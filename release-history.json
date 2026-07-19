@@ -1,0 +1,383 @@
+{
+  "format": "fizz-health-release-history",
+  "releases": [
+    {
+      "version": "1.4.10.6",
+      "name": "Field Hotfix Completion",
+      "type": "Hotfix",
+      "created": "2026-07-19T18:00:00-04:00",
+      "stories": [
+        "FH-1221",
+        "FH-1222",
+        "FH-1224",
+        "FH-1225",
+        "FH-1228",
+        "FH-1235",
+        "FH-1236",
+        "FH-1238"
+      ]
+    },
+    {
+      "version": "1.4.10.1",
+      "date": "2026-07-19",
+      "story": "FH-1220",
+      "release": "Legacy Health Database Import Audit",
+      "schema_version": 40
+    },
+    {
+      "version": "1.4.10",
+      "date": "2026-07-18",
+      "title": "Pantry Intelligence Stabilization & Workflow Refinement",
+      "schema_version": 39,
+      "stories": [
+        "FH-1190",
+        "FH-1191",
+        "FH-1192",
+        "FH-1193",
+        "FH-1194",
+        "FH-1195",
+        "FH-1196",
+        "FH-1200",
+        "FH-1205",
+        "FH-1212",
+        "FH-1213",
+        "FH-1214",
+        "FH-1215",
+        "FH-1216",
+        "FH-1217",
+        "FH-1218",
+        "FH-1219"
+      ]
+    },
+    {
+      "version": "1.4.9.1",
+      "release": "Restaurant-First Universal Capture Hotfix",
+      "date": "2026-07-18",
+      "status": "COMPLETE",
+      "stories": [
+        "HOTFIX-1.4.9.1"
+      ]
+    },
+    {
+      "version": "1.4.8.3",
+      "release": "Form Viewport Recovery Hotfix",
+      "date": "2026-07-18",
+      "status": "COMPLETE",
+      "stories": [
+        "HOTFIX-1.4.8.3"
+      ]
+    },
+    {
+      "app": "Fizz Health",
+      "version": "1.4.7",
+      "release": "Workflow & Experience 2.0",
+      "release_type": "Feature release",
+      "build": "1470",
+      "release_id": "FH-20260718-1470",
+      "created_at": "2026-07-18T09:00:00-04:00",
+      "schema_version": 36,
+      "status": "COMPLETE",
+      "completed_story": "FH-1177",
+      "baseline_story": "FH-1169",
+      "updated": "2026-07-18",
+      "stories": [
+        "FH-1169",
+        "FH-1170",
+        "FH-1171",
+        "FH-1172",
+        "FH-1173",
+        "FH-1174",
+        "FH-1175",
+        "FH-1176",
+        "FH-1177"
+      ],
+      "build_date": "2026-07-18"
+    },
+    {
+      "version": "1.4.6",
+      "release": "Health Intelligence 2.0",
+      "date": "2026-07-18",
+      "build": "1460",
+      "schema_version": 35,
+      "stories": [
+        "FH-1161",
+        "FH-1162",
+        "FH-1163",
+        "FH-1164",
+        "FH-1165",
+        "FH-1166",
+        "FH-1167",
+        "FH-1168"
+      ],
+      "status": "COMPLETE"
+    },
+    {
+      "version": "1.4.5",
+      "release": "Restaurant Intelligence 2.0 & AI Food Recognition 2.0",
+      "date": "2026-07-18",
+      "build": "1450",
+      "schema_version": 34,
+      "stories": [
+        "FH-1153",
+        "FH-1154",
+        "FH-1155",
+        "FH-1156",
+        "FH-1157",
+        "FH-1158",
+        "FH-1159",
+        "FH-1160"
+      ],
+      "status": "COMPLETE"
+    },
+    {
+      "version": "1.4.4",
+      "release": "Meal Planning 2.0",
+      "date": "2026-07-18",
+      "build": "1440",
+      "schema_version": 33,
+      "stories": [
+        "FH-1144",
+        "FH-1145",
+        "FH-1146",
+        "FH-1147",
+        "FH-1148",
+        "FH-1149",
+        "FH-1150",
+        "FH-1151",
+        "FH-1152"
+      ],
+      "status": "COMPLETE"
+    },
+    {
+      "version": "1.4.3",
+      "name": "Pantry Intelligence 2.0",
+      "type": "Feature release",
+      "created": "2026-07-18T21:30:00-04:00",
+      "build": "1430",
+      "releaseId": "FH-20260718-2130",
+      "schemaVersion": 32,
+      "stories": [
+        [
+          "FH-1128",
+          "Pantry Freshness Intelligence"
+        ],
+        [
+          "FH-1129",
+          "Grocery Optimization Engine"
+        ],
+        [
+          "FH-1130",
+          "Pantry Cost Intelligence"
+        ],
+        [
+          "FH-1131",
+          "Waste Prevention Engine"
+        ],
+        [
+          "FH-1132",
+          "Smart Restock Engine"
+        ],
+        [
+          "FH-1133",
+          "Purchase Intelligence"
+        ],
+        [
+          "FH-1134",
+          "Multi-Location Pantry"
+        ],
+        [
+          "FH-1135",
+          "Pantry Health Score"
+        ],
+        [
+          "FH-1136",
+          "Pantry Utilization Analytics"
+        ],
+        [
+          "FH-1137",
+          "Inventory Confidence"
+        ],
+        [
+          "FH-1138",
+          "Inventory Timeline"
+        ],
+        [
+          "FH-1139",
+          "Pantry Verification"
+        ]
+      ],
+      "knownIssues": []
+    },
+    {
+      "version": "1.4.2",
+      "name": "Decision Intelligence Enhancements",
+      "type": "Feature release",
+      "created": "2026-07-18T18:45:00-04:00",
+      "build": "1420",
+      "releaseId": "FH-20260718-1845",
+      "schemaVersion": 31,
+      "stories": [
+        [
+          "FH-1120",
+          "Predictive Nutrition Engine"
+        ],
+        [
+          "FH-1121",
+          "Decision Simulator"
+        ],
+        [
+          "FH-1122",
+          "Daily Decision Queue"
+        ],
+        [
+          "FH-1123",
+          "Opportunity Scoring"
+        ],
+        [
+          "FH-1124",
+          "Nutrition Debt & Credit"
+        ],
+        [
+          "FH-1125",
+          "Weekly Health Forecast"
+        ],
+        [
+          "FH-1126",
+          "Decision Timeline"
+        ],
+        [
+          "FH-1127",
+          "Goal Probability Engine"
+        ]
+      ],
+      "knownIssues": []
+    },
+    {
+      "version": "1.4.1.2",
+      "name": "Restaurant Intelligence Expansion",
+      "type": "Feature release",
+      "created": "2026-07-18T15:30:00-04:00",
+      "build": "1412",
+      "releaseId": "FH-20260718-1530",
+      "stories": [
+        [
+          "FH-1110",
+          "Restaurant Meal Capture"
+        ],
+        [
+          "FH-1111",
+          "Restaurant Learning Engine"
+        ],
+        [
+          "FH-1112",
+          "Restaurant Nutrition Confidence"
+        ],
+        [
+          "FH-1113",
+          "Restaurant Analytics & Insights"
+        ]
+      ],
+      "knownIssues": []
+    },
+    {
+      "app": "Fizz Health",
+      "version": "1.4.1.1",
+      "release": "Restaurant Intelligence Core",
+      "release_type": "Feature release",
+      "build": "1411",
+      "release_id": "FH-20260718-1130",
+      "created_at": "2026-07-18T11:30:00-04:00",
+      "schema_version": 29,
+      "status": "COMPLETE",
+      "completed_story": "FH-1109",
+      "baseline_story": "FH-1106",
+      "updated": "2026-07-18",
+      "stories": [
+        "FH-1106",
+        "FH-1107",
+        "FH-1108",
+        "FH-1109"
+      ],
+      "build_date": "2026-07-18"
+    },
+    {
+      "app": "Fizz Health",
+      "version": "1.4.0",
+      "release": "Page Enhancements & Settings",
+      "release_type": "Feature release",
+      "build": "1400",
+      "release_id": "FH-20260718-0900",
+      "created_at": "2026-07-18T09:00:00-04:00",
+      "schema_version": 28,
+      "status": "COMPLETE",
+      "completed_story": "FH-1111",
+      "baseline_story": "HF-012",
+      "updated": "2026-07-18",
+      "stories": [
+        "FH-1099",
+        "FH-1100",
+        "FH-1101",
+        "FH-1102",
+        "FH-1103",
+        "FH-1104",
+        "FH-1105",
+        "FH-1106",
+        "FH-1107",
+        "FH-1108",
+        "FH-1109",
+        "FH-1110",
+        "FH-1111"
+      ]
+    },
+    {
+      "version": "1.4.8.1",
+      "name": "Today Dashboard Recovery Hotfix",
+      "release_date": "2026-07-18",
+      "schema_version": 37,
+      "stories": [
+        "HOTFIX-1.4.8.1"
+      ]
+    },
+    {
+      "version": "1.4.8.2",
+      "name": "Today Meal Planner Query Hotfix",
+      "release_date": "2026-07-18",
+      "schema_version": 37,
+      "stories": [
+        "HOTFIX-1.4.8.2"
+      ]
+    },
+    {
+      "version": "1.4.9",
+      "name": "Universal Photo Capture",
+      "release_date": "2026-07-18",
+      "schema_version": 38,
+      "stories": [
+        "FH-1188",
+        "FH-1189"
+      ]
+    },
+    {
+      "version": "1.4.10.2",
+      "name": "Stability, Navigation & UX Hotfix",
+      "release_date": "2026-07-19",
+      "schema_version": 40,
+      "stories": [
+        "FH-1221",
+        "FH-1222",
+        "FH-1223",
+        "FH-1224",
+        "FH-1225",
+        "FH-1226",
+        "FH-1227",
+        "FH-1228",
+        "FH-1229",
+        "FH-1230"
+      ]
+    },
+    {
+      "version": "1.4.10.7",
+      "title": "Keyboard and Capture Commit Reliability Hotfix"
+    }
+  ]
+}

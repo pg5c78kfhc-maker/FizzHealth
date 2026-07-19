@@ -1,0 +1,28 @@
+{
+  "app": "Fizz Health",
+  "version": "1.4.10.7",
+  "release": "Field Hotfix Completion",
+  "release_type": "Patch",
+  "build": "14106",
+  "release_id": "FH-20260719-14106",
+  "created_at": "2026-07-19T18:00:00-04:00",
+  "schema_version": 40,
+  "status": "COMPLETE",
+  "completed_story": "FH-1238",
+  "baseline_story": "FH-1221",
+  "updated": "2026-07-19",
+  "stories": [
+    "FH-1221",
+    "FH-1222",
+    "FH-1224",
+    "FH-1225",
+    "FH-1228",
+    "FH-1235",
+    "FH-1223",
+    "FH-1227",
+    "FH-1236",
+    "FH-1238"
+  ],
+  "build_date": "2026-07-19",
+  "release_name": "Capture, Health Intelligence, and Meal-Date Hotfix Completion"
+}
