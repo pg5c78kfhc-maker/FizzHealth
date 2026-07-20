@@ -1,3 +1,10 @@
+# Changelog
+
+## v1.4.10.8 — 2026-07-20
+- FH-1262 partial: canonical federated Health timeline for meals and measurements.
+- Added stable event identity, source linkage, duplicate suppression, Delete, Log Again, and Undo behavior.
+- Added automated FH-1262 regression coverage and implementation/deferred-scope documentation.
+
 ## v1.4.10 — Pantry Intelligence Stabilization & Workflow Refinement
 
 Schema 39. Unified hierarchical pantry filtering now drives the inventory list, Pantry Health Score, Chef’s Recommendations, waste risk, restock, and shopping. Added Pantry Health Score drill-down, intelligent empty states, manual pantry creation, multi-image Universal Capture, keyboard-safe workflow standards, chart rendering stabilization, and release-wide resilience/navigation refinements.

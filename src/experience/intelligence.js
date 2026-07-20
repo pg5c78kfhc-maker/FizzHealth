@@ -30,15 +30,22 @@ export function rankActions({pantry=[],plannedMeals=[],captures=[],preventive=[]
  return actions.sort((a,b)=>b.priority-a.priority).slice(0,8);
 }
 
+// FH-1262: canonical presentation contract for the federated event sources already in Fizz Health.
+// Originating domain rows remain authoritative; the timeline never stores a duplicate copy.
 export function buildUnifiedTimeline(sources={}){
- const out=[];const add=(rows,type,dateKey,title,detail)=>{for(const r of rows||[]){const at=r[dateKey];if(!at)continue;out.push({id:`${type}-${r.id||r.event_id||r.pantry_id||r.receipt_id||out.length}`,type,eventAt:at,title:title(r),detail:detail(r),source:r})}};
- add(sources.meals,'meal','eaten_at',r=>r.food_name||'Meal',r=>`${n(r.calories)} kcal`);
+ const out=[],seen=new Set();
+ const add=(rows,type,dateKey,title,detail,sourceId=r=>r.id||r.event_id||r.pantry_id||r.receipt_id)=>{for(const r of rows||[]){
+  const at=r[dateKey],id=sourceId(r);if(!at)continue;
+  const eventId=`${type}-${id??`${at}-${out.length}`}`;if(seen.has(eventId))continue;seen.add(eventId);
+  out.push({id:eventId,type,eventAt:at,title:title(r),detail:detail(r),sourceType:type,sourceId:id??null,source:r});
+ }};
+ add(sources.meals,'meal','eaten_at',r=>r.food_name||'Meal',r=>`${n(r.calories)} kcal · ${r.meal_type||'Meal'}`);
  add(sources.metrics,'metric','measured_at',r=>String(r.metric_type||'Health metric').replaceAll('_',' '),r=>`${r.value_primary??''}${r.value_secondary!=null?`/${r.value_secondary}`:''} ${r.unit||''}`.trim());
  add(sources.pantryEvents,'pantry','event_at',r=>r.event_type||'Pantry update',r=>r.notes||r.source||'');
  add(sources.restaurantVisits,'restaurant','visited_at',r=>r.restaurant_name||'Restaurant visit',r=>r.items_json||'');
  add(sources.purchases,'purchase','purchased_at',r=>r.retailer||'Grocery purchase',r=>r.total!=null?`$${n(r.total).toFixed(2)}`:'');
  add(sources.healthEvents,'health','event_at',r=>r.title||r.event_type,r=>r.details_json||'');
- return out.sort((a,b)=>isoTime(b.eventAt)-isoTime(a.eventAt));
+ return out.sort((a,b)=>isoTime(b.eventAt)-isoTime(a.eventAt)||String(a.id).localeCompare(String(b.id)));
 }
 
 export function adaptiveNavigation(usage={},items=[]){

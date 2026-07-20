@@ -488,3 +488,10 @@ textarea{width:100%;min-width:0;max-height:min(36dvh,280px);resize:vertical;over
 .shopping-placeholder>svg{width:42px;height:42px;color:#a9ef45}
 .shopping-placeholder h2{margin:8px 0 0}
 .shopping-placeholder p{max-width:360px;margin:0}
+/* FH-1262 — unified event timeline gestures. Left reveals Delete; right reveals Log again. */
+.meal-swipe-shell .swipe-quick,.health-event-swipe .swipe-quick{width:82px}
+.health-timeline .health-event-swipe{display:block;padding:0;border-bottom:1px solid rgba(255,255,255,.08)}
+.health-timeline .health-event-card{display:grid;grid-template-columns:62px 14px 1fr;gap:10px;align-items:start;width:100%;padding:10px 0;border:0;background:var(--panel,#11181a);color:#fff;text-align:left}
+.health-timeline .health-event-card time{color:#9ca6b5;font-size:.75rem;padding-top:2px}
+.health-timeline .health-event-card div{display:flex;flex-direction:column;gap:2px}
+.health-timeline .health-event-card small{color:#9ca6b5}

@@ -37,5 +37,5 @@ test('schema 40 and cache version are present',()=>{
  assert.match(db,/TARGET_SCHEMA_VERSION=40/);
  assert.match(db,/version:39/);
  assert.match(db,/version:40/);
- assert.match(sw,/fizz-health-v1\.4\.10\.7/);
+ assert.match(sw,/fizz-health-v1\.4\.10\.8/);
 });

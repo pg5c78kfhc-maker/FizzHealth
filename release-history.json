@@ -2,6 +2,24 @@
   "format": "fizz-health-release-history",
   "releases": [
     {
+      "version": "1.4.10.8",
+      "name": "Unified Event Timeline Reconciliation",
+      "type": "Patch",
+      "created": "2026-07-20T10:30:00-04:00",
+      "build": "14107",
+      "release_id": "FH-20260720-14107",
+      "stories": [
+        "FH-1262"
+      ],
+      "status": "PARTIAL",
+      "deferred": [
+        "Universal event contract",
+        "Immutable audit semantics",
+        "Timeline filters",
+        "Future event types"
+      ]
+    },
+    {
       "version": "1.4.10.6",
       "name": "Field Hotfix Completion",
       "type": "Hotfix",
