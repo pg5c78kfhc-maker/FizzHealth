@@ -301,3 +301,11 @@ Implemented FH-1153 through FH-1160 with AI-assisted capture, recognition, porti
 - Added functional meal planning entry from Today.
 - Rebuilt manual Pantry editor for keyboard-safe scrolling.
 - Reconciled laboratory import and Health Intelligence biomarker visibility.
+
+## v1.4.10.9 — FH-1259 One-Time Food Logging
+- Added user-facing Log Once entry point and keyboard-safe editor.
+- Added direct one-time meal persistence using `source='one_time'`.
+- Preserved unknown-vs-zero nutrition semantics.
+- Confirmed no Foods, Recipes, Favorites, or Pantry mutation.
+- Integrated with Meal Log, unified Timeline, nutrition totals, deletion, and Undo.
+- Added FH-1259 test proof, DOD, acceptance checklist, and deferred-scope record.

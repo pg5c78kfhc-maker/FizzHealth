@@ -495,3 +495,7 @@ textarea{width:100%;min-width:0;max-height:min(36dvh,280px);resize:vertical;over
 .health-timeline .health-event-card time{color:#9ca6b5;font-size:.75rem;padding-top:2px}
 .health-timeline .health-event-card div{display:flex;flex-direction:column;gap:2px}
 .health-timeline .health-event-card small{color:#9ca6b5}
+
+/* FH-1259 — One-Time Food Logging / user-facing “Log Once”. */
+.log-once-launch{width:100%;display:flex;align-items:center;gap:12px;margin:0 0 14px;padding:15px 16px;border:1px solid var(--line);border-radius:18px;background:var(--panel);text-align:left}.log-once-launch>svg:first-child{padding:8px;width:42px;height:42px;border-radius:50%;background:var(--lime);color:#07110d}.log-once-launch div{display:flex;flex:1;flex-direction:column;gap:3px}.log-once-launch b{font-size:1rem}.log-once-launch span{color:var(--muted);font-size:.82rem;line-height:1.25}.log-once-launch>svg:last-child{color:var(--muted)}
+.log-once-editor .amount.unit-amount{align-items:end}.log-once-editor .amount.unit-amount label{min-width:0}.log-once-nutrition{border:1px solid var(--line);border-radius:14px;padding:12px}.log-once-nutrition legend{padding:0 6px;font-weight:700}.log-once-nutrition small{display:block;margin-top:8px;color:var(--muted)}.log-once-boundary{display:flex;flex-direction:column;gap:4px;padding:12px;border-radius:12px;background:rgba(163,255,58,.08);border:1px solid rgba(163,255,58,.25)}.log-once-boundary span{color:var(--muted);font-size:.84rem}

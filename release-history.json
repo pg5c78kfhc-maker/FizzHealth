@@ -2,6 +2,25 @@
   "format": "fizz-health-release-history",
   "releases": [
     {
+      "version": "1.4.10.9",
+      "name": "One-Time Food Logging \u2014 Log Once",
+      "type": "Patch",
+      "created": "2026-07-20T11:15:00-04:00",
+      "build": "14108",
+      "release_id": "FH-20260720-14108",
+      "stories": [
+        "FH-1259"
+      ],
+      "status": "PARTIAL",
+      "deferred": [
+        "AI/photo capture integration",
+        "Promote to Food Database",
+        "Convert to Recipe",
+        "Repeated-item promotion intelligence",
+        "Barcode and restaurant-specific Log Once entry points"
+      ]
+    },
+    {
       "version": "1.4.10.8",
       "name": "Unified Event Timeline Reconciliation",
       "type": "Patch",

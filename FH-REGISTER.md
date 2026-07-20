@@ -188,3 +188,5 @@
 | FH-1237 | — | — | Unassigned; no source evidence |
 | FH-1238 | Imported restaurant meals remain editable and can be moved between dates without requiring a linked food row | 1.4.10.6, 1.4.10.7 | Released |
 | FH-1262 | Unified Event Architecture & Timeline | 1.4.10.8 | Partial; meal-event reconciliation implemented; story remains open |
+
+| FH-1259 | One-Time Food Logging | 1.4.10.9 | Partial; Log Once vertical slice implemented; AI/photo and promotion scope deferred |
