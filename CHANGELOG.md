@@ -1,3 +1,7 @@
+## 1.4.10.15 — 2026-07-20
+
+- Nutrient audit completion, Add Food fix, nutrition inspector access, About metadata, and planned-card consistency.
+
 ## 1.4.10.14 — 2026-07-20
 
 - Complete nutrient registry, editing, provenance, unknown-value preservation, schema 42, time-sensitive nutrient priority/color logic, and durable decision documentation.

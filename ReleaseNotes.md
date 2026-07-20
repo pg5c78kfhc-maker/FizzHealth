@@ -1,3 +1,15 @@
+# Fizz Health v1.4.10.15 — Nutrient Integrity Completion & Logging Reliability
+
+Issued July 20, 2026. Schema 43. Build 141015.
+
+- Audited v1.4.10.14 against the agreed nutrient-integrity scope.
+- Fixed Add Food commit failure caused by mismatched SQL columns and values.
+- Exposed the complete nutrient inspector/editor from the Food list.
+- Expanded Log Once to all tracked nutrients.
+- Added canonical nutrient normalization for universal photo meal captures.
+- Added current application, release-date, build, schema, and release-history information under Settings → About.
+- Unified planned meal card appearance and swipe behavior with consumed meal cards.
+- Preserved and documented the time-sensitive nutrient ranking and color logic.
 # Fizz Health v1.4.10.14 — Nutrient Integrity and Decision Priority
 
 - Added a canonical registry for every tracked nutrient and unit.

@@ -15,12 +15,12 @@ test('FH-1259 exposes user-facing Log Once capture with explicit knowledge-base 
 
 test('FH-1259 writes a classified meal event without creating reusable or pantry entities',()=>{
  assert.match(main,/sourceRecordId=`one-time-/);
- assert.match(main,/null,name,qty,unit/);
- assert.match(main,/'one_time',sourceRecordId/);
+ assert.match(main,/food_id:null,food_name:name,amount:qty,unit/);
+ assert.match(main,/source:'one_time',source_record_id:sourceRecordId/);
  const saveStart=main.indexOf('async function saveLogOnce');
  const saveEnd=main.indexOf('const n=calculated()',saveStart);
  const saveBody=main.slice(saveStart,saveEnd);
- assert.match(saveBody,/INSERT INTO meals/);
+ assert.match(saveBody,/insertRecord\(db,'meals'/);
  assert.doesNotMatch(saveBody,/INSERT INTO foods/);
  assert.doesNotMatch(saveBody,/INSERT INTO recipes/);
  assert.doesNotMatch(saveBody,/INSERT INTO pantry/);
@@ -30,7 +30,7 @@ test('FH-1259 writes a classified meal event without creating reusable or pantry
 test('FH-1259 distinguishes unknown nutrition from verified zero and refreshes derived views',()=>{
  assert.match(main,/raw===''\?null:Number\(raw\)/);
  assert.match(main,/known=Object\.values\(nutrition\)\.some\(value=>value!=null\)/);
- assert.match(main,/nutrition_known,source,source_record_id/);
+ assert.match(main,/nutrition_known:known\?1:0/);
  assert.match(main,/localStorage\.setItem\('fizz-meal-added','1'\)/);
  assert.match(main,/refresh\(\);setLocalTick/);
 });

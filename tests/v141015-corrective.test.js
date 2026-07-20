@@ -1,0 +1,7 @@
+import test from 'node:test';import assert from 'node:assert/strict';import fs from 'node:fs';
+const main=fs.readFileSync('src/main.jsx','utf8');const db=fs.readFileSync('src/database.js','utf8');const css=fs.readFileSync('src/styles.css','utf8');
+test('Add Food uses schema-aware insert and cannot drift column/value counts',()=>{assert.match(main,/insertRecord\(db,'meals'/);assert.match(main,/PRAGMA table_info\(\$\{table\}\)/);assert.doesNotMatch(main,/pantry_opened_changed\) VALUES \(\?,\?,\?,\?,\?,\?,\?,\?,\?,\?,\?,\?,\?,\?,\?,\?,\?,\?,\?,\?,\?\)/)});
+test('nutrition inspector is reachable and registry driven',()=>{assert.match(main,/nutrition-inspect-button/);assert.match(main,/nutritionFood&&<NutritionEditor/);assert.match(main,/const fields=NUTRIENTS/);assert.match(main,/Blank means Unknown/)});
+test('Log Once exposes the full nutrient registry',()=>{assert.match(main,/NUTRIENTS\.map\(n=><label/);assert.match(main,/Object\.fromEntries\(NUTRIENT_KEYS\.map/)});
+test('About and release metadata identify build and schema dates',()=>{assert.match(main,/Application version/);assert.match(main,/Build identifier/);assert.match(main,/Issued \{RELEASE_DATE\}/);assert.match(db,/version:43/);assert.match(db,/release_metadata/)});
+test('planned card is compact and gesture-only',()=>{const start=main.indexOf('function PlannedMealSwipeCard');const end=main.indexOf('function Today',start);const body=main.slice(start,end);assert.match(body,/meal-card planned-card/);assert.doesNotMatch(body,/planned-actions/);assert.match(css,/planned-actions\{display:none/)});

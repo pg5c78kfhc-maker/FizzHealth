@@ -31,11 +31,11 @@ test('v1.4.10 UI removes legacy pantry pills and supports score drilldown manual
  assert.match(source,/universal_photo_capture_images/);
 });
 
-test('schema 42 and cache version are present',()=>{
+test('schema 43 and cache version are present',()=>{
  const db=fs.readFileSync(new URL('../src/database.js',import.meta.url),'utf8');
  const sw=fs.readFileSync(new URL('../public/sw.js',import.meta.url),'utf8');
- assert.match(db,/TARGET_SCHEMA_VERSION=42/);
+ assert.match(db,/TARGET_SCHEMA_VERSION=43/);
  assert.match(db,/version:39/);
  assert.match(db,/version:40/);
- assert.match(sw,/fizz-health-v1\.4\.10\.14/);
+ assert.match(sw,/fizz-health-v1\.4\.10\.15/);
 });

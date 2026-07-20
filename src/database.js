@@ -3,7 +3,7 @@ import wasmUrl from 'sql.js/dist/sql-wasm.wasm?url';
 
 const DB_KEY='fizz-health-sqlite-v1';
 const STORAGE_DB='FizzHealthStorage';
-const TARGET_SCHEMA_VERSION=42;
+const TARGET_SCHEMA_VERSION=43;
 let SQL, db;
 
 const migrations=[
@@ -591,6 +591,15 @@ const migrations=[
     ALTER TABLE restaurant_meals ADD COLUMN nutrition_completeness_json TEXT;
   `}
 
+
+,  {version:43,name:'nutrient_integrity_completion_and_release_metadata',sql:`
+    CREATE TABLE IF NOT EXISTS release_metadata (
+      version TEXT PRIMARY KEY, release_date TEXT NOT NULL, build_id TEXT,
+      schema_version INTEGER NOT NULL, title TEXT, created_at TEXT NOT NULL
+    );
+    INSERT OR REPLACE INTO release_metadata(version,release_date,build_id,schema_version,title,created_at)
+    VALUES ('1.4.10.15','2026-07-20','141015',43,'Nutrient Integrity Completion & Logging Reliability',CURRENT_TIMESTAMP);
+  `}
 
 ];
 
