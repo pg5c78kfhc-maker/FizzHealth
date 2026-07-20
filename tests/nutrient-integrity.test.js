@@ -1,0 +1,11 @@
+import test from 'node:test';import assert from 'node:assert/strict';import fs from 'node:fs';
+import {NUTRIENTS,NUTRIENT_KEYS,canonicalNutrition,scaleNutrition,CRITICAL_VISIBLE} from '../src/nutrition/registry.js';
+import {evaluateNutrient} from '../src/decision/engine.js';
+const main=fs.readFileSync(new URL('../src/main.jsx',import.meta.url),'utf8');const db=fs.readFileSync(new URL('../src/database.js',import.meta.url),'utf8');
+test('canonical registry includes LDL-critical and micronutrient fields',()=>{for(const k of ['fat','saturated_fat','trans_fat','cholesterol','fiber','sodium','magnesium','omega_3'])assert.ok(NUTRIENT_KEYS.includes(k));assert.ok(NUTRIENTS.length>=22)});
+test('aliases normalize and unknown remains null',()=>{const n=canonicalNutrition({cholesterol_mg:85,saturated_fat_g:2});assert.equal(n.cholesterol,85);assert.equal(n.saturated_fat,2);assert.equal(n.trans_fat,null)});
+test('portion scaling preserves unknown and scales known cholesterol',()=>{const n=scaleNutrition({cholesterol:85,trans_fat:null},3);assert.equal(n.cholesterol,255);assert.equal(n.trans_fat,null)});
+test('full editor is registry driven and distinguishes zero from unknown',()=>{assert.match(main,/const fields=NUTRIENTS/);assert.match(main,/Blank means Unknown/);assert.match(main,/nutrition_completeness_json/)});
+test('schema 42 adds provenance and trans fat support',()=>{assert.match(db,/TARGET_SCHEMA_VERSION=42/);assert.match(db,/complete_nutrient_contract_and_provenance/);assert.match(db,/ALTER TABLE foods ADD COLUMN trans_fat/)});
+test('critical nutrients are guaranteed visible without fixed rank wording',()=>{assert.equal(CRITICAL_VISIBLE.length,6);assert.match(main,/guaranteed a visible Top 10 position but is not pinned to a fixed rank/)});
+test('protein status becomes urgent late but not early at same intake',()=>{const def={key:'protein',label:'Protein',unit:'g',behavior:'goal',priority:100};assert.notEqual(evaluateNutrient({definition:def,value:12,target:180,hour:9}).status,'urgent');assert.equal(evaluateNutrient({definition:def,value:12,target:180,hour:17}).status,'urgent')});

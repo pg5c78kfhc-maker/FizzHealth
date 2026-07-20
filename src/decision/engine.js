@@ -1,8 +1,8 @@
 const number = value => Number.isFinite(Number(value)) ? Number(value) : 0;
 const clamp = (value, min = 0, max = 100) => Math.max(min, Math.min(max, value));
 const unique = values => [...new Set(values.filter(Boolean))];
-export const ENGINE_VERSION = '1.4.10.13';
-export const RULES_VERSION = '2026-07-17.8';
+export const ENGINE_VERSION = '1.4.10.14';
+export const RULES_VERSION = '2026-07-20.1';
 
 export const DECISION_TRACE_CONTRACT = Object.freeze({
   required: Object.freeze(['type','subject','subjectId','subjectName','score','confidence','status','rank','positive','negative','missing','factors','confidenceReason','methodology','action','inputs','dataUsed','projectedResult','comparison','engineVersion','rulesVersion','evaluatedAt']),
@@ -102,7 +102,9 @@ export function evaluateNutrient({definition, value = 0, planned = 0, target = 0
   const behavior = definition.behavior || 'goal';
   const goal = number(target);
   const ceiling = max == null ? null : number(max);
-  const dayProgress = clamp((hour - 6) / 16, .15, 1);
+  const dayProgress = clamp((hour - 6) / 16, .05, 1);
+  const expectedPace = clamp(dayProgress, .05, 1);
+  const actualPace = goal > 0 ? projected / goal : 0;
   const positive = [];
   const negative = [];
   const missing = [];
@@ -114,7 +116,9 @@ export function evaluateNutrient({definition, value = 0, planned = 0, target = 0
 
   if (behavior === 'goal') {
     const gap = goal > 0 ? Math.max(0, 1 - projected / goal) : 0;
-    score += gap * DECISION_RULES.nutrient.gapWeight * (.45 + dayProgress * DECISION_RULES.nutrient.lateDayMultiplier);
+    const paceDeficit=Math.max(0,expectedPace-actualPace);
+    score += gap * DECISION_RULES.nutrient.gapWeight * (.35 + dayProgress * DECISION_RULES.nutrient.lateDayMultiplier);
+    score += paceDeficit * 95;
     if (hour >= 19 && gap > .5) score += DECISION_RULES.nutrient.lateDayBoost;
     if (hour >= 21 && gap > .25) score += DECISION_RULES.nutrient.eveningBoost;
 
@@ -129,7 +133,7 @@ export function evaluateNutrient({definition, value = 0, planned = 0, target = 0
       const remaining = Math.max(0, goal - projected);
       negative.push(`${Math.round(remaining * 10) / 10}${definition.unit === 'kcal' ? ' kcal' : definition.unit} remaining`);
       if (hour >= 19) negative.push('Limited time remains today');
-      status = projected < goal * .35 ? 'urgent' : 'building';
+      status = (dayProgress>=.65&&actualPace<expectedPace*.65)||(dayProgress>=.85&&gap>.2) ? 'urgent' : actualPace+0.08<expectedPace ? 'building' : 'on_track';
       action = `Choose a meal that adds ${definition.label.toLowerCase()}.`;
     }
   } else {
@@ -166,7 +170,7 @@ export function evaluateNutrient({definition, value = 0, planned = 0, target = 0
       positive,
       negative,
       missing,
-      methodology: behavior === 'goal' ? 'Priority increases with the remaining gap, health importance, and the amount of the day already elapsed.' : 'Priority increases as intake approaches or exceeds the configured limit.',
+      methodology: behavior === 'goal' ? 'Priority increases with the remaining gap, expected time-of-day pace, health importance, planned intake, and declining recoverability before day-end.' : 'Priority increases as intake approaches or exceeds the configured limit.',
       action,
       dataUsed: ['Consumed nutrition', ...(planned > 0 ? ['Planned meals'] : []), 'Nutrient configuration', 'Current local time'],
       projectedResult: {current:number(value), planned:number(planned), projected, target:goal, max:ceiling},

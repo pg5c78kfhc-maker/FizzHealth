@@ -1,3 +1,7 @@
+## 1.4.10.14 — 2026-07-20
+
+- Complete nutrient registry, editing, provenance, unknown-value preservation, schema 42, time-sensitive nutrient priority/color logic, and durable decision documentation.
+
 ## 1.4.10.13 — 2026-07-20
 
 - Corrected FH-1250.2 planner card layout, planned-meal gestures, and meal scheduling UX.

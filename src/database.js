@@ -3,7 +3,7 @@ import wasmUrl from 'sql.js/dist/sql-wasm.wasm?url';
 
 const DB_KEY='fizz-health-sqlite-v1';
 const STORAGE_DB='FizzHealthStorage';
-const TARGET_SCHEMA_VERSION=41;
+const TARGET_SCHEMA_VERSION=42;
 let SQL, db;
 
 const migrations=[
@@ -558,6 +558,37 @@ const migrations=[
     ALTER TABLE planned_meals ADD COLUMN vitamin_c REAL DEFAULT 0;
     ALTER TABLE planned_meals ADD COLUMN alcohol REAL DEFAULT 0;
     ALTER TABLE planned_meals ADD COLUMN caffeine REAL DEFAULT 0;
+  `}
+
+,  {version:42,name:'complete_nutrient_contract_and_provenance',sql:`
+    ALTER TABLE foods ADD COLUMN trans_fat REAL;
+    ALTER TABLE foods ADD COLUMN nutrition_source TEXT;
+    ALTER TABLE foods ADD COLUMN nutrition_confidence REAL;
+    ALTER TABLE foods ADD COLUMN nutrition_completeness_json TEXT;
+    ALTER TABLE foods ADD COLUMN updated_at TEXT;
+    ALTER TABLE meals ADD COLUMN trans_fat REAL;
+    ALTER TABLE meals ADD COLUMN nutrition_source TEXT;
+    ALTER TABLE meals ADD COLUMN nutrition_completeness_json TEXT;
+    ALTER TABLE planned_meals ADD COLUMN trans_fat REAL;
+    ALTER TABLE planned_meals ADD COLUMN nutrition_source TEXT;
+    ALTER TABLE planned_meals ADD COLUMN nutrition_confidence REAL;
+    ALTER TABLE planned_meals ADD COLUMN nutrition_completeness_json TEXT;
+    ALTER TABLE restaurant_meals ADD COLUMN cholesterol REAL;
+    ALTER TABLE restaurant_meals ADD COLUMN trans_fat REAL;
+    ALTER TABLE restaurant_meals ADD COLUMN monounsaturated_fat REAL;
+    ALTER TABLE restaurant_meals ADD COLUMN polyunsaturated_fat REAL;
+    ALTER TABLE restaurant_meals ADD COLUMN total_sugar REAL;
+    ALTER TABLE restaurant_meals ADD COLUMN added_sugar REAL;
+    ALTER TABLE restaurant_meals ADD COLUMN potassium REAL;
+    ALTER TABLE restaurant_meals ADD COLUMN calcium REAL;
+    ALTER TABLE restaurant_meals ADD COLUMN iron REAL;
+    ALTER TABLE restaurant_meals ADD COLUMN magnesium REAL;
+    ALTER TABLE restaurant_meals ADD COLUMN vitamin_d REAL;
+    ALTER TABLE restaurant_meals ADD COLUMN vitamin_c REAL;
+    ALTER TABLE restaurant_meals ADD COLUMN omega_3 REAL;
+    ALTER TABLE restaurant_meals ADD COLUMN alcohol REAL;
+    ALTER TABLE restaurant_meals ADD COLUMN caffeine REAL;
+    ALTER TABLE restaurant_meals ADD COLUMN nutrition_completeness_json TEXT;
   `}
 
 
