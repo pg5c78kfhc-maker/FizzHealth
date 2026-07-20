@@ -16,7 +16,7 @@ import {optimizeMealPlan} from './planning/intelligence';
 import {parseMenuText,suggestModifications,orchestrateCapture,buildRestaurantMemory} from './restaurant/capture';
 import {detectIntent,rankActions,buildUnifiedTimeline,explainRecommendation,buildNotifications,dashboardSummary} from './experience/intelligence';
 import './styles.css';
-const VERSION='1.4.10.9';
+const VERSION='1.4.10.10';
 const localDateKey=(date=new Date())=>{const y=date.getFullYear(),m=String(date.getMonth()+1).padStart(2,'0'),d=String(date.getDate()).padStart(2,'0');return `${y}-${m}-${d}`};
 const today=()=>localDateKey();
 const toDateTimeLocal=(date=new Date())=>{const y=date.getFullYear(),m=String(date.getMonth()+1).padStart(2,'0'),d=String(date.getDate()).padStart(2,'0'),h=String(date.getHours()).padStart(2,'0'),min=String(date.getMinutes()).padStart(2,'0');return `${y}-${m}-${d}T${h}:${min}`};
@@ -103,6 +103,7 @@ function App(){
 
 function FoodHub({navigate}){
  const destinations=[
+  {id:'add',Icon:Plus,title:'Log food',description:'Log a Food Database item, Recipe, or one-time meal with Log Once.'},
   {id:'pantry',Icon:Package,title:'Pantry',description:'Browse foods on hand, quantities, expiration, and pantry intelligence.'},
   {id:'shopping',Icon:Box,title:'Shopping',description:'Build and manage grocery needs from your food plan.'},
   {id:'restaurants',Icon:UtensilsCrossed,title:'Restaurants',description:'Open restaurant profiles, menus, meals, and dining intelligence.'}
@@ -529,7 +530,7 @@ function Pantry({onLogFood,tick}){
  const score=intel.health,verified=intel.items.filter(i=>i.confidence>=75).length,lower=intel.items.filter(i=>i.waste.score>=55).slice(0,3),improve=intel.items.filter(i=>i.opportunity.score>=55).slice(0,3);
  return <><header className="pantry-summary-header" onClick={()=>document.getElementById('pantry-inventory')?.scrollIntoView({behavior:'smooth'})}><small>PANTRY INTELLIGENCE 2.0</small><h1>What should I eat?</h1><p>{rows.length} matching items · {currentLocation} · Tap to view inventory</p></header>
  <button className="pantry-health-card tappable" onClick={()=>setShowScore(true)}><div className="pantry-score"><strong>{score.score}</strong><span>Pantry Health Score</span></div><div><h2>{score.label}</h2><p>Freshness, nutrition, variety, waste risk, and inventory confidence.</p><small>Tap for details</small></div></button>
- <div className="pantry-toolbar"><label className="location-picker">Current location<select value={currentLocation} onChange={e=>setLocation(e.target.value)}>{locations.length?locations.map(l=><option key={l.location_id}>{l.name}</option>):<option>Home</option>}</select></label><button className="primary" onClick={()=>setShowManual(true)}><Plus/> Add food</button></div>
+ <div className="pantry-toolbar"><label className="location-picker">Current location<select value={currentLocation} onChange={e=>setLocation(e.target.value)}>{locations.length?locations.map(l=><option key={l.location_id}>{l.name}</option>):<option>Home</option>}</select></label><button className="primary" onClick={()=>setShowManual(true)}><Plus/> Add to pantry</button></div>
  <div className="pantry-intel-tabs">{[['recommend','Eat next'],['waste','Waste risk'],['restock','Restock'],['shopping','Shopping']].map(([id,label])=><button key={id} className={view===id?'active':''} onClick={()=>setView(id)}>{label}</button>)}</div>
  {view==='recommend'&&<section className="pantry-intel-list"><h2>Chef’s Recommendations</h2>{intel.recommendations.length?intel.recommendations.map((r,i)=><article key={r.id||r.pantry_id}><b>#{i+1}</b><div><strong>{r.item}</strong><span>{r.opportunity.label} · Expected Health Gain {r.opportunity.healthGain}</span><small>{r.freshness.quality} · {Math.round(r.remainingServings*10)/10} servings · {r.verificationState}</small></div><button onClick={()=>{const food=resolvePantryFood(r);if(food)onLogFood({...food,pantry_id:r.pantry_id,pantry_quantity:r.quantity,pantry_unit:r.unit})}}>Eat</button></article>):<div className="empty"><b>{empty?.title||'No qualifying recommendation is available.'}</b><span>{empty?.action||'Add quantity or nutrition details to improve recommendations.'}</span></div>}</section>}
  {view==='waste'&&<section className="pantry-intel-list"><h2>Waste prevention</h2>{intel.wasteRisks.map(r=><article key={r.id||r.pantry_id}><AlertTriangle/><div><strong>{r.item}</strong><span>{r.waste.reasons.join(' · ')||'Recommended this week'}</span><small>{r.freshness.safety} · Risk {r.waste.score}%</small></div></article>)}{!intel.wasteRisks.length&&<div className="empty">No foods currently at elevated waste risk.</div>}</section>}

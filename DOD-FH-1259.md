@@ -50,3 +50,15 @@ The Add Food screen now begins with a Log Once action card. The editor explicitl
 - [ ] Undo deletion and confirm the complete entry returns.
 - [ ] Log a past-dated item and confirm it appears on the correct date and time.
 - [ ] Verify Cancel, Close, and keyboard scrolling remain usable on iPhone.
+
+## v1.4.10.10 Entry-Point Correction
+
+Product-owner acceptance testing identified that the Food hub did not expose the meal-logging flow. The only visible Food destination was Pantry, whose Add Food control correctly opened the pantry inventory editor but was easy to mistake for Log Once.
+
+Implemented correction:
+- Added **Log food** as the first Food hub destination.
+- Log food opens the existing Add Meal workflow, where **Log Once** is prominently available.
+- Renamed the Pantry action from **Add food** to **Add to pantry** so inventory creation is unambiguous.
+- Added regression tests proving the two workflows remain distinct.
+
+FH-1259 remains open for the previously documented deferred capabilities.

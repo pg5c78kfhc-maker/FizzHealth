@@ -9,3 +9,6 @@ FH-1262 begins the Unified Event Architecture reconciliation. The Health timelin
 # Fizz Health v1.4.10.7
 
 This hotfix completes FH-1225 shared keyboard-safe modal behavior and repairs Universal Capture Confirm and save. Save progress and failures are now visible, meal commits are atomic, retries do not create duplicate meals, and FH-1238 meal-date reliability remains included.
+
+## v1.4.10.10
+The Food screen now has a clear **Log food** entry point for Food Database items, Recipes, and **Log Once** meals. Pantry inventory creation is now labeled **Add to pantry** to prevent confusion.

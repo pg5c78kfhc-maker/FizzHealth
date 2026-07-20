@@ -309,3 +309,9 @@ Implemented FH-1153 through FH-1160 with AI-assisted capture, recognition, porti
 - Confirmed no Foods, Recipes, Favorites, or Pantry mutation.
 - Integrated with Meal Log, unified Timeline, nutrition totals, deletion, and Undo.
 - Added FH-1259 test proof, DOD, acceptance checklist, and deferred-scope record.
+
+## v1.4.10.10 — FH-1259 Entry-Point Correction
+- Added a direct **Log food** destination to the Food hub.
+- Clarified Pantry inventory creation by renaming **Add food** to **Add to pantry**.
+- Preserved the dedicated **Log Once** editor within the meal-logging workflow.
+- Added regression coverage for routing and terminology separation.

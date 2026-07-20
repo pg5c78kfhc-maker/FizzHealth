@@ -190,3 +190,5 @@
 | FH-1262 | Unified Event Architecture & Timeline | 1.4.10.8 | Partial; meal-event reconciliation implemented; story remains open |
 
 | FH-1259 | One-Time Food Logging | 1.4.10.9 | Partial; Log Once vertical slice implemented; AI/photo and promotion scope deferred |
+
+- FH-1259 — Entry-point correction delivered in v1.4.10.10; story remains open for deferred scope.
