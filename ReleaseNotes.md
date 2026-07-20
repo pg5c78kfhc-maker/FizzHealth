@@ -1,3 +1,14 @@
+# Fizz Health v1.4.10.16 — Nutrition Editor and Meal Interaction Completion
+
+Issued July 20, 2026 · Build 141016 · Database schema 43
+
+- Reconstructed the full nutrition editor as a safe-area-aware, keyboard-aware screen with fixed actions.
+- Added visible serving size, serving unit, nutrition basis, source, confidence, and completeness.
+- Fixed nutrition Save handling with explicit errors and confirmation.
+- Nutrition corrections automatically refresh matching planned meals and consumed meals for today while preserving prior-day snapshots.
+- Planned meal cards now tap to edit amount, unit, occasion, date/time, and notes; swipes remain consume/remove.
+- Adaptive plan recommendations now tap for explanation, swipe right to add to the plan, and swipe left to dismiss.
+
 # Fizz Health v1.4.10.15 — Nutrient Integrity Completion & Logging Reliability
 
 Issued July 20, 2026. Schema 43. Build 141015.

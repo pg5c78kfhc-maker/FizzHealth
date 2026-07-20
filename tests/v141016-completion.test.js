@@ -1,0 +1,6 @@
+import test from 'node:test';import assert from 'node:assert/strict';import fs from 'node:fs';
+const main=fs.readFileSync(new URL('../src/main.jsx',import.meta.url),'utf8');const css=fs.readFileSync(new URL('../src/styles.css',import.meta.url),'utf8');
+test('nutrition editor shows serving basis and preserves historical snapshots',()=>{assert.match(main,/Nutrition values shown per serving basis/);assert.match(main,/consumed_local_date=\?/);assert.match(main,/prior days remain historical snapshots/);assert.match(main,/Nutrition updated\./)});
+test('nutrition editor save is guarded and visible above navigation',()=>{assert.match(main,/saving\?'Saving…':'Save nutrition'/);assert.match(main,/catch\(e\)\{setError/);assert.match(css,/z-index:2200/);assert.match(css,/grid-template-rows:auto minmax\(0,1fr\) auto/)});
+test('planned meal cards support tap edit and quantity scaling',()=>{assert.match(main,/function PlannedMealEditor/);assert.match(main,/onEdit=\{setPlannedEditing\}/);assert.match(main,/values scale with amount/)});
+test('adaptive plan cards support tap swipe accept and dismiss',()=>{assert.match(main,/function AdaptivePlanCard/);assert.match(main,/onAccept=\{acceptPlanRow\}/);assert.match(main,/onDismiss=\{dismissPlanRow\}/);assert.match(main,/Why this was selected/)});

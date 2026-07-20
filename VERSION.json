@@ -1,13 +1,13 @@
 {
   "app": "Fizz Health",
-  "version": "1.4.10.15",
-  "release": "FH-1250.2 Corrective Nutrition Trust and Planner UX",
+  "version": "1.4.10.16",
+  "release": "Nutrition Editor and Meal Interaction Completion",
   "release_type": "Patch",
-  "build": "14112",
-  "release_id": "FH-20260720-14112",
-  "created_at": "2026-07-20T14:45:00-04:00",
+  "build": "141016",
+  "release_id": "FH-20260720-141016",
+  "created_at": "2026-07-20T18:30:00-04:00",
   "schema_version": 43,
-  "status": "PARTIAL",
+  "status": "COMPLETE",
   "completed_story": "FH-1250",
   "baseline_story": "FH-1221",
   "updated": "2026-07-20",
@@ -29,11 +29,16 @@
     "FH-1250.6",
     "FH-1250.7",
     "FH-1259",
-    "FH-1262"
+    "FH-1262",
+    "FH-1250.8",
+    "FH-1250.9",
+    "FH-1250.10",
+    "FH-1250.11",
+    "FH-1250.12"
   ],
   "build_date": "2026-07-20",
-  "release_name": "Nutrient Integrity and Decision Priority",
+  "release_name": "Nutrition Editor and Meal Interaction Completion",
   "release_date": "2026-07-20",
-  "build_id": "141015",
-  "title": "Nutrient Integrity Completion & Logging Reliability"
+  "build_id": "141016",
+  "title": "Nutrition Editor and Meal Interaction Completion"
 }
