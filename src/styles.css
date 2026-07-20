@@ -475,3 +475,16 @@ textarea{width:100%;min-width:0;max-height:min(36dvh,280px);resize:vertical;over
 .capture-review-page .status{margin:12px 0;padding:12px;border-radius:12px;background:#18331e;color:#caffb4;font-weight:800}
 .capture-review-page .status.error{background:#4a1717;color:#ffc4bd}
 .capture-review-page .detail-actions button:disabled{opacity:.55}
+
+/* Food navigation hub */
+.food-hub-grid{display:grid;gap:12px;margin:18px 0 96px}
+.food-hub-grid>button{display:grid;grid-template-columns:44px minmax(0,1fr) 22px;align-items:center;gap:12px;width:100%;text-align:left;padding:16px;border:1px solid var(--border,#30343b);border-radius:16px;background:var(--panel,#17191d);color:inherit}
+.food-hub-grid>button>svg:first-child{width:25px;height:25px;color:#a9ef45}
+.food-hub-grid>button>svg:last-child{width:20px;height:20px;color:#7f8b94}
+.food-hub-grid div{display:grid;gap:4px;min-width:0}
+.food-hub-grid b{font-size:1rem}
+.food-hub-grid span{font-size:.86rem;opacity:.72;line-height:1.35}
+.shopping-placeholder{display:grid;place-items:center;text-align:center;gap:8px;min-height:320px;margin:18px 0 96px;padding:28px;border:1px dashed #34434b;border-radius:22px;background:#10171c}
+.shopping-placeholder>svg{width:42px;height:42px;color:#a9ef45}
+.shopping-placeholder h2{margin:8px 0 0}
+.shopping-placeholder p{max-width:360px;margin:0}

@@ -14,7 +14,7 @@ import {buildPantryIntelligence} from './pantry/intelligence';
 import {filterPantryInventory,pantryEmptyState} from './pantry/query';
 import {optimizeMealPlan} from './planning/intelligence';
 import {parseMenuText,suggestModifications,orchestrateCapture,buildRestaurantMemory} from './restaurant/capture';
-import {detectIntent,rankActions,buildUnifiedTimeline,adaptiveNavigation,explainRecommendation,buildNotifications,dashboardSummary} from './experience/intelligence';
+import {detectIntent,rankActions,buildUnifiedTimeline,explainRecommendation,buildNotifications,dashboardSummary} from './experience/intelligence';
 import './styles.css';
 const VERSION='1.4.10.7';
 const localDateKey=(date=new Date())=>{const y=date.getFullYear(),m=String(date.getMonth()+1).padStart(2,'0'),d=String(date.getDate()).padStart(2,'0');return `${y}-${m}-${d}`};
@@ -90,15 +90,29 @@ function App(){
  const refresh=()=>setTick(x=>x+1);
  const visit=id=>{const usage=JSON.parse(localStorage.getItem('fizz-nav-usage')||'{}');usage[id]={count:Number(usage[id]?.count||0)+1,recent:Date.now()};localStorage.setItem('fizz-nav-usage',JSON.stringify(usage));setTab(id)};
  if(!ready)return <div className="splash">Fizz Health<br/><small>{bootError||'Opening SQLite…'}</small>{bootError&&<button className="retry-boot" onClick={boot}>Try again</button>}</div>;
- const navItems=[{id:'today',I:Home,label:'Today'},{id:'health',I:HeartPulse,label:'Health'},{id:'pantry',I:Package,label:'Pantry'},{id:'restaurants',I:UtensilsCrossed,label:'Dining'}];
- const usage=JSON.parse(localStorage.getItem('fizz-nav-usage')||'{}');const adaptive=adaptiveNavigation(usage,navItems);
+ const navItems=[{id:'today',I:Home,label:'Home'},{id:'food',I:UtensilsCrossed,label:'Food'},{id:'health',I:HeartPulse,label:'Health'},{id:'data',I:Settings,label:'Settings'}];
+ const foodTabs=new Set(['food','pantry','shopping','restaurants']);
+ const isNavActive=id=>id==='food'?foodTabs.has(tab):tab===id;
  return <main className={`app ${captureOpen?'capture-active':''}`}><section className="content">
-  {tab==='today'&&<ErrorBoundary label="Today"><Today tick={tick} openGear={()=>visit('data')} onLogRecommendation={food=>{setPendingFood(food);visit('add')}} openCapture={()=>setCaptureOpen(true)} navigate={visit}/></ErrorBoundary>} {tab==='add'&&<AddMeal refresh={refresh} done={()=>visit('today')} initialFood={pendingFood} clearInitial={()=>setPendingFood(null)}/>} {tab==='pantry'&&<Pantry tick={tick} onLogFood={food=>{setPendingFood(food);visit('add')}}/>} {tab==='health'&&<ErrorBoundary label="Health"><Health tick={tick} refresh={refresh}/></ErrorBoundary>} {tab==='data'&&<Data refresh={refresh}/>} {tab==='restaurants'&&<Restaurants refresh={refresh} done={()=>visit('today')} openData={()=>visit('data')} openCapture={()=>setCaptureOpen(true)}/>} </section>
+  {tab==='today'&&<ErrorBoundary label="Today"><Today tick={tick} openGear={()=>visit('data')} onLogRecommendation={food=>{setPendingFood(food);visit('add')}} openCapture={()=>setCaptureOpen(true)} navigate={visit}/></ErrorBoundary>} {tab==='add'&&<AddMeal refresh={refresh} done={()=>visit('today')} initialFood={pendingFood} clearInitial={()=>setPendingFood(null)}/>} {tab==='food'&&<FoodHub navigate={visit}/>} {tab==='pantry'&&<Pantry tick={tick} onLogFood={food=>{setPendingFood(food);visit('add')}}/>} {tab==='shopping'&&<ShoppingHub onBack={()=>visit('food')}/>} {tab==='health'&&<ErrorBoundary label="Health"><Health tick={tick} refresh={refresh}/></ErrorBoundary>} {tab==='data'&&<Data refresh={refresh}/>} {tab==='restaurants'&&<Restaurants refresh={refresh} done={()=>visit('today')} openData={()=>visit('data')} openCapture={()=>setCaptureOpen(true)}/>} </section>
   <button className="universal-fab" aria-label="Universal capture" onClick={()=>setCaptureOpen(true)}><Plus/></button>
-  <footer>Fizz Health v{VERSION}</footer><nav>{adaptive.map(({id,I,label})=><button key={id} className={tab===id?'active':''} onClick={()=>visit(id)}><I/><span>{label}</span></button>)}</nav>
+  <footer>Fizz Health v{VERSION}</footer><nav aria-label="Primary navigation">{navItems.map(({id,I,label})=><button key={id} className={isNavActive(id)?'active':''} aria-current={isNavActive(id)?'page':undefined} onClick={()=>visit(id)}><I/><span>{label}</span></button>)}</nav>
   {captureOpen&&<UniversalCapture onClose={()=>setCaptureOpen(false)} onRefresh={refresh} navigate={id=>{setCaptureOpen(false);visit(id)}}/>}
  </main>
 }
+
+function FoodHub({navigate}){
+ const destinations=[
+  {id:'pantry',Icon:Package,title:'Pantry',description:'Browse foods on hand, quantities, expiration, and pantry intelligence.'},
+  {id:'shopping',Icon:Box,title:'Shopping',description:'Build and manage grocery needs from your food plan.'},
+  {id:'restaurants',Icon:UtensilsCrossed,title:'Restaurants',description:'Open restaurant profiles, menus, meals, and dining intelligence.'}
+ ];
+ return <><header><Brand/><small>FOOD</small><h1>Food</h1><p>Choose where you want to work.</p></header><section className="food-hub-grid">{destinations.map(({id,Icon,title,description})=><button key={id} onClick={()=>navigate(id)}><Icon/><div><b>{title}</b><span>{description}</span></div><ChevronRight/></button>)}</section></>
+}
+function ShoppingHub({onBack}){
+ return <PageShell eyebrow="FOOD" title="Shopping" description="Shopping tools will live here." onBack={onBack}><section className="shopping-placeholder"><Box/><h2>Shopping is ready for its next build.</h2><p>This placeholder keeps the new Food navigation complete without changing pantry or restaurant functionality.</p></section></PageShell>
+}
+
 function classifyPhotoFile(file){
  const name=String(file?.name||'').toLowerCase();
  if(/menu/.test(name))return 'restaurant_menu';
