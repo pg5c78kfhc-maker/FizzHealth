@@ -1,0 +1,12 @@
+Fizz Health v1.4.10.13
+FH-1250.2 Corrective Nutrition Trust and Planner UX
+
+npm test
+Result: 178 passed, 0 failed
+
+npm run verify:release
+Result: Release metadata verified: v1.4.10.13 / FH-1250
+
+npm run build
+Result: Production build completed successfully with Vite 8.1.5.
+Note: Vite emitted the existing large-chunk advisory; it did not fail the build.

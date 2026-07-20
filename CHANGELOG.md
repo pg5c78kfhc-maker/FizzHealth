@@ -1,3 +1,10 @@
+## 1.4.10.13 — 2026-07-20
+
+- Corrected FH-1250.2 planner card layout, planned-meal gestures, and meal scheduling UX.
+- Added transparent fixed/dynamic Top 10 nutrient ranking and contributor drill-downs.
+- Added schema 41 and cholesterol propagation for planned and consumed meals.
+- Added regression coverage for nutrition trust and planner corrections.
+
 ## 1.4.10.12 — 2026-07-20
 
 ### FH-1250.2

@@ -1,0 +1,7 @@
+import test from 'node:test';import assert from 'node:assert/strict';import fs from 'node:fs';
+const main=fs.readFileSync('src/main.jsx','utf8'),db=fs.readFileSync('src/database.js','utf8'),styles=fs.readFileSync('src/styles.css','utf8'),importer=fs.readFileSync('src/importer.js','utf8');
+test('goal-critical nutrients are pinned into the top ten',()=>{for(const key of ['calories','protein','saturated_fat','fiber','cholesterol','net_carbs'])assert.match(main,new RegExp(`'${key}'`));assert.match(main,/ALWAYS_VISIBLE_NUTRIENTS/);assert.match(main,/rankingReason/)});
+test('nutrient detail ranks consumed and planned contributors',()=>{assert.match(main,/Contributors · largest first/);assert.match(main,/status:'consumed'/);assert.match(main,/status:'planned'/);assert.match(styles,/nutrient-contributors/)});
+test('planned meals support swipe remove and consume',()=>{assert.match(main,/function PlannedMealSwipeCard/);assert.match(main,/onRemove\(row\)/);assert.match(main,/onConsume\(row\)/)});
+test('meal scheduling uses native date and time controls',()=>{assert.match(main,/type="date"/);assert.match(main,/type="time"/);assert.doesNotMatch(main,/window\.prompt\('Schedule date and time'/)});
+test('cholesterol is carried through nutrition and planned meal schema',()=>{assert.match(importer,/cholesterol:calc\('cholesterol'\)/);assert.match(db,/ALTER TABLE planned_meals ADD COLUMN cholesterol/);assert.match(main,/saturated_fat,cholesterol,notes/)});

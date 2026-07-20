@@ -411,5 +411,5 @@ export function nutritionFor(food,amount,unit){
   const base=Number(food.default_serving)||1;const qty=Number(amount)||0;
   const ratio=(unit===food.unit||!unit||!food.unit)?qty/base:qty;
   const calc=k=>(Number(food[k])||0)*ratio;
-  return {calories:calc('calories'),protein:calc('protein'),carbs:calc('carbs'),fiber:calc('fiber'),fat:calc('fat'),saturated_fat:calc('saturated_fat'),known:Number(food.nutrition_known)===1};
+  return {calories:calc('calories'),protein:calc('protein'),carbs:calc('carbs'),fiber:calc('fiber'),fat:calc('fat'),saturated_fat:calc('saturated_fat'),sodium:calc('sodium'),potassium:calc('potassium'),cholesterol:calc('cholesterol'),added_sugar:calc('added_sugar'),total_sugar:calc('total_sugar'),caffeine:calc('caffeine'),alcohol:calc('alcohol'),calcium:calc('calcium'),iron:calc('iron'),vitamin_d:calc('vitamin_d'),vitamin_c:calc('vitamin_c'),magnesium:calc('magnesium'),omega_3:calc('omega_3'),monounsaturated_fat:calc('monounsaturated_fat'),polyunsaturated_fat:calc('polyunsaturated_fat'),known:Number(food.nutrition_known)===1};
 }

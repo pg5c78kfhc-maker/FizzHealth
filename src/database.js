@@ -3,7 +3,7 @@ import wasmUrl from 'sql.js/dist/sql-wasm.wasm?url';
 
 const DB_KEY='fizz-health-sqlite-v1';
 const STORAGE_DB='FizzHealthStorage';
-const TARGET_SCHEMA_VERSION=40;
+const TARGET_SCHEMA_VERSION=41;
 let SQL, db;
 
 const migrations=[
@@ -540,6 +540,24 @@ const migrations=[
       destination TEXT,details TEXT
     );
     CREATE INDEX IF NOT EXISTS idx_workbook_coverage_import ON workbook_import_coverage(imported_at,sheet_name);
+  `}
+
+
+,  {version:41,name:'nutrition_trust_and_planner_corrections',sql:`
+    ALTER TABLE planned_meals ADD COLUMN sodium REAL DEFAULT 0;
+    ALTER TABLE planned_meals ADD COLUMN potassium REAL DEFAULT 0;
+    ALTER TABLE planned_meals ADD COLUMN total_sugar REAL DEFAULT 0;
+    ALTER TABLE planned_meals ADD COLUMN added_sugar REAL DEFAULT 0;
+    ALTER TABLE planned_meals ADD COLUMN cholesterol REAL DEFAULT 0;
+    ALTER TABLE planned_meals ADD COLUMN monounsaturated_fat REAL DEFAULT 0;
+    ALTER TABLE planned_meals ADD COLUMN polyunsaturated_fat REAL DEFAULT 0;
+    ALTER TABLE planned_meals ADD COLUMN omega_3 REAL DEFAULT 0;
+    ALTER TABLE planned_meals ADD COLUMN calcium REAL DEFAULT 0;
+    ALTER TABLE planned_meals ADD COLUMN iron REAL DEFAULT 0;
+    ALTER TABLE planned_meals ADD COLUMN vitamin_d REAL DEFAULT 0;
+    ALTER TABLE planned_meals ADD COLUMN vitamin_c REAL DEFAULT 0;
+    ALTER TABLE planned_meals ADD COLUMN alcohol REAL DEFAULT 0;
+    ALTER TABLE planned_meals ADD COLUMN caffeine REAL DEFAULT 0;
   `}
 
 
