@@ -192,3 +192,5 @@
 | FH-1259 | One-Time Food Logging | 1.4.10.9 | Partial; Log Once vertical slice implemented; AI/photo and promotion scope deferred |
 
 - FH-1259 — Entry-point correction delivered in v1.4.10.10; story remains open for deferred scope.
+
+- FH-1250 — Unified Meal Planning & Food Workspace — v1.4.10.11 partial; planner stabilization and Food relocation complete; story remains open for deferred scope.

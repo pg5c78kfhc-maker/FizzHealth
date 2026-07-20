@@ -2,6 +2,25 @@
   "format": "fizz-health-release-history",
   "releases": [
     {
+      "version": "1.4.10.11",
+      "name": "FH-1250.1 Meal Planner Stabilization and Food Workspace Relocation",
+      "type": "Patch",
+      "created": "2026-07-20T12:30:00-04:00",
+      "build": "14110",
+      "release_id": "FH-20260720-14110",
+      "stories": [
+        "FH-1250"
+      ],
+      "status": "PARTIAL",
+      "deferred": [
+        "Composite multi-item meal container",
+        "Unified food and recipe search",
+        "Eat Now versus Schedule composition flow",
+        "JSON and AI nutrition acquisition",
+        "Full Food workspace completion"
+      ]
+    },
+    {
       "version": "1.4.10.10",
       "name": "FH-1259 Entry-Point Correction",
       "type": "Patch",

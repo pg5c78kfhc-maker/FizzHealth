@@ -1,3 +1,7 @@
+# Fizz Health v1.4.10.11
+
+FH-1250.1 stabilizes Meal Planning 2.0 and relocates full planning and Chef’s Recommendations from Home into the Food workspace. Home retains macros, goal impact, planned nutrition, and the Food Log, with a compact Food Plan summary linking into Food. FH-1250 remains open for composite meals, unified search, Eat Now versus Schedule, and JSON/AI nutrition acquisition.
+
 # Fizz Health v1.4.10.9
 
 FH-1259 introduces **Log Once**, a direct one-time food and meal capture path. Entries save only to Meal Log history with a durable `one_time` source, appear automatically in the unified Health Timeline, contribute to nutrition totals, and support normal delete and Undo behavior without creating Food Database, Recipe, or Pantry records. FH-1259 remains open for AI/photo capture, promotion, conversion, and expanded enrichment workflows.

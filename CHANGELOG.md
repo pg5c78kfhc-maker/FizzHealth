@@ -315,3 +315,11 @@ Implemented FH-1153 through FH-1160 with AI-assisted capture, recognition, porti
 - Clarified Pantry inventory creation by renaming **Add food** to **Add to pantry**.
 - Preserved the dedicated **Log Once** editor within the meal-logging workflow.
 - Added regression coverage for routing and terminology separation.
+
+## v1.4.10.11 — FH-1250.1 Meal Planner Stabilization and Food Workspace Relocation
+- Moved full Meal Planner and Chef’s Recommendations from Home into Food.
+- Added Plan a meal, Recommendations, and Upcoming meals destinations to Food.
+- Kept macros, goal impact, planned meals, and Food Log on Home.
+- Added a compact Home Food Plan summary linking into Food.
+- Added guarded planner queries, normalized candidate data, safe defaults, empty state, recoverable failure state, and Retry.
+- Added FH-1250 implementation, test, acceptance, and deferred-scope documentation.

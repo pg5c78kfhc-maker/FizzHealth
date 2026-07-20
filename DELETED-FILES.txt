@@ -1,0 +1,3 @@
+Files removed from the complete release:
+dist/assets/index-BNMtjJvf.js
+dist/assets/index-Eavubqej.css
