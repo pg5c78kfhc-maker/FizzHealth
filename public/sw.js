@@ -1,4 +1,4 @@
-const CACHE='fizz-health-v1.4.10.11';
+const CACHE='fizz-health-v1.4.10.12';
 self.addEventListener('install',event=>{
   self.skipWaiting();
   event.waitUntil(caches.open(CACHE).then(cache=>cache.addAll(['/','/index.html','/manifest.webmanifest','/icon-192.png','/icon-512.png','/apple-touch-icon.png'])));

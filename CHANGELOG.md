@@ -1,3 +1,13 @@
+## 1.4.10.12 — 2026-07-20
+
+### FH-1250.2
+- Added interactive recommendation swipe/tap actions and accessible button alternatives.
+- Added recommendation explanation, acceptance, same-day dismissal, and scheduling workflows.
+- Added distinct lifecycle events for dismissed suggestions and removed planned meals.
+- Added same-day recommendation suppression and behavior/time-of-day ranking guardrails.
+- Preserved the Food Log as the unified consumed-plus-planned nutrition runway.
+- Reduced Home planning UI to a compact link.
+
 # Changelog
 
 ## v1.4.10.8 — 2026-07-20

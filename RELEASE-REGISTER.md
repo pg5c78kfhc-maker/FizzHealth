@@ -32,3 +32,5 @@
 - Stories: FH-1221, FH-1222, FH-1224, FH-1225, FH-1228, FH-1235, FH-1223, FH-1227, FH-1236, FH-1238
 
 | 1.4.10.11 | FH-1250.1 Meal Planner Stabilization and Food Workspace Relocation | 2026-07-20 | FH-1250 | Partial; composite meal and AI/JSON scope deferred. |
+
+| 1.4.10.12 | 2026-07-20 | FH-1250.2 Interactive Meal Planning | Partial | Tested build; FH-1250 remains open |
