@@ -1,3 +1,19 @@
+## v1.4.10.23 — Restaurant Intelligence Workflow Completion
+
+Issued July 21, 2026 · Build 141023 · Database schema 44
+
+Completed story: FH-1250
+
+- Replaced trapped restaurant navigation with standard close, add, and edit headers.
+- Reused the Restaurant Profile editor for both new and existing restaurants.
+- Added contextual AI Exchange entry points for menu replacement and individual menu-item enrichment.
+- Removed generic restaurant AI capture, meal capture, and manual visit controls.
+- Replaced menu-card Plan and Retire buttons with swipe-right logging and swipe-left retirement.
+- Added visible evidence levels for menu-description estimates, photo-enhanced estimates, and restaurant-verified nutrition.
+- Unified menu-item logging under Consume Now / Plan for Later.
+- Promoted Food and Restaurants to compact subsystem icons at the top of the Food hub.
+- Photos, PDFs, receipts, and exchange JSON remain temporary and are not stored in the database.
+
 ## v1.4.10.22 — Unified AI Food Exchange & Restaurant Stability
 
 Issued July 21, 2026 · Build 141022 · Database schema 44

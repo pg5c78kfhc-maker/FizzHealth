@@ -25,8 +25,9 @@ test('Nutrition editor uses header actions without duplicate footer',()=>{
 });
 
 test('Restaurant Intelligence has explicit escape paths',()=>{
-  assert.match(main,/className="back-link page-exit" onClick=\{done\}>‹ Back/);
-  assert.match(main,/className="back-link page-exit" onClick=\{\(\)=>setSelectedId\(null\)\}>‹ All restaurants/);
+  assert.match(main,/aria-label="Close restaurants"/);
+  assert.match(main,/aria-label="Close restaurant"/);
+  assert.match(main,/className="standard-page-head"/);
 });
 
 test('Decision explanation pages remain wired to existing detail component',()=>{

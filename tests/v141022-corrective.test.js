@@ -6,10 +6,10 @@ const main=fs.readFileSync(new URL('../src/main.jsx',import.meta.url),'utf8');
 const css=fs.readFileSync(new URL('../src/styles.css',import.meta.url),'utf8');
 const pkg=JSON.parse(fs.readFileSync(new URL('../package.json',import.meta.url),'utf8'));
 
-test('v1.4.10.22 release identity is canonical',()=>{
- assert.equal(pkg.version,'1.4.10.22');
- assert.match(main,/const VERSION='1\.4\.10\.22'/);
- assert.match(main,/const BUILD_ID='141022'/);
+test('v1.4.10.23 release identity is canonical',()=>{
+ assert.equal(pkg.version,'1.4.10.23');
+ assert.match(main,/const VERSION='1\.4\.10\.23'/);
+ assert.match(main,/const BUILD_ID='141023'/);
 });
 
 test('global plus opens Add Food and legacy Universal Capture is removed',()=>{
@@ -34,9 +34,9 @@ test('AI Exchange has an explicit clipboard response action',()=>{
 });
 
 test('restaurant detail reads are resilient and legacy capture card is absent',()=>{
- assert.match(main,/function Restaurants\(\{refresh,done,openData\}\)/);
- assert.match(main,/ORDER BY occurred_at DESC LIMIT 100/);
- assert.match(main,/ErrorBoundary label="Restaurant capture"/);
- assert.match(main,/ErrorBoundary label="Restaurant history"/);
+ assert.match(main,/function Restaurants\(\{refresh,done\}\)/);
+ assert.match(main,/function RestaurantExchangeWorkspace/);
+ assert.match(main,/standard-page-head/);
+ assert.match(main,/Replace menu/);
  assert.doesNotMatch(main,/RestaurantUniversalCapture/);
 });

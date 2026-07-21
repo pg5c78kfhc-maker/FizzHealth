@@ -1,0 +1,8 @@
+import test from 'node:test';import assert from 'node:assert/strict';import fs from 'node:fs';
+const main=fs.readFileSync('src/main.jsx','utf8'),css=fs.readFileSync('src/styles.css','utf8');
+test('restaurant list and detail use standard close and add/edit headers',()=>{assert.match(main,/standard-page-head/);assert.match(main,/aria-label="Add restaurant"/);assert.match(main,/aria-label="Close restaurant"/)});
+test('restaurant profile editor supports both create and edit with same fields',()=>{for(const name of ['name','cuisine','website','phone','address','price_level','notes'])assert.match(main,new RegExp(`name="${name}"`));assert.match(main,/Continue to AI Exchange/)});
+test('restaurant AI entry points are contextual',()=>{assert.match(main,/operation:'replace_menu'/);assert.match(main,/operation:'enrich_menu_item'/);assert.doesNotMatch(main,/AI-assisted restaurant capture/)});
+test('menu cards use compact help and swipe gestures',()=>{assert.match(main,/function RestaurantSwipeCard/);assert.match(main,/dx>70/);assert.match(main,/dx<-70/);assert.match(main,/<small>\?<\/small>/);assert.doesNotMatch(main,/>Why\?<\/small>/)});
+test('menu detail exposes evidence level and standard log choice',()=>{assert.match(main,/Menu description only/);assert.match(main,/Photo enhanced/);assert.match(main,/Restaurant verified/);assert.match(main,/Consume now/);assert.match(main,/Plan for later/)});
+test('Food hub promotes food and restaurants',()=>{assert.match(main,/food-hub-promoted/);assert.match(css,/\.food-hub-promoted/)});

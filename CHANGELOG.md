@@ -1,3 +1,11 @@
+## 1.4.10.23
+
+- Completed restaurant navigation and contextual AI Exchange workflows.
+- Added shared Add/Edit Restaurant profile screen.
+- Added restaurant menu-item provenance and swipe actions.
+- Promoted completed Food hub subsystems.
+- Removed obsolete generic restaurant capture interfaces.
+
 ## 1.4.10.22
 - Unified AI food creation, one-time meal estimation, and existing-food enrichment.
 - Added lightweight provenance without storing photos or exchange payloads.
