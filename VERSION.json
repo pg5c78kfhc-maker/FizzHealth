@@ -1,10 +1,10 @@
 {
   "app": "Fizz Health",
-  "version": "1.4.10.20",
-  "release": "Universal Existing-Food Enrichment",
+  "version": "1.4.10.21",
+  "release": "Unified AI Food Exchange & Restaurant Stability",
   "release_type": "Patch",
-  "build": "141020",
-  "release_id": "FH-20260721-141020",
+  "build": "141021",
+  "release_id": "FH-20260721-141021",
   "created_at": "2026-07-21T09:36:00-04:00",
   "schema_version": 44,
   "status": "COMPLETE",
@@ -17,8 +17,8 @@
     "FH-1272"
   ],
   "build_date": "2026-07-21",
-  "release_name": "Universal Existing-Food Enrichment",
+  "release_name": "Unified AI Food Exchange & Restaurant Stability",
   "release_date": "2026-07-21",
   "build_id": "141020",
-  "title": "Universal Existing-Food Enrichment"
+  "title": "Unified AI Food Exchange & Restaurant Stability"
 }

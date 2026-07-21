@@ -12,7 +12,7 @@ test('FH-1220 schema and importer coverage are present',()=>{
   assert.match(importer,/workbook_import_coverage/);
 });
 
-test('release metadata preserves schema 44 in v1.4.10.20',()=>{
+test('release metadata preserves schema 44 in v1.4.10.21',()=>{
   const meta=JSON.parse(fs.readFileSync('VERSION.json','utf8'));
-  assert.equal(meta.version,'1.4.10.20');assert.equal(meta.schema_version,44);assert.ok(meta.stories.includes('FH-1270'));
+  assert.equal(meta.version,'1.4.10.21');assert.equal(meta.schema_version,44);assert.ok(meta.stories.includes('FH-1270'));
 });

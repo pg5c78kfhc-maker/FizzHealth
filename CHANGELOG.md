@@ -1,3 +1,8 @@
+## 1.4.10.21
+- Unified AI food creation, one-time meal estimation, and existing-food enrichment.
+- Added lightweight provenance without storing photos or exchange payloads.
+- Fixed restaurant detail black-screen failure path and added resilient fallback behavior.
+
 ## 1.4.10.15 — 2026-07-20
 
 - Nutrient audit completion, Add Food fix, nutrition inspector access, About metadata, and planned-card consistency.

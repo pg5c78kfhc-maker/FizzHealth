@@ -1,3 +1,12 @@
+## v1.4.10.21 — Unified AI Food Exchange & Restaurant Stability
+
+Issued July 21, 2026 · Build 141021 · Database schema 44
+
+- FH-1270 / FH-1271 / FH-1272: One AI Exchange workspace now creates a reusable food, logs a one-time photo-estimated meal, or enriches an existing food according to entry context.
+- Add Food now uses compact **+ New Food** and **⚡ Log Once** actions.
+- AI responses are read from the clipboard and routed to an all-or-nothing review; photos and exchange JSON are not retained after approval.
+- Restaurant profiles use resilient queries and a page-level recovery boundary so selecting a restaurant cannot strand the user on a black screen.
+
 # Fizz Health v1.4.10.18 — Workflow Completion and UX Consistency
 
 Issued July 20, 2026 · Build 141018 · Database schema 43
