@@ -7,11 +7,11 @@ const css=fs.readFileSync('src/styles.css','utf8');
 const pkg=JSON.parse(fs.readFileSync('package.json','utf8'));
 const meta=JSON.parse(fs.readFileSync('VERSION.json','utf8'));
 
-test('v1.4.10.19 release identity is canonical',()=>{
-  assert.equal(pkg.version,'1.4.10.19');
-  assert.equal(meta.version,'1.4.10.19');
-  assert.match(main,/const VERSION='1\.4\.10\.19'/);
-  assert.match(main,/version:'1\.4\.10\.19'/);
+test('v1.4.10.20 release identity is canonical',()=>{
+  assert.equal(pkg.version,'1.4.10.20');
+  assert.equal(meta.version,'1.4.10.20');
+  assert.match(main,/const VERSION='1\.4\.10\.20'/);
+  assert.match(main,/version:'1\.4\.10\.20'/);
 });
 
 test('Home hierarchy targets actual rendered components',()=>{

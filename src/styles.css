@@ -611,3 +611,16 @@ textarea{width:100%;min-width:0;max-height:min(36dvh,280px);resize:vertical;over
 .keyboard-open .nutrition-basis-summary b,.nutrition-editor:focus-within .nutrition-basis-summary b{font-size:.82rem}
 .keyboard-open .nutrition-basis-summary em,.nutrition-editor:focus-within .nutrition-basis-summary em{font-size:.62rem!important}
 @media(max-width:430px){.nutrition-editor-head h3{font-size:1.12rem!important}.nutrition-editor:focus-within .nutrition-editor-head h3{font-size:.96rem!important}}
+
+/* v1.4.10.20 — universal existing-food enrichment */
+.nutrition-head-actions{display:flex;align-items:center;gap:10px}
+.enrichment-modal{z-index:3200}
+.enrichment-workspace,.enrichment-review{width:min(760px,calc(100vw - 24px));height:min(var(--visual-viewport-height,100dvh),920px);max-height:var(--visual-viewport-height,100dvh);overflow:hidden}
+.enrichment-workspace .editor-scroll,.enrichment-review .editor-scroll{padding:22px;display:flex;flex-direction:column;gap:18px}
+.enrichment-step,.enrichment-confidence{border:1px solid #31414a;border-radius:24px;background:#111a20;padding:20px}
+.enrichment-step small{color:#9ef13a;font-weight:800;letter-spacing:.14em}.enrichment-step h3{margin:6px 0 8px}.enrichment-step p{color:#9aa7b2;line-height:1.45}
+.enrichment-step .primary{width:100%;display:flex;justify-content:center;align-items:center;gap:10px}
+.enrichment-step textarea{min-height:220px;margin-top:14px}
+.enrichment-confidence{display:flex;flex-direction:column;gap:4px}.enrichment-confidence b{font-size:1.35rem;color:#9ef13a}.enrichment-confidence span{color:#a6b1ba}
+.change-list{display:flex;flex-direction:column;gap:12px}.change-list article{border:1px solid #33424a;border-radius:18px;background:#10171c;padding:16px}.change-list article>b{text-transform:capitalize;color:#eef3ef}.change-list article>div{display:grid;grid-template-columns:minmax(0,1fr) 24px minmax(0,1fr);align-items:center;gap:8px;margin-top:10px}.change-list span{color:#8f9ca6;overflow-wrap:anywhere}.change-list strong{color:#9ef13a;text-align:right;overflow-wrap:anywhere}.change-list svg{width:18px;color:#65737d}
+@media(max-width:600px){.enrichment-workspace,.enrichment-review{width:100vw;height:var(--visual-viewport-height,100dvh);max-height:var(--visual-viewport-height,100dvh);border-radius:0}.enrichment-workspace .editor-scroll,.enrichment-review .editor-scroll{padding:16px}.nutrition-editor-head>div:nth-child(2){min-width:0}.nutrition-head-actions{gap:6px}}

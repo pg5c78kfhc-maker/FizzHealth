@@ -1,24 +1,24 @@
 {
   "app": "Fizz Health",
-  "version": "1.4.10.19",
-  "release": "Release Metadata, Home Hierarchy, and Keyboard Editor Correction",
+  "version": "1.4.10.20",
+  "release": "Universal Existing-Food Enrichment",
   "release_type": "Patch",
-  "build": "141019",
-  "release_id": "FH-20260720-141019",
-  "created_at": "2026-07-20T21:15:00-04:00",
-  "schema_version": 43,
+  "build": "141020",
+  "release_id": "FH-20260721-141020",
+  "created_at": "2026-07-21T09:36:00-04:00",
+  "schema_version": 44,
   "status": "COMPLETE",
   "completed_story": "FH-1272",
   "baseline_story": "FH-1221",
-  "updated": "2026-07-20",
+  "updated": "2026-07-21",
   "stories": [
     "FH-1270",
     "FH-1271",
     "FH-1272"
   ],
-  "build_date": "2026-07-20",
-  "release_name": "Release Metadata, Home Hierarchy, and Keyboard Editor Correction",
-  "release_date": "2026-07-20",
-  "build_id": "141019",
-  "title": "Release Metadata, Home Hierarchy, and Keyboard Editor Correction"
+  "build_date": "2026-07-21",
+  "release_name": "Universal Existing-Food Enrichment",
+  "release_date": "2026-07-21",
+  "build_id": "141020",
+  "title": "Universal Existing-Food Enrichment"
 }

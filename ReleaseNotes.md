@@ -26,3 +26,16 @@ Issued July 20, 2026 · Build 141018 · Database schema 43
 - FH-1270: About, package, build, service worker, and engine versions now share the current release identity.
 - FH-1271: Home opens with date controls, decision summary, nutrient bars, and meals before secondary panels.
 - FH-1272: Nutrition editing preserves more usable screen space above the iPhone keyboard.
+
+## v1.4.10.20 — Universal Existing-Food Enrichment
+
+Issued July 21, 2026 · Build 141020 · Database schema 44
+
+- Added a universal exchange v3 contract for enriching an existing canonical food from multiple package photographs.
+- Added comprehensive ChatGPT instructions for package identity, Nutrition Facts, ingredients, allergens, barcode, dates, and preparation evidence.
+- Added the pencil launch action to Full Nutrition Record while preserving the pencil as a context-dependent edit action elsewhere.
+- Added an inbound-only enrichment workspace; outbound JSON remains hidden and is copied directly to the clipboard.
+- Added a specialized all-or-nothing approval screen showing Current versus Proposed values, confidence, evidence, and identity mismatch protection.
+- Enforced `create_if_missing: false`; enrichment cannot silently create a new food.
+- Added schema 44 product metadata, exchange-session history, and change traceability.
+- Approved nutrition changes recalculate linked consumed meals for today and planned meals while preserving historical snapshots.

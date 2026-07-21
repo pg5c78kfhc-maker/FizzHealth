@@ -3,7 +3,7 @@ import wasmUrl from 'sql.js/dist/sql-wasm.wasm?url';
 
 const DB_KEY='fizz-health-sqlite-v1';
 const STORAGE_DB='FizzHealthStorage';
-const TARGET_SCHEMA_VERSION=43;
+const TARGET_SCHEMA_VERSION=44;
 let SQL, db;
 
 const migrations=[
@@ -599,6 +599,32 @@ const migrations=[
     );
     INSERT OR REPLACE INTO release_metadata(version,release_date,build_id,schema_version,title,created_at)
     VALUES ('1.4.10.19','2026-07-20','141019',43,'Release Metadata, Home Hierarchy, and Keyboard Editor Correction',CURRENT_TIMESTAMP);
+  `}
+
+,  {version:44,name:'universal_food_enrichment_exchange',sql:`
+    ALTER TABLE foods ADD COLUMN brand TEXT;
+    ALTER TABLE foods ADD COLUMN barcode TEXT;
+    ALTER TABLE foods ADD COLUMN serving_description TEXT;
+    ALTER TABLE foods ADD COLUMN servings_per_container REAL;
+    ALTER TABLE foods ADD COLUMN ingredients TEXT;
+    ALTER TABLE foods ADD COLUMN allergens TEXT;
+    ALTER TABLE foods ADD COLUMN package_quantity TEXT;
+    ALTER TABLE foods ADD COLUMN expiration_date TEXT;
+    ALTER TABLE foods ADD COLUMN expiration_date_type TEXT;
+    ALTER TABLE foods ADD COLUMN preparation_instructions TEXT;
+    CREATE TABLE IF NOT EXISTS ai_exchange_sessions (
+      request_id TEXT PRIMARY KEY,operation TEXT NOT NULL,target_type TEXT NOT NULL,target_id TEXT NOT NULL,
+      status TEXT NOT NULL DEFAULT 'prepared',request_json TEXT NOT NULL,response_json TEXT,approved_payload_json TEXT,
+      confidence REAL,identity_match INTEGER,evidence_notes_json TEXT,created_at TEXT NOT NULL,reviewed_at TEXT,applied_at TEXT
+    );
+    CREATE INDEX IF NOT EXISTS idx_ai_exchange_target ON ai_exchange_sessions(target_type,target_id,created_at DESC);
+    CREATE TABLE IF NOT EXISTS ai_exchange_changes (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,request_id TEXT NOT NULL,field_key TEXT NOT NULL,old_value TEXT,new_value TEXT,
+      applied INTEGER DEFAULT 0,created_at TEXT NOT NULL
+    );
+    CREATE INDEX IF NOT EXISTS idx_ai_exchange_changes_request ON ai_exchange_changes(request_id,id);
+    INSERT OR REPLACE INTO release_metadata(version,release_date,build_id,schema_version,title,created_at)
+    VALUES ('1.4.10.20','2026-07-21','141020',44,'Universal Existing-Food Enrichment',CURRENT_TIMESTAMP);
   `}
 
 ];
