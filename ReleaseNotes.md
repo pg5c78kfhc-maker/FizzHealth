@@ -1,3 +1,14 @@
+# Fizz Health v1.4.10.25
+
+**Meal Status and Recipe Transaction Correction**
+
+- FH-1250: Fixed recipe consumption and planned-recipe conversion using schema-aware database inserts.
+- Preserved proposed versus consumed meal intent across foods and recipes.
+- Proposed meals remain in the Food Log as planned records and continue contributing to projected nutrition bars.
+- Converting a proposed meal to consumed updates the existing planned record and creates one consumed snapshot without duplicate consumption.
+- Rebuilt the New/Edit Restaurant editor with the standard fixed X / checkmark header and removed the inaccessible bottom save button.
+- Synchronized application, engine, service-worker, package, build, and release metadata to v1.4.10.25.
+
 ## v1.4.10.24 — Restaurant Tile Hotfix
 
 Issued July 21, 2026 · Build 141024 · Database schema 44

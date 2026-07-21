@@ -1,0 +1,6 @@
+import test from 'node:test';import assert from 'node:assert/strict';import fs from 'node:fs';
+const main=fs.readFileSync('src/main.jsx','utf8'),css=fs.readFileSync('src/styles.css','utf8');
+test('recipe logging uses schema-aware inserts for proposed and consumed destinations',()=>{assert.match(main,/insertRecord\(db,'planned_meals'/);assert.match(main,/insertRecord\(db,'meals'/);assert.match(main,/recipe_snapshot/)});
+test('quick log preserves proposed versus consumed intent',()=>{assert.match(main,/chooseFood\(quickItem\.item,'planned'\)/);assert.match(main,/destination:'planned'/);assert.match(main,/Add proposed meal/);assert.match(main,/entryDestination==='planned'/)});
+test('planned meal consumption converts one existing proposal to consumed',()=>{assert.match(main,/source_record_id:`planned-\$\{row\.id\}`/);assert.match(main,/UPDATE planned_meals SET status='consumed'/)});
+test('restaurant editor uses fixed X and check header with no bottom save control',()=>{assert.match(main,/restaurant-editor-head/);assert.match(main,/type="submit" aria-label=\{creating\?'Save new restaurant':'Save restaurant profile'\}/);assert.match(css,/restaurant-profile-editor \.restaurant-editor-head/)});

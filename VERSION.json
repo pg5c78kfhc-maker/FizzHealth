@@ -1,11 +1,11 @@
 {
   "app": "Fizz Health",
-  "version": "1.4.10.24",
-  "release": "Restaurant Tile Hotfix",
-  "release_type": "Patch",
-  "build": "141024",
-  "release_id": "FH-20260721-141024",
-  "created_at": "2026-07-21T09:36:00-04:00",
+  "version": "1.4.10.25",
+  "release": "Meal Status and Recipe Transaction Correction",
+  "release_type": "Immediate corrective release",
+  "build": "141025",
+  "release_id": "FH-20260721-141025",
+  "created_at": "2026-07-21T20:30:00-04:00",
   "schema_version": 44,
   "status": "COMPLETE",
   "completed_story": "FH-1250",
@@ -15,8 +15,8 @@
     "FH-1250"
   ],
   "build_date": "2026-07-21",
-  "release_name": "Restaurant Tile Hotfix",
+  "release_name": "Meal Status and Recipe Transaction Correction",
   "release_date": "2026-07-21",
-  "build_id": "141024",
-  "title": "Restaurant Tile Hotfix"
+  "build_id": "141025",
+  "title": "Meal Status and Recipe Transaction Correction"
 }

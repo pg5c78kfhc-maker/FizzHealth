@@ -6,10 +6,10 @@ const main=fs.readFileSync(new URL('../src/main.jsx',import.meta.url),'utf8');
 const css=fs.readFileSync(new URL('../src/styles.css',import.meta.url),'utf8');
 const pkg=JSON.parse(fs.readFileSync(new URL('../package.json',import.meta.url),'utf8'));
 
-test('v1.4.10.24 release identity is canonical',()=>{
- assert.equal(pkg.version,'1.4.10.24');
- assert.match(main,/const VERSION='1\.4\.10\.24'/);
- assert.match(main,/const BUILD_ID='141024'/);
+test('v1.4.10.25 release identity is canonical',()=>{
+ assert.equal(pkg.version,'1.4.10.25');
+ assert.match(main,/const VERSION='1\.4\.10\.25'/);
+ assert.match(main,/const BUILD_ID='141025'/);
 });
 
 test('global plus opens Add Food and legacy Universal Capture is removed',()=>{

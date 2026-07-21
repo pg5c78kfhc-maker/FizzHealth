@@ -1,4 +1,4 @@
-## 1.4.10.24
+## 1.4.10.25
 
 - Hotfixed the Restaurants tile startup crash.
 - Restored safe current-day nutrition totals used by restaurant ranking.
