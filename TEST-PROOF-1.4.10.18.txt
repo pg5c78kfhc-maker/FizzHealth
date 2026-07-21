@@ -1,0 +1,14 @@
+Fizz Health v1.4.10.18 verification
+Date: 2026-07-20
+
+Automated tests: 206 passed, 0 failed
+Release metadata verification: passed
+Production build: passed
+Database schema: 43 (unchanged)
+
+Build output:
+- dist/index.html
+- dist/assets application CSS/JS
+- sql-wasm asset
+
+Vite emitted a non-blocking large-chunk advisory for the existing application bundle.

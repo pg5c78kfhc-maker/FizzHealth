@@ -557,3 +557,30 @@ textarea{width:100%;min-width:0;max-height:min(36dvh,280px);resize:vertical;over
 .today-view>.health-assistant-card,.today-view>.decision-intelligence-panel{order:5}.today-view>.decision-dashboard{order:1}.today-view>.command-center{order:8}.today-view{display:flex;flex-direction:column}.today-header{order:0}.today-view>h2,.today-view>.list,.today-view>.home-food-summary{order:6}.today-view>.planned-list{order:5}.today-view>.pull-refresh{order:-1}
 /* Recommendation cards: meal name first; score and confidence cannot overlap. */
 .chef-card .chef-score{position:relative!important;top:auto!important;right:auto!important;width:auto!important;display:grid!important;grid-template-columns:auto minmax(0,1fr) auto!important;padding:10px 14px!important}.chef-food-body b{display:block;font-size:1.2rem!important;color:#fff}.chef-score strong{font-size:1.5rem!important}.chef-score small{white-space:normal!important;line-height:1.15}.chef-food-body span{color:#d6f6aa!important}
+
+/* v1.4.10.18 — workflow completion and exact Home hierarchy */
+.today-view{display:flex;flex-direction:column}
+.today-header{order:0}
+.today-view>.decision-dashboard{order:1}
+.today-view>.today-meals-section{order:2}
+.today-view>.health-assistant-card,
+.today-view>.decision-intelligence-panel{order:3}
+.today-view>.command-center{order:4}
+.today-view>.home-food-summary{order:5}
+.today-meals-section{display:grid;gap:10px}
+.today-meals-section>h2{margin:18px 0 4px}
+.page-exit{margin:8px 0 4px;align-self:flex-start}
+
+/* Header-only editor actions: one cancel and one save, no duplicate footer. */
+.nutrition-editor.fixed-editor{grid-template-rows:auto minmax(0,1fr)}
+.nutrition-editor-head{display:grid!important;grid-template-columns:48px minmax(0,1fr) 48px;align-items:start;gap:10px}
+.nutrition-editor-head>div{min-width:0}
+.header-icon-action{width:44px;height:44px;min-height:44px;border-radius:50%;padding:0;display:grid;place-items:center;border:1px solid #48565e}
+.header-icon-action svg{width:23px;height:23px}
+.nutrition-editor .nutrition-scroll{scroll-padding-bottom:24px;padding-bottom:max(24px,env(safe-area-inset-bottom))}
+.keyboard-open .nutrition-editor-head{padding-top:6px;padding-bottom:6px}
+
+/* Dashboard cards must retain accessible contrast. */
+.command-grid button,.smart-action{color:#fff}
+.command-grid button span,.command-grid button small,.smart-action span{color:#d6dde1;opacity:1}
+.command-grid button b,.smart-action b{color:#fff}
