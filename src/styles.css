@@ -645,3 +645,14 @@ textarea{width:100%;min-width:0;max-height:min(36dvh,280px);resize:vertical;over
 .restaurant-profile-editor .restaurant-editor-head button{display:grid;place-items:center;width:40px;height:40px;border:0;background:transparent;color:#fff}
 .restaurant-profile-editor .restaurant-editor-head svg{width:24px;height:24px}
 .restaurant-profile-editor .editor-scroll{overflow-y:auto;display:grid;gap:12px;padding:14px 16px calc(24px + env(safe-area-inset-bottom));scroll-padding-bottom:100px}
+
+.recipe-create-editor{max-width:680px}
+.recipe-ingredient-editor{display:grid;gap:12px}
+.recipe-ingredient-editor .section-title{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.recipe-ingredient-editor .section-title button{display:inline-flex;align-items:center;gap:6px}
+.recipe-ingredient-row{display:grid;grid-template-columns:28px minmax(0,1fr) 40px;gap:10px;align-items:start;padding:12px;border:1px solid var(--line);border-radius:14px}
+.recipe-ingredient-number{display:grid;place-items:center;width:28px;height:28px;border-radius:50%;background:var(--surface-2);font-weight:700}
+.recipe-ingredient-fields{display:grid;gap:10px;min-width:0}
+.recipe-remove-ingredient{display:grid;place-items:center;min-width:40px;min-height:40px}
+.recipe-remove-ingredient:disabled{opacity:.35}
+@media(max-width:520px){.recipe-ingredient-row{grid-template-columns:24px minmax(0,1fr) 36px;padding:10px}.recipe-ingredient-number{width:24px;height:24px}.recipe-ingredient-editor .section-title{align-items:flex-start;flex-direction:column}}

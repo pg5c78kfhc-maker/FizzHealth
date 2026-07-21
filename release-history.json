@@ -2,6 +2,21 @@
   "format": "fizz-health-release-history",
   "releases": [
     {
+      "version": "1.4.10.26",
+      "name": "Recipe Creation Discoverability",
+      "type": "Focused implementation release",
+      "created": "2026-07-21T21:30:00-04:00",
+      "build": "141026",
+      "releaseId": "FH-20260721-141026",
+      "stories": [
+        [
+          "FH-1250.25",
+          "Adds a clear New Recipe action and a complete reusable recipe creation editor"
+        ]
+      ],
+      "knownIssues": []
+    },
+    {
       "version": "1.4.10.19",
       "name": "Release Metadata, Home Hierarchy, and Keyboard Editor Correction",
       "type": "Corrective release",

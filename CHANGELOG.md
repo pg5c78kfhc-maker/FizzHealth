@@ -1,3 +1,11 @@
+## 1.4.10.26
+
+- Added a context-aware **New Recipe** action in the Recipes view.
+- Added a recipe creation editor with recipe name, multiple food ingredients, quantities, and units.
+- Added validation for missing names, invalid quantities, duplicate ingredients, and duplicate recipe names.
+- Newly created recipes return directly to the Recipes list.
+- Updated application, engine, service-worker, package, and release metadata.
+
 ## 1.4.10.25
 
 - Hotfixed the Restaurants tile startup crash.
