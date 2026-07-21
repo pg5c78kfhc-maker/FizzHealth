@@ -2,6 +2,29 @@
   "format": "fizz-health-release-history",
   "releases": [
     {
+      "version": "1.4.10.19",
+      "name": "Release Metadata, Home Hierarchy, and Keyboard Editor Correction",
+      "type": "Corrective release",
+      "created": "2026-07-20T21:15:00-04:00",
+      "build": "141019",
+      "releaseId": "FH-20260720-141019",
+      "stories": [
+        [
+          "FH-1270",
+          "Canonical release metadata synchronization"
+        ],
+        [
+          "FH-1271",
+          "Exact Home render hierarchy"
+        ],
+        [
+          "FH-1272",
+          "Nutrition editor keyboard-space optimization"
+        ]
+      ],
+      "knownIssues": []
+    },
+    {
       "version": "1.4.10.11",
       "name": "FH-1250.1 Meal Planner Stabilization and Food Workspace Relocation",
       "type": "Patch",

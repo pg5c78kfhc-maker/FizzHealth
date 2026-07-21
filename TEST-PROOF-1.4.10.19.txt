@@ -1,0 +1,8 @@
+Fizz Health v1.4.10.19
+
+Tests: 209 passed
+Release verification: passed
+Production build: passed
+Schema: 43
+
+Build warning: main JS bundle remains above Vite default 500 kB warning threshold; build succeeded.

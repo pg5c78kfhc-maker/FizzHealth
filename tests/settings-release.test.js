@@ -11,9 +11,9 @@ test('v1.4.0 settings hub and focused pages are present',()=>{
  assert.match(src,/Maintenance & audit/);
 });
 test('release metadata includes timestamp and story traceability',()=>{
- assert.equal(version.version,'1.4.10.18');
+ assert.equal(version.version,'1.4.10.19');
  assert.ok(version.created_at.includes('T'));
- assert.ok(version.stories.includes('FH-1223'));  
+ assert.ok(version.stories.includes('FH-1270'));  
  assert.equal(version.baseline_story,'FH-1221');
  assert.match(src,/View full release history/);
  assert.match(src,/FH-1099/);

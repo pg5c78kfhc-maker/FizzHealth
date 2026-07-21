@@ -20,3 +20,9 @@ Issued July 20, 2026 · Build 141018 · Database schema 43
 - LDL Support, Steps, and Estimated Maintenance explanation pages are intentionally unchanged.
 - Native planned-meal date/time selection remains unchanged.
 - Database schema remains 43.
+
+## v1.4.10.19 — Release Metadata, Home Hierarchy, and Keyboard Editor Correction
+
+- FH-1270: About, package, build, service worker, and engine versions now share the current release identity.
+- FH-1271: Home opens with date controls, decision summary, nutrient bars, and meals before secondary panels.
+- FH-1272: Nutrition editing preserves more usable screen space above the iPhone keyboard.

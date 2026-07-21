@@ -598,7 +598,7 @@ const migrations=[
       schema_version INTEGER NOT NULL, title TEXT, created_at TEXT NOT NULL
     );
     INSERT OR REPLACE INTO release_metadata(version,release_date,build_id,schema_version,title,created_at)
-    VALUES ('1.4.10.16','2026-07-20','141016',43,'Nutrition Editor and Meal Interaction Completion',CURRENT_TIMESTAMP);
+    VALUES ('1.4.10.19','2026-07-20','141019',43,'Release Metadata, Home Hierarchy, and Keyboard Editor Correction',CURRENT_TIMESTAMP);
   `}
 
 ];

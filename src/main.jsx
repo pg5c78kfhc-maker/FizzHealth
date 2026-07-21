@@ -17,9 +17,9 @@ import {parseMenuText,suggestModifications,orchestrateCapture,buildRestaurantMem
 import {detectIntent,rankActions,buildUnifiedTimeline,explainRecommendation,buildNotifications,dashboardSummary} from './experience/intelligence';
 import {NUTRIENTS,NUTRIENT_KEYS,CRITICAL_VISIBLE,canonicalNutrition} from './nutrition/registry';
 import './styles.css';
-const VERSION='1.4.10.18';
+const VERSION='1.4.10.19';
 const RELEASE_DATE='2026-07-20';
-const BUILD_ID='141018';
+const BUILD_ID='141019';
 const localDateKey=(date=new Date())=>{const y=date.getFullYear(),m=String(date.getMonth()+1).padStart(2,'0'),d=String(date.getDate()).padStart(2,'0');return `${y}-${m}-${d}`};
 const today=()=>localDateKey();
 const toDateTimeLocal=(date=new Date())=>{const y=date.getFullYear(),m=String(date.getMonth()+1).padStart(2,'0'),d=String(date.getDate()).padStart(2,'0'),h=String(date.getHours()).padStart(2,'0'),min=String(date.getMinutes()).padStart(2,'0');return `${y}-${m}-${d}T${h}:${min}`};
@@ -922,6 +922,7 @@ function NutrientConfiguration({onBack,onClose=onBack}){
 }
 
 const RELEASE_HISTORY=[
+ {version:'1.4.10.19',name:'Release Metadata, Home Hierarchy, and Keyboard Editor Correction',type:'Corrective release',created:'2026-07-20T21:15:00-04:00',build:'141019',releaseId:'FH-20260720-141019',stories:[['FH-1270','Canonical release metadata synchronization'],['FH-1271','Exact Home render hierarchy'],['FH-1272','Nutrition editor keyboard-space optimization']],knownIssues:[]},
  {version:'1.4.10.16',name:'Nutrition Editor and Meal Interaction Completion',type:'Corrective release',created:'2026-07-20T18:30:00-04:00',build:'141016',releaseId:'FH-20260720-141016',stories:[['FH-1250.8','Adaptive plan card interaction'],['FH-1250.9','Planned meal editing'],['FH-1250.10','Serving basis and nutrition editor completion'],['FH-1250.11','Nutrition save and same-day propagation'],['FH-1250.12','Keyboard and safe-area editor reconstruction']],knownIssues:[]},
  {version:'1.4.10.15',name:'Nutrient Integrity Completion & Logging Reliability',type:'Corrective release',created:'2026-07-20T16:30:00-04:00',build:'141015',releaseId:'FH-20260720-141015',stories:[['FH-1250.4','Add Food commit reliability'],['FH-1250.5','About, version, and schema information'],['FH-1250.6','Nutrient inspector accessibility and audit completion'],['FH-1250.7','Planned meal card lifecycle consistency']],knownIssues:[]},
  {version:'1.4.10.14',name:'Nutrient Integrity and Decision Priority',type:'Audit foundation',created:'2026-07-20T15:00:00-04:00',build:'141014',releaseId:'FH-20260720-141014',stories:[['FH-1250.3','Nutrient contract, provenance, and priority groundwork']],knownIssues:['Full nutrition editor existed in code but was not reachable from the food UI; several legacy write paths remained hand-written.']},

@@ -584,3 +584,30 @@ textarea{width:100%;min-width:0;max-height:min(36dvh,280px);resize:vertical;over
 .command-grid button,.smart-action{color:#fff}
 .command-grid button span,.command-grid button small,.smart-action span{color:#d6dde1;opacity:1}
 .command-grid button b,.smart-action b{color:#fff}
+
+/* v1.4.10.19 — exact Home hierarchy and compact keyboard-aware nutrition editing */
+.today-view{display:flex;flex-direction:column}
+.today-view>.today-header{order:0}
+.today-view>.decision-dashboard{order:1}
+.today-view>.today-meals-section{order:2}
+.today-view>.health-assistant-card{order:3}
+.today-view>.decision-intelligence{order:4}
+.today-view>.command-center{order:5}
+.today-view>.home-food-summary{order:6}
+
+/* The nutrition editor keeps context without sacrificing the editable viewport. */
+.nutrition-editor-head{padding:10px 12px 8px!important;grid-template-columns:44px minmax(0,1fr) 44px!important;gap:8px!important}
+.nutrition-editor-head small{font-size:.66rem;line-height:1;letter-spacing:.08em}
+.nutrition-editor-head h3{font-size:1.18rem!important;line-height:1.13!important;margin:4px 0 6px!important;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.nutrition-basis-summary{gap:2px 8px!important;line-height:1.15}
+.nutrition-basis-summary b{font-size:.98rem}
+.nutrition-basis-summary span,.nutrition-basis-summary em{font-size:.7rem!important}
+.nutrition-editor .nutrition-scroll{padding-top:8px;scroll-padding-top:8px;scroll-padding-bottom:28px}
+.keyboard-open .nutrition-editor-head,.nutrition-editor:focus-within .nutrition-editor-head{padding:5px 10px 5px!important}
+.keyboard-open .nutrition-editor-head small,.nutrition-editor:focus-within .nutrition-editor-head small{font-size:.58rem}
+.keyboard-open .nutrition-editor-head h3,.nutrition-editor:focus-within .nutrition-editor-head h3{font-size:1rem!important;line-height:1.08!important;margin:2px 0 3px!important;-webkit-line-clamp:1}
+.keyboard-open .nutrition-basis-summary span,.nutrition-editor:focus-within .nutrition-basis-summary span{display:none}
+.keyboard-open .nutrition-basis-summary,.nutrition-editor:focus-within .nutrition-basis-summary{gap:2px 6px!important}
+.keyboard-open .nutrition-basis-summary b,.nutrition-editor:focus-within .nutrition-basis-summary b{font-size:.82rem}
+.keyboard-open .nutrition-basis-summary em,.nutrition-editor:focus-within .nutrition-basis-summary em{font-size:.62rem!important}
+@media(max-width:430px){.nutrition-editor-head h3{font-size:1.12rem!important}.nutrition-editor:focus-within .nutrition-editor-head h3{font-size:.96rem!important}}

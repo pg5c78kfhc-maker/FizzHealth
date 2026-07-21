@@ -34,3 +34,9 @@
 | 1.4.10.11 | FH-1250.1 Meal Planner Stabilization and Food Workspace Relocation | 2026-07-20 | FH-1250 | Partial; composite meal and AI/JSON scope deferred. |
 
 | 1.4.10.12 | 2026-07-20 | FH-1250.2 Interactive Meal Planning | Partial | Tested build; FH-1250 remains open |
+
+## 1.4.10.19 — July 20, 2026
+Release ID: FH-20260720-141019  
+Build: 141019  
+Schema: 43  
+Scope: FH-1270 through FH-1272

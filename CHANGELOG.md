@@ -348,3 +348,9 @@ Implemented FH-1153 through FH-1160 with AI-assisted capture, recognition, porti
 - Added a compact Home Food Plan summary linking into Food.
 - Added guarded planner queries, normalized candidate data, safe defaults, empty state, recoverable failure state, and Retry.
 - Added FH-1250 implementation, test, acceptance, and deferred-scope documentation.
+
+## 1.4.10.19 — 2026-07-20
+
+- Corrected canonical release metadata and About-screen version synchronization.
+- Enforced the agreed Home render hierarchy against the actual rendered components.
+- Compacted the nutrition editor header and keyboard-focused state.
