@@ -1,0 +1,14 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import fs from 'node:fs';
+const main=fs.readFileSync(new URL('../src/main.jsx',import.meta.url),'utf8');
+const css=fs.readFileSync(new URL('../src/styles.css',import.meta.url),'utf8');
+const sw=fs.readFileSync(new URL('../public/sw.js',import.meta.url),'utf8');
+const experience=fs.readFileSync(new URL('../src/experience/intelligence.js',import.meta.url),'utf8');
+test('safe PWA update lifecycle replaces mixed-version black screen behavior',()=>{assert.match(sw,/SKIP_WAITING/);assert.doesNotMatch(sw,/self\.skipWaiting\(\);\s*event\.waitUntil/);assert.match(main,/controllerchange/);assert.match(main,/window\.location\.reload/)});
+test('planned notes hide internal serialized metadata',()=>assert.match(main,/trim\(\)\.startsWith\('\{'\)/));
+test('compact standard editor actions use icon semantics',()=>{assert.match(main,/compact-actions/);assert.match(main,/aria-label="Save nutrition"/);assert.match(css,/\.icon-action/)});
+test('dashboard calories report remaining to target',()=>{assert.match(experience,/n\(plan\[k\]\)-n\(actual\[k\]\)/);assert.match(main,/Calories remaining/)});
+test('pantry attention preserves dashboard context',()=>{assert.match(main,/fizz-pantry-attention/);assert.match(main,/Needs attention today/)});
+test('steps retain event identity in timeline',()=>assert.match(experience,/Steps update/));
+test('home operational dashboard follows food log',()=>{const meals=main.indexOf("Today’s meals");const command=main.indexOf('Daily command center',meals);assert.ok(meals>0&&command>meals)});

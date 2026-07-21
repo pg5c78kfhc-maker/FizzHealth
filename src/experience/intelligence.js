@@ -40,7 +40,7 @@ export function buildUnifiedTimeline(sources={}){
   out.push({id:eventId,type,eventAt:at,title:title(r),detail:detail(r),sourceType:type,sourceId:id??null,source:r});
  }};
  add(sources.meals,'meal','eaten_at',r=>r.food_name||'Meal',r=>`${n(r.calories)} kcal · ${r.meal_type||'Meal'}`);
- add(sources.metrics,'metric','measured_at',r=>String(r.metric_type||'Health metric').replaceAll('_',' '),r=>`${r.value_primary??''}${r.value_secondary!=null?`/${r.value_secondary}`:''} ${r.unit||''}`.trim());
+ add(sources.metrics,'metric','measured_at',r=>String(r.metric_type)==='steps'?'Steps update':String(r.metric_type||'Health metric').replaceAll('_',' '),r=>`${r.value_primary??''}${r.value_secondary!=null?`/${r.value_secondary}`:''} ${r.unit||''}`.trim());
  add(sources.pantryEvents,'pantry','event_at',r=>r.event_type||'Pantry update',r=>r.notes||r.source||'');
  add(sources.restaurantVisits,'restaurant','visited_at',r=>r.restaurant_name||'Restaurant visit',r=>r.items_json||'');
  add(sources.purchases,'purchase','purchased_at',r=>r.retailer||'Grocery purchase',r=>r.total!=null?`$${n(r.total).toFixed(2)}`:'');
@@ -62,6 +62,7 @@ export function buildNotifications({actions=[],permission='default'}={}){
 }
 
 export function dashboardSummary({actions=[],nextMeal=null,risks=[],pantry=[],restaurantPlans=[],actual={},plan={}}={}){
- const variance={};for(const k of ['calories','protein','fiber','saturated_fat'])variance[k]=n(actual[k])-n(plan[k]);
- return {nextAction:actions[0]||null,nextMeal,risks:risks.slice(0,3),pantryAttention:pantry.slice(0,3),restaurantPlans:restaurantPlans.slice(0,3),variance,generatedAt:new Date().toISOString()};
+ const variance={};
+ for(const k of ['calories','protein','fiber','saturated_fat'])variance[k]=n(plan[k])-n(actual[k]);
+ return {nextAction:actions[0]||null,nextMeal,risks:risks.slice(0,3),pantryAttention:pantry.slice(0,3),restaurantPlans:restaurantPlans.slice(0,3),variance,actualCalories:n(actual.calories),targetCalories:n(plan.calories),generatedAt:new Date().toISOString()};
 }
