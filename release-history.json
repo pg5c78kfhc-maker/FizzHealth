@@ -2,12 +2,27 @@
   "format": "fizz-health-release-history",
   "releases": [
     {
-      "version": "1.4.10.26",
+      "version": "1.4.10.28",
+      "name": "Food and Pantry Navigation Polish",
+      "type": "Focused corrective release",
+      "created": "2026-07-21T23:45:00-04:00",
+      "build": "141028",
+      "releaseId": "FH-20260721-141028",
+      "stories": [
+        [
+          "FH-1250.25",
+          "Completes the agreed recipe and pantry UI scope with compact Food navigation and safe pantry location defaults"
+        ]
+      ],
+      "knownIssues": []
+    },
+    {
+      "version": "1.4.10.27",
       "name": "Recipe Creation Discoverability",
       "type": "Focused implementation release",
       "created": "2026-07-21T21:30:00-04:00",
-      "build": "141026",
-      "releaseId": "FH-20260721-141026",
+      "build": "141027",
+      "releaseId": "FH-20260721-141027",
       "stories": [
         [
           "FH-1250.25",

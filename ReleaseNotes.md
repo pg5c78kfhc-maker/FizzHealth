@@ -1,12 +1,24 @@
-# Fizz Health v1.4.10.26
+# Fizz Health v1.4.10.28
 
-## Recipe Creation Discoverability
+## Food and Pantry navigation polish
 
-FH-1250.25 closes the missing recipe-creation path.
+- The Food landing page now follows the subsystem header protocol with a compact add action at the top.
+- The large floating add button is no longer shown on Food or Pantry screens.
+- Adding a pantry item while the location filter is set to All now selects a real household storage location instead of storing “All.”
 
-- The Recipes view now exposes **New Recipe** instead of **New Food**.
-- The new editor creates a reusable recipe from one or more existing foods.
-- Each ingredient supports its own quantity and unit.
-- Save validation prevents incomplete or duplicate recipe definitions.
-- After saving, the user returns to the Recipes list and sees the new recipe immediately.
+# Fizz Health v1.4.10.27
 
+## Recipe & Pantry Reliability
+
+FH-1250.25 now completes recipe discovery parity and the pantry corrections identified during acceptance review.
+
+- Recipes can be starred and appear in Favorites.
+- Recently consumed recipes appear in Recent.
+- Pantry defaults to All locations.
+- Out-of-stock items are separated from active inventory.
+- Missing pantry score data is shown as unavailable rather than 0%.
+- Pantry item cards open a dedicated detail and edit workflow.
+- Inventory confidence is tappable and explained.
+- Add Pantry uses the standard fixed X / title / checkmark header.
+- The large Add to Pantry button and Pantry floating action button are removed.
+- Eat Next evaluates in-stock inventory across all household locations.

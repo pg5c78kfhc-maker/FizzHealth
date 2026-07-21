@@ -1,0 +1,14 @@
+Fizz Health v1.4.10.28 verification
+
+npm test
+- tests: 193
+- passed: 193
+- failed: 0
+
+npm run verify:release
+- Release metadata verified: v1.4.10.28 / FH-1250.25
+
+npm run build
+- Not completed in this sandbox.
+- Failure: sh: 1: vite: not found
+- npm dependency installation could not be completed in the sandbox runtime.

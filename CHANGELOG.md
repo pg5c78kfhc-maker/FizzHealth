@@ -1,4 +1,10 @@
-## 1.4.10.26
+## 1.4.10.28
+
+- Replaced the Food hub floating add button with the standard compact header action.
+- Prevented manual pantry creation from saving the virtual “All” filter as a storage location.
+- Retained the v1.4.10.27 recipe parity and Pantry Intelligence corrections.
+
+## 1.4.10.27
 
 - Added a context-aware **New Recipe** action in the Recipes view.
 - Added a recipe creation editor with recipe name, multiple food ingredients, quantities, and units.
