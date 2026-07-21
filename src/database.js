@@ -624,7 +624,7 @@ const migrations=[
     );
     CREATE INDEX IF NOT EXISTS idx_ai_exchange_changes_request ON ai_exchange_changes(request_id,id);
     INSERT OR REPLACE INTO release_metadata(version,release_date,build_id,schema_version,title,created_at)
-    VALUES ('1.4.10.21','2026-07-21','141021',44,'Unified AI Food Exchange & Restaurant Stability',CURRENT_TIMESTAMP);
+    VALUES ('1.4.10.22','2026-07-21','141022',44,'Unified AI Food Exchange & Restaurant Stability',CURRENT_TIMESTAMP);
   `}
 
 ];

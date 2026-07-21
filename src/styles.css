@@ -627,3 +627,9 @@ textarea{width:100%;min-width:0;max-height:min(36dvh,280px);resize:vertical;over
 
 /* v1.4.10.21 — unified AI exchange entry actions */
 .add-food-actions{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:0 0 14px}.add-food-actions button{display:flex;align-items:center;justify-content:center;gap:8px;min-height:48px;border:1px solid var(--line);border-radius:999px;background:var(--panel);color:var(--text);font-weight:900}.add-food-actions button:first-child{background:var(--lime);color:#07110d}.add-food-actions svg{width:20px}.ai-source-options{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}.ai-source-options button{border:1px solid var(--line);border-radius:14px;background:#10181d;color:var(--muted);padding:12px 8px;font-weight:800}.ai-source-options button.active{border-color:var(--lime);background:#223510;color:#d9ff9d}@media(max-width:430px){.ai-source-options{grid-template-columns:1fr}.add-food-actions{grid-template-columns:1fr 1fr}}
+
+/* v1.4.10.22 — Universal Add and AI Exchange accessibility corrections */
+.add-food-actions button:first-child{background:var(--panel);color:#fff}
+.add-food-actions button{color:#fff}
+.add-food-actions button svg{color:#fff;stroke:#fff}
+.clipboard-response-button{width:100%;display:flex;align-items:center;justify-content:center;gap:10px;min-height:52px;color:#fff}

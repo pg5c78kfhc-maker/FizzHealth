@@ -1,6 +1,6 @@
-## v1.4.10.21 — Unified AI Food Exchange & Restaurant Stability
+## v1.4.10.22 — Unified AI Food Exchange & Restaurant Stability
 
-Issued July 21, 2026 · Build 141021 · Database schema 44
+Issued July 21, 2026 · Build 141022 · Database schema 44
 
 - FH-1270 / FH-1271 / FH-1272: One AI Exchange workspace now creates a reusable food, logs a one-time photo-estimated meal, or enriches an existing food according to entry context.
 - Add Food now uses compact **+ New Food** and **⚡ Log Once** actions.
@@ -38,7 +38,7 @@ Issued July 20, 2026 · Build 141018 · Database schema 43
 
 ## v1.4.10.20 — Universal Existing-Food Enrichment
 
-Issued July 21, 2026 · Build 141020 · Database schema 44
+Issued July 21, 2026 · Build 141022 · Database schema 44
 
 - Added a universal exchange v3 contract for enriching an existing canonical food from multiple package photographs.
 - Added comprehensive ChatGPT instructions for package identity, Nutrition Facts, ingredients, allergens, barcode, dates, and preparation evidence.
