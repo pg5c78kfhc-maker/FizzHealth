@@ -1,0 +1,10 @@
+Fizz Health v1.4.10.24 verification
+Date: 2026-07-21
+
+Root cause: Restaurants component referenced undefined getTodayTotals().
+Correction: Added safe canonical current-day nutrition totals helper.
+
+Automated tests: 179 passed, 0 failed.
+Release verification: passed (v1.4.10.24 / FH-1250).
+Production build: passed with Vite 8.1.5.
+Database schema: 44 (unchanged).

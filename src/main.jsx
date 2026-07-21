@@ -18,9 +18,9 @@ import {rankActions,buildUnifiedTimeline,explainRecommendation,buildNotification
 import {NUTRIENTS,NUTRIENT_KEYS,CRITICAL_VISIBLE,canonicalNutrition} from './nutrition/registry';
 import {buildFoodEnrichmentExchange,buildNewFoodExchange,buildLogOnceExchange,normalizeExchangeJson as normalizeUniversalJson,validateUniversalExchange,foodProposal,mealProposal,changedFoodFields} from './exchange';
 import './styles.css';
-const VERSION='1.4.10.23';
+const VERSION='1.4.10.24';
 const RELEASE_DATE='2026-07-21';
-const BUILD_ID='141023';
+const BUILD_ID='141024';
 const localDateKey=(date=new Date())=>{const y=date.getFullYear(),m=String(date.getMonth()+1).padStart(2,'0'),d=String(date.getDate()).padStart(2,'0');return `${y}-${m}-${d}`};
 const today=()=>localDateKey();
 const toDateTimeLocal=(date=new Date())=>{const y=date.getFullYear(),m=String(date.getMonth()+1).padStart(2,'0'),d=String(date.getDate()).padStart(2,'0'),h=String(date.getHours()).padStart(2,'0'),min=String(date.getMinutes()).padStart(2,'0');return `${y}-${m}-${d}T${h}:${min}`};
@@ -45,6 +45,11 @@ class ErrorBoundary extends Component{
 const finite=v=>Number.isFinite(Number(v))?Number(v):0;
 function insertRecord(db,table,record){const available=new Set(db.query(`PRAGMA table_info(${table})`).map(x=>x.name));const cols=Object.keys(record).filter(k=>available.has(k));if(!cols.length)throw new Error(`No valid columns for ${table}`);db.run(`INSERT INTO ${table}(${cols.join(',')}) VALUES (${cols.map(()=>'?').join(',')})`,cols.map(k=>record[k]??null));}
 function nutrientSnapshot(source={}){return Object.fromEntries(NUTRIENT_KEYS.map(k=>[k,source[k]===undefined?null:source[k]]));}
+
+function getTodayTotals(date=today()){
+ const row=optionalQuery(`SELECT COALESCE(SUM(calories),0) calories,COALESCE(SUM(protein),0) protein,COALESCE(SUM(carbs),0) carbs,COALESCE(SUM(fiber),0) fiber,COALESCE(SUM(fat),0) fat,COALESCE(SUM(saturated_fat),0) saturated_fat,COALESCE(SUM(sodium),0) sodium FROM meals WHERE consumed_local_date=?`,[date])[0];
+ return row||{calories:0,protein:0,carbs:0,fiber:0,fat:0,saturated_fat:0,sodium:0};
+}
 
 function getTargets(date=today()){
  const historical=query(`SELECT h.nutrient,h.target_value,h.max_value,h.unit,h.source,h.formula FROM target_history h JOIN (SELECT nutrient,MAX(effective_date) effective_date FROM target_history WHERE effective_date<=? GROUP BY nutrient) x ON x.nutrient=h.nutrient AND x.effective_date=h.effective_date`,[date]);

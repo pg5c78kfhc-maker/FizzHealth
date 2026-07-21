@@ -1,3 +1,11 @@
+## v1.4.10.24 — Restaurant Tile Hotfix
+
+Issued July 21, 2026 · Build 141024 · Database schema 44
+
+- Fixed the Food hub Restaurants tile crash caused by a missing current-day nutrition totals helper.
+- Added safe zero-default totals for restaurant ranking.
+- Added direct regression coverage for opening the restaurant subsystem.
+
 ## v1.4.10.23 — Restaurant Intelligence Workflow Completion
 
 Issued July 21, 2026 · Build 141023 · Database schema 44

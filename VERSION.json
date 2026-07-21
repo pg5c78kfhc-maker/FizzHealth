@@ -1,10 +1,10 @@
 {
   "app": "Fizz Health",
-  "version": "1.4.10.23",
-  "release": "Restaurant Intelligence Workflow Completion",
+  "version": "1.4.10.24",
+  "release": "Restaurant Tile Hotfix",
   "release_type": "Patch",
-  "build": "141023",
-  "release_id": "FH-20260721-141023",
+  "build": "141024",
+  "release_id": "FH-20260721-141024",
   "created_at": "2026-07-21T09:36:00-04:00",
   "schema_version": 44,
   "status": "COMPLETE",
@@ -15,8 +15,8 @@
     "FH-1250"
   ],
   "build_date": "2026-07-21",
-  "release_name": "Restaurant Intelligence Workflow Completion",
+  "release_name": "Restaurant Tile Hotfix",
   "release_date": "2026-07-21",
-  "build_id": "141023",
-  "title": "Restaurant Intelligence Workflow Completion"
+  "build_id": "141024",
+  "title": "Restaurant Tile Hotfix"
 }

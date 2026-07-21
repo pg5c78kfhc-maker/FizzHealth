@@ -1,3 +1,9 @@
+## 1.4.10.24
+
+- Hotfixed the Restaurants tile startup crash.
+- Restored safe current-day nutrition totals used by restaurant ranking.
+- Added regression tests for the Food hub → Restaurants route.
+
 ## 1.4.10.23
 
 - Completed restaurant navigation and contextual AI Exchange workflows.
