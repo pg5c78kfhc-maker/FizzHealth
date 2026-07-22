@@ -1,10 +1,11 @@
-## 1.4.10.29
+# v1.4.10.32 — Food Decision & Pantry Inventory Separation
 
-- Replaced the Food hub floating add button with the standard compact header action.
-- Prevented manual pantry creation from saving the virtual “All” filter as a storage location.
-- Retained the v1.4.10.27 recipe parity and Pantry Intelligence corrections.
+- Split food decisions from pantry inventory management.
+- Added dedicated What Should I Eat? routing under Food.
+- Simplified Pantry to inventory search, stock state, and restock.
+- Added icon-only inventory status controls and tappable intelligence cards.
 
-## 1.4.10.27
+## 1.4.10.26
 
 - Added a context-aware **New Recipe** action in the Recipes view.
 - Added a recipe creation editor with recipe name, multiple food ingredients, quantities, and units.

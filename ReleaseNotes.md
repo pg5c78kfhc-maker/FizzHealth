@@ -1,3 +1,25 @@
+# Fizz Health v1.4.10.32
+
+## Food Decision & Pantry Inventory Separation
+
+Completed under FH-1250.26-1250.47.
+
+- Renamed the Add Food page to Food.
+- Added What Should I Eat? as the first Food action.
+- Removed Pantry from the Food database filters.
+- Moved Chef recommendations, use-soon guidance, and Food Readiness to a dedicated Food Intelligence page.
+- Converted Pantry into an inventory-only workspace with In Stock, Out of Stock, Restock, location, and inventory search.
+- Made recommendation and restock cards open the referenced pantry item.
+- Replaced text-heavy inventory status panels with fixed-width icon-only status controls.
+- Moved Pantry on the Food landing page into a compact shortcut.
+- Preserved the standardized Pantry add-item header and inventory editor.
+
+## Verification
+
+- 198 automated tests passed.
+- Release metadata verification passed.
+- Production build was not completed because dependency installation timed out and Vite was unavailable in the execution environment.
+
 # Fizz Health v1.4.10.31
 
 ## Pantry Intelligence Consistency & Navigation Correction
