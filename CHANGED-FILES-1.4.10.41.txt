@@ -1,0 +1,17 @@
+CHANGED-FILES-1.4.10.41.txt
+CHANGELOG.md
+RELEASE-REGISTER.md
+ReleaseNotes.md
+TEST-PROOF-1.4.10.41.txt
+VERSION.json
+package-lock.json
+package.json
+public/sw.js
+release-history.json
+src/decision/engine.js
+src/main.jsx
+src/styles.css
+tests/fh1250-food-workspace.test.js
+tests/fh1250-interactive-planning.test.js
+tests/v141040c-enrichment-paste-recovery.test.js
+tests/v141041-home-hierarchy.test.js

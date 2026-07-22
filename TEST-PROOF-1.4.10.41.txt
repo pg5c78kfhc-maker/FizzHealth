@@ -1,0 +1,31 @@
+Fizz Health v1.4.10.41 — Test and Build Proof
+
+Scope implemented
+- FH-1: Removed the Home Next Meal panel and recovered its space.
+- FH-2: Added a compact, collapsed-by-default Decision Intelligence strip using the existing nutrient disclosure pattern.
+- FH-3: Added one or two dynamic headlines from existing nutrient, pantry, and planned-meal state.
+- FH-4: Moved the existing Home intelligence into the expandable region without adding new decision logic.
+- FH-5: Kept Nutrition Coverage and Projected Calories visible outside the disclosure.
+- FH-6: Preserved LDL Support, Estimated Maintenance, Steps, What If, nutrient detail, and explanation interactions.
+
+Automated tests
+Command: npm test
+Result: PASS
+Tests: 239
+Passed: 239
+Failed: 0
+
+Release verification
+Command: npm run verify:release
+Result: PASS
+Output: Release metadata verified: v1.4.10.41 / FH-1 through FH-6
+
+Production build
+Command: npm run build
+Result: NOT COMPLETED
+Reason: The uploaded source archive did not contain installed dependencies. The build stopped with "vite: not found".
+
+Dependency installation
+Command: npm ci --no-audit --no-fund
+Result: NOT COMPLETED
+Reason: The container dependency-install attempt failed before dependencies were installed. No build success is claimed.
