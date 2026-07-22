@@ -1,0 +1,1256 @@
+Fizz Health v1.4.10.35 verification
+Date: 2026-07-22
+
+=== npm test ===
+
+> fizz-health@1.4.10.35 test
+> node --test tests/*.test.js
+
+TAP version 13
+# Subtest: late-day protein deficit becomes more urgent than morning deficit
+ok 1 - late-day protein deficit becomes more urgent than morning deficit
+  ---
+  duration_ms: 2.486066
+  type: 'test'
+  ...
+# Subtest: limit nutrient jumps in priority when maximum is exceeded
+ok 2 - limit nutrient jumps in priority when maximum is exceeded
+  ---
+  duration_ms: 0.446665
+  type: 'test'
+  ...
+# Subtest: rankNutrients returns structured decision objects
+ok 3 - rankNutrients returns structured decision objects
+  ---
+  duration_ms: 0.469878
+  type: 'test'
+  ...
+# Subtest: chef recommendation rewards open, expiring, high-protein foods
+ok 4 - chef recommendation rewards open, expiring, high-protein foods
+  ---
+  duration_ms: 1.738032
+  type: 'test'
+  ...
+# Subtest: chef ranking observes result limit
+ok 5 - chef ranking observes result limit
+  ---
+  duration_ms: 12.303521
+  type: 'test'
+  ...
+# Subtest: decision trace includes full-disclosure contract and versions
+ok 6 - decision trace includes full-disclosure contract and versions
+  ---
+  duration_ms: 0.262187
+  type: 'test'
+  ...
+# Subtest: open package alone cannot overpower a materially healthier option
+ok 7 - open package alone cannot overpower a materially healthier option
+  ---
+  duration_ms: 0.741916
+  type: 'test'
+  ...
+# Subtest: ranked chef decisions include rank and comparison
+ok 8 - ranked chef decisions include rank and comparison
+  ---
+  duration_ms: 0.37454
+  type: 'test'
+  ...
+# Subtest: all central decision evaluators return the standard trace contract
+ok 9 - all central decision evaluators return the standard trace contract
+  ---
+  duration_ms: 8.575291
+  type: 'test'
+  ...
+# Subtest: LDL decision uses activity and non-fiber nutrition pressures
+ok 10 - LDL decision uses activity and non-fiber nutrition pressures
+  ---
+  duration_ms: 0.709028
+  type: 'test'
+  ...
+# Subtest: step likelihood improves when personal pace and planned activity support the goal
+ok 11 - step likelihood improves when personal pace and planned activity support the goal
+  ---
+  duration_ms: 0.698606
+  type: 'test'
+  ...
+# Subtest: what-if simulation never changes actual data and reports before-after decisions
+ok 12 - what-if simulation never changes actual data and reports before-after decisions
+  ---
+  duration_ms: 1.664798
+  type: 'test'
+  ...
+# Subtest: dispatcher owns ranking, pantry matching, and maintenance estimation paths
+ok 13 - dispatcher owns ranking, pantry matching, and maintenance estimation paths
+  ---
+  duration_ms: 1.149005
+  type: 'test'
+  ...
+# Subtest: enhanced meal simulation reports all supported nutrient impacts and suggestions
+ok 14 - enhanced meal simulation reports all supported nutrient impacts and suggestions
+  ---
+  duration_ms: 1.200919
+  type: 'test'
+  ...
+# Subtest: substitution subtracts removed nutrition before adding replacement
+ok 15 - substitution subtracts removed nutrition before adding replacement
+  ---
+  duration_ms: 1.171576
+  type: 'test'
+  ...
+# Subtest: meal comparison ranks options and explains the winner
+ok 16 - meal comparison ranks options and explains the winner
+  ---
+  duration_ms: 2.202568
+  type: 'test'
+  ...
+# Subtest: meal comparison requires at least two options
+ok 17 - meal comparison requires at least two options
+  ---
+  duration_ms: 0.422017
+  type: 'test'
+  ...
+# Subtest: chef recommendation prioritizes thawed food over otherwise equivalent frozen food
+ok 18 - chef recommendation prioritizes thawed food over otherwise equivalent frozen food
+  ---
+  duration_ms: 0.32683
+  type: 'test'
+  ...
+# Subtest: chef recommendation strongly penalizes food past its recorded expiration date
+ok 19 - chef recommendation strongly penalizes food past its recorded expiration date
+  ---
+  duration_ms: 0.239683
+  type: 'test'
+  ...
+# Subtest: FH-1120 predicts end-of-day nutrition and LDL support
+ok 20 - FH-1120 predicts end-of-day nutrition and LDL support
+  ---
+  duration_ms: 2.139776
+  type: 'test'
+  ...
+# Subtest: FH-1122 creates a prioritized decision queue
+ok 21 - FH-1122 creates a prioritized decision queue
+  ---
+  duration_ms: 18.653012
+  type: 'test'
+  ...
+# Subtest: FH-1123 scores health opportunities
+ok 22 - FH-1123 scores health opportunities
+  ---
+  duration_ms: 0.613715
+  type: 'test'
+  ...
+# Subtest: FH-1124 carries nutrition debt and credit across days
+ok 23 - FH-1124 carries nutrition debt and credit across days
+  ---
+  duration_ms: 0.388772
+  type: 'test'
+  ...
+# Subtest: FH-1125 forecasts weekly health direction
+ok 24 - FH-1125 forecasts weekly health direction
+  ---
+  duration_ms: 0.426158
+  type: 'test'
+  ...
+# Subtest: FH-1126 builds an explainable timeline
+ok 25 - FH-1126 builds an explainable timeline
+  ---
+  duration_ms: 0.407673
+  type: 'test'
+  ...
+# Subtest: FH-1127 calculates goal probabilities
+ok 26 - FH-1127 calculates goal probabilities
+  ---
+  duration_ms: 0.436154
+  type: 'test'
+  ...
+# Subtest: fingerprint is stable for equivalent input key order
+ok 27 - fingerprint is stable for equivalent input key order
+  ---
+  duration_ms: 1.109717
+  type: 'test'
+  ...
+# Subtest: exact memory match reuses prior reasoning
+ok 28 - exact memory match reuses prior reasoning
+  ---
+  duration_ms: 0.615877
+  type: 'test'
+  ...
+# Subtest: related context reports material changes
+ok 29 - related context reports material changes
+  ---
+  duration_ms: 0.633588
+  type: 'test'
+  ...
+# Subtest: stale memory is identified and not silently reused
+ok 30 - stale memory is identified and not silently reused
+  ---
+  duration_ms: 0.233214
+  type: 'test'
+  ...
+# Subtest: upsert deduplicates exact decisions and preserves newest first
+ok 31 - upsert deduplicates exact decisions and preserves newest first
+  ---
+  duration_ms: 0.272073
+  type: 'test'
+  ...
+# Subtest: storage round trip and clear remain local
+ok 32 - storage round trip and clear remain local
+  ---
+  duration_ms: 0.496173
+  type: 'test'
+  ...
+# Subtest: unchanged related decision says materially unchanged
+ok 33 - unchanged related decision says materially unchanged
+  ---
+  duration_ms: 0.128798
+  type: 'test'
+  ...
+# Subtest: decision audit groups factors and reconciles the recorded score
+ok 34 - decision audit groups factors and reconciles the recorded score
+  ---
+  duration_ms: 3.669857
+  type: 'test'
+  ...
+# Subtest: factor grouping orders categories by absolute contribution and labels direction
+ok 35 - factor grouping orders categories by absolute contribution and labels direction
+  ---
+  duration_ms: 0.630389
+  type: 'test'
+  ...
+# Subtest: shared terminology normalizes the same factor consistently
+ok 36 - shared terminology normalizes the same factor consistently
+  ---
+  duration_ms: 0.116805
+  type: 'test'
+  ...
+# Subtest: shared factor descriptions use one direction vocabulary
+ok 37 - shared factor descriptions use one direction vocabulary
+  ---
+  duration_ms: 0.385671
+  type: 'test'
+  ...
+# Subtest: plain-language explanation identifies primary drivers and confidence gaps
+ok 38 - plain-language explanation identifies primary drivers and confidence gaps
+  ---
+  duration_ms: 14.061542
+  type: 'test'
+  ...
+# Subtest: confidence wording is shared across decision types
+ok 39 - confidence wording is shared across decision types
+  ---
+  duration_ms: 0.427848
+  type: 'test'
+  ...
+# Subtest: projection rows turn before-after pairs into readable changes
+ok 40 - projection rows turn before-after pairs into readable changes
+  ---
+  duration_ms: 1.65989
+  type: 'test'
+  ...
+# Subtest: ranking explanation is consistent with and without an explicit comparison
+ok 41 - ranking explanation is consistent with and without an explicit comparison
+  ---
+  duration_ms: 0.386818
+  type: 'test'
+  ...
+# Subtest: raw trace serializer produces readable JSON
+ok 42 - raw trace serializer produces readable JSON
+  ---
+  duration_ms: 0.293036
+  type: 'test'
+  ...
+# Subtest: factory normalizes and validates the canonical DecisionTrace contract
+ok 43 - factory normalizes and validates the canonical DecisionTrace contract
+  ---
+  duration_ms: 1.51813
+  type: 'test'
+  ...
+# Subtest: validator reports malformed traces and factory rejects missing identity
+ok 44 - validator reports malformed traces and factory rejects missing identity
+  ---
+  duration_ms: 0.471915
+  type: 'test'
+  ...
+# Subtest: all decision evaluators produce canonical traces
+ok 45 - all decision evaluators produce canonical traces
+  ---
+  duration_ms: 17.313797
+  type: 'test'
+  ...
+# Subtest: ranked traces retain canonical validation after rank and comparison are applied
+ok 46 - ranked traces retain canonical validation after rank and comparison are applied
+  ---
+  duration_ms: 0.39108
+  type: 'test'
+  ...
+# Subtest: FH-1236 imported restaurant meals can be edited without a foods-table link
+ok 47 - FH-1236 imported restaurant meals can be edited without a foods-table link
+  ---
+  duration_ms: 0.780282
+  type: 'test'
+  ...
+# Subtest: goal-critical nutrients are pinned into the top ten
+ok 48 - goal-critical nutrients are pinned into the top ten
+  ---
+  duration_ms: 0.751658
+  type: 'test'
+  ...
+# Subtest: nutrient detail ranks consumed and planned contributors
+ok 49 - nutrient detail ranks consumed and planned contributors
+  ---
+  duration_ms: 0.249423
+  type: 'test'
+  ...
+# Subtest: planned meals support swipe remove and consume
+ok 50 - planned meals support swipe remove and consume
+  ---
+  duration_ms: 0.358319
+  type: 'test'
+  ...
+# Subtest: meal scheduling uses native date and time controls
+ok 51 - meal scheduling uses native date and time controls
+  ---
+  duration_ms: 0.2846
+  type: 'test'
+  ...
+# Subtest: cholesterol is carried through nutrition and planned meal schema
+ok 52 - cholesterol is carried through nutrition and planned meal schema
+  ---
+  duration_ms: 0.131172
+  type: 'test'
+  ...
+# Subtest: FH-1250.1 relocates full planner and recommendations to Food
+ok 53 - FH-1250.1 relocates full planner and recommendations to Food
+  ---
+  duration_ms: 2.058309
+  type: 'test'
+  ...
+# Subtest: FH-1250.1 keeps Home focused on daily state with compact planning summary
+ok 54 - FH-1250.1 keeps Home focused on daily state with compact planning summary
+  ---
+  duration_ms: 0.733873
+  type: 'test'
+  ...
+# Subtest: FH-1250.1 planner fails soft and supports retry and empty states
+ok 55 - FH-1250.1 planner fails soft and supports retry and empty states
+  ---
+  duration_ms: 0.316264
+  type: 'test'
+  ...
+# Subtest: FH-1250.1 Food pages preserve explicit escape paths
+ok 56 - FH-1250.1 Food pages preserve explicit escape paths
+  ---
+  duration_ms: 1.267964
+  type: 'test'
+  ...
+# Subtest: FH-1250.2 recommendations support explain, dismiss, and accept interactions
+ok 57 - FH-1250.2 recommendations support explain, dismiss, and accept interactions
+  ---
+  duration_ms: 0.786352
+  type: 'test'
+  ...
+# Subtest: FH-1250.2 accepted recommendations can be consumed, planned, or scheduled
+ok 58 - FH-1250.2 accepted recommendations can be consumed, planned, or scheduled
+  ---
+  duration_ms: 0.567239
+  type: 'test'
+  ...
+# Subtest: FH-1250.2 removed plans and dismissed suggestions are distinct not-today signals
+ok 59 - FH-1250.2 removed plans and dismissed suggestions are distinct not-today signals
+  ---
+  duration_ms: 1.15703
+  type: 'test'
+  ...
+# Subtest: FH-1250.2 recommendation guardrails prioritize familiar meals and suppress implausible components
+ok 60 - FH-1250.2 recommendation guardrails prioritize familiar meals and suppress implausible components
+  ---
+  duration_ms: 0.376685
+  type: 'test'
+  ...
+# Subtest: FH-1250.2 keeps Home compact and planner work in Food
+ok 61 - FH-1250.2 keeps Home compact and planner work in Food
+  ---
+  duration_ms: 0.357449
+  type: 'test'
+  ...
+# Subtest: FH-1259 exposes meal logging from the Food hub
+ok 62 - FH-1259 exposes meal logging from the Food hub
+  ---
+  duration_ms: 0.866806
+  type: 'test'
+  ...
+# Subtest: FH-1259 distinguishes pantry creation from meal logging
+ok 63 - FH-1259 distinguishes pantry creation from meal logging
+  ---
+  duration_ms: 0.35033
+  type: 'test'
+  ...
+# Subtest: FH-1259 exposes user-facing Log Once capture with explicit knowledge-base boundary
+ok 64 - FH-1259 exposes user-facing Log Once capture with explicit knowledge-base boundary
+  ---
+  duration_ms: 1.180098
+  type: 'test'
+  ...
+# Subtest: FH-1259 writes a classified meal event without creating reusable or pantry entities
+ok 65 - FH-1259 writes a classified meal event without creating reusable or pantry entities
+  ---
+  duration_ms: 0.702676
+  type: 'test'
+  ...
+# Subtest: FH-1259 distinguishes unknown nutrition from verified zero and refreshes derived views
+ok 66 - FH-1259 distinguishes unknown nutrition from verified zero and refreshes derived views
+  ---
+  duration_ms: 0.303216
+  type: 'test'
+  ...
+# Subtest: forward planner never schedules more verified servings than are on hand
+ok 67 - forward planner never schedules more verified servings than are on hand
+  ---
+  duration_ms: 5.377546
+  type: 'test'
+  ...
+# Subtest: forward planner distributes foods instead of repeating the same item on adjacent days when alternatives exist
+ok 68 - forward planner distributes foods instead of repeating the same item on adjacent days when alternatives exist
+  ---
+  duration_ms: 0.896616
+  type: 'test'
+  ...
+# Subtest: expired foods are excluded from forward plans
+ok 69 - expired foods are excluded from forward plans
+  ---
+  duration_ms: 1.101207
+  type: 'test'
+  ...
+# Subtest: linear longitudinal trend
+ok 70 - linear longitudinal trend
+  ---
+  duration_ms: 0.928955
+  type: 'test'
+  ...
+# Subtest: filters weak correlations
+ok 71 - filters weak correlations
+  ---
+  duration_ms: 0.416487
+  type: 'test'
+  ...
+# Subtest: measures intervention impact
+ok 72 - measures intervention impact
+  ---
+  duration_ms: 0.331534
+  type: 'test'
+  ...
+# Subtest: goal intelligence forecasts correct direction
+ok 73 - goal intelligence forecasts correct direction
+  ---
+  duration_ms: 0.306311
+  type: 'test'
+  ...
+# Subtest: preventive planner identifies overdue
+ok 74 - preventive planner identifies overdue
+  ---
+  duration_ms: 0.227515
+  type: 'test'
+  ...
+# Subtest: builds explainable health intelligence
+ok 75 - builds explainable health intelligence
+  ---
+  duration_ms: 0.89808
+  type: 'test'
+  ...
+# Subtest: FH-1076 builds unified health model
+ok 76 - FH-1076 builds unified health model
+  ---
+  duration_ms: 0.774083
+  type: 'test'
+  ...
+# Subtest: FH-1077 generates adaptive score and domains
+ok 77 - FH-1077 generates adaptive score and domains
+  ---
+  duration_ms: 1.348623
+  type: 'test'
+  ...
+# Subtest: FH-1078 ranks highest impact next action
+ok 78 - FH-1078 ranks highest impact next action
+  ---
+  duration_ms: 12.143703
+  type: 'test'
+  ...
+# Subtest: FH-1079 optimizes biomarker actions
+ok 79 - FH-1079 optimizes biomarker actions
+  ---
+  duration_ms: 0.218943
+  type: 'test'
+  ...
+# Subtest: FH-1080 detects trends and correlations
+ok 80 - FH-1080 detects trends and correlations
+  ---
+  duration_ms: 0.57979
+  type: 'test'
+  ...
+# Subtest: FH-1081 forecasts goal achievement
+ok 81 - FH-1081 forecasts goal achievement
+  ---
+  duration_ms: 0.308212
+  type: 'test'
+  ...
+# Subtest: Epic 6 returns integrated health intelligence
+ok 82 - Epic 6 returns integrated health intelligence
+  ---
+  duration_ms: 0.459672
+  type: 'test'
+  ...
+# Subtest: HF safe deletion archives foods and preserves meal history
+ok 83 - HF safe deletion archives foods and preserves meal history
+  ---
+  duration_ms: 2.405054
+  type: 'test'
+  ...
+# Subtest: HF recipe deletion uses swipe-left and archives all recipe rows
+ok 84 - HF recipe deletion uses swipe-left and archives all recipe rows
+  ---
+  duration_ms: 0.203038
+  type: 'test'
+  ...
+# Subtest: HF editor is fixed, closable, unit-aware, and previews macro impact
+ok 85 - HF editor is fixed, closable, unit-aware, and previews macro impact
+  ---
+  duration_ms: 0.644129
+  type: 'test'
+  ...
+# Subtest: HF migration adds archive fields without rewriting historical records
+ok 86 - HF migration adds archive fields without rewriting historical records
+  ---
+  duration_ms: 0.215915
+  type: 'test'
+  ...
+# Subtest: inventory pressure prioritizes thawed opened food expiring soon
+ok 87 - inventory pressure prioritizes thawed opened food expiring soon
+  ---
+  duration_ms: 1.496635
+  type: 'test'
+  ...
+# Subtest: expired inventory is flagged as a safety exception
+ok 88 - expired inventory is flagged as a safety exception
+  ---
+  duration_ms: 0.391154
+  type: 'test'
+  ...
+# Subtest: serving surplus increases pressure when preferred cadence is too low
+ok 89 - serving surplus increases pressure when preferred cadence is too low
+  ---
+  duration_ms: 0.217748
+  type: 'test'
+  ...
+# Subtest: forward planner exposes inventory pressure and uses it in ordering
+ok 90 - forward planner exposes inventory pressure and uses it in ordering
+  ---
+  duration_ms: 1.63024
+  type: 'test'
+  ...
+# Subtest: generates supported planning horizons and respects inventory
+ok 91 - generates supported planning horizons and respects inventory
+  ---
+  duration_ms: 9.378497
+  type: 'test'
+  ...
+# Subtest: restaurant events are locked first-class planning events
+ok 92 - restaurant events are locked first-class planning events
+  ---
+  duration_ms: 0.282042
+  type: 'test'
+  ...
+# Subtest: batch items create leftover meals
+ok 93 - batch items create leftover meals
+  ---
+  duration_ms: 0.127484
+  type: 'test'
+  ...
+# Subtest: smart shopping aggregates plan demand
+ok 94 - smart shopping aggregates plan demand
+  ---
+  duration_ms: 0.196391
+  type: 'test'
+  ...
+# Subtest: adaptation preserves locked and unaffected meals
+ok 95 - adaptation preserves locked and unaffected meals
+  ---
+  duration_ms: 0.299768
+  type: 'test'
+  ...
+# Subtest: forecast and optimization expose health and pantry outcomes
+ok 96 - forecast and optimization expose health and pantry outcomes
+  ---
+  duration_ms: 0.44798
+  type: 'test'
+  ...
+# Subtest: canonical registry includes LDL-critical and micronutrient fields
+ok 97 - canonical registry includes LDL-critical and micronutrient fields
+  ---
+  duration_ms: 0.909313
+  type: 'test'
+  ...
+# Subtest: aliases normalize and unknown remains null
+ok 98 - aliases normalize and unknown remains null
+  ---
+  duration_ms: 0.387038
+  type: 'test'
+  ...
+# Subtest: portion scaling preserves unknown and scales known cholesterol
+ok 99 - portion scaling preserves unknown and scales known cholesterol
+  ---
+  duration_ms: 0.23632
+  type: 'test'
+  ...
+# Subtest: full editor is registry driven and distinguishes zero from unknown
+ok 100 - full editor is registry driven and distinguishes zero from unknown
+  ---
+  duration_ms: 0.682819
+  type: 'test'
+  ...
+# Subtest: schema 44 adds provenance and trans fat support
+ok 101 - schema 44 adds provenance and trans fat support
+  ---
+  duration_ms: 0.3537
+  type: 'test'
+  ...
+# Subtest: critical nutrients are guaranteed visible without fixed rank wording
+ok 102 - critical nutrients are guaranteed visible without fixed rank wording
+  ---
+  duration_ms: 0.173789
+  type: 'test'
+  ...
+# Subtest: protein status becomes urgent late but not early at same intake
+ok 103 - protein status becomes urgent late but not early at same intake
+  ---
+  duration_ms: 1.160949
+  type: 'test'
+  ...
+# Subtest: FH-1128 freshness combines purchase, opened, and storage data
+ok 104 - FH-1128 freshness combines purchase, opened, and storage data
+  ---
+  duration_ms: 1.282167
+  type: 'test'
+  ...
+# Subtest: FH-1130 computes pantry cost intelligence
+ok 105 - FH-1130 computes pantry cost intelligence
+  ---
+  duration_ms: 1.129826
+  type: 'test'
+  ...
+# Subtest: FH-1131 raises waste risk for opened food with multiple servings
+ok 106 - FH-1131 raises waste risk for opened food with multiple servings
+  ---
+  duration_ms: 0.691607
+  type: 'test'
+  ...
+# Subtest: FH-1132 predicts runout date from consumption
+ok 107 - FH-1132 predicts runout date from consumption
+  ---
+  duration_ms: 0.417237
+  type: 'test'
+  ...
+# Subtest: FH-1129 optimizes grocery quantities
+ok 108 - FH-1129 optimizes grocery quantities
+  ---
+  duration_ms: 0.414634
+  type: 'test'
+  ...
+# Subtest: FH-1135 produces a bounded pantry health score
+ok 109 - FH-1135 produces a bounded pantry health score
+  ---
+  duration_ms: 0.490032
+  type: 'test'
+  ...
+# Subtest: FH-1134 filters recommendations by current location
+ok 110 - FH-1134 filters recommendations by current location
+  ---
+  duration_ms: 1.032096
+  type: 'test'
+  ...
+# Subtest: FH-1139 opportunity and verification are exposed
+ok 111 - FH-1139 opportunity and verification are exposed
+  ---
+  duration_ms: 0.442864
+  type: 'test'
+  ...
+# Subtest: FH-1070 derives verified availability
+ok 112 - FH-1070 derives verified availability
+  ---
+  duration_ms: 0.847963
+  type: 'test'
+  ...
+# Subtest: FH-1071 tracks remaining servings through consumption
+ok 113 - FH-1071 tracks remaining servings through consumption
+  ---
+  duration_ms: 1.170833
+  type: 'test'
+  ...
+# Subtest: FH-1072 evaluates expiration and thaw freshness
+ok 114 - FH-1072 evaluates expiration and thaw freshness
+  ---
+  duration_ms: 0.377326
+  type: 'test'
+  ...
+# Subtest: FH-1073 prioritizes opened thawed food
+ok 115 - FH-1073 prioritizes opened thawed food
+  ---
+  duration_ms: 0.524465
+  type: 'test'
+  ...
+# Subtest: FH-1074 confidence rises after verification
+ok 116 - FH-1074 confidence rises after verification
+  ---
+  duration_ms: 0.198466
+  type: 'test'
+  ...
+# Subtest: FH-1075 forecasts inventory runout
+ok 117 - FH-1075 forecasts inventory runout
+  ---
+  duration_ms: 0.263034
+  type: 'test'
+  ...
+# Subtest: Epic 5 returns ranked integrated pantry intelligence
+ok 118 - Epic 5 returns ranked integrated pantry intelligence
+  ---
+  duration_ms: 1.398319
+  type: 'test'
+  ...
+# Subtest: personal knowledge learns favorites and avoided foods
+ok 119 - personal knowledge learns favorites and avoided foods
+  ---
+  duration_ms: 1.60691
+  type: 'test'
+  ...
+# Subtest: preference learning and continuous updates change scores
+ok 120 - preference learning and continuous updates change scores
+  ---
+  duration_ms: 0.435606
+  type: 'test'
+  ...
+# Subtest: adherence combines availability preference and history
+ok 121 - adherence combines availability preference and history
+  ---
+  duration_ms: 1.238502
+  type: 'test'
+  ...
+# Subtest: behavior strategy and adaptive goals are explainable
+ok 122 - behavior strategy and adaptive goals are explainable
+  ---
+  duration_ms: 0.566982
+  type: 'test'
+  ...
+# Subtest: memory context explainability and governance are inspectable
+ok 123 - memory context explainability and governance are inspectable
+  ---
+  duration_ms: 0.501326
+  type: 'test'
+  ...
+# Subtest: menu OCR parser extracts sections items and prices
+ok 124 - menu OCR parser extracts sections items and prices
+  ---
+  duration_ms: 1.624608
+  type: 'test'
+  ...
+# Subtest: meal recognition supports plate components and beverage
+ok 125 - meal recognition supports plate components and beverage
+  ---
+  duration_ms: 1.495181
+  type: 'test'
+  ...
+# Subtest: portion and nutrition estimates expose ranges and provenance
+ok 126 - portion and nutrition estimates expose ranges and provenance
+  ---
+  duration_ms: 0.440393
+  type: 'test'
+  ...
+# Subtest: smart modifications identify restaurant improvements
+ok 127 - smart modifications identify restaurant improvements
+  ---
+  duration_ms: 0.797061
+  type: 'test'
+  ...
+# Subtest: receipt reconciliation and memory retain habits
+ok 128 - receipt reconciliation and memory retain habits
+  ---
+  duration_ms: 0.609793
+  type: 'test'
+  ...
+# Subtest: capture orchestrator requires review and carries confidence
+ok 129 - capture orchestrator requires review and carries confidence
+  ---
+  duration_ms: 0.692783
+  type: 'test'
+  ...
+# Subtest: nutrition confidence provides clear bands and explanations
+ok 130 - nutrition confidence provides clear bands and explanations
+  ---
+  duration_ms: 1.28584
+  type: 'test'
+  ...
+# Subtest: learning engine identifies repeated meals and modifications
+ok 131 - learning engine identifies repeated meals and modifications
+  ---
+  duration_ms: 0.466051
+  type: 'test'
+  ...
+# Subtest: restaurant analytics summarizes dining and nutrition trends
+ok 132 - restaurant analytics summarizes dining and nutrition trends
+  ---
+  duration_ms: 0.316008
+  type: 'test'
+  ...
+# Subtest: restaurant ranking can apply a bounded history preference boost
+ok 133 - restaurant ranking can apply a bounded history preference boost
+  ---
+  duration_ms: 1.396923
+  type: 'test'
+  ...
+# Subtest: restaurant context calculates remaining daily nutrition room
+ok 134 - restaurant context calculates remaining daily nutrition room
+  ---
+  duration_ms: 1.014366
+  type: 'test'
+  ...
+# Subtest: restaurant menu intelligence ranks stronger LDL-supportive choice first
+ok 135 - restaurant menu intelligence ranks stronger LDL-supportive choice first
+  ---
+  duration_ms: 2.1064
+  type: 'test'
+  ...
+# Subtest: restaurant profile summarizes favorites and visit history
+ok 136 - restaurant profile summarizes favorites and visit history
+  ---
+  duration_ms: 0.261126
+  type: 'test'
+  ...
+# Subtest: Today command center treats secondary feature tables as optional
+ok 137 - Today command center treats secondary feature tables as optional
+  ---
+  duration_ms: 1.863166
+  type: 'test'
+  ...
+# Subtest: startup repairs feature schemas even when migrations were already recorded
+ok 138 - startup repairs feature schemas even when migrations were already recorded
+  ---
+  duration_ms: 0.233805
+  type: 'test'
+  ...
+# Subtest: meal planner reads weight from canonical health_metrics columns
+ok 139 - meal planner reads weight from canonical health_metrics columns
+  ---
+  duration_ms: 0.41065
+  type: 'test'
+  ...
+# Subtest: secondary recommendation and planning widgets cannot crash Today
+ok 140 - secondary recommendation and planning widgets cannot crash Today
+  ---
+  duration_ms: 0.171032
+  type: 'test'
+  ...
+# Subtest: Add Food uses schema-aware insert and cannot drift column/value counts
+ok 141 - Add Food uses schema-aware insert and cannot drift column/value counts
+  ---
+  duration_ms: 0.940062
+  type: 'test'
+  ...
+# Subtest: nutrition inspector is reachable and registry driven
+ok 142 - nutrition inspector is reachable and registry driven
+  ---
+  duration_ms: 0.366806
+  type: 'test'
+  ...
+# Subtest: Log Once exposes the full nutrient registry
+ok 143 - Log Once exposes the full nutrient registry
+  ---
+  duration_ms: 0.23003
+  type: 'test'
+  ...
+# Subtest: About and release metadata identify build and schema dates
+ok 144 - About and release metadata identify build and schema dates
+  ---
+  duration_ms: 0.481869
+  type: 'test'
+  ...
+# Subtest: planned card is compact and gesture-only
+ok 145 - planned card is compact and gesture-only
+  ---
+  duration_ms: 0.24217
+  type: 'test'
+  ...
+# Subtest: nutrition editor shows serving basis and preserves historical snapshots
+ok 146 - nutrition editor shows serving basis and preserves historical snapshots
+  ---
+  duration_ms: 0.844625
+  type: 'test'
+  ...
+# Subtest: nutrition editor save is guarded and visible above navigation
+ok 147 - nutrition editor save is guarded and visible above navigation
+  ---
+  duration_ms: 0.262418
+  type: 'test'
+  ...
+# Subtest: planned meal cards support tap edit and quantity scaling
+ok 148 - planned meal cards support tap edit and quantity scaling
+  ---
+  duration_ms: 0.184462
+  type: 'test'
+  ...
+# Subtest: adaptive plan cards support tap swipe accept and dismiss
+ok 149 - adaptive plan cards support tap swipe accept and dismiss
+  ---
+  duration_ms: 0.911123
+  type: 'test'
+  ...
+# Subtest: safe PWA update lifecycle replaces mixed-version black screen behavior
+ok 150 - safe PWA update lifecycle replaces mixed-version black screen behavior
+  ---
+  duration_ms: 0.979017
+  type: 'test'
+  ...
+# Subtest: planned notes hide internal serialized metadata
+ok 151 - planned notes hide internal serialized metadata
+  ---
+  duration_ms: 1.327415
+  type: 'test'
+  ...
+# Subtest: compact standard editor actions use icon semantics
+ok 152 - compact standard editor actions use icon semantics
+  ---
+  duration_ms: 0.325179
+  type: 'test'
+  ...
+# Subtest: dashboard calories report remaining to target
+ok 153 - dashboard calories report remaining to target
+  ---
+  duration_ms: 0.270834
+  type: 'test'
+  ...
+# Subtest: pantry attention preserves dashboard context
+ok 154 - pantry attention preserves dashboard context
+  ---
+  duration_ms: 0.253894
+  type: 'test'
+  ...
+# Subtest: steps retain event identity in timeline
+ok 155 - steps retain event identity in timeline
+  ---
+  duration_ms: 0.178228
+  type: 'test'
+  ...
+# Subtest: home operational dashboard follows food log
+ok 156 - home operational dashboard follows food log
+  ---
+  duration_ms: 0.232332
+  type: 'test'
+  ...
+# Subtest: Home hierarchy is header, decision dashboard, meals, then operational content
+ok 157 - Home hierarchy is header, decision dashboard, meals, then operational content
+  ---
+  duration_ms: 1.001156
+  type: 'test'
+  ...
+# Subtest: Take Action routes calories to meal planner and steps to metric entry
+ok 158 - Take Action routes calories to meal planner and steps to metric entry
+  ---
+  duration_ms: 0.319583
+  type: 'test'
+  ...
+# Subtest: Nutrition editor uses header actions without duplicate footer
+ok 159 - Nutrition editor uses header actions without duplicate footer
+  ---
+  duration_ms: 0.41322
+  type: 'test'
+  ...
+# Subtest: Restaurant Intelligence has explicit escape paths
+ok 160 - Restaurant Intelligence has explicit escape paths
+  ---
+  duration_ms: 0.36605
+  type: 'test'
+  ...
+# Subtest: Decision explanation pages remain wired to existing detail component
+ok 161 - Decision explanation pages remain wired to existing detail component
+  ---
+  duration_ms: 0.23602
+  type: 'test'
+  ...
+# Subtest: v1.4.10.35 release identity is canonical
+ok 162 - v1.4.10.35 release identity is canonical
+  ---
+  duration_ms: 1.097729
+  type: 'test'
+  ...
+# Subtest: global plus opens Add Food and legacy Universal Capture is removed
+ok 163 - global plus opens Add Food and legacy Universal Capture is removed
+  ---
+  duration_ms: 0.472443
+  type: 'test'
+  ...
+# Subtest: Add Food actions are visible and retain New Food and Log Once intent
+ok 164 - Add Food actions are visible and retain New Food and Log Once intent
+  ---
+  duration_ms: 1.09086
+  type: 'test'
+  ...
+# Subtest: AI Exchange has an explicit clipboard response action
+ok 165 - AI Exchange has an explicit clipboard response action
+  ---
+  duration_ms: 0.408811
+  type: 'test'
+  ...
+# Subtest: restaurant detail reads are resilient and legacy capture card is absent
+ok 166 - restaurant detail reads are resilient and legacy capture card is absent
+  ---
+  duration_ms: 0.390245
+  type: 'test'
+  ...
+# Subtest: restaurant list and detail use standard close and add/edit headers
+ok 167 - restaurant list and detail use standard close and add/edit headers
+  ---
+  duration_ms: 0.718373
+  type: 'test'
+  ...
+# Subtest: restaurant profile editor supports both create and edit with same fields
+ok 168 - restaurant profile editor supports both create and edit with same fields
+  ---
+  duration_ms: 1.252208
+  type: 'test'
+  ...
+# Subtest: restaurant AI entry points are contextual
+ok 169 - restaurant AI entry points are contextual
+  ---
+  duration_ms: 1.027755
+  type: 'test'
+  ...
+# Subtest: menu cards use compact help and swipe gestures
+ok 170 - menu cards use compact help and swipe gestures
+  ---
+  duration_ms: 0.665142
+  type: 'test'
+  ...
+# Subtest: menu detail exposes evidence level and standard log choice
+ok 171 - menu detail exposes evidence level and standard log choice
+  ---
+  duration_ms: 0.211267
+  type: 'test'
+  ...
+# Subtest: Food hub promotes food and restaurants
+ok 172 - Food hub promotes food and restaurants
+  ---
+  duration_ms: 0.139268
+  type: 'test'
+  ...
+# Subtest: restaurant subsystem defines safe current-day totals before ranking
+ok 173 - restaurant subsystem defines safe current-day totals before ranking
+  ---
+  duration_ms: 1.705978
+  type: 'test'
+  ...
+# Subtest: restaurant tile still routes to the restaurant subsystem
+ok 174 - restaurant tile still routes to the restaurant subsystem
+  ---
+  duration_ms: 0.23319
+  type: 'test'
+  ...
+# Subtest: recipe logging uses schema-aware inserts for proposed and consumed destinations
+ok 175 - recipe logging uses schema-aware inserts for proposed and consumed destinations
+  ---
+  duration_ms: 1.076796
+  type: 'test'
+  ...
+# Subtest: quick log preserves proposed versus consumed intent
+ok 176 - quick log preserves proposed versus consumed intent
+  ---
+  duration_ms: 0.342737
+  type: 'test'
+  ...
+# Subtest: planned meal consumption converts one existing proposal to consumed
+ok 177 - planned meal consumption converts one existing proposal to consumed
+  ---
+  duration_ms: 0.258216
+  type: 'test'
+  ...
+# Subtest: restaurant editor uses fixed X and check header with no bottom save control
+ok 178 - restaurant editor uses fixed X and check header with no bottom save control
+  ---
+  duration_ms: 1.185838
+  type: 'test'
+  ...
+# Subtest: Recipes view exposes a context-aware New Recipe action
+ok 179 - Recipes view exposes a context-aware New Recipe action
+  ---
+  duration_ms: 60.365553
+  type: 'test'
+  ...
+# Subtest: recipe creation editor captures reusable ingredients and saves schema-aware rows
+ok 180 - recipe creation editor captures reusable ingredients and saves schema-aware rows
+  ---
+  duration_ms: 0.451483
+  type: 'test'
+  ...
+# Subtest: recipe creation validates incomplete and duplicate definitions
+ok 181 - recipe creation validates incomplete and duplicate definitions
+  ---
+  duration_ms: 0.335008
+  type: 'test'
+  ...
+# Subtest: successful recipe creation returns to the Recipes list
+ok 182 - successful recipe creation returns to the Recipes list
+  ---
+  duration_ms: 1.363973
+  type: 'test'
+  ...
+# Subtest: All location includes every household storage location
+ok 183 - All location includes every household storage location
+  ---
+  duration_ms: 1.348369
+  type: 'test'
+  ...
+# Subtest: out of stock is separated from active pantry and restock
+ok 184 - out of stock is separated from active pantry and restock
+  ---
+  duration_ms: 2.697576
+  type: 'test'
+  ...
+# Subtest: empty score is unavailable rather than misleading zero
+ok 185 - empty score is unavailable rather than misleading zero
+  ---
+  duration_ms: 0.189504
+  type: 'test'
+  ...
+# Subtest: in-stock inventory produces eat-next recommendations across All locations
+ok 186 - in-stock inventory produces eat-next recommendations across All locations
+  ---
+  duration_ms: 0.505282
+  type: 'test'
+  ...
+# Subtest: Food hub uses the compact header add action and suppresses the floating add button
+ok 187 - Food hub uses the compact header add action and suppresses the floating add button
+  ---
+  duration_ms: 0.856459
+  type: 'test'
+  ...
+# Subtest: manual pantry creation never stores All as a physical location
+ok 188 - manual pantry creation never stores All as a physical location
+  ---
+  duration_ms: 0.598939
+  type: 'test'
+  ...
+# Subtest: expired freshness does not mean out of stock
+ok 189 - expired freshness does not mean out of stock
+  ---
+  duration_ms: 2.476811
+  type: 'test'
+  ...
+# Subtest: positive quantity overrides stale depletion flags
+ok 190 - positive quantity overrides stale depletion flags
+  ---
+  duration_ms: 1.253659
+  type: 'test'
+  ...
+# Subtest: zero quantity is the only out-of-stock inventory state
+ok 191 - zero quantity is the only out-of-stock inventory state
+  ---
+  duration_ms: 0.47479
+  type: 'test'
+  ...
+# Subtest: quantity is the pantry inventory source of truth
+ok 192 - quantity is the pantry inventory source of truth
+  ---
+  duration_ms: 1.853474
+  type: 'test'
+  ...
+# Subtest: zero quantity is out of stock regardless of stale flags
+ok 193 - zero quantity is out of stock regardless of stale flags
+  ---
+  duration_ms: 0.349755
+  type: 'test'
+  ...
+# Subtest: Meals screen uses Meals terminology
+ok 194 - Meals screen uses Meals terminology
+  ---
+  duration_ms: 0.842629
+  type: 'test'
+  ...
+# Subtest: Pantry is inventory-only and no longer owns What Should I Eat
+ok 195 - Pantry is inventory-only and no longer owns What Should I Eat
+  ---
+  duration_ms: 0.416986
+  type: 'test'
+  ...
+# Subtest: What Should I Eat is a standalone Meals-owned page
+ok 196 - What Should I Eat is a standalone Meals-owned page
+  ---
+  duration_ms: 0.941599
+  type: 'test'
+  ...
+# Subtest: recipe snapshot aggregates the complete nutrient registry
+ok 197 - recipe snapshot aggregates the complete nutrient registry
+  ---
+  duration_ms: 0.16586
+  type: 'test'
+  ...
+# Subtest: ingredient enrichment recalculates linked recipe meals
+ok 198 - ingredient enrichment recalculates linked recipe meals
+  ---
+  duration_ms: 0.285673
+  type: 'test'
+  ...
+# Subtest: enrichment approval gives visible feedback and formats evidence objects
+ok 199 - enrichment approval gives visible feedback and formats evidence objects
+  ---
+  duration_ms: 0.308747
+  type: 'test'
+  ...
+# Subtest: intent engine routes natural language
+ok 200 - intent engine routes natural language
+  ---
+  duration_ms: 1.354238
+  type: 'test'
+  ...
+# Subtest: action center prioritizes unresolved conditions
+ok 201 - action center prioritizes unresolved conditions
+  ---
+  duration_ms: 13.917758
+  type: 'test'
+  ...
+# Subtest: timeline normalizes sources chronologically with authoritative source identity
+ok 202 - timeline normalizes sources chronologically with authoritative source identity
+  ---
+  duration_ms: 0.485502
+  type: 'test'
+  ...
+# Subtest: adaptive navigation preserves every section
+ok 203 - adaptive navigation preserves every section
+  ---
+  duration_ms: 0.186037
+  type: 'test'
+  ...
+# Subtest: explainability and dashboard use traceable evidence
+ok 204 - explainability and dashboard use traceable evidence
+  ---
+  duration_ms: 0.208593
+  type: 'test'
+  ...
+1..204
+# tests 204
+# suites 0
+# pass 204
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 847.199945
+
+=== npm run verify:release ===
+
+> fizz-health@1.4.10.35 verify:release
+> node scripts/verify-release.mjs
+
+Release metadata verified: v1.4.10.35 / FH-1250.25
+
+=== npm run build ===
+
+> fizz-health@1.4.10.35 build
+> vite build
+
+sh: 1: vite: not found
