@@ -3,30 +3,23 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 const main=fs.readFileSync(new URL('../src/main.jsx',import.meta.url),'utf8');
 const css=fs.readFileSync(new URL('../src/styles.css',import.meta.url),'utf8');
-const meta=JSON.parse(fs.readFileSync(new URL('../VERSION.json',import.meta.url),'utf8'));
 const history=JSON.parse(fs.readFileSync(new URL('../release-history.json',import.meta.url),'utf8'));
 
-test('v1.4.10.40a release identity is canonical and visible',()=>{
- assert.equal(meta.version,'1.4.10.40a');
- assert.equal(meta.build,'141040A');
- assert.equal(meta.release_id,'FH-20260722-141040A');
- assert.match(main,/const VERSION='1\.4\.10\.40a'/);
- assert.match(main,/const BUILD_ID='141040A'/);
- assert.equal(history.releases[0].version,'1.4.10.40a');
- assert.match(main,/const RELEASE_HISTORY=\[\n \{version:'1\.4\.10\.40a'/);
+test('v1.4.10.40a remains preserved in release history',()=>{
+ assert.ok(history.releases.some(r=>r.version==='1.4.10.40a'));
+ assert.match(main,/\{version:'1\.4\.10\.40a'/);
 });
 
-test('complete and incomplete pantry cards use one horizontal fill each',()=>{
+test('complete and incomplete pantry cards retain one horizontal fill each',()=>{
  assert.match(css,/\.pantry-smart-item\{[^}]*background:#17211b/);
  assert.match(css,/\.verify-chip\{[^}]*background:inherit/);
  assert.match(css,/\.pantry-smart-item\.needs-data-card\{background:#263a2d/);
  assert.match(css,/\.pantry-smart-item\.needs-data-card \.verify-chip\{background:inherit/);
 });
 
-test('pantry enrichment is mounted outside its parent form so clipboard actions cannot dismiss the editor',()=>{
+test('Pantry nutrition and enrichment overlays are mounted outside the inventory form',()=>{
  const editor=main.slice(main.indexOf('function PantryItemEditor'),main.indexOf('function Pantry({'));
- assert.match(editor,/<\/form><\/div>\{enrichmentFood&&<FoodEnrichmentWorkspace/);
- assert.doesNotMatch(editor,/<FoodEnrichmentWorkspace[^>]+\/>\}<\/form>/);
+ assert.match(editor,/<\/form><\/div>\{nutritionFood&&<NutritionEditor/);
 });
 
 test('Paste Response validates and advances directly to the review screen',()=>{

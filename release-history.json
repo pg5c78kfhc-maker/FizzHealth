@@ -2,6 +2,12 @@
   "format": "fizz-health-release-history",
   "releases": [
     {
+      "version": "1.4.10.40b",
+      "date": "2026-07-22",
+      "title": "Pantry Nutrition Completion Corrective",
+      "summary": "Explains missing nutrition requirements, routes Pantry Pencil through the full nutrition editor, and recalculates completion after enrichment."
+    },
+    {
       "version": "1.4.10.40a",
       "name": "Pantry UX Corrective",
       "type": "Corrective release",

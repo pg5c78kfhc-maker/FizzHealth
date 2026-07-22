@@ -5,15 +5,16 @@ const main=fs.readFileSync(new URL('../src/main.jsx',import.meta.url),'utf8');
 const css=fs.readFileSync(new URL('../src/styles.css',import.meta.url),'utf8');
 const exchange=fs.readFileSync(new URL('../src/exchange.js',import.meta.url),'utf8');
 test('missing-data cards use icon-only fixed status column and distinct background',()=>{
- assert.match(main,/r\.confidence>0\?<>{r\.confidence>=75\?<Check\/>:<ShieldCheck\/>}{r\.confidence}%<\/>:<Database\/>/);
+ assert.match(main,/completion\.complete\?\(r\.confidence>0\?<>{r\.confidence>=75\?<Check\/>:<ShieldCheck\/>}{r\.confidence}%<\/>:<Check\/>\):<Database\/>/);
  assert.doesNotMatch(main,/<Database\/><X\/> Needs data/);
  assert.match(css,/\.verify-chip\{width:104px;min-width:104px/);
  assert.match(css,/\.pantry-smart-item\.needs-data-card\{background:#263a2d/);
  assert.match(css,/\.pantry-smart-item\.needs-data-card \.verify-chip\{background:inherit/);
 });
-test('pantry editor exposes shared enrichment workflow with pantry context',()=>{
- assert.match(main,/aria-label="Enrich linked food"><Pencil\/>/);
- assert.match(main,/<FoodEnrichmentWorkspace food=\{enrichmentFood\}/);
+test('pantry editor routes through the shared full nutrition editor before enrichment',()=>{
+ assert.match(main,/aria-label="View and edit complete nutrition record"><Pencil\/>/);
+ assert.match(main,/<NutritionEditor food=\{nutritionFood\}/);
+ assert.match(main,/aria-label="Enrich this food"/);
  assert.match(exchange,/inventory_context:\{quantity:food\.pantry_quantity/);
 });
 test('location browsing defaults to All and excludes Home',()=>{

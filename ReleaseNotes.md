@@ -1,28 +1,30 @@
-# Fizz Health v1.4.10.40a
+# Fizz Health v1.4.10.40b
 
 **Release type:** Corrective release  
-**Issued:** July 22, 2026 at 1:40 PM EDT  
-**Build:** 141040A  
-**Release ID:** FH-20260722-141040A
+**Issued:** July 22, 2026  
+**Build:** 141040B  
+**Release ID:** FH-20260722-141040B
 
-## FH-40A-1 — Pantry card color integrity
+## FH-40B-1 — Explain nutrition completion
 
-- Complete records use the same darker background across the information and confidence panels.
-- Incomplete records use the same lighter green background across the information and database-icon panels.
-- The vertical divider remains the only visual separation.
+- The complete nutrition editor now shows whether a food satisfies the Pantry nutrition requirement.
+- Incomplete foods show the exact required fields that are still missing.
+- Complete foods show a clear Nutrition data complete state.
 
-## FH-40A-2 — Pantry Food Enrichment workflow parity
+## FH-40B-2 — Correct Pantry Pencil routing
 
-- Copy Request leaves the Food Enrichment exchange open.
-- The exchange is mounted outside the Pantry Item form so backdrop events cannot dismiss the parent editor.
-- Paste Response validates immediately and advances to the existing review/validation screen.
-- Applying the approved response preserves the established recalculation and audit workflow.
+- The Pencil on Pantry Item opens the complete nutrition editor.
+- All nutrient values are visible and editable before enrichment.
+- The Pencil inside the nutrition editor launches the existing JSON enrichment workflow.
 
-## FH-40A-3 — Release metadata
+## FH-40B-3 — Completion recalculation and refresh
 
-- Updated application version, build identifier, release ID, release history, service-worker cache, decision engine, package metadata, and About-page source.
+- Completion is recalculated from the same required fields after manual save or enrichment.
+- Enrichment returns to the refreshed full nutrition editor for review.
+- Pantry complete/incomplete styling is based on nutrition completeness rather than inventory confidence.
+- Closing the edited Pantry item refreshes the Pantry list immediately.
 
-## FH-40A-4 — Artifact naming
+## Artifacts
 
-- Full source: `Source.1.4.10.40a.zip`
-- Changed files: `Changed.1.4.10.40a.zip`
+- Full source: `Source.1.4.10.40b.zip`
+- Changed files: `Changed.1.4.10.40b.zip`

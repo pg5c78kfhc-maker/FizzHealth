@@ -1,0 +1,13 @@
+ReleaseNotes.md
+TEST-PROOF-1.4.10.40b.txt
+VERSION.json
+package-lock.json
+package.json
+public/sw.js
+release-history.json
+src/decision/engine.js
+src/main.jsx
+src/styles.css
+tests/v141040-pantry-ux.test.js
+tests/v141040a-corrective.test.js
+tests/v141040b-nutrition-completion.test.js
