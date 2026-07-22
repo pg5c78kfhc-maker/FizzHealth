@@ -2,6 +2,19 @@
   "format": "fizz-health-release-history",
   "releases": [
     {
+      "version": "1.4.10.29",
+      "date": "2026-07-21",
+      "title": "Pantry intelligence consistency and Food landing polish",
+      "summary": "Fixes pantry availability classification, empty states, recommendations, diagnostics, and moves the add action to the compact Food header while replacing the oversized plus tile icon.",
+      "items": [
+        "Expired or past-best-quality items remain in stock until quantity reaches zero or the item is explicitly depleted.",
+        "Pantry Health and Eat Next use the same active inventory set.",
+        "Out of Stock always renders a clear empty state.",
+        "Pantry Health details show evaluated inventory diagnostics.",
+        "The Food landing tile uses a food icon; the add action remains in the compact page header."
+      ]
+    },
+    {
       "version": "1.4.10.28",
       "name": "Food and Pantry Navigation Polish",
       "type": "Focused corrective release",
@@ -94,7 +107,7 @@
     },
     {
       "version": "1.4.10.9",
-      "name": "One-Time Food Logging \u2014 Log Once",
+      "name": "One-Time Food Logging — Log Once",
       "type": "Patch",
       "created": "2026-07-20T11:15:00-04:00",
       "build": "14108",

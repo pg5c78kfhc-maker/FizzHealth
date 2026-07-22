@@ -1,4 +1,4 @@
-## 1.4.10.28
+## 1.4.10.29
 
 - Replaced the Food hub floating add button with the standard compact header action.
 - Prevented manual pantry creation from saving the virtual “All” filter as a storage location.

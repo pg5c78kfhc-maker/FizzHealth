@@ -1,0 +1,12 @@
+Fizz Health v1.4.10.29 verification
+
+Automated tests: PASS
+195 tests passed; 0 failed.
+Command: npm test
+
+Release metadata verification: PASS
+Command: npm run verify:release
+Result: Release metadata verified: v1.4.10.29 / FH-1250.25
+
+Production build: NOT RUN
+The sandbox could not complete npm dependency installation, and node_modules/.bin/vite was unavailable. No successful production build is claimed.

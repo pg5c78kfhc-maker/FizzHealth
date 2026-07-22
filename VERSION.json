@@ -1,10 +1,10 @@
 {
   "app": "Fizz Health",
-  "version": "1.4.10.28",
+  "version": "1.4.10.29",
   "release": "Recipe & Pantry Reliability",
   "release_type": "Focused corrective release",
-  "build": "141027",
-  "release_id": "FH-20260721-141027",
+  "build": "141029",
+  "release_id": "FH-20260721-141029",
   "created_at": "2026-07-21T21:30:00-04:00",
   "schema_version": 45,
   "status": "COMPLETE",
@@ -17,6 +17,6 @@
   "build_date": "2026-07-21",
   "release_name": "Recipe & Pantry Reliability",
   "release_date": "2026-07-21",
-  "build_id": "141027",
+  "build_id": "141029",
   "title": "Recipe & Pantry Reliability"
 }
