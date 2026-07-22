@@ -2,6 +2,21 @@
   "format": "fizz-health-release-history",
   "releases": [
     {
+      "version": "1.4.10.40c",
+      "name": "Pantry Enrichment Paste Recovery",
+      "type": "Critical corrective release",
+      "created": "2026-07-22T14:30:00-04:00",
+      "build": "141040C",
+      "release_id": "FH-20260722-141040C",
+      "stories": [
+        {
+          "id": "FH-40C-1",
+          "description": "Prevent the Pantry enrichment paste flow from crashing to a black screen and preserve recoverable validation errors"
+        }
+      ],
+      "known_issues": []
+    },
+    {
       "version": "1.4.10.40b",
       "date": "2026-07-22",
       "title": "Pantry Nutrition Completion Corrective",

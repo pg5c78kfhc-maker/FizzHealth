@@ -6,10 +6,9 @@ const css=fs.readFileSync(new URL('../src/styles.css',import.meta.url),'utf8');
 const meta=JSON.parse(fs.readFileSync(new URL('../VERSION.json',import.meta.url),'utf8'));
 const history=JSON.parse(fs.readFileSync(new URL('../release-history.json',import.meta.url),'utf8'));
 
-test('v1.4.10.40b metadata is current',()=>{
- assert.equal(meta.version,'1.4.10.40b');assert.equal(meta.build,'141040B');
- assert.match(main,/const VERSION='1\.4\.10\.40b'/);assert.match(main,/const BUILD_ID='141040B'/);
- assert.equal(history.releases[0].version,'1.4.10.40b');assert.match(main,/\{version:'1\.4\.10\.40b'/);
+test('v1.4.10.40b remains preserved in release history',()=>{
+ assert.ok(history.releases.some(r=>r.version==='1.4.10.40b'));
+ assert.match(main,/\{version:'1\.4\.10\.40b'/);
 });
 
 test('Pantry Pencil opens the full nutrition editor instead of AI Exchange',()=>{

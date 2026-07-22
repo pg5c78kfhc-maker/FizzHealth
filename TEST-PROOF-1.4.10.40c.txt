@@ -1,0 +1,29 @@
+Fizz Health v1.4.10.40c — Test and Build Proof
+
+Scope
+FH-40C-1 — Repair black screen after pasting valid enriched JSON from the Pantry Food Enrichment workflow.
+
+Root cause
+FoodEnrichmentWorkspace successfully parsed and validated the clipboard payload, then rendered the review state using an undefined currentFood variable. The render exception occurred immediately after setPreview(payload), producing the blank/black application screen.
+
+Correction
+- Replaced every invalid currentFood reference inside FoodEnrichmentWorkspace with the mounted food target.
+- Kept valid clipboard responses in the mounted workflow and advanced them to review.
+- Preserved visible validation errors on the exchange screen for invalid or mismatched JSON.
+- Updated release metadata to v1.4.10.40c / build 141040C / FH-40C-1.
+
+Automated tests
+Command: npm test
+Result: PASS
+Tests: 233
+Passed: 233
+Failed: 0
+
+Release verification
+Command: npm run verify:release
+Result: PASS
+Output: Release metadata verified: v1.4.10.40c / FH-40C-1
+
+Production build
+Result: NOT COMPLETED
+The uploaded source archive did not include installed dependencies (node_modules/.bin/vite was absent). npm ci was attempted from the supplied lockfile but did not complete within the available execution window. No production build success is claimed.
