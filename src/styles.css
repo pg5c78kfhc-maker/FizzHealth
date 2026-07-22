@@ -667,4 +667,14 @@ textarea{width:100%;min-width:0;max-height:min(36dvh,280px);resize:vertical;over
 .food-subsystem-grid{grid-template-columns:repeat(3,minmax(0,1fr))}.food-subsystem-grid button{min-height:118px}.food-subsystem-grid span{font-size:1rem}.food-readiness-diagnostics{display:grid;gap:10px;margin:18px 0}.food-readiness-diagnostics article{display:flex;justify-content:space-between;gap:12px;border:1px solid #34444a;border-radius:16px;padding:14px;background:#121a1f}.food-readiness-diagnostics article>div{display:grid;gap:4px}.food-readiness-diagnostics small{color:#a9ef45;font-weight:900;text-transform:uppercase}.food-readiness-diagnostics span{color:#a4b0b6}.food-readiness-diagnostics em{font-style:normal;color:#cfff9a;font-weight:800;white-space:nowrap}.pantry-intel-list article.tappable{cursor:pointer}.pantry-intel-list article.tappable>svg:last-child{margin-left:auto}@media(max-width:520px){.food-subsystem-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}.food-subsystem-grid button{min-height:104px;padding:8px}.food-subsystem-grid svg{width:34px;height:34px}.food-subsystem-grid span{font-size:.78rem}}
 .enrichment-sticky-status{position:sticky;top:0;z-index:4;margin:0 0 14px;padding:12px 14px;border-radius:12px;background:var(--panel,#121a21);border:1px solid var(--line,#31404a)}
 
-.enrichment-header-status{position:sticky;top:0;z-index:8;margin:0;padding:12px 18px;border-radius:0;background:#17341f;color:#eaffef;font-weight:800;border-bottom:1px solid #365044}.enrichment-header-status.error{background:#4b1e24;color:#fff0f1}.save-action:disabled{opacity:.65;pointer-events:none}
+/* v1.4.10.39 pantry finishing pass */
+.pantry-smart-item.needs-data-card{background:#1b2329;border-color:#40505a}
+.pantry-smart-item.needs-data-card .verify-chip{background:#222d34;border-left-color:#52616a}
+.verify-chip{width:104px;min-width:104px;justify-content:center}
+.verify-chip.missing-data{gap:0}
+.verify-chip.missing-data svg{width:24px;height:24px}
+.pantry-editor-actions{display:flex;align-items:center;gap:8px}
+.pantry-search-launch{width:100%;display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:12px;text-align:left;background:#141b22;border:1px solid #31404a;border-radius:22px;color:#eef4f0;padding:14px 16px;margin:14px 0}
+.pantry-search-launch>svg{width:24px}.pantry-search-launch span{display:grid;gap:2px}.pantry-search-launch small{color:#97a4ad}
+.pantry-filter-results{margin-top:14px}.pantry-search-page{padding-bottom:calc(110px + env(safe-area-inset-bottom))}.pantry-search-page .pantry-search{margin:16px 0 8px}.search-result-count{color:#94a0a8;margin:0 0 12px}.pantry-search-results{padding-bottom:24px}
+.pantry-intel-list article.tappable{cursor:pointer}.pantry-intel-list article.tappable:active{transform:scale(.99)}

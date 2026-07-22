@@ -1,3 +1,12 @@
+# Fizz Health v1.4.10.39
+
+## Pantry finishing pass
+
+- Missing-data pantry cards now use a database icon without text and a lighter incomplete-record treatment.
+- Pantry Item Details now opens the existing AI enrichment workflow with the linked food record and known pantry context.
+- Pantry search now has a dedicated screen.
+- In Stock, Restock, Out of Stock, Shopping, and Attention results are actionable and open Pantry Item Details.
+
 # Fizz Health v1.4.10.38
 
 ## Pantry Health Calculation Repair

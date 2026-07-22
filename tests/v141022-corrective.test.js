@@ -6,10 +6,8 @@ const main=fs.readFileSync(new URL('../src/main.jsx',import.meta.url),'utf8');
 const css=fs.readFileSync(new URL('../src/styles.css',import.meta.url),'utf8');
 const pkg=JSON.parse(fs.readFileSync(new URL('../package.json',import.meta.url),'utf8'));
 
-test('v1.4.10.38 release identity is canonical',()=>{
- assert.equal(pkg.version,'1.4.10.38');
- assert.match(main,/const VERSION='1\.4\.10\.38'/);
- assert.match(main,/const BUILD_ID='141038'/);
+test('v1.4.10.38 remains in release history',()=>{
+ assert.match(main,/version:'1\.4\.10\.38'.*build:'141038'.*FH-20260722-141038/);
 });
 
 test('global plus opens Add Food and legacy Universal Capture is removed',()=>{
