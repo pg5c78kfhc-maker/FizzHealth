@@ -1,13 +1,12 @@
-# Fizz Health v1.4.10.35
+# Fizz Health v1.4.10.36
 
-## Corrective implementation release
+## Critical repair
 
-- Renames the meal workspace to **Meals**.
-- Removes What Should I Eat, Eat Next, Chef’s Recommendations, and Waste Risk from Pantry so Pantry is inventory control only.
-- Keeps What Should I Eat as a standalone Food Intelligence screen reached from Meals.
-- Repairs recipe nutrition aggregation to carry every registered nutrient, including caffeine, into consumed and planned recipe snapshots.
-- Recalculates current linked recipe meals when an ingredient is enriched.
-- Repairs food enrichment approval feedback with an immediate saving state, sticky success/error feedback, and readable evidence formatting.
-- Preserves all-or-nothing import behavior and linked current-day meal recalculation.
+- Repairs recipe consumption so complete nutrient snapshots, including caffeine, are saved and the dashboard refreshes immediately.
+- Converts compatible ingredient units before recipe nutrient aggregation.
+- Prevents oversized recipe ingredient payloads from destabilizing meal logging.
+- Repairs AI enrichment approval by serializing structured values before SQLite binding.
+- Keeps success and exact failure feedback visible beside the review header.
+- Preserves all-or-nothing enrichment transactions and readable evidence details.
 
 Implementation slice: FH-1250.25.

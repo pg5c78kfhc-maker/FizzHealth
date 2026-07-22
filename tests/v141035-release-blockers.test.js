@@ -27,7 +27,7 @@ test('What Should I Eat is a standalone Meals-owned page',()=>{
 
 test('recipe snapshot aggregates the complete nutrient registry',()=>{
  assert.match(main,/const total=Object\.fromEntries\(NUTRIENT_KEYS\.map\(k=>\[k,0\]\)\)/);
- assert.match(main,/for\(const k of NUTRIENT_KEYS\)total\[k\]\+=finite\(r\[k\]\)\*ratio/);
+ assert.match(main,/for\(const k of NUTRIENT_KEYS\).*total\[k\]\+=Number\(value\)\*ratio/s);
  assert.match(main,/nutrientColumns=NUTRIENT_KEYS\.map/);
 });
 
@@ -40,7 +40,7 @@ test('ingredient enrichment recalculates linked recipe meals',()=>{
 
 test('enrichment approval gives visible feedback and formats evidence objects',()=>{
  assert.match(main,/function evidenceText/);
- assert.match(main,/enrichment-sticky-status/);
+ assert.match(main,/enrichment-header-status/);
  assert.match(css,/\.enrichment-sticky-status/);
  assert.match(main,/disabled=\{busy\}/);
 });
