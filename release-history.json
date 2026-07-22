@@ -2,6 +2,21 @@
   "format": "fizz-health-release-history",
   "releases": [
     {
+      "version": "1.4.10.41b",
+      "name": "Home Hierarchy Corrective B",
+      "type": "Home hierarchy corrective release",
+      "created": "2026-07-22T18:15:00-04:00",
+      "build": "141041B",
+      "release_id": "FH-20260722-141041B",
+      "stories": [
+        "FH-41B-1",
+        "FH-41B-2",
+        "FH-41B-3",
+        "FH-41B-4"
+      ],
+      "known_issues": []
+    },
+    {
       "version": "1.4.10.41a",
       "name": "Home Hierarchy Corrective",
       "type": "Home hierarchy corrective release",

@@ -1,3 +1,4 @@
+| 1.4.10.41b | Home Hierarchy Corrective B | 2026-07-22T18:15:00-04:00 | FH-41B-1 through FH-41B-4 | Corrected Home sequence and preserved dynamic nutrition progress behavior. |
 # Fizz Health Release Register
 
 **Audit baseline:** Source records through v1.4.10.7. Conflicts are retained rather than silently corrected.

@@ -1,0 +1,26 @@
+Fizz Health v1.4.10.41b — Test and Build Proof
+Generated: 2026-07-22
+
+Implemented scope
+- Decision Intelligence remains directly below the date selector.
+- Expanded order: Nutrition Coverage, Projected Calories, Highest Impact Next Action, What Happens Next, Today’s Focus, Smart Action Center.
+- LDL Support, Estimated Maintenance, and Steps remain outside the disclosure in the existing left-to-right layout.
+- Nutrition progress remains outside the disclosure and preserves orderedBars dynamic ranking, top-ten display, show-all/show-top-10 control, target/maximum logic, planned values, and interactions.
+- Meal log remains below nutrition progress.
+- Application and release metadata updated to v1.4.10.41b / 141041B.
+
+Automated regression tests
+Command: npm test
+Result: PASS
+Tests: 244 passed, 0 failed
+
+Release metadata verification
+Command: npm run verify:release
+Result: PASS
+Output: Release metadata verified: v1.4.10.41b / FH-41B-1 through FH-41B-4
+
+Production build
+Command: npm run build
+Result: NOT COMPLETED
+Reason: vite is not installed in the uploaded source environment (`sh: 1: vite: not found`).
+No production-build success is claimed.

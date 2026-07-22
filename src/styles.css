@@ -702,3 +702,7 @@ textarea{width:100%;min-width:0;max-height:min(36dvh,280px);resize:vertical;over
 .home-key-summaries b{color:#a9ef45}
 .today-view>.today-meals-section{order:4}
 .today-view>.command-center{order:5}
+
+/* v1.4.10.41b — corrected Home sequence */
+.decision-intelligence-content>.home-key-summaries{margin:0 0 12px}
+.home-summary-dashboard,.nutrition-progress-dashboard{margin-top:12px}

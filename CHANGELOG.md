@@ -1,3 +1,10 @@
+## 1.4.10.41b
+
+- Corrected the Home sequence and Decision Intelligence contents.
+- Moved Nutrition Coverage and Projected Calories inside the disclosure.
+- Kept the LDL/Maintenance/Steps row and the unchanged dynamic nutrition-progress component outside the disclosure.
+- Moved Today’s Focus and Smart Action Center into Decision Intelligence.
+
 ## 1.4.10.41a
 
 - Corrected the Home hierarchy so Nutrition Coverage and Projected Calories remain visible directly beneath the Decision Intelligence strip.

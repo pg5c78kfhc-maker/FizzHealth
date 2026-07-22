@@ -11,4 +11,4 @@ test('compact standard editor actions use icon semantics',()=>{assert.match(main
 test('dashboard calories report remaining to target',()=>{assert.match(experience,/n\(plan\[k\]\)-n\(actual\[k\]\)/);assert.match(main,/Calories remaining/)});
 test('pantry attention preserves dashboard context',()=>{assert.match(main,/fizz-pantry-attention/);assert.match(main,/Needs attention today/)});
 test('steps retain event identity in timeline',()=>assert.match(experience,/Steps update/));
-test('home operational dashboard follows food log',()=>{const meals=main.indexOf("Today’s meals");const command=main.indexOf('Daily command center',meals);assert.ok(meals>0&&command>meals)});
+test('home operational dashboard remains available inside Decision Intelligence before the food log',()=>{const command=main.indexOf('Daily command center');const meals=main.indexOf("Today’s meals",command);assert.ok(command>0&&meals>command)});

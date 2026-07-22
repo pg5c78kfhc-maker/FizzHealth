@@ -1,27 +1,25 @@
 {
   "app": "Fizz Health",
-  "version": "1.4.10.41a",
-  "release": "1.4.10.41a",
+  "version": "1.4.10.41b",
+  "release": "1.4.10.41b",
   "release_type": "Home hierarchy corrective release",
-  "build": "141041A",
-  "release_id": "FH-20260722-141041A",
-  "created_at": "2026-07-22T17:30:00-04:00",
+  "build": "141041B",
+  "release_id": "FH-20260722-141041B",
+  "created_at": "2026-07-22T18:15:00-04:00",
   "schema_version": 45,
   "status": "Home hierarchy corrective release",
-  "completed_story": "FH-1 through FH-6",
+  "completed_story": "FH-41B-1 through FH-41B-4",
   "baseline_story": "FH-1221",
-  "updated": "2026-07-22T17:30:00-04:00",
+  "updated": "2026-07-22T18:15:00-04:00",
   "stories": [
-    "FH-1",
-    "FH-2",
-    "FH-3",
-    "FH-4",
-    "FH-5",
-    "FH-6"
+    "FH-41B-1",
+    "FH-41B-2",
+    "FH-41B-3",
+    "FH-41B-4"
   ],
-  "build_date": "2026-07-22T17:30:00-04:00",
-  "release_name": "Home Hierarchy Corrective",
+  "build_date": "2026-07-22T18:15:00-04:00",
+  "release_name": "Home Hierarchy Corrective B",
   "release_date": "2026-07-22",
-  "build_id": "141041A",
-  "title": "Home Hierarchy Corrective"
+  "build_id": "141041B",
+  "title": "Home Hierarchy Corrective B"
 }
