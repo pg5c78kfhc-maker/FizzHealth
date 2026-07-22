@@ -1,0 +1,19 @@
+Fizz Health v1.4.10.37 verification
+
+Automated tests:
+214 passed
+0 failed
+
+Release verification:
+Release metadata verified: v1.4.10.37 / FH-1250.25
+
+Production build:
+Attempted: npm run build
+Result: not completed
+Reason: sh: 1: vite: not found
+
+Confirmed source corrections:
+- AI exchange approval stores non-null request_json and response_json.
+- Approval displays an immediate visible saving state.
+- Current-day consumed and active planned recipe meals receive a one-time complete nutrient backfill.
+- Backfill completion is persisted in the settings table.
