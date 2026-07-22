@@ -1,3 +1,9 @@
+## 1.4.10.42b
+
+- Corrected Highest Impact Next Action overflow on iPhone portrait.
+- Stacked mobile card content to provide full usable text width.
+- Added responsive regression coverage.
+
 ## 1.4.10.42a
 - Added persistent, date-specific Restaurant Day control.
 - Gated restaurant planning and Highest Impact alternatives behind Restaurant Day.

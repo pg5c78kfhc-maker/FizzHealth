@@ -1,19 +1,20 @@
-# Fizz Health v1.4.10.42a
+# Fizz Health v1.4.10.42b
 
-**Build:** 141042A  
-**Release ID:** FH-20260722-141042A  
-**Completed scope:** FH-1 through FH-6
+**Build:** 141042B  
+**Release ID:** FH-20260722-141042B  
+**Created:** 2026-07-22T22:55:00-04:00
 
-## Restaurant Day and responsive decision support
+## Corrective scope
 
-- Repairs Highest Impact Next Action overflow on iPhone portrait.
-- Replaces the Home header gear with a date-specific Restaurant Day Yes/No switch.
-- Defaults new dates to No and persists each date's selection.
-- Automatically forces Yes when a proposed or logged restaurant meal exists.
-- Prevents switching to No while a restaurant meal remains in the selected day's food log.
-- Excludes restaurant recommendations whenever Restaurant Day is No.
+Completed stories: FH-1 through FH-3
+
+- Rebuilt the mobile Highest Impact Next Action card as a single-column layout.
+- Kept the score in a compact horizontal header so the recommendation receives the full card width.
+- Removed the mobile chevron column and retained the Tap for options affordance.
+- Forced all recommendation text, metadata, and rationale to wrap inside the card.
+- Preserved Restaurant Day behavior and the full v1.4.10.42 decision-support experience.
 
 ## Artifacts
 
-- Full source: `Source.1.4.10.42a.zip`
-- Changed files: `Changed.1.4.10.42a.zip`
+- Full source: `Source.1.4.10.42b.zip`
+- Changed files: `Changed.1.4.10.42b.zip`

@@ -20,9 +20,9 @@ import {buildRecipeSnapshot,compactRecipeMealNotes} from './nutrition/recipe';
 import {normalizeSqlValue,auditValue} from './exchange/persistence';
 import {buildFoodEnrichmentExchange,buildNewFoodExchange,buildLogOnceExchange,normalizeExchangeJson as normalizeUniversalJson,validateUniversalExchange,foodProposal,mealProposal,changedFoodFields} from './exchange';
 import './styles.css';
-const VERSION='1.4.10.42a';
+const VERSION='1.4.10.42b';
 const RELEASE_DATE='2026-07-22';
-const BUILD_ID='141042A';
+const BUILD_ID='141042B';
 const localDateKey=(date=new Date())=>{const y=date.getFullYear(),m=String(date.getMonth()+1).padStart(2,'0'),d=String(date.getDate()).padStart(2,'0');return `${y}-${m}-${d}`};
 const today=()=>localDateKey();
 const toDateTimeLocal=(date=new Date())=>{const y=date.getFullYear(),m=String(date.getMonth()+1).padStart(2,'0'),d=String(date.getDate()).padStart(2,'0'),h=String(date.getHours()).padStart(2,'0'),min=String(date.getMinutes()).padStart(2,'0');return `${y}-${m}-${d}T${h}:${min}`};
@@ -1080,6 +1080,7 @@ function NutrientConfiguration({onBack,onClose=onBack}){
 }
 
 const RELEASE_HISTORY=[
+ {version:'1.4.10.42b',name:'Responsive Highest Impact Card Repair',type:'Corrective UI release',created:'2026-07-22T22:55:00-04:00',build:'141042B',releaseId:'FH-20260722-141042B',stories:[['FH-1','Stack Highest Impact card content on mobile'],['FH-2','Constrain all text and controls to card width'],['FH-3','Responsive regression coverage']],knownIssues:[]},
  {version:'1.4.10.42a',name:'Restaurant Day and Responsive Decision Support',type:'Corrective decision intelligence release',created:'2026-07-22T20:00:00-04:00',build:'141042A',releaseId:'FH-20260722-141042A',stories:[['FH-1','Responsive Highest Impact card'],['FH-2','Date-specific Restaurant Day toggle'],['FH-3','Hard restaurant recommendation gate'],['FH-4','Automatic Yes from restaurant meals'],['FH-5','Prevent contradictory No state'],['FH-6','Regression coverage']],knownIssues:[]},
  {version:'1.4.10.42',name:'Home Hierarchy Corrective B',type:'Home hierarchy corrective release',created:'2026-07-22T18:15:00-04:00',build:'141042',releaseId:'FH-20260722-141042',stories:[['FH-41B-1','Place Nutrition Coverage and Projected Calories inside Decision Intelligence'],['FH-41B-2','Keep LDL Support, Estimated Maintenance, and Steps outside Decision Intelligence'],['FH-41B-3','Move the unchanged dynamic nutrition progress component outside Decision Intelligence'],['FH-41B-4','Place Today’s Focus and Smart Action Center inside Decision Intelligence']],knownIssues:[]},
  {version:'1.4.10.40c',name:'Pantry Enrichment Paste Recovery',type:'Critical corrective release',created:'2026-07-22T14:30:00-04:00',build:'141040C',releaseId:'FH-20260722-141040C',stories:[['FH-40C-1','Prevent the Pantry enrichment paste flow from crashing to a black screen and preserve recoverable validation errors']],knownIssues:[]},

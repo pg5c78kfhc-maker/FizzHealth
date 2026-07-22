@@ -1,0 +1,28 @@
+Fizz Health v1.4.10.42b — Test and Build Proof
+
+Automated regression suite
+Command: npm test
+Result: PASS
+Tests: 255 passed, 0 failed
+
+Release metadata verification
+Command: npm run verify:release
+Result: PASS
+Output: Release metadata verified: v1.4.10.42b / FH-1 through FH-3
+
+Production build
+Command: npm run build
+Result: NOT COMPLETED
+Reason: The uploaded source archive did not include installed dependencies; vite was unavailable (sh: 1: vite: not found).
+No production-build success is claimed.
+
+Corrective verification
+- Mobile Highest Impact card uses a single-column layout.
+- Daily Health Score is a compact horizontal header.
+- Recommendation title, rationale, impact, and confidence receive the full card width.
+- Mobile chevron column is removed; Tap for options remains visible.
+- Restaurant Day behavior from v1.4.10.42a remains intact.
+
+Version: 1.4.10.42b
+Build: 141042B
+Release ID: FH-20260722-141042B

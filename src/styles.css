@@ -715,3 +715,38 @@ textarea{width:100%;min-width:0;max-height:min(36dvh,280px);resize:vertical;over
 .highest-impact-trigger{box-sizing:border-box;max-width:100%;min-width:0;grid-template-columns:minmax(72px,110px) minmax(0,1fr) auto;overflow:hidden}.highest-impact-trigger>*{min-width:0}.highest-impact-trigger .assistant-action{min-width:0;overflow:hidden}.highest-impact-trigger .assistant-action h2,.highest-impact-trigger .assistant-action p,.highest-impact-trigger .assistant-action b,.highest-impact-trigger .assistant-action span{max-width:100%;overflow-wrap:anywhere;word-break:normal;white-space:normal}.highest-impact-trigger .highest-impact-chevron{width:20px;min-width:20px}.decision-intelligence-content,.health-assistant-card,.impact-option,.impact-option>div{min-width:0;max-width:100%;box-sizing:border-box}.impact-option b,.impact-option span,.impact-option em{overflow-wrap:anywhere}.highest-impact-panel{box-sizing:border-box;max-width:calc(100vw - 10px)}
 @media(max-width:620px){.highest-impact-trigger{grid-template-columns:76px minmax(0,1fr) 18px;gap:10px;padding:12px}.highest-impact-trigger .assistant-action h2{font-size:1rem;line-height:1.18}.highest-impact-trigger .assistant-action p{font-size:.76rem;line-height:1.35}.highest-impact-trigger .assistant-action>div{gap:5px;display:grid}.highest-impact-trigger .assistant-score strong{font-size:2rem}.highest-impact-trigger .assistant-score span{font-size:.68rem}.highest-impact-chevron{width:18px}.restaurant-day-control{top:19px}.highest-impact-panel .edit-head h3{font-size:1.25rem;overflow-wrap:anywhere}.impact-option{grid-template-columns:32px minmax(0,1fr) 26px;gap:8px}}
 @media(max-width:390px){.highest-impact-trigger{grid-template-columns:64px minmax(0,1fr);}.highest-impact-trigger .highest-impact-chevron{display:none}.restaurant-day-control button{width:54px}.restaurant-day-control>span{font-size:.43rem}}
+
+
+/* v1.4.10.42b — definitive iPhone Highest Impact card repair */
+@media(max-width:620px){
+ .decision-intelligence-content{width:100%;max-width:100%;overflow:hidden;padding:10px}
+ .decision-intelligence-content>.highest-impact-trigger{
+  display:grid;grid-template-columns:minmax(0,1fr);width:100%;max-width:100%;min-width:0;
+  gap:10px;padding:14px;margin:10px 0 0;overflow:hidden;align-items:start
+ }
+ .highest-impact-trigger .assistant-score{
+  width:100%;min-width:0;display:grid;grid-template-columns:24px auto minmax(0,1fr);
+  align-items:center;justify-content:start;gap:8px;text-align:left
+ }
+ .highest-impact-trigger .assistant-score svg{width:22px;height:22px}
+ .highest-impact-trigger .assistant-score strong{font-size:2rem;line-height:1}
+ .highest-impact-trigger .assistant-score span{font-size:.72rem;line-height:1.2;text-align:left;max-width:110px}
+ .highest-impact-trigger .assistant-action{width:100%;max-width:100%;min-width:0;overflow:visible}
+ .highest-impact-trigger .assistant-action small,
+ .highest-impact-trigger .assistant-action h2,
+ .highest-impact-trigger .assistant-action p,
+ .highest-impact-trigger .assistant-action div,
+ .highest-impact-trigger .assistant-action b,
+ .highest-impact-trigger .assistant-action span{
+  width:auto;max-width:100%;min-width:0;white-space:normal;overflow:visible;
+  overflow-wrap:break-word;word-break:normal
+ }
+ .highest-impact-trigger .assistant-action h2{font-size:1.15rem;line-height:1.22;margin:5px 0 7px}
+ .highest-impact-trigger .assistant-action p{font-size:.82rem;line-height:1.38;margin:0 0 10px}
+ .highest-impact-trigger .assistant-action>div{display:grid;grid-template-columns:minmax(0,1fr);gap:5px}
+ .highest-impact-trigger .highest-impact-chevron{display:none}
+}
+@media(max-width:390px){
+ .decision-intelligence-content{padding:8px}
+ .decision-intelligence-content>.highest-impact-trigger{padding:12px}
+}

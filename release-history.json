@@ -2,6 +2,29 @@
   "format": "fizz-health-release-history",
   "releases": [
     {
+      "version": "1.4.10.42b",
+      "name": "Responsive Highest Impact Card Repair",
+      "type": "Corrective UI release",
+      "created": "2026-07-22T22:55:00-04:00",
+      "build": "141042B",
+      "release_id": "FH-20260722-141042B",
+      "stories": [
+        [
+          "FH-1",
+          "Stack Highest Impact card content on mobile"
+        ],
+        [
+          "FH-2",
+          "Constrain all text and controls to the card width"
+        ],
+        [
+          "FH-3",
+          "Responsive regression coverage"
+        ]
+      ],
+      "knownIssues": []
+    },
+    {
       "version": "1.4.10.42a",
       "name": "Restaurant Day and Responsive Decision Support",
       "type": "Corrective decision intelligence release",
