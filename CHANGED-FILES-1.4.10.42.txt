@@ -1,0 +1,18 @@
+Fizz Health v1.4.10.42 — Changed Files
+
+CHANGELOG.md
+RELEASE-REGISTER.md
+ReleaseNotes.md
+VERSION.json
+package-lock.json
+package.json
+public/sw.js
+release-history.json
+src/decision/engine.js
+src/main.jsx
+src/styles.css
+tests/v141041-home-hierarchy.test.js
+tests/v141041b-home-sequence.test.js
+tests/v141042-highest-impact.test.js
+TEST-PROOF-1.4.10.42.txt
+CHANGED-FILES-1.4.10.42.txt

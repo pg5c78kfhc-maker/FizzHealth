@@ -2,6 +2,41 @@
   "format": "fizz-health-release-history",
   "releases": [
     {
+      "version": "1.4.10.42",
+      "name": "Highest Impact Next Action",
+      "type": "Decision intelligence release",
+      "created": "2026-07-22T19:15:00-04:00",
+      "build": "141042",
+      "release_id": "FH-20260722-141042",
+      "stories": [
+        [
+          "FH-1",
+          "Expandable detail view"
+        ],
+        [
+          "FH-2",
+          "Alternative actions"
+        ],
+        [
+          "FH-3",
+          "Pantry integration"
+        ],
+        [
+          "FH-4",
+          "Restaurant integration"
+        ],
+        [
+          "FH-5",
+          "Predicted outcome"
+        ],
+        [
+          "FH-6",
+          "Transparent rationale"
+        ]
+      ],
+      "known_issues": []
+    },
+    {
       "version": "1.4.10.41b",
       "name": "Home Hierarchy Corrective B",
       "type": "Home hierarchy corrective release",

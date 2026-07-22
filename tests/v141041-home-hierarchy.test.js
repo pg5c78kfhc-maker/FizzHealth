@@ -28,7 +28,7 @@ test('collapsed headlines are dynamic and limited to two',()=>{
 test('required intelligence is revealed inside the expandable region',()=>{
  const disclosure=main.slice(main.indexOf('{showDecisionIntelligence&&<div className="decision-intelligence-content">'),main.indexOf('home-summary-dashboard'));
  assert.match(disclosure,/home-key-summaries/);
- assert.match(disclosure,/health-assistant-card/);
+ assert.match(disclosure,/HighestImpactDecisionExperience/);
  assert.match(disclosure,/DecisionIntelligencePanel/);
  assert.match(disclosure,/DailyCommandCenter/);
  assert.doesNotMatch(disclosure,/summary-rings maintenance-layout/);
@@ -42,9 +42,9 @@ test('Nutrition Coverage and Projected Calories are inside the disclosure',()=>{
  assert.match(css,/\.home-key-summaries/);
 });
 
-test('release metadata advances to the v1.4.10.41b corrective release',()=>{
- assert.equal(meta.version,'1.4.10.41b');
- assert.equal(meta.build,'141041B');
- assert.match(main,/const VERSION='1\.4\.10\.41b'/);
- assert.match(main,/const BUILD_ID='141041B'/);
+test('release metadata advances to the v1.4.10.42 corrective release',()=>{
+ assert.equal(meta.version,'1.4.10.42');
+ assert.equal(meta.build,'141042');
+ assert.match(main,/const VERSION='1\.4\.10\.42'/);
+ assert.match(main,/const BUILD_ID='141042'/);
 });

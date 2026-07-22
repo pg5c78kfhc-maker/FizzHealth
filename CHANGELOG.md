@@ -1,3 +1,9 @@
+## 1.4.10.42
+
+- Expanded Highest Impact Next Action into an interactive decision engine.
+- Added ranked alternatives from pantry, planned meals, activity, timing, and restaurants.
+- Added projected outcomes and transparent recommendation rationale.
+
 ## 1.4.10.41b
 
 - Corrected the Home sequence and Decision Intelligence contents.

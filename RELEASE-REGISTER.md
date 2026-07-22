@@ -1,3 +1,4 @@
+| 1.4.10.42 | Highest Impact Next Action | 2026-07-22T19:15:00-04:00 | FH-1 through FH-6 | Interactive decision support with alternatives, predicted outcomes, pantry and restaurant integration, and transparent rationale. |
 | 1.4.10.41b | Home Hierarchy Corrective B | 2026-07-22T18:15:00-04:00 | FH-41B-1 through FH-41B-4 | Corrected Home sequence and preserved dynamic nutrition progress behavior. |
 # Fizz Health Release Register
 

@@ -1,0 +1,34 @@
+Fizz Health v1.4.10.42 — Test and Build Proof
+Date: 2026-07-22
+
+Implemented scope
+- FH-1: Highest Impact Next Action opens an expandable decision-support detail view.
+- FH-2: Multiple viable alternatives are ranked and presented.
+- FH-3: Pantry foods are ranked using nutrition fit, inventory pressure, expiration, and open status.
+- FH-4: Restaurant meals are included using known nutrition and current-goal fit.
+- FH-5: Every selectable option presents current-to-projected outcome metrics.
+- FH-6: Every option explains rationale, contributing data, goal improved, and why alternatives rank lower.
+
+Version metadata
+- Version: 1.4.10.42
+- Build: 141042
+- Release ID: FH-20260722-141042
+
+Automated tests
+Command: npm test
+Result: PASS
+Tests: 248 passed, 0 failed
+
+Release verification
+Command: npm run verify:release
+Result: PASS
+Output: Release metadata verified: v1.4.10.42 / FH-1 through FH-6
+
+Production build
+Command: npm run build
+Result: NOT COMPLETED
+Reason: The uploaded source archive does not contain installed dependencies; vite is unavailable (sh: vite: not found).
+No production-build success is claimed.
+
+Archive integrity
+- Source and changed-files ZIP archives were created and validated with unzip -t.

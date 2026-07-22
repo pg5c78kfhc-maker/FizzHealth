@@ -7,7 +7,7 @@ const meta=JSON.parse(fs.readFileSync(new URL('../VERSION.json',import.meta.url)
 test('Home sections follow the corrected sequence',()=>{
  const toggle=main.indexOf('decision-intelligence-toggle');
  const summaries=main.indexOf('home-key-summaries',toggle);
- const action=main.indexOf('health-assistant-card',summaries);
+ const action=main.indexOf('HighestImpactDecisionExperience',summaries);
  const happens=main.indexOf('DecisionIntelligencePanel',action);
  const focus=main.indexOf('DailyCommandCenter',happens);
  const rings=main.indexOf('home-summary-dashboard',focus);
@@ -22,7 +22,7 @@ test('intelligence disclosure contains only the required intelligence blocks',()
  const disclosure=main.slice(start,end);
  assert.match(disclosure,/Nutrition coverage/);
  assert.match(disclosure,/Projected calories/);
- assert.match(disclosure,/HIGHEST-IMPACT NEXT ACTION/);
+ assert.match(disclosure,/HighestImpactDecisionExperience/);
  assert.match(disclosure,/DecisionIntelligencePanel/);
  assert.match(disclosure,/DailyCommandCenter/);
  assert.doesNotMatch(disclosure,/summary-rings maintenance-layout/);
@@ -41,9 +41,9 @@ test('nutrition progress preserves dynamic top-ten and show-all logic outside in
  assert.match(progress,/Show all nutrients/);
 });
 
-test('release metadata advances to v1.4.10.41b',()=>{
- assert.equal(meta.version,'1.4.10.41b');
- assert.equal(meta.build,'141041B');
- assert.match(main,/const VERSION='1\.4\.10\.41b'/);
- assert.match(main,/const BUILD_ID='141041B'/);
+test('release metadata advances to v1.4.10.42',()=>{
+ assert.equal(meta.version,'1.4.10.42');
+ assert.equal(meta.build,'141042');
+ assert.match(main,/const VERSION='1\.4\.10\.42'/);
+ assert.match(main,/const BUILD_ID='141042'/);
 });

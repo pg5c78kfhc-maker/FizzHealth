@@ -1,21 +1,20 @@
-# Fizz Health v1.4.10.41b
+# Fizz Health v1.4.10.42
 
-**Release type:** Home hierarchy corrective release  
-**Build:** 141041B  
-**Release ID:** FH-20260722-141041B  
-**Issued:** 2026-07-22
+**Build:** 141042  
+**Release ID:** FH-20260722-141042  
+**Completed scope:** FH-1 through FH-6
 
-**Completed scope:** FH-41B-1 through FH-41B-4
+## Highest Impact Next Action
 
-## Corrected Home sequence
-
-- Decision Intelligence remains directly beneath the date selector.
-- Its expanded contents now appear in this order: Nutrition Coverage, Projected Calories, Highest Impact Next Action, What Happens Next, Today’s Focus, and Smart Action Center.
-- LDL Support, Estimated Maintenance, and Steps remain visible outside the intelligence disclosure in their existing left-to-right layout.
-- The existing nutrition progress component now renders outside Decision Intelligence and retains its independent top-10/show-all control, dynamic ranking, ordering, target markers, colors, and interactions.
-- The meal log remains below nutrition progress.
+- Tapping Highest Impact Next Action opens a detailed decision-support panel.
+- Explains why the top action ranks first, goals improved, expected impact, and why alternatives rank lower.
+- Presents multiple viable pantry, planned-meal, activity, timing, and restaurant choices.
+- Pantry choices account for nutrition fit, inventory pressure, expiration, and open status.
+- Restaurant choices balance fiber, protein, calories, and saturated fat.
+- Each option shows current-to-projected outcomes before selection.
+- Every option includes transparent rationale and contributing data.
 
 ## Artifacts
 
-- Full source: `Source.1.4.10.41b.zip`
-- Changed files: `Changed.1.4.10.41b.zip`
+- Full source: `Source.1.4.10.42.zip`
+- Changed files: `Changed.1.4.10.42.zip`
