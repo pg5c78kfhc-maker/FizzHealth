@@ -1,7 +1,7 @@
 const number = value => Number.isFinite(Number(value)) ? Number(value) : 0;
 const clamp = (value, min = 0, max = 100) => Math.max(min, Math.min(max, value));
 const unique = values => [...new Set(values.filter(Boolean))];
-export const ENGINE_VERSION = '1.4.10.33';
+export const ENGINE_VERSION = '1.4.10.34';
 export const RULES_VERSION = '2026-07-20.1';
 
 export const DECISION_TRACE_CONTRACT = Object.freeze({
