@@ -4,8 +4,8 @@ import fs from 'node:fs';
 const main=fs.readFileSync(new URL('../src/main.jsx',import.meta.url),'utf8');
 
 test('FH-1259 exposes meal logging from the Food hub',()=>{
-  assert.match(main,/className="food-hub-promoted"/);
-  assert.match(main,/onClick=\{\(\)=>navigate\('add'\)\} aria-label="Log food"/);
+  assert.match(main,/className="food-hub-promoted food-subsystem-grid"/);
+  assert.match(main,/id:'add',Icon:Apple,title:'Meals'/);
 });
 
 test('FH-1259 distinguishes pantry creation from meal logging',()=>{
