@@ -2,40 +2,27 @@
   "format": "fizz-health-release-history",
   "releases": [
     {
-      "version": "1.4.10.29",
-      "date": "2026-07-21",
-      "title": "Pantry intelligence consistency and Food landing polish",
-      "summary": "Fixes pantry availability classification, empty states, recommendations, diagnostics, and moves the add action to the compact Food header while replacing the oversized plus tile icon.",
-      "items": [
-        "Expired or past-best-quality items remain in stock until quantity reaches zero or the item is explicitly depleted.",
-        "Pantry Health and Eat Next use the same active inventory set.",
-        "Out of Stock always renders a clear empty state.",
-        "Pantry Health details show evaluated inventory diagnostics.",
-        "The Food landing tile uses a food icon; the add action remains in the compact page header."
-      ]
-    },
-    {
-      "version": "1.4.10.28",
-      "name": "Food and Pantry Navigation Polish",
-      "type": "Focused corrective release",
-      "created": "2026-07-21T23:45:00-04:00",
-      "build": "141028",
-      "releaseId": "FH-20260721-141028",
+      "version": "1.4.10.30",
+      "name": "Pantry Intelligence Consistency & Navigation Correction",
+      "type": "Corrective implementation release",
+      "created": "2026-07-22T00:45:00-04:00",
+      "build": "141030",
+      "releaseId": "FH-20260722-141030",
       "stories": [
         [
           "FH-1250.25",
-          "Completes the agreed recipe and pantry UI scope with compact Food navigation and safe pantry location defaults"
+          "Completes recipe parity and corrects Pantry Intelligence, inventory states, item details, and navigation"
         ]
       ],
       "knownIssues": []
     },
     {
-      "version": "1.4.10.27",
+      "version": "1.4.10.26",
       "name": "Recipe Creation Discoverability",
       "type": "Focused implementation release",
       "created": "2026-07-21T21:30:00-04:00",
-      "build": "141027",
-      "releaseId": "FH-20260721-141027",
+      "build": "141026",
+      "releaseId": "FH-20260721-141026",
       "stories": [
         [
           "FH-1250.25",
@@ -107,7 +94,7 @@
     },
     {
       "version": "1.4.10.9",
-      "name": "One-Time Food Logging — Log Once",
+      "name": "One-Time Food Logging \u2014 Log Once",
       "type": "Patch",
       "created": "2026-07-20T11:15:00-04:00",
       "build": "14108",

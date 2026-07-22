@@ -1,24 +1,19 @@
-# Fizz Health v1.4.10.29
+# Fizz Health v1.4.10.30
 
-## Food and Pantry navigation polish
+## Pantry Intelligence Consistency & Navigation Correction
 
-- The Food landing page now follows the subsystem header protocol with a compact add action at the top.
-- The large floating add button is no longer shown on Food or Pantry screens.
-- Adding a pantry item while the location filter is set to All now selects a real household storage location instead of storing “All.”
+Completed under **FH-1250.25**:
 
-# Fizz Health v1.4.10.27
-
-## Recipe & Pantry Reliability
-
-FH-1250.25 now completes recipe discovery parity and the pantry corrections identified during acceptance review.
-
-- Recipes can be starred and appear in Favorites.
-- Recently consumed recipes appear in Recent.
-- Pantry defaults to All locations.
-- Out-of-stock items are separated from active inventory.
-- Missing pantry score data is shown as unavailable rather than 0%.
-- Pantry item cards open a dedicated detail and edit workflow.
-- Inventory confidence is tappable and explained.
-- Add Pantry uses the standard fixed X / title / checkmark header.
-- The large Add to Pantry button and Pantry floating action button are removed.
-- Eat Next evaluates in-stock inventory across all household locations.
+- Recipe favorites and recently used recipe parity.
+- Pantry default location is **All**.
+- One shared evaluated inventory drives Pantry Health, Eat Next, Waste Risk, Restock, Out of Stock, and Shopping.
+- Expired freshness no longer incorrectly means out of stock when quantity remains.
+- Pantry Health displays an unavailable state instead of a misleading 0 when it cannot be calculated.
+- Eat Next uses all in-stock pantry items and explains when data is insufficient.
+- Out-of-stock items are separated from the main pantry and have a clear empty state.
+- Pantry item cards open item details and inventory editing rather than the Add Food screen.
+- Quantity, location, package state, purchase date, expiration, notes, and stock state can be reconciled.
+- Missing confidence data uses a distinct unavailable state instead of 0%.
+- Add Pantry uses the standard X / title / checkmark keyboard-safe editor.
+- The oversized Food tile plus icon is replaced with a food icon; the compact add action is in the Food header.
+- Pantry add action is compact and located in the Pantry header.

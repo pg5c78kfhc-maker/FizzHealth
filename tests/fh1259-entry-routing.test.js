@@ -9,7 +9,8 @@ test('FH-1259 exposes meal logging from the Food hub',()=>{
 });
 
 test('FH-1259 distinguishes pantry creation from meal logging',()=>{
-  assert.match(main,/> Add to pantry<\/button>/);
+  assert.match(main,/aria-label="Add pantry item"/);
   assert.doesNotMatch(main,/> Add food<\/button>/);
   assert.match(main,/<small>PANTRY<\/small><h3>Add food manually<\/h3>/);
+  assert.doesNotMatch(main,/className="primary" onClick=\{\(\)=>setShowManual\(true\)\}><Plus\/> Add to pantry/);
 });

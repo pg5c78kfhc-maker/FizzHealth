@@ -656,3 +656,10 @@ textarea{width:100%;min-width:0;max-height:min(36dvh,280px);resize:vertical;over
 .recipe-remove-ingredient{display:grid;place-items:center;min-width:40px;min-height:40px}
 .recipe-remove-ingredient:disabled{opacity:.35}
 @media(max-width:520px){.recipe-ingredient-row{grid-template-columns:24px minmax(0,1fr) 36px;padding:10px}.recipe-ingredient-number{width:24px;height:24px}.recipe-ingredient-editor .section-title{align-items:flex-start;flex-direction:column}}
+
+/* v1.4.10.27 pantry and recipe parity */
+.pantry-page-head{position:sticky;top:0;z-index:18;background:var(--bg,#071012);padding-top:max(10px,env(safe-area-inset-top));}
+.pantry-toolbar{display:block}.pantry-toolbar .location-picker{width:100%}
+.verify-chip.missing-data{gap:4px;white-space:nowrap}.verify-chip.missing-data svg{width:16px;height:16px}.verify-chip.missing-data svg+svg{margin-left:-6px;width:12px}
+.pantry-manual-editor .edit-head{grid-template-columns:48px 1fr 48px}.pantry-manual-editor .edit-head>div{text-align:center}
+@media(max-width:480px){.pantry-intel-tabs{overflow-x:auto;flex-wrap:nowrap}.pantry-intel-tabs button{white-space:nowrap}.pantry-smart-item{align-items:stretch}.verify-chip{min-width:92px}}

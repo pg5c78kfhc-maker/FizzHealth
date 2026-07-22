@@ -1,0 +1,29 @@
+Fizz Health v1.4.10.30 verification
+Date: 2026-07-22
+Baseline: v1.4.10.26
+
+1. Automated tests
+Command: npm test
+Result: PASS
+Tests: 195 passed, 0 failed
+
+2. Release metadata
+Command: npm run verify:release
+Result: PASS
+Output: Release metadata verified: v1.4.10.30 / FH-1250.25
+
+3. Production build
+Attempted preparation command: npm ci
+Result: NOT COMPLETED
+Reason: npm registry gateway returned HTTP 503 while downloading xlsx-0.18.5.tgz, so Vite was not installed in this sandbox.
+No successful production build is claimed.
+
+Required local verification after copying files:
+  npm ci
+  npm test
+  npm run verify:release
+  npm run build
+
+Cloudflare build configuration remains:
+  Build command: npm run build
+  Output directory: dist

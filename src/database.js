@@ -627,6 +627,13 @@ const migrations=[
     VALUES ('1.4.10.22','2026-07-21','141022',44,'Unified AI Food Exchange & Restaurant Stability',CURRENT_TIMESTAMP);
   `}
 
+,  {version:45,name:'recipe_favorites_and_pantry_detail',sql:`
+    CREATE TABLE IF NOT EXISTS favorite_recipes (
+      recipe_id TEXT PRIMARY KEY, created_at TEXT NOT NULL
+    );
+    CREATE INDEX IF NOT EXISTS idx_favorite_recipes_created ON favorite_recipes(created_at DESC);
+  `}
+
 ];
 
 const canonicalSchema={

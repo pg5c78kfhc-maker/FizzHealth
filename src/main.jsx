@@ -18,9 +18,9 @@ import {rankActions,buildUnifiedTimeline,explainRecommendation,buildNotification
 import {NUTRIENTS,NUTRIENT_KEYS,CRITICAL_VISIBLE,canonicalNutrition} from './nutrition/registry';
 import {buildFoodEnrichmentExchange,buildNewFoodExchange,buildLogOnceExchange,normalizeExchangeJson as normalizeUniversalJson,validateUniversalExchange,foodProposal,mealProposal,changedFoodFields} from './exchange';
 import './styles.css';
-const VERSION='1.4.10.29';
-const RELEASE_DATE='2026-07-21';
-const BUILD_ID='141029';
+const VERSION='1.4.10.30';
+const RELEASE_DATE='2026-07-22';
+const BUILD_ID='141030';
 const localDateKey=(date=new Date())=>{const y=date.getFullYear(),m=String(date.getMonth()+1).padStart(2,'0'),d=String(date.getDate()).padStart(2,'0');return `${y}-${m}-${d}`};
 const today=()=>localDateKey();
 const toDateTimeLocal=(date=new Date())=>{const y=date.getFullYear(),m=String(date.getMonth()+1).padStart(2,'0'),d=String(date.getDate()).padStart(2,'0'),h=String(date.getHours()).padStart(2,'0'),min=String(date.getMinutes()).padStart(2,'0');return `${y}-${m}-${d}T${h}:${min}`};
@@ -955,6 +955,7 @@ function NutrientConfiguration({onBack,onClose=onBack}){
 }
 
 const RELEASE_HISTORY=[
+ {version:'1.4.10.30',name:'Pantry Intelligence Consistency & Navigation Correction',type:'Corrective implementation release',created:'2026-07-22T00:45:00-04:00',build:'141030',releaseId:'FH-20260722-141030',stories:[['FH-1250.25','Recipe parity, unified Pantry Intelligence, inventory detail editing, and compact header navigation']],knownIssues:[]},
  {version:'1.4.10.26',name:'Recipe Creation Discoverability',type:'Focused implementation release',created:'2026-07-21T21:30:00-04:00',build:'141026',releaseId:'FH-20260721-141026',stories:[['FH-1250.25','Adds a clear New Recipe action and a complete reusable recipe creation editor']],knownIssues:[]},
  {version:'1.4.10.25',name:'Meal Status and Recipe Transaction Correction',type:'Immediate corrective release',created:'2026-07-21T20:30:00-04:00',build:'141025',releaseId:'FH-20260721-141025',stories:[['FH-1250','Recipe consumption reliability, proposed-meal status routing, planned-to-consumed conversion, and restaurant editor navigation']],knownIssues:[]},
  {version:'1.4.10.23',name:'Restaurant Intelligence Workflow Completion',type:'Focused restaurant release',created:'2026-07-21T17:30:00-04:00',build:'141023',releaseId:'FH-20260721-141023',stories:[['FH-1250','Restaurant navigation, contextual AI exchange, evidence provenance, swipe actions, and Food hub promotion']],knownIssues:[]},

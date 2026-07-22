@@ -1,8 +1,9 @@
 const norm=v=>String(v??'').trim().toLowerCase();
 
-export function locationDescendants(locations=[],selected='Home'){
+export function locationDescendants(locations=[],selected='All'){
  const byParent=new Map();
  for(const loc of locations){const parent=loc.parent_location_id??loc.parent_id??null;if(!byParent.has(String(parent)))byParent.set(String(parent),[]);byParent.get(String(parent)).push(loc)}
+ if(norm(selected)==='all')return new Set(locations.map(l=>norm(l.name)).filter(Boolean));
  const chosen=locations.find(l=>norm(l.name)===norm(selected));
  if(!chosen||norm(selected)==='home'){
   const home=chosen||locations.find(l=>norm(l.name)==='home');
@@ -16,19 +17,19 @@ export function locationDescendants(locations=[],selected='Home'){
  return names;
 }
 
-export function filterPantryInventory(items=[],{search='',location='Home',locations=[]}={}){
+export function filterPantryInventory(items=[],{search='',location='All',locations=[]}={}){
  const allowed=locationDescendants(locations,location),needle=norm(search);
  return items.filter(item=>{
   const itemLocation=norm(item.location||item.storage_type||'Home');
-  const locationMatch=norm(location)==='home'||allowed.has(itemLocation)||itemLocation.includes(norm(location));
+  const locationMatch=norm(location)==='all'||norm(location)==='home'||allowed.has(itemLocation)||itemLocation.includes(norm(location));
   const searchMatch=!needle||[item.item,item.name,item.brand,item.category,item.location].some(v=>norm(v).includes(needle));
   return locationMatch&&searchMatch;
  });
 }
 
-export function pantryEmptyState({allItems=[],filteredItems=[],search='',location='Home'}={}){
+export function pantryEmptyState({allItems=[],filteredItems=[],search='',location='All'}={}){
  if(!allItems.length)return {title:'Pantry is empty.',action:'Add a food manually, scan a barcode, or take a photo.'};
  if(search&&filteredItems.length===0)return {title:'No foods match your search.',action:'Clear the search or try a broader term.'};
- if(filteredItems.length===0)return {title:`No foods match ${location}.`,action:'Choose Home or add an item to this location.'};
+ if(filteredItems.length===0)return {title:`No foods match ${location}.`,action:'Choose All or add an item to this location.'};
  return null;
 }

@@ -1,22 +1,22 @@
 {
   "app": "Fizz Health",
-  "version": "1.4.10.29",
-  "release": "Recipe & Pantry Reliability",
-  "release_type": "Focused corrective release",
-  "build": "141029",
-  "release_id": "FH-20260721-141029",
-  "created_at": "2026-07-21T21:30:00-04:00",
+  "version": "1.4.10.30",
+  "release": "Pantry Intelligence Consistency & Navigation Correction",
+  "release_type": "Corrective implementation release",
+  "build": "141030",
+  "release_id": "FH-20260722-141030",
+  "created_at": "2026-07-22T00:45:00-04:00",
   "schema_version": 45,
-  "status": "COMPLETE",
+  "status": "SOURCE VERIFIED",
   "completed_story": "FH-1250.25",
   "baseline_story": "FH-1221",
-  "updated": "2026-07-21",
+  "updated": "2026-07-22",
   "stories": [
     "FH-1250.25"
   ],
-  "build_date": "2026-07-21",
-  "release_name": "Recipe & Pantry Reliability",
-  "release_date": "2026-07-21",
-  "build_id": "141029",
-  "title": "Recipe & Pantry Reliability"
+  "build_date": "2026-07-22",
+  "release_name": "Pantry Intelligence Consistency & Navigation Correction",
+  "release_date": "2026-07-22",
+  "build_id": "141030",
+  "title": "Pantry Intelligence Consistency & Navigation Correction"
 }
