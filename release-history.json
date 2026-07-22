@@ -2,6 +2,41 @@
   "format": "fizz-health-release-history",
   "releases": [
     {
+      "version": "1.4.10.42a",
+      "name": "Restaurant Day and Responsive Decision Support",
+      "type": "Corrective decision intelligence release",
+      "created": "2026-07-22T20:00:00-04:00",
+      "build": "141042A",
+      "release_id": "FH-20260722-141042A",
+      "stories": [
+        [
+          "FH-1",
+          "Responsive Highest Impact card"
+        ],
+        [
+          "FH-2",
+          "Date-specific Restaurant Day toggle"
+        ],
+        [
+          "FH-3",
+          "Hard restaurant recommendation gate"
+        ],
+        [
+          "FH-4",
+          "Automatic Yes from restaurant meals"
+        ],
+        [
+          "FH-5",
+          "Prevent contradictory No state"
+        ],
+        [
+          "FH-6",
+          "Consistency and regression testing"
+        ]
+      ],
+      "known_issues": []
+    },
+    {
       "version": "1.4.10.42",
       "name": "Highest Impact Next Action",
       "type": "Decision intelligence release",

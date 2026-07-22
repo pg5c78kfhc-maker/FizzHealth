@@ -1,0 +1,30 @@
+Fizz Health v1.4.10.42a — Test and Build Proof
+
+Scope
+- Responsive Highest Impact Next Action card and decision-support options
+- Date-specific Restaurant Day Yes/No control in the Home header
+- Default No for dates without a saved preference
+- Automatic Yes when a planned or logged restaurant meal exists
+- Blocking warning when attempting No while a restaurant meal exists
+- Hard restaurant recommendation gate when Restaurant Day is No
+
+Automated tests
+Command: npm test
+Result: PASS
+Tests: 253 passed, 0 failed
+
+Release verification
+Command: npm run verify:release
+Result: PASS
+Output: Release metadata verified: v1.4.10.42a / FH-1 through FH-6
+
+Production build
+Command: npm run build
+Result: NOT COMPLETED
+Reason: The uploaded source archive did not contain installed dependencies; vite was unavailable (sh: 1: vite: not found).
+No production-build success is claimed.
+
+Release metadata
+- Version: 1.4.10.42a
+- Build: 141042A
+- Release ID: FH-20260722-141042A

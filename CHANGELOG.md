@@ -1,3 +1,9 @@
+## 1.4.10.42a
+- Added persistent, date-specific Restaurant Day control.
+- Gated restaurant planning and Highest Impact alternatives behind Restaurant Day.
+- Automatically reconciled Restaurant Day with proposed and logged restaurant meals.
+- Repaired iPhone overflow in Highest Impact cards and decision-support options.
+
 ## 1.4.10.42
 
 - Expanded Highest Impact Next Action into an interactive decision engine.
