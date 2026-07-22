@@ -2,12 +2,12 @@
   "format": "fizz-health-release-history",
   "releases": [
     {
-      "version": "1.4.10.30",
-      "name": "Pantry Intelligence Consistency & Navigation Correction",
+      "version": "1.4.10.31",
+      "name": "Pantry Inventory State Correction",
       "type": "Corrective implementation release",
-      "created": "2026-07-22T00:45:00-04:00",
-      "build": "141030",
-      "releaseId": "FH-20260722-141030",
+      "created": "2026-07-21T12:30:00-04:00",
+      "build": "141031",
+      "releaseId": "FH-20260721-141031",
       "stories": [
         [
           "FH-1250.25",

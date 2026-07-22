@@ -5,8 +5,18 @@ const dateMs=v=>{const n=Date.parse(v||'');return Number.isFinite(n)?n:null};
 const yes=v=>['yes','true','1','on hand','available','verified'].includes(String(v??'').trim().toLowerCase());
 const round=(v,d=1)=>Math.round(num(v)*10**d)/10**d;
 
+export function inventoryState(item={}){
+ const status=String(item.status||'').trim().toLowerCase();
+ if(['archived','deleted','discarded'].includes(status))return 'archived';
+ const quantity=Number.isFinite(Number(item.quantity))?Math.max(0,num(item.quantity)):null;
+ const remaining=Number.isFinite(Number(item.remaining_servings))?Math.max(0,num(item.remaining_servings)):null;
+ if(quantity!==null)return quantity>0?'in_stock':'out_of_stock';
+ if(remaining!==null)return remaining>0?'in_stock':'out_of_stock';
+ return yes(item.on_hand??'Yes')?'in_stock':'out_of_stock';
+}
+
 export function calculateAvailableServings(item={}){
- if(!yes(item.on_hand??'Yes')||['depleted','discarded','out of stock','out_of_stock'].includes(String(item.status||'').trim().toLowerCase()))return 0;
+ if(inventoryState(item)!=='in_stock')return 0;
  if(Number.isFinite(Number(item.remaining_servings)))return Math.max(0,num(item.remaining_servings));
  const serving=num(item.serving_size||item.default_serving||1);
  return serving>0?Math.max(0,num(item.quantity)/serving):Math.max(0,num(item.quantity));
@@ -89,8 +99,8 @@ export function pantryHealthScore(items=[],events=[],now=Date.now()){
 }
 
 export function buildPantryIntelligence({items=[],events=[],plannedMeals=[],history=[],purchases=[],currentLocation='All',now=Date.now()}){
- const enriched=items.map(item=>{const forecast=forecastPantry(item,plannedMeals,history,new Date(now)),freshness=freshnessStatus(item,now),confidence=pantryConfidence(item,events,now),waste=wasteRisk(item,events,now),cost=costMetrics(item),locationMatch=(()=>{const selected=String(currentLocation||'All').toLowerCase(),location=String(item.location||'').toLowerCase();return selected==='all'?true:selected==='home'?['home','refrigerator','freezer','pantry','garage refrigerator','wine cellar','standalone freezer','standalone refrigerator'].some(x=>location===x||location.includes(x)):location.includes(selected)})();const opportunity=opportunityScore({...item,current_location_match:locationMatch?'yes':'no'},events,now);return {...item,available:calculateAvailableServings(item)>0,remainingServings:calculateAvailableServings(item),confidence,freshness,waste,forecast,cost,locationMatch,opportunity,verificationState:confidence>=75?'Verified on hand':confidence>=45?'Probably on hand':calculateAvailableServings(item)<=0?'Out of stock':'Verify'}}).sort((a,b)=>b.opportunity.score-a.opportunity.score||b.waste.score-a.waste.score);
- const shopping=optimizeGroceries({items:enriched,plannedMeals,history});const restock=enriched.filter(i=>i.available&&i.forecast.daysRemaining!=null&&i.forecast.daysRemaining<=7).sort((a,b)=>a.forecast.daysRemaining-b.forecast.daysRemaining);const outOfStock=enriched.filter(i=>!i.available||String(i.on_hand||'').toLowerCase()==='no');
+ const enriched=items.map(item=>{const inventory=inventoryState(item),forecast=forecastPantry(item,plannedMeals,history,new Date(now)),freshness=freshnessStatus(item,now),confidence=pantryConfidence(item,events,now),waste=wasteRisk(item,events,now),cost=costMetrics(item),locationMatch=(()=>{const selected=String(currentLocation||'All').toLowerCase(),location=String(item.location||'').toLowerCase();return selected==='all'?true:selected==='home'?['home','refrigerator','freezer','pantry','garage refrigerator','wine cellar','standalone freezer','standalone refrigerator'].some(x=>location===x||location.includes(x)):location.includes(selected)})();const opportunity=opportunityScore({...item,current_location_match:locationMatch?'yes':'no'},events,now);return {...item,inventoryState:inventory,available:inventory==='in_stock',remainingServings:calculateAvailableServings(item),confidence,freshness,waste,forecast,cost,locationMatch,opportunity,verificationState:inventory==='out_of_stock'?'Out of stock':confidence>=75?'Verified on hand':confidence>=45?'Probably on hand':'Verify'}}).sort((a,b)=>b.opportunity.score-a.opportunity.score||b.waste.score-a.waste.score);
+ const shopping=optimizeGroceries({items:enriched,plannedMeals,history});const restock=enriched.filter(i=>i.available&&i.forecast.daysRemaining!=null&&i.forecast.daysRemaining<=7).sort((a,b)=>a.forecast.daysRemaining-b.forecast.daysRemaining);const outOfStock=enriched.filter(i=>i.inventoryState==='out_of_stock');
  const health=pantryHealthScore(enriched,events,now);const candidates=enriched.filter(i=>i.available&&i.locationMatch);enriched.items=enriched;enriched.recommendations=candidates.sort((a,b)=>b.opportunity.score-a.opportunity.score||b.confidence-a.confidence||String(a.item).localeCompare(String(b.item))).slice(0,8);enriched.wasteRisks=enriched.filter(i=>i.waste.score>=30).sort((a,b)=>b.waste.score-a.waste.score);enriched.restock=restock;enriched.outOfStock=outOfStock;enriched.shopping=shopping;enriched.health=health;enriched.currentLocation=currentLocation;return enriched;
 }
 

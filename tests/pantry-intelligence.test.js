@@ -5,7 +5,7 @@ const now=Date.parse('2026-07-17T12:00:00Z');
 
 test('FH-1070 derives verified availability',()=>{
  assert.equal(calculateAvailableServings({on_hand:'Yes',quantity:600,serving_size:200}),3);
- assert.equal(calculateAvailableServings({on_hand:'No',quantity:600,serving_size:200}),0);
+ assert.equal(calculateAvailableServings({on_hand:'No',quantity:600,serving_size:200}),3);
 });
 test('FH-1071 tracks remaining servings through consumption',()=>{
  const next=reconcilePantryItem({quantity:4,on_hand:'Yes'},{event_type:'meal',quantity:1,event_at:'2026-07-17'});

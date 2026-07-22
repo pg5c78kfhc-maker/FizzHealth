@@ -11,9 +11,16 @@ test('expired freshness does not mean out of stock',()=>{
  assert.notEqual(intel.health.score,null);
 });
 
-test('explicit depletion remains out of stock',()=>{
- const item={pantry_id:'P2',item:'Coffee',on_hand:'Yes',quantity:4,status:'Depleted'};
- assert.equal(calculateAvailableServings(item),0);
+test('positive quantity overrides stale depletion flags',()=>{
+ const item={pantry_id:'P2',item:'Coffee',on_hand:'No',quantity:4,status:'Depleted'};
+ assert.equal(calculateAvailableServings(item),4);
+ const intel=buildPantryIntelligence({items:[item],currentLocation:'All'});
+ assert.equal(intel.outOfStock.length,0);
+ assert.equal(intel.recommendations.length,1);
+});
+
+test('zero quantity is the only out-of-stock inventory state',()=>{
+ const item={pantry_id:'P3',item:'Coffee',on_hand:'Yes',quantity:0,status:'Active'};
  const intel=buildPantryIntelligence({items:[item],currentLocation:'All'});
  assert.equal(intel.outOfStock.length,1);
  assert.equal(intel.recommendations.length,0);
