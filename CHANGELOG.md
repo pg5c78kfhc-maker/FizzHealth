@@ -1,3 +1,17 @@
+## 1.4.10.41a
+
+- Corrected the Home hierarchy so Nutrition Coverage and Projected Calories remain visible directly beneath the Decision Intelligence strip.
+- Moved expanded Decision Intelligence content below the persistent summaries.
+- Updated release metadata and cache identifiers.
+
+## 1.4.10.41
+
+- Removed the Next Meal panel from Home.
+- Added a collapsed-by-default Decision Intelligence disclosure with one or two dynamic daily headlines.
+- Moved existing Home intelligence into the expandable region without changing its calculations or detail interactions.
+- Kept Nutrition Coverage and Projected Calories continuously visible.
+- Updated release metadata, history, cache version, and regression coverage.
+
 ## 1.4.10.26
 
 - Added a context-aware **New Recipe** action in the Recipes view.

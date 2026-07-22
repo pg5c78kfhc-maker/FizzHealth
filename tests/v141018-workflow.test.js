@@ -4,11 +4,13 @@ import fs from 'node:fs';
 const main=fs.readFileSync(new URL('../src/main.jsx',import.meta.url),'utf8');
 const css=fs.readFileSync(new URL('../src/styles.css',import.meta.url),'utf8');
 
-test('Home hierarchy is header, decision dashboard, meals, then operational content',()=>{
+test('Home hierarchy preserves summaries before expandable intelligence and operational content',()=>{
   assert.match(main,/className="today-meals-section"/);
-  assert.match(css,/\.today-view>\.decision-dashboard\{order:1\}/);
-  assert.match(css,/\.today-view>\.today-meals-section\{order:2\}/);
-  assert.match(css,/\.today-view>\.command-center\{order:4\}/);
+  assert.match(css,/\.decision-intelligence-disclosure\{order:1/);
+  assert.match(css,/\.home-key-summaries\{order:2/);
+  assert.match(css,/\.decision-intelligence-content\{order:3/);
+  assert.match(css,/\.today-view>\.today-meals-section\{order:4\}/);
+  assert.match(css,/\.today-view>\.command-center\{order:5\}/);
 });
 
 test('Take Action routes calories to meal planner and steps to metric entry',()=>{

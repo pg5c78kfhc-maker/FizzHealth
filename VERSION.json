@@ -1,22 +1,27 @@
 {
   "app": "Fizz Health",
-  "version": "1.4.10.40c",
-  "release": "1.4.10.40c",
-  "release_type": "Critical corrective release",
-  "build": "141040C",
-  "release_id": "FH-20260722-141040C",
-  "created_at": "2026-07-22T14:30:00-04:00",
+  "version": "1.4.10.41a",
+  "release": "1.4.10.41a",
+  "release_type": "Home hierarchy corrective release",
+  "build": "141041A",
+  "release_id": "FH-20260722-141041A",
+  "created_at": "2026-07-22T17:30:00-04:00",
   "schema_version": 45,
-  "status": "Critical corrective release",
-  "completed_story": "FH-40C-1",
+  "status": "Home hierarchy corrective release",
+  "completed_story": "FH-1 through FH-6",
   "baseline_story": "FH-1221",
-  "updated": "2026-07-22T14:30:00-04:00",
+  "updated": "2026-07-22T17:30:00-04:00",
   "stories": [
-    "FH-40C-1"
+    "FH-1",
+    "FH-2",
+    "FH-3",
+    "FH-4",
+    "FH-5",
+    "FH-6"
   ],
-  "build_date": "2026-07-22T14:30:00-04:00",
-  "release_name": "Pantry Enrichment Paste Recovery",
+  "build_date": "2026-07-22T17:30:00-04:00",
+  "release_name": "Home Hierarchy Corrective",
   "release_date": "2026-07-22",
-  "build_id": "141040C",
-  "title": "Pantry Enrichment Paste Recovery"
+  "build_id": "141041A",
+  "title": "Home Hierarchy Corrective"
 }

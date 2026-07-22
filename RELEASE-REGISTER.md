@@ -4,6 +4,8 @@
 
 | Version | Release | Date / created | FH stories recorded | Audit note |
 |---|---|---|---|---|
+| 1.4.10.41a | Home Hierarchy Corrective | 2026-07-22T17:30:00-04:00 | FH-1 through FH-6 corrective | Persistent summaries remain above expanded intelligence. |
+| 1.4.10.41 | Home Information Hierarchy | 2026-07-22T16:30:00-04:00 | FH-1, FH-2, FH-3, FH-4, FH-5, FH-6 | Home simplification and structural reorganization only. |
 | 1.4.10.6 | Field Hotfix Completion | 2026-07-19T18:00:00-04:00 | FH-1221, FH-1222, FH-1224, FH-1225, FH-1228, FH-1235, FH-1236, FH-1238 | Current VERSION.json is 1.4.10.7 but repeats most of this story set. |
 | 1.4.10.1 | Legacy Health Database Import Audit | 2026-07-19 | — | — |
 | 1.4.10 | Pantry Intelligence Stabilization & Workflow Refinement | 2026-07-18 | FH-1190, FH-1191, FH-1192, FH-1193, FH-1194, FH-1195, FH-1196, FH-1200, FH-1205, FH-1212, FH-1213, FH-1214, FH-1215, FH-1216, FH-1217, FH-1218, FH-1219 | — |

@@ -2,6 +2,39 @@
   "format": "fizz-health-release-history",
   "releases": [
     {
+      "version": "1.4.10.41a",
+      "name": "Home Hierarchy Corrective",
+      "type": "Home hierarchy corrective release",
+      "created": "2026-07-22T17:30:00-04:00",
+      "build": "141041A",
+      "release_id": "FH-20260722-141041A",
+      "stories": [
+        "FH-1",
+        "FH-2",
+        "FH-3",
+        "FH-4",
+        "FH-5",
+        "FH-6"
+      ],
+      "known_issues": []
+    },
+    {
+      "version": "1.4.10.41",
+      "name": "Home Information Hierarchy",
+      "release_date": "2026-07-22",
+      "schema_version": 45,
+      "build": "141041",
+      "release_id": "FH-20260722-141041",
+      "stories": [
+        "FH-1",
+        "FH-2",
+        "FH-3",
+        "FH-4",
+        "FH-5",
+        "FH-6"
+      ]
+    },
+    {
       "version": "1.4.10.40c",
       "name": "Pantry Enrichment Paste Recovery",
       "type": "Critical corrective release",

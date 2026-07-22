@@ -565,7 +565,7 @@ textarea{width:100%;min-width:0;max-height:min(36dvh,280px);resize:vertical;over
 .today-view>.today-meals-section{order:2}
 .today-view>.health-assistant-card,
 .today-view>.decision-intelligence-panel{order:3}
-.today-view>.command-center{order:4}
+.today-view>.command-center{order:5}
 .today-view>.home-food-summary{order:5}
 .today-meals-section{display:grid;gap:10px}
 .today-meals-section>h2{margin:18px 0 4px}
@@ -683,3 +683,22 @@ textarea{width:100%;min-width:0;max-height:min(36dvh,280px);resize:vertical;over
 
 /* v1.4.10.40b nutrition completeness */
 .nutrition-completion{display:grid;gap:10px;border:1px solid #52665a;border-radius:16px;padding:14px;margin-bottom:14px;background:#17211b}.nutrition-completion h3{margin:3px 0 4px}.nutrition-completion p{margin:0;color:#a7b2ac}.nutrition-completion small{color:#a9ef45;font-weight:900;letter-spacing:.12em}.nutrition-completion.incomplete{background:#263a2d;border-color:#5f7d69}.nutrition-completion.complete{background:#17211b;border-color:#3d5745}.nutrition-completion ul{margin:0;padding-left:20px;columns:2;column-gap:24px}.nutrition-completion li{break-inside:avoid;margin:4px 0;color:#e8eee9}@media(max-width:520px){.nutrition-completion ul{columns:1}}
+
+/* v1.4.10.41a — Home hierarchy corrective */
+.decision-intelligence-disclosure{order:1;margin:12px 0 10px;border:1px solid #334149;border-radius:18px;background:#10191e;overflow:hidden}
+.decision-intelligence-toggle{width:100%;display:flex;align-items:center;justify-content:space-between;gap:14px;padding:14px 16px;border:0;background:transparent;color:#fff;text-align:left}
+.decision-intelligence-toggle>div{display:grid;gap:4px;min-width:0}
+.decision-intelligence-toggle small{color:#a9ef45;font-size:.68rem;font-weight:900;letter-spacing:.12em}
+.decision-intelligence-toggle b{font-size:.9rem;line-height:1.25;overflow-wrap:anywhere}
+.decision-intelligence-toggle svg{width:20px;height:20px;flex:0 0 auto;color:#a9ef45}
+.decision-intelligence-content{order:3;display:grid;gap:12px;margin:0 0 10px;padding:12px;border:1px solid #334149;border-radius:18px;background:#10191e}
+.decision-intelligence-content>.health-assistant-card{margin:12px 0 0}
+.decision-intelligence-content>.decision-intelligence-panel{margin:0}
+.decision-dashboard-expanded{margin:0}
+.home-key-summaries{order:2;display:grid;gap:0;margin:0 0 10px;padding:0 14px;border:1px solid #2d3940;border-radius:16px;background:#0f171c}
+.home-key-summaries .coverage-line,.home-key-summaries .projected-line{margin:0;padding:12px 0;border-top:0;display:flex;align-items:center;justify-content:space-between}
+.home-key-summaries .projected-line{border-top:1px solid #2a353c}
+.home-key-summaries span{color:#9ca7af;font-size:13px}
+.home-key-summaries b{color:#a9ef45}
+.today-view>.today-meals-section{order:4}
+.today-view>.command-center{order:5}

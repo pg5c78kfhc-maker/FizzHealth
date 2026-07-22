@@ -1,0 +1,30 @@
+Fizz Health v1.4.10.41a — Test and Build Proof
+
+Scope
+- Correct Home hierarchy so persistent summaries remain visible above expanded intelligence.
+- Update all application release metadata to v1.4.10.41a.
+
+Automated tests
+Command: npm test
+Result: PASS
+Tests: 243
+Passed: 243
+Failed: 0
+
+Release verification
+Command: npm run verify:release
+Result: PASS
+Output: Release metadata verified: v1.4.10.41a / FH-1 through FH-6
+
+Production build
+Command: npm run build
+Result: NOT COMPLETED
+Reason: The uploaded source archive did not include installed dependencies. The build command stopped with "vite: not found".
+No production-build success is claimed.
+
+Corrective regression coverage
+- Decision Intelligence strip appears before persistent summaries.
+- Nutrition Coverage and Projected Calories remain outside the conditional expansion.
+- Expanded existing intelligence renders below the persistent summaries.
+- Meals and operational content remain below the intelligence region.
+- Application, decision engine, service-worker cache, package, About-page, and release metadata identify v1.4.10.41a / 141041A.

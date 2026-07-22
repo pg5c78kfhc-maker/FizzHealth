@@ -1,19 +1,20 @@
-# Fizz Health v1.4.10.40c
+# Fizz Health v1.4.10.41a
 
-**Type:** Critical corrective release  
-**Build:** 141040C  
-**Release ID:** FH-20260722-141040C  
-**Issued:** July 22, 2026
+**Release type:** Home hierarchy corrective release  
+**Build:** 141041A  
+**Release ID:** FH-20260722-141041A  
+**Issued:** 2026-07-22
 
-## FH-40C-1 — Pantry enrichment paste recovery
+**Completed scope:** FH-1 through FH-6
 
-- Corrected the Pantry Food Enrichment review transition that referenced nonexistent `currentFood` state after a valid clipboard response was parsed.
-- Valid enriched JSON now remains in the mounted workflow and opens the review screen instead of crashing to a black page.
-- The same selected `food` target is used consistently during review, approval, meal recalculation, and persistence.
-- Invalid, mismatched, or unreadable clipboard JSON remains on the exchange screen with a visible validation message.
-- Added regression coverage for the exact paste-to-review crash and metadata consistency.
+## Corrected
+
+- The compact Decision Intelligence strip remains at the top of the Home intelligence area.
+- Nutrition Coverage and Projected Calories now remain immediately visible beneath the strip in both collapsed and expanded states.
+- Expanded intelligence renders below the two persistent summaries instead of pushing them down the page.
+- Existing Decision Intelligence calculations, detail screens, and interactions are unchanged.
 
 ## Artifacts
 
-- Full source: `Source.1.4.10.40c.zip`
-- Changed files: `Changed.1.4.10.40c.zip`
+- Full source: `Source.1.4.10.41a.zip`
+- Changed files: `Changed.1.4.10.41a.zip`
