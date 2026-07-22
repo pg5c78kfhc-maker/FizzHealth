@@ -4,12 +4,13 @@ const clamp=(v,min=0,max=100)=>Math.max(min,Math.min(max,v));
 const dateMs=v=>{const n=Date.parse(v||'');return Number.isFinite(n)?n:null};
 const yes=v=>['yes','true','1','on hand','available','verified'].includes(String(v??'').trim().toLowerCase());
 const round=(v,d=1)=>Math.round(num(v)*10**d)/10**d;
+const hasNumber=v=>v!==null&&v!==undefined&&String(v).trim()!==''&&Number.isFinite(Number(v));
 
 export function inventoryState(item={}){
  const status=String(item.status||'').trim().toLowerCase();
  if(['archived','deleted','discarded'].includes(status))return 'archived';
- const quantity=Number.isFinite(Number(item.quantity))?Math.max(0,num(item.quantity)):null;
- const remaining=Number.isFinite(Number(item.remaining_servings))?Math.max(0,num(item.remaining_servings)):null;
+ const quantity=hasNumber(item.quantity)?Math.max(0,num(item.quantity)):null;
+ const remaining=hasNumber(item.remaining_servings)?Math.max(0,num(item.remaining_servings)):null;
  if(quantity!==null)return quantity>0?'in_stock':'out_of_stock';
  if(remaining!==null)return remaining>0?'in_stock':'out_of_stock';
  return yes(item.on_hand??'Yes')?'in_stock':'out_of_stock';
@@ -17,8 +18,9 @@ export function inventoryState(item={}){
 
 export function calculateAvailableServings(item={}){
  if(inventoryState(item)!=='in_stock')return 0;
- if(Number.isFinite(Number(item.remaining_servings)))return Math.max(0,num(item.remaining_servings));
- const serving=num(item.serving_size||item.default_serving||1);
+ if(hasNumber(item.remaining_servings))return Math.max(0,num(item.remaining_servings));
+ if(!hasNumber(item.quantity))return 1;
+ const serving=hasNumber(item.serving_size)?num(item.serving_size):hasNumber(item.default_serving)?num(item.default_serving):1;
  return serving>0?Math.max(0,num(item.quantity)/serving):Math.max(0,num(item.quantity));
 }
 
@@ -92,10 +94,26 @@ export function optimizeGroceries({items=[],plannedMeals=[],history=[],days=7}){
 }
 
 export function pantryHealthScore(items=[],events=[],now=Date.now()){
- const active=items.filter(i=>calculateAvailableServings(i)>0);if(!active.length)return {score:null,label:'Not calculated',reason:'No in-stock items are available in the current view.',components:{freshness:null,variety:null,protein:null,fiber:null,waste:null,confidence:null}};
- const avg=a=>a.reduce((s,v)=>s+v,0)/Math.max(1,a.length);const categories=new Set(active.map(i=>i.category).filter(Boolean)).size;
- const components={freshness:Math.round(avg(active.map(i=>Math.max(0,100-wasteRisk(i,events,now).score)))),variety:Math.round(clamp(categories*14)),protein:Math.round(clamp(active.filter(i=>num(i.protein)>=15).length/active.length*140)),fiber:Math.round(clamp(active.filter(i=>num(i.fiber)>=3).length/active.length*160)),waste:Math.round(avg(active.map(i=>100-wasteRisk(i,events,now).score))),confidence:Math.round(avg(active.map(i=>pantryConfidence(i,events,now))))};
- const score=Math.round(Object.values(components).reduce((s,v)=>s+v,0)/6);return {score,label:score>=80?'Ready to eat well':score>=60?'Good foundation':score>=40?'Needs attention':'Poorly prepared',components};
+ const active=items.filter(i=>inventoryState(i)==='in_stock'&&i.locationMatch!==false);
+ if(!active.length)return {score:null,label:'Not calculated',reason:'No in-stock items are available in the current view.',coverage:0,activeCount:0,components:{freshness:null,variety:null,protein:null,fiber:null,waste:null,confidence:null}};
+ const avg=a=>a.reduce((s,v)=>s+v,0)/Math.max(1,a.length);
+ const categories=new Set(active.map(i=>String(i.category||'').trim()).filter(Boolean)).size;
+ const nutritionKnown=active.filter(i=>hasNumber(i.calories)||hasNumber(i.protein)||hasNumber(i.fiber));
+ const proteinKnown=active.filter(i=>hasNumber(i.protein));
+ const fiberKnown=active.filter(i=>hasNumber(i.fiber));
+ const freshnessKnown=active.filter(i=>freshnessStatus(i,now).status!=='unknown');
+ const components={
+  freshness:Math.round(avg(active.map(i=>Math.max(0,100-wasteRisk(i,events,now).score)))),
+  variety:Math.round(clamp(categories*14)),
+  protein:proteinKnown.length?Math.round(clamp(proteinKnown.filter(i=>num(i.protein)>=15).length/proteinKnown.length*140)):50,
+  fiber:fiberKnown.length?Math.round(clamp(fiberKnown.filter(i=>num(i.fiber)>=3).length/fiberKnown.length*160)):50,
+  waste:Math.round(avg(active.map(i=>100-wasteRisk(i,events,now).score))),
+  confidence:Math.round(avg(active.map(i=>pantryConfidence(i,events,now))))
+ };
+ const coverage=Math.round((freshnessKnown.length+nutritionKnown.length)/(active.length*2)*100);
+ const score=Math.round(Object.values(components).reduce((s,v)=>s+v,0)/Object.values(components).length);
+ const missing=[];if(freshnessKnown.length<active.length)missing.push(`${active.length-freshnessKnown.length} missing freshness`);if(nutritionKnown.length<active.length)missing.push(`${active.length-nutritionKnown.length} missing nutrition`);
+ return {score,label:score>=80?'Ready to eat well':score>=60?'Good foundation':score>=40?'Needs attention':'Poorly prepared',reason:missing.length?`${active.length} in-stock items evaluated · ${coverage}% data coverage · ${missing.join(' · ')}`:`${active.length} in-stock items evaluated with complete core data.`,coverage,activeCount:active.length,components};
 }
 
 export function buildPantryIntelligence({items=[],events=[],plannedMeals=[],history=[],purchases=[],currentLocation='All',now=Date.now()}){

@@ -20,9 +20,9 @@ import {buildRecipeSnapshot,compactRecipeMealNotes} from './nutrition/recipe';
 import {normalizeSqlValue,auditValue} from './exchange/persistence';
 import {buildFoodEnrichmentExchange,buildNewFoodExchange,buildLogOnceExchange,normalizeExchangeJson as normalizeUniversalJson,validateUniversalExchange,foodProposal,mealProposal,changedFoodFields} from './exchange';
 import './styles.css';
-const VERSION='1.4.10.37';
+const VERSION='1.4.10.38';
 const RELEASE_DATE='2026-07-22';
-const BUILD_ID='141037';
+const BUILD_ID='141038';
 const localDateKey=(date=new Date())=>{const y=date.getFullYear(),m=String(date.getMonth()+1).padStart(2,'0'),d=String(date.getDate()).padStart(2,'0');return `${y}-${m}-${d}`};
 const today=()=>localDateKey();
 const toDateTimeLocal=(date=new Date())=>{const y=date.getFullYear(),m=String(date.getMonth()+1).padStart(2,'0'),d=String(date.getDate()).padStart(2,'0'),h=String(date.getHours()).padStart(2,'0'),min=String(date.getMinutes()).padStart(2,'0');return `${y}-${m}-${d}T${h}:${min}`};
@@ -1028,6 +1028,7 @@ function NutrientConfiguration({onBack,onClose=onBack}){
 }
 
 const RELEASE_HISTORY=[
+ {version:'1.4.10.38',name:'Pantry Health Calculation Repair',type:'Corrective release',created:'2026-07-22T14:30:00-04:00',build:'141038',releaseId:'FH-20260722-141038',stories:[['FH-1250.25','Pantry Health now evaluates the same in-stock inventory displayed by Pantry and reports coverage diagnostics']],knownIssues:[]},
  {version:'1.4.10.37',name:'Recipe Backfill and Enrichment Commit Repair',type:'Critical corrective release',created:'2026-07-22T13:25:00-04:00',build:'141037',releaseId:'FH-20260722-141037',stories:[['FH-1250.25','Behavioral repair for recipe nutrient propagation, recipe consumption stability, enrichment persistence, and release metadata']],knownIssues:[]},
  {version:'1.4.10.35',name:'Meals Architecture and Enrichment Reliability',type:'Corrective implementation release',created:'2026-07-22T11:45:00-04:00',build:'141035',releaseId:'FH-20260722-141035',stories:[['FH-1250.25','Food subsystem hierarchy, Food Readiness diagnostics, and complete nutrient synchronization']],knownIssues:['Recipe caffeine propagation and enrichment approval remained unreliable.']},
  {version:'1.4.10.26',name:'Recipe Creation Discoverability',type:'Focused implementation release',created:'2026-07-21T21:30:00-04:00',build:'141026',releaseId:'FH-20260721-141026',stories:[['FH-1250.25','Adds a clear New Recipe action and a complete reusable recipe creation editor']],knownIssues:[]},

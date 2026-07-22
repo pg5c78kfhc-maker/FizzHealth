@@ -1,3 +1,15 @@
+# Fizz Health v1.4.10.38
+
+## Pantry Health Calculation Repair
+
+- Fixes null `remaining_servings` values being interpreted as numeric zero and excluding valid in-stock pantry items from Pantry Health.
+- Calculates Pantry Health from the same location-filtered, in-stock inventory displayed on the Pantry page.
+- Produces a numeric score whenever at least one in-stock item exists.
+- Adds data-coverage diagnostics for missing freshness and nutrition instead of falsely reporting no inventory.
+- Adds behavioral tests for positive quantities with null remaining-servings data and unknown quantities explicitly marked on hand.
+
+Implementation slice: FH-1250.25.
+
 # Fizz Health v1.4.10.37
 
 ## Critical Recipe and Enrichment Repair

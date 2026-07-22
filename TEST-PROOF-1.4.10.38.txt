@@ -1,0 +1,25 @@
+Fizz Health v1.4.10.38 verification
+
+Source baseline: v1.4.10.37 full source supplied by user
+
+Test command:
+  npm test
+
+Result:
+  217 tests passed
+  0 failed
+
+Release verification command:
+  npm run verify:release
+
+Result:
+  Release metadata verified: v1.4.10.38 / FH-1250.25
+
+Production build command:
+  npm run build
+
+Result:
+  Not completed in this runtime.
+  vite: not found
+
+No successful production build is claimed.
