@@ -1,0 +1,31 @@
+Fizz Health v1.4.10.40 — Verification Proof
+Date: 2026-07-22
+Release: Pantry UX Refinement
+Scope: FH-1, FH-2, FH-3, FH-4, FH-5
+
+IMPLEMENTATION
+- FH-1: Pantry location browsing defaults to All; Home is excluded from browsing filter choices while remaining available as a physical storage location in item editors.
+- FH-2: Missing nutrition uses database icon only, fixed status-column alignment, and lighter green planned-data styling.
+- FH-3: Pantry Item Details includes a Pencil action that opens the shared Food Enrichment workflow with pantry context.
+- FH-4: Pantry Search is a dedicated full-screen experience, separate from browsing filters.
+- FH-5: Restock, Shopping, and Out of Stock results open Pantry Item Details.
+
+AUTOMATED TESTS
+Command: npm test
+Result: PASS
+Tests: 222 passed, 0 failed
+
+RELEASE METADATA
+Command: npm run verify:release
+Result: PASS
+Output: Release metadata verified: v1.4.10.40 / FH-1
+
+BUILD
+Initial command: npm run build
+Result: NOT EXECUTED — local dependencies were not present (vite: not found).
+Dependency installation attempted with npm ci and an explicit public registry retry.
+Result: FAILED due package-registry HTTP 503 responses, including xlsx and transitive Vite packages.
+Because dependencies could not be installed, a fresh production build could not be run. No build success is claimed.
+
+SOURCE PACKAGE
+The full-source archive excludes the incomplete node_modules directory created by the failed dependency-install attempt.

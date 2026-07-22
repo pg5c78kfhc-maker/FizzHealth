@@ -2,6 +2,37 @@
   "format": "fizz-health-release-history",
   "releases": [
     {
+      "version": "1.4.10.40",
+      "name": "Pantry UX Refinement",
+      "type": "Focused release",
+      "created": "2026-07-22T17:00:00-04:00",
+      "build": "141040",
+      "releaseId": "FH-20260722-141040",
+      "stories": [
+        [
+          "FH-1",
+          "Restore All and remove Home from pantry browsing location filters"
+        ],
+        [
+          "FH-2",
+          "Use icon-only aligned light-green styling for missing nutrition"
+        ],
+        [
+          "FH-3",
+          "Open shared Food Enrichment from Pantry Item Details"
+        ],
+        [
+          "FH-4",
+          "Provide a dedicated pantry search experience"
+        ],
+        [
+          "FH-5",
+          "Make inventory action views navigable"
+        ]
+      ],
+      "knownIssues": []
+    },
+    {
       "version": "1.4.10.31",
       "name": "Pantry Inventory State Correction",
       "type": "Corrective implementation release",

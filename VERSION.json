@@ -1,22 +1,26 @@
 {
   "app": "Fizz Health",
-  "version": "1.4.10.39",
-  "release": "Pantry Health Calculation Repair",
-  "release_type": "Corrective release",
-  "build": "141039",
-  "release_id": "FH-20260722-141039",
-  "created_at": "2026-07-22T14:30:00-04:00",
+  "version": "1.4.10.40",
+  "release": "Pantry UX Refinement",
+  "release_type": "Focused release",
+  "build": "141040",
+  "release_id": "FH-20260722-141040",
+  "created_at": "2026-07-22T17:00:00-04:00",
   "schema_version": 45,
   "status": "TESTED SOURCE",
-  "completed_story": "FH-1250.25",
+  "completed_story": "FH-1",
   "baseline_story": "FH-1221",
   "updated": "2026-07-22",
   "stories": [
-    "FH-1250.25"
+    "FH-1",
+    "FH-2",
+    "FH-3",
+    "FH-4",
+    "FH-5"
   ],
   "build_date": "2026-07-22",
-  "release_name": "Pantry Health Calculation Repair",
+  "release_name": "Pantry UX Refinement",
   "release_date": "2026-07-22",
-  "build_id": "141039",
-  "title": "Pantry Health Calculation Repair"
+  "build_id": "141040",
+  "title": "Pantry UX Refinement"
 }

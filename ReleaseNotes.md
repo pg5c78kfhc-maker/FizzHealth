@@ -1,3 +1,15 @@
+# Fizz Health v1.4.10.40
+
+## Pantry UX Refinement
+
+- Restores **All** as the default unfiltered pantry location and removes **Home** from the browsing-location choices.
+- Replaces missing-nutrition text with an aligned database icon and a lighter green planned-data treatment.
+- Adds a Pencil action in Pantry Item Details that opens the shared Food Enrichment workflow with pantry context pre-populated.
+- Moves pantry search into a dedicated full-screen experience so inventory filters remain focused on browsing.
+- Makes Restock, Shopping, and Out of Stock results tappable entry points to Pantry Item Details.
+
+Implementation slices: FH-1, FH-2, FH-3, FH-4, FH-5.
+
 # Fizz Health v1.4.10.39
 
 ## Pantry finishing pass

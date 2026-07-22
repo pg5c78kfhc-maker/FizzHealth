@@ -20,9 +20,9 @@ import {buildRecipeSnapshot,compactRecipeMealNotes} from './nutrition/recipe';
 import {normalizeSqlValue,auditValue} from './exchange/persistence';
 import {buildFoodEnrichmentExchange,buildNewFoodExchange,buildLogOnceExchange,normalizeExchangeJson as normalizeUniversalJson,validateUniversalExchange,foodProposal,mealProposal,changedFoodFields} from './exchange';
 import './styles.css';
-const VERSION='1.4.10.39';
+const VERSION='1.4.10.40';
 const RELEASE_DATE='2026-07-22';
-const BUILD_ID='141039';
+const BUILD_ID='141040';
 const localDateKey=(date=new Date())=>{const y=date.getFullYear(),m=String(date.getMonth()+1).padStart(2,'0'),d=String(date.getDate()).padStart(2,'0');return `${y}-${m}-${d}`};
 const today=()=>localDateKey();
 const toDateTimeLocal=(date=new Date())=>{const y=date.getFullYear(),m=String(date.getMonth()+1).padStart(2,'0'),d=String(date.getDate()).padStart(2,'0'),h=String(date.getHours()).padStart(2,'0'),min=String(date.getMinutes()).padStart(2,'0');return `${y}-${m}-${d}T${h}:${min}`};
@@ -696,6 +696,7 @@ function Pantry({onLogFood,tick}){
  const planned=query("SELECT * FROM planned_meals WHERE status='planned' ORDER BY planned_at LIMIT 250");
  const history=query("SELECT pantry_id,food_id,amount AS quantity,eaten_at AS event_at FROM meals WHERE pantry_id IS NOT NULL ORDER BY eaten_at DESC LIMIT 1000");
  const locations=query("SELECT * FROM pantry_locations WHERE active=1 ORDER BY sort_order,name");
+ const browsingLocations=locations.filter(location=>String(location.name||'').trim().toLowerCase()!=='home');
  const locationRows=filterPantryInventory(allRows,{search:'',location:currentLocation,locations});
  const rows=view==='attention'?locationRows.filter(r=>attentionIds.includes(String(r.pantry_id||r.id))):locationRows;
  const intel=buildPantryIntelligence({items:rows.map(r=>({...r,category:r.category||r.food_category})),events,plannedMeals:planned,history,currentLocation});
@@ -710,7 +711,7 @@ function Pantry({onLogFood,tick}){
  const InventoryCard=({r})=><div className={'item pantry-item pantry-smart-item '+(r.confidence<=0?'needs-data-card':'')} key={r.id||r.pantry_id}><button type="button" className="pantry-open" onClick={()=>openRecord(r)}><div><b>{r.item}</b><span>{r.brand}{r.location?' · '+r.location:''}{r.opened==='Yes'?' · Open':''} · {r.freshness?.quality||'unknown'}</span></div><em>{r.quantity??''} {r.unit}</em></button><button className={'verify-chip '+(r.confidence<=0?'missing-data':'')} onClick={()=>setScoreItem(r)} aria-label={r.confidence>0?`Inventory confidence ${r.confidence}%`:'Inventory data incomplete'}>{r.confidence>0?<>{r.confidence>=75?<Check/>:<ShieldCheck/>}{r.confidence}%</>:<Database/>}</button></div>;
  return <><div className="standard-page-head pantry-page-head"><span></span><h2>Pantry</h2><button type="button" onClick={()=>setShowManual(true)} aria-label="Add pantry item"><Plus/></button></div><header className="pantry-summary-header"><small>PANTRY INVENTORY</small><h1>Inventory control</h1><p>{rows.length} matching items · {currentLocation} · Choose a view below</p></header>
  <button className="pantry-health-card tappable" onClick={()=>setShowScore(true)}><div className="pantry-score"><strong>{score.score==null?'—':score.score}</strong><span>Pantry Health Score</span></div><div><h2>{score.label}</h2><p>{score.reason||'Freshness, nutrition, variety, waste risk, and inventory confidence.'}</p><small>{activeCount} in stock · Tap for details</small></div></button>
- <div className="pantry-toolbar"><label className="location-picker">Current location<select value={currentLocation} onChange={e=>setLocation(e.target.value)}><option value="All">All</option>{locations.map(l=><option key={l.location_id}>{l.name}</option>)}</select></label></div>
+ <div className="pantry-toolbar"><label className="location-picker">Current location<select value={currentLocation} onChange={e=>setLocation(e.target.value)}><option value="All">All</option>{browsingLocations.map(l=><option key={l.location_id}>{l.name}</option>)}</select></label></div>
  {attentionIds.length>0&&<section className="attention-context"><b>Pantry attention</b><span>{attentionIds.length} items produced the Home dashboard alert.</span></section>}<div className="pantry-intel-tabs">{[...(attentionIds.length?[['attention',`Attention (${attentionIds.length})`]]:[]),['stock','In Stock'],['restock','Restock'],['out','Out of Stock'],['shopping','Shopping']].map(([id,label])=><button key={id} className={view===id?'active':''} onClick={()=>setView(id)}>{label}</button>)}</div>
  <button className="pantry-search-launch" type="button" onClick={()=>{setQ('');setShowSearch(true)}}><Search/><span><b>Search pantry</b><small>Find any inventory record</small></span><ChevronRight/></button>
  {view==='attention'&&<section className="pantry-intel-list attention-list"><h2>Needs attention today</h2>{rows.map(r=><article className="tappable" key={r.pantry_id||r.id} onClick={()=>openRecord(r)}><AlertTriangle/><div><strong>{r.item}</strong><span>{r.expiration?`Expires ${new Date(`${r.expiration}T12:00:00`).toLocaleDateString()}`:'Inventory attention'}</span><small>{r.quantity??''} {r.unit||''} on hand</small></div><ChevronRight/></article>)}{!rows.length&&<div className="empty">Those items are no longer in the current pantry view.</div>}</section>}

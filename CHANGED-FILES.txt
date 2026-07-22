@@ -1,23 +1,15 @@
-package-lock.json
-release-history.json
-VERSION.json
-RELEASE-REGISTER.md
-CHANGELOG.md
-ReleaseNotes.md
-package.json
-ACCEPTANCE-1.4.10.19.md
-FH-RECONCILIATION-1.4.10.19.md
-DOD-FH-1270-1272.md
-TEST-PROOF-1.4.10.19.txt
-public/sw.js
-src/styles.css
-src/main.jsx
-src/database.js
-tests/v14102-hotfix.test.js
-tests/fh1220-import.test.js
-tests/settings-release.test.js
-tests/v1410-stabilization.test.js
-tests/v141019-corrective.test.js
-docs/decisions/ADR-006-HOME-RENDER-HIERARCHY.md
-docs/releases/1.4.10.19.md
-src/decision/engine.js
+Changed files:
+- package.json
+- package-lock.json
+- VERSION.json
+- ReleaseNotes.md
+- release-history.json
+- public/sw.js
+- src/main.jsx
+- src/styles.css
+- src/decision/engine.js
+- tests/v141040-pantry-ux.test.js
+- TEST-PROOF-1.4.10.40.txt
+
+Removed file:
+- tests/v141039-pantry-finishing.test.js (replaced by v141040-pantry-ux.test.js)
