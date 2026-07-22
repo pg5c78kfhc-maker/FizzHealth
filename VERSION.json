@@ -1,26 +1,25 @@
 {
   "app": "Fizz Health",
-  "version": "1.4.10.40",
-  "release": "Pantry UX Refinement",
-  "release_type": "Focused release",
-  "build": "141040",
-  "release_id": "FH-20260722-141040",
-  "created_at": "2026-07-22T17:00:00-04:00",
+  "version": "1.4.10.40a",
+  "release": "Pantry UX Corrective",
+  "release_type": "Corrective release",
+  "build": "141040A",
+  "release_id": "FH-20260722-141040A",
+  "created_at": "2026-07-22T13:40:00-04:00",
   "schema_version": 45,
   "status": "TESTED SOURCE",
-  "completed_story": "FH-1",
+  "completed_story": "FH-40A-1",
   "baseline_story": "FH-1221",
   "updated": "2026-07-22",
   "stories": [
-    "FH-1",
-    "FH-2",
-    "FH-3",
-    "FH-4",
-    "FH-5"
+    "FH-40A-1",
+    "FH-40A-2",
+    "FH-40A-3",
+    "FH-40A-4"
   ],
   "build_date": "2026-07-22",
-  "release_name": "Pantry UX Refinement",
+  "release_name": "Pantry UX Corrective",
   "release_date": "2026-07-22",
-  "build_id": "141040",
-  "title": "Pantry UX Refinement"
+  "build_id": "141040A",
+  "title": "Pantry UX Corrective"
 }

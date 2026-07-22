@@ -2,6 +2,33 @@
   "format": "fizz-health-release-history",
   "releases": [
     {
+      "version": "1.4.10.40a",
+      "name": "Pantry UX Corrective",
+      "type": "Corrective release",
+      "created": "2026-07-22T13:40:00-04:00",
+      "build": "141040A",
+      "releaseId": "FH-20260722-141040A",
+      "stories": [
+        [
+          "FH-40A-1",
+          "Match left and right pantry-card backgrounds according to record completeness"
+        ],
+        [
+          "FH-40A-2",
+          "Preserve Pantry enrichment state and advance Paste Response directly to validation"
+        ],
+        [
+          "FH-40A-3",
+          "Update all release metadata"
+        ],
+        [
+          "FH-40A-4",
+          "Adopt Source.version and Changed.version artifact names"
+        ]
+      ],
+      "knownIssues": []
+    },
+    {
       "version": "1.4.10.40",
       "name": "Pantry UX Refinement",
       "type": "Focused release",
