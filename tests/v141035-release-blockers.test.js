@@ -4,6 +4,7 @@ import fs from 'node:fs';
 
 const main=fs.readFileSync(new URL('../src/main.jsx',import.meta.url),'utf8');
 const css=fs.readFileSync(new URL('../src/styles.css',import.meta.url),'utf8');
+const recipe=fs.readFileSync(new URL('../src/nutrition/recipe.js',import.meta.url),'utf8');
 
 test('Meals screen uses Meals terminology',()=>{
  assert.match(main,/<small>MEALS<\/small><h1>Meals<\/h1>/);
@@ -26,9 +27,9 @@ test('What Should I Eat is a standalone Meals-owned page',()=>{
 });
 
 test('recipe snapshot aggregates the complete nutrient registry',()=>{
- assert.match(main,/const total=Object\.fromEntries\(NUTRIENT_KEYS\.map\(k=>\[k,0\]\)\)/);
- assert.match(main,/for\(const k of NUTRIENT_KEYS\).*total\[k\]\+=Number\(value\)\*ratio/s);
- assert.match(main,/nutrientColumns=NUTRIENT_KEYS\.map/);
+ assert.match(recipe,/const total=Object\.fromEntries\(NUTRIENT_KEYS\.map\(key=>\[key,0\]\)\)/);
+ assert.match(recipe,/for\(const key of NUTRIENT_KEYS\)total\[key\]\+=finite\(food\[key\]\)\*scaling\.ratio/);
+ assert.match(main,/buildRecipeSnapshot/);
 });
 
 test('ingredient enrichment recalculates linked recipe meals',()=>{
@@ -40,7 +41,7 @@ test('ingredient enrichment recalculates linked recipe meals',()=>{
 
 test('enrichment approval gives visible feedback and formats evidence objects',()=>{
  assert.match(main,/function evidenceText/);
- assert.match(main,/enrichment-header-status/);
+ assert.match(main,/enrichment-sticky-status/);
  assert.match(css,/\.enrichment-sticky-status/);
  assert.match(main,/disabled=\{busy\}/);
 });
