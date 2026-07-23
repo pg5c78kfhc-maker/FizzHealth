@@ -1,3 +1,11 @@
+## 1.4.10.43
+
+- Introduced the first Daily Decision Brief architecture.
+- Added ranked Act Now recommendations, Today’s Outlook, Watch Today, Use First, and collapsed More Insights.
+- Consolidated detailed legacy intelligence beneath progressive disclosure.
+- Repaired Decision Intelligence viewport overflow.
+- Corrected local timestamp initialization and future-time validation for new health readings.
+
 ## 1.4.10.42b
 
 - Corrected Highest Impact Next Action overflow on iPhone portrait.

@@ -1,3 +1,4 @@
+| 1.4.10.43 | Daily Decision Brief | 2026-07-22T23:40:00-04:00 | FH-1301 through FH-1306 | First Decision Intelligence redesign pass plus mobile width and health timestamp corrections. |
 | 1.4.10.42b | Responsive Highest Impact Card Repair | 2026-07-22T22:55:00-04:00 | FH-1 through FH-3 | Definitive iPhone portrait layout correction for Highest Impact Next Action. |
 | 1.4.10.42a | Restaurant Day and Responsive Decision Support | 2026-07-22T20:00:00-04:00 | FH-1 through FH-6 | Date-aware restaurant eligibility gate plus iPhone card overflow repair. |
 | 1.4.10.42 | Highest Impact Next Action | 2026-07-22T19:15:00-04:00 | FH-1 through FH-6 | Interactive decision support with alternatives, predicted outcomes, pantry and restaurant integration, and transparent rationale. |

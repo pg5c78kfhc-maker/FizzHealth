@@ -2,6 +2,41 @@
   "format": "fizz-health-release-history",
   "releases": [
     {
+      "version": "1.4.10.43",
+      "name": "Daily Decision Brief",
+      "type": "Decision Intelligence redesign",
+      "created": "2026-07-22T23:40:00-04:00",
+      "build": "141043",
+      "release_id": "FH-20260722-141043",
+      "stories": [
+        [
+          "FH-1301",
+          "Repair Decision Intelligence mobile width"
+        ],
+        [
+          "FH-1302",
+          "Use current local time for new health readings"
+        ],
+        [
+          "FH-1303",
+          "Transform Decision Intelligence into a Daily Decision Brief"
+        ],
+        [
+          "FH-1304",
+          "Consolidate duplicated intelligence"
+        ],
+        [
+          "FH-1305",
+          "Add concise recommendation rationale"
+        ],
+        [
+          "FH-1306",
+          "Prepare for historical and future planning intelligence"
+        ]
+      ],
+      "known_issues": []
+    },
+    {
       "version": "1.4.10.42b",
       "name": "Responsive Highest Impact Card Repair",
       "type": "Corrective UI release",

@@ -1,0 +1,30 @@
+Fizz Health v1.4.10.43 — Test and Build Proof
+
+Release: 1.4.10.43
+Build: 141043
+Release ID: FH-20260722-141043
+
+Automated tests
+Command: npm test
+Result: PASS
+Suites: 260 tests
+Passed: 260
+Failed: 0
+
+Release verification
+Command: npm run verify:release
+Result: PASS
+Output: Release metadata verified: v1.4.10.43 / FH-1 through FH-3
+
+Production build
+Command: npm run build
+Result: NOT COMPLETED
+Reason: The uploaded archive did not include installed dependencies and vite was unavailable in the execution environment (`sh: vite: not found`). An attempted `npm ci` could not complete in the container environment.
+
+Implemented scope
+- FH-1301 Decision Intelligence viewport-width repair.
+- FH-1302 local date/time initialization and future-time protection for new health readings.
+- FH-1303 first Daily Decision Brief architecture.
+- FH-1304 progressive disclosure to reduce duplicated intelligence.
+- FH-1305 concise rationale and expected-benefit language.
+- FH-1306 structural foundation for past, present, and future intelligence inputs.

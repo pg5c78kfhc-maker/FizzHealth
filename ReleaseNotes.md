@@ -1,3 +1,28 @@
+# Fizz Health v1.4.10.43
+
+**Build:** 141043  
+**Release ID:** FH-20260722-141043  
+**Released:** July 22, 2026
+
+## Daily Decision Brief
+
+- Replaces the flat expanded intelligence stack with a concise daily decision brief.
+- Ranks immediate priorities and explains why each matters and its expected benefit.
+- Adds Today’s Outlook, Watch Today, and Use First sections.
+- Preserves detailed forecasts, alternatives, timeline, and command-center tools under More Insights.
+- Repairs horizontal overflow throughout the expanded intelligence experience.
+- New health readings now initialize from the device’s current local date and time and cannot default into the future.
+- Existing reading timestamps remain preserved when edited.
+
+## Architecture foundation
+
+The brief separates immediate action, projected outcomes, warnings, inventory pressure, and supporting evidence so future historical trends and planned meals or restaurant events can feed the same decision experience.
+
+## Artifacts
+
+- Full source: `Source.1.4.10.43.zip`
+- Changed files: `Changed.1.4.10.43.zip`
+
 # Fizz Health v1.4.10.42b
 
 **Build:** 141042B  

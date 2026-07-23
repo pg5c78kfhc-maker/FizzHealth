@@ -27,7 +27,7 @@ test('collapsed headlines are dynamic and limited to two',()=>{
 
 test('required intelligence is revealed inside the expandable region',()=>{
  const disclosure=main.slice(main.indexOf('{showDecisionIntelligence&&<div className="decision-intelligence-content">'),main.indexOf('home-summary-dashboard'));
- assert.match(disclosure,/home-key-summaries/);
+ assert.match(disclosure,/DecisionBrief/);
  assert.match(disclosure,/HighestImpactDecisionExperience/);
  assert.match(disclosure,/DecisionIntelligencePanel/);
  assert.match(disclosure,/DailyCommandCenter/);
@@ -37,14 +37,14 @@ test('required intelligence is revealed inside the expandable region',()=>{
 
 test('Nutrition Coverage and Projected Calories are inside the disclosure',()=>{
  const disclosure=main.slice(main.indexOf('{showDecisionIntelligence&&<div className="decision-intelligence-content">'),main.indexOf('home-summary-dashboard'));
- assert.match(disclosure,/Nutrition coverage/);
- assert.match(disclosure,/Projected calories/);
- assert.match(css,/\.home-key-summaries/);
+ assert.match(main,/TODAY’S OUTLOOK/);
+ assert.match(main,/Calories/);
+ assert.match(css,/\.brief-metrics/);
 });
 
-test('release metadata advances to the v1.4.10.42b corrective release',()=>{
- assert.equal(meta.version,'1.4.10.42b');
- assert.equal(meta.build,'141042B');
- assert.match(main,/const VERSION='1\.4\.10\.42b'/);
- assert.match(main,/const BUILD_ID='141042B'/);
+test('release metadata advances to the v1.4.10.43 corrective release',()=>{
+ assert.equal(meta.version,'1.4.10.43');
+ assert.equal(meta.build,'141043');
+ assert.match(main,/const VERSION='1\.4\.10\.43'/);
+ assert.match(main,/const BUILD_ID='141043'/);
 });

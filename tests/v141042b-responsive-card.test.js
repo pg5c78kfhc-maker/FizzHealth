@@ -5,10 +5,10 @@ const css=fs.readFileSync(new URL('../src/styles.css',import.meta.url),'utf8');
 const main=fs.readFileSync(new URL('../src/main.jsx',import.meta.url),'utf8');
 const meta=JSON.parse(fs.readFileSync(new URL('../VERSION.json',import.meta.url),'utf8'));
 
-test('release metadata advances to v1.4.10.42b',()=>{
- assert.equal(meta.version,'1.4.10.42b');
- assert.equal(meta.build,'141042B');
- assert.match(main,/const VERSION='1\.4\.10\.42b'/);
+test('release metadata advances to v1.4.10.43',()=>{
+ assert.equal(meta.version,'1.4.10.43');
+ assert.equal(meta.build,'141043');
+ assert.match(main,/const VERSION='1\.4\.10\.43'/);
 });
 
 test('mobile Highest Impact card uses a full-width single-column layout',()=>{
