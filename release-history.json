@@ -2,6 +2,22 @@
   "format": "fizz-health-release-history",
   "releases": [
     {
+      "version": "1.4.11.14",
+      "name": "Meal Planning Calendar Prototype",
+      "title": "Meal Planning Calendar Prototype",
+      "type": "Feature prototype",
+      "build": "141240",
+      "releaseId": "FH-20260723-141240",
+      "release_id": "FH-20260723-141240",
+      "created": "2026-07-23T17:40:00-04:00",
+      "created_at": "2026-07-23T17:40:00-04:00",
+      "stories": [
+        "FH-1475",
+        "FH-1476",
+        "FH-1477"
+      ]
+    },
+    {
       "version": "1.4.11.13",
       "name": "JSON Exchange Workflow Repair",
       "type": "Blocking corrective release",

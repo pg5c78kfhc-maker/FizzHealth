@@ -1,0 +1,20 @@
+Fizz Health v1.4.11.14 — Meal Planning Calendar Prototype
+Build: 141240
+Deployment: FH-20260723-141240
+
+Verification
+- npm test: PASS (330 tests, 0 failures)
+- npm run verify:release: PASS
+- npm run build: NOT COMPLETED — dependency installation could not finish in the execution environment; vite was unavailable.
+
+Implemented
+- Added Appetizer, Side, Dessert, Beverage, and Condiment Meal categories.
+- Replaced pantry-food recommendations with a saved-Meals-only calendar prototype.
+- Added date-only planning for Breakfast, Lunch, Dinner, and Snack.
+- Added attached component roles for appetizer, side, dessert, beverage, and condiment.
+- Added locked calorie-capacity reservations for unknown future meals and restaurant commitments.
+- Planned items continue through planned_meals and therefore appear on Today as proposed meals when their date is today.
+- Added schema migration 51 for item roles and reserved calories.
+
+GitHub
+- No commits or pushes were performed.

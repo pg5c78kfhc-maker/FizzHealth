@@ -43,8 +43,8 @@ test('Nutrition Coverage and Projected Calories are inside the disclosure',()=>{
 });
 
 test('release metadata advances to the v1.4.10.43 corrective release',()=>{
- assert.equal(meta.version,'1.4.11.13');
- assert.equal(meta.build,'141230');
- assert.match(main,/const VERSION='1\.4\.11\.13'/);
- assert.match(main,/const BUILD_ID='141230'/);
+ assert.equal(meta.version,'1.4.11.14');
+ assert.equal(meta.build,'141240');
+ assert.match(main,/const VERSION='1\.4\.11\.14'/);
+ assert.match(main,/const BUILD_ID='141240'/);
 });

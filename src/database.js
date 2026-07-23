@@ -685,6 +685,14 @@ const migrations=[
     VALUES ('1.4.11.13','2026-07-23','141230',50,'JSON Exchange Workflow Repair','2026-07-23T16:30:00.000Z');
   `}
 
+,  {version:51,name:'meal_planning_calendar_prototype',sql:`
+    ALTER TABLE planned_meals ADD COLUMN item_role TEXT DEFAULT 'main';
+    ALTER TABLE planned_meals ADD COLUMN reserved_calories REAL DEFAULT 0;
+    CREATE INDEX IF NOT EXISTS idx_planned_meal_definition_date ON planned_meals(meal_definition_id,planned_local_date,status);
+    INSERT OR REPLACE INTO release_metadata(version,release_date,build_id,schema_version,title,created_at)
+    VALUES ('1.4.11.14','2026-07-23','141240',51,'Meal Planning Calendar Prototype','2026-07-23T21:40:00.000Z');
+  `}
+
 ];
 
 const canonicalSchema={

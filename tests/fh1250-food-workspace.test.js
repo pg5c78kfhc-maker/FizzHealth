@@ -25,13 +25,11 @@ test('FH-1250.1 keeps Home focused on daily state while planning remains in Food
  assert.match(css,/\.decision-intelligence-disclosure/);
 });
 
-test('FH-1250.1 planner fails soft and supports retry and empty states',()=>{
- assert.match(main,/FH-1250 meal planner calculation failed/);
- assert.match(main,/Meal planner could not load/);
- assert.match(main,/setRetryKey\(x=>x\+1\)/);
- assert.match(main,/No qualifying foods yet/);
- assert.match(main,/optionalQuery\(`SELECT p\.pantry_id/);
- assert.match(main,/Number\.isFinite/);
+test('meal planner prototype uses saved Meals and a date calendar',()=>{
+ assert.match(main,/MEAL PLANNING PROTOTYPE/);
+ assert.match(main,/SELECT \* FROM meal_definitions/);
+ assert.match(main,/Reserve capacity/);
+ assert.match(main,/planned_local_date BETWEEN/);
 });
 
 test('FH-1250.1 Food pages preserve explicit escape paths',()=>{

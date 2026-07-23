@@ -18,10 +18,10 @@ test('startup repairs feature schemas even when migrations were already recorded
 });
 
 
-test('meal planner reads weight from canonical health_metrics columns',()=>{
-  assert.match(main,/SELECT value_primary FROM health_metrics WHERE metric_type='weight'/);
-  assert.doesNotMatch(main,/SELECT weight FROM health_metrics WHERE weight IS NOT NULL/);
-  assert.doesNotMatch(main,/ORDER BY recorded_at DESC/);
+test('meal planner stores proposals in the canonical planned-meals lifecycle',()=>{
+  assert.match(main,/insertRecord\(db,'planned_meals'/);
+  assert.match(main,/planned_local_date:selectedDate/);
+  assert.match(main,/status:'planned'/);
 });
 
 test('secondary recommendation and planning widgets cannot crash Today',()=>{

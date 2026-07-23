@@ -17,7 +17,7 @@ test('missing legacy IDs are not collapsed into one undefined duplicate',()=>{
 });
 
 test('release metadata identifies the blocking corrective build',()=>{
-  assert.match(main,/const VERSION='1\.4\.11\.13'/);
-  assert.match(main,/const BUILD_ID='141230'/);
-  assert.match(main,/const DEPLOYMENT_ID='FH-20260723-141230'/);
+  assert.match(main,/const VERSION='1\.4\.11\.14'/);
+  assert.match(main,/const BUILD_ID='141240'/);
+  assert.match(main,/const DEPLOYMENT_ID='FH-20260723-141240'/);
 });
