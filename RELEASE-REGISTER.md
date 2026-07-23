@@ -1,7 +1,14 @@
-## v1.4.11.5 — Recipe Duplicate Validation Repair
+## v1.4.11.6 — Prepared Recipe Pantry & Pantry Edit Repair
 
-- Build: 141150
-- Deployment: FH-20260723-141150
+- Build: 141160
+- Deployment: FH-20260723-141160
+- Stories: FH-1470–FH-1472
+- Status: Tested corrective release
+
+## v1.4.11.6 — Recipe Duplicate Validation Repair
+
+- Build: 141160
+- Deployment: FH-20260723-141160
 - Stories: FH-1467 through FH-1469
 
 ## v1.4.11.4 — Navigation & Workflow Stabilization

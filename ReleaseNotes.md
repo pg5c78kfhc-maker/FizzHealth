@@ -1,4 +1,19 @@
-# Fizz Health v1.4.11.5
+# Fizz Health v1.4.11.6
+
+## Prepared Recipe Pantry & Pantry Edit Repair
+
+FH-1470 through FH-1472
+
+- FH-1470: Pantry detail Edit now opens the selected pantry item editor instead of closing the detail and losing the action.
+- FH-1471: Recipe detail now provides a pantry action that creates a prepared batch with quantity, unit, prepared date, expiration, location, state, and notes.
+- FH-1472: Prepared batches are linked to the source recipe and tracked as finished food; component ingredients are not individually decremented.
+
+Version: 1.4.11.6  
+Build: 141160  
+Deployment: FH-20260723-141160  
+Released: 2026-07-23T10:05:00-04:00
+
+# Fizz Health v1.4.11.6
 
 ## Recipe Duplicate Validation Repair
 
@@ -8,9 +23,9 @@ FH-1467 through FH-1469
 - FH-1468: Legacy ingredients with missing IDs are no longer all treated as the same duplicate ingredient.
 - FH-1469: Added regression coverage proving a recipe containing unique legacy ingredients can save.
 
-Version: 1.4.11.5  
-Build: 141150  
-Deployment: FH-20260723-141150  
+Version: 1.4.11.6  
+Build: 141160  
+Deployment: FH-20260723-141160  
 Released: 2026-07-23T09:20:00-04:00
 # Fizz Health v1.4.11.4
 
