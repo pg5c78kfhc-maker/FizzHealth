@@ -1,3 +1,9 @@
+## v1.4.11.5 — 2026-07-23
+
+- Fixed false duplicate-ingredient validation for recipes containing legacy rows without canonical food IDs.
+- Duplicate detection now uses canonical ID when available and normalized ingredient name as fallback.
+- Updated About metadata to v1.4.11.5 / build 141150 / deployment FH-20260723-141150.
+
 ## v1.4.11.4 — 2026-07-23
 
 - Added a clear exit from the secondary Meals library back to Food.

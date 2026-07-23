@@ -1,3 +1,9 @@
+## v1.4.11.5 — Recipe Duplicate Validation Repair
+
+- Build: 141150
+- Deployment: FH-20260723-141150
+- Stories: FH-1467 through FH-1469
+
 ## v1.4.11.4 — Navigation & Workflow Stabilization
 
 - Build: 141140

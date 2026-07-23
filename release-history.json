@@ -2,6 +2,20 @@
   "format": "fizz-health-release-history",
   "releases": [
     {
+      "version": "1.4.11.5",
+      "build": "141150",
+      "release_id": "FH-20260723-141150",
+      "release_date": "2026-07-23",
+      "created_at": "2026-07-23T09:20:00-04:00",
+      "name": "Recipe Duplicate Validation Repair",
+      "type": "Blocking corrective release",
+      "stories": [
+        "FH-1467",
+        "FH-1468",
+        "FH-1469"
+      ]
+    },
+    {
       "version": "1.4.11.4",
       "build": "141140",
       "release_id": "FH-20260723-141140",

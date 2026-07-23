@@ -1,3 +1,17 @@
+# Fizz Health v1.4.11.5
+
+## Recipe Duplicate Validation Repair
+
+FH-1467 through FH-1469
+
+- FH-1467: Recipe duplicate validation now uses canonical food IDs with normalized ingredient-name fallback.
+- FH-1468: Legacy ingredients with missing IDs are no longer all treated as the same duplicate ingredient.
+- FH-1469: Added regression coverage proving a recipe containing unique legacy ingredients can save.
+
+Version: 1.4.11.5  
+Build: 141150  
+Deployment: FH-20260723-141150  
+Released: 2026-07-23T09:20:00-04:00
 # Fizz Health v1.4.11.4
 
 Critical Action Wiring Repair

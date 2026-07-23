@@ -15,13 +15,13 @@ test('recipe creation editor captures reusable ingredients and saves schema-awar
  assert.match(main,/Add ingredient/);
  assert.match(main,/insertRecord\(db,'recipes'/);
  assert.match(main,/ingredient_type:'food'/);
- assert.match(main,/ingredient_id:row\.food\.food_id/);
+ assert.match(main,/ingredient_id:row\.food\?\.food_id\|\|row\.food_id\|\|null/);
 });
 
 test('recipe creation validates incomplete and duplicate definitions',()=>{
  assert.match(main,/Enter a recipe name/);
  assert.match(main,/Every ingredient needs a quantity greater than zero/);
- assert.match(main,/Each ingredient can appear only once/);
+ assert.match(main,/can appear only once/);
  assert.match(main,/A recipe with this name already exists/);
 });
 

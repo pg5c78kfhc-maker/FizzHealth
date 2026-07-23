@@ -20,11 +20,11 @@ import {buildRecipeSnapshot,compactRecipeMealNotes} from './nutrition/recipe';
 import {normalizeSqlValue,auditValue} from './exchange/persistence';
 import {buildFoodEnrichmentExchange,buildNewFoodExchange,buildLogOnceExchange,normalizeExchangeJson as normalizeUniversalJson,validateUniversalExchange,foodProposal,mealProposal,changedFoodFields} from './exchange';
 import './styles.css';
-const VERSION='1.4.11.4';
+const VERSION='1.4.11.5';
 const RELEASE_DATE='2026-07-23';
-const BUILD_ID='141140';
-const DEPLOYMENT_ID='FH-20260723-141140';
-const RELEASE_CREATED_AT='2026-07-23T09:15:00-04:00';
+const BUILD_ID='141150';
+const DEPLOYMENT_ID='FH-20260723-141150';
+const RELEASE_CREATED_AT='2026-07-23T09:20:00-04:00';
 const localDateKey=(date=new Date())=>{const y=date.getFullYear(),m=String(date.getMonth()+1).padStart(2,'0'),d=String(date.getDate()).padStart(2,'0');return `${y}-${m}-${d}`};
 const today=()=>localDateKey();
 const toDateTimeLocal=(date=new Date())=>{const y=date.getFullYear(),m=String(date.getMonth()+1).padStart(2,'0'),d=String(date.getDate()).padStart(2,'0'),h=String(date.getHours()).padStart(2,'0'),min=String(date.getMinutes()).padStart(2,'0');return `${y}-${m}-${d}T${h}:${min}`};
@@ -34,6 +34,7 @@ const normalizeUnit=u=>String(u||'').trim().toLowerCase().replace(/s$/,'');
 const isPackageUnit=u=>PACKAGE_UNITS.has(normalizeUnit(u));
 const optionalQuery=(sql,params=[])=>{try{return query(sql,params)}catch(error){console.warn('Optional dashboard data unavailable:',error);return []}};
 const quantityLabel=(amount,unit)=>{const n=Number(amount);if(!Number.isFinite(n))return `Quantity not recorded`;const u=unit||'serving';return `${n%1===0?n:n.toFixed(1)} ${u}${n===1?'':'s'}`};
+const canonicalIngredientIdentity=row=>{const rawId=row?.food_id??row?.food?.food_id??row?.ingredient_id;const id=String(rawId??'').trim().toLowerCase();if(id&&id!=='undefined'&&id!=='null')return `id:${id}`;const name=String(row?.food?.name??row?.ingredient_name??'').trim().toLowerCase().replace(/\s+/g,' ');return name?`name:${name}`:''};
 const consumptionServing=food=>{const n=Number(food?.default_serving)||1;const u=normalizeUnit(food?.unit);if(u==='g'&&n<=1&&/(peanut|almond|cashew|pistachio|walnut|nut)/i.test(food?.name||''))return 34;return n};
 function resolvePantryFood(pantry){
  const pantryName=String(pantry.item||'').toLowerCase().replace(/^365\s+/,'').replace(/[^a-z0-9]+/g,' ').trim();
@@ -703,7 +704,9 @@ function RecipeCreateEditor({foods,recipe=null,onClose,onSaved}){
   if(!recipeName)return setError('Enter a recipe name.');
   if(!ingredients.length)return setError('Add at least one ingredient.');
   if(ingredients.some(row=>!Number.isFinite(Number(row.amount))||Number(row.amount)<=0))return setError('Every ingredient needs a quantity greater than zero.');
-  if(new Set(ingredients.map(row=>String(row.food_id))).size!==ingredients.length)return setError('Each ingredient can appear only once.');
+  const seenIngredients=new Map();
+  const duplicateIngredient=ingredients.find(row=>{const identity=canonicalIngredientIdentity(row);if(!identity)return false;if(seenIngredients.has(identity))return true;seenIngredients.set(identity,row);return false});
+  if(duplicateIngredient)return setError(`${duplicateIngredient.food?.name||duplicateIngredient.ingredient_name||'This ingredient'} can appear only once.`);
   if(!recipe&&query('SELECT 1 FROM recipes WHERE LOWER(recipe_name)=LOWER(?) AND COALESCE(archived,0)=0 LIMIT 1',[recipeName]).length)return setError('A recipe with this name already exists.');
   const recipeId=recipe?.recipe_id||`R${Date.now()}`;
   setSaving(true);
@@ -711,7 +714,7 @@ function RecipeCreateEditor({foods,recipe=null,onClose,onSaved}){
     await transaction(async db=>{
       db.run('DELETE FROM recipes WHERE recipe_id=?',[recipeId]);
       for(const row of ingredients){
-        insertRecord(db,'recipes',{recipe_id:recipeId,recipe_name:recipeName,ingredient_name:row.food.name,amount:Number(row.amount),unit:row.unit||row.food.unit||'serving',ingredient_type:'food',ingredient_id:row.food.food_id,inventory_status:'linked',archived:0,archived_at:null});
+        insertRecord(db,'recipes',{recipe_id:recipeId,recipe_name:recipeName,ingredient_name:row.food.name,amount:Number(row.amount),unit:row.unit||row.food.unit||'serving',ingredient_type:'food',ingredient_id:row.food?.food_id||row.food_id||null,inventory_status:'linked',archived:0,archived_at:null});
       }
     });
     onSaved?.(recipeName,recipeId);
@@ -1177,6 +1180,7 @@ function NutrientConfiguration({onBack,onClose=onBack}){
 }
 
 const RELEASE_HISTORY=[
+ {version:'1.4.11.5',name:'Recipe Duplicate Validation Repair',type:'Blocking corrective release',created:RELEASE_CREATED_AT,build:BUILD_ID,releaseId:DEPLOYMENT_ID,stories:[['FH-1467','Validate recipe duplicates using canonical food identity with a name fallback'],['FH-1468','Ignore missing legacy ingredient IDs instead of treating them as duplicates'],['FH-1469','Require a regression test proving unique legacy recipe ingredients save successfully']],knownIssues:[]},
  {version:'1.4.11.4',name:'Critical Action Wiring Repair',type:'Corrective functional release',created:RELEASE_CREATED_AT,build:BUILD_ID,releaseId:DEPLOYMENT_ID,stories:[['FH-1461','Make pantry detail pencil open the pantry editor'],['FH-1462','Make recipe Save persist and return to refreshed detail'],['FH-1463','Make Consume Now open Universal Log'],['FH-1464','Make Plan for Later open Universal Log'],['FH-1465','Add functional action-path release verification'],['FH-1466','Require current About version and deployment metadata']],knownIssues:[]},
  {version:'1.4.11.3',name:'Navigation & Workflow Stabilization',type:'Corrective hardening release',created:RELEASE_CREATED_AT,build:BUILD_ID,releaseId:DEPLOYMENT_ID,stories:[['FH-1405.1','Classify root, library, detail, editor, and modal screens'],['FH-1405.2','Add explicit exits to every secondary screen'],['FH-1405.3','Return secondary screens to their immediate caller'],['FH-1411','Restore recipe editing from the detail pencil'],['FH-1412','Edit recipe ingredient quantities and units'],['FH-1413','Swipe-left recipe ingredient removal'],['FH-1421','Connect Consume Now to Universal Log'],['FH-1422','Connect Plan for Later to Universal Log'],['FH-1432','Standard meal editor header actions'],['FH-1440','Correct nested editor viewport and overlay layering'],['FH-1451','Centralize release metadata'],['FH-1452','Show current version, build, deployment, and timestamp in About'],['FH-1453','Fail release verification for stale About metadata']],knownIssues:[]},
  {version:'1.4.10.43b',name:'Daily Health Newspaper',type:'Daily Brief evolution',created:'2026-07-23T05:45:00-04:00',build:'141043B',releaseId:'FH-20260723-141043B',stories:[['FH-1311','Front Page and editorial story ranking'],['FH-1312','Continuous health newspaper sections'],['FH-1313','Urgency-based pantry safety intelligence'],['FH-1314','Voice Engine 2.0 with exact voiceURI persistence'],['FH-1315','Conversational spoken narration'],['FH-1316','Momentum section'],['FH-1317','Chef’s Kitchen section'],['FH-1318','Looking Ahead section'],['FH-1319','Coaching observations'],['FH-1320','Daily wins'],['FH-1321','Newspaper presentation polish'],['FH-1322','Standardized briefing story model'],['FH-1323','Breaking pantry alerts']],knownIssues:[]},
