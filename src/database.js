@@ -690,7 +690,12 @@ const migrations=[
     ALTER TABLE planned_meals ADD COLUMN reserved_calories REAL DEFAULT 0;
     CREATE INDEX IF NOT EXISTS idx_planned_meal_definition_date ON planned_meals(meal_definition_id,planned_local_date,status);
     INSERT OR REPLACE INTO release_metadata(version,release_date,build_id,schema_version,title,created_at)
-    VALUES ('1.4.11.14','2026-07-23','141240',51,'Meal Planning Calendar Prototype','2026-07-23T21:40:00.000Z');
+    VALUES ('1.4.11.15','2026-07-23','141250',51,'Meal Planning Calendar Prototype','2026-07-23T21:40:00.000Z');
+  `}
+
+,  {version:52,name:'restaurant_aware_meal_planning',sql:`
+    INSERT OR REPLACE INTO release_metadata(version,release_date,build_id,schema_version,title,created_at)
+    VALUES ('1.4.11.15','2026-07-23','141250',52,'Restaurant-Aware Meal Planning Prototype','2026-07-23T22:25:00.000Z');
   `}
 
 ];

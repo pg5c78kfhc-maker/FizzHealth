@@ -28,7 +28,7 @@ test('FH-1250.1 keeps Home focused on daily state while planning remains in Food
 test('meal planner prototype uses saved Meals and a date calendar',()=>{
  assert.match(main,/MEAL PLANNING PROTOTYPE/);
  assert.match(main,/SELECT \* FROM meal_definitions/);
- assert.match(main,/Reserve capacity/);
+ assert.match(main,/RESTAURANT/);
  assert.match(main,/planned_local_date BETWEEN/);
 });
 

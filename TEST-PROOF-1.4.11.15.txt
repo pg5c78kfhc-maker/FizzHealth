@@ -1,0 +1,25 @@
+Fizz Health v1.4.11.15 Test Proof
+=================================
+
+Automated tests:
+- Command: npm test
+- Result: 335 passed, 0 failed
+
+Release integrity:
+- Command: npm run verify:release
+- Result: passed
+- Verified version: 1.4.11.15
+- Verified build: 141250
+- Verified deployment: FH-20260723-141250
+- Verified completed scope: FH-1478 through FH-1482
+
+JSX/JavaScript parse verification:
+- Command: tsc --allowJs --checkJs false --jsx react-jsx --noEmit --module esnext --target es2022 --moduleResolution bundler src/main.jsx
+- Result: passed
+
+Production build:
+- npm ci was attempted with the project lockfile and offline preference.
+- Dependency installation could not complete in the execution environment, so Vite was unavailable and npm run build could not be executed.
+
+GitHub:
+- No commits or pushes performed.

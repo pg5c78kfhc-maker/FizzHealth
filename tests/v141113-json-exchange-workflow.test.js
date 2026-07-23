@@ -30,9 +30,9 @@ test('restaurant exchange UI contains review, apply, and completion states',()=>
  assert.match(main,/restaurantMenuItems\(payload\)/);
 });
 
-test('release metadata identifies 1.4.11.14 deployment',()=>{
+test('release metadata identifies 1.4.11.15 deployment',()=>{
  const meta=JSON.parse(fs.readFileSync(new URL('../VERSION.json',import.meta.url),'utf8'));
- assert.equal(meta.version,'1.4.11.14');
- assert.equal(meta.build,'141240');
- assert.equal(meta.release_id,'FH-20260723-141240');
+ assert.equal(meta.version,'1.4.11.15');
+ assert.equal(meta.build,'141250');
+ assert.equal(meta.release_id,'FH-20260723-141250');
 });

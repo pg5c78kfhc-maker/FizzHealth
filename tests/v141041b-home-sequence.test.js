@@ -38,8 +38,8 @@ test('nutrition progress preserves dynamic top-ten and show-all logic outside in
 });
 
 test('release metadata advances to v1.4.10.43a',()=>{
- assert.equal(meta.version,'1.4.11.14');
- assert.equal(meta.build,'141240');
- assert.match(main,/const VERSION='1\.4\.11\.14'/);
- assert.match(main,/const BUILD_ID='141240'/);
+ assert.equal(meta.version,'1.4.11.15');
+ assert.equal(meta.build,'141250');
+ assert.match(main,/const VERSION='1\.4\.11\.15'/);
+ assert.match(main,/const BUILD_ID='141250'/);
 });

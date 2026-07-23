@@ -6,9 +6,9 @@ const main=fs.readFileSync(new URL('../src/main.jsx',import.meta.url),'utf8');
 const meta=JSON.parse(fs.readFileSync(new URL('../VERSION.json',import.meta.url),'utf8'));
 
 test('release metadata advances to v1.4.10.43a',()=>{
- assert.equal(meta.version,'1.4.11.14');
- assert.equal(meta.build,'141240');
- assert.match(main,/const VERSION='1\.4\.11\.14'/);
+ assert.equal(meta.version,'1.4.11.15');
+ assert.equal(meta.build,'141250');
+ assert.match(main,/const VERSION='1\.4\.11\.15'/);
 });
 
 test('mobile Highest Impact card uses a full-width single-column layout',()=>{
