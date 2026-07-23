@@ -1,0 +1,12 @@
+Fizz Health v1.4.11.16 — Robust JSON Exchange
+
+Automated tests: 337 passed, 0 failed.
+Release verification: passed.
+Production build: not run because Vite dependencies are not installed in the execution environment (`vite: not found`).
+
+Targeted coverage includes:
+- Smart/curly quote normalization, including nested JSON strings.
+- Structured arrays and objects accepted for *_json fields.
+- Trailing comma, code fence, BOM, line-ending, and clipboard wrapping repair.
+- Separate syntax and exchange-schema validation.
+- Restaurant import review and explicit approval workflow.

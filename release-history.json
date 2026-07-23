@@ -2,13 +2,49 @@
   "format": "fizz-health-release-history",
   "releases": [
     {
+      "version": "1.4.11.16",
+      "release": "1.4.11.16",
+      "release_type": "Critical corrective release",
+      "build": "141251",
+      "release_id": "FH-20260723-141251",
+      "created_at": "2026-07-23T18:51:00-04:00",
+      "schema_version": 52,
+      "status": "Robust JSON Exchange",
+      "completed_story": "FH-1482 through FH-1486",
+      "stories": [
+        "FH-1482",
+        "FH-1483",
+        "FH-1484",
+        "FH-1485",
+        "FH-1486"
+      ],
+      "release_name": "Robust JSON Exchange"
+    },
+    {
       "version": "1.4.11.15",
-      "name": "Meal Planning Calendar Prototype",
-      "title": "Meal Planning Calendar Prototype",
+      "name": "Restaurant-Aware Meal Planning Prototype",
+      "title": "Restaurant-Aware Meal Planning Prototype",
       "type": "Feature prototype",
       "build": "141250",
       "releaseId": "FH-20260723-141250",
       "release_id": "FH-20260723-141250",
+      "created": "2026-07-23T18:25:00-04:00",
+      "created_at": "2026-07-23T18:25:00-04:00",
+      "stories": [
+        "FH-1478",
+        "FH-1479",
+        "FH-1480",
+        "FH-1481"
+      ]
+    },
+    {
+      "version": "1.4.11.14",
+      "name": "Meal Planning Calendar Prototype",
+      "title": "Meal Planning Calendar Prototype",
+      "type": "Feature prototype",
+      "build": "141240",
+      "releaseId": "FH-20260723-141240",
+      "release_id": "FH-20260723-141240",
       "created": "2026-07-23T17:40:00-04:00",
       "created_at": "2026-07-23T17:40:00-04:00",
       "stories": [

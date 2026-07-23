@@ -25,7 +25,7 @@ test('Pantry inventory editor is mounted as a dedicated top layer',()=>{
 
 test('Paste Response validates and advances directly to the review screen',()=>{
  const workspace=main.slice(main.indexOf('function FoodEnrichmentWorkspace'),main.indexOf('function NutritionEditor'));
- assert.match(workspace,/async function pasteResponse\(\)\{try\{const normalized=normalizeUniversalJson\(await navigator\.clipboard\.readText\(\)\),payload=validateUniversalExchange/);
+ assert.match(workspace,/async function pasteResponse\(\)\{try\{const parsed=parseExchangeJson\(await navigator\.clipboard\.readText\(\)\),payload=validateUniversalExchange/);
  assert.match(workspace,/setPreview\(payload\);setMessage\('Response validated\. Review all proposed changes before importing\.'/);
  assert.doesNotMatch(workspace,/Response pasted\. Tap Review/);
 });

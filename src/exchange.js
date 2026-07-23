@@ -44,29 +44,86 @@ export function buildLogOnceExchange(){
  return {format:EXCHANGE_FORMAT,schema_version:EXCHANGE_SCHEMA_VERSION,request_type:'universal_exchange',request_id:`log-once-${Date.now()}`,operation:'log_once_meal',target:{type:'meal_event',id:null,create_if_missing:true},instructions:{recipient:'ChatGPT with access to the attached meal photograph and description',purpose:'Estimate nutrition for one consumed meal without creating a reusable food.',rules:[...sharedRules,'Return one proposed consumed meal event.','This is a one-time meal. Never create a Food, Recipe, Pantry item, or restaurant menu item.','Estimate the visible portion and include portion assumptions.','Use restaurant_estimate when the meal appears to be restaurant food; otherwise use visual_estimate.']},existing_record:null,proposed_record:{name:null,meal_type:'Meal',amount:1,unit:'serving',portion_description:null,nutrition:emptyNutrition(),notes:null},analysis:{identity_match:true,confidence:null,evidence_quality:'visual_estimate',evidence_notes:[],portion_assumptions:[],photos_analyzed:[]},review:{approval_mode:'all_or_nothing',user_review_required:true}};
 }
 
+const quoteMap={"“":'"',"”":'"',"„":'"',"‟":'"'};
+
+function normalizeSmartQuotedJson(text=''){
+ const source=String(text);let out='',inSmart=false,escaped=false;
+ for(let i=0;i<source.length;i++){
+  const ch=source[i];
+  if(ch==='“'||ch==='”'||ch==='„'||ch==='‟'){
+   if(!inSmart){out+='"';inSmart=true;escaped=false}else{out+='"';inSmart=false;escaped=false}
+   continue;
+  }
+  if(inSmart&&ch==='"'){
+   out+=escaped?'"':'\\"';escaped=false;continue;
+  }
+  if(inSmart&&ch==='\\'){
+   out+=ch;escaped=!escaped;continue;
+  }
+  escaped=false;out+=quoteMap[ch]||ch;
+ }
+ return out;
+}
+
+function removeTrailingCommas(text=''){
+ let out='',inString=false,escaped=false;
+ for(let i=0;i<text.length;i++){
+  const ch=text[i];
+  if(inString){out+=ch;if(escaped)escaped=false;else if(ch==='\\')escaped=true;else if(ch==='"')inString=false;continue}
+  if(ch==='"'){inString=true;out+=ch;continue}
+  if(ch===','){
+   let j=i+1;while(j<text.length&&/\s/.test(text[j]))j++;
+   if(text[j]===']'||text[j]==='}')continue;
+  }
+  out+=ch;
+ }
+ return out;
+}
+
 export function normalizeExchangeJson(text=''){
- return String(text)
+ return normalizeSmartQuotedJson(String(text))
   .replace(/^\uFEFF/,'')
   .replace(/\u00a0/g,' ')
-  .replace(/[“”„‟]/g,'"')
   .replace(/[‘’‚‛]/g,"'")
   .replace(/^\s*```(?:json)?\s*/i,'')
   .replace(/\s*```\s*$/,'')
+  .replace(/\r\n?/g,'\n')
   .trim();
 }
+function jsonErrorContext(text,error){
+ const match=String(error?.message||'').match(/position\s+(\d+)/i);if(!match)return error?.message||'Unknown JSON syntax error.';
+ const position=Number(match[1]),before=text.slice(0,position),line=before.split('\n').length,column=position-(before.lastIndexOf('\n')+1)+1;
+ const field=[...before.matchAll(/"([^"\\]+)"\s*:/g)].at(-1)?.[1];
+ const excerpt=text.slice(Math.max(0,position-28),Math.min(text.length,position+28)).replace(/\s+/g,' ');
+ return `${error.message}${field?` near field "${field}"`:''} (line ${line}, column ${column}). Context: ${excerpt}`;
+}
 export function parseExchangeJson(text=''){
- const normalized=normalizeExchangeJson(text);
+ const original=String(text),normalized=normalizeExchangeJson(original);
  if(!normalized)throw new Error('Paste the JSON response first.');
- try{return {payload:JSON.parse(normalized),normalized,repaired:normalized!==String(text).trim()}}
- catch(firstError){
-  const start=normalized.indexOf('{'),end=normalized.lastIndexOf('}');
-  if(start>=0&&end>start){
-   const extracted=normalized.slice(start,end+1);
-   try{return {payload:JSON.parse(extracted),normalized:extracted,repaired:true}}
-   catch{}
+ const attempts=[{text:normalized,repairs:[]}];
+ const noTrailing=removeTrailingCommas(normalized);if(noTrailing!==normalized)attempts.push({text:noTrailing,repairs:['trailing commas']});
+ const start=normalized.indexOf('{'),end=normalized.lastIndexOf('}');
+ if(start>=0&&end>start){const extracted=normalized.slice(start,end+1),clean=removeTrailingCommas(extracted);if(!attempts.some(x=>x.text===clean))attempts.push({text:clean,repairs:['clipboard wrapping',...(clean!==extracted?['trailing commas']:[])]})}
+ let lastError;
+ for(const attempt of attempts){try{return {payload:normalizeStructuredJsonFields(JSON.parse(attempt.text)),normalized:attempt.text,repaired:attempt.text!==original.trim(),repairs:attempt.repairs}}catch(error){lastError=error}}
+ throw new Error(`JSON syntax failed. ${jsonErrorContext(attempts.at(-1).text,lastError)}`);
+}
+export function normalizeStructuredJsonFields(value){
+ if(Array.isArray(value))return value.map(normalizeStructuredJsonFields);
+ if(!value||typeof value!=='object')return value;
+ const result={};
+ for(const [key,raw] of Object.entries(value)){
+  let next=normalizeStructuredJsonFields(raw);
+  if(key.endsWith('_json')&&typeof next==='string'){
+   const trimmed=next.trim();if((trimmed.startsWith('[')&&trimmed.endsWith(']'))||(trimmed.startsWith('{')&&trimmed.endsWith('}'))){try{next=JSON.parse(trimmed)}catch{}}
   }
-  throw new Error(`The response is not valid JSON: ${firstError.message}`);
+  result[key]=next;
  }
+ return result;
+}
+export function serializeJsonBackedFields(record={}){
+ const result={};for(const [key,value] of Object.entries(record||{}))result[key]=key.endsWith('_json')&&value!=null&&typeof value!=='string'?JSON.stringify(value):value;
+ return result;
 }
 export function restaurantMenuItems(payload={}){
  const proposed=payload.proposed_record||payload.proposed||payload;
