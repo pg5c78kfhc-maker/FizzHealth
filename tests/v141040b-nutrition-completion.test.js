@@ -11,11 +11,10 @@ test('v1.4.10.40b remains preserved in release history',()=>{
  assert.match(main,/\{version:'1\.4\.10\.40b'/);
 });
 
-test('Pantry Pencil opens the full nutrition editor instead of AI Exchange',()=>{
- const editor=main.slice(main.indexOf('function PantryItemEditor'),main.indexOf('function Pantry({'));
- assert.match(editor,/setNutritionFood\(rows\[0\]\)/);
- assert.match(editor,/<NutritionEditor food=\{nutritionFood\}/);
- assert.doesNotMatch(editor,/<FoodEnrichmentWorkspace food=\{enrichmentFood\}/);
+test('Pantry Pencil opens the inventory editor',()=>{
+ const pantry=main.slice(main.indexOf('function Pantry({'),main.indexOf('function AIExchangeWorkspace'));
+ assert.match(pantry,/setSelectedPantry\(scoreItem\)/);
+ assert.match(pantry,/selectedPantry&&<PantryItemEditor/);
 });
 
 test('full nutrition editor explains exact completion requirements',()=>{

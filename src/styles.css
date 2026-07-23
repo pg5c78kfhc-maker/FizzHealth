@@ -864,6 +864,12 @@ body.food-library-active .content{height:calc(100dvh - var(--bottom-nav-height))
 .food-library-page .empty{flex:0 0 auto;min-height:150px}
 @media(max-width:390px){.food-library-page{padding-left:12px;padding-right:12px}.food-library-page .compact-library-actions{grid-template-columns:1fr 1fr}.food-library-page .compact-library-actions button:last-child{grid-column:1/-1}}
 
-/* v1.4.11.10: prepared recipe batch editor must render above recipe detail. */
+/* v1.4.11.11: prepared recipe batch editor must render above recipe detail. */
 .recipe-pantry-batch{z-index:3300!important;}
 .recipe-pantry-batch>.panel{position:relative;z-index:3301;}
+
+/* v1.4.11.11: pantry editor and confidence-detail stabilization. */
+.pantry-editor-layer{z-index:2600}
+.pantry-package-editor{display:grid;gap:14px}
+.missing-evidence-list ul{margin:10px 0 18px;padding-left:22px;display:grid;gap:8px}
+.missing-evidence-list li{color:var(--muted)}

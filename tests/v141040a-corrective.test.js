@@ -17,9 +17,10 @@ test('complete and incomplete pantry cards retain one horizontal fill each',()=>
  assert.match(css,/\.pantry-smart-item\.needs-data-card \.verify-chip\{background:inherit/);
 });
 
-test('Pantry nutrition and enrichment overlays are mounted outside the inventory form',()=>{
- const editor=main.slice(main.indexOf('function PantryItemEditor'),main.indexOf('function Pantry({'));
- assert.match(editor,/<\/form><\/div>\{nutritionFood&&<NutritionEditor/);
+test('Pantry inventory editor is mounted as a dedicated top layer',()=>{
+ const editor=main.slice(main.indexOf('function PantryItemEditor'),main.indexOf('function pantryMissingEvidence'));
+ assert.match(editor,/pantry-editor-layer/);
+ assert.match(editor,/z-index:2600|pantry-editor-layer/);
 });
 
 test('Paste Response validates and advances directly to the review screen',()=>{

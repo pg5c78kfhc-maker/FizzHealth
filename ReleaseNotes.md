@@ -1,16 +1,18 @@
-# Fizz Health v1.4.11.10
+# Fizz Health v1.4.11.11
 
-Prepared Recipe Pantry End-to-End Repair — FH-1485 through FH-1488
+Pantry Structure & Editing Stabilization — FH-1462 through FH-1468
 
-- Add a prepared recipe to Pantry using total gram weight.
-- The add form now renders above the recipe detail screen.
-- Pantry persistence is verified before success is reported.
-- Source ingredients are not individually decremented.
+- Track package count separately from size per package and total quantity.
+- Track an open package remainder and unopened package count.
+- Keep prepared recipe batches measured by total gram weight.
+- Open the real pantry editor from the detail pencil.
+- Name every missing field that reduces inventory confidence.
+- Preserve existing and legacy pantry records without destructive cleanup.
 
-Version: 1.4.11.10  
-Build: 141200  
-Deployment: FH-20260723-141200  
-Released: 2026-07-23 11:15 EDT
+Version: 1.4.11.11  
+Build: 141210  
+Deployment: FH-20260723-141210  
+Released: 2026-07-23 11:45 EDT
 
 # Fizz Health v1.4.11.9
 

@@ -1,0 +1,16 @@
+Fizz Health v1.4.11.11 — Pantry Structure & Editing Stabilization
+
+Automated tests: 319 passed, 0 failed.
+Release metadata verification: passed.
+Database JavaScript syntax check: passed.
+Production build: not executed because the supplied environment does not contain the Vite executable (sh: vite: not found).
+
+Functional scope covered by regression tests:
+- package count and package type fields
+- size per package and package unit
+- unopened package count and open-package remainder
+- calculated total quantity
+- prepared recipe gram-weight preservation
+- pantry detail pencil opens the inventory editor
+- exact missing-confidence evidence
+- schema migration and mandatory release metadata

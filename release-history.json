@@ -2,32 +2,45 @@
   "format": "fizz-health-release-history",
   "releases": [
     {
-      "version": "1.4.11.10",
-      "name": "Prepared Recipe Pantry End-to-End Repair",
+      "version": "1.4.11.11",
+      "name": "Pantry Structure & Editing Stabilization",
       "type": "Blocking corrective release",
-      "created": "2026-07-23T11:15:00-04:00",
-      "build": "141200",
-      "releaseId": "FH-20260723-141200",
+      "created": "2026-07-23T11:45:00-04:00",
+      "build": "141210",
+      "releaseId": "FH-20260723-141210",
       "stories": [
         [
-          "FH-1485",
-          "Render the prepared-batch editor above recipe detail instead of behind it"
+          "FH-1462",
+          "Separate package count, package type, and size per package"
         ],
         [
-          "FH-1486",
-          "Create and verify the prepared Pantry record in the same transaction"
+          "FH-1463",
+          "Preserve prepared recipe inventory by total gram weight"
         ],
         [
-          "FH-1487",
-          "Track prepared recipe inventory by total gram weight"
+          "FH-1464",
+          "Repair pantry detail pencil routing"
         ],
         [
-          "FH-1488",
-          "Keep optional pantry event history from rolling back the Pantry save"
+          "FH-1465",
+          "Explain exact missing confidence evidence"
+        ],
+        [
+          "FH-1466",
+          "Complete pantry inventory editing and verification"
+        ],
+        [
+          "FH-1467",
+          "Preserve legacy pantry records for safe cleanup"
+        ],
+        [
+          "FH-1468",
+          "Add end-to-end pantry regression coverage"
         ]
       ],
       "knownIssues": [],
-      "release_id": "FH-20260723-141200"
+      "release_id": "FH-20260723-141210",
+      "title": "Pantry Structure & Editing Stabilization"
     },
     {
       "version": "1.4.11.9",

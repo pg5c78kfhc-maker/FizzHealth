@@ -1,7 +1,7 @@
 {
   "name": "fizz-health",
   "private": true,
-  "version": "1.4.11.10",
+  "version": "1.4.11.11",
   "type": "module",
   "scripts": {
     "dev": "vite",

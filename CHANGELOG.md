@@ -1,10 +1,12 @@
-## v1.4.11.10 — Prepared Recipe Pantry End-to-End Repair
+## v1.4.11.11 — Pantry Structure & Editing Stabilization
 
-- Fixed the prepared-batch editor being rendered behind the recipe detail screen.
-- Added total gram weight as the required pantry quantity for prepared recipes.
-- Verified the Pantry record inside and after the database transaction.
-- Prevented optional pantry event logging from rolling back the actual Pantry save.
-- Updated mandatory About/build/deployment metadata.
+- FH-1462: Separated package count, package type, size per package, open-package remainder, and calculated total quantity.
+- FH-1463: Preserved prepared-recipe pantry inventory by total gram weight.
+- FH-1464: Repaired the pantry detail pencil so it opens the selected item editor above the detail screen.
+- FH-1465: Replaced vague confidence language with exact missing-data explanations.
+- FH-1466: Added freshness, expiration, package structure, and automatic verification to the pantry editor.
+- FH-1467: Preserved legacy and duplicate records without destructive automatic cleanup.
+- FH-1468: Added regression coverage for package calculations, editor routing, persistence fields, and release metadata.
 
 ## v1.4.11.9 — Meals Library Regression Stabilization
 

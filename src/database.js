@@ -3,7 +3,7 @@ import wasmUrl from 'sql.js/dist/sql-wasm.wasm?url';
 
 const DB_KEY='fizz-health-sqlite-v1';
 const STORAGE_DB='FizzHealthStorage';
-const TARGET_SCHEMA_VERSION=46;
+const TARGET_SCHEMA_VERSION=48;
 let SQL, db;
 
 const migrations=[
@@ -662,6 +662,19 @@ const migrations=[
     VALUES ('1.4.11.4','2026-07-23','141140',48,'Critical Action Wiring Repair','2026-07-23T13:15:00.000Z');
   `}
 
+,  {version:48,name:'pantry_package_structure_and_editor_stabilization',sql:`
+    ALTER TABLE pantry ADD COLUMN package_count REAL;
+    ALTER TABLE pantry ADD COLUMN package_type TEXT;
+    ALTER TABLE pantry ADD COLUMN container_size REAL;
+    ALTER TABLE pantry ADD COLUMN container_unit TEXT;
+    ALTER TABLE pantry ADD COLUMN unopened_packages REAL;
+    ALTER TABLE pantry ADD COLUMN partial_package_quantity REAL;
+    ALTER TABLE pantry ADD COLUMN freshness_status TEXT;
+    ALTER TABLE pantry ADD COLUMN source_recipe_id TEXT;
+    INSERT OR REPLACE INTO release_metadata(version,release_date,build_id,schema_version,title,created_at)
+    VALUES ('1.4.11.11','2026-07-23','141210',48,'Pantry Structure & Editing Stabilization','2026-07-23T15:45:00.000Z');
+  `}
+
 ];
 
 const canonicalSchema={
@@ -672,7 +685,7 @@ const canonicalSchema={
   },
   pantry:{
     create:`CREATE TABLE IF NOT EXISTS pantry (id INTEGER PRIMARY KEY AUTOINCREMENT, pantry_id TEXT, item TEXT, food_id TEXT, brand TEXT, on_hand TEXT, quantity REAL, unit TEXT, opened TEXT, opened_date TEXT, expiration TEXT, location TEXT, status TEXT, priority TEXT, category TEXT, notes TEXT)`,
-    columns:{pantry_id:'TEXT',item:'TEXT',food_id:'TEXT',brand:'TEXT',on_hand:'TEXT',quantity:'REAL',unit:'TEXT',opened:'TEXT',opened_date:'TEXT',expiration:'TEXT',location:'TEXT',status:'TEXT',priority:'TEXT',category:'TEXT',notes:'TEXT',purchase_date:'TEXT',verified_at:'TEXT',storage_type:'TEXT',manufacturer_shelf_life_days:'REAL',opened_shelf_life_days:'REAL',freshness_observation:'TEXT',purchase_price:'REAL',retailer:'TEXT',original_servings:'REAL',quantity_accuracy:'TEXT'},
+    columns:{pantry_id:'TEXT',item:'TEXT',food_id:'TEXT',brand:'TEXT',on_hand:'TEXT',quantity:'REAL',unit:'TEXT',opened:'TEXT',opened_date:'TEXT',expiration:'TEXT',location:'TEXT',status:'TEXT',priority:'TEXT',category:'TEXT',notes:'TEXT',purchase_date:'TEXT',verified_at:'TEXT',storage_type:'TEXT',manufacturer_shelf_life_days:'REAL',opened_shelf_life_days:'REAL',freshness_observation:'TEXT',purchase_price:'REAL',retailer:'TEXT',original_servings:'REAL',quantity_accuracy:'TEXT',package_count:'REAL',package_type:'TEXT',container_size:'REAL',container_unit:'TEXT',unopened_packages:'REAL',partial_package_quantity:'REAL',freshness_status:'TEXT',source_recipe_id:'TEXT'},
     aliases:{item:['name','food','pantry_item'],food_id:['canonical_food_id'],expiration:['effective_expiry','best_by_expiration']}
   },
   recipes:{

@@ -11,11 +11,11 @@ test('missing-data cards use icon-only fixed status column and distinct backgrou
  assert.match(css,/\.pantry-smart-item\.needs-data-card\{background:#263a2d/);
  assert.match(css,/\.pantry-smart-item\.needs-data-card \.verify-chip\{background:inherit/);
 });
-test('pantry editor routes through the shared full nutrition editor before enrichment',()=>{
- assert.match(main,/aria-label="View and edit complete nutrition record"><Pencil\/>/);
- assert.match(main,/<NutritionEditor food=\{nutritionFood\}/);
- assert.match(main,/aria-label="Enrich this food"/);
- assert.match(exchange,/inventory_context:\{quantity:food\.pantry_quantity/);
+test('pantry editor exposes package structure and direct save',()=>{
+ assert.match(main,/Packages on hand/);
+ assert.match(main,/Size per package/);
+ assert.match(main,/partial_package_quantity/);
+ assert.match(main,/aria-label="Save pantry item"/);
 });
 test('location browsing defaults to All and excludes Home',()=>{
  assert.match(main,/useState\('All'\)/);
