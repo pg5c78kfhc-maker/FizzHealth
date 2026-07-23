@@ -1,3 +1,11 @@
+## v1.4.11.3 — Navigation & Workflow Stabilization
+
+- Build: 141130
+- Deployment: FH-20260723-141130
+- Date: 2026-07-23
+- Scope: FH-1405.1 through FH-1460
+- Status: Tested
+
 
 
 ## v1.4.10.43b — Daily Health Newspaper

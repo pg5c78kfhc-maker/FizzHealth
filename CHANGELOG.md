@@ -1,3 +1,10 @@
+## v1.4.11.3 — 2026-07-23
+
+- Added a clear exit from the secondary Meals library back to Food.
+- Restored recipe pencil, Consume Now, and Plan for Later workflows by correcting nested overlay layering and action wiring.
+- Centralized About metadata at v1.4.11.3 / build 141130 / deployment FH-20260723-141130.
+- Made stale About metadata a release-verification failure.
+
 ## v1.4.11.2 — 2026-07-23
 
 - Standardized editor headers and moved meal deletion to the header.

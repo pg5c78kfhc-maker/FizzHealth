@@ -816,3 +816,9 @@ textarea{width:100%;min-width:0;max-height:min(36dvh,280px);resize:vertical;over
  .component-picker-panel{border-radius:14px}
  .component-picker-backdrop,.recipe-create-modal{padding-left:4px;padding-right:4px}
 }
+
+/* v1.4.11.3 — navigation, nested workflow, and metadata hardening */
+.meals-library-head{margin-bottom:4px}
+.recipe-create-modal,.universal-log-backdrop,.component-picker-backdrop{z-index:3200!important}
+.recipe-create-editor,.universal-log-panel,.component-picker-panel{position:relative;z-index:3201}
+.decision-page .recipe-create-modal,.decision-page .universal-log-backdrop{position:fixed;inset:0}

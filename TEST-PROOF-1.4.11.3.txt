@@ -1,0 +1,20 @@
+Fizz Health v1.4.11.3 — Navigation & Workflow Stabilization
+
+Test date: 2026-07-23
+
+Automated tests:
+- Command: npm test
+- Result: PASS
+- Tests: 288 passed, 0 failed
+
+Release verification:
+- Command: TERM=xterm npm run verify:release
+- Result: PASS
+- Verified version: 1.4.11.3
+- Verified build: 141130
+- Verified deployment: FH-20260723-141130
+- Verified About screen bindings to centralized version, build, deployment, and timestamp constants
+
+Production build:
+- npm dependency installation could not run in the isolated environment (container client failure).
+- node_modules was not available, so Vite production build was not executed.

@@ -656,6 +656,12 @@ const migrations=[
     VALUES ('1.4.11.2','2026-07-23','141120',46,'Daily Brief & Meal Intelligence — First Pass',CURRENT_TIMESTAMP);
   `}
 
+
+,  {version:47,name:'navigation_workflow_and_release_integrity',sql:`
+    INSERT OR REPLACE INTO release_metadata(version,release_date,build_id,schema_version,title,created_at)
+    VALUES ('1.4.11.3','2026-07-23','141130',47,'Navigation & Workflow Stabilization','2026-07-23T12:55:00.000Z');
+  `}
+
 ];
 
 const canonicalSchema={

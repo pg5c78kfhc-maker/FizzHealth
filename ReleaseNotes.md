@@ -1,8 +1,7 @@
-# Fizz Health v1.4.11.2
+# Fizz Health v1.4.11.3
 
-Meal & Editor Stabilization
+Navigation & Workflow Stabilization
 
-This release repairs pantry editing, recipe editing, meal deletion placement, universal consume/plan actions, visual viewport sizing, invalid quantity displays, and release metadata consistency.
+This corrective hardening release restores the recipe edit and universal logging workflows, adds a clear exit to the secondary Meals library, fixes nested editor layering and viewport behavior, and makes the About screen read the exact current version, build, deployment identifier, and release timestamp from centralized release metadata.
 
-
-Completed story: FH-1341 through FH-1404
+Completed story: FH-1405.1 through FH-1460
