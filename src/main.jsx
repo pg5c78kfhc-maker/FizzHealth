@@ -20,11 +20,11 @@ import {buildRecipeSnapshot,compactRecipeMealNotes} from './nutrition/recipe';
 import {normalizeSqlValue,auditValue} from './exchange/persistence';
 import {buildFoodEnrichmentExchange,buildNewFoodExchange,buildLogOnceExchange,normalizeExchangeJson as normalizeUniversalJson,validateUniversalExchange,foodProposal,mealProposal,changedFoodFields} from './exchange';
 import './styles.css';
-const VERSION='1.4.11.9';
+const VERSION='1.4.11.10';
 const RELEASE_DATE='2026-07-23';
-const BUILD_ID='141190';
-const DEPLOYMENT_ID='FH-20260723-141190';
-const RELEASE_CREATED_AT='2026-07-23T10:45:00-04:00';
+const BUILD_ID='141200';
+const DEPLOYMENT_ID='FH-20260723-141200';
+const RELEASE_CREATED_AT='2026-07-23T11:15:00-04:00';
 const localDateKey=(date=new Date())=>{const y=date.getFullYear(),m=String(date.getMonth()+1).padStart(2,'0'),d=String(date.getDate()).padStart(2,'0');return `${y}-${m}-${d}`};
 const today=()=>localDateKey();
 const toDateTimeLocal=(date=new Date())=>{const y=date.getFullYear(),m=String(date.getMonth()+1).padStart(2,'0'),d=String(date.getDate()).padStart(2,'0'),h=String(date.getHours()).padStart(2,'0'),min=String(date.getMinutes()).padStart(2,'0');return `${y}-${m}-${d}T${h}:${min}`};
@@ -285,25 +285,30 @@ function RecipePantryBatchEditor({recipe,onClose,onSaved}){
  const locations=optionalQuery(`SELECT * FROM pantry_locations WHERE COALESCE(active,1)=1 ORDER BY COALESCE(is_current,0) DESC,name COLLATE NOCASE`);
  const [saving,setSaving]=useState(false),[error,setError]=useState('');
  async function save(event){
-  event.preventDefault();setError('');const form=new FormData(event.currentTarget),quantity=Number(form.get('quantity'));
-  if(!Number.isFinite(quantity)||quantity<=0){setError('Enter the prepared quantity on hand.');return}
-  const unit=String(form.get('unit')||'g').trim()||'g',now=new Date().toISOString(),pantryId=`P-RECIPE-${Date.now()}-${Math.random().toString(36).slice(2,7)}`;
+  event.preventDefault();
+  if(saving)return;
+  setError('');
+  const form=new FormData(event.currentTarget),quantity=Number(form.get('quantity_grams'));
+  if(!Number.isFinite(quantity)||quantity<=0){setError('Enter the total prepared gram weight.');return}
+  const unit='g',now=new Date().toISOString(),pantryId=`P-RECIPE-${Date.now()}-${Math.random().toString(36).slice(2,7)}`,foodId=`recipe:${recipe.recipe_id}`;
   setSaving(true);
   try{
+   let savedRecord=null;
    await transaction(async db=>{
-    const foodId=`recipe:${recipe.recipe_id}`;
     const existingFood=db.query('SELECT food_id FROM foods WHERE food_id=? LIMIT 1',[foodId])[0];
-    if(!existingFood)insertRecord(db,'foods',{food_id:foodId,name:recipe.recipe_name,category:'Prepared recipe',default_serving:quantity,unit,nutrition_known:0,nutrition_source:'recipe_prepared_batch',notes:`Prepared pantry food linked to recipe ${recipe.recipe_name}`,created_at:now,updated_at:now});
-    else db.run('UPDATE foods SET name=?,category=?,default_serving=?,unit=?,updated_at=? WHERE food_id=?',[recipe.recipe_name,'Prepared recipe',quantity,unit,now,foodId]);
+    if(!existingFood)insertRecord(db,'foods',{food_id:foodId,name:recipe.recipe_name,category:'Prepared recipe',default_serving:100,unit,nutrition_known:0,nutrition_source:'recipe_prepared_batch',notes:`Prepared pantry food linked to recipe ${recipe.recipe_name}`,created_at:now,updated_at:now});
+    else db.run('UPDATE foods SET name=?,category=?,unit=?,updated_at=? WHERE food_id=?',[recipe.recipe_name,'Prepared recipe',unit,now,foodId]);
     insertRecord(db,'pantry',{pantry_id:pantryId,item:recipe.recipe_name,food_id:foodId,brand:'Prepared recipe',on_hand:'Yes',quantity,unit,opened:form.get('opened')||'Yes',opened_date:form.get('prepared_date')||localDateKey(),purchase_date:form.get('prepared_date')||localDateKey(),expiration:form.get('expiration')||null,location:form.get('location')||locations[0]?.name||'Refrigerator',status:'Active',priority:'Use first',category:'Prepared recipe',notes:[`Prepared from recipe ${recipe.recipe_name}`,form.get('notes')].filter(Boolean).join(' · '),verified_at:now,quantity_accuracy:'verified'});
-    insertRecord(db,'pantry_events',{pantry_id:pantryId,event_type:'prepared_recipe_batch',quantity,unit,notes:`Prepared from recipe ${recipe.recipe_name}`,event_at:now});
+    savedRecord=db.query('SELECT * FROM pantry WHERE pantry_id=? LIMIT 1',[pantryId])[0]||null;
+    if(!savedRecord)throw new Error('Pantry save failed before the transaction completed.');
+    try{insertRecord(db,'pantry_events',{pantry_id:pantryId,event_type:'prepared_recipe_batch',quantity,unit,notes:`Prepared from recipe ${recipe.recipe_name}`,event_at:now})}catch(eventError){console.warn('Prepared batch event history was not recorded:',eventError)}
    });
-   const saved=optionalQuery('SELECT * FROM pantry WHERE pantry_id=? LIMIT 1',[pantryId])[0];
-   if(!saved)throw new Error('The prepared batch could not be verified in Pantry.');
-   onSaved?.(saved);
+   const persisted=query('SELECT * FROM pantry WHERE pantry_id=? LIMIT 1',[pantryId])[0];
+   if(!persisted)throw new Error('The prepared batch was not retained in Pantry.');
+   onSaved?.(persisted);
   }catch(err){setError(err instanceof Error?err.message:String(err))}finally{setSaving(false)}
  }
- return <div className="modal-backdrop recipe-pantry-batch" onClick={onClose}><form className="panel fixed-editor pantry-manual-editor" onSubmit={save} onClick={e=>e.stopPropagation()}><div className="edit-head sticky-head"><button type="button" className="header-icon-action" onClick={onClose} aria-label="Cancel"><X/></button><div><small>PREPARED RECIPE</small><h3>Add {recipe.recipe_name} to Pantry</h3><em>Track the finished food, not its individual ingredients</em></div><button type="submit" className="header-icon-action save-action" disabled={saving} aria-label="Save prepared batch"><Check/></button></div><div className="editor-scroll"><div className="amount"><label>Quantity on hand<input name="quantity" type="number" inputMode="decimal" min="0.1" step="0.1" autoFocus required/></label><label>Unit<select name="unit" defaultValue="g"><option value="g">g</option><option value="oz">oz</option><option value="ml">ml</option><option value="serving">serving</option></select></label></div><label>Prepared date<input name="prepared_date" type="date" defaultValue={localDateKey()}/></label><label>Expiration / best-by<input name="expiration" type="date"/></label><label>Storage location<select name="location" defaultValue={locations[0]?.name||'Refrigerator'}>{locations.length?locations.map(l=><option key={l.location_id||l.name}>{l.name}</option>):<><option>Refrigerator</option><option>Freezer</option><option>Pantry</option></>}</select></label><label>Package state<select name="opened" defaultValue="Yes"><option>Yes</option><option>No</option></select></label><label>Notes<textarea name="notes" placeholder="Optional batch notes"/></label><section className="decision-block"><h3>Pantry accounting</h3><p>Fizz Health will track this prepared batch as {recipe.recipe_name}. The source ingredients will not be individually decremented.</p></section>{error&&<div className="inline-error">{error}</div>}</div></form></div>
+ return <div className="modal-backdrop recipe-pantry-batch" onClick={onClose}><form className="panel fixed-editor pantry-manual-editor" onSubmit={save} onClick={e=>e.stopPropagation()}><div className="edit-head sticky-head"><button type="button" className="header-icon-action" onClick={onClose} aria-label="Cancel"><X/></button><div><small>PREPARED RECIPE</small><h3>Add {recipe.recipe_name} to Pantry</h3><em>Track the finished food by total gram weight</em></div><button type="submit" className="header-icon-action save-action" disabled={saving} aria-label="Save prepared batch"><Check/></button></div><div className="editor-scroll"><label>Total gram weight<input name="quantity_grams" type="number" inputMode="decimal" min="0.1" step="0.1" autoFocus required placeholder="e.g. 1250"/><small>The pantry will track the finished recipe in grams.</small></label><label>Prepared date<input name="prepared_date" type="date" defaultValue={localDateKey()}/></label><label>Expiration / best-by<input name="expiration" type="date"/></label><label>Storage location<select name="location" defaultValue={locations[0]?.name||'Refrigerator'}>{locations.length?locations.map(l=><option key={l.location_id||l.name}>{l.name}</option>):<><option>Refrigerator</option><option>Freezer</option><option>Pantry</option></>}</select></label><label>Package state<select name="opened" defaultValue="Yes"><option>Yes</option><option>No</option></select></label><label>Notes<textarea name="notes" placeholder="Optional batch notes"/></label><section className="decision-block"><h3>Pantry accounting</h3><p>Fizz Health will create a Pantry item for {recipe.recipe_name} and track the total prepared gram weight. The source ingredients will not be individually decremented.</p></section>{error&&<div className="inline-error" role="alert">{error}</div>}</div></form></div>
 }
 function FoodRecipeDetails({item,onClose,onSaved}){
  const isRecipe=item?.type==='recipe', snap=isRecipe?recipeSnapshot(item.recipe_id):null, source=isRecipe?snap:item;
@@ -1216,7 +1221,7 @@ function NutrientConfiguration({onBack,onClose=onBack}){
 }
 
 const RELEASE_HISTORY=[
- {version:'1.4.11.9',name:'Food Library Data & Layer Recovery',type:'Blocking corrective release',created:RELEASE_CREATED_AT,build:BUILD_ID,releaseId:DEPLOYMENT_ID,stories:[['FH-1481','Restore All, Recipes, Favorites, Recent, and Meals from independent stable queries'],['FH-1482','Remove contradictory empty states and collapsed placeholder rows'],['FH-1483','Hide swipe action rails unless a card is actively swiped'],['FH-1484','Use one results container and reset card state on filter changes']],knownIssues:[]},
+ {version:'1.4.11.10',name:'Prepared Recipe Pantry End-to-End Repair',type:'Blocking corrective release',created:RELEASE_CREATED_AT,build:BUILD_ID,releaseId:DEPLOYMENT_ID,stories:[['FH-1485','Render the prepared-batch editor above recipe detail instead of behind it'],['FH-1486','Create and verify the prepared Pantry record in the same transaction'],['FH-1487','Track prepared recipe inventory by total gram weight'],['FH-1488','Keep optional pantry event history from rolling back the Pantry save']],knownIssues:[]},
  {version:'1.4.11.8',name:'Meals Library Regression Stabilization',type:'Blocking corrective release',created:RELEASE_CREATED_AT,build:BUILD_ID,releaseId:DEPLOYMENT_ID,stories:[['FH-1477','Restore the Meals library as a contained secondary screen with no horizontal overflow'],['FH-1478','Open the Meals library on the Meals filter and preserve seeded meal records'],['FH-1479','Keep filter controls, actions, search, and results inside the iPhone visual viewport'],['FH-1480','Add regression gates for overflow and populated meal rendering']],knownIssues:[]},
  {version:'1.4.11.7',name:'Prepared Pantry Persistence & Mobile Layout Repair',type:'Blocking corrective release',created:RELEASE_CREATED_AT,build:BUILD_ID,releaseId:DEPLOYMENT_ID,stories:[['FH-1473','Persist prepared recipe batches as verified pantry records linked to a reusable prepared-food record'],['FH-1474','Verify the pantry record after saving and show immediate success feedback'],['FH-1475','Constrain the Food and Meals library to the iPhone visual viewport'],['FH-1476','Place the Search Pantry close control to the left of the page title']],knownIssues:[]},
  {version:'1.4.11.4',name:'Critical Action Wiring Repair',type:'Corrective functional release',created:RELEASE_CREATED_AT,build:BUILD_ID,releaseId:DEPLOYMENT_ID,stories:[['FH-1461','Make pantry detail pencil open the pantry editor'],['FH-1462','Make recipe Save persist and return to refreshed detail'],['FH-1463','Make Consume Now open Universal Log'],['FH-1464','Make Plan for Later open Universal Log'],['FH-1465','Add functional action-path release verification'],['FH-1466','Require current About version and deployment metadata']],knownIssues:[]},

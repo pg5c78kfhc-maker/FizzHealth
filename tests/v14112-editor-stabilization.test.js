@@ -4,7 +4,7 @@ import fs from 'node:fs';
 const main=fs.readFileSync(new URL('../src/main.jsx',import.meta.url),'utf8');
 const css=fs.readFileSync(new URL('../src/styles.css',import.meta.url),'utf8');
 const meta=JSON.parse(fs.readFileSync(new URL('../VERSION.json',import.meta.url),'utf8'));
-test('v1.4.11.2 metadata is canonical',()=>{assert.equal(meta.version,'1.4.11.9');assert.equal(meta.build,'141190');assert.match(main,/const VERSION='1\.4\.11\.9'/)});
+test('v1.4.11.2 metadata is canonical',()=>{assert.equal(meta.version,'1.4.11.10');assert.equal(meta.build,'141200');assert.match(main,/const VERSION='1\.4\.11\.10'/)});
 test('pantry detail exposes header pencil editor',()=>{assert.match(main,/aria-label="Edit pantry item"/);assert.doesNotMatch(main,/>View and edit item</)});
 test('meal delete uses header trash action',()=>{assert.match(main,/aria-label="Delete meal"/);assert.doesNotMatch(main,/> Delete meal<\/button>/)});
 test('recipe detail and ingredients are editable',()=>{assert.match(main,/aria-label="Edit recipe"/);assert.match(main,/SwipeDeleteIngredient/);assert.match(main,/Remove \$\{label\} from this recipe/)});

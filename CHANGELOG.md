@@ -1,3 +1,11 @@
+## v1.4.11.10 — Prepared Recipe Pantry End-to-End Repair
+
+- Fixed the prepared-batch editor being rendered behind the recipe detail screen.
+- Added total gram weight as the required pantry quantity for prepared recipes.
+- Verified the Pantry record inside and after the database transaction.
+- Prevented optional pantry event logging from rolling back the actual Pantry save.
+- Updated mandatory About/build/deployment metadata.
+
 ## v1.4.11.9 — Meals Library Regression Stabilization
 
 - FH-1477: Contained Meals library layout and removed horizontal overflow.

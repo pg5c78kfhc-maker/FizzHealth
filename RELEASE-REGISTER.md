@@ -1,3 +1,10 @@
+## v1.4.11.10 — Prepared Recipe Pantry End-to-End Repair
+
+- FH-1485 — Prepared-batch modal layering repair.
+- FH-1486 — Transactional Pantry persistence verification.
+- FH-1487 — Total gram-weight inventory for prepared recipes.
+- FH-1488 — Non-blocking optional pantry event history.
+
 ## v1.4.11.9 — Meals Library Regression Stabilization
 
 - FH-1477: Contained Meals library layout and removed horizontal overflow.

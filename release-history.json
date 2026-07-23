@@ -2,6 +2,34 @@
   "format": "fizz-health-release-history",
   "releases": [
     {
+      "version": "1.4.11.10",
+      "name": "Prepared Recipe Pantry End-to-End Repair",
+      "type": "Blocking corrective release",
+      "created": "2026-07-23T11:15:00-04:00",
+      "build": "141200",
+      "releaseId": "FH-20260723-141200",
+      "stories": [
+        [
+          "FH-1485",
+          "Render the prepared-batch editor above recipe detail instead of behind it"
+        ],
+        [
+          "FH-1486",
+          "Create and verify the prepared Pantry record in the same transaction"
+        ],
+        [
+          "FH-1487",
+          "Track prepared recipe inventory by total gram weight"
+        ],
+        [
+          "FH-1488",
+          "Keep optional pantry event history from rolling back the Pantry save"
+        ]
+      ],
+      "knownIssues": [],
+      "release_id": "FH-20260723-141200"
+    },
+    {
       "version": "1.4.11.9",
       "name": "Food Library Data & Layer Recovery",
       "type": "Blocking corrective release",
