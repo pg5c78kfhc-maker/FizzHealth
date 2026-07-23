@@ -675,6 +675,11 @@ const migrations=[
     VALUES ('1.4.11.11','2026-07-23','141210',48,'Pantry Structure & Editing Stabilization','2026-07-23T15:45:00.000Z');
   `}
 
+,  {version:49,name:'pantry_package_persistence_repair',sql:`
+    INSERT OR REPLACE INTO release_metadata(version,release_date,build_id,schema_version,title,created_at)
+    VALUES ('1.4.11.12','2026-07-23','141220',49,'Pantry Package Persistence Repair','2026-07-23T16:20:00.000Z');
+  `}
+
 ];
 
 const canonicalSchema={

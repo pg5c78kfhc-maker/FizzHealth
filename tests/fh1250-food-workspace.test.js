@@ -13,15 +13,16 @@ test('FH-1250.1 relocates full planner and recommendations to Food',()=>{
  assert.match(main,/tab==='food-recommendations'/);
 });
 
-test('FH-1250.1 keeps Home focused on daily state with compact planning summary',()=>{
+test('FH-1250.1 keeps Home focused on daily state while planning remains in Food',()=>{
  const todayStart=main.indexOf('function Today(');
  const plannerStart=main.indexOf('function ForwardMealPlanner');
  const todaySource=main.slice(todayStart,plannerStart);
  assert.match(todaySource,/Today’s meals/);
- assert.match(todaySource,/HomeFoodPlanningSummary/);
+ assert.doesNotMatch(todaySource,/HomeFoodPlanningSummary/);
+ assert.match(todaySource,/decision-intelligence-disclosure/);
  assert.doesNotMatch(todaySource,/<ForwardMealPlanner/);
  assert.doesNotMatch(todaySource,/<ChefRecommendations/);
- assert.match(css,/\.home-food-summary/);
+ assert.match(css,/\.decision-intelligence-disclosure/);
 });
 
 test('FH-1250.1 planner fails soft and supports retry and empty states',()=>{

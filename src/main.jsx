@@ -20,11 +20,11 @@ import {buildRecipeSnapshot,compactRecipeMealNotes} from './nutrition/recipe';
 import {normalizeSqlValue,auditValue} from './exchange/persistence';
 import {buildFoodEnrichmentExchange,buildNewFoodExchange,buildLogOnceExchange,normalizeExchangeJson as normalizeUniversalJson,validateUniversalExchange,foodProposal,mealProposal,changedFoodFields} from './exchange';
 import './styles.css';
-const VERSION='1.4.11.11';
+const VERSION='1.4.11.12';
 const RELEASE_DATE='2026-07-23';
-const BUILD_ID='141210';
-const DEPLOYMENT_ID='FH-20260723-141210';
-const RELEASE_CREATED_AT='2026-07-23T11:45:00-04:00';
+const BUILD_ID='141220';
+const DEPLOYMENT_ID='FH-20260723-141220';
+const RELEASE_CREATED_AT='2026-07-23T12:20:00-04:00';
 const localDateKey=(date=new Date())=>{const y=date.getFullYear(),m=String(date.getMonth()+1).padStart(2,'0'),d=String(date.getDate()).padStart(2,'0');return `${y}-${m}-${d}`};
 const today=()=>localDateKey();
 const toDateTimeLocal=(date=new Date())=>{const y=date.getFullYear(),m=String(date.getMonth()+1).padStart(2,'0'),d=String(date.getDate()).padStart(2,'0'),h=String(date.getHours()).padStart(2,'0'),min=String(date.getMinutes()).padStart(2,'0');return `${y}-${m}-${d}T${h}:${min}`};
@@ -868,36 +868,48 @@ function FoodIntelligencePage({tick,onBack,onLogFood}){
 
 function PantryItemEditor({item,locations,onClose,onSaved}){
  const [saving,setSaving]=useState(false),[error,setError]=useState('');
- const initialPackageCount=Number(item.package_count);
- const initialContainerSize=Number(item.container_size);
- const initialUnopened=Number(item.unopened_packages);
- const initialPartial=Number(item.partial_package_quantity);
- const hasPackageStructure=Number.isFinite(initialPackageCount)||Number.isFinite(initialContainerSize)||Number.isFinite(initialUnopened)||Number.isFinite(initialPartial);
+ const optionalNumber=value=>{const text=String(value??'').trim();if(!text)return null;const number=Number(text);return Number.isFinite(number)?number:null};
+ const initialPackageCount=optionalNumber(item.package_count);
+ const initialContainerSize=optionalNumber(item.container_size);
+ const initialUnopened=optionalNumber(item.unopened_packages);
+ const initialPartial=optionalNumber(item.partial_package_quantity);
+ const hasPackageStructure=[initialPackageCount,initialContainerSize,initialUnopened,initialPartial].some(value=>value!==null)||Boolean(String(item.package_type||item.container_unit||'').trim());
  async function save(event){
   event.preventDefault();setError('');
   const form=new FormData(event.currentTarget);
-  const enteredQuantity=Number(form.get('quantity'));
-  const packageCount=Number(form.get('package_count'));
-  const containerSize=Number(form.get('container_size'));
-  const unopenedPackages=Number(form.get('unopened_packages'));
-  const partialPackageQuantity=Number(form.get('partial_package_quantity'));
-  const structured=Number.isFinite(packageCount)&&packageCount>0&&Number.isFinite(containerSize)&&containerSize>0;
-  const quantity=structured
-   ? Math.max(0,(Number.isFinite(unopenedPackages)?unopenedPackages:packageCount)*containerSize+(Number.isFinite(partialPackageQuantity)?partialPackageQuantity:0))
-   : enteredQuantity;
-  if(!Number.isFinite(quantity)||quantity<0){setError('Enter a valid total quantity, or complete the package details.');return}
-  if(structured&&Number.isFinite(unopenedPackages)&&unopenedPackages>packageCount){setError('Unopened packages cannot exceed packages on hand.');return}
+  const enteredQuantity=optionalNumber(form.get('quantity'));
+  const packageCount=optionalNumber(form.get('package_count'));
+  const containerSize=optionalNumber(form.get('container_size'));
+  const unopenedPackages=optionalNumber(form.get('unopened_packages'));
+  const partialPackageQuantity=optionalNumber(form.get('partial_package_quantity'));
+  const packageType=String(form.get('package_type')||'').trim()||null;
+  const containerUnit=String(form.get('container_unit')||'').trim()||null;
+  const hasAnyPackageDetail=[packageCount,containerSize,unopenedPackages,partialPackageQuantity].some(value=>value!==null)||Boolean(packageType||containerUnit);
+  const canCalculateTotal=packageCount!==null&&packageCount>0&&containerSize!==null&&containerSize>0;
+  if(hasAnyPackageDetail&&!canCalculateTotal){setError('Enter both packages on hand and size per package, or clear all package details.');return}
+  if(canCalculateTotal&&unopenedPackages!==null&&unopenedPackages>packageCount){setError('Unopened packages cannot exceed packages on hand.');return}
+  const effectiveUnopened=canCalculateTotal?(unopenedPackages??packageCount):null;
+  const effectivePartial=canCalculateTotal?(partialPackageQuantity??0):null;
+  const quantity=canCalculateTotal?Math.max(0,effectiveUnopened*containerSize+effectivePartial):enteredQuantity;
+  if(quantity===null||quantity<0){setError('Enter a valid total quantity, or complete the package details.');return}
   setSaving(true);
   try{
    const now=new Date().toISOString();
+   const savedUnit=(canCalculateTotal?containerUnit:String(form.get('unit')||'').trim())||item.unit||'item';
    await transaction(async db=>{
     db.run(`UPDATE pantry SET item=?,brand=?,quantity=?,unit=?,location=?,opened=?,purchase_date=?,expiration=?,notes=?,on_hand=?,verified_at=?,quantity_accuracy='verified',package_count=?,package_type=?,container_size=?,container_unit=?,unopened_packages=?,partial_package_quantity=?,freshness_status=? WHERE pantry_id=?`,[
-     form.get('item'),form.get('brand')||null,quantity,(structured?form.get('container_unit'):form.get('unit'))||'item',form.get('location')||'Home',form.get('opened')||'No',form.get('purchase_date')||null,form.get('expiration')||null,form.get('notes')||null,quantity>0?'Yes':'No',now,
-     structured?packageCount:null,structured?(form.get('package_type')||'package'):null,structured?containerSize:null,structured?(form.get('container_unit')||form.get('unit')||'item'):null,structured?(Number.isFinite(unopenedPackages)?unopenedPackages:packageCount):null,structured?(Number.isFinite(partialPackageQuantity)?partialPackageQuantity:0):null,form.get('freshness_status')||null,item.pantry_id
+     form.get('item'),form.get('brand')||null,quantity,savedUnit,form.get('location')||'Home',form.get('opened')||'No',form.get('purchase_date')||null,form.get('expiration')||null,form.get('notes')||null,quantity>0?'Yes':'No',now,
+     canCalculateTotal?packageCount:null,canCalculateTotal?(packageType||'package'):null,canCalculateTotal?containerSize:null,canCalculateTotal?(containerUnit||savedUnit):null,canCalculateTotal?effectiveUnopened:null,canCalculateTotal?effectivePartial:null,form.get('freshness_status')||null,item.pantry_id
     ]);
-    db.run('INSERT INTO pantry_events(pantry_id,event_type,quantity,unit,notes,event_at) VALUES (?,?,?,?,?,?)',[item.pantry_id,'verify',quantity,(structured?form.get('container_unit'):form.get('unit'))||'item','Pantry item edited and verified',now]);
+    const verified=db.query('SELECT * FROM pantry WHERE pantry_id=? LIMIT 1',[item.pantry_id])[0];
+    if(!verified)throw new Error('Pantry item could not be reloaded after saving.');
+    const expected={package_count:canCalculateTotal?packageCount:null,container_size:canCalculateTotal?containerSize:null,unopened_packages:canCalculateTotal?effectiveUnopened:null,partial_package_quantity:canCalculateTotal?effectivePartial:null};
+    for(const [key,value] of Object.entries(expected)){const actual=optionalNumber(verified[key]);if(value===null?actual!==null:actual!==value)throw new Error(`Pantry ${key.replaceAll('_',' ')} did not save correctly.`)}
+    db.run('INSERT INTO pantry_events(pantry_id,event_type,quantity,unit,notes,event_at) VALUES (?,?,?,?,?,?)',[item.pantry_id,'verify',quantity,savedUnit,'Pantry item edited and verified',now]);
    });
-   onSaved?.({...item,quantity,unit:(structured?form.get('container_unit'):form.get('unit'))||'item',expiration:form.get('expiration')||null,verified_at:now,freshness_status:form.get('freshness_status')||null});
+   const saved=query('SELECT * FROM pantry WHERE pantry_id=? LIMIT 1',[item.pantry_id])[0];
+   if(!saved)throw new Error('Pantry item was saved but could not be reloaded.');
+   onSaved?.(saved);
   }catch(err){setError(err instanceof Error?err.message:String(err))}finally{setSaving(false)}
  }
  return <div className="modal-backdrop pantry-editor-layer" onClick={onClose}><form className="panel fixed-editor pantry-manual-editor" onSubmit={save} onClick={e=>e.stopPropagation()}><div className="edit-head sticky-head"><button type="button" className="header-icon-action" onClick={onClose} aria-label="Cancel"><X/></button><div><small>PANTRY ITEM</small><h3>{item.item}</h3><em>Inventory details</em></div><button type="submit" className="header-icon-action save-action" disabled={saving} aria-label="Save pantry item"><Check/></button></div><div className="editor-scroll">
@@ -1279,7 +1291,7 @@ function NutrientConfiguration({onBack,onClose=onBack}){
 }
 
 const RELEASE_HISTORY=[
- {version:'1.4.11.11',name:'Pantry Structure & Editing Stabilization',type:'Blocking corrective release',created:RELEASE_CREATED_AT,build:BUILD_ID,releaseId:DEPLOYMENT_ID,stories:[['FH-1462','Separate package count, package type, and size per package'],['FH-1463','Preserve prepared recipe inventory by total gram weight'],['FH-1464','Repair pantry detail pencil routing'],['FH-1465','Explain exact missing confidence evidence'],['FH-1466','Complete pantry inventory editing and verification'],['FH-1467','Preserve legacy pantry records for safe cleanup'],['FH-1468','Add end-to-end pantry regression coverage']],knownIssues:[]},
+ {version:'1.4.11.12',name:'Pantry Package Persistence Repair',type:'Blocking corrective release',created:RELEASE_CREATED_AT,build:BUILD_ID,releaseId:DEPLOYMENT_ID,stories:[['FH-1469','Persist package count, type, size, unit, unopened count, and open-package remainder'],['FH-1470','Reload and verify every pantry package field after save'],['FH-1471','Preserve legacy total quantity when package details are blank']],knownIssues:[]},
  {version:'1.4.11.8',name:'Meals Library Regression Stabilization',type:'Blocking corrective release',created:RELEASE_CREATED_AT,build:BUILD_ID,releaseId:DEPLOYMENT_ID,stories:[['FH-1477','Restore the Meals library as a contained secondary screen with no horizontal overflow'],['FH-1478','Open the Meals library on the Meals filter and preserve seeded meal records'],['FH-1479','Keep filter controls, actions, search, and results inside the iPhone visual viewport'],['FH-1480','Add regression gates for overflow and populated meal rendering']],knownIssues:[]},
  {version:'1.4.11.7',name:'Prepared Pantry Persistence & Mobile Layout Repair',type:'Blocking corrective release',created:RELEASE_CREATED_AT,build:BUILD_ID,releaseId:DEPLOYMENT_ID,stories:[['FH-1473','Persist prepared recipe batches as verified pantry records linked to a reusable prepared-food record'],['FH-1474','Verify the pantry record after saving and show immediate success feedback'],['FH-1475','Constrain the Food and Meals library to the iPhone visual viewport'],['FH-1476','Place the Search Pantry close control to the left of the page title']],knownIssues:[]},
  {version:'1.4.11.4',name:'Critical Action Wiring Repair',type:'Corrective functional release',created:RELEASE_CREATED_AT,build:BUILD_ID,releaseId:DEPLOYMENT_ID,stories:[['FH-1461','Make pantry detail pencil open the pantry editor'],['FH-1462','Make recipe Save persist and return to refreshed detail'],['FH-1463','Make Consume Now open Universal Log'],['FH-1464','Make Plan for Later open Universal Log'],['FH-1465','Add functional action-path release verification'],['FH-1466','Require current About version and deployment metadata']],knownIssues:[]},

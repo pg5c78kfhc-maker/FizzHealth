@@ -1,7 +1,13 @@
-## v1.4.11.11 — Pantry Structure & Editing Stabilization
+## v1.4.11.12 — Pantry Package Persistence Repair
 
-- Build: 141210
-- Deployment: FH-20260723-141210
+- Build: 141220
+- Deployment: FH-20260723-141220
+- Status: Tested corrective release
+
+## v1.4.11.12 — Pantry Package Persistence Repair
+
+- Build: 141220
+- Deployment: FH-20260723-141220
 - Stories: FH-1462–FH-1468
 - Status: Tested corrective release
 

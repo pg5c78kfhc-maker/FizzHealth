@@ -7,9 +7,9 @@ const css=fs.readFileSync(new URL('../src/styles.css',import.meta.url),'utf8');
 const meta=JSON.parse(fs.readFileSync(new URL('../VERSION.json',import.meta.url),'utf8'));
 
 test('v1.4.11.8 metadata is current',()=>{
-  assert.equal(meta.version,'1.4.11.11');
-  assert.equal(meta.build,'141210');
-  assert.equal(meta.release_id,'FH-20260723-141210');
+  assert.equal(meta.version,'1.4.11.12');
+  assert.equal(meta.build,'141220');
+  assert.equal(meta.release_id,'FH-20260723-141220');
 });
 
 test('Meals library opens on explicit meal records',()=>{

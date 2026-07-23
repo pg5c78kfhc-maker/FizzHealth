@@ -1,6 +1,17 @@
-# Fizz Health v1.4.11.11
+# Fizz Health v1.4.11.12
 
-Pantry Structure & Editing Stabilization — FH-1462 through FH-1468
+Pantry Package Persistence Repair
+
+Version: 1.4.11.12  
+Build: 141220  
+Deployment: FH-20260723-141220  
+Stories: FH-1469 through FH-1471  
+
+Package count, package type, size per package, package unit, unopened packages, and open-package remainder now persist and are verified after saving.
+
+# Fizz Health v1.4.11.12
+
+Pantry Package Persistence Repair — FH-1462 through FH-1468
 
 - Track package count separately from size per package and total quantity.
 - Track an open package remainder and unopened package count.
@@ -9,9 +20,10 @@ Pantry Structure & Editing Stabilization — FH-1462 through FH-1468
 - Name every missing field that reduces inventory confidence.
 - Preserve existing and legacy pantry records without destructive cleanup.
 
-Version: 1.4.11.11  
-Build: 141210  
-Deployment: FH-20260723-141210  
+Version: 1.4.11.12  
+Build: 141220  
+Deployment: FH-20260723-141220  
+Stories: FH-1469 through FH-1471  
 Released: 2026-07-23 11:45 EDT
 
 # Fizz Health v1.4.11.9

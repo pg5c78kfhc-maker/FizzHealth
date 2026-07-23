@@ -34,8 +34,8 @@ test('FH-1250.2 recommendation guardrails prioritize familiar meals and suppress
  assert.match(main,/behavior_score/);
 });
 
-test('FH-1250.2 keeps Home compact and planner work in Food',()=>{
- assert.match(main,/className="home-next-meal"/);
+test('FH-1250.2 keeps planner work in Food while Home remains compact',()=>{
  assert.doesNotMatch(main,/home-food-summary-actions/);
- assert.match(css,/\.home-next-meal/);
+ assert.doesNotMatch(main,/className="home-next-meal"/);
+ assert.match(main,/decision-intelligence-disclosure/);
 });

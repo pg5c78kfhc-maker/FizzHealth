@@ -1,4 +1,11 @@
-## v1.4.11.11 — Pantry Structure & Editing Stabilization
+## v1.4.11.12 — Pantry Package Persistence Repair
+
+- Fixed package-structure fields failing to persist after pantry item save.
+- Empty numeric inputs are no longer converted to zero.
+- Saved pantry records are reloaded and verified field-by-field before the editor closes.
+- Total quantity is recalculated from unopened packages plus the remaining open-package amount.
+
+## v1.4.11.12 — Pantry Package Persistence Repair
 
 - FH-1462: Separated package count, package type, size per package, open-package remainder, and calculated total quantity.
 - FH-1463: Preserved prepared-recipe pantry inventory by total gram weight.

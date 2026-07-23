@@ -1,0 +1,5 @@
+Fizz Health v1.4.11.12 — Pantry Package Persistence Repair
+
+322 of 322 tests passed.
+Release metadata verification passed.
+Production Vite build unavailable because dependencies are not installed in the supplied environment.

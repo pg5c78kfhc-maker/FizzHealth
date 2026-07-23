@@ -25,9 +25,9 @@ test('nested editors render above recipe detail',()=>{
 });
 
 test('About uses centralized current release metadata',()=>{
-  assert.equal(meta.version,'1.4.11.11');
-  assert.equal(meta.build,'141210');
-  assert.equal(meta.release_id,'FH-20260723-141210');
+  assert.equal(meta.version,'1.4.11.12');
+  assert.equal(meta.build,'141220');
+  assert.equal(meta.release_id,'FH-20260723-141220');
   assert.match(main,/Application version<\/span><b>\{VERSION\}/);
   assert.match(main,/Build identifier<\/span><b>\{BUILD_ID\}/);
   assert.match(main,/Deployment<\/span><b>\{DEPLOYMENT_ID\}/);

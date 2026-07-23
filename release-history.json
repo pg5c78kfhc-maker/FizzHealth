@@ -2,6 +2,30 @@
   "format": "fizz-health-release-history",
   "releases": [
     {
+      "version": "1.4.11.12",
+      "name": "Pantry Package Persistence Repair",
+      "type": "Blocking corrective release",
+      "created": "2026-07-23T12:20:00-04:00",
+      "build": "141220",
+      "releaseId": "FH-20260723-141220",
+      "release_id": "FH-20260723-141220",
+      "stories": [
+        [
+          "FH-1469",
+          "Persist all pantry package structure fields"
+        ],
+        [
+          "FH-1470",
+          "Reload and verify package fields after save"
+        ],
+        [
+          "FH-1471",
+          "Preserve legacy total quantity when package structure is blank"
+        ]
+      ],
+      "knownIssues": []
+    },
+    {
       "version": "1.4.11.11",
       "name": "Pantry Structure & Editing Stabilization",
       "type": "Blocking corrective release",
