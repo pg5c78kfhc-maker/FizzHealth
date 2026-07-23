@@ -5,7 +5,7 @@ const main=fs.readFileSync('src/main.jsx','utf8');
 const css=fs.readFileSync('src/styles.css','utf8');
 const meta=JSON.parse(fs.readFileSync('VERSION.json','utf8'));
 
-test('release metadata advances to v1.4.10.43a',()=>{assert.equal(meta.version,'1.4.11.8');assert.equal(meta.build,'141180');assert.match(main,/const VERSION='1\.4\.11\.8'/);});
+test('release metadata advances to v1.4.10.43a',()=>{assert.equal(meta.version,'1.4.11.9');assert.equal(meta.build,'141190');assert.match(main,/const VERSION='1\.4\.11\.9'/);});
 test('Restaurant Day is date-specific and persisted',()=>{assert.match(main,/daily_preferences WHERE preference_date=\?/);assert.match(main,/restaurant-day-control/);assert.match(main,/role="switch"/);assert.match(main,/restaurant_possible,updated_at/);});
 test('restaurant meals force Yes and block contradictory No',()=>{assert.match(main,/restaurantMealExists/);assert.match(main,/Restaurant meal already planned/);assert.match(main,/Remove it before changing Restaurant Day to No/);assert.match(main,/restaurantMealExists\|\|storedRestaurantDay/);});
 test('restaurant recommendations are hard-gated',()=>{assert.match(main,/const restaurants=restaurantDay\?optionalQuery/);assert.match(main,/\.\.\.\(restaurantDay\?restaurantOptions:\[\]\)/);});

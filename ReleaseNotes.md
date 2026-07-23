@@ -1,18 +1,18 @@
-# Fizz Health v1.4.11.8
+# Fizz Health v1.4.11.9
 
-## Meals Library Regression Stabilization
+## Food Library Data & Layer Recovery
 
-FH-1477 through FH-1480
+FH-1481 through FH-1484
 
-- FH-1477: Restored the Meals library as a contained secondary screen with no horizontal page overflow.
-- FH-1478: The Meals library now opens directly on explicit meal records and preserves the existing meal data query.
-- FH-1479: Header actions, filter controls, search, and results remain inside the iPhone visual viewport; only the results list scrolls.
-- FH-1480: Added regression checks for current metadata, meal-record binding, and responsive containment.
+- FH-1481: Restored independent data loading for All, Recipes, Favorites, Recent, and Meals.
+- FH-1482: Removed contradictory empty states and collapsed placeholder rows.
+- FH-1483: Swipe action rails remain hidden until a card is actively swiped.
+- FH-1484: Consolidated the library into one bounded results container and reset card state on filter changes.
 
-Version: 1.4.11.8  
-Build: 141180  
-Deployment: FH-20260723-141180  
-Released: 2026-07-23T10:30:00-04:00
+Version: 1.4.11.9  
+Build: 141190  
+Deployment: FH-20260723-141190  
+Released: 2026-07-23T10:45:00-04:00
 
 # Fizz Health v1.4.11.6
 

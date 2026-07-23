@@ -838,36 +838,28 @@ body.food-library-active .search{flex:0 0 auto}
 body.food-library-active .discovery-tabs{flex:0 0 auto}
 .recipe-pantry-success{margin:12px 0}
 
-/* v1.4.11.8 — Meals library regression stabilization. */
-body.food-library-active .app{width:100%;max-width:100%;padding-bottom:0}
-body.food-library-active .content{width:100%;max-width:100%;padding-bottom:0}
-.food-library-page{
- width:100%;max-width:100%;min-width:0;min-height:0;flex:1;
- display:flex;flex-direction:column;overflow:hidden;
- padding:0 16px calc(var(--bottom-nav-height) + env(safe-area-inset-bottom));
- box-sizing:border-box
-}
+
+
+/* v1.4.11.9 — single-layer Food library and data recovery. */
+body.food-library-active{overflow:hidden}
+body.food-library-active .app{height:100dvh;min-height:0;overflow:hidden;padding-bottom:0;width:100%;max-width:100%}
+body.food-library-active .content{height:calc(100dvh - var(--bottom-nav-height));min-height:0;overflow:hidden;width:100%;max-width:100%;padding-bottom:0}
+.food-library-page{height:100%;min-height:0;width:100%;max-width:100%;display:grid;grid-template-rows:auto auto auto auto minmax(0,1fr);gap:10px;overflow:hidden;padding:0 16px 10px;box-sizing:border-box}
 .food-library-page>*{min-width:0;max-width:100%;box-sizing:border-box}
-.food-library-page .meals-library-head{flex:0 0 auto;margin:0 -4px 8px;padding:10px 4px}
-.food-library-page .compact-library-actions{
- flex:0 0 auto;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin:0 0 10px
-}
-.food-library-page .compact-library-actions button{min-width:0;width:100%;padding:10px 6px;justify-content:center}
+.food-library-page .meals-library-head{margin:0;padding:8px 0}
+.food-library-page .compact-library-actions{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin:0}
+.food-library-page .compact-library-actions button{min-width:0;width:100%;padding:10px 5px;justify-content:center}
 .food-library-page .compact-library-actions button span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.food-library-page .discovery-tabs{
- flex:0 0 auto;display:flex;gap:8px;overflow-x:auto;overflow-y:hidden;max-width:100%;
- padding:2px 0 8px;scrollbar-width:none;overscroll-behavior-inline:contain
-}
+.food-library-page .discovery-tabs{display:flex;gap:8px;overflow-x:auto;overflow-y:hidden;width:100%;padding:2px 0 4px;scrollbar-width:none;overscroll-behavior-inline:contain}
 .food-library-page .discovery-tabs::-webkit-scrollbar{display:none}
-.food-library-page .discovery-tabs button{flex:0 0 auto;max-width:100%}
-.food-library-page .search{flex:0 0 auto;width:100%;max-width:100%;margin:0 0 10px}
-.food-library-page .list.foods{
- flex:1 1 auto;min-height:0;width:100%;max-width:100%;overflow-y:auto;overflow-x:hidden;
- padding:0 0 20px;overscroll-behavior:contain
-}
-.food-library-page .item,.food-library-page .swipe-shell,.food-library-page .swipe-card{max-width:100%;min-width:0}
-@media(max-width:390px){
- .food-library-page{padding-left:12px;padding-right:12px}
- .food-library-page .compact-library-actions{grid-template-columns:1fr 1fr}
- .food-library-page .compact-library-actions button:last-child{grid-column:1/-1}
-}
+.food-library-page .discovery-tabs button{flex:0 0 auto}
+.food-library-page .search{width:100%;margin:0}
+.food-library-page .list.foods{min-height:0;height:100%;overflow-y:auto;overflow-x:hidden;padding:0 0 24px;overscroll-behavior:contain;display:flex;flex-direction:column;gap:10px}
+.food-library-page .discovery-swipe{flex:0 0 auto;width:100%;max-width:100%;min-height:0;position:relative;overflow:hidden;background:transparent}
+.food-library-page .discovery-swipe-rail{position:absolute;inset:0;display:flex;justify-content:space-between;opacity:0;visibility:hidden;pointer-events:none;transition:opacity .12s ease}
+.food-library-page .discovery-swipe.is-open .discovery-swipe-rail{opacity:1;visibility:visible;pointer-events:auto}
+.food-library-page .discovery-swipe .swipe-quick,.food-library-page .discovery-swipe .swipe-delete{position:relative;inset:auto;height:100%;width:88px}
+.food-library-page .discovery-swipe .swipe-card{position:relative;z-index:2;width:100%;max-width:100%;min-height:0;background:var(--bg,#090a0c)}
+.food-library-page .item{width:100%;max-width:100%;min-width:0;margin:0}
+.food-library-page .empty{flex:0 0 auto;min-height:150px}
+@media(max-width:390px){.food-library-page{padding-left:12px;padding-right:12px}.food-library-page .compact-library-actions{grid-template-columns:1fr 1fr}.food-library-page .compact-library-actions button:last-child{grid-column:1/-1}}

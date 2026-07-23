@@ -1,4 +1,4 @@
-## v1.4.11.8 — Meals Library Regression Stabilization
+## v1.4.11.9 — Meals Library Regression Stabilization
 
 - FH-1477: Contained Meals library layout and removed horizontal overflow.
 - FH-1478: Restored direct meal-record rendering as the default library view.
