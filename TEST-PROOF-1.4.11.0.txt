@@ -1,0 +1,7 @@
+Fizz Health v1.4.11.0 test proof
+
+npm test: PASS — 272/272 tests
+npm run verify:release: PASS
+npm run build: NOT RUN — dependency installation timed out in the isolated execution environment; node_modules was not available.
+
+Implemented first-pass meal definitions, meal components, Meal Library, Meal Builder, meal categories, and universal consumed/planned logging.

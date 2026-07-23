@@ -1,3 +1,15 @@
+# Fizz Health v1.4.11.0
+
+## Daily Brief & Meal Intelligence — First Pass
+
+Completed FH-1321 through FH-1336.
+
+- Added first-class meal definitions and meal components.
+- Added Breakfast, Lunch, Dinner, Snack, and Any meal categories.
+- Added a Meal Library and Create/Edit Meal workflow.
+- Added a universal consumed/planned logging panel with past, current, and future timestamps.
+- Added schema foundations for meal-aware recommendations, planned meals, and pantry forecasting.
+
 # Fizz Health v1.4.10.43b
 
 ## Daily Health Newspaper and Voice Engine 2.0

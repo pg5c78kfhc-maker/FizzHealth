@@ -3,7 +3,7 @@ import wasmUrl from 'sql.js/dist/sql-wasm.wasm?url';
 
 const DB_KEY='fizz-health-sqlite-v1';
 const STORAGE_DB='FizzHealthStorage';
-const TARGET_SCHEMA_VERSION=45;
+const TARGET_SCHEMA_VERSION=46;
 let SQL, db;
 
 const migrations=[
@@ -632,6 +632,28 @@ const migrations=[
       recipe_id TEXT PRIMARY KEY, created_at TEXT NOT NULL
     );
     CREATE INDEX IF NOT EXISTS idx_favorite_recipes_created ON favorite_recipes(created_at DESC);
+  `}
+
+,  {version:46,name:'meal_intelligence_foundation',sql:`
+    CREATE TABLE IF NOT EXISTS meal_definitions (
+      meal_id TEXT PRIMARY KEY, title TEXT NOT NULL, category TEXT NOT NULL DEFAULT 'Any', icon TEXT DEFAULT 'utensils',
+      notes TEXT, favorite INTEGER DEFAULT 0, archived INTEGER DEFAULT 0,
+      calories REAL DEFAULT 0, protein REAL DEFAULT 0, carbs REAL DEFAULT 0, fiber REAL DEFAULT 0, fat REAL DEFAULT 0, saturated_fat REAL DEFAULT 0,
+      created_at TEXT NOT NULL, updated_at TEXT NOT NULL
+    );
+    CREATE TABLE IF NOT EXISTS meal_components (
+      id INTEGER PRIMARY KEY AUTOINCREMENT, meal_id TEXT NOT NULL, component_type TEXT NOT NULL,
+      component_id TEXT, component_name TEXT NOT NULL, amount REAL NOT NULL DEFAULT 1, unit TEXT DEFAULT 'serving', optional INTEGER DEFAULT 0,
+      calories REAL DEFAULT 0, protein REAL DEFAULT 0, carbs REAL DEFAULT 0, fiber REAL DEFAULT 0, fat REAL DEFAULT 0, saturated_fat REAL DEFAULT 0,
+      sort_order INTEGER DEFAULT 0
+    );
+    CREATE INDEX IF NOT EXISTS idx_meal_definitions_category ON meal_definitions(category,archived,title);
+    CREATE INDEX IF NOT EXISTS idx_meal_components_meal ON meal_components(meal_id,sort_order,id);
+    ALTER TABLE meals ADD COLUMN source_type TEXT DEFAULT 'food';
+    ALTER TABLE meals ADD COLUMN meal_definition_id TEXT;
+    ALTER TABLE planned_meals ADD COLUMN meal_definition_id TEXT;
+    INSERT OR REPLACE INTO release_metadata(version,release_date,build_id,schema_version,title,created_at)
+    VALUES ('1.4.11.0','2026-07-23','141100',46,'Daily Brief & Meal Intelligence — First Pass',CURRENT_TIMESTAMP);
   `}
 
 ];

@@ -2,6 +2,55 @@
   "format": "fizz-health-release-history",
   "releases": [
     {
+      "version": "1.4.11.0",
+      "name": "Daily Brief & Meal Intelligence \u2014 First Pass",
+      "type": "Meal Intelligence foundation",
+      "created": "2026-07-23T06:00:00-04:00",
+      "build": "141100",
+      "release_id": "FH-20260723-141100",
+      "stories": [
+        [
+          "FH-1321",
+          "Introduce a first-class Meal entity"
+        ],
+        [
+          "FH-1322",
+          "Add the Meal Library"
+        ],
+        [
+          "FH-1323",
+          "Add the Meal Builder"
+        ],
+        [
+          "FH-1324",
+          "Add the universal consumed/planned logging panel"
+        ],
+        [
+          "FH-1325",
+          "Support future planned meals"
+        ],
+        [
+          "FH-1326",
+          "Lay pantry forecasting foundations"
+        ],
+        [
+          "FH-1330",
+          "Lay meal recommendation foundations"
+        ],
+        [
+          "FH-1335",
+          "Add Breakfast, Lunch, Dinner, Snack, and Any categories"
+        ],
+        [
+          "FH-1336",
+          "Add time-aware category eligibility"
+        ]
+      ],
+      "known_issues": [
+        "Browser voice quality remains limited to voices exposed by iOS Safari."
+      ]
+    },
+    {
       "version": "1.4.10.43a",
       "name": "Spoken Editorial Brief",
       "type": "Decision Intelligence refinement",
