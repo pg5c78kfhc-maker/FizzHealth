@@ -1,3 +1,4 @@
+| 1.4.10.43a | Spoken Editorial Brief | 2026-07-22T23:58:00-04:00 | FH-1307 through FH-1310 | Continuous newspaper-style briefing with device-native spoken narration. |
 | 1.4.10.43 | Daily Decision Brief | 2026-07-22T23:40:00-04:00 | FH-1301 through FH-1306 | First Decision Intelligence redesign pass plus mobile width and health timestamp corrections. |
 | 1.4.10.42b | Responsive Highest Impact Card Repair | 2026-07-22T22:55:00-04:00 | FH-1 through FH-3 | Definitive iPhone portrait layout correction for Highest Impact Next Action. |
 | 1.4.10.42a | Restaurant Day and Responsive Decision Support | 2026-07-22T20:00:00-04:00 | FH-1 through FH-6 | Date-aware restaurant eligibility gate plus iPhone card overflow repair. |

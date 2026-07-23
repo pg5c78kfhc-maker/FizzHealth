@@ -1,0 +1,22 @@
+Fizz Health v1.4.10.43a — Changed Files
+
+Application
+src/main.jsx
+src/styles.css
+src/decision/engine.js
+public/sw.js
+
+Release metadata
+package.json
+package-lock.json
+VERSION.json
+release-history.json
+RELEASE-REGISTER.md
+ReleaseNotes.md
+CHANGELOG.md
+
+Tests and proof
+tests/v141043-decision-brief.test.js
+tests/v141043a-spoken-editorial-brief.test.js
+TEST-PROOF-1.4.10.43a.txt
+CHANGED-FILES-1.4.10.43a.txt

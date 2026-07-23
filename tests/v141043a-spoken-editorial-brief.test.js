@@ -1,0 +1,10 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import fs from 'node:fs';
+const main=fs.readFileSync(new URL('../src/main.jsx',import.meta.url),'utf8');
+const css=fs.readFileSync(new URL('../src/styles.css',import.meta.url),'utf8');
+const meta=JSON.parse(fs.readFileSync(new URL('../VERSION.json',import.meta.url),'utf8'));
+test('release metadata advances to v1.4.10.43a',()=>{assert.equal(meta.version,'1.4.10.43a');assert.equal(meta.build,'141043A');assert.match(main,/const VERSION='1\.4\.10\.43a'/)});
+test('brief is a continuous editorial document',()=>{assert.match(main,/briefing-document/);assert.match(main,/TOP STORY/);assert.match(main,/Research desk/);assert.match(css,/continuous editorial Daily Brief/)});
+test('supporting evidence uses native collapsed disclosures',()=>{assert.match(main,/<details><summary>Why this is first/);assert.match(main,/<details><summary>See projected totals/);assert.match(main,/<details><summary>See prioritized pantry foods/)});
+test('spoken briefing uses browser speech synthesis with complete controls',()=>{assert.match(main,/SpeechSynthesisUtterance/);assert.match(main,/synth\.pause/);assert.match(main,/speechSynthesis\.cancel/);assert.match(main,/Device default/);assert.match(main,/Restart spoken brief/)});

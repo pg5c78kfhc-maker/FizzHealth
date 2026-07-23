@@ -1,0 +1,34 @@
+Fizz Health v1.4.10.43a — Test and Build Proof
+
+Release: 1.4.10.43a
+Build ID: 141043A
+Stories: FH-1307 through FH-1310
+
+Automated test command:
+npm test
+
+Result:
+264 tests passed
+0 tests failed
+
+Release verification command:
+npm run verify:release
+
+Result:
+Release metadata verified: v1.4.10.43a / FH-1307 through FH-1310
+
+Production build command:
+npm run build
+
+Result:
+Not completed. The supplied source archive does not include installed node_modules, and vite is unavailable in this environment.
+Observed error: sh: 1: vite: not found
+
+Implemented coverage:
+- Continuous newspaper-style Daily Brief document
+- Action-oriented lead and secondary headlines
+- Collapsed rationale, source-data, projection, and pantry disclosures
+- Device-native speech synthesis narration
+- Listen, pause, resume, restart, stop, voice, and speed controls
+- Automatic fallback when speech synthesis is unsupported
+- Existing detailed intelligence preserved under Research Desk

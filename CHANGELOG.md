@@ -1,3 +1,10 @@
+## 1.4.10.43a
+
+- Redesigned the Daily Decision Brief as a continuous editorial document.
+- Added collapsed rationale, data-used, projection, and pantry-detail disclosures.
+- Added browser-native spoken briefing controls and device voice selection.
+- Preserved detailed intelligence under the Research Desk.
+
 ## 1.4.10.43
 
 - Introduced the first Daily Decision Brief architecture.

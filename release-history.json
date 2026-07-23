@@ -2,6 +2,33 @@
   "format": "fizz-health-release-history",
   "releases": [
     {
+      "version": "1.4.10.43a",
+      "name": "Spoken Editorial Brief",
+      "type": "Decision Intelligence refinement",
+      "created": "2026-07-22T23:58:00-04:00",
+      "build": "141043A",
+      "release_id": "FH-20260722-141043A",
+      "stories": [
+        [
+          "FH-1307",
+          "Render the Daily Brief as one continuous editorial document"
+        ],
+        [
+          "FH-1308",
+          "Move supporting rationale into collapsed disclosure boxes"
+        ],
+        [
+          "FH-1309",
+          "Add device-native spoken briefing controls"
+        ],
+        [
+          "FH-1310",
+          "Preserve detailed intelligence under the Research Desk"
+        ]
+      ],
+      "known_issues": []
+    },
+    {
       "version": "1.4.10.43",
       "name": "Daily Decision Brief",
       "type": "Decision Intelligence redesign",
