@@ -680,6 +680,11 @@ const migrations=[
     VALUES ('1.4.11.12','2026-07-23','141220',49,'Pantry Package Persistence Repair','2026-07-23T16:20:00.000Z');
   `}
 
+,  {version:50,name:'json_exchange_workflow_repair',sql:`
+    INSERT OR REPLACE INTO release_metadata(version,release_date,build_id,schema_version,title,created_at)
+    VALUES ('1.4.11.13','2026-07-23','141230',50,'JSON Exchange Workflow Repair','2026-07-23T16:30:00.000Z');
+  `}
+
 ];
 
 const canonicalSchema={

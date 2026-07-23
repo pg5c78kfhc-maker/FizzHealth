@@ -1,4 +1,4 @@
-import {NUTRIENT_KEYS} from './nutrition/registry';
+import {NUTRIENT_KEYS} from './nutrition/registry.js';
 
 export const EXCHANGE_SCHEMA_VERSION=3;
 export const EXCHANGE_FORMAT='fizz-health-exchange';
@@ -44,7 +44,67 @@ export function buildLogOnceExchange(){
  return {format:EXCHANGE_FORMAT,schema_version:EXCHANGE_SCHEMA_VERSION,request_type:'universal_exchange',request_id:`log-once-${Date.now()}`,operation:'log_once_meal',target:{type:'meal_event',id:null,create_if_missing:true},instructions:{recipient:'ChatGPT with access to the attached meal photograph and description',purpose:'Estimate nutrition for one consumed meal without creating a reusable food.',rules:[...sharedRules,'Return one proposed consumed meal event.','This is a one-time meal. Never create a Food, Recipe, Pantry item, or restaurant menu item.','Estimate the visible portion and include portion assumptions.','Use restaurant_estimate when the meal appears to be restaurant food; otherwise use visual_estimate.']},existing_record:null,proposed_record:{name:null,meal_type:'Meal',amount:1,unit:'serving',portion_description:null,nutrition:emptyNutrition(),notes:null},analysis:{identity_match:true,confidence:null,evidence_quality:'visual_estimate',evidence_notes:[],portion_assumptions:[],photos_analyzed:[]},review:{approval_mode:'all_or_nothing',user_review_required:true}};
 }
 
-export function normalizeExchangeJson(text=''){return String(text).replace(/[“”]/g,'"').replace(/[‘’]/g,"'").replace(/^```(?:json)?\s*/i,'').replace(/\s*```$/,'').trim()}
+export function normalizeExchangeJson(text=''){
+ return String(text)
+  .replace(/^\uFEFF/,'')
+  .replace(/\u00a0/g,' ')
+  .replace(/[“”„‟]/g,'"')
+  .replace(/[‘’‚‛]/g,"'")
+  .replace(/^\s*```(?:json)?\s*/i,'')
+  .replace(/\s*```\s*$/,'')
+  .trim();
+}
+export function parseExchangeJson(text=''){
+ const normalized=normalizeExchangeJson(text);
+ if(!normalized)throw new Error('Paste the JSON response first.');
+ try{return {payload:JSON.parse(normalized),normalized,repaired:normalized!==String(text).trim()}}
+ catch(firstError){
+  const start=normalized.indexOf('{'),end=normalized.lastIndexOf('}');
+  if(start>=0&&end>start){
+   const extracted=normalized.slice(start,end+1);
+   try{return {payload:JSON.parse(extracted),normalized:extracted,repaired:true}}
+   catch{}
+  }
+  throw new Error(`The response is not valid JSON: ${firstError.message}`);
+ }
+}
+export function restaurantMenuItems(payload={}){
+ const proposed=payload.proposed_record||payload.proposed||payload;
+ const menu=proposed.menu||{};
+ const direct=proposed.menu_items||proposed.items||proposed.restaurant_meals||menu.menu_items||menu.items;
+ const rows=[];
+ const add=(item={},sectionName=null)=>{
+  const nutrition=item.nutrition||{};
+  const name=item.meal_name||item.name;
+  if(!name)return;
+  rows.push({...item,
+   meal_name:name,
+   category:item.category||sectionName||null,
+   serving_description:item.serving_description||item.serving||item.description||null,
+   calories:item.calories??nutrition.calories??null,
+   protein:item.protein??nutrition.protein_g??null,
+   carbs:item.carbs??nutrition.carbohydrate_g??null,
+   fiber:item.fiber??nutrition.fiber_g??null,
+   fat:item.fat??nutrition.total_fat_g??null,
+   saturated_fat:item.saturated_fat??nutrition.saturated_fat_g??null,
+   sodium:item.sodium??nutrition.sodium_mg??null,
+   price:typeof item.price==='object'?item.price?.amount??null:item.price??null
+  });
+ };
+ if(Array.isArray(direct))direct.forEach(item=>add(item));
+ if(Array.isArray(menu.sections))for(const section of menu.sections||[])for(const item of section?.items||[])add(item,section?.name||null);
+ return rows;
+}
+export function validateRestaurantExchange(payload={},expected={}){
+ if(!payload||payload.format!==EXCHANGE_FORMAT)throw new Error('Not a Fizz Health exchange response.');
+ if(Number(payload.schema_version)!==EXCHANGE_SCHEMA_VERSION)throw new Error(`Expected exchange schema v${EXCHANGE_SCHEMA_VERSION}.`);
+ if(payload.request_type!=='universal_exchange')throw new Error('Unsupported exchange request type.');
+ if(expected.operation&&payload.operation!==expected.operation)throw new Error(`Expected ${expected.operation}, but the response is for ${payload.operation||'an unknown operation'}.`);
+ if(expected.targetId&&String(payload.target?.id)!==String(expected.targetId))throw new Error('The response targets a different restaurant or menu item.');
+ if(!payload.proposed_record&&!payload.proposed)throw new Error('The exchange is missing proposed_record.');
+ if(payload.operation==='replace_menu'&&!restaurantMenuItems(payload).length)throw new Error('No menu items were found. Use proposed_record.menu.sections or proposed_record.menu_items.');
+ return payload;
+}
 export function validateUniversalExchange(payload){
  if(!payload||payload.format!==EXCHANGE_FORMAT)throw new Error('Not a Fizz Health exchange.');
  if(Number(payload.schema_version)!==EXCHANGE_SCHEMA_VERSION)throw new Error(`Expected exchange schema v${EXCHANGE_SCHEMA_VERSION}.`);

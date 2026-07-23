@@ -1,0 +1,16 @@
+Fizz Health v1.4.11.13 — JSON Exchange Workflow Repair
+Build: 141230
+Deployment: FH-20260723-141230
+Date: 2026-07-23T12:30:00-04:00
+
+Verification performed:
+- npm test: PASS — 326/326 tests
+- npm run verify:release: PASS
+- npm run build: NOT RUN — Vite executable unavailable in the supplied source environment; npm dependency installation timed out.
+
+Functional coverage added:
+- Smart-quote, BOM, non-breaking-space, code-fence, and surrounding-text normalization.
+- Strict restaurant exchange target and operation validation.
+- proposed_record.menu.sections flattening with section/category preservation.
+- Restaurant menu review screen with item/section counts and item preview.
+- Explicit Apply action and visible import-completion confirmation.

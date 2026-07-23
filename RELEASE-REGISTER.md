@@ -1,3 +1,20 @@
+# Fizz Health v1.4.11.13
+
+## JSON Exchange Workflow Repair
+
+FH-1472 through FH-1474
+
+- Restaurant exchange requests now explicitly require strict JSON with straight quotation marks and no markdown wrapping.
+- Imported responses automatically repair smart quotes, BOM characters, non-breaking spaces, code fences, and surrounding prose before strict parsing.
+- Restaurant menus returned as `proposed_record.menu.sections` are flattened correctly while preserving section names as categories.
+- The import workflow now includes editable pasted JSON, explicit validation, section and item counts, an item preview, a clear Apply action, and a visible completion screen.
+- Restaurant profile fields included in the exchange are updated with the menu replacement.
+
+Version: 1.4.11.13  
+Build: 141230  
+Deployment: FH-20260723-141230  
+Released: 2026-07-23T12:30:00-04:00
+
 ## v1.4.11.12 — Pantry Package Persistence Repair
 
 - Build: 141220

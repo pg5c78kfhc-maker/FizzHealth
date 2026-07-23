@@ -2,6 +2,30 @@
   "format": "fizz-health-release-history",
   "releases": [
     {
+      "version": "1.4.11.13",
+      "name": "JSON Exchange Workflow Repair",
+      "type": "Blocking corrective release",
+      "created": "2026-07-23T12:30:00-04:00",
+      "build": "141230",
+      "releaseId": "FH-20260723-141230",
+      "release_id": "FH-20260723-141230",
+      "stories": [
+        [
+          "FH-1472",
+          "Generate strict import-safe restaurant exchange JSON"
+        ],
+        [
+          "FH-1473",
+          "Repair smart quotes, code fences, BOM, and clipboard wrapping before parsing"
+        ],
+        [
+          "FH-1474",
+          "Flatten section-based menus, present a complete review, and confirm successful import"
+        ]
+      ],
+      "knownIssues": []
+    },
+    {
       "version": "1.4.11.12",
       "name": "Pantry Package Persistence Repair",
       "type": "Blocking corrective release",
