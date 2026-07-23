@@ -1,3 +1,8 @@
+
+
+## v1.4.10.43b — Daily Health Newspaper
+
+Completed FH-1311 through FH-1323: expanded editorial brief, urgency-ranked pantry safety, exact voiceURI selection, diagnostics, narration, and newspaper sections.
 ## 1.4.10.43a
 
 - Redesigned the Daily Decision Brief as a continuous editorial document.
