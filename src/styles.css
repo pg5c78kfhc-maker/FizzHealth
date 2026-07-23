@@ -828,3 +828,12 @@ textarea{width:100%;min-width:0;max-height:min(36dvh,280px);resize:vertical;over
 .decision-detail-head button,.edit-head button,.detail-actions button{pointer-events:auto;touch-action:manipulation}
 .recipe-create-modal,.universal-log-backdrop{pointer-events:auto}
 .recipe-create-editor,.universal-log-panel,.pantry-manual-editor{pointer-events:auto}
+
+/* v1.4.11.7: iPhone visual-viewport hardening for Food/Meals library. */
+body.food-library-active{overflow:hidden}
+body.food-library-active .app{height:100dvh;min-height:0;overflow:hidden;display:flex;flex-direction:column;padding-bottom:var(--bottom-nav-height)}
+body.food-library-active .content{min-height:0;flex:1;display:flex;flex-direction:column;overflow:hidden}
+body.food-library-active .foods{max-height:none;min-height:0;flex:1;overflow-y:auto;overscroll-behavior:contain;padding-bottom:calc(24px + env(safe-area-inset-bottom))}
+body.food-library-active .search{flex:0 0 auto}
+body.food-library-active .discovery-tabs{flex:0 0 auto}
+.recipe-pantry-success{margin:12px 0}

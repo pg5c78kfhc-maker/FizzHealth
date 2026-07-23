@@ -2,24 +2,18 @@
   "format": "fizz-health-release-history",
   "releases": [
     {
-      "version": "1.4.11.6",
-      "build": "141160",
-      "release_id": "FH-20260723-141160",
-      "name": "Prepared Recipe Pantry & Pantry Edit Repair",
-      "date": "2026-07-23"
-    },
-    {
-      "version": "1.4.11.6",
-      "build": "141160",
-      "release_id": "FH-20260723-141160",
+      "version": "1.4.11.7",
+      "build": "141170",
+      "release_id": "FH-20260723-141170",
       "release_date": "2026-07-23",
-      "created_at": "2026-07-23T09:20:00-04:00",
-      "name": "Recipe Duplicate Validation Repair",
+      "created_at": "2026-07-23T10:05:00-04:00",
+      "name": "Prepared Pantry Persistence & Mobile Layout Repair",
       "type": "Blocking corrective release",
       "stories": [
-        "FH-1467",
-        "FH-1468",
-        "FH-1469"
+        "FH-1473",
+        "FH-1474",
+        "FH-1475",
+        "FH-1476"
       ]
     },
     {

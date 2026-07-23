@@ -4,7 +4,7 @@ import fs from 'node:fs';
 const main=fs.readFileSync(new URL('../src/main.jsx',import.meta.url),'utf8');
 const css=fs.readFileSync(new URL('../src/styles.css',import.meta.url),'utf8');
 const meta=JSON.parse(fs.readFileSync(new URL('../VERSION.json',import.meta.url),'utf8'));
-test('v1.4.11.2 corrective metadata is canonical',()=>{assert.equal(meta.version,'1.4.11.6');assert.equal(meta.build,'141160');assert.match(main,/const VERSION='1\.4\.11\.6'/)});
+test('v1.4.11.2 corrective metadata is canonical',()=>{assert.equal(meta.version,'1.4.11.7');assert.equal(meta.build,'141170');assert.match(main,/const VERSION='1\.4\.11\.7'/)});
 test('Meals view does not fall through to the food query',()=>{assert.match(main,/if\(view==='meals'\)mealDefs=.*?else if\(view==='recipes'\)/s)});
 test('recipes and meals share the searchable component picker',()=>{assert.match(main,/function ComponentPicker/);assert.match(main,/mode="recipe"/);assert.match(main,/mode="meal"/);assert.match(main,/Search foods…/);assert.match(main,/Search recipes…/)});
 test('meal picker supports food units and recipe servings',()=>{assert.match(main,/Foods.*Recipes/s);assert.match(main,/tab==='recipe'\?'Servings':'Quantity'/);assert.match(main,/unitOptions\(selected\.unit\)/)});

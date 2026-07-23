@@ -1,3 +1,19 @@
+# Fizz Health v1.4.11.7
+
+## Prepared Pantry Persistence & Mobile Layout Repair
+
+FH-1473 through FH-1476
+
+- FH-1473: Prepared recipe batches now persist as verified pantry records linked to a reusable prepared-food record.
+- FH-1474: The app verifies the saved pantry row and immediately confirms the quantity added.
+- FH-1475: The Food and Meals library is constrained to the iPhone visual viewport, with only the results list scrolling.
+- FH-1476: Search Pantry now places its Close control to the left of the page title.
+
+Version: 1.4.11.7  
+Build: 141170  
+Deployment: FH-20260723-141170  
+Released: 2026-07-23T10:05:00-04:00
+
 # Fizz Health v1.4.11.6
 
 ## Prepared Recipe Pantry & Pantry Edit Repair

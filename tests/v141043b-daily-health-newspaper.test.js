@@ -4,7 +4,7 @@ import fs from 'node:fs';
 const main=fs.readFileSync(new URL('../src/main.jsx',import.meta.url),'utf8');
 const css=fs.readFileSync(new URL('../src/styles.css',import.meta.url),'utf8');
 const meta=JSON.parse(fs.readFileSync(new URL('../VERSION.json',import.meta.url),'utf8'));
-test('43b metadata identifies Daily Health Newspaper',()=>{assert.equal(meta.version,'1.4.11.6');assert.equal(meta.build,'141160');assert.match(main,/const VERSION='1\.4\.11\.6'/)});
+test('43b metadata identifies Daily Health Newspaper',()=>{assert.equal(meta.version,'1.4.11.7');assert.equal(meta.build,'141170');assert.match(main,/const VERSION='1\.4\.11\.7'/)});
 test('expired pantry items are ranked ahead and never included in Use First',()=>{assert.match(main,/function pantryUrgency/);assert.match(main,/urgencyKind==='expired'/);assert.match(main,/Expired food will not be recommended for consumption/);assert.match(main,/urgencyRank>0&&x\.urgencyRank<=5/)});
 test('newspaper sections cover the expanded daily brief',()=>{for(const label of ['CHEF’S KITCHEN','MOMENTUM','LOOKING AHEAD','TODAY’S WIN','FINAL OUTLOOK','PANTRY ALERT'])assert.match(main,new RegExp(label))});
 test('Voice Engine persists exact voiceURI and exposes test diagnostics',()=>{assert.match(main,/fizz-brief-voice-uri/);assert.match(main,/voiceIdentity/);assert.match(main,/voiceURI/);assert.match(main,/Test Voice/);assert.match(main,/voices detected/);assert.match(main,/visibilitychange/)});
