@@ -2,6 +2,28 @@
   "format": "fizz-health-release-history",
   "releases": [
     {
+      "version": "1.4.11.1",
+      "name": "Meal Library & Shared Component Picker Corrective",
+      "type": "Corrective implementation release",
+      "created": "2026-07-23T06:55:00-04:00",
+      "build": "141110",
+      "release_id": "FH-20260723-141110",
+      "stories": [
+        [
+          "FH-1322",
+          "Limit the Meals library to explicit meal definitions"
+        ],
+        [
+          "FH-1323",
+          "Use one searchable, keyboard-aware component picker for recipes and meals"
+        ],
+        [
+          "FH-1324",
+          "Support food quantities/units and complete recipes as meal components"
+        ]
+      ]
+    },
+    {
       "version": "1.4.11.0",
       "name": "Daily Brief & Meal Intelligence \u2014 First Pass",
       "type": "Meal Intelligence foundation",

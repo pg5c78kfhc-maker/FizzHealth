@@ -1,0 +1,16 @@
+Fizz Health v1.4.11.1 test proof
+
+Automated test suite: PASS
+277 tests passed; 0 failed.
+
+Release metadata verification: PASS
+v1.4.11.1 / FH-1322, FH-1323 corrective
+
+Production build: NOT RUN
+Vite is not installed in the isolated environment. npm run build exits with: vite: not found.
+
+Corrective coverage:
+- Meals tab is isolated to meal_definitions and no longer falls through to foods.
+- Recipe and meal creation share a searchable component picker.
+- Meal components accept foods with quantity/unit and recipes by serving.
+- Picker uses visual viewport height, independently scrolling results, and persistent actions.

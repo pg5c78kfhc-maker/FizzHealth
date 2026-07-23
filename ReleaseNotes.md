@@ -1,3 +1,16 @@
+# Fizz Health v1.4.11.1
+
+## Meal Library & Shared Component Picker Corrective
+
+Completed story: FH-1322, FH-1323 corrective
+
+- Corrected the Meals tab so it shows only explicit meal definitions.
+- Replaced native full-list ingredient dropdowns with a searchable, keyboard-aware component picker.
+- Reused the same picker process for recipe ingredients and meal contents.
+- Meal contents now support complete recipes as well as foods.
+- Food components require quantity and unit; recipe components use servings.
+- Added viewport-safe independent result scrolling and persistent Cancel/Add controls.
+
 # Fizz Health v1.4.11.0
 
 ## Daily Brief & Meal Intelligence — First Pass

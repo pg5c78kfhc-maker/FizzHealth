@@ -1,3 +1,10 @@
+## v1.4.11.1 — 2026-07-23
+
+- Corrected Meals-only filtering.
+- Added shared searchable component picker for recipe and meal creation.
+- Added recipe-as-meal-component support and quantity/unit configuration.
+- Corrected iPhone visual viewport behavior for component selection.
+
 
 
 ## v1.4.10.43b — Daily Health Newspaper

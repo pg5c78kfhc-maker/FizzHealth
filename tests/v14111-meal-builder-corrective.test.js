@@ -1,0 +1,11 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import fs from 'node:fs';
+const main=fs.readFileSync(new URL('../src/main.jsx',import.meta.url),'utf8');
+const css=fs.readFileSync(new URL('../src/styles.css',import.meta.url),'utf8');
+const meta=JSON.parse(fs.readFileSync(new URL('../VERSION.json',import.meta.url),'utf8'));
+test('v1.4.11.1 corrective metadata is canonical',()=>{assert.equal(meta.version,'1.4.11.1');assert.equal(meta.build,'141110');assert.match(main,/const VERSION='1\.4\.11\.1'/)});
+test('Meals view does not fall through to the food query',()=>{assert.match(main,/if\(view==='meals'\)mealDefs=.*?else if\(view==='recipes'\)/s)});
+test('recipes and meals share the searchable component picker',()=>{assert.match(main,/function ComponentPicker/);assert.match(main,/mode="recipe"/);assert.match(main,/mode="meal"/);assert.match(main,/Search foods…/);assert.match(main,/Search recipes…/)});
+test('meal picker supports food units and recipe servings',()=>{assert.match(main,/Foods.*Recipes/s);assert.match(main,/tab==='recipe'\?'Servings':'Quantity'/);assert.match(main,/unitOptions\(selected\.unit\)/)});
+test('component picker is constrained to visual viewport with independent results scrolling',()=>{assert.match(css,/component-picker-panel[^}]*var\(--visual-height,100dvh\)/);assert.match(css,/component-picker-results\{[^}]*overflow-y:auto/)});
