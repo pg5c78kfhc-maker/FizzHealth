@@ -837,3 +837,37 @@ body.food-library-active .foods{max-height:none;min-height:0;flex:1;overflow-y:a
 body.food-library-active .search{flex:0 0 auto}
 body.food-library-active .discovery-tabs{flex:0 0 auto}
 .recipe-pantry-success{margin:12px 0}
+
+/* v1.4.11.8 — Meals library regression stabilization. */
+body.food-library-active .app{width:100%;max-width:100%;padding-bottom:0}
+body.food-library-active .content{width:100%;max-width:100%;padding-bottom:0}
+.food-library-page{
+ width:100%;max-width:100%;min-width:0;min-height:0;flex:1;
+ display:flex;flex-direction:column;overflow:hidden;
+ padding:0 16px calc(var(--bottom-nav-height) + env(safe-area-inset-bottom));
+ box-sizing:border-box
+}
+.food-library-page>*{min-width:0;max-width:100%;box-sizing:border-box}
+.food-library-page .meals-library-head{flex:0 0 auto;margin:0 -4px 8px;padding:10px 4px}
+.food-library-page .compact-library-actions{
+ flex:0 0 auto;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin:0 0 10px
+}
+.food-library-page .compact-library-actions button{min-width:0;width:100%;padding:10px 6px;justify-content:center}
+.food-library-page .compact-library-actions button span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.food-library-page .discovery-tabs{
+ flex:0 0 auto;display:flex;gap:8px;overflow-x:auto;overflow-y:hidden;max-width:100%;
+ padding:2px 0 8px;scrollbar-width:none;overscroll-behavior-inline:contain
+}
+.food-library-page .discovery-tabs::-webkit-scrollbar{display:none}
+.food-library-page .discovery-tabs button{flex:0 0 auto;max-width:100%}
+.food-library-page .search{flex:0 0 auto;width:100%;max-width:100%;margin:0 0 10px}
+.food-library-page .list.foods{
+ flex:1 1 auto;min-height:0;width:100%;max-width:100%;overflow-y:auto;overflow-x:hidden;
+ padding:0 0 20px;overscroll-behavior:contain
+}
+.food-library-page .item,.food-library-page .swipe-shell,.food-library-page .swipe-card{max-width:100%;min-width:0}
+@media(max-width:390px){
+ .food-library-page{padding-left:12px;padding-right:12px}
+ .food-library-page .compact-library-actions{grid-template-columns:1fr 1fr}
+ .food-library-page .compact-library-actions button:last-child{grid-column:1/-1}
+}

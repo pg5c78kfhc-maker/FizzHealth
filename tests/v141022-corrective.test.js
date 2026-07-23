@@ -17,7 +17,7 @@ test('global plus opens Add Food and legacy Universal Capture is removed',()=>{
 });
 
 test('Add Food actions are visible and retain New Food and Log Once intent',()=>{
- assert.match(main,/className="add-food-actions"/);
+ assert.match(main,/className="add-food-actions compact-library-actions"/);
  assert.match(main,/<Plus\/><span>New Food<\/span>/);
  assert.match(main,/<Zap\/><span>Log Once<\/span>/);
  assert.match(css,/\.add-food-actions button:first-child\{background:var\(--panel\);color:#fff\}/);

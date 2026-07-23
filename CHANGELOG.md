@@ -1,3 +1,10 @@
+## v1.4.11.8 — Meals Library Regression Stabilization
+
+- FH-1477: Contained Meals library layout and removed horizontal overflow.
+- FH-1478: Restored direct meal-record rendering as the default library view.
+- FH-1479: Added iPhone viewport containment for actions, filters, search, and results.
+- FH-1480: Added regression gates for responsive layout and populated meal rendering.
+
 ## v1.4.11.6 — 2026-07-23
 
 - Repaired the pantry-detail pencil handoff to the actual pantry editor.

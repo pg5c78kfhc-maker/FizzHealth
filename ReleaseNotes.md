@@ -1,18 +1,18 @@
-# Fizz Health v1.4.11.7
+# Fizz Health v1.4.11.8
 
-## Prepared Pantry Persistence & Mobile Layout Repair
+## Meals Library Regression Stabilization
 
-FH-1473 through FH-1476
+FH-1477 through FH-1480
 
-- FH-1473: Prepared recipe batches now persist as verified pantry records linked to a reusable prepared-food record.
-- FH-1474: The app verifies the saved pantry row and immediately confirms the quantity added.
-- FH-1475: The Food and Meals library is constrained to the iPhone visual viewport, with only the results list scrolling.
-- FH-1476: Search Pantry now places its Close control to the left of the page title.
+- FH-1477: Restored the Meals library as a contained secondary screen with no horizontal page overflow.
+- FH-1478: The Meals library now opens directly on explicit meal records and preserves the existing meal data query.
+- FH-1479: Header actions, filter controls, search, and results remain inside the iPhone visual viewport; only the results list scrolls.
+- FH-1480: Added regression checks for current metadata, meal-record binding, and responsive containment.
 
-Version: 1.4.11.7  
-Build: 141170  
-Deployment: FH-20260723-141170  
-Released: 2026-07-23T10:05:00-04:00
+Version: 1.4.11.8  
+Build: 141180  
+Deployment: FH-20260723-141180  
+Released: 2026-07-23T10:30:00-04:00
 
 # Fizz Health v1.4.11.6
 

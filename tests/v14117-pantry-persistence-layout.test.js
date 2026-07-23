@@ -4,7 +4,7 @@ import fs from 'node:fs';
 const main=fs.readFileSync(new URL('../src/main.jsx',import.meta.url),'utf8');
 const css=fs.readFileSync(new URL('../src/styles.css',import.meta.url),'utf8');
 const meta=JSON.parse(fs.readFileSync(new URL('../VERSION.json',import.meta.url),'utf8'));
-test('v1.4.11.7 metadata is current',()=>{assert.equal(meta.version,'1.4.11.7');assert.equal(meta.build,'141170');assert.equal(meta.release_id,'FH-20260723-141170')});
+test('v1.4.11.8 metadata is current',()=>{assert.equal(meta.version,'1.4.11.8');assert.equal(meta.build,'141180');assert.equal(meta.release_id,'FH-20260723-141180')});
 test('prepared recipe save creates and verifies a pantry record',()=>{
  assert.match(main,/foodId=`recipe:\$\{recipe\.recipe_id\}`/);
  assert.match(main,/insertRecord\(db,'pantry'/);

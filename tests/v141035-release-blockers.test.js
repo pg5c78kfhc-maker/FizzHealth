@@ -7,7 +7,7 @@ const css=fs.readFileSync(new URL('../src/styles.css',import.meta.url),'utf8');
 const recipe=fs.readFileSync(new URL('../src/nutrition/recipe.js',import.meta.url),'utf8');
 
 test('Meals screen uses Meals terminology',()=>{
- assert.match(main,/<small>MEALS<\/small><h1>Meals<\/h1>/);
+ assert.match(main,/className="standard-page-head meals-library-head"[\s\S]*<h2>Meals<\/h2>/);
 });
 
 test('Pantry is inventory-only and no longer owns What Should I Eat',()=>{
