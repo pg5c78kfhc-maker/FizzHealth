@@ -1,43 +1,8 @@
-# Fizz Health v1.4.11.1
+# Fizz Health v1.4.11.2
 
-## Meal Library & Shared Component Picker Corrective
+Meal & Editor Stabilization
 
-Completed story: FH-1322, FH-1323 corrective
+This release repairs pantry editing, recipe editing, meal deletion placement, universal consume/plan actions, visual viewport sizing, invalid quantity displays, and release metadata consistency.
 
-- Corrected the Meals tab so it shows only explicit meal definitions.
-- Replaced native full-list ingredient dropdowns with a searchable, keyboard-aware component picker.
-- Reused the same picker process for recipe ingredients and meal contents.
-- Meal contents now support complete recipes as well as foods.
-- Food components require quantity and unit; recipe components use servings.
-- Added viewport-safe independent result scrolling and persistent Cancel/Add controls.
 
-# Fizz Health v1.4.11.0
-
-## Daily Brief & Meal Intelligence — First Pass
-
-Completed FH-1321 through FH-1336.
-
-- Added first-class meal definitions and meal components.
-- Added Breakfast, Lunch, Dinner, Snack, and Any meal categories.
-- Added a Meal Library and Create/Edit Meal workflow.
-- Added a universal consumed/planned logging panel with past, current, and future timestamps.
-- Added schema foundations for meal-aware recommendations, planned meals, and pantry forecasting.
-
-# Fizz Health v1.4.10.43b
-
-## Daily Health Newspaper and Voice Engine 2.0
-
-Stories: FH-1311 through FH-1323
-
-- Expanded the Daily Brief into a continuous health newspaper with Front Page priorities, Outlook, Chef’s Kitchen, Momentum, Looking Ahead, Today’s Win, and Final Outlook sections.
-- Added urgency-based pantry intelligence: expired, expires today, within three days, opened, within one week, and later pressure.
-- Prevented expired foods from appearing as consumption recommendations and added a dedicated Pantry Alert with corrective actions.
-- Upgraded voice selection to persist the exact browser `voiceURI`, distinguish duplicate names when possible, refresh after iOS voice changes, and fall back safely.
-- Added Test Voice, speaking-rate persistence, and compact speech diagnostics.
-- Rewrote narration as a conversational briefing addressed to Edward rather than reading interface controls.
-- Preserved detailed Decision Intelligence modules under the Research Desk.
-
-## Artifacts
-
-- Full source: `Source.1.4.10.43b.zip`
-- Changed files: `Changed.1.4.10.43b.zip`
+Completed story: FH-1341 through FH-1404

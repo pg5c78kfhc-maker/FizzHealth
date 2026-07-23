@@ -10,7 +10,7 @@ test('Recipes view exposes a context-aware New Recipe action',()=>{
 });
 
 test('recipe creation editor captures reusable ingredients and saves schema-aware rows',()=>{
- assert.match(main,/function RecipeCreateEditor\(\{foods,onClose,onSaved\}\)/);
+ assert.match(main,/function RecipeCreateEditor\(\{foods,recipe=null,onClose,onSaved\}\)/);
  assert.match(main,/Recipe name/);
  assert.match(main,/Add ingredient/);
  assert.match(main,/insertRecord\(db,'recipes'/);

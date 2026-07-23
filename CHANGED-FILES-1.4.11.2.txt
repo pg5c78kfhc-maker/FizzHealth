@@ -1,0 +1,26 @@
+Fizz Health v1.4.11.2 changed files
+
+CHANGED-FILES-1.4.11.2.txt
+CHANGELOG.md
+ReleaseNotes.md
+TEST-PROOF-1.4.11.2.txt
+VERSION.json
+package-lock.json
+package.json
+public/sw.js
+release-history.json
+src/database.js
+src/decision/engine.js
+src/main.jsx
+src/styles.css
+tests/v141026-recipe-creation.test.js
+tests/v141041-home-hierarchy.test.js
+tests/v141041b-home-sequence.test.js
+tests/v141042-highest-impact.test.js
+tests/v141042a-restaurant-day.test.js
+tests/v141042b-responsive-card.test.js
+tests/v141043-decision-brief.test.js
+tests/v141043a-spoken-editorial-brief.test.js
+tests/v141043b-daily-health-newspaper.test.js
+tests/v14111-meal-builder-corrective.test.js
+tests/v14112-editor-stabilization.test.js

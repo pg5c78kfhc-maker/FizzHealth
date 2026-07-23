@@ -787,3 +787,32 @@ textarea{width:100%;min-width:0;max-height:min(36dvh,280px);resize:vertical;over
 
 /* v1.4.11.1 shared searchable component picker */
 .component-picker-backdrop{z-index:120}.component-picker-panel{width:min(680px,100%);height:min(var(--visual-height,100dvh),760px);max-height:var(--visual-height,100dvh);display:grid;grid-template-rows:auto minmax(0,1fr) auto;overflow:hidden}.component-picker-body{min-height:0;display:grid;grid-template-rows:auto auto minmax(100px,1fr) auto auto;gap:10px;padding:12px;overflow:hidden}.component-picker-search{display:flex;align-items:center;gap:9px;border:1px solid #34464e;border-radius:14px;padding:0 12px;background:#0c1418}.component-picker-search svg{width:20px;flex:none}.component-picker-search input{min-width:0;width:100%;border:0;background:transparent;padding:13px 0}.component-picker-tabs{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}.component-picker-tabs button{min-height:42px;border:1px solid #34464e;border-radius:12px;background:#111b20}.component-picker-tabs button.active{border-color:#8ee82f;color:#8ee82f;background:#18270f}.component-picker-results{min-height:0;overflow-y:auto;overscroll-behavior:contain;display:grid;align-content:start;gap:7px;padding-right:2px}.component-picker-results>button{display:flex;justify-content:space-between;align-items:center;gap:10px;text-align:left;border:1px solid #2f4047;border-radius:12px;padding:11px;background:#111a1f}.component-picker-results>button.selected{border-color:#8ee82f;background:#17230f}.component-picker-results>button div{display:grid;gap:3px;min-width:0}.component-picker-results>button span{font-size:.78rem;color:#9aa7ad}.component-picker-results>button svg{width:18px;color:#8ee82f;flex:none}.component-picker-config{display:grid;gap:8px;border-top:1px solid #2f4047;padding-top:10px}.nutrition-preview.compact{margin:0;padding:9px 11px}.component-empty-action{width:100%;min-height:72px;border:1px dashed #405159;border-radius:12px;background:#10191e;color:#aeb9be}.compact-row{grid-template-columns:34px minmax(0,1fr) 36px}.compact-row .recipe-ingredient-fields{display:grid;gap:3px}.compact-row .recipe-ingredient-fields span{font-size:.76rem;color:#9aa7ad}.meal-component-picker .section-title{align-items:center}.meal-component-picker .section-title button{display:flex;align-items:center;gap:6px}.meal-component-picker p{margin:0;color:#9aa7ad;font-size:.78rem}.meal-definition-editor .editor-scroll,.recipe-create-editor .editor-scroll{padding-bottom:max(24px,env(safe-area-inset-bottom))}@media(max-width:480px){.component-picker-panel{height:var(--visual-height,100dvh);max-height:var(--visual-height,100dvh);border-radius:0}.component-picker-body{padding:10px}.component-picker-config .unit-amount{grid-template-columns:1fr 1fr}}
+
+/* v1.4.11.2 — editor, viewport, recipe, pantry and logging stabilization */
+.component-picker-panel,.meal-definition-editor,.recipe-create-editor,.universal-log-panel,.pantry-manual-editor{
+ height:calc(var(--visual-viewport-height,100dvh) - 12px);
+ max-height:calc(var(--visual-viewport-height,100dvh) - 12px);
+ margin:calc(var(--visual-viewport-top,0px) + 6px) auto 6px;
+}
+.component-picker-backdrop,.recipe-create-modal{align-items:flex-start;padding:0 6px calc(var(--bottom-nav-height) + env(safe-area-inset-bottom,0px));overflow:hidden}
+.component-picker-panel{width:min(680px,calc(100vw - 12px));grid-template-rows:auto minmax(0,1fr) auto}
+.component-picker-body{min-height:0;overflow:hidden;grid-template-rows:auto auto minmax(80px,1fr) auto auto}
+.component-picker-results{min-height:0;overflow:auto;-webkit-overflow-scrolling:touch}
+.component-picker-panel .editor-actions{position:relative;z-index:4;padding-bottom:max(12px,env(safe-area-inset-bottom));background:#121a20}
+.editor-header-actions{display:flex;align-items:center;gap:6px}
+.danger-icon{color:#ff7d7d!important;background:#2a1719!important}
+.decision-detail-head{display:grid;grid-template-columns:auto minmax(0,1fr) auto;align-items:start;gap:12px}
+.decision-detail-head>div{text-align:left;min-width:0}
+.swipe-delete-row{position:relative;overflow:hidden;border-radius:12px;background:#39191b}
+.swipe-delete-action{position:absolute;inset:0 0 0 auto;width:90px;display:grid;place-content:center;gap:3px;background:#4a1d20;color:#ffd0d0}
+.swipe-delete-action svg{width:20px;margin:auto}
+.swipe-delete-content{position:relative;background:#121c21;transition:transform .18s ease;touch-action:pan-y}
+.recipe-ingredient-row.editable{cursor:pointer;grid-template-columns:34px minmax(0,1fr) 26px}
+.recipe-ingredient-row.editable>svg{width:18px;color:#9aa7ad}
+.keyboard-open .component-picker-panel,.keyboard-open .meal-definition-editor,.keyboard-open .recipe-create-editor,.keyboard-open .universal-log-panel,.keyboard-open .pantry-manual-editor{
+ height:calc(var(--visual-viewport-height,100dvh) - 4px);max-height:calc(var(--visual-viewport-height,100dvh) - 4px);margin:calc(var(--visual-viewport-top,0px) + 2px) auto 2px;border-radius:14px
+}
+@media(max-width:480px){
+ .component-picker-panel{border-radius:14px}
+ .component-picker-backdrop,.recipe-create-modal{padding-left:4px;padding-right:4px}
+}

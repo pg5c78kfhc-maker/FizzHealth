@@ -653,7 +653,7 @@ const migrations=[
     ALTER TABLE meals ADD COLUMN meal_definition_id TEXT;
     ALTER TABLE planned_meals ADD COLUMN meal_definition_id TEXT;
     INSERT OR REPLACE INTO release_metadata(version,release_date,build_id,schema_version,title,created_at)
-    VALUES ('1.4.11.1','2026-07-23','141110',46,'Daily Brief & Meal Intelligence — First Pass',CURRENT_TIMESTAMP);
+    VALUES ('1.4.11.2','2026-07-23','141120',46,'Daily Brief & Meal Intelligence — First Pass',CURRENT_TIMESTAMP);
   `}
 
 ];

@@ -2,6 +2,25 @@
   "format": "fizz-health-release-history",
   "releases": [
     {
+      "version": "1.4.11.2",
+      "date": "2026-07-23",
+      "title": "Meal & Editor Stabilization",
+      "build": "141120",
+      "release_id": "FH-20260723-141120",
+      "stories": [
+        "FH-1341",
+        "FH-1351",
+        "FH-1352",
+        "FH-1353",
+        "FH-1371",
+        "FH-1372",
+        "FH-1381",
+        "FH-1391",
+        "FH-1401",
+        "FH-1403"
+      ]
+    },
+    {
       "version": "1.4.11.1",
       "name": "Meal Library & Shared Component Picker Corrective",
       "type": "Corrective implementation release",

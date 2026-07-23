@@ -1,3 +1,13 @@
+## v1.4.11.2 — 2026-07-23
+
+- Standardized editor headers and moved meal deletion to the header.
+- Added pantry item pencil editing from the detail screen.
+- Added editable recipes with tap-to-edit and swipe-left ingredient removal.
+- Repaired recipe quantity fallbacks so NaN is never displayed.
+- Wired Consume Now and Plan for Later through the Universal Log panel.
+- Corrected component picker sizing against the iOS visual viewport and bottom navigation.
+- Centralized current release metadata at v1.4.11.2 / build 141120.
+
 ## v1.4.11.1 — 2026-07-23
 
 - Corrected Meals-only filtering.

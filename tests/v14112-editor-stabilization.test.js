@@ -1,0 +1,13 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import fs from 'node:fs';
+const main=fs.readFileSync(new URL('../src/main.jsx',import.meta.url),'utf8');
+const css=fs.readFileSync(new URL('../src/styles.css',import.meta.url),'utf8');
+const meta=JSON.parse(fs.readFileSync(new URL('../VERSION.json',import.meta.url),'utf8'));
+test('v1.4.11.2 metadata is canonical',()=>{assert.equal(meta.version,'1.4.11.2');assert.equal(meta.build,'141120');assert.match(main,/const VERSION='1\.4\.11\.2'/)});
+test('pantry detail exposes header pencil editor',()=>{assert.match(main,/aria-label="Edit pantry item"/);assert.doesNotMatch(main,/>View and edit item</)});
+test('meal delete uses header trash action',()=>{assert.match(main,/aria-label="Delete meal"/);assert.doesNotMatch(main,/> Delete meal<\/button>/)});
+test('recipe detail and ingredients are editable',()=>{assert.match(main,/aria-label="Edit recipe"/);assert.match(main,/SwipeDeleteIngredient/);assert.match(main,/Remove \$\{label\} from this recipe/)});
+test('universal log supports initial consumed and planned state',()=>{assert.match(main,/initialStatus='consumed'/);assert.match(main,/setLogStatus\('planned'\)/);assert.match(main,/setLogStatus\('consumed'\)/)});
+test('component picker uses visual viewport and internal scroll',()=>{assert.match(css,/--visual-viewport-height/);assert.match(css,/component-picker-results\{[^}]*overflow:auto/s)});
+test('invalid recipe amount does not render NaN',()=>{assert.match(main,/Quantity not recorded/)});

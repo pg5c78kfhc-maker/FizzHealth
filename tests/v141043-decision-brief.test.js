@@ -4,7 +4,7 @@ import fs from 'node:fs';
 const main=fs.readFileSync(new URL('../src/main.jsx',import.meta.url),'utf8');
 const css=fs.readFileSync(new URL('../src/styles.css',import.meta.url),'utf8');
 const meta=JSON.parse(fs.readFileSync(new URL('../VERSION.json',import.meta.url),'utf8'));
-test('release metadata advances to v1.4.10.43a',()=>{assert.equal(meta.version,'1.4.11.1');assert.equal(meta.build,'141110');assert.match(main,/const VERSION='1\.4\.11\.1'/)});
+test('release metadata advances to v1.4.10.43a',()=>{assert.equal(meta.version,'1.4.11.2');assert.equal(meta.build,'141120');assert.match(main,/const VERSION='1\.4\.11\.2'/)});
 test('expanded intelligence uses a Daily Decision Brief',()=>{assert.match(main,/function DecisionBrief/);for(const label of ['TOP STORY','TODAY’S OUTLOOK','CHEF’S KITCHEN','MOMENTUM','Research desk'])assert.match(main,new RegExp(label));});
 test('detailed intelligence is preserved under progressive disclosure',()=>{assert.match(main,/brief-legacy/);assert.match(main,/HighestImpactDecisionExperience/);assert.match(main,/DecisionIntelligencePanel/);assert.match(main,/DailyCommandCenter/);});
 test('Decision Intelligence is constrained to viewport',()=>{assert.match(css,/v1\.4\.10\.43b — Daily Health Newspaper/);assert.match(css,/width:100%;max-width:100%;min-width:0/);assert.match(css,/overflow:hidden/);});
