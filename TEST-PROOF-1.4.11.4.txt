@@ -1,0 +1,17 @@
+Fizz Health v1.4.11.4 — Critical Action Wiring Repair
+
+Verification completed 2026-07-23.
+
+Automated tests
+- npm test: 292 passed, 0 failed.
+- npm run verify:release: passed.
+
+Functional paths covered
+- Pantry detail pencil closes the detail layer and opens PantryItemEditor.
+- Recipe Save performs database persistence and invokes the saved callback.
+- Consume Now opens UniversalLogPanel in consumed mode.
+- Plan for Later opens UniversalLogPanel in planned mode.
+- About metadata is centralized and verified as version 1.4.11.4, build 141140, deployment FH-20260723-141140.
+
+Production build
+- npm run build could not execute because the supplied source archive does not contain the Vite executable in node_modules/.bin.

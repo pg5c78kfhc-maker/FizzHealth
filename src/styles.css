@@ -822,3 +822,9 @@ textarea{width:100%;min-width:0;max-height:min(36dvh,280px);resize:vertical;over
 .recipe-create-modal,.universal-log-backdrop,.component-picker-backdrop{z-index:3200!important}
 .recipe-create-editor,.universal-log-panel,.component-picker-panel{position:relative;z-index:3201}
 .decision-page .recipe-create-modal,.decision-page .universal-log-backdrop{position:fixed;inset:0}
+
+/* v1.4.11.4 functional action hardening */
+.decision-detail-head,.edit-head,.detail-actions{position:relative;z-index:20;pointer-events:auto}
+.decision-detail-head button,.edit-head button,.detail-actions button{pointer-events:auto;touch-action:manipulation}
+.recipe-create-modal,.universal-log-backdrop{pointer-events:auto}
+.recipe-create-editor,.universal-log-panel,.pantry-manual-editor{pointer-events:auto}

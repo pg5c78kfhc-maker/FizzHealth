@@ -1,7 +1,7 @@
-## v1.4.11.3 — Navigation & Workflow Stabilization
+## v1.4.11.4 — Navigation & Workflow Stabilization
 
-- Build: 141130
-- Deployment: FH-20260723-141130
+- Build: 141140
+- Deployment: FH-20260723-141140
 - Date: 2026-07-23
 - Scope: FH-1405.1 through FH-1460
 - Status: Tested
