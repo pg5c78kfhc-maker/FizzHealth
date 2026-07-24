@@ -3,4 +3,4 @@ const main=fs.readFileSync('src/main.jsx','utf8'),db=fs.readFileSync('src/databa
 test('meal categories include components and beverage',()=>{for(const x of ['Appetizer','Side','Dessert','Beverage','Condiment'])assert.match(main,new RegExp(x))});
 test('planner uses saved meals and date calendar',()=>{assert.match(main,/SELECT \* FROM meal_definitions/);assert.match(main,/MEAL PLANNING PROTOTYPE/);assert.match(main,/RESTAURANT/);assert.doesNotMatch(main,/Plan from pantry foods, recipes, leftovers/)});
 test('planner schema supports roles and reservations',()=>{assert.match(db,/ADD COLUMN item_role/);assert.match(db,/ADD COLUMN reserved_calories/)});
-test('release metadata is current',()=>{assert.equal(meta.version,'1.4.11.18');assert.equal(meta.schema_version,53)});
+test('release metadata is current',()=>{assert.equal(meta.version,'1.4.11.19');assert.equal(meta.schema_version,53)});

@@ -1,0 +1,9 @@
+Fizz Health v1.4.11.19 — Restaurant Intelligence UX & Decision Dashboard
+Build: 141319
+Deployment: FH-20260723-141319
+
+Automated tests: 352 passed, 0 failed.
+Release metadata verification: passed.
+Production build: not completed because the provided source archive did not include installed dependencies and vite was unavailable (sh: vite: not found).
+Archive integrity: verified after packaging.
+No GitHub writes were performed.

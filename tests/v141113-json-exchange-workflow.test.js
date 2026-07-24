@@ -30,11 +30,11 @@ test('restaurant exchange UI contains review, apply, and completion states',()=>
  assert.match(main,/restaurantMenuItems\(payload\)/);
 });
 
-test('release metadata identifies 1.4.11.18 deployment',()=>{
+test('release metadata identifies 1.4.11.19 deployment',()=>{
  const meta=JSON.parse(fs.readFileSync(new URL('../VERSION.json',import.meta.url),'utf8'));
- assert.equal(meta.version,'1.4.11.18');
- assert.equal(meta.build,'141318');
- assert.equal(meta.release_id,'FH-20260723-141318');
+ assert.equal(meta.version,'1.4.11.19');
+ assert.equal(meta.build,'141319');
+ assert.equal(meta.release_id,'FH-20260723-141319');
 });
 
 test('repairs smart-quoted nested JSON strings and converts them to structured values',()=>{

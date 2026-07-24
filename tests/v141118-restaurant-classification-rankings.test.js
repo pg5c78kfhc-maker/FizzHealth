@@ -5,7 +5,7 @@ const main=fs.readFileSync(new URL('../src/main.jsx',import.meta.url),'utf8');
 const db=fs.readFileSync(new URL('../src/database.js',import.meta.url),'utf8');
 const intelligence=fs.readFileSync(new URL('../src/restaurant/intelligence.js',import.meta.url),'utf8');
 const meta=JSON.parse(fs.readFileSync(new URL('../VERSION.json',import.meta.url),'utf8'));
-test('release metadata identifies restaurant classification release',()=>{assert.equal(meta.version,'1.4.11.18');assert.equal(meta.schema_version,53);assert.equal(meta.build,'141318')});
+test('release metadata identifies restaurant classification release',()=>{assert.equal(meta.version,'1.4.11.19');assert.equal(meta.schema_version,53);assert.equal(meta.build,'141319')});
 test('restaurant ranking is not capped at twenty',()=>{assert.match(main,/limit:null/);assert.doesNotMatch(main,/limit:20/);assert.match(intelligence,/limit==null/)});
 test('restaurant items share meal role taxonomy and filters',()=>{for(const role of ['Breakfast','Lunch','Dinner','Any','Snack','Appetizer','Side','Dessert','Beverage','Condiment'])assert.match(main,new RegExp(`'${role}'`));assert.match(main,/restaurant-menu-filters/);assert.match(main,/Favorites/)});
 test('restaurant classification persists primary and eligible roles',()=>{assert.match(db,/primary_category TEXT/);assert.match(db,/eligible_categories_json TEXT/);assert.match(main,/RestaurantMealClassificationEditor/);assert.match(main,/eligible_categories_json/)});

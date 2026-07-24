@@ -703,7 +703,7 @@ const migrations=[
     ALTER TABLE restaurant_meals ADD COLUMN eligible_categories_json TEXT;
     CREATE INDEX IF NOT EXISTS idx_restaurant_meals_primary_category ON restaurant_meals(restaurant_id,primary_category,active);
     INSERT OR REPLACE INTO release_metadata(version,release_date,build_id,schema_version,title,created_at)
-    VALUES ('1.4.11.18','2026-07-23','141318',53,'Restaurant Classification & Complete Rankings','2026-07-24T00:45:00.000Z');
+    VALUES ('1.4.11.19','2026-07-23','141319',53,'Restaurant Intelligence UX & Decision Dashboard','2026-07-24T01:30:00.000Z');
   `}
 
 ];

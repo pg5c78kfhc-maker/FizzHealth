@@ -20,11 +20,11 @@ import {buildRecipeSnapshot,compactRecipeMealNotes} from './nutrition/recipe';
 import {normalizeSqlValue,auditValue} from './exchange/persistence';
 import {buildFoodEnrichmentExchange,buildNewFoodExchange,buildLogOnceExchange,normalizeExchangeJson as normalizeUniversalJson,parseExchangeJson,restaurantMenuItems,validateRestaurantExchange,validateUniversalExchange,foodProposal,mealProposal,changedFoodFields,serializeJsonBackedFields} from './exchange';
 import './styles.css';
-const VERSION='1.4.11.18';
+const VERSION='1.4.11.19';
 const RELEASE_DATE='2026-07-23';
-const BUILD_ID='141318';
-const DEPLOYMENT_ID='FH-20260723-141318';
-const RELEASE_CREATED_AT='2026-07-23T20:45:00-04:00';
+const BUILD_ID='141319';
+const DEPLOYMENT_ID='FH-20260723-141319';
+const RELEASE_CREATED_AT='2026-07-23T21:30:00-04:00';
 const localDateKey=(date=new Date())=>{const y=date.getFullYear(),m=String(date.getMonth()+1).padStart(2,'0'),d=String(date.getDate()).padStart(2,'0');return `${y}-${m}-${d}`};
 const today=()=>localDateKey();
 const toDateTimeLocal=(date=new Date())=>{const y=date.getFullYear(),m=String(date.getMonth()+1).padStart(2,'0'),d=String(date.getDate()).padStart(2,'0'),h=String(date.getHours()).padStart(2,'0'),min=String(date.getMinutes()).padStart(2,'0');return `${y}-${m}-${d}T${h}:${min}`};
@@ -1267,9 +1267,40 @@ function RestaurantMealClassificationEditor({meal,onClose,onSaved}){
  async function save(){const roles=[...new Set([primary,...eligible])];await run('UPDATE restaurant_meals SET primary_category=?,eligible_categories_json=?,meal_period=?,favorite=?,active=?,price=?,updated_at=? WHERE id=?',[primary,JSON.stringify(roles),primary,favorite?1:0,active?1:0,price===''?null:Number(price),new Date().toISOString(),meal.id]);onSaved?.();onClose()}
  return <div className="modal-backdrop" onClick={onClose}><div className="panel fixed-editor restaurant-classification-editor" onClick={e=>e.stopPropagation()}><div className="edit-head sticky-head"><button onClick={onClose} aria-label="Cancel"><X/></button><div><small>RESTAURANT MEAL</small><h3>Classify {meal.meal_name}</h3></div><button onClick={save} aria-label="Save classification"><Check/></button></div><div className="editor-scroll"><label>Primary category<select value={primary} onChange={e=>{setPrimary(e.target.value);setEligible(rows=>rows.includes(e.target.value)?rows:[...rows,e.target.value])}}>{RESTAURANT_MEAL_CATEGORIES.map(role=><option key={role}>{role}</option>)}</select></label><fieldset className="restaurant-role-picker"><legend>Eligible categories</legend><p>Choose every place this item can appear in Restaurant Intelligence and Meal Planning.</p><div>{RESTAURANT_MEAL_CATEGORIES.map(role=><button type="button" key={role} className={eligible.includes(role)?'active':''} onClick={()=>toggle(role)}>{eligible.includes(role)?<Check/>:<Plus/>}{role}</button>)}</div></fieldset><label>Price<input type="number" inputMode="decimal" min="0" step="0.01" value={price} onChange={e=>setPrice(e.target.value)}/></label><label className="check-row"><input type="checkbox" checked={favorite} onChange={e=>setFavorite(e.target.checked)}/> Starred favorite</label><label className="check-row"><input type="checkbox" checked={active} onChange={e=>setActive(e.target.checked)}/> Active menu item</label></div></div></div>
 }
+function restaurantDishDescription(meal){
+ const candidates=[meal.serving_description,meal.preparation,meal.notes];
+ return candidates.map(value=>String(value||'').trim()).find(value=>value&&!/estimated from|confidence|nutrition/i.test(value))||'Dish description not yet available.';
+}
+function restaurantRankReason(meal,decision,rank){
+ const positives=[...(decision.positive||[])],negatives=[...(decision.negative||[])];
+ const factors=[...(decision.factors||[])].sort((a,b)=>Math.abs(Number(b.impact)||0)-Math.abs(Number(a.impact)||0));
+ const best=factors.find(f=>Number(f.impact)>0),worst=factors.find(f=>Number(f.impact)<0);
+ const protein=Number(meal.protein)||0,sat=Number(meal.saturated_fat)||0,chol=Number(meal.cholesterol)||0,cal=Number(meal.calories)||0;
+ if(!positives.length&&protein>=25)positives.push('strong protein');
+ if(!negatives.length&&sat>=8)negatives.push('high saturated fat');
+ if(!negatives.length&&chol>=250)negatives.push('high cholesterol');
+ if(!negatives.length&&cal>=700)negatives.push('high calories');
+ const strength=positives[0]||best?.label;const tradeoff=negatives[0]||worst?.label;
+ if(strength&&tradeoff)return `${strength.charAt(0).toUpperCase()+strength.slice(1)}, but ${tradeoff.charAt(0).toLowerCase()+tradeoff.slice(1)} keeps it from ranking higher.`;
+ if(strength)return `${strength.charAt(0).toUpperCase()+strength.slice(1)} supports its #${rank} ranking today.`;
+ if(tradeoff)return `${tradeoff.charAt(0).toUpperCase()+tradeoff.slice(1)} is the main reason it ranks #${rank}.`;
+ return `Ranked #${rank} from today's calorie, protein, fiber, saturated-fat, and confidence factors.`;
+}
+function nutrientStatus(type,value){
+ const v=Number(value)||0;
+ if(type==='protein')return v>=30?['Excellent','good']:v>=20?['Good','good']:v>=10?['Fair','moderate']:['Low','warning'];
+ if(type==='sat')return v<=3?['Low','good']:v<=7?['Moderate','moderate']:['High','danger'];
+ return v<=100?['Low','good']:v<=250?['Moderate','moderate']:['High','danger'];
+}
+function RestaurantMetric({type,label,value,unit}){const [status,tone]=nutrientStatus(type,value);return <div className={`restaurant-metric ${tone}`}><span>{label}</span><strong>{Math.round(Number(value)||0)}{unit}</strong><em>{status}</em></div>}
 function RestaurantSwipeCard({meal,decision,rank,onOpen,onExplain,onFavorite,onEnrich,onRetire,onLog}){
  const [startX,setStartX]=useState(null),[dx,setDx]=useState(0);function end(){if(dx>70)onLog();else if(dx<-70)onRetire();setStartX(null);setDx(0)}
- return <article className={`restaurant-rank-card ${rank===1?'winner':''}`} onTouchStart={e=>setStartX(e.touches[0].clientX)} onTouchMove={e=>startX!=null&&setDx(e.touches[0].clientX-startX)} onTouchEnd={end} style={{transform:`translateX(${Math.max(-90,Math.min(90,dx))}px)`}}><button className="rank-copy" onClick={onOpen}><em>#{rank}</em><div><span className={`restaurant-price-badge ${meal.price==null?'unknown':''}`}>{meal.price==null?'Price unknown':`${meal.currency&&meal.currency!=='USD'?meal.currency+' ': '$'}${Number(meal.price).toFixed(2)}`}</span><b>{meal.meal_name}</b><span>{meal.category||'Meal'} · {Math.round(meal.calories||0)} kcal</span><small>{decision.action}</small></div></button><div className="rank-compact-actions"><button className="score-circle" onClick={onExplain} aria-label={`Explain ${decision.confidence?.score??Math.round((meal.confidence||0)*100)} percent confidence`}><span>{decision.confidence?.score??Math.round((meal.confidence||0)*100)}%</span></button><button className={`favorite-star ${Number(meal.favorite)===1?'active':''}`} onClick={onFavorite}><Star fill={Number(meal.favorite)===1?'currentColor':'none'}/></button><button className="item-pencil" onClick={onEnrich} aria-label="Improve menu item"><Pencil/></button></div></article>
+ const confidence=decision.confidence?.score??Math.round((meal.confidence||0)*100),description=restaurantDishDescription(meal),reason=restaurantRankReason(meal,decision,rank);
+ return <article className={`restaurant-rank-card restaurant-decision-card ${rank===1?'winner':''}`} onTouchStart={e=>setStartX(e.touches[0].clientX)} onTouchMove={e=>startX!=null&&setDx(e.touches[0].clientX-startX)} onTouchEnd={end} style={{transform:`translateX(${Math.max(-90,Math.min(90,dx))}px)`}}>
+  <div className="restaurant-card-left"><span className={`restaurant-price-badge ${meal.price==null?'unknown':''}`}>{meal.price==null?'Price unknown':`${meal.currency&&meal.currency!=='USD'?meal.currency+' ': '$'}${Number(meal.price).toFixed(2)}`}</span><em className="restaurant-rank-circle">#{rank}</em></div>
+  <button className="restaurant-card-main" onClick={onOpen}><b>{meal.meal_name}</b><span>{meal.primary_category||meal.meal_period||meal.category||'Meal'} · {Math.round(meal.calories||0)} kcal · {Math.round(meal.protein||0)}g protein</span><p>{description}</p><small><strong>WHY IT RANKS #{rank}</strong>{reason}</small><div className="restaurant-metric-row"><RestaurantMetric type="protein" label="Protein" value={meal.protein} unit="g"/><RestaurantMetric type="sat" label="Sat. fat" value={meal.saturated_fat} unit="g"/><RestaurantMetric type="chol" label="Cholesterol" value={meal.cholesterol} unit="mg"/></div></button>
+  <div className="rank-compact-actions"><button className="score-circle" onClick={onExplain} aria-label={`Explain ${confidence} percent confidence`}><span>{confidence}%</span></button><button className={`favorite-star ${Number(meal.favorite)===1?'active':''}`} onClick={onFavorite}><Star fill={Number(meal.favorite)===1?'currentColor':'none'}/></button><button className="item-pencil" onClick={onEnrich} aria-label="Improve menu item"><Pencil/></button></div>
+ </article>
 }
 function Restaurants({refresh,done}){
  const [selectedId,setSelectedId]=useState(null),[showArchived,setShowArchived]=useState(false),[revision,setRevision]=useState(0),[editingProfile,setEditingProfile]=useState(false),[creating,setCreating]=useState(false),[selectedMeal,setSelectedMeal]=useState(null),[decisionMeal,setDecisionMeal]=useState(null),[classifyMeal,setClassifyMeal]=useState(null),[menuFilter,setMenuFilter]=useState('All'),[exchange,setExchange]=useState(null);
@@ -1387,6 +1418,7 @@ function NutrientConfiguration({onBack,onClose=onBack}){
 }
 
 const RELEASE_HISTORY=[
+ {version:'1.4.11.19',name:'Restaurant Intelligence UX & Decision Dashboard',type:'Feature and corrective release',created:RELEASE_CREATED_AT,build:BUILD_ID,releaseId:DEPLOYMENT_ID,stories:[['FH-1287','Redesign restaurant recommendation cards as compact decision dashboards'],['FH-1288','Replace generic card advice with dish descriptions and item-specific ranking reasons'],['FH-1289','Show protein, saturated fat, and cholesterol with goal-focused status labels'],['FH-1290','Use adaptive high-contrast text for all colored restaurant metric states'],['FH-1291','Center and enlarge the percentage-only confidence badge'],['FH-1292','Explain the strongest benefit and largest tradeoff directly on each card'],['FH-1293','Prioritize restaurant description, preparation, then saved notes'],['FH-1294','Establish the reusable decision-dashboard card framework']],knownIssues:[]},
  {version:'1.4.11.18',name:'Restaurant Classification & Complete Rankings',type:'Feature and corrective release',created:RELEASE_CREATED_AT,build:BUILD_ID,releaseId:DEPLOYMENT_ID,stories:[['FH-1280','Show every active restaurant menu item and never hide starred meals behind a ranking limit'],['FH-1281','Classify restaurant items with the same primary and eligible meal roles as saved Meals'],['FH-1282','Rank restaurant choices within breakfast, lunch, dinner, appetizer, beverage, and other roles'],['FH-1283','Add complete-menu, favorites, and meal-role filters'],['FH-1284','Add an iPhone-friendly restaurant meal classification editor'],['FH-1285','Restrict Meal Planner placement to eligible restaurant meal roles'],['FH-1286','Restore the compact percentage-only confidence badge']],knownIssues:[]},
  {version:'1.4.11.17',name:'Restaurant Intelligence Completion',type:'Feature and corrective release',created:RELEASE_CREATED_AT,build:BUILD_ID,releaseId:DEPLOYMENT_ID,stories:[['FH-1274','Support explicit Replace menu and Add/update menu items exchange modes'],['FH-1275','Provide item-specific confidence breakdowns from evidence, verified fields, assumptions, and deductions'],['FH-1276','Show menu prices directly on ranked restaurant cards'],['FH-1277','Move restaurant meal detail navigation to the standard upper-left Back control'],['FH-1278','Make confidence explanations data-driven and actionable'],['FH-1279','Preserve favorites and history while updating matched appended menu items']],knownIssues:[]},
  {version:'1.4.11.13',name:'JSON Exchange Workflow Repair',type:'Blocking corrective release',created:RELEASE_CREATED_AT,build:BUILD_ID,releaseId:DEPLOYMENT_ID,stories:[['FH-1472','Generate strict import-safe restaurant exchange JSON'],['FH-1473','Normalize smart quotes, code fences, and clipboard wrapping before validation'],['FH-1474','Import section-based restaurant menus and show an actionable review and completion screen']],knownIssues:[]},
