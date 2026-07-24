@@ -42,3 +42,10 @@ The planner establishes the calendar, category, reservation, and proposal lifecy
 - Deployment: FH-20260724-141137
 - Scope: FH-1376 through FH-1383
 - Theme: UI Stabilization & Archive Recovery
+
+## 1.4.11.38
+- Build: 141138
+- Deployment: FH-20260724-141138
+- Date: 2026-07-25
+- Theme: Archive Restore Completion
+- Stories: FH-1384–FH-1387

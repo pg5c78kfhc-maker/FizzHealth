@@ -1,0 +1,34 @@
+Fizz Health v1.4.11.38 Test Proof
+=================================
+
+Focused command:
+  node --test tests/v141138-archive-restore-completion.test.js
+
+Result:
+  Tests: 5
+  Passed: 5
+  Failed: 0
+
+Verified behaviors:
+  1. Archived swipe is Restore-first and cannot invoke Add/Consume.
+  2. Grouped Recipe queries carry archived state into card behavior.
+  3. Archived Food and Recipe details expose visible Restore controls.
+  4. Restore writes restored_at and clears archive fields.
+  5. Version/build/completed-story metadata identifies v1.4.11.38.
+
+Release verification:
+  node scripts/verify-release.mjs
+  PASS — Release metadata verified: v1.4.11.38 / FH-1387
+
+Additional syntax checks:
+  node --check src/database.js — PASS
+  node --check src/decision/engine.js — PASS
+
+Historical suite:
+  401 total
+  358 passed
+  43 failed
+
+Build limitation:
+  npm ci could not complete in the sandbox and node_modules were not present,
+  so the Vite production build was not executed.

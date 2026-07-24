@@ -972,3 +972,8 @@ body.food-library-active .content{height:calc(100dvh - var(--bottom-nav-height))
 @media(max-width:390px){.food-library-page{gap:8px}.food-library-page .search{height:50px;min-height:50px;max-height:50px;flex-basis:50px}}
 .archive-restore-row{margin-top:10px}
 .archive-restore-row button{width:100%}
+
+/* v1.4.11.38 — archived items are restore-first, never log-first */
+.archive-status-banner{display:flex;align-items:center;justify-content:space-between;gap:14px;margin:0 0 18px;padding:14px 16px;border:1px solid var(--line,#30404a);border-radius:18px;background:rgba(151,255,43,.08)}
+.archive-status-banner>div{display:grid;gap:4px}.archive-status-banner small{color:var(--accent,#9cff39);font-weight:800;letter-spacing:.12em}.archive-status-banner b{font-size:.92rem;line-height:1.25}.archive-status-banner .primary{width:auto;min-height:44px;white-space:nowrap;margin:0}.restore-icon-action{color:var(--accent,#9cff39)!important}.archived-swipe .swipe-quick{background:#2f6f25}.archived-swipe.commit-ready .swipe-quick{background:#3f8f2d}
+@media(max-width:560px){.archive-status-banner{align-items:stretch;flex-direction:column}.archive-status-banner .primary{width:100%}}

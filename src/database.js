@@ -782,6 +782,12 @@ const migrations=[
     VALUES ('1.4.11.37','2026-07-24','141137',58,'UI Stabilization & Archive Recovery','2026-07-24T23:59:00-04:00');
   `}
 
+
+,  {version:59,name:'archive_restore_completion_release',sql:`
+    INSERT OR REPLACE INTO release_metadata(version,release_date,build_id,schema_version,title,created_at)
+    VALUES ('1.4.11.38','2026-07-25','141138',59,'Archive Restore Completion','2026-07-25T00:30:00-04:00');
+  `}
+
 ];
 
 const canonicalSchema={

@@ -1,18 +1,22 @@
-# Fizz Health v1.4.11.37 — UI Stabilization & Archive Recovery
+# Fizz Health v1.4.11.38 — Archive Restore Completion
 
-**Build:** 141137  
-**Deployment:** FH-20260724-141137  
-**Completed through:** FH-1383
+**Build:** 141138  
+**Deployment:** FH-20260724-141138  
+**Released:** July 25, 2026
 
-## Corrected
+This blocking corrective release completes the Food and Recipe archive lifecycle that was not delivered correctly in v1.4.11.37.
 
-- Repaired the Food/Meals library grid regression introduced in v1.4.11.36.
-- Search controls now have a fixed compact height and can no longer expand into a large circular control.
-- Status and Data filters remain compact, while the result list owns the remaining scrollable space.
-- The first result card starts below the search field and no longer renders underneath it.
-- Archived Foods and Recipes can be restored from the archived list and from their detail screen.
-- Restore preserves nutrition, ingredient relationships, favorites, serving data, and historical logs while recording `restored_at`.
+## Completed
 
-## Stories
+- **FH-1384:** Archived cards now use archive-specific gestures. A right swipe reveals **Restore**, and a full right swipe restores immediately. It can no longer open Add to Food Log or consume an archived record.
+- **FH-1385:** Archived Food and Recipe detail screens display an immediately visible **Restore to Active** action in the header area and an archive-status banner.
+- **FH-1386:** Restore preserves nutrition, recipe ingredients, favorites/history relationships, serving information, and existing historical Food Log snapshots. The record immediately leaves Archived and returns to Active.
+- **FH-1387:** Added focused regression gates for archived query state, context-aware swipe behavior, visible detail restoration, release metadata, and the restore persistence updates.
 
-FH-1376, FH-1377, FH-1378, FH-1379, FH-1380, FH-1381, FH-1382, FH-1383
+## Acceptance behavior
+
+1. Set Status to Archived.
+2. Swipe an archived Food or Recipe right: the exposed action reads **Restore**, not Add.
+3. Complete the full swipe or tap Restore: the record returns to Active.
+4. Open an archived Food or Recipe: **Restore to Active** is visible at the top of the detail screen.
+5. Archived records cannot be logged or consumed until restored.

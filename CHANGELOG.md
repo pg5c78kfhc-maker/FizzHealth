@@ -56,3 +56,11 @@ Completed story: FH-1478 through FH-1481
 - Corrected the v1.4.11.36 Food/Meals library grid regression.
 - Standardized the compact search field and filter layout.
 - Added archived Food and Recipe restore actions on detail screens.
+
+## 1.4.11.38 — Archive Restore Completion
+
+- Corrected archived-card right swipe to Restore instead of Add/Consume.
+- Added explicit archived state to grouped Recipe queries.
+- Added visible Restore controls to archived Food and Recipe details.
+- Preserved restore timestamps and relationships while returning records to Active.
+- Added focused archive lifecycle regression tests.

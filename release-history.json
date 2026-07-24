@@ -2,6 +2,33 @@
   "format": "fizz-health-release-history",
   "releases": [
     {
+      "version": "1.4.11.38",
+      "name": "Archive Restore Completion",
+      "type": "Blocking corrective release",
+      "created": "2026-07-25T00:30:00-04:00",
+      "build": "141138",
+      "release_id": "FH-20260724-141138",
+      "stories": [
+        [
+          "FH-1384",
+          "Make archived right swipes restore instead of log or consume"
+        ],
+        [
+          "FH-1385",
+          "Add an immediately visible Restore action to archived Food and Recipe details"
+        ],
+        [
+          "FH-1386",
+          "Preserve data and relationships while returning restored records to Active"
+        ],
+        [
+          "FH-1387",
+          "Gate the complete archive lifecycle with focused regression tests"
+        ]
+      ],
+      "known_issues": []
+    },
+    {
       "version": "1.4.11.37",
       "name": "UI Stabilization & Archive Recovery",
       "type": "Stabilization and corrective release",
