@@ -2,6 +2,26 @@
   "format": "fizz-health-release-history",
   "releases": [
     {
+      "version": "1.4.11.26",
+      "date": "2026-07-24",
+      "name": "Production Build Syntax Repair",
+      "type": "Hotfix",
+      "created": "2026-07-24T15:45:00-04:00",
+      "build": "141126",
+      "release_id": "FH-20260724-141126",
+      "stories": [
+        {
+          "id": "FH-1329",
+          "title": "Remove extra JSX expression terminator in Food/Recipe details"
+        },
+        {
+          "id": "FH-1330",
+          "title": "Repair malformed migration JavaScript in database module"
+        }
+      ],
+      "known_issues": []
+    },
+    {
       "version": "1.4.11.25",
       "date": "2026-07-24",
       "name": "JSX Build Repair",
