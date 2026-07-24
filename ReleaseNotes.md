@@ -1,6 +1,6 @@
-# Fizz Health v1.4.11.29 — Classified Meal Promotion Recovery
+# Fizz Health v1.4.11.30 — Classified Meal Promotion Recovery
 
-Released July 24, 2026. Build 141129. Deployment FH-20260724-141129.
+Released July 24, 2026. Build 141130. Deployment FH-20260724-141130.
 
 Completed FH-1325 through FH-1327, with stabilization story FH-1333.
 

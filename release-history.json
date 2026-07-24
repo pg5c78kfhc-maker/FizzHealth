@@ -2,10 +2,10 @@
   "format": "fizz-health-release-history",
   "releases": [
     {
-      "version": "1.4.11.29",
+      "version": "1.4.11.30",
       "name": "Classified Meal Promotion Recovery",
       "type": "Stabilization and focused feature release",
-      "build": "141129",
+      "build": "141130",
       "stories": [
         "FH-1325",
         "FH-1326",
@@ -14,7 +14,7 @@
       ],
       "knownIssues": [],
       "created_at": "2026-07-24T22:45:00-04:00",
-      "release_id": "FH-20260724-141129"
+      "release_id": "FH-20260724-141130"
     },
     {
       "version": "1.4.11.22",

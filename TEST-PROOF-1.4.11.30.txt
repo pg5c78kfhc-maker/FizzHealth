@@ -1,0 +1,21 @@
+Fizz Health v1.4.11.30 corrective proof
+
+Cloudflare v1.4.11.29 failure:
+  Identifier `MEAL_CATEGORIES` has already been declared
+  src/main.jsx declarations at generated lines 1825 and 6468
+
+Correction:
+  Removed the later duplicate declaration.
+  Remaining declarations found by grep: 1
+  src/main.jsx source line: 325
+
+Release verification:
+  PASS — v1.4.11.30 / FH-1325 through FH-1327
+
+Node tests:
+  369 total
+  336 passed
+  33 failed (legacy/version-pinned and removed-control source assertions)
+
+Local npm clean-install:
+  BLOCKED by internal package gateway HTTP 503.
