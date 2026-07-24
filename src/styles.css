@@ -922,8 +922,8 @@ body.food-library-active .content{height:calc(100dvh - var(--bottom-nav-height))
 .boot-diagnostic{display:block;margin:12px auto 0;max-width:34rem;font-size:.78rem;line-height:1.4;color:#aeb8c2}
 
 
-/* v1.4.11.30 — shared classified meal promotion */
-.promotion-backdrop{align-items:flex-end}
+/* v1.4.11.31 — shared classified meal promotion activation */
+.promotion-backdrop{align-items:flex-end;z-index:3100}
 .promotion-editor{max-height:min(82dvh,760px);display:flex;flex-direction:column;padding:0;overflow:hidden}
 .promotion-editor .editor-scroll{overflow:auto;overscroll-behavior:contain;padding:18px;padding-bottom:calc(24px + env(safe-area-inset-bottom))}
 .standard-editor-head{flex:0 0 auto;grid-template-columns:44px 1fr 44px;align-items:center}

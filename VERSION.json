@@ -1,27 +1,27 @@
 {
   "app": "Fizz Health",
-  "version": "1.4.11.30",
-  "release": "1.4.11.30",
-  "release_type": "Stabilization and focused feature release",
-  "build": "141130",
-  "release_id": "FH-20260724-141130",
-  "created_at": "2026-07-24T22:45:00-04:00",
+  "version": "1.4.11.31",
+  "release": "1.4.11.31",
+  "release_type": "Corrective feature completion",
+  "build": "141131",
+  "release_id": "FH-20260724-141131",
+  "created_at": "2026-07-24T23:15:00-04:00",
   "schema_version": 55,
-  "status": "Classified Meal Promotion Recovery",
-  "completed_story": "FH-1325 through FH-1327",
+  "status": "Classified Meal Promotion Activation",
+  "completed_story": "FH-1325 through FH-1327 and FH-1334",
   "baseline_story": "FH-1221",
-  "updated": "2026-07-24T22:45:00-04:00",
+  "updated": "2026-07-24T23:15:00-04:00",
   "stories": [
     "FH-1325",
     "FH-1326",
     "FH-1327",
-    "FH-1333"
+    "FH-1334"
   ],
-  "build_date": "2026-07-24T22:45:00-04:00",
-  "release_name": "Classified Meal Promotion Recovery",
+  "build_date": "2026-07-24T23:15:00-04:00",
+  "release_name": "Classified Meal Promotion Activation",
   "release_date": "2026-07-24",
-  "build_id": "141130",
-  "title": "Classified Meal Promotion Recovery",
-  "name": "Classified Meal Promotion Recovery",
-  "type": "Stabilization and focused feature release"
+  "build_id": "141131",
+  "title": "Classified Meal Promotion Activation",
+  "name": "Classified Meal Promotion Activation",
+  "type": "Corrective feature completion"
 }

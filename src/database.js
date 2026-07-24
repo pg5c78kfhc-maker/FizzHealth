@@ -715,7 +715,7 @@ const migrations=[
     ALTER TABLE foods ADD COLUMN consumption_role TEXT DEFAULT 'both';
     UPDATE foods SET consumption_role='both' WHERE consumption_role IS NULL OR TRIM(consumption_role)='';
     INSERT OR REPLACE INTO release_metadata(version,release_date,build_id,schema_version,title,created_at)
-    VALUES ('1.4.11.30','2026-07-24','141130',55,'Classified Meal Promotion Recovery','2026-07-24T22:45:00-04:00');
+    VALUES ('1.4.11.31','2026-07-24','141131',55,'Classified Meal Promotion Activation','2026-07-24T23:15:00-04:00');
   `}
 
 ];

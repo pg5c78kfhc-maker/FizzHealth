@@ -20,11 +20,11 @@ import {buildRecipeSnapshot,compactRecipeMealNotes} from './nutrition/recipe';
 import {normalizeSqlValue,auditValue} from './exchange/persistence';
 import {buildFoodEnrichmentExchange,buildNewFoodExchange,buildLogOnceExchange,normalizeExchangeJson as normalizeUniversalJson,parseExchangeJson,restaurantMenuItems,validateRestaurantExchange,validateUniversalExchange,foodProposal,mealProposal,changedFoodFields,serializeJsonBackedFields} from './exchange';
 import './styles.css';
-const VERSION='1.4.11.30';
+const VERSION='1.4.11.31';
 const RELEASE_DATE='2026-07-24';
-const BUILD_ID='141130';
-const DEPLOYMENT_ID='FH-20260724-141130';
-const RELEASE_CREATED_AT='2026-07-24T22:45:00-04:00';
+const BUILD_ID='141131';
+const DEPLOYMENT_ID='FH-20260724-141131';
+const RELEASE_CREATED_AT='2026-07-24T23:15:00-04:00';
 const localDateKey=(date=new Date())=>{const y=date.getFullYear(),m=String(date.getMonth()+1).padStart(2,'0'),d=String(date.getDate()).padStart(2,'0');return `${y}-${m}-${d}`};
 const today=()=>localDateKey();
 const toDateTimeLocal=(date=new Date())=>{const y=date.getFullYear(),m=String(date.getMonth()+1).padStart(2,'0'),d=String(date.getDate()).padStart(2,'0'),h=String(date.getHours()).padStart(2,'0'),min=String(date.getMinutes()).padStart(2,'0');return `${y}-${m}-${d}T${h}:${min}`};
@@ -1480,7 +1480,7 @@ function NutrientConfiguration({onBack,onClose=onBack}){
 }
 
 const RELEASE_HISTORY=[
- {version:'1.4.11.30',name:'Classified Meal Promotion Recovery',type:'Stabilization and focused feature release',created:'2026-07-24T22:45:00-04:00',build:'141130',releaseId:'FH-20260724-141130',stories:[['FH-1325','Food Consumption Role classification'],['FH-1326','Food to classified Meal promotion'],['FH-1327','Recipe to classified Meal promotion'],['FH-1333','Restore v1.4.11.22 stable baseline and isolate metadata from logging']],knownIssues:[]},
+ {version:'1.4.11.31',name:'Classified Meal Promotion Activation',type:'Corrective feature completion',created:'2026-07-24T23:15:00-04:00',build:'141131',releaseId:'FH-20260724-141131',stories:[['FH-1325','Food Consumption Role classification'],['FH-1326','Food to classified Meal promotion'],['FH-1327','Recipe to classified Meal promotion'],['FH-1334','Ensure the shared promotion editor renders above Food and Recipe detail pages']],knownIssues:[]},
  {version:'1.4.11.22',name:'Startup Reliability Hotfix',type:'Corrective hotfix',created:RELEASE_CREATED_AT,build:BUILD_ID,releaseId:DEPLOYMENT_ID,stories:[['FH-1321','Remove the artificial database startup timeout'],['FH-1322','Preserve real startup errors and show the active startup stage'],['FH-1323','Run schema reconciliation once after pending migrations'],['FH-1324','Optimize first-install and upgrade startup without clearing health data']],knownIssues:[]},
  {version:'1.4.11.21',name:'Living Daily Brief & Persistent Audio',type:'Feature release',created:RELEASE_CREATED_AT,build:BUILD_ID,releaseId:DEPLOYMENT_ID,stories:[['FH-1302','Replace the static greeting with timestamped health and fitness headlines'],['FH-1303','Continuously adapt the brief as daily data changes'],['FH-1304','Recommend specific verified pantry foods for nutrition gaps'],['FH-1305','Explain progress, opportunities, and projected impact in newspaper form'],['FH-1306','Recognize weight milestones and prior at-or-below dates'],['FH-1311','Generate smoother conversational narration'],['FH-1312','Report pending food separately from consumed food'],['FH-1313','Create Restaurant Day-aware context'],['FH-1314','Narrate projected nutrition impact'],['FH-1315','Provide restaurant-aware pantry guidance'],['FH-1316','Add persistent Settings → Audio voice and speed controls'],['FH-1317','Promote Meal Planner into the subsystem tile grid'],['FH-1318','Remove the redundant Plan a meal card'],['FH-1319','Standardize Meal Planner close navigation'],['FH-1320','Lock restaurant card control order and confidence fitting']],knownIssues:[]},
  {version:'1.4.11.20',name:'Restaurant Decision Dashboard Polish',type:'Feature and corrective release',created:RELEASE_CREATED_AT,build:BUILD_ID,releaseId:DEPLOYMENT_ID,stories:[['FH-1295','Finalize restaurant cards with rank, price, favorite, and edit controls in one compact top row'],['FH-1296','Stack confidence, Prot, Sat Fat, and Chol in a dedicated upper-right metrics rail'],['FH-1297','Expand the readable title, description, and ranking explanation area'],['FH-1298','Use abbreviated goal metrics with centered values and adaptive contrast'],['FH-1299','Keep percentage-only confidence controls centered and tappable'],['FH-1300','Add the standard X, enrichment Pencil, and Save Check header to full nutrition records'],['FH-1301','Keep editor actions visible across iPhone safe areas and keyboard states']],knownIssues:[]},

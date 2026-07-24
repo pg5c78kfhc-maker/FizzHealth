@@ -2,19 +2,31 @@
   "format": "fizz-health-release-history",
   "releases": [
     {
-      "version": "1.4.11.30",
-      "name": "Classified Meal Promotion Recovery",
-      "type": "Stabilization and focused feature release",
-      "build": "141130",
+      "version": "1.4.11.31",
+      "name": "Classified Meal Promotion Activation",
+      "type": "Corrective feature completion",
+      "build": "141131",
       "stories": [
-        "FH-1325",
-        "FH-1326",
-        "FH-1327",
-        "FH-1333"
+        {
+          "id": "FH-1325",
+          "title": "Food Consumption Role classification"
+        },
+        {
+          "id": "FH-1326",
+          "title": "Food to classified Meal promotion"
+        },
+        {
+          "id": "FH-1327",
+          "title": "Recipe to classified Meal promotion"
+        },
+        {
+          "id": "FH-1334",
+          "title": "Ensure the shared promotion editor renders above Food and Recipe detail pages"
+        }
       ],
       "knownIssues": [],
-      "created_at": "2026-07-24T22:45:00-04:00",
-      "release_id": "FH-20260724-141130"
+      "created_at": "2026-07-24T23:15:00-04:00",
+      "release_id": "FH-20260724-141131"
     },
     {
       "version": "1.4.11.22",
