@@ -3,7 +3,7 @@ import wasmUrl from 'sql.js/dist/sql-wasm.wasm?url';
 
 const DB_KEY='fizz-health-sqlite-v1';
 const STORAGE_DB='FizzHealthStorage';
-const TARGET_SCHEMA_VERSION=57;
+const TARGET_SCHEMA_VERSION=58;
 let SQL, db;
 
 const migrations=[
@@ -767,6 +767,19 @@ const migrations=[
 ,  {version:57,name:'migration_56_duplicate_recovery',sql:`
     INSERT OR REPLACE INTO release_metadata(version,release_date,build_id,schema_version,title,created_at)
     VALUES ('1.4.11.33','2026-07-24','141133',57,'Migration 56 Duplicate Recovery','2026-07-24T23:59:00-04:00');
+  `}
+
+,  {version:58,name:'archive_metadata_and_data_readiness',sql:`
+    ALTER TABLE foods ADD COLUMN archive_source TEXT;
+    ALTER TABLE foods ADD COLUMN restored_at TEXT;
+    ALTER TABLE foods ADD COLUMN needs_review INTEGER DEFAULT 0;
+    ALTER TABLE recipes ADD COLUMN archive_source TEXT;
+    ALTER TABLE recipes ADD COLUMN restored_at TEXT;
+    ALTER TABLE meal_definitions ADD COLUMN archived_at TEXT;
+    ALTER TABLE meal_definitions ADD COLUMN archive_source TEXT;
+    ALTER TABLE meal_definitions ADD COLUMN restored_at TEXT;
+    INSERT OR REPLACE INTO release_metadata(version,release_date,build_id,schema_version,title,created_at)
+    VALUES ('1.4.11.36','2026-07-24','141136',58,'Data Management & Detail Screen Redesign','2026-07-24T23:59:00-04:00');
   `}
 
 ];

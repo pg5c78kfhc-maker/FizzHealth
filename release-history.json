@@ -2,6 +2,65 @@
   "format": "fizz-health-release-history",
   "releases": [
     {
+      "version": "1.4.11.36",
+      "name": "Data Management & Detail Screen Redesign",
+      "type": "Feature and UX release",
+      "created": "2026-07-24T23:59:00-04:00",
+      "build": "141136",
+      "release_id": "FH-20260724-141136",
+      "stories": [
+        [
+          "FH-1361",
+          "Universal archive filters"
+        ],
+        [
+          "FH-1362",
+          "Archived record management"
+        ],
+        [
+          "FH-1363",
+          "Standardized swipe behavior"
+        ],
+        [
+          "FH-1364",
+          "Unified detail layout"
+        ],
+        [
+          "FH-1365",
+          "Consumption Role auto-save"
+        ],
+        [
+          "FH-1366",
+          "Compact actions"
+        ],
+        [
+          "FH-1367",
+          "Data status filters"
+        ],
+        [
+          "FH-1368",
+          "Nutrient enrichment queue"
+        ],
+        [
+          "FH-1369",
+          "Consumption Role queue"
+        ],
+        [
+          "FH-1370",
+          "Null-safe completeness rules"
+        ],
+        [
+          "FH-1371",
+          "Missing-data badges"
+        ],
+        [
+          "FH-1372",
+          "Archive metadata"
+        ]
+      ],
+      "known_issues": []
+    },
+    {
       "version": "1.4.11.35",
       "name": "Fast Food Logging",
       "type": "Feature and workflow release",
