@@ -159,7 +159,7 @@ export function validateRestaurantExchange(payload={},expected={}){
  if(expected.operation&&payload.operation!==expected.operation)throw new Error(`Expected ${expected.operation}, but the response is for ${payload.operation||'an unknown operation'}.`);
  if(expected.targetId&&String(payload.target?.id)!==String(expected.targetId))throw new Error('The response targets a different restaurant or menu item.');
  if(!payload.proposed_record&&!payload.proposed)throw new Error('The exchange is missing proposed_record.');
- if(payload.operation==='replace_menu'&&!restaurantMenuItems(payload).length)throw new Error('No menu items were found. Use proposed_record.menu.sections or proposed_record.menu_items.');
+ if(['replace_menu','append_menu_items'].includes(payload.operation)&&!restaurantMenuItems(payload).length)throw new Error('No menu items were found. Use proposed_record.menu.sections or proposed_record.menu_items.');
  return payload;
 }
 export function validateUniversalExchange(payload){

@@ -5,12 +5,12 @@ const main=fs.readFileSync(new URL('../src/main.jsx',import.meta.url),'utf8');
 const meta=JSON.parse(fs.readFileSync(new URL('../VERSION.json',import.meta.url),'utf8'));
 
 test('v1.4.11.8 metadata is current everywhere',()=>{
-  assert.equal(meta.version,'1.4.11.16');
-  assert.equal(meta.build,'141251');
-  assert.equal(meta.release_id,'FH-20260723-141251');
-  assert.match(main,/const VERSION='1\.4\.11\.16'/);
-  assert.match(main,/const BUILD_ID='141251'/);
-  assert.match(main,/const DEPLOYMENT_ID='FH-20260723-141251'/);
+  assert.equal(meta.version,'1.4.11.17');
+  assert.equal(meta.build,'141317');
+  assert.equal(meta.release_id,'FH-20260723-141317');
+  assert.match(main,/const VERSION='1\.4\.11\.17'/);
+  assert.match(main,/const BUILD_ID='141317'/);
+  assert.match(main,/const DEPLOYMENT_ID='FH-20260723-141317'/);
 });
 
 test('pantry detail pencil opens the real editor without dismissing the detail first',()=>{

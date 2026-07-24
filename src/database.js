@@ -695,7 +695,7 @@ const migrations=[
 
 ,  {version:52,name:'restaurant_aware_meal_planning',sql:`
     INSERT OR REPLACE INTO release_metadata(version,release_date,build_id,schema_version,title,created_at)
-    VALUES ('1.4.11.16','2026-07-23','141251',52,'Robust JSON Exchange','2026-07-23T22:51:00.000Z');
+    VALUES ('1.4.11.17','2026-07-23','141317',52,'Restaurant Intelligence Completion','2026-07-23T23:13:17.000Z');
   `}
 
 ];

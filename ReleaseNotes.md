@@ -1,31 +1,35 @@
-# Fizz Health v1.4.11.16 — Robust JSON Exchange
+# Fizz Health v1.4.11.17 — Restaurant Intelligence Completion
 
-**FH-1482 through FH-1486**
+Released: July 23, 2026
+Build: 141317
+Deployment: FH-20260723-141317
 
-- Generates stricter ASCII-only, raw-JSON instructions and prefilled machine templates.
-- Accepts arrays and objects directly for `*_json` fields and serializes them safely for storage.
-- Repairs smart quotes, code fences, clipboard wrapping, BOMs, line endings, and trailing commas.
-- Separates JSON syntax parsing from exchange-schema validation with field-aware diagnostics.
-- Preserves the validated import preview and explicit approval step before database writes.
+## FH-1274 — Menu import modes
 
-# Fizz Health v1.4.11.15
+- Added explicit **Replace menu** and **Add menu items** actions.
+- Replace deactivates the current menu before importing the approved replacement.
+- Add/update preserves unrelated active items, updates strong identity matches, and inserts new items.
+- Review clearly identifies destructive replacement versus non-destructive append behavior.
 
-## Restaurant-Aware Meal Planning Prototype
+## FH-1275 / FH-1278 — Confidence Engine 2.0
 
-Version: 1.4.11.15  
-Build: 141250  
-Deployment: FH-20260723-141250  
-Date: July 23, 2026
+- Replaced generic question-mark explanations with item-specific confidence breakdowns.
+- Shows evidence source, verified and estimated fields, assumptions, deductions, and concrete ways to improve confidence.
+- The entire confidence control is labeled and accessible.
 
-### Completed
+## FH-1276 — Restaurant ranking prices
 
-- FH-1478 — Added an independent Beverage occasion before Snack while retaining beverages as optional components of breakfast, lunch, and dinner.
-- FH-1479 — Added the complete saved Meal catalog below the planning slots so any eligible saved Meal can be assigned to a date and occasion.
-- FH-1480 — Added a persistent, date-specific Restaurant toggle shared with the Home screen, automatic restaurant-capacity reservation, and restaurant-day indicators on calendar dates.
-- FH-1481 — Added starred restaurant-meal choices and support for multiple restaurant meals, multiple restaurant occasions, and different restaurants on the same date. Specific selections replace estimated restaurant capacity instead of being added on top of it.
+- Ranked cards display each captured price in the upper-left content area.
+- Missing prices display **Price unknown**, never `$0.00`.
 
-### Planning behavior
+## FH-1277 — Navigation standardization
 
-Turning Restaurant on creates an 800-calorie provisional restaurant reservation for the selected date. The separate Reserve Capacity button has been removed. Selecting starred restaurant meals replaces available provisional capacity one reservation at a time, while additional restaurant selections remain supported after the reservation is exhausted.
+- Restaurant meal details now use the standard sticky upper-left Back control.
+- Edit remains a page-specific action on the right.
 
-Completed story: FH-1478 through FH-1481
+## FH-1279 — Database quality
+
+- Append imports match by item ID or normalized restaurant/name/category identity.
+- Matched records are updated in place so favorites and historical references remain intact.
+
+Completed stories: FH-1274 through FH-1279

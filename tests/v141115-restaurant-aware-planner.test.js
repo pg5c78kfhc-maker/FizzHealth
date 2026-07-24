@@ -4,4 +4,4 @@ test('planner has persistent date-specific restaurant toggle',()=>{assert.match(
 test('restaurant mode creates automatic capacity and actual meals replace it',()=>{assert.match(main,/Restaurant meal — undecided/);assert.match(main,/status='replaced'/);assert.match(main,/source_type:'restaurant'/)});
 test('planner supports independent beverage and snack slots',()=>{assert.match(main,/independentCategories=\['Beverage','Snack'\]/)});
 test('planner displays saved meal catalog and starred restaurant catalog',()=>{assert.match(main,/AVAILABLE SAVED MEALS/);assert.match(main,/STARRED RESTAURANT MEALS/);assert.match(main,/COALESCE\(rm.favorite,0\)=1/)});
-test('release metadata is current',()=>{assert.equal(meta.version,'1.4.11.16');assert.equal(meta.schema_version,52);assert.match(db,/version:52/)});
+test('release metadata is current',()=>{assert.equal(meta.version,'1.4.11.17');assert.equal(meta.schema_version,52);assert.match(db,/version:52/)});

@@ -22,7 +22,7 @@ test('library uses one bounded results region',()=>{
  assert.match(css,/\.food-library-page \.list\.foods\{[^}]*overflow-y:auto;overflow-x:hidden/s);
 });
 test('release metadata is current',()=>{
- assert.match(jsx,/const VERSION='1\.4\.11\.16'/);
- assert.match(jsx,/const BUILD_ID='141251'/);
- assert.match(jsx,/const DEPLOYMENT_ID='FH-20260723-141251'/);
+ assert.match(jsx,/const VERSION='1\.4\.11\.17'/);
+ assert.match(jsx,/const BUILD_ID='141317'/);
+ assert.match(jsx,/const DEPLOYMENT_ID='FH-20260723-141317'/);
 });

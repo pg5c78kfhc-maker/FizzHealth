@@ -1,0 +1,26 @@
+Fizz Health v1.4.11.17 — Restaurant Intelligence Completion
+Date: 2026-07-23
+Build: 141317
+Deployment: FH-20260723-141317
+
+Automated tests:
+- npm test
+- 342 tests passed
+- 0 failed
+
+Release verification:
+- npm run verify:release
+- Passed: v1.4.11.17 / FH-1274 through FH-1279
+
+Production build:
+- npm run build attempted
+- Could not execute because project dependencies were unavailable in the execution environment (`vite: not found`).
+- npm install was attempted but timed out before dependencies became available.
+
+Implemented checks include:
+- explicit replace-menu and append-menu operations
+- non-destructive matching/update path for appended items
+- price or Price unknown on ranked restaurant cards
+- standard upper-left Back navigation on restaurant meal details
+- evidence-driven confidence breakdown
+- centralized release metadata consistency
