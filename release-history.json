@@ -2,6 +2,22 @@
   "format": "fizz-health-release-history",
   "releases": [
     {
+      "version": "1.4.11.25",
+      "date": "2026-07-24",
+      "name": "JSX Build Repair",
+      "type": "Hotfix",
+      "created": "2026-07-24T15:30:00-04:00",
+      "build": "141125",
+      "release_id": "FH-20260724-141125",
+      "stories": [
+        {
+          "id": "FH-1328",
+          "title": "Repair malformed Food/Recipe details JSX that blocked production builds"
+        }
+      ],
+      "known_issues": []
+    },
+    {
       "version": "1.4.11.24",
       "name": "Narration Navigation & Classified Meal Promotion",
       "type": "Feature release",

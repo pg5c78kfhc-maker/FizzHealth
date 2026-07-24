@@ -1,16 +1,16 @@
 {
   "app": "Fizz Health",
-  "version": "1.4.11.24",
-  "release": "1.4.11.24",
-  "release_type": "Feature release",
-  "build": "141124",
-  "release_id": "FH-20260724-141124",
+  "version": "1.4.11.25",
+  "release": "1.4.11.25",
+  "release_type": "Hotfix",
+  "build": "141125",
+  "release_id": "FH-20260724-141125",
   "created_at": "2026-07-24T23:30:00-04:00",
   "schema_version": 55,
-  "status": "Narration Navigation & Classified Meal Promotion",
-  "completed_story": "FH-1322 through FH-1327",
+  "status": "JSX Build Repair",
+  "completed_story": "FH-1322 through FH-1327 build repair",
   "baseline_story": "FH-1221",
-  "updated": "2026-07-24T23:30:00-04:00",
+  "updated": "2026-07-24T15:30:00-04:00",
   "stories": [
     "FH-1322",
     "FH-1323",
@@ -19,11 +19,11 @@
     "FH-1326",
     "FH-1327"
   ],
-  "build_date": "2026-07-24T23:30:00-04:00",
-  "release_name": "Narration Navigation & Classified Meal Promotion",
+  "build_date": "2026-07-24T15:30:00-04:00",
+  "release_name": "JSX Build Repair",
   "release_date": "2026-07-24",
-  "build_id": "141124",
-  "title": "Narration Navigation & Classified Meal Promotion",
-  "name": "Narration Navigation & Classified Meal Promotion",
-  "type": "Feature release"
+  "build_id": "141125",
+  "title": "JSX Build Repair",
+  "name": "JSX Build Repair",
+  "type": "Hotfix"
 }
