@@ -20,11 +20,11 @@ import {buildRecipeSnapshot,compactRecipeMealNotes} from './nutrition/recipe';
 import {normalizeSqlValue,auditValue} from './exchange/persistence';
 import {buildFoodEnrichmentExchange,buildNewFoodExchange,buildLogOnceExchange,normalizeExchangeJson as normalizeUniversalJson,parseExchangeJson,restaurantMenuItems,validateRestaurantExchange,validateUniversalExchange,foodProposal,mealProposal,changedFoodFields,serializeJsonBackedFields} from './exchange';
 import './styles.css';
-const VERSION='1.4.11.27';
+const VERSION='1.4.11.28';
 const RELEASE_DATE='2026-07-24';
-const BUILD_ID='141127';
-const DEPLOYMENT_ID='FH-20260724-141127';
-const RELEASE_CREATED_AT='2026-07-24T16:00:00-04:00';
+const BUILD_ID='141128';
+const DEPLOYMENT_ID='FH-20260724-141128';
+const RELEASE_CREATED_AT='2026-07-24T11:58:00-04:00';
 const localDateKey=(date=new Date())=>{const y=date.getFullYear(),m=String(date.getMonth()+1).padStart(2,'0'),d=String(date.getDate()).padStart(2,'0');return `${y}-${m}-${d}`};
 const today=()=>localDateKey();
 const toDateTimeLocal=(date=new Date())=>{const y=date.getFullYear(),m=String(date.getMonth()+1).padStart(2,'0'),d=String(date.getDate()).padStart(2,'0'),h=String(date.getHours()).padStart(2,'0'),min=String(date.getMinutes()).padStart(2,'0');return `${y}-${m}-${d}T${h}:${min}`};
@@ -33,6 +33,7 @@ const PACKAGE_UNITS=new Set(['jar','bag','box','bottle','container','package','p
 const normalizeUnit=u=>String(u||'').trim().toLowerCase().replace(/s$/,'');
 const isPackageUnit=u=>PACKAGE_UNITS.has(normalizeUnit(u));
 const optionalQuery=(sql,params=[])=>{try{return query(sql,params)}catch(error){console.warn('Optional dashboard data unavailable:',error);return []}};
+const safeValue=(label,fn,fallback)=>{try{return fn()}catch(error){console.error(`Today calculation failed: ${label}`,error);return fallback}};
 const quantityLabel=(amount,unit)=>{const n=Number(amount);if(!Number.isFinite(n))return `Quantity not recorded`;const u=unit||'serving';return `${n%1===0?n:n.toFixed(1)} ${u}${n===1?'':'s'}`};
 const canonicalIngredientIdentity=row=>{const rawId=row?.food_id??row?.food?.food_id??row?.ingredient_id;const id=String(rawId??'').trim().toLowerCase();if(id&&id!=='undefined'&&id!=='null')return `id:${id}`;const name=String(row?.food?.name??row?.ingredient_name??'').trim().toLowerCase().replace(/\s+/g,' ');return name?`name:${name}`:''};
 const consumptionServing=food=>{const n=Number(food?.default_serving)||1;const u=normalizeUnit(food?.unit);if(u==='g'&&n<=1&&/(peanut|almond|cashew|pistachio|walnut|nut)/i.test(food?.name||''))return 34;return n};
@@ -46,7 +47,7 @@ class ErrorBoundary extends Component{
  constructor(props){super(props);this.state={error:null}}
  static getDerivedStateFromError(error){return {error}}
  componentDidCatch(error,info){console.error('Fizz Health widget failed',error,info)}
- render(){if(!this.state.error)return this.props.children;return <div className="widget-error"><HeartPulse/><div><b>{this.props.label||'This section'} could not load</b><span>The rest of Fizz Health is still available.</span><button onClick={()=>this.setState({error:null})}>Try again</button></div></div>}
+ render(){if(!this.state.error)return this.props.children;const message=this.state.error?.message||String(this.state.error);return <div className="widget-error"><HeartPulse/><div><b>{this.props.label||'This section'} could not load</b><span>The rest of Fizz Health is still available.</span><small className="widget-error-detail">{message}</small><button onClick={()=>this.setState({error:null})}>Try again</button></div></div>}
 }
 const finite=v=>Number.isFinite(Number(v))?Number(v):0;
 function insertRecord(db,table,record){const available=new Set(db.query(`PRAGMA table_info(${table})`).map(x=>x.name));const cols=Object.keys(record).filter(k=>available.has(k));if(!cols.length)throw new Error(`No valid columns for ${table}`);db.run(`INSERT INTO ${table}(${cols.join(',')}) VALUES (${cols.map(()=>'?').join(',')})`,cols.map(k=>record[k]??null));}
@@ -427,38 +428,38 @@ function Today({tick,onLogRecommendation,openGear,openCapture,navigate}){
  const nutrientKeys=NUTRIENT_BARS.map(x=>x.key).filter(k=>k!=='net_carbs');
  const [dashboard,setDashboard]=useState({rows:[],totals:Object.fromEntries(nutrientKeys.map(k=>[k,0])),coverage:100});
  useEffect(()=>{
-  const loaded=query(`SELECT * FROM meals WHERE consumed_local_date=? OR (consumed_local_date IS NULL AND substr(eaten_at,1,10)=?) ORDER BY eaten_at ASC,id ASC`,[selectedDate,selectedDate]);
+  const loaded=optionalQuery(`SELECT * FROM meals WHERE consumed_local_date=? OR (consumed_local_date IS NULL AND substr(eaten_at,1,10)=?) ORDER BY eaten_at ASC,id ASC`,[selectedDate,selectedDate]);
   const nextTotals=loaded.reduce((a,r)=>{for(const k of nutrientKeys)a[k]+=finite(r[k]);return a},Object.fromEntries(nutrientKeys.map(k=>[k,0])));nextTotals.net_carbs=Math.max(0,nextTotals.carbs-nextTotals.fiber);
   const nextCoverage=loaded.length?Math.round(loaded.filter(r=>Number(r.nutrition_known)===1).length/loaded.length*100):100;
   setDashboard({rows:loaded,totals:nextTotals,coverage:nextCoverage});
  },[selectedDate,tick,revision]);
  const {rows,totals,coverage}=dashboard;
- const planned=query(`SELECT * FROM planned_meals WHERE planned_local_date=? AND status='planned' ORDER BY planned_at,id`,[selectedDate]);
+ const planned=optionalQuery(`SELECT * FROM planned_meals WHERE planned_local_date=? AND status='planned' ORDER BY planned_at,id`,[selectedDate]);
  const plannedTotals=planned.reduce((a,r)=>{for(const k of nutrientKeys)a[k]+=finite(r[k]);return a},Object.fromEntries(nutrientKeys.map(k=>[k,0])));plannedTotals.net_carbs=Math.max(0,plannedTotals.carbs-plannedTotals.fiber);
  const projected=Object.fromEntries(Object.keys(totals).map(k=>[k,(Number(totals[k])||0)+(Number(plannedTotals[k])||0)]));
  const highlightPlans=(key,mode='detail')=>{const def=NUTRIENT_BARS.find(x=>x.key===key)||{label:key,unit:''},targetRow=targets[key]||(key==='net_carbs'?targets.carbs:null)||{target:0,max:null,formula:''};const consumedContributors=rows.map(r=>({id:`meal-${r.id}`,recordId:r.id,status:'consumed',name:r.restaurant_name?`${r.restaurant_name} · ${r.food_name}`:r.food_name,value:key==='net_carbs'?Math.max(0,finite(r.carbs)-finite(r.fiber)):finite(r[key])}));const plannedContributors=planned.map(r=>({id:`plan-${r.id}`,recordId:r.id,status:'planned',name:r.restaurant_name?`${r.restaurant_name} · ${r.food_name}`:r.food_name,value:key==='net_carbs'?Math.max(0,finite(r.carbs)-finite(r.fiber)):finite(r[key])}));const decision=nutrientDecisions.find(x=>x.definition.key===key);setDetail({label:def.label,key,mode,unit:def.unit==='kcal'?'':def.unit,value:totals[key],planned:plannedTotals[key],projected:projected[key],target:targetRow.target||0,max:targetRow.max??null,formula:targetRow.formula||'',rank:decision?.displayRank,rankingReason:decision?.rankingReason,contributors:[...consumedContributors,...plannedContributors].filter(x=>x.value!==0).sort((a,b)=>b.value-a.value)});};
  const targets=getTargets(selectedDate);
- const stepsRow=query(`SELECT value_primary FROM health_metrics WHERE metric_type='steps' AND local_date=? ORDER BY measured_at DESC,id DESC LIMIT 1`,[selectedDate])[0];
+ const stepsRow=optionalQuery(`SELECT value_primary FROM health_metrics WHERE metric_type='steps' AND local_date=? ORDER BY measured_at DESC,id DESC LIMIT 1`,[selectedDate])[0];
  const steps=finite(stepsRow?.value_primary),stepTarget=10000;
  const satTarget=finite(targets.saturated_fat?.target)||Math.max(1,finite(targets.fat?.target)*.3)||20,fiberTarget=finite(targets.fiber?.target)||30;
- const nutrientDecisions=orderNutrients(evaluateDecision('nutrients',{definitions:NUTRIENT_BARS,totals,plannedTotals,targets}));
+ const nutrientDecisions=safeValue('nutrient decisions',()=>orderNutrients(evaluateDecision('nutrients',{definitions:NUTRIENT_BARS,totals,plannedTotals,targets})),[]);
  const candidateOrder=nutrientDecisions.map(x=>x.definition);
  useEffect(()=>{if(interacting||detail)return;const timer=setTimeout(()=>setBarOrder(candidateOrder.map(x=>x.key)),260);return()=>clearTimeout(timer)},[interacting,detail,selectedDate,revision,tick,JSON.stringify(candidateOrder.map(x=>x.key))]);
- const allOrderedBars=(barOrder.length?barOrder.map(k=>NUTRIENT_BARS.find(x=>x.key===k)).filter(Boolean):candidateOrder); const orderedBars=showAllNutrients?allOrderedBars:allOrderedBars.slice(0,10); const hiddenNutrients=Math.max(0,allOrderedBars.length-10); const maintenance=estimateMaintenance();
- const intelligence=buildHealthIntelligence({nutrition:projected,targets,metrics:query('SELECT * FROM health_metrics ORDER BY measured_at DESC LIMIT 500'),goals:{steps:stepTarget,weight:Number(query("SELECT value FROM settings WHERE key='goal_weight_lb' LIMIT 1")[0]?.value||215)}});
- const dailyHistory=query(`SELECT consumed_local_date AS date,SUM(calories) calories,SUM(protein) protein,SUM(fiber) fiber,SUM(saturated_fat) saturated_fat,SUM(sodium) sodium FROM meals WHERE consumed_local_date<? GROUP BY consumed_local_date ORDER BY consumed_local_date DESC LIMIT 30`,[selectedDate]).reverse();
- const weightHistory=query(`SELECT local_date AS date,value_primary AS value FROM health_metrics WHERE metric_type='weight' ORDER BY local_date DESC LIMIT 30`).reverse();
- const currentWeight=weightHistory.at(-1)?.value??null,goalWeight=Number(query("SELECT value FROM settings WHERE key='goal_weight_lb' LIMIT 1")[0]?.value||215);
- const prediction=predictEndOfDay({totals,plannedTotals,targets,history:dailyHistory,hour:new Date().getHours()});
- const decisionQueue=buildDecisionQueue({totals:projected,targets,steps,stepTarget,candidates:[{label:'Choose grilled fish tonight',nutrition:{protein:40,fiber:6,saturated_fat:2}},{label:'Walk after dinner',stepDelta:2500}]});
- const nutritionDebt=calculateNutritionDebtCredit({days:[...dailyHistory,{...totals,date:selectedDate}],targets});
- const healthForecast=weeklyHealthForecast({days:dailyHistory,weightHistory,targets,currentWeight,goalWeight});
- const decisionTimeline=buildDecisionTimeline({meals:rows,activities:query(`SELECT id,metric_type,value_primary,measured_at FROM health_metrics WHERE local_date=? AND metric_type IN ('steps','workout') ORDER BY measured_at`,[selectedDate]),targets});
- const probabilities=goalProbabilities({projection:prediction.baseline,targets,steps,stepTarget,forecast:healthForecast});
+ const allOrderedBars=(barOrder.length?barOrder.map(k=>NUTRIENT_BARS.find(x=>x.key===k)).filter(Boolean):candidateOrder); const orderedBars=showAllNutrients?allOrderedBars:allOrderedBars.slice(0,10); const hiddenNutrients=Math.max(0,allOrderedBars.length-10); const maintenance=safeValue('maintenance estimate',()=>estimateMaintenance(),{estimate:null,confidence:0,days:0});
+ const intelligence=safeValue('health intelligence',()=>buildHealthIntelligence({nutrition:projected,targets,metrics:optionalQuery('SELECT * FROM health_metrics ORDER BY measured_at DESC LIMIT 500'),goals:{steps:stepTarget,weight:Number(optionalQuery("SELECT value FROM settings WHERE key='goal_weight_lb' LIMIT 1")[0]?.value||215)}}),{});
+ const dailyHistory=optionalQuery(`SELECT consumed_local_date AS date,SUM(calories) calories,SUM(protein) protein,SUM(fiber) fiber,SUM(saturated_fat) saturated_fat,SUM(sodium) sodium FROM meals WHERE consumed_local_date<? GROUP BY consumed_local_date ORDER BY consumed_local_date DESC LIMIT 30`,[selectedDate]).reverse();
+ const weightHistory=optionalQuery(`SELECT local_date AS date,value_primary AS value FROM health_metrics WHERE metric_type='weight' ORDER BY local_date DESC LIMIT 30`).reverse();
+ const currentWeight=weightHistory.at(-1)?.value??null,goalWeight=Number(optionalQuery("SELECT value FROM settings WHERE key='goal_weight_lb' LIMIT 1")[0]?.value||215);
+ const prediction=safeValue('end-of-day prediction',()=>predictEndOfDay({totals,plannedTotals,targets,history:dailyHistory,hour:new Date().getHours()}),{baseline:projected});
+ const decisionQueue=safeValue('decision queue',()=>buildDecisionQueue({totals:projected,targets,steps,stepTarget,candidates:[{label:'Choose grilled fish tonight',nutrition:{protein:40,fiber:6,saturated_fat:2}},{label:'Walk after dinner',stepDelta:2500}]}),[]);
+ const nutritionDebt=safeValue('nutrition debt',()=>calculateNutritionDebtCredit({days:[...dailyHistory,{...totals,date:selectedDate}],targets}),{});
+ const healthForecast=safeValue('weekly health forecast',()=>weeklyHealthForecast({days:dailyHistory,weightHistory,targets,currentWeight,goalWeight}),{});
+ const decisionTimeline=safeValue('decision timeline',()=>buildDecisionTimeline({meals:rows,activities:optionalQuery(`SELECT id,metric_type,value_primary,measured_at FROM health_metrics WHERE local_date=? AND metric_type IN ('steps','workout') ORDER BY measured_at`,[selectedDate]),targets}),[]);
+ const probabilities=safeValue('goal probabilities',()=>goalProbabilities({projection:prediction.baseline||projected,targets,steps,stepTarget,forecast:healthForecast}),[]);
  const hour=new Date().getHours();
- const ldlDecision=evaluateDecision('ldl',{totals:projected,targets,coverage,activity:{steps,stepTarget,stepsKnown:Boolean(stepsRow)}});
- const stepsDecision=evaluateDecision('steps',{steps,goal:stepTarget,hour,typicalByHour:null,typicalRemaining:null,plannedExerciseSteps:0,dataFresh:Boolean(stepsRow)});
- const maintenanceDecision=evaluateDecision('maintenance',maintenance);
+ const ldlDecision=safeValue('LDL decision',()=>evaluateDecision('ldl',{totals:projected,targets,coverage,activity:{steps,stepTarget,stepsKnown:Boolean(stepsRow)}}),{score:0,status:'unknown'});
+ const stepsDecision=safeValue('steps decision',()=>evaluateDecision('steps',{steps,goal:stepTarget,hour,typicalByHour:null,typicalRemaining:null,plannedExerciseSteps:0,dataFresh:Boolean(stepsRow)}),{status:'unknown'});
+ const maintenanceDecision=safeValue('maintenance decision',()=>evaluateDecision('maintenance',maintenance),{status:'unknown'});
  const ldlSupport=ldlDecision.score;
  const selectedDateObj=new Date(`${selectedDate}T12:00:00`);
  const date=selectedDateObj.toLocaleDateString(undefined,{weekday:'long',month:'long',day:'numeric'});
@@ -1474,7 +1475,7 @@ function NutrientConfiguration({onBack,onClose=onBack}){
 }
 
 const RELEASE_HISTORY=[
- {version:'1.4.11.27',name:'Migration 55 Compatibility Repair',type:'Hotfix',created:RELEASE_CREATED_AT,build:BUILD_ID,releaseId:DEPLOYMENT_ID,stories:[['FH-1331','Create app_releases defensively before migration 55 writes release history']],knownIssues:[]},
+ {version:'1.4.11.28',name:'Today Dashboard Stabilization',type:'Hotfix',created:RELEASE_CREATED_AT,build:BUILD_ID,releaseId:DEPLOYMENT_ID,stories:[['FH-1332','Keep Today available when optional analytics or historical fields are unavailable']],knownIssues:[]},
  {version:'1.4.11.22',name:'Startup Reliability Hotfix',type:'Corrective hotfix',created:RELEASE_CREATED_AT,build:BUILD_ID,releaseId:DEPLOYMENT_ID,stories:[['FH-1321','Remove the artificial database startup timeout'],['FH-1322','Preserve real startup errors and show the active startup stage'],['FH-1323','Run schema reconciliation once after pending migrations'],['FH-1324','Optimize first-install and upgrade startup without clearing health data']],knownIssues:[]},
  {version:'1.4.11.25',name:'JSX Build Repair',type:'Hotfix',created:RELEASE_CREATED_AT,build:BUILD_ID,releaseId:DEPLOYMENT_ID,stories:[['FH-1328','Repair malformed Food and Recipe details JSX that blocked production builds']],knownIssues:[]},
  {version:'1.4.11.24',name:'Narration Navigation & Classified Meal Promotion',type:'Feature release',created:RELEASE_CREATED_AT,build:BUILD_ID,releaseId:DEPLOYMENT_ID,stories:[['FH-1322','Put newly changed Daily Brief items first'],['FH-1323','Add 15-second rewind and advance narration controls'],['FH-1324','Resume narration from the saved playback position'],['FH-1325','Classify foods as standalone, component, or both'],['FH-1326','Promote foods to categorized Meals'],['FH-1327','Promote recipes to categorized Meals']],knownIssues:[]},

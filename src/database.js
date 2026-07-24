@@ -722,11 +722,11 @@ const migrations=[
       schema_version INTEGER NOT NULL, title TEXT, created_at TEXT NOT NULL
     );
     INSERT OR REPLACE INTO release_metadata(version,release_date,build_id,schema_version,title,created_at)
-    VALUES ('1.4.11.27','2026-07-24','141127',55,'Migration 55 Compatibility Repair','2026-07-24T16:00:00-04:00');
+    VALUES ('1.4.11.28','2026-07-24','141128',55,'Migration 55 Compatibility Repair','2026-07-24T11:58:00-04:00');
     INSERT OR IGNORE INTO app_releases(version,release_date,build_id,schema_version,title,created_at)
     VALUES ('1.4.11.24','2026-07-24','141124',55,'Narration Navigation & Classified Meal Promotion','2026-07-24T23:30:00-04:00');
     INSERT OR REPLACE INTO app_releases(version,release_date,build_id,schema_version,title,created_at)
-    VALUES ('1.4.11.27','2026-07-24','141127',55,'Migration 55 Compatibility Repair','2026-07-24T16:00:00-04:00');
+    VALUES ('1.4.11.28','2026-07-24','141128',55,'Migration 55 Compatibility Repair','2026-07-24T11:58:00-04:00');
   `}
 
 ];
