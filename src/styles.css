@@ -844,7 +844,7 @@ body.food-library-active .discovery-tabs{flex:0 0 auto}
 body.food-library-active{overflow:hidden}
 body.food-library-active .app{height:100dvh;min-height:0;overflow:hidden;padding-bottom:0;width:100%;max-width:100%}
 body.food-library-active .content{height:calc(100dvh - var(--bottom-nav-height));min-height:0;overflow:hidden;width:100%;max-width:100%;padding-bottom:0}
-.food-library-page{height:100%;min-height:0;width:100%;max-width:100%;display:grid;grid-template-rows:auto auto auto auto minmax(0,1fr);gap:10px;overflow:hidden;padding:0 16px 10px;box-sizing:border-box}
+.food-library-page{height:100%;min-height:0;width:100%;max-width:100%;display:grid;grid-template-rows:auto auto auto auto auto minmax(0,1fr);gap:10px;overflow:hidden;padding:0 16px 10px;box-sizing:border-box}
 .food-library-page>*{min-width:0;max-width:100%;box-sizing:border-box}
 .food-library-page .meals-library-head{margin:0;padding:8px 0}
 .food-library-page .compact-library-actions{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin:0}
@@ -958,3 +958,17 @@ body.food-library-active .content{height:calc(100dvh - var(--bottom-nav-height))
 
 /* v1.4.11.36 — data management and compact details */
 .library-filter-row{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin:10px 0}.library-filter-row label{display:grid;gap:5px;font-size:.78rem;color:var(--muted)}.library-filter-row select{width:100%;min-width:0;border:1px solid var(--line);border-radius:12px;background:var(--panel);color:var(--text);padding:10px 12px;font:inherit}.readiness-badges{display:flex;flex-wrap:wrap;justify-content:flex-end;gap:5px}.readiness-badges em{font-style:normal;font-size:.7rem;border:1px solid var(--line);border-radius:999px;padding:4px 7px;white-space:nowrap}.compact-detail-section{padding:14px 16px}.compact-section-head{display:flex;align-items:center;justify-content:space-between;gap:12px}.compact-section-head h3{margin:0}.compact-section-head small{color:var(--muted)}.compact-action-row{width:100%;display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:12px;text-align:left;padding:14px 16px;border:1px solid var(--line);border-radius:14px;background:var(--panel);color:var(--text)}.compact-action-row span{display:grid;gap:3px}.compact-action-row small{color:var(--muted)}.food-detail-page .food-detail-summary{gap:8px}.food-detail-page .food-detail-summary>div{padding:11px 8px}.food-detail-page .food-detail-summary strong{font-size:1.15rem}@media(max-width:430px){.library-filter-row{grid-template-columns:1fr 1fr}.readiness-badges{max-width:150px}}
+
+
+/* v1.4.11.37 — Food library stabilization after v1.4.11.36. */
+.food-library-page .library-filter-row{margin:0;align-items:end}
+.food-library-page .library-filter-row label{gap:4px}
+.food-library-page .library-filter-row select{height:44px;padding:8px 10px}
+.food-library-page .search{height:52px;min-height:52px;max-height:52px;flex:0 0 52px;padding:0 16px;border-radius:18px;align-self:stretch;overflow:hidden}
+.food-library-page .search input{height:50px;min-height:0;padding:0;font-size:16px}
+.food-library-page .search svg{flex:0 0 auto;width:22px;height:22px}
+.food-library-page .list.foods{position:relative;z-index:0;padding-top:2px}
+.food-library-page .list.foods>.discovery-swipe:first-child,.food-library-page .list.foods>.empty:first-child{margin-top:0}
+@media(max-width:390px){.food-library-page{gap:8px}.food-library-page .search{height:50px;min-height:50px;max-height:50px;flex-basis:50px}}
+.archive-restore-row{margin-top:10px}
+.archive-restore-row button{width:100%}

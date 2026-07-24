@@ -2,6 +2,48 @@
   "format": "fizz-health-release-history",
   "releases": [
     {
+      "version": "1.4.11.37",
+      "name": "UI Stabilization & Archive Recovery",
+      "type": "Stabilization and corrective release",
+      "created": "2026-07-24T23:59:00-04:00",
+      "build": "141137",
+      "release_id": "FH-20260724-141137",
+      "stories": [
+        [
+          "FH-1376",
+          "Repair list layout regressions"
+        ],
+        [
+          "FH-1377",
+          "Search field standardization"
+        ],
+        [
+          "FH-1378",
+          "Compact filter bar"
+        ],
+        [
+          "FH-1379",
+          "Restore archived Foods and Recipes"
+        ],
+        [
+          "FH-1380",
+          "Archive metadata verification"
+        ],
+        [
+          "FH-1381",
+          "Food module UI consistency audit"
+        ],
+        [
+          "FH-1382",
+          "Shared list layout stabilization"
+        ],
+        [
+          "FH-1383",
+          "Food module regression pass"
+        ]
+      ]
+    },
+    {
       "version": "1.4.11.36",
       "name": "Data Management & Detail Screen Redesign",
       "type": "Feature and UX release",

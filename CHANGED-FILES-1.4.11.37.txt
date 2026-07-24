@@ -1,0 +1,17 @@
+ReleaseNotes.md
+VERSION.json
+package-lock.json
+package.json
+public/sw.js
+release-history.json
+src/database.js
+src/decision/engine.js
+src/main.jsx
+src/styles.css
+tests/v141137-ui-stabilization.test.js
+BUILD-TEST-SUMMARY-1.4.11.37.md
+DOD-V1.4.11.37.md
+TEST-PROOF-1.4.11.37.txt
+CHANGED-FILES-1.4.11.37.txt
+CHANGELOG.md
+RELEASE-REGISTER.md

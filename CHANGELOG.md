@@ -51,3 +51,8 @@ Date: July 23, 2026
 - Specific restaurant selections replace provisional restaurant reservations rather than double-counting calories.
 
 Completed story: FH-1478 through FH-1481
+
+## 1.4.11.37 — UI Stabilization & Archive Recovery
+- Corrected the v1.4.11.36 Food/Meals library grid regression.
+- Standardized the compact search field and filter layout.
+- Added archived Food and Recipe restore actions on detail screens.

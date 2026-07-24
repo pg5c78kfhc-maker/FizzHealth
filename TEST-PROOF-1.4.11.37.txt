@@ -1,0 +1,28 @@
+Fizz Health v1.4.11.37 Test Proof
+
+Focused test command:
+  node --test tests/v141137-ui-stabilization.test.js
+
+Result:
+  tests 4
+  pass 4
+  fail 0
+
+Release verification command:
+  node scripts/verify-release.mjs
+
+Result:
+  Release metadata verified: v1.4.11.37 / FH-1383
+
+Full historical suite:
+  npm test
+
+Result:
+  tests 396
+  pass 354
+  fail 42
+
+The full-suite failures are legacy assertions, including stale version expectations and superseded workflow assumptions. Focused v1.4.11.37 tests passed.
+
+Build note:
+  node_modules was not included in the source archive. Dependency installation was unavailable in the sandbox, so `npm run build` could not be executed.

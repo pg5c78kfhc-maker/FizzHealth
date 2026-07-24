@@ -779,7 +779,7 @@ const migrations=[
     ALTER TABLE meal_definitions ADD COLUMN archive_source TEXT;
     ALTER TABLE meal_definitions ADD COLUMN restored_at TEXT;
     INSERT OR REPLACE INTO release_metadata(version,release_date,build_id,schema_version,title,created_at)
-    VALUES ('1.4.11.36','2026-07-24','141136',58,'Data Management & Detail Screen Redesign','2026-07-24T23:59:00-04:00');
+    VALUES ('1.4.11.37','2026-07-24','141137',58,'UI Stabilization & Archive Recovery','2026-07-24T23:59:00-04:00');
   `}
 
 ];

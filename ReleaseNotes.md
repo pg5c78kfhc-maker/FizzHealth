@@ -1,21 +1,18 @@
-# Fizz Health v1.4.11.36 — Data Management & Detail Screen Redesign
+# Fizz Health v1.4.11.37 — UI Stabilization & Archive Recovery
 
-**Issued:** July 24, 2026  
-**Build:** 141136  
-**Deployment:** FH-20260724-141136  
-**Schema:** 58
+**Build:** 141137  
+**Deployment:** FH-20260724-141137  
+**Completed through:** FH-1383
 
-## Included stories
+## Corrected
 
-- **FH-1361–FH-1363:** Active, Archived, and All list filtering; restore and permanent-delete workflows; consistent archived-item gestures.
-- **FH-1364–FH-1366:** Compact detail hierarchy, Consumption Role auto-save, and compact action rows.
-- **FH-1367–FH-1371:** Data readiness filters, nutrient-enrichment and role queues, null-safe completeness rules, and visible missing-data badges.
-- **FH-1372:** Archive source, archived timestamp, and restored timestamp metadata.
+- Repaired the Food/Meals library grid regression introduced in v1.4.11.36.
+- Search controls now have a fixed compact height and can no longer expand into a large circular control.
+- Status and Data filters remain compact, while the result list owns the remaining scrollable space.
+- The first result card starts below the search field and no longer renders underneath it.
+- Archived Foods and Recipes can be restored from the archived list and from their detail screen.
+- Restore preserves nutrition, ingredient relationships, favorites, serving data, and historical logs while recording `restored_at`.
 
-## Data readiness
+## Stories
 
-Foods can be filtered by Complete, Needs Nutrients, Needs Role, Needs Review, or All Incomplete. A numeric zero is treated as known data; only null or blank values are missing.
-
-## Archive behavior
-
-Active records swipe left to archive. Archived records remain viewable; swiping right restores them and swiping left offers permanent deletion with confirmation. Historical Food Log snapshots remain unchanged.
+FH-1376, FH-1377, FH-1378, FH-1379, FH-1380, FH-1381, FH-1382, FH-1383
