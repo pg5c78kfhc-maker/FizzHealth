@@ -1,0 +1,15 @@
+VERSION.json
+package.json
+package-lock.json
+release-history.json
+ReleaseNotes.md
+src/main.jsx
+src/database.js
+src/styles.css
+src/decision/engine.js
+public/sw.js
+tests/v141132-promotion-uniqueness-deletion.test.js
+DOD-V1.4.11.32.md
+BUILD-TEST-SUMMARY-1.4.11.32.md
+TEST-PROOF-1.4.11.32.txt
+CHANGED-FILES-1.4.11.32.txt

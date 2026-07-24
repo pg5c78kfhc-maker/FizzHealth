@@ -2,6 +2,29 @@
   "format": "fizz-health-release-history",
   "releases": [
     {
+      "version": "1.4.11.32",
+      "name": "Promotion Uniqueness & Meal Deletion",
+      "type": "Corrective feature completion",
+      "build": "141132",
+      "stories": [
+        {
+          "id": "FH-1328",
+          "title": "Prevent duplicate Food and Recipe promotion using durable source links"
+        },
+        {
+          "id": "FH-1329",
+          "title": "Make swipe-left Meal deletion persist and refresh immediately"
+        },
+        {
+          "id": "FH-1330",
+          "title": "Restore source promotion eligibility after its Meal is removed"
+        }
+      ],
+      "knownIssues": [],
+      "created_at": "2026-07-24T23:55:00-04:00",
+      "release_id": "FH-20260724-141132"
+    },
+    {
       "version": "1.4.11.31",
       "name": "Classified Meal Promotion Activation",
       "type": "Corrective feature completion",

@@ -718,6 +718,19 @@ const migrations=[
     VALUES ('1.4.11.31','2026-07-24','141131',55,'Classified Meal Promotion Activation','2026-07-24T23:15:00-04:00');
   `}
 
+,  {version:56,name:'meal_promotion_uniqueness_and_deletion',sql:`
+    ALTER TABLE meal_definitions ADD COLUMN source_type TEXT;
+    ALTER TABLE meal_definitions ADD COLUMN source_id TEXT;
+    UPDATE meal_definitions
+      SET source_type=(SELECT component_type FROM meal_components WHERE meal_components.meal_id=meal_definitions.meal_id ORDER BY sort_order,id LIMIT 1),
+          source_id=(SELECT CAST(component_id AS TEXT) FROM meal_components WHERE meal_components.meal_id=meal_definitions.meal_id ORDER BY sort_order,id LIMIT 1)
+      WHERE notes LIKE 'Promoted from %' AND source_type IS NULL
+        AND (SELECT COUNT(*) FROM meal_components WHERE meal_components.meal_id=meal_definitions.meal_id)=1;
+    CREATE INDEX IF NOT EXISTS idx_meal_definitions_source ON meal_definitions(source_type,source_id,archived);
+    INSERT OR REPLACE INTO release_metadata(version,release_date,build_id,schema_version,title,created_at)
+    VALUES ('1.4.11.32','2026-07-24','141132',56,'Promotion Uniqueness & Meal Deletion','2026-07-24T23:55:00-04:00');
+  `}
+
 ];
 
 const canonicalSchema={

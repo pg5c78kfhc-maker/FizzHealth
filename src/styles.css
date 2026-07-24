@@ -934,3 +934,9 @@ body.food-library-active .content{height:calc(100dvh - var(--bottom-nav-height))
 .metadata-actions{display:grid;grid-template-columns:1fr}
 .metadata-actions .primary{display:flex;align-items:center;justify-content:center;gap:8px}
 @media (max-height:620px){.promotion-editor{max-height:calc(100dvh - env(safe-area-inset-top) - 8px)}}
+
+/* v1.4.11.32 — source-linked promotion status */
+.promotion-status{display:flex;align-items:center;gap:12px;width:100%;padding:14px 16px;border:1px solid rgba(255,255,255,.16);border-radius:14px;background:rgba(255,255,255,.06)}
+.promotion-status svg{flex:0 0 auto}
+.promotion-status div{display:flex;flex-direction:column;gap:3px;text-align:left}
+.promotion-status span{opacity:.72;font-size:.9rem}

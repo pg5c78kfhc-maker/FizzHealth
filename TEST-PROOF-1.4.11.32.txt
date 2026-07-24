@@ -1,0 +1,51 @@
+Fizz Health v1.4.11.32 test proof
+Generated: 2026-07-24
+
+Focused tests:
+TAP version 13
+# Subtest: promotion stores and checks durable source identity
+ok 1 - promotion stores and checks durable source identity
+  ---
+  duration_ms: 0.990763
+  type: 'test'
+  ...
+# Subtest: promote action is unavailable while an active sourced meal exists
+ok 2 - promote action is unavailable while an active sourced meal exists
+  ---
+  duration_ms: 0.141591
+  type: 'test'
+  ...
+# Subtest: swipe delete is wired to persistent meal removal
+ok 3 - swipe delete is wired to persistent meal removal
+  ---
+  duration_ms: 0.209992
+  type: 'test'
+  ...
+# Subtest: schema migration adds source columns and backfills promoted meals
+ok 4 - schema migration adds source columns and backfills promoted meals
+  ---
+  duration_ms: 0.78118
+  type: 'test'
+  ...
+1..4
+# tests 4
+# suites 0
+# pass 4
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 44.911603
+
+Release verification:
+
+> fizz-health@1.4.11.32 verify:release
+> node scripts/verify-release.mjs
+
+Release metadata verified: v1.4.11.32 / FH-1328 through FH-1330
+
+Production dependency/build gate:
+npm clean-install could not complete because the sandbox package gateway did not provide xlsx-0.18.5; npm offline reported ENOTCACHED.
+Therefore npm run build was not executable in this sandbox. Cloudflare must run the final production compile gate.
+
+Historical suite: 343 passed / 376 total; 33 legacy assertions failed, primarily version-pinned or superseded UI expectations.
