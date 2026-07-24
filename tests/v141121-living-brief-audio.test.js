@@ -1,0 +1,6 @@
+import test from 'node:test';import assert from 'node:assert/strict';import fs from 'node:fs';
+const main=fs.readFileSync('src/main.jsx','utf8'),css=fs.readFileSync('src/styles.css','utf8');
+test('Daily Brief uses timestamped living headline and contextual intelligence',()=>{assert.match(main,/Edward, here’s the latest health and fitness headlines/);assert.match(main,/pending food/);assert.match(main,/Restaurant Day/);assert.match(main,/fiberHelpers/);assert.match(main,/priorAtOrBelow/)});
+test('Audio settings persist exact voice plus fallback identity',()=>{assert.match(main,/fizz-audio-settings-v1/);assert.match(main,/voiceName/);assert.match(main,/AudioSettingsPage/);assert.match(main,/Audio & narration/)});
+test('Food hub promotes Meal Planner and removes duplicate action card',()=>{const hub=main.slice(main.indexOf('function FoodHub'),main.indexOf('function FoodPlannerPage'));assert.match(hub,/title:'Meal Planner'/);assert.doesNotMatch(hub,/title:'Plan a meal'/)});
+test('Restaurant card controls remain horizontal and confidence type fits',()=>{assert.match(main,/restaurant-card-topline.*restaurant-rank-circle.*restaurant-price-badge.*favorite-star.*item-pencil/s);assert.match(css,/restaurant-card-topline\{flex-direction:row!important;flex-wrap:nowrap!important\}/);assert.match(css,/score-circle>span\{font-size:1\.4rem!important/)});

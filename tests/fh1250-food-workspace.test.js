@@ -5,7 +5,7 @@ const main=fs.readFileSync(new URL('../src/main.jsx',import.meta.url),'utf8');
 const css=fs.readFileSync(new URL('../src/styles.css',import.meta.url),'utf8');
 
 test('FH-1250.1 relocates full planner and recommendations to Food',()=>{
- assert.match(main,/id:'food-planner'.*title:'Plan a meal'/s);
+ assert.match(main,/id:'food-planner'.*title:'Meal Planner'/s);
  assert.match(main,/id:'food-recommendations'.*title:'Recommendations'/s);
  assert.match(main,/function FoodPlannerPage/);
  assert.match(main,/function FoodRecommendationsPage/);
@@ -33,7 +33,7 @@ test('meal planner prototype uses saved Meals and a date calendar',()=>{
 });
 
 test('FH-1250.1 Food pages preserve explicit escape paths',()=>{
- assert.match(main,/PageShell eyebrow="FOOD" title="Meal Planner"[^>]*onBack=/);
+ assert.match(main,/function FoodPlannerPage[\s\S]*standard-form-header[\s\S]*onBack/);
  assert.match(main,/PageShell eyebrow="FOOD" title="Chef’s Recommendations"[^>]*onBack=/);
  assert.match(main,/PageShell eyebrow="FOOD" title="Upcoming Meals"[^>]*onBack=/);
  assert.match(main,/className="back-link" onClick=\{onBack\}>‹ Back/);

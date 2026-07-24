@@ -4,7 +4,7 @@ import fs from 'node:fs';
 const main=fs.readFileSync('src/main.jsx','utf8');
 const css=fs.readFileSync('src/styles.css','utf8');
 const meta=JSON.parse(fs.readFileSync('VERSION.json','utf8'));
-test('release metadata advances to v1.4.10.43a',()=>{assert.equal(meta.version,'1.4.11.20');assert.equal(meta.build,'141320');assert.match(main,/const VERSION='1\.4\.11\.20'/);});
+test('release metadata advances to v1.4.10.43a',()=>{assert.equal(meta.version,'1.4.11.21');assert.equal(meta.build,'141121');assert.match(main,/const VERSION='1\.4\.11\.21'/);});
 test('Highest Impact Next Action opens decision support',()=>{assert.match(main,/function HighestImpactDecisionExperience/);assert.match(main,/Why #\{top\?\.rank\|\|1\} is first/);assert.match(main,/Tap for options/);});
 test('alternatives include pantry planned activity timing and restaurant options',()=>{for(const phrase of ["kind:'Pantry'","kind:'Planned meal'","kind:'Activity'","kind:'Timing'","kind:'Restaurant'"])assert.match(main,new RegExp(phrase.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')));});
 test('predicted outcomes and transparent rationale are rendered',()=>{assert.match(main,/Predicted outcome/);assert.match(main,/Why am I seeing this\?/);assert.match(main,/Data that influenced it/);assert.match(main,/Why isn’t another option first\?/);assert.match(css,/highest-impact-panel/);});
