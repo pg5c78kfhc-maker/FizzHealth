@@ -1,3 +1,17 @@
+# Fizz Health v1.4.11.23 — Daily Brief Intelligence & UI Consistency
+
+Released July 24, 2026. Build 141123. Deployment FH-20260724-141123.
+
+Completed FH-1316 through FH-1321.
+
+- Removed the white treatment behind restaurant edit pencils while preserving full touch targets.
+- Completed Audio Settings dirty-state, explicit save, persistent voice and speed, unsaved-change protection, and return navigation.
+- Standardized X and checkmark controls directly on editor page backgrounds with 44×44 touch targets.
+- Added verified pantry ranking for fiber and protein gaps using nutrition impact, calories, expiration, open status, Restaurant Day context, LDL support, and projected gap closure.
+- Added Daily Brief acknowledgment for Not Planned → Proposed and Proposed → Consumed transitions.
+- Kept planned nutrition separate from consumed totals and re-ranked next actions after transitions.
+- Updated spoken narration to connect meal changes, projected effects, actual effects, and pantry-based next steps.
+
 # Fizz Health v1.4.11.22 — Startup Reliability Hotfix
 
 Released July 24, 2026. Build 141122. Deployment FH-20260724-141122.

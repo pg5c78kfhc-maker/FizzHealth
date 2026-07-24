@@ -1,0 +1,10 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import fs from 'node:fs';
+const main=fs.readFileSync('src/main.jsx','utf8');
+const css=fs.readFileSync('src/styles.css','utf8');
+test('v1.4.11.23 release metadata is current',()=>{assert.match(main,/const VERSION='1\.4\.11\.23'/);assert.match(main,/FH-20260724-141123/)});
+test('audio settings use explicit dirty save and unsaved protection',()=>{assert.match(main,/dirty=voiceURI/);assert.match(main,/disabled={!dirty}/);assert.match(main,/Discard unsaved Audio Settings changes/);assert.doesNotMatch(main,/onChange={e=>\{setVoiceURI\(e\.target\.value\);save/)});
+test('daily brief ranks pantry foods with projected benefit',()=>{assert.match(main,/pantryRecommendation=\(nutrient,gap\)/);assert.match(main,/closes about/);assert.match(main,/proteinHelpers/)});
+test('meal state transitions are narrated',()=>{assert.match(main,/proposed_meal_consumed/);assert.match(main,/Not Planned → Proposed/);assert.match(main,/Proposed → Consumed/)});
+test('editor and pencil controls have transparent direct treatment',()=>{assert.match(css,/v1\.4\.11\.23/);assert.match(css,/background:transparent!important/);assert.match(css,/min-width:44px/)});

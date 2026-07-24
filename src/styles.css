@@ -920,3 +920,10 @@ body.food-library-active .content{height:calc(100dvh - var(--bottom-nav-height))
 
 /* v1.4.11.22 — startup diagnostics */
 .boot-diagnostic{display:block;margin:12px auto 0;max-width:34rem;font-size:.78rem;line-height:1.4;color:#aeb8c2}
+
+/* v1.4.11.23 — Daily Brief intelligence and consistent editor controls. */
+.standard-form-header>button,.standard-page-head button,.edit-head button,.decision-detail-head button{width:44px;min-width:44px;height:44px;min-height:44px;border:0!important;border-radius:0!important;background:transparent!important;color:#eef3f1;display:grid;place-items:center;padding:0}
+.standard-form-header>button:disabled{opacity:.28;cursor:default}.standard-form-header>button:not(:disabled){opacity:1}
+.restaurant-card-topline .item-pencil,.rank-compact-actions .item-pencil,.food-actions .nutrition-inspect-button{border:0!important;background:transparent!important;box-shadow:none!important;border-radius:0!important;color:#eef3f1;display:grid;place-items:center;min-width:44px;min-height:44px;padding:0}
+.restaurant-card-topline .item-pencil svg,.rank-compact-actions .item-pencil svg{width:21px;height:21px;stroke-width:2}
+.pantry-guidance-story p{line-height:1.55}

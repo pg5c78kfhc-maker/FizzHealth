@@ -29,8 +29,8 @@ test('optional event history cannot roll back pantry save',()=>{
 });
 
 test('mandatory release metadata is current',()=>{
-  assert.equal(version.version,'1.4.11.22');
-  assert.equal(version.build,'141122');
-  assert.equal(version.release_id,'FH-20260724-141122');
-  assert.match(main,/const VERSION='1\.4\.11\.22'/);
+  assert.equal(version.version,'1.4.11.23');
+  assert.equal(version.build,'141123');
+  assert.equal(version.release_id,'FH-20260724-141123');
+  assert.match(main,/const VERSION='1\.4\.11\.23'/);
 });

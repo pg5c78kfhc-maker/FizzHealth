@@ -7,10 +7,10 @@ const database=fs.readFileSync(new URL('../src/database.js',import.meta.url),'ut
 const meta=JSON.parse(fs.readFileSync(new URL('../VERSION.json',import.meta.url),'utf8'));
 
 test('startup hotfix metadata is current',()=>{
-  assert.equal(meta.version,'1.4.11.22');
-  assert.equal(meta.build,'141122');
-  assert.equal(meta.release_id,'FH-20260724-141122');
-  assert.match(main,/const VERSION='1\.4\.11\.22'/);
+  assert.equal(meta.version,'1.4.11.23');
+  assert.equal(meta.build,'141123');
+  assert.equal(meta.release_id,'FH-20260724-141123');
+  assert.match(main,/const VERSION='1\.4\.11\.23'/);
 });
 
 test('startup no longer has fatal 12 or 15 second timeout',()=>{
