@@ -3,7 +3,7 @@ import wasmUrl from 'sql.js/dist/sql-wasm.wasm?url';
 
 const DB_KEY='fizz-health-sqlite-v1';
 const STORAGE_DB='FizzHealthStorage';
-const TARGET_SCHEMA_VERSION=48;
+const TARGET_SCHEMA_VERSION=53;
 let SQL, db;
 
 const migrations=[
@@ -696,6 +696,14 @@ const migrations=[
 ,  {version:52,name:'restaurant_aware_meal_planning',sql:`
     INSERT OR REPLACE INTO release_metadata(version,release_date,build_id,schema_version,title,created_at)
     VALUES ('1.4.11.17','2026-07-23','141317',52,'Restaurant Intelligence Completion','2026-07-23T23:13:17.000Z');
+  `}
+
+,  {version:53,name:'restaurant_meal_classification_and_complete_rankings',sql:`
+    ALTER TABLE restaurant_meals ADD COLUMN primary_category TEXT;
+    ALTER TABLE restaurant_meals ADD COLUMN eligible_categories_json TEXT;
+    CREATE INDEX IF NOT EXISTS idx_restaurant_meals_primary_category ON restaurant_meals(restaurant_id,primary_category,active);
+    INSERT OR REPLACE INTO release_metadata(version,release_date,build_id,schema_version,title,created_at)
+    VALUES ('1.4.11.18','2026-07-23','141318',53,'Restaurant Classification & Complete Rankings','2026-07-24T00:45:00.000Z');
   `}
 
 ];

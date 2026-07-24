@@ -1,3 +1,21 @@
+# Fizz Health v1.4.11.18 — Restaurant Classification & Complete Rankings
+
+Released July 23, 2026. Build 141318. Deployment FH-20260723-141318.
+
+## Completed
+
+Stories: FH-1280 through FH-1286.
+
+- FH-1280: Removed the top-20 restaurant-menu visibility cap; all active items remain visible and starred meals never disappear.
+- FH-1281: Added shared restaurant meal classifications: Breakfast, Lunch, Dinner, Any, Snack, Appetizer, Side, Dessert, Beverage, and Condiment.
+- FH-1282: Restaurant rankings now recalculate within the selected category.
+- FH-1283: Added All, Favorites, and category filters.
+- FH-1284: Added an iPhone-friendly restaurant item classification editor with primary and eligible categories, price, favorite, and active state.
+- FH-1285: Meal Planner occasion choices now respect each restaurant meal’s eligible categories.
+- FH-1286: Restored the compact confidence badge with percentage only.
+
+---
+
 # Fizz Health v1.4.11.17 — Restaurant Intelligence Completion
 
 Released: July 23, 2026

@@ -1,0 +1,19 @@
+Fizz Health v1.4.11.18 — Restaurant Classification & Complete Rankings
+Build: 141318
+Deployment: FH-20260723-141318
+Schema: 53
+
+Verification
+- npm test: 348 passed, 0 failed
+- npm run verify:release: passed
+- npm run build: unavailable because Vite dependencies are not installed in this execution environment (vite: not found)
+- Full-source and changed-files ZIP integrity: verified after packaging
+
+Implemented
+- FH-1280 through FH-1286
+- Removed restaurant top-20 visibility cap
+- Added shared primary and eligible restaurant meal categories
+- Added All, Favorites, and category filters with category-local rankings
+- Added restaurant meal classification editor
+- Restricted Meal Planner restaurant occasions to eligible roles
+- Restored percentage-only confidence badges
