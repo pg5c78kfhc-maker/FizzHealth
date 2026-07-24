@@ -2,6 +2,45 @@
   "format": "fizz-health-release-history",
   "releases": [
     {
+      "version": "1.4.11.35",
+      "name": "Fast Food Logging",
+      "type": "Feature and workflow release",
+      "created": "2026-07-24T21:30:00-04:00",
+      "build": "141135",
+      "release_id": "FH-20260724-141135",
+      "stories": [
+        [
+          "FH-1351",
+          "Full right swipe logs one serving immediately as Consumed"
+        ],
+        [
+          "FH-1352",
+          "Partial right swipe opens the Add to Food Log servings sheet"
+        ],
+        [
+          "FH-1353",
+          "Scale every stored macro and micronutrient by servings"
+        ],
+        [
+          "FH-1354",
+          "Keep item taps dedicated to detail and editing"
+        ],
+        [
+          "FH-1355",
+          "Provide Undo after full-swipe quick consume"
+        ],
+        [
+          "FH-1356",
+          "Refresh Food Log, dashboards, Decision Intelligence, and Daily Brief"
+        ],
+        [
+          "FH-1357",
+          "Use the same gesture architecture for Foods, Recipes, and Meals"
+        ]
+      ],
+      "known_issues": []
+    },
+    {
       "version": "1.4.11.34",
       "name": "Daily Brief Completion",
       "type": "Feature and corrective release",

@@ -943,3 +943,15 @@ body.food-library-active .content{height:calc(100dvh - var(--bottom-nav-height))
 
 /* v1.4.11.34 — Daily Brief completion: newest-first events and 15-second transport */
 .brief-audio .brief-skip{min-width:48px;justify-content:center;font-variant-numeric:tabular-nums;font-weight:950}.brief-audio .brief-skip span{font-size:.78rem;line-height:1}.recent-changes-story{border-left-color:#9bf23c}.brief-event-list{display:grid;gap:8px;margin-top:14px}.brief-event-list>button{width:100%;display:grid;grid-template-columns:58px 1fr 22px;gap:10px;align-items:start;text-align:left;border:1px solid #314047;border-radius:12px;background:#0e181d;color:#edf4f1;padding:12px}.brief-event-list time{color:#a9b5ba;font-size:.72rem;font-weight:850}.brief-event-list div{display:grid;gap:4px}.brief-event-list b{font-size:.9rem}.brief-event-list span{color:#aeb9bd;font-size:.76rem;line-height:1.4}.brief-event-list svg{width:18px;height:18px;color:#9bf23c;margin-top:2px}
+
+/* v1.4.11.35 — fast Food Log gestures */
+.food-library-page .discovery-swipe.commit-ready .discovery-swipe-rail{opacity:1;visibility:visible}
+.food-library-page .discovery-swipe.commit-ready .swipe-quick{width:100%;align-items:flex-start;padding-left:24px;background:#315b18;color:#e4ffb6}
+.food-library-page .discovery-swipe.commit-ready .swipe-quick span{font-size:12px;white-space:nowrap}
+.serving-log-panel{width:min(94vw,520px)}
+.serving-quick-picks{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+.serving-quick-picks button{min-height:44px;border:1px solid #40505a;border-radius:12px;background:#11191e;color:#d8e1e5;font-weight:900;font-size:16px}
+.serving-quick-picks button.active{border-color:#a8ed38;background:#263a17;color:#dfffaa}
+.serving-log-actions button{display:flex;align-items:center;justify-content:center;gap:7px}
+.serving-log-actions svg{width:18px}
+.quick-consume-undo{z-index:260}

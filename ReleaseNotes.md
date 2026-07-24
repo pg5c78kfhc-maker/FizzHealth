@@ -1,26 +1,24 @@
-# Fizz Health v1.4.11.34 — Daily Brief Completion
+# Fizz Health v1.4.11.35 — Fast Food Logging
 
-**Release type:** Feature and corrective release  
-**Build:** 141134  
-**Deployment:** FH-20260724-141134  
-**Created:** July 24, 2026 at 8:30 PM EDT
+**Issued:** July 24, 2026  
+**Build:** 141135  
+**Deployment:** FH-20260724-141135  
+**Schema:** 57
 
-## Completed stories
+## Included stories
 
-- **FH-1332** — Show the most recent changes first in true reverse chronological order.
-- **FH-1333** — Prioritize newly logged meals and meal-plan changes ahead of background coaching.
-- **FH-1334** — Add functional back 15 seconds and forward 15 seconds narration controls.
-- **FH-1335** — Persist spoken-brief playback position and resume it after navigation.
-- **FH-1336** — Rebuild the brief from current meals, planned meals, health metrics, and pantry events.
-- **FH-1337** — Explain recent events and their nutrition impact in conversational narration.
-- **FH-1338** — Preserve Restaurant Day and pantry-led day context.
-- **FH-1339** — Lead the decision section with the highest-value next action.
-- **FH-1340** — End the brief with a direct “What should I do next?” action.
+- **FH-1351:** Full right swipe logs one serving immediately as Consumed.
+- **FH-1352:** Partial right swipe reveals Add; tapping it opens a compact Add to Food Log servings sheet.
+- **FH-1353:** Serving quantity scales every nutrient registered by Fizz Health.
+- **FH-1354:** Tapping an item remains the path to details and editing.
+- **FH-1355:** Full-swipe logging provides a transient Undo action.
+- **FH-1356:** New entries refresh the Food Log and downstream Daily Brief and Decision Intelligence inputs.
+- **FH-1357:** Foods, Recipes, and Meals use the same logging gesture model.
 
-## Testing focus
+## Interaction model
 
-1. Log a meal and confirm it appears first under **Just In — Newest First**.
-2. Start narration and confirm Pause, −15, Restart, +15, and Stop work.
-3. Leave Home during narration, return, and confirm playback resumes near the stored position.
-4. Add or change a planned meal and confirm the updated brief reflects it without manual refresh.
-5. Confirm the final section provides a concrete next action.
+- Tap item: open details/editing.
+- Partial swipe right: reveal Add.
+- Tap Add: choose servings, date/time, occasion, and either Proposed or Consumed.
+- Full swipe right: log one serving as Consumed immediately.
+- Swipe left: archive/delete where supported.
