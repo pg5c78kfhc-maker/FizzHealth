@@ -5,10 +5,10 @@ import fs from 'node:fs';
 const main=fs.readFileSync('src/main.jsx','utf8');
 const meta=JSON.parse(fs.readFileSync('VERSION.json','utf8'));
 
-test('v1.4.11.19 metadata is current',()=>{
-  assert.equal(meta.version,'1.4.11.19');
-  assert.equal(meta.build,'141319');
-  assert.equal(meta.release_id,'FH-20260723-141319');
+test('v1.4.11.20 metadata is current',()=>{
+  assert.equal(meta.version,'1.4.11.20');
+  assert.equal(meta.build,'141320');
+  assert.equal(meta.release_id,'FH-20260724-141320');
 });
 
 test('pantry package editor preserves blank numeric values and verifies persistence',()=>{

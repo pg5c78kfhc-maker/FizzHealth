@@ -704,6 +704,7 @@ const migrations=[
     CREATE INDEX IF NOT EXISTS idx_restaurant_meals_primary_category ON restaurant_meals(restaurant_id,primary_category,active);
     INSERT OR REPLACE INTO release_metadata(version,release_date,build_id,schema_version,title,created_at)
     VALUES ('1.4.11.19','2026-07-23','141319',53,'Restaurant Intelligence UX & Decision Dashboard','2026-07-24T01:30:00.000Z');
+    INSERT OR IGNORE INTO app_releases(version,release_date,build_id,schema_version,title,created_at) VALUES ('1.4.11.20','2026-07-24','141320',54,'Restaurant Decision Dashboard Polish','2026-07-24T14:55:00.000Z');
   `}
 
 ];

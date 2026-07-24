@@ -1,0 +1,17 @@
+Fizz Health v1.4.11.20 — Restaurant Decision Dashboard Polish
+
+Automated regression suite:
+- Command: npm test
+- Result: 355 passed, 0 failed
+
+Release verification:
+- Command: npm run verify:release
+- Result: passed
+- Verified: v1.4.11.20 / FH-1295 through FH-1301
+
+Production build:
+- Command: npm run build
+- Result: not run successfully because the supplied archive did not include installed dependencies; vite was not found.
+
+Package integrity:
+- Full-source and changed-files ZIP archives were created and validated with unzip -t.

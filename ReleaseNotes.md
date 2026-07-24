@@ -1,12 +1,13 @@
-# Fizz Health v1.4.11.19 — Restaurant Intelligence UX & Decision Dashboard
+# Fizz Health v1.4.11.20 — Restaurant Decision Dashboard Polish
 
-Released July 23, 2026. Build 141319. Deployment FH-20260723-141319.
+Released July 24, 2026.
 
-Completed FH-1287 through FH-1294.
+- FH-1295: Final restaurant card toolbar: rank, price, favorite, edit.
+- FH-1296: Expanded title, description, and ranking explanation area.
+- FH-1297: Compact Prot, Sat Fat, and Chol labels.
+- FH-1298: Percentage-only confidence circle above the vertical nutrient stack.
+- FH-1299: Nutrition editor uses X, Pencil, Check header protocol.
+- FH-1300: Save enables only for edits; closing protects unsaved changes.
+- FH-1301: Responsive spacing for supported iPhone widths.
 
-- Redesigned restaurant recommendation cards as compact decision dashboards.
-- Kept the larger outlined price pill above the rank circle.
-- Centered the percentage-only confidence badge.
-- Replaced generic ranking advice with the saved dish description and an item-specific ranking explanation.
-- Added protein, saturated fat, and cholesterol values with high-contrast status treatments.
-- Added reusable adaptive-contrast styling for colored metric states.
+Completed stories: FH-1295 through FH-1301.
