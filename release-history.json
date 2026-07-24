@@ -2,87 +2,19 @@
   "format": "fizz-health-release-history",
   "releases": [
     {
-      "version": "1.4.11.28",
-      "release": "1.4.11.28",
-      "release_type": "Hotfix",
-      "build": "141128",
-      "release_id": "FH-20260724-141128",
-      "created_at": "2026-07-24T11:58:00-04:00",
-      "schema_version": 55,
-      "status": "Migration 55 Compatibility Repair",
-      "title": "Migration 55 Compatibility Repair",
+      "version": "1.4.11.29",
+      "name": "Classified Meal Promotion Recovery",
+      "type": "Stabilization and focused feature release",
+      "build": "141129",
       "stories": [
-        "FH-1331"
-      ]
-    },
-    {
-      "version": "1.4.11.26",
-      "date": "2026-07-24",
-      "name": "Production Build Syntax Repair",
-      "type": "Hotfix",
-      "created": "2026-07-24T15:45:00-04:00",
-      "build": "141126",
-      "release_id": "FH-20260724-141126",
-      "stories": [
-        {
-          "id": "FH-1329",
-          "title": "Remove extra JSX expression terminator in Food/Recipe details"
-        },
-        {
-          "id": "FH-1330",
-          "title": "Repair malformed migration JavaScript in database module"
-        }
-      ],
-      "known_issues": []
-    },
-    {
-      "version": "1.4.11.25",
-      "date": "2026-07-24",
-      "name": "JSX Build Repair",
-      "type": "Hotfix",
-      "created": "2026-07-24T15:30:00-04:00",
-      "build": "141125",
-      "release_id": "FH-20260724-141125",
-      "stories": [
-        {
-          "id": "FH-1328",
-          "title": "Repair malformed Food/Recipe details JSX that blocked production builds"
-        }
-      ],
-      "known_issues": []
-    },
-    {
-      "version": "1.4.11.24",
-      "name": "Narration Navigation & Classified Meal Promotion",
-      "type": "Feature release",
-      "created": "2026-07-24T23:30:00-04:00",
-      "build": "141124",
-      "release_id": "FH-20260724-141124",
-      "schema_version": 55,
-      "stories": [
-        "FH-1322",
-        "FH-1323",
-        "FH-1324",
         "FH-1325",
         "FH-1326",
-        "FH-1327"
-      ]
-    },
-    {
-      "version": "1.4.11.23",
-      "name": "Daily Brief Intelligence & UI Consistency",
-      "type": "Feature release",
-      "created_at": "2026-07-24T21:30:00-04:00",
-      "build": "141123",
-      "release_id": "FH-20260724-141123",
-      "stories": [
-        "FH-1316",
-        "FH-1317",
-        "FH-1318",
-        "FH-1319",
-        "FH-1320",
-        "FH-1321"
-      ]
+        "FH-1327",
+        "FH-1333"
+      ],
+      "knownIssues": [],
+      "created_at": "2026-07-24T22:45:00-04:00",
+      "release_id": "FH-20260724-141129"
     },
     {
       "version": "1.4.11.22",

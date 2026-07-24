@@ -921,14 +921,16 @@ body.food-library-active .content{height:calc(100dvh - var(--bottom-nav-height))
 /* v1.4.11.22 — startup diagnostics */
 .boot-diagnostic{display:block;margin:12px auto 0;max-width:34rem;font-size:.78rem;line-height:1.4;color:#aeb8c2}
 
-/* v1.4.11.23 — direct-background editor controls and pantry intelligence */
-.standard-form-header>button,.standard-page-head button,.header-icon-action{min-width:44px!important;width:44px!important;min-height:44px!important;height:44px!important;border:0!important;border-radius:0!important;background:transparent!important;box-shadow:none!important;color:#fff}
-.standard-form-header .save-action:disabled,.header-icon-action.save-action:disabled{opacity:.3}
-.rank-compact-actions .item-pencil,.restaurant-card-topline .item-pencil,.item-pencil{min-width:44px;min-height:44px;border:0!important;border-radius:0!important;background:transparent!important;box-shadow:none!important;color:inherit}
-.goal-pantry-list{display:grid;gap:8px;margin-top:14px}.goal-pantry-list>p{margin:0;padding:10px 0;border-top:1px solid #2d393e}.goal-pantry-list small{display:block;color:#9ba8ae;margin-top:4px}.transition-story{border-color:#6d8f44}
 
-/* v1.4.11.24 — narration seeking and classified promotion */
-.brief-audio button{position:relative;min-width:44px;min-height:44px}
-.brief-audio .seek-label{position:absolute;font-size:10px;font-weight:800;line-height:1;inset:auto 0 5px;text-align:center}
-.promote-meal-panel{max-height:min(640px,calc(100dvh - 24px))}
-.food-detail-page .decision-block select{width:100%}
+/* v1.4.11.29 — shared classified meal promotion */
+.promotion-backdrop{align-items:flex-end}
+.promotion-editor{max-height:min(82dvh,760px);display:flex;flex-direction:column;padding:0;overflow:hidden}
+.promotion-editor .editor-scroll{overflow:auto;overscroll-behavior:contain;padding:18px;padding-bottom:calc(24px + env(safe-area-inset-bottom))}
+.standard-editor-head{flex:0 0 auto;grid-template-columns:44px 1fr 44px;align-items:center}
+.standard-editor-head>div{text-align:center;min-width:0}
+.standard-editor-head .header-icon-action{background:transparent;border:0;border-radius:0;min-width:44px;min-height:44px}
+.metadata-block label{display:grid;gap:8px}
+.metadata-block select,.promotion-editor input,.promotion-editor select{width:100%;font-size:16px}
+.metadata-actions{display:grid;grid-template-columns:1fr}
+.metadata-actions .primary{display:flex;align-items:center;justify-content:center;gap:8px}
+@media (max-height:620px){.promotion-editor{max-height:calc(100dvh - env(safe-area-inset-top) - 8px)}}

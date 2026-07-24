@@ -711,22 +711,11 @@ const migrations=[
     VALUES ('1.4.11.20','2026-07-24','141320',54,'Restaurant Decision Dashboard Polish','2026-07-24T15:30:00.000Z');
   `}
 
-,  {version:55,name:'classified_meal_promotion_and_food_roles',sql:`
+,  {version:55,name:'classified_meal_promotion',sql:`
     ALTER TABLE foods ADD COLUMN consumption_role TEXT DEFAULT 'both';
-    ALTER TABLE meal_definitions ADD COLUMN source_type TEXT;
-    ALTER TABLE meal_definitions ADD COLUMN source_id TEXT;
-    CREATE INDEX IF NOT EXISTS idx_foods_consumption_role ON foods(consumption_role,archived,name);
-    CREATE UNIQUE INDEX IF NOT EXISTS idx_meal_definition_source ON meal_definitions(source_type,source_id) WHERE source_type IS NOT NULL AND source_id IS NOT NULL;
-    CREATE TABLE IF NOT EXISTS app_releases (
-      version TEXT PRIMARY KEY, release_date TEXT NOT NULL, build_id TEXT,
-      schema_version INTEGER NOT NULL, title TEXT, created_at TEXT NOT NULL
-    );
+    UPDATE foods SET consumption_role='both' WHERE consumption_role IS NULL OR TRIM(consumption_role)='';
     INSERT OR REPLACE INTO release_metadata(version,release_date,build_id,schema_version,title,created_at)
-    VALUES ('1.4.11.28','2026-07-24','141128',55,'Migration 55 Compatibility Repair','2026-07-24T11:58:00-04:00');
-    INSERT OR IGNORE INTO app_releases(version,release_date,build_id,schema_version,title,created_at)
-    VALUES ('1.4.11.24','2026-07-24','141124',55,'Narration Navigation & Classified Meal Promotion','2026-07-24T23:30:00-04:00');
-    INSERT OR REPLACE INTO app_releases(version,release_date,build_id,schema_version,title,created_at)
-    VALUES ('1.4.11.28','2026-07-24','141128',55,'Migration 55 Compatibility Repair','2026-07-24T11:58:00-04:00');
+    VALUES ('1.4.11.29','2026-07-24','141129',55,'Classified Meal Promotion Recovery','2026-07-24T22:45:00-04:00');
   `}
 
 ];
@@ -734,7 +723,7 @@ const migrations=[
 const canonicalSchema={
   foods:{
     create:`CREATE TABLE IF NOT EXISTS foods (food_id TEXT PRIMARY KEY, name TEXT, category TEXT, default_serving REAL, unit TEXT, calories REAL, protein REAL, carbs REAL, fiber REAL, fat REAL, saturated_fat REAL, sodium REAL, potassium REAL, notes TEXT)`,
-    columns:{food_id:'TEXT',name:'TEXT',category:'TEXT',default_serving:'REAL',unit:'TEXT',calories:'REAL',protein:'REAL',carbs:'REAL',fiber:'REAL',fat:'REAL',saturated_fat:'REAL',sodium:'REAL',potassium:'REAL',notes:'TEXT',nutrition_known:'INTEGER DEFAULT 0',archived:'INTEGER DEFAULT 0',archived_at:'TEXT',consumption_role:"TEXT DEFAULT 'both'"},
+    columns:{food_id:'TEXT',name:'TEXT',category:'TEXT',default_serving:'REAL',unit:'TEXT',calories:'REAL',protein:'REAL',carbs:'REAL',fiber:'REAL',fat:'REAL',saturated_fat:'REAL',sodium:'REAL',potassium:'REAL',notes:'TEXT',nutrition_known:'INTEGER DEFAULT 0',archived:'INTEGER DEFAULT 0',archived_at:'TEXT'},
     aliases:{name:['food','food_name']}
   },
   pantry:{
