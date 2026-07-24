@@ -1,0 +1,11 @@
+Fizz Health v1.4.11.20 build-syntax hotfix
+Date: 2026-07-24
+
+Correction:
+- Replaced the restaurant swipe-card inline template-literal transform with a parser-safe precomputed swipeStyle object.
+- Added a regression test guarding the corrected transform construction.
+
+Verification:
+- npm test: 356 passed, 0 failed
+- npm run verify:release: passed
+- npm dependency installation/build could not be rerun in this environment because the internal npm mirror returned HTTP 503 for xlsx. Cloudflare's prior log confirmed dependencies install successfully and identified only the corrected JSX parse error.
