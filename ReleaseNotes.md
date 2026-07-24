@@ -1,10 +1,13 @@
-# Fizz Health v1.4.11.26 — Production Build Syntax Repair
+# Fizz Health v1.4.11.27 — Migration 55 Compatibility Repair
 
-## FH-1329 and FH-1330 production build syntax repair
+Released: July 24, 2026
 
-## Corrected
+## Fixed
 
-- Removed the extra JSX expression terminator in the Food/Recipe details screen that caused Vite to stop at `src/main.jsx` around character 56,311.
-- Repaired malformed JavaScript surrounding schema migration 55 in `src/database.js`, which would have become the next production parser failure after the JSX issue.
-- Preserved all v1.4.11.24 feature behavior and database schema 55.
-- Advanced centralized release, About, package, decision-engine, release-history, and service-worker metadata to v1.4.11.26 / build 141126.
+- Migration 55 now creates the `app_releases` table when it is absent before writing release history.
+- Existing user databases that never received this optional metadata table can now complete startup successfully.
+- The migration remains transactional and preserves all existing health data if any step fails.
+
+## Story
+
+- FH-1331 migration 55 compatibility repair — Harden migration 55 for databases missing `app_releases`.

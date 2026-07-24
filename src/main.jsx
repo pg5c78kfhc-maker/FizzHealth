@@ -20,11 +20,11 @@ import {buildRecipeSnapshot,compactRecipeMealNotes} from './nutrition/recipe';
 import {normalizeSqlValue,auditValue} from './exchange/persistence';
 import {buildFoodEnrichmentExchange,buildNewFoodExchange,buildLogOnceExchange,normalizeExchangeJson as normalizeUniversalJson,parseExchangeJson,restaurantMenuItems,validateRestaurantExchange,validateUniversalExchange,foodProposal,mealProposal,changedFoodFields,serializeJsonBackedFields} from './exchange';
 import './styles.css';
-const VERSION='1.4.11.26';
+const VERSION='1.4.11.27';
 const RELEASE_DATE='2026-07-24';
-const BUILD_ID='141126';
-const DEPLOYMENT_ID='FH-20260724-141126';
-const RELEASE_CREATED_AT='2026-07-24T15:45:00-04:00';
+const BUILD_ID='141127';
+const DEPLOYMENT_ID='FH-20260724-141127';
+const RELEASE_CREATED_AT='2026-07-24T16:00:00-04:00';
 const localDateKey=(date=new Date())=>{const y=date.getFullYear(),m=String(date.getMonth()+1).padStart(2,'0'),d=String(date.getDate()).padStart(2,'0');return `${y}-${m}-${d}`};
 const today=()=>localDateKey();
 const toDateTimeLocal=(date=new Date())=>{const y=date.getFullYear(),m=String(date.getMonth()+1).padStart(2,'0'),d=String(date.getDate()).padStart(2,'0'),h=String(date.getHours()).padStart(2,'0'),min=String(date.getMinutes()).padStart(2,'0');return `${y}-${m}-${d}T${h}:${min}`};
@@ -1474,7 +1474,7 @@ function NutrientConfiguration({onBack,onClose=onBack}){
 }
 
 const RELEASE_HISTORY=[
- {version:'1.4.11.26',name:'Production Build Syntax Repair',type:'Hotfix',created:RELEASE_CREATED_AT,build:BUILD_ID,releaseId:DEPLOYMENT_ID,stories:[['FH-1329','Remove the extra JSX expression terminator in Food and Recipe details'],['FH-1330','Repair malformed schema migration JavaScript so the production parser can load the database module']],knownIssues:[]},
+ {version:'1.4.11.27',name:'Migration 55 Compatibility Repair',type:'Hotfix',created:RELEASE_CREATED_AT,build:BUILD_ID,releaseId:DEPLOYMENT_ID,stories:[['FH-1331','Create app_releases defensively before migration 55 writes release history']],knownIssues:[]},
  {version:'1.4.11.22',name:'Startup Reliability Hotfix',type:'Corrective hotfix',created:RELEASE_CREATED_AT,build:BUILD_ID,releaseId:DEPLOYMENT_ID,stories:[['FH-1321','Remove the artificial database startup timeout'],['FH-1322','Preserve real startup errors and show the active startup stage'],['FH-1323','Run schema reconciliation once after pending migrations'],['FH-1324','Optimize first-install and upgrade startup without clearing health data']],knownIssues:[]},
  {version:'1.4.11.25',name:'JSX Build Repair',type:'Hotfix',created:RELEASE_CREATED_AT,build:BUILD_ID,releaseId:DEPLOYMENT_ID,stories:[['FH-1328','Repair malformed Food and Recipe details JSX that blocked production builds']],knownIssues:[]},
  {version:'1.4.11.24',name:'Narration Navigation & Classified Meal Promotion',type:'Feature release',created:RELEASE_CREATED_AT,build:BUILD_ID,releaseId:DEPLOYMENT_ID,stories:[['FH-1322','Put newly changed Daily Brief items first'],['FH-1323','Add 15-second rewind and advance narration controls'],['FH-1324','Resume narration from the saved playback position'],['FH-1325','Classify foods as standalone, component, or both'],['FH-1326','Promote foods to categorized Meals'],['FH-1327','Promote recipes to categorized Meals']],knownIssues:[]},

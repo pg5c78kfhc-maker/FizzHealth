@@ -717,10 +717,16 @@ const migrations=[
     ALTER TABLE meal_definitions ADD COLUMN source_id TEXT;
     CREATE INDEX IF NOT EXISTS idx_foods_consumption_role ON foods(consumption_role,archived,name);
     CREATE UNIQUE INDEX IF NOT EXISTS idx_meal_definition_source ON meal_definitions(source_type,source_id) WHERE source_type IS NOT NULL AND source_id IS NOT NULL;
+    CREATE TABLE IF NOT EXISTS app_releases (
+      version TEXT PRIMARY KEY, release_date TEXT NOT NULL, build_id TEXT,
+      schema_version INTEGER NOT NULL, title TEXT, created_at TEXT NOT NULL
+    );
     INSERT OR REPLACE INTO release_metadata(version,release_date,build_id,schema_version,title,created_at)
-    VALUES ('1.4.11.26','2026-07-24','141126',55,'Production Build Syntax Repair','2026-07-24T15:45:00-04:00');
+    VALUES ('1.4.11.27','2026-07-24','141127',55,'Migration 55 Compatibility Repair','2026-07-24T16:00:00-04:00');
     INSERT OR IGNORE INTO app_releases(version,release_date,build_id,schema_version,title,created_at)
     VALUES ('1.4.11.24','2026-07-24','141124',55,'Narration Navigation & Classified Meal Promotion','2026-07-24T23:30:00-04:00');
+    INSERT OR REPLACE INTO app_releases(version,release_date,build_id,schema_version,title,created_at)
+    VALUES ('1.4.11.27','2026-07-24','141127',55,'Migration 55 Compatibility Repair','2026-07-24T16:00:00-04:00');
   `}
 
 ];
