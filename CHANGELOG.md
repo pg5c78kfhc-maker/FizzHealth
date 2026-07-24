@@ -1,3 +1,15 @@
+# Fizz Health v1.4.11.22 — Startup Reliability Hotfix
+
+Released July 24, 2026. Build 141122. Deployment FH-20260724-141122.
+
+Completed FH-1321 through FH-1324.
+
+- Removed the artificial database startup timeout that could reject a healthy first installation or upgrade.
+- Replaced the fatal startup watchdog with non-destructive progress reporting.
+- Added visible startup-stage diagnostics while preserving the underlying error message.
+- Reduced migration work by reconciling schema once after pending migrations and limiting feature repair to the necessary upgrade path.
+- Preserved all existing local Fizz Health data.
+
 ## 1.4.11.21 — 2026-07-24
 
 Completed FH-1302 through FH-1320.

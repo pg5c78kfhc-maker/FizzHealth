@@ -1,6 +1,6 @@
 import test from 'node:test';import assert from 'node:assert/strict';import fs from 'node:fs';
 const main=fs.readFileSync('src/main.jsx','utf8'),css=fs.readFileSync('src/styles.css','utf8'),meta=JSON.parse(fs.readFileSync('VERSION.json','utf8'));
-test('release metadata identifies dashboard polish',()=>{assert.equal(meta.version,'1.4.11.21');assert.equal(meta.build,'141121');assert.equal(meta.schema_version,54)});
+test('release metadata identifies dashboard polish',()=>{assert.equal(meta.version,'1.4.11.22');assert.equal(meta.build,'141122');assert.equal(meta.schema_version,54)});
 test('restaurant card uses top controls and vertical metric rail',()=>{assert.match(main,/restaurant-card-topline/);assert.match(main,/restaurant-card-metrics/);assert.match(main,/label="Prot"/);assert.match(main,/label="Chol"/);assert.match(css,/grid-template-columns:minmax\(0,1fr\) 104px/)});
 test('nutrition editor protects and saves changes from standard header',()=>{assert.match(main,/function closeEditor/);assert.match(main,/Discard unsaved nutrition changes/);assert.match(main,/disabled=\{saving\|\|!dirty\}/);assert.match(css,/nutrition-editor-head\{grid-template-columns:44px minmax\(0,1fr\) auto/)});
 test('restaurant swipe transform uses parser-safe style construction',()=>{assert.match(main,/const swipeStyle=\{transform:'translateX\('\+swipeOffset\+'px\)'\}/);assert.doesNotMatch(main,/translateX\(\$\{Math\.max\(-90,Math\.min\(90,dx\)\)\}px`\)/)});

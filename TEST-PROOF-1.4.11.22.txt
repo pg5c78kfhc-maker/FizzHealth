@@ -1,0 +1,28 @@
+Fizz Health v1.4.11.22 verification
+Date: 2026-07-24
+
+Automated tests
+- Command: npm test
+- Result: PASS
+- Tests: 364 passed, 0 failed
+
+Release integrity
+- Command: npm run verify:release
+- Result: PASS
+- Verified version: 1.4.11.22
+- Verified stories: FH-1321 through FH-1324
+- Service-worker cache: fizz-health-v1.4.11.22
+
+Production build
+- Command: npm run build
+- Result: NOT EXECUTED LOCALLY
+- Reason: the supplied archive does not contain node_modules and dependency installation was unavailable in this runtime; `vite` was therefore not present.
+- Cloudflare must run the production build from package-lock.json as part of deployment.
+
+Startup hotfix regression coverage
+- Removed the artificial 12-second database timeout.
+- Removed the fatal 15-second watchdog that replaced the real startup error.
+- Added active startup-stage reporting and retained the underlying error text.
+- Moved canonical schema reconciliation outside the per-migration loop.
+- Added a schema-repair marker to avoid redundant repair work.
+- Existing IndexedDB data remains untouched.

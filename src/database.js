@@ -3,7 +3,7 @@ import wasmUrl from 'sql.js/dist/sql-wasm.wasm?url';
 
 const DB_KEY='fizz-health-sqlite-v1';
 const STORAGE_DB='FizzHealthStorage';
-const TARGET_SCHEMA_VERSION=53;
+const TARGET_SCHEMA_VERSION=54;
 let SQL, db;
 
 const migrations=[
@@ -704,7 +704,11 @@ const migrations=[
     CREATE INDEX IF NOT EXISTS idx_restaurant_meals_primary_category ON restaurant_meals(restaurant_id,primary_category,active);
     INSERT OR REPLACE INTO release_metadata(version,release_date,build_id,schema_version,title,created_at)
     VALUES ('1.4.11.19','2026-07-23','141319',53,'Restaurant Intelligence UX & Decision Dashboard','2026-07-24T01:30:00.000Z');
-    INSERT OR IGNORE INTO app_releases(version,release_date,build_id,schema_version,title,created_at) VALUES ('1.4.11.20','2026-07-24','141320',54,'Restaurant Decision Dashboard Polish','2026-07-24T14:55:00.000Z');
+  `}
+
+,  {version:54,name:'restaurant_dashboard_final_and_nutrition_header',sql:`
+    INSERT OR REPLACE INTO release_metadata(version,release_date,build_id,schema_version,title,created_at)
+    VALUES ('1.4.11.20','2026-07-24','141320',54,'Restaurant Decision Dashboard Polish','2026-07-24T15:30:00.000Z');
   `}
 
 ];
@@ -881,16 +885,18 @@ function repairFeatureSchema(){
     if(migration.sql.trim())runMigrationSql(migration.sql);
   }
 }
-async function migrate(){
+async function migrate(onProgress=()=>{}){
+  onProgress('Checking database structure…');
   if(!hasTable('schema_migrations'))db.run('CREATE TABLE IF NOT EXISTS schema_migrations (version INTEGER PRIMARY KEY, name TEXT NOT NULL, applied_at TEXT NOT NULL)');
   const applied=new Set(query('SELECT version FROM schema_migrations').map(r=>Number(r.version)));
-  for(const migration of migrations){
-    if(applied.has(migration.version))continue;
+  const pending=migrations.filter(migration=>!applied.has(migration.version));
+  for(let index=0;index<pending.length;index++){
+    const migration=pending[index];
+    onProgress(`Updating health database ${index+1} of ${pending.length}…`);
     const backup=db.export();
     try{
       db.run('BEGIN');
       if(migration.sql.trim())runMigrationSql(migration.sql);
-      reconcileImportSchema({apply:true});
       db.run('INSERT OR IGNORE INTO schema_migrations(version,name,applied_at) VALUES (?,?,?)',[migration.version,migration.name,new Date().toISOString()]);
       db.run('COMMIT');
     }catch(error){
@@ -899,12 +905,33 @@ async function migrate(){
       throw new Error(`Database migration ${migration.version} failed: ${error.message}`);
     }
   }
+  const repairMarker=`feature_schema_repaired_v${TARGET_SCHEMA_VERSION}`;
+  const alreadyRepaired=hasTable('settings')&&query('SELECT value FROM settings WHERE key=?',[repairMarker])[0]?.value==='1';
+  const needsRepair=pending.length===0&&!alreadyRepaired;
   const backup=db.export();
-  try{db.run('BEGIN');repairFeatureSchema();reconcileImportSchema({apply:true});db.run('COMMIT')}catch(error){try{db.run('ROLLBACK')}catch{}db=new SQL.Database(new Uint8Array(backup));throw new Error(`Database schema reconciliation failed: ${error.message}`)}
-  if(hasTable('meal_date_index'))normalizeHistoricalMeals();
+  try{
+    onProgress('Finalizing database structure…');
+    db.run('BEGIN');
+    if(needsRepair)repairFeatureSchema();
+    reconcileImportSchema({apply:true});
+    if(hasTable('settings'))db.run('INSERT OR REPLACE INTO settings(key,value) VALUES (?,?)',[repairMarker,'1']);
+    db.run('COMMIT');
+  }catch(error){try{db.run('ROLLBACK')}catch{}db=new SQL.Database(new Uint8Array(backup));throw new Error(`Database schema reconciliation failed: ${error.message}`)}
+  if(hasTable('meal_date_index')){onProgress('Indexing meal history…');normalizeHistoricalMeals()}
+  onProgress('Saving database…');
   await persist();
 }
-export async function openDatabase(){if(db)return db;SQL=await initSqlJs({locateFile:()=>wasmUrl});const bytes=await loadBytes();db=bytes?new SQL.Database(new Uint8Array(bytes)):new SQL.Database();await migrate();return db}
+export async function openDatabase({onProgress=()=>{}}={}){
+  if(db){onProgress('Database ready');return db}
+  onProgress('Loading database engine…');
+  SQL=await initSqlJs({locateFile:()=>wasmUrl});
+  onProgress('Opening saved health data…');
+  const bytes=await loadBytes();
+  db=bytes?new SQL.Database(new Uint8Array(bytes)):new SQL.Database();
+  await migrate(onProgress);
+  onProgress('Database ready');
+  return db;
+}
 export async function persist(){if(db)await saveBytes(db.export())}
 export async function resetDatabase(){db=new SQL.Database();await migrate();return db}
 const normalizeBindValue=value=>{

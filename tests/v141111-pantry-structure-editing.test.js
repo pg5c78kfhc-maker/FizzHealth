@@ -6,10 +6,10 @@ const db=fs.readFileSync(new URL('../src/database.js',import.meta.url),'utf8');
 const meta=JSON.parse(fs.readFileSync(new URL('../VERSION.json',import.meta.url),'utf8'));
 
 test('release metadata identifies pantry stabilization build',()=>{
- assert.equal(meta.version,'1.4.11.21');
- assert.equal(meta.build,'141121');
- assert.equal(meta.release_id,'FH-20260724-141121');
- assert.match(main,/const VERSION='1\.4\.11\.21'/);
+ assert.equal(meta.version,'1.4.11.22');
+ assert.equal(meta.build,'141122');
+ assert.equal(meta.release_id,'FH-20260724-141122');
+ assert.match(main,/const VERSION='1\.4\.11\.22'/);
 });
 test('schema supports packages, container sizes, partial packages, and freshness',()=>{
  for(const field of ['package_count','package_type','container_size','container_unit','unopened_packages','partial_package_quantity','freshness_status']) assert.match(db,new RegExp(field));

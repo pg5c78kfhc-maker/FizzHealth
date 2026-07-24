@@ -14,7 +14,8 @@ test('Today command center treats secondary feature tables as optional',()=>{
 test('startup repairs feature schemas even when migrations were already recorded',()=>{
   assert.match(db,/function repairFeatureSchema/);
   assert.match(db,/version>=34/);
-  assert.match(db,/repairFeatureSchema\(\);reconcileImportSchema/);
+  assert.match(db,/if\(needsRepair\)repairFeatureSchema\(\)/);
+  assert.match(db,/reconcileImportSchema\(\{apply:true\}\)/);
 });
 
 

@@ -24,5 +24,5 @@ test('current recipe meals are backfilled once with all registered nutrients',()
 });
 
 test('backfill runs before application becomes ready',()=>{
-  assert.match(source,/then\(async\(\)=>\{await backfillCurrentRecipeMealsOnce\(\);setReady\(true\)\}\)/);
+  assert.match(source,/await openDatabase\(\{onProgress:setBootStage\}\)[\s\S]*await backfillCurrentRecipeMealsOnce\(\)[\s\S]*setReady\(true\)/);
 });
