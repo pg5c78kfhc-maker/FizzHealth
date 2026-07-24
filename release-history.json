@@ -2,10 +2,27 @@
   "format": "fizz-health-release-history",
   "releases": [
     {
+      "version": "1.4.11.24",
+      "name": "Narration Navigation & Classified Meal Promotion",
+      "type": "Feature release",
+      "created": "2026-07-24T23:30:00-04:00",
+      "build": "141124",
+      "release_id": "FH-20260724-141124",
+      "schema_version": 55,
+      "stories": [
+        "FH-1322",
+        "FH-1323",
+        "FH-1324",
+        "FH-1325",
+        "FH-1326",
+        "FH-1327"
+      ]
+    },
+    {
       "version": "1.4.11.23",
       "name": "Daily Brief Intelligence & UI Consistency",
-      "type": "Feature and corrective release",
-      "created_at": "2026-07-24T09:00:00-04:00",
+      "type": "Feature release",
+      "created_at": "2026-07-24T21:30:00-04:00",
       "build": "141123",
       "release_id": "FH-20260724-141123",
       "stories": [

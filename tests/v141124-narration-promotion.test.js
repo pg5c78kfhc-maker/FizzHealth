@@ -1,0 +1,11 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import fs from 'node:fs';
+const main=fs.readFileSync(new URL('../src/main.jsx',import.meta.url),'utf8');
+const db=fs.readFileSync(new URL('../src/database.js',import.meta.url),'utf8');
+const version=JSON.parse(fs.readFileSync(new URL('../VERSION.json',import.meta.url),'utf8'));
+test('FH-1322 changed information leads narration',()=>{assert.match(main,/here’s what changed most recently/);assert.match(main,/if\(transitionStory\)parts\.push\(transitionStory\)/)});
+test('FH-1323 and FH-1324 provide 15-second seeking and resume persistence',()=>{assert.match(main,/seekSpeech\(-15\)/);assert.match(main,/seekSpeech\(15\)/);assert.match(main,/fizz-brief-resume-word/);assert.match(main,/onboundary/)});
+test('FH-1325 excludes meal components from standalone recommendations',()=>{assert.match(db,/consumption_role TEXT DEFAULT 'both'/);assert.match(main,/consumptionRole==='component'/);assert.match(main,/consumption_role,'both'\)!='component'/)});
+test('FH-1326 and FH-1327 require category during promotion',()=>{assert.match(main,/function PromoteToMealModal/);assert.match(main,/MEAL_CATEGORIES\.includes\(category\)/);assert.match(main,/sourceType==='recipe'/);assert.match(main,/Every promoted item is classified/)});
+test('release metadata is v1.4.11.24 schema 55',()=>{assert.equal(version.version,'1.4.11.24');assert.equal(version.schema_version,55);assert.equal(version.build,'141124')});
