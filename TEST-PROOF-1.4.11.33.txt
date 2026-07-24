@@ -1,0 +1,51 @@
+Fizz Health v1.4.11.33 test proof
+Generated: 2026-07-24
+
+=== Release verification ===
+
+> fizz-health@1.4.11.33 verify:release
+> node scripts/verify-release.mjs
+
+Release metadata verified: v1.4.11.33 / FH-1331
+
+=== Focused migration recovery tests ===
+TAP version 13
+# Subtest: FH-1331 migration 56 keeps only one canonical linked Meal per source
+ok 1 - FH-1331 migration 56 keeps only one canonical linked Meal per source
+  ---
+  duration_ms: 0.820528
+  type: 'test'
+  ...
+# Subtest: FH-1331 creates uniqueness only after duplicate recovery
+ok 2 - FH-1331 creates uniqueness only after duplicate recovery
+  ---
+  duration_ms: 0.167919
+  type: 'test'
+  ...
+# Subtest: FH-1331 preserves duplicate Meal records rather than deleting them
+ok 3 - FH-1331 preserves duplicate Meal records rather than deleting them
+  ---
+  duration_ms: 0.197994
+  type: 'test'
+  ...
+# Subtest: FH-1331 advances schema through an idempotent release marker
+ok 4 - FH-1331 advances schema through an idempotent release marker
+  ---
+  duration_ms: 13.669504
+  type: 'test'
+  ...
+1..4
+# tests 4
+# suites 0
+# pass 4
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 61.51313
+
+=== SQLite migration scenario validation ===
+Food duplicates: canonical link retained; duplicate unlinked; repeat run stable.
+Recipe duplicates: canonical link retained; duplicate unlinked; repeat run stable.
+Prelinked duplicates: oldest active link retained; later links cleared.
+Clean database: source link retained; unique partial index created.

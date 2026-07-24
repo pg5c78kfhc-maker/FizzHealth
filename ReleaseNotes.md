@@ -1,3 +1,16 @@
+# Fizz Health v1.4.11.33 — Migration 56 Duplicate Recovery
+
+**Release date:** July 24, 2026  
+**Build:** 141133  
+**Story:** FH-1331
+
+- Repairs Migration 56 so databases containing duplicate promoted Meals can start successfully.
+- Preserves every Meal record while retaining one canonical Food/Recipe source link and unlinking later duplicates.
+- Creates the active-source uniqueness constraint only after duplicate links are repaired.
+- Adds an idempotent follow-up migration and regression coverage for Food, Recipe, mixed, clean, and repeat-run cases.
+
+---
+
 # Fizz Health v1.4.11.32 — Promotion Uniqueness & Meal Deletion
 
 Released: July 24, 2026

@@ -2,6 +2,21 @@
   "format": "fizz-health-release-history",
   "releases": [
     {
+      "version": "1.4.11.33",
+      "name": "Migration 56 Duplicate Recovery",
+      "type": "Emergency corrective release",
+      "created_at": "2026-07-24T23:59:00-04:00",
+      "build": "141133",
+      "release_id": "FH-20260724-141133",
+      "stories": [
+        {
+          "id": "FH-1331",
+          "title": "Recover Migration 56 safely when duplicate promoted Meals already exist"
+        }
+      ],
+      "known_issues": []
+    },
+    {
       "version": "1.4.11.32",
       "name": "Promotion Uniqueness & Meal Deletion",
       "type": "Corrective feature completion",

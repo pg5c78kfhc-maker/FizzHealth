@@ -20,11 +20,11 @@ import {buildRecipeSnapshot,compactRecipeMealNotes} from './nutrition/recipe';
 import {normalizeSqlValue,auditValue} from './exchange/persistence';
 import {buildFoodEnrichmentExchange,buildNewFoodExchange,buildLogOnceExchange,normalizeExchangeJson as normalizeUniversalJson,parseExchangeJson,restaurantMenuItems,validateRestaurantExchange,validateUniversalExchange,foodProposal,mealProposal,changedFoodFields,serializeJsonBackedFields} from './exchange';
 import './styles.css';
-const VERSION='1.4.11.32';
+const VERSION='1.4.11.33';
 const RELEASE_DATE='2026-07-24';
-const BUILD_ID='141132';
-const DEPLOYMENT_ID='FH-20260724-141132';
-const RELEASE_CREATED_AT='2026-07-24T23:55:00-04:00';
+const BUILD_ID='141133';
+const DEPLOYMENT_ID='FH-20260724-141133';
+const RELEASE_CREATED_AT='2026-07-24T23:59:00-04:00';
 const localDateKey=(date=new Date())=>{const y=date.getFullYear(),m=String(date.getMonth()+1).padStart(2,'0'),d=String(date.getDate()).padStart(2,'0');return `${y}-${m}-${d}`};
 const today=()=>localDateKey();
 const toDateTimeLocal=(date=new Date())=>{const y=date.getFullYear(),m=String(date.getMonth()+1).padStart(2,'0'),d=String(date.getDate()).padStart(2,'0'),h=String(date.getHours()).padStart(2,'0'),min=String(date.getMinutes()).padStart(2,'0');return `${y}-${m}-${d}T${h}:${min}`};
@@ -1486,6 +1486,7 @@ function NutrientConfiguration({onBack,onClose=onBack}){
 }
 
 const RELEASE_HISTORY=[
+ {version:'1.4.11.33',name:'Migration 56 Duplicate Recovery',type:'Emergency corrective release',created:'2026-07-24T23:59:00-04:00',build:'141133',releaseId:'FH-20260724-141133',stories:[['FH-1331','Recover Migration 56 safely when duplicate promoted Meals already exist']],knownIssues:[]},
  {version:'1.4.11.32',name:'Promotion Uniqueness & Meal Deletion',type:'Corrective feature completion',created:'2026-07-24T23:55:00-04:00',build:'141132',releaseId:'FH-20260724-141132',stories:[['FH-1328','Prevent duplicate Food and Recipe promotion using durable source links'],['FH-1329','Make swipe-left Meal deletion persist and refresh immediately'],['FH-1330','Restore source promotion eligibility after its Meal is removed']],knownIssues:[]},
  {version:'1.4.11.31',name:'Classified Meal Promotion Activation',type:'Corrective feature completion',created:'2026-07-24T23:15:00-04:00',build:'141131',releaseId:'FH-20260724-141131',stories:[['FH-1325','Food Consumption Role classification'],['FH-1326','Food to classified Meal promotion'],['FH-1327','Recipe to classified Meal promotion'],['FH-1334','Ensure the shared promotion editor renders above Food and Recipe detail pages']],knownIssues:[]},
  {version:'1.4.11.22',name:'Startup Reliability Hotfix',type:'Corrective hotfix',created:RELEASE_CREATED_AT,build:BUILD_ID,releaseId:DEPLOYMENT_ID,stories:[['FH-1321','Remove the artificial database startup timeout'],['FH-1322','Preserve real startup errors and show the active startup stage'],['FH-1323','Run schema reconciliation once after pending migrations'],['FH-1324','Optimize first-install and upgrade startup without clearing health data']],knownIssues:[]},

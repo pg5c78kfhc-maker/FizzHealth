@@ -3,7 +3,7 @@ import wasmUrl from 'sql.js/dist/sql-wasm.wasm?url';
 
 const DB_KEY='fizz-health-sqlite-v1';
 const STORAGE_DB='FizzHealthStorage';
-const TARGET_SCHEMA_VERSION=55;
+const TARGET_SCHEMA_VERSION=57;
 let SQL, db;
 
 const migrations=[
@@ -721,14 +721,52 @@ const migrations=[
 ,  {version:56,name:'meal_promotion_uniqueness_and_deletion',sql:`
     ALTER TABLE meal_definitions ADD COLUMN source_type TEXT;
     ALTER TABLE meal_definitions ADD COLUMN source_id TEXT;
-    UPDATE meal_definitions
-      SET source_type=(SELECT component_type FROM meal_components WHERE meal_components.meal_id=meal_definitions.meal_id ORDER BY sort_order,id LIMIT 1),
-          source_id=(SELECT CAST(component_id AS TEXT) FROM meal_components WHERE meal_components.meal_id=meal_definitions.meal_id ORDER BY sort_order,id LIMIT 1)
-      WHERE notes LIKE 'Promoted from %' AND source_type IS NULL
-        AND (SELECT COUNT(*) FROM meal_components WHERE meal_components.meal_id=meal_definitions.meal_id)=1;
+
+    -- Backfill only one canonical promoted Meal for each Food or Recipe source.
+    -- Existing duplicate Meal records are preserved but deliberately left unlinked.
+    UPDATE meal_definitions AS target
+      SET source_type=(SELECT component_type FROM meal_components WHERE meal_components.meal_id=target.meal_id ORDER BY sort_order,id LIMIT 1),
+          source_id=(SELECT CAST(component_id AS TEXT) FROM meal_components WHERE meal_components.meal_id=target.meal_id ORDER BY sort_order,id LIMIT 1)
+      WHERE target.notes LIKE 'Promoted from %'
+        AND target.source_type IS NULL
+        AND (SELECT COUNT(*) FROM meal_components WHERE meal_components.meal_id=target.meal_id)=1
+        AND target.rowid=(
+          SELECT MIN(candidate.rowid)
+          FROM meal_definitions AS candidate
+          JOIN meal_components AS candidate_component ON candidate_component.meal_id=candidate.meal_id
+          WHERE candidate.notes LIKE 'Promoted from %'
+            AND (SELECT COUNT(*) FROM meal_components WHERE meal_components.meal_id=candidate.meal_id)=1
+            AND candidate_component.component_type=(SELECT component_type FROM meal_components WHERE meal_components.meal_id=target.meal_id ORDER BY sort_order,id LIMIT 1)
+            AND CAST(candidate_component.component_id AS TEXT)=(SELECT CAST(component_id AS TEXT) FROM meal_components WHERE meal_components.meal_id=target.meal_id ORDER BY sort_order,id LIMIT 1)
+        );
+
+    -- Repair databases containing source links written by an interrupted or older build.
+    -- Keep the oldest active linked Meal and unlink later duplicates without deleting them.
+    UPDATE meal_definitions AS duplicate
+      SET source_type=NULL, source_id=NULL
+      WHERE duplicate.source_type IS NOT NULL
+        AND duplicate.source_id IS NOT NULL
+        AND COALESCE(duplicate.archived,0)=0
+        AND EXISTS (
+          SELECT 1 FROM meal_definitions AS canonical
+          WHERE canonical.rowid < duplicate.rowid
+            AND COALESCE(canonical.archived,0)=0
+            AND canonical.source_type=duplicate.source_type
+            AND canonical.source_id=duplicate.source_id
+        );
+
+    DROP INDEX IF EXISTS idx_meal_definitions_source;
+    CREATE UNIQUE INDEX IF NOT EXISTS idx_meal_definitions_active_source_unique
+      ON meal_definitions(source_type,source_id)
+      WHERE COALESCE(archived,0)=0 AND source_type IS NOT NULL AND source_id IS NOT NULL;
     CREATE INDEX IF NOT EXISTS idx_meal_definitions_source ON meal_definitions(source_type,source_id,archived);
     INSERT OR REPLACE INTO release_metadata(version,release_date,build_id,schema_version,title,created_at)
     VALUES ('1.4.11.32','2026-07-24','141132',56,'Promotion Uniqueness & Meal Deletion','2026-07-24T23:55:00-04:00');
+  `}
+
+,  {version:57,name:'migration_56_duplicate_recovery',sql:`
+    INSERT OR REPLACE INTO release_metadata(version,release_date,build_id,schema_version,title,created_at)
+    VALUES ('1.4.11.33','2026-07-24','141133',57,'Migration 56 Duplicate Recovery','2026-07-24T23:59:00-04:00');
   `}
 
 ];

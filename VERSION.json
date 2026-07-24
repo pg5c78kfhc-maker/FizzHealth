@@ -1,26 +1,24 @@
 {
   "app": "Fizz Health",
-  "version": "1.4.11.32",
-  "release": "1.4.11.32",
-  "release_type": "Corrective feature completion",
-  "build": "141132",
-  "release_id": "FH-20260724-141132",
-  "created_at": "2026-07-24T23:55:00-04:00",
-  "schema_version": 56,
-  "status": "Promotion Uniqueness & Meal Deletion",
-  "completed_story": "FH-1328 through FH-1330",
+  "version": "1.4.11.33",
+  "release": "1.4.11.33",
+  "release_type": "Emergency corrective release",
+  "build": "141133",
+  "release_id": "FH-20260724-141133",
+  "created_at": "2026-07-24T23:59:00-04:00",
+  "schema_version": 57,
+  "status": "Migration 56 Duplicate Recovery",
+  "completed_story": "FH-1331",
   "baseline_story": "FH-1221",
-  "updated": "2026-07-24T23:55:00-04:00",
+  "updated": "2026-07-24T23:59:00-04:00",
   "stories": [
-    "FH-1328",
-    "FH-1329",
-    "FH-1330"
+    "FH-1331"
   ],
-  "build_date": "2026-07-24T23:55:00-04:00",
-  "release_name": "Promotion Uniqueness & Meal Deletion",
+  "build_date": "2026-07-24T23:59:00-04:00",
+  "release_name": "Migration 56 Duplicate Recovery",
   "release_date": "2026-07-24",
-  "build_id": "141132",
-  "title": "Promotion Uniqueness & Meal Deletion",
-  "name": "Promotion Uniqueness & Meal Deletion",
-  "type": "Corrective feature completion"
+  "build_id": "141133",
+  "title": "Migration 56 Duplicate Recovery",
+  "name": "Migration 56 Duplicate Recovery",
+  "type": "Emergency corrective release"
 }
