@@ -1,40 +1,26 @@
-# Fizz Health v1.4.11.33 — Migration 56 Duplicate Recovery
+# Fizz Health v1.4.11.34 — Daily Brief Completion
 
-**Release date:** July 24, 2026  
-**Build:** 141133  
-**Story:** FH-1331
+**Release type:** Feature and corrective release  
+**Build:** 141134  
+**Deployment:** FH-20260724-141134  
+**Created:** July 24, 2026 at 8:30 PM EDT
 
-- Repairs Migration 56 so databases containing duplicate promoted Meals can start successfully.
-- Preserves every Meal record while retaining one canonical Food/Recipe source link and unlinking later duplicates.
-- Creates the active-source uniqueness constraint only after duplicate links are repaired.
-- Adds an idempotent follow-up migration and regression coverage for Food, Recipe, mixed, clean, and repeat-run cases.
+## Completed stories
 
----
+- **FH-1332** — Show the most recent changes first in true reverse chronological order.
+- **FH-1333** — Prioritize newly logged meals and meal-plan changes ahead of background coaching.
+- **FH-1334** — Add functional back 15 seconds and forward 15 seconds narration controls.
+- **FH-1335** — Persist spoken-brief playback position and resume it after navigation.
+- **FH-1336** — Rebuild the brief from current meals, planned meals, health metrics, and pantry events.
+- **FH-1337** — Explain recent events and their nutrition impact in conversational narration.
+- **FH-1338** — Preserve Restaurant Day and pantry-led day context.
+- **FH-1339** — Lead the decision section with the highest-value next action.
+- **FH-1340** — End the brief with a direct “What should I do next?” action.
 
-# Fizz Health v1.4.11.32 — Promotion Uniqueness & Meal Deletion
+## Testing focus
 
-Released: July 24, 2026
-
-Completed story: FH-1328 through FH-1330
-
-- FH-1328: Promotion now records a durable Food/Recipe source link and blocks a second active Meal from the same source, including rapid double taps and stale screens.
-- FH-1329: Swipe-left Delete on the Meals list now archives the selected Meal, removes it from Meals and the Meal Planner, and refreshes the list immediately.
-- FH-1330: Removing the promoted Meal restores Promote to Meal on the original Food or Recipe.
-- Existing duplicate Meals are not deleted automatically; remove the unwanted copy with the repaired Delete action.
-
-# Fizz Health v1.4.11.31 — Classified Meal Promotion Activation
-
-Released July 24, 2026. Build 141131. Deployment FH-20260724-141131.
-
-## Completed
-
-Completed story set: FH-1325 through FH-1327 and FH-1334.
-
-- FH-1325 — Food Consumption Role classification remains available and persistent.
-- FH-1326 — Food promotion opens the shared classified Meal editor.
-- FH-1327 — Recipe promotion opens the same shared classified Meal editor.
-- FH-1334 — Corrected the promotion editor stacking layer so it renders above Food and Recipe information pages rather than invisibly beneath them.
-
-## Promotion behavior
-
-The shared editor opens with the source name prefilled, category set to Any, and no autofocus. Confirmation creates a categorized Meal definition and source component without logging consumption, planning an occurrence, or changing Pantry.
+1. Log a meal and confirm it appears first under **Just In — Newest First**.
+2. Start narration and confirm Pause, −15, Restart, +15, and Stop work.
+3. Leave Home during narration, return, and confirm playback resumes near the stored position.
+4. Add or change a planned meal and confirm the updated brief reflects it without manual refresh.
+5. Confirm the final section provides a concrete next action.

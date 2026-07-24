@@ -940,3 +940,6 @@ body.food-library-active .content{height:calc(100dvh - var(--bottom-nav-height))
 .promotion-status svg{flex:0 0 auto}
 .promotion-status div{display:flex;flex-direction:column;gap:3px;text-align:left}
 .promotion-status span{opacity:.72;font-size:.9rem}
+
+/* v1.4.11.34 — Daily Brief completion: newest-first events and 15-second transport */
+.brief-audio .brief-skip{min-width:48px;justify-content:center;font-variant-numeric:tabular-nums;font-weight:950}.brief-audio .brief-skip span{font-size:.78rem;line-height:1}.recent-changes-story{border-left-color:#9bf23c}.brief-event-list{display:grid;gap:8px;margin-top:14px}.brief-event-list>button{width:100%;display:grid;grid-template-columns:58px 1fr 22px;gap:10px;align-items:start;text-align:left;border:1px solid #314047;border-radius:12px;background:#0e181d;color:#edf4f1;padding:12px}.brief-event-list time{color:#a9b5ba;font-size:.72rem;font-weight:850}.brief-event-list div{display:grid;gap:4px}.brief-event-list b{font-size:.9rem}.brief-event-list span{color:#aeb9bd;font-size:.76rem;line-height:1.4}.brief-event-list svg{width:18px;height:18px;color:#9bf23c;margin-top:2px}
