@@ -1,3 +1,26 @@
+# Fizz Health v1.4.11.40 — Project Integrity & Food Library Recovery
+
+**Build:** 141140  
+**Deployment:** FH-20260725-141140  
+**Released:** July 25, 2026
+
+This corrective release removes the duplicate nested application, restores the approved Ingredients / Recipes / Meals Food Library as the only active implementation, and makes source-tree repair an automatic prerequisite of development and production builds.
+
+## Completed
+
+- **FH-1170:** Added automatic project-integrity repair. A valid root app removes nested duplicate app trees; a single nested app is promoted when the root is missing; ambiguous layouts stop before code can be overwritten.
+- **FH-1171:** Restored the approved Food Library mode selector, single + creation menu, pinned search/filter hierarchy, and unified cards while retaining v1.4.11.39 Classification, Usage, Meal Planner, Recipe Builder, AI defaults, and Data Enrichment changes.
+
+## Source-tree result
+
+- Exactly one `package.json`
+- Exactly one root `src` application tree
+- No nested `fizz37` application
+- `predev` and `prebuild` automatically run integrity repair
+- `pretest` verifies the repaired structure
+
+---
+
 # Fizz Health v1.4.11.39 — Food Classification & Planning Intelligence
 
 **Build:** 141139  

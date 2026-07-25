@@ -2,6 +2,25 @@
   "format": "fizz-health-release-history",
   "releases": [
     {
+      "version": "1.4.11.40",
+      "name": "Project Integrity & Food Library Recovery",
+      "type": "Corrective release",
+      "created": "2026-07-25T19:15:00-04:00",
+      "build": "141140",
+      "release_id": "FH-20260725-141140",
+      "stories": [
+        [
+          "FH-1170",
+          "Enforce and automatically repair a single canonical application tree before development and build"
+        ],
+        [
+          "FH-1171",
+          "Restore the approved Food Library redesign and retain classification, usage, planner, builder, and enrichment changes"
+        ]
+      ],
+      "known_issues": []
+    },
+    {
       "version": "1.4.11.39",
       "name": "Food Classification & Planning Intelligence",
       "type": "Feature release",

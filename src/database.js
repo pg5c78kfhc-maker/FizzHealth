@@ -3,7 +3,7 @@ import wasmUrl from 'sql.js/dist/sql-wasm.wasm?url';
 
 const DB_KEY='fizz-health-sqlite-v1';
 const STORAGE_DB='FizzHealthStorage';
-const TARGET_SCHEMA_VERSION=60;
+const TARGET_SCHEMA_VERSION=61;
 let SQL, db;
 
 const migrations=[
@@ -803,6 +803,11 @@ const migrations=[
     UPDATE meal_definitions SET usage_designation='standalone' WHERE usage_designation IS NULL OR TRIM(usage_designation)='';
     INSERT OR REPLACE INTO release_metadata(version,release_date,build_id,schema_version,title,created_at)
     VALUES ('1.4.11.39','2026-07-25','141139',60,'Food Classification & Planning Intelligence','2026-07-25T18:30:00-04:00');
+  `}
+
+,  {version:61,name:'project_integrity_and_food_library_recovery',sql:`
+    INSERT OR REPLACE INTO release_metadata(version,release_date,build_id,schema_version,title,created_at)
+    VALUES ('1.4.11.40','2026-07-25','141140',61,'Project Integrity & Food Library Recovery','2026-07-25T19:15:00-04:00');
   `}
 
 ];

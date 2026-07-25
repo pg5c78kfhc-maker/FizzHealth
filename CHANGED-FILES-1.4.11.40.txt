@@ -1,0 +1,16 @@
+package.json
+VERSION.json
+release-history.json
+ReleaseNotes.md
+public/sw.js
+scripts/project-integrity.mjs
+src/main.jsx
+src/styles.css
+src/database.js
+src/decision/engine.js
+tests/project-integrity.test.js
+tests/v141140-integrity-recovery.test.js
+BUILD-TEST-SUMMARY-1.4.11.40.md
+DOD-V1.4.11.40.md
+TEST-PROOF-1.4.11.40.txt
+CHANGED-FILES-1.4.11.40.txt

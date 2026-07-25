@@ -973,10 +973,31 @@ body.food-library-active .content{height:calc(100dvh - var(--bottom-nav-height))
 .archive-restore-row{margin-top:10px}
 .archive-restore-row button{width:100%}
 
+/* v1.4.11.38 — unified Meals library architecture */
+.food-library-page{grid-template-rows:auto auto auto minmax(0,1fr);gap:10px}
+.food-library-page .meals-library-head{display:grid;grid-template-columns:48px minmax(0,1fr) 48px;align-items:center;gap:8px;padding:8px 0}
+.food-library-page .meals-library-head>button,.food-library-page .create-menu-wrap>button{width:44px;height:44px;min-width:44px;border-radius:50%;display:grid;place-items:center}
+.library-mode-switch{min-width:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:4px;align-items:stretch}
+.library-mode-switch button{min-width:0;border:0;background:transparent;color:var(--muted);display:grid;place-items:center;gap:3px;padding:5px 2px;border-bottom:3px solid transparent;border-radius:0;font-weight:850}
+.library-mode-switch button svg{width:22px;height:22px}.library-mode-switch button span{font-size:.72rem;white-space:nowrap}
+.library-mode-switch button.active{color:#9bf23c;border-bottom-color:#9bf23c}
+.create-menu-wrap{position:relative;justify-self:end}.create-menu{position:absolute;right:0;top:50px;z-index:1200;width:210px;padding:8px;display:grid;gap:4px;border:1px solid var(--line);border-radius:16px;background:#11191e;box-shadow:0 16px 40px rgba(0,0,0,.45)}
+.create-menu button{width:100%;display:flex;align-items:center;gap:12px;text-align:left;border:0;background:transparent;color:var(--text);padding:12px;border-radius:10px}.create-menu button:active{background:rgba(255,255,255,.08)}.create-menu svg{width:20px;height:20px}
+.library-scope-row{display:grid;grid-template-columns:repeat(3,52px);justify-content:center;gap:24px;align-items:center}
+.library-scope-row button{width:48px;height:42px;border:0;background:transparent;color:var(--muted);display:grid;place-items:center;border-radius:12px}.library-scope-row button.active{color:#9bf23c;background:rgba(155,242,60,.1)}.library-scope-row svg{width:25px;height:25px}
+.food-library-page .item.select{min-height:112px;display:grid;grid-template-columns:minmax(0,1fr) 54px;align-items:start;gap:10px;padding:16px 12px 16px 18px;border-radius:18px}
+.food-library-page .item.select>div:first-child{min-width:0;display:grid;gap:7px}.food-library-page .item.select b{white-space:normal;overflow-wrap:anywhere;line-height:1.15;font-size:1.12rem}.food-library-page .item.select span{white-space:normal;line-height:1.35}
+.food-library-page .vertical-card-actions{display:flex!important;flex-direction:column;align-items:center;gap:8px;justify-self:end;width:48px}
+.food-library-page .vertical-card-actions button{width:44px;height:44px;min-width:44px;border-radius:50%;display:grid;place-items:center;margin:0}
+.food-library-page .meal-definition-card{grid-template-columns:minmax(0,1fr) 54px!important}.food-library-page .meal-category-icon{display:none}
+.enrichment-summary{grid-template-columns:repeat(2,minmax(0,1fr))}
+@media(max-width:390px){.library-mode-switch button span{font-size:.66rem}.library-scope-row{gap:18px}.food-library-page .item.select{padding-left:14px}}
+
 /* v1.4.11.38 — archived items are restore-first, never log-first */
 .archive-status-banner{display:flex;align-items:center;justify-content:space-between;gap:14px;margin:0 0 18px;padding:14px 16px;border:1px solid var(--line,#30404a);border-radius:18px;background:rgba(151,255,43,.08)}
 .archive-status-banner>div{display:grid;gap:4px}.archive-status-banner small{color:var(--accent,#9cff39);font-weight:800;letter-spacing:.12em}.archive-status-banner b{font-size:.92rem;line-height:1.25}.archive-status-banner .primary{width:auto;min-height:44px;white-space:nowrap;margin:0}.restore-icon-action{color:var(--accent,#9cff39)!important}.archived-swipe .swipe-quick{background:#2f6f25}.archived-swipe.commit-ready .swipe-quick{background:#3f8f2d}
 @media(max-width:560px){.archive-status-banner{align-items:stretch;flex-direction:column}.archive-status-banner .primary{width:100%}}
+
 /* v1.4.11.39 FH-1164–1169 classification and usage */
 .classification-controls{display:grid;grid-template-columns:1fr 1fr;gap:.75rem;padding:.85rem;border:1px solid var(--line);border-radius:1rem;background:var(--panel)}
 .classification-controls label{margin:0}.enrichment-list{display:grid;gap:.65rem}.enrichment-list article{display:grid;grid-template-columns:minmax(0,1fr) minmax(7rem,.8fr) minmax(8rem,.9fr);gap:.55rem;align-items:center;padding:.8rem;border:1px solid var(--line);border-radius:1rem;background:var(--panel)}.enrichment-list article div{min-width:0}.enrichment-list article b,.enrichment-list article small{display:block}.enrichment-list article small{color:var(--muted);text-transform:capitalize}.enrichment-list select{min-width:0}

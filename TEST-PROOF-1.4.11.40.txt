@@ -1,0 +1,58 @@
+TAP version 13
+# Subtest: release contains one canonical application tree
+ok 1 - release contains one canonical application tree
+  ---
+  duration_ms: 4.005892
+  type: 'test'
+  ...
+# Subtest: integrity checker accepts current tree
+ok 2 - integrity checker accepts current tree
+  ---
+  duration_ms: 28.67647
+  type: 'test'
+  ...
+# Subtest: approved Food Library is the active implementation
+ok 3 - approved Food Library is the active implementation
+  ---
+  duration_ms: 1.730112
+  type: 'test'
+  ...
+# Subtest: v1.4.11.40 release metadata is centralized
+ok 4 - v1.4.11.40 release metadata is centralized
+  ---
+  duration_ms: 0.624394
+  type: 'test'
+  ...
+# Subtest: approved Food Library redesign is active and old action row is absent
+ok 5 - approved Food Library redesign is active and old action row is absent
+  ---
+  duration_ms: 0.807146
+  type: 'test'
+  ...
+# Subtest: classification and usage remain available across object editors
+ok 6 - classification and usage remain available across object editors
+  ---
+  duration_ms: 0.978318
+  type: 'test'
+  ...
+# Subtest: planner and builders use standalone and component capability
+ok 7 - planner and builders use standalone and component capability
+  ---
+  duration_ms: 0.207047
+  type: 'test'
+  ...
+# Subtest: build lifecycle repairs duplicate project trees before dev and build
+ok 8 - build lifecycle repairs duplicate project trees before dev and build
+  ---
+  duration_ms: 0.096973
+  type: 'test'
+  ...
+1..8
+# tests 8
+# suites 0
+# pass 8
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 78.105066
