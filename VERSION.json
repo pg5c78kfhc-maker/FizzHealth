@@ -1,25 +1,26 @@
 {
   "app": "Fizz Health",
-  "version": "1.4.13.4",
-  "release": "1.4.13.4",
-  "release_type": "Corrective release",
-  "build": "141304",
-  "release_id": "FH-20260725-141304",
-  "created_at": "2026-07-25T23:15:00-04:00",
+  "version": "1.4.13.5",
+  "release": "1.4.13.5",
+  "release_type": "Feature and corrective release",
+  "build": "141305",
+  "release_id": "FH-20260725-141305",
+  "created_at": "2026-07-25T23:45:00-04:00",
   "schema_version": 63,
-  "status": "Menu Calendar and Meal Card Correction",
-  "completed_story": "FH-1413.5C",
+  "status": "Menu Favorites, Ranking, Filtering & Tap-to-Add",
+  "completed_story": "FH-1413.9",
   "baseline_story": "FH-1221",
-  "updated": "2026-07-25T23:15:00-04:00",
+  "updated": "2026-07-25T23:45:00-04:00",
   "stories": [
-    "FH-1413.3D",
-    "FH-1413.5C"
+    "FH-1413.5D",
+    "FH-1413.8",
+    "FH-1413.9"
   ],
-  "build_date": "2026-07-25T23:15:00-04:00",
-  "release_name": "Menu Calendar and Meal Card Correction",
+  "build_date": "2026-07-25T23:45:00-04:00",
+  "release_name": "Menu Favorites, Ranking, Filtering & Tap-to-Add",
   "release_date": "2026-07-25",
-  "build_id": "141304",
-  "title": "Menu Calendar and Meal Card Correction",
-  "name": "Menu Calendar and Meal Card Correction",
-  "type": "Corrective release"
+  "build_id": "141305",
+  "title": "Menu Favorites, Ranking, Filtering & Tap-to-Add",
+  "name": "Menu Favorites, Ranking, Filtering & Tap-to-Add",
+  "type": "Feature and corrective release"
 }

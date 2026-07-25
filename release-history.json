@@ -2,6 +2,19 @@
   "format": "fizz-health-release-history",
   "releases": [
     {
+      "version": "1.4.13.5",
+      "name": "Menu Favorites, Ranking, Filtering & Tap-to-Add",
+      "type": "Feature and corrective release",
+      "created": "2026-07-25T23:45:00-04:00",
+      "build": "141305",
+      "release_id": "FH-20260725-141305",
+      "stories": [
+        "FH-1413.5D",
+        "FH-1413.8",
+        "FH-1413.9"
+      ]
+    },
+    {
       "version": "1.4.13.4",
       "name": "Menu Calendar and Meal Card Correction",
       "type": "Corrective release",

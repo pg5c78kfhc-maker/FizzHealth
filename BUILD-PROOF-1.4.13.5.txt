@@ -1,0 +1,14 @@
+
+> fizz-health@1.4.13.5 prebuild
+> npm run integrity:repair
+
+
+> fizz-health@1.4.13.5 integrity:repair
+> node scripts/project-integrity.mjs --repair
+
+Project integrity OK: one application root (.), one package.json, one src tree.
+
+> fizz-health@1.4.13.5 build
+> vite build
+
+sh: 1: vite: not found
