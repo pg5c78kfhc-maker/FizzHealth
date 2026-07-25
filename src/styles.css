@@ -973,7 +973,21 @@ body.food-library-active .content{height:calc(100dvh - var(--bottom-nav-height))
 .archive-restore-row{margin-top:10px}
 .archive-restore-row button{width:100%}
 
-/* v1.4.11.38 — archived items are restore-first, never log-first */
-.archive-status-banner{display:flex;align-items:center;justify-content:space-between;gap:14px;margin:0 0 18px;padding:14px 16px;border:1px solid var(--line,#30404a);border-radius:18px;background:rgba(151,255,43,.08)}
-.archive-status-banner>div{display:grid;gap:4px}.archive-status-banner small{color:var(--accent,#9cff39);font-weight:800;letter-spacing:.12em}.archive-status-banner b{font-size:.92rem;line-height:1.25}.archive-status-banner .primary{width:auto;min-height:44px;white-space:nowrap;margin:0}.restore-icon-action{color:var(--accent,#9cff39)!important}.archived-swipe .swipe-quick{background:#2f6f25}.archived-swipe.commit-ready .swipe-quick{background:#3f8f2d}
-@media(max-width:560px){.archive-status-banner{align-items:stretch;flex-direction:column}.archive-status-banner .primary{width:100%}}
+/* v1.4.11.38 — unified Meals library architecture */
+.food-library-page{grid-template-rows:auto auto auto minmax(0,1fr);gap:10px}
+.food-library-mode-head{display:grid!important;grid-template-columns:52px minmax(0,1fr) 52px;align-items:center;gap:8px}
+.food-library-mode-head>button,.food-library-mode-head>.create-menu-wrap>button{width:48px;height:48px;border-radius:50%;padding:0;display:grid;place-items:center}
+.library-mode-tabs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:4px;min-width:0}
+.library-mode-tabs button{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;min-width:0;padding:5px 2px;border:0;background:transparent;color:var(--muted)}
+.library-mode-tabs button svg{width:22px;height:22px}.library-mode-tabs button span{font-size:11px;white-space:nowrap}.library-mode-tabs button.active{color:var(--lime)}
+.create-menu-wrap{position:relative}.create-menu{position:absolute;right:0;top:54px;z-index:50;width:210px;padding:8px;border:1px solid var(--line);border-radius:16px;background:var(--card);box-shadow:0 16px 40px #0009}
+.create-menu button{width:100%;display:flex;align-items:center;gap:12px;padding:12px;border:0;border-radius:10px;background:transparent;color:var(--text);text-align:left}.create-menu button:active{background:var(--surface)}.create-menu svg{width:20px}
+.library-scope-tabs{display:grid;grid-template-columns:repeat(3,48px);justify-content:center;gap:24px}
+.library-scope-tabs button{width:48px;height:42px;padding:0;display:grid;place-items:center;border:0;background:transparent;color:var(--muted);border-bottom:2px solid transparent}.library-scope-tabs button.active{color:var(--lime);border-color:var(--lime)}
+.library-scope-tabs svg{width:24px;height:24px}
+.unified-library-card{display:grid!important;grid-template-columns:minmax(0,1fr) 54px;align-items:stretch;gap:10px;min-height:118px;padding:16px 10px 16px 18px!important}
+.library-card-copy{min-width:0;display:flex;flex-direction:column;align-items:flex-start!important;justify-content:flex-start;gap:8px;padding-right:4px}
+.library-card-copy b{font-size:20px;line-height:1.15;white-space:normal;overflow-wrap:anywhere;text-align:left}.library-card-copy span,.library-card-copy small{white-space:normal;text-align:left;color:var(--muted);line-height:1.35}
+.library-card-actions{border-left:1px solid var(--line);display:flex;flex-direction:column;align-items:center;gap:10px;padding-left:8px}
+.library-card-actions button{width:42px;height:42px;border-radius:14px;padding:0;display:grid;place-items:center;background:transparent;border:1px solid var(--line);color:var(--muted)}.library-card-actions button.favorite{border-color:transparent}.library-card-actions button.on{color:var(--lime)}
+@media(max-width:390px){.food-library-mode-head{grid-template-columns:46px minmax(0,1fr) 46px}.food-library-mode-head>button,.food-library-mode-head>.create-menu-wrap>button{width:44px;height:44px}.library-mode-tabs button span{font-size:10px}.library-scope-tabs{gap:18px}}
