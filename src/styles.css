@@ -1038,3 +1038,14 @@ body.food-library-active .content{height:calc(100dvh - var(--bottom-nav-height))
 
 /* v1.4.13.1 — Menu header redesign. */
 .planner-head-actions{justify-content:flex-end}
+
+/* v1.4.13.2 — Menu calendar, metrics, and restaurant-style browsing. */
+.standard-form-header>button{background:transparent;border:0;border-radius:0;color:inherit;position:relative;z-index:2}
+.planner-calendar-sticky{position:sticky;top:calc(65px + env(safe-area-inset-top));z-index:30;background:#050809;padding:4px 0 10px;border-bottom:1px solid #28343a;display:grid;gap:8px}
+.planner-metrics{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.planner-metrics>div{min-width:0;background:#121b20;border:1px solid #29363d;border-radius:14px;padding:12px 6px;text-align:center;display:grid;gap:4px}
+.planner-metrics strong{font-size:1.45rem;line-height:1}.planner-metrics strong small{font-size:.65rem;margin-left:2px;opacity:.7}.planner-metrics span{font-size:.68rem;color:#9aa7ad}
+.planned-meals-menu,.today-menu{display:grid;gap:12px}.today-menu{border-top:1px solid #2a363d;padding-top:16px}.today-menu-title h3{margin:.2rem 0 0}
+.menu-category{display:grid;gap:8px}.menu-category>h3{margin:0;font-size:1.05rem}.menu-category-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+.menu-category-grid button{min-width:0;text-align:left;background:#152027;border:1px solid #304047;border-radius:13px;padding:12px;display:grid;gap:5px}.menu-category-grid button b{overflow:hidden;text-overflow:ellipsis}.menu-category-grid button span{font-size:.74rem;color:#9aa7ad}
+@media(max-width:520px){.planner-calendar-sticky{top:calc(65px + env(safe-area-inset-top))}.planner-metrics{gap:6px}.planner-metrics strong{font-size:1.25rem}.menu-category-grid{grid-template-columns:1fr 1fr}}

@@ -1,0 +1,16 @@
+CHANGED-FILES-1.4.13.2.txt
+CHANGELOG.md
+Changelog v1.4.13.2.md
+Regression Report v1.4.13.2.md
+Release Notes v1.4.13.2.md
+ReleaseNotes.md
+Test Report v1.4.13.2.md
+VERSION.json
+package-lock.json
+package.json
+public/sw.js
+release-history.json
+src/decision/engine.js
+src/main.jsx
+src/styles.css
+tests/v141115-restaurant-aware-planner.test.js

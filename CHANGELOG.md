@@ -1,5 +1,12 @@
 # Changelog
 
+## 1.4.13.2 — 2026-07-25
+
+- Made the Menu calendar sticky beneath the standard Nutrition header.
+- Replaced capacity summaries with a six-metric 2×3 nutrition grid.
+- Reorganized saved meals into restaurant-style Today’s Menu sections.
+- Collapsed empty menu sections and corrected the header checkmark artifact.
+
 ## 1.4.13.1 — 2026-07-25
 
 ### Changed

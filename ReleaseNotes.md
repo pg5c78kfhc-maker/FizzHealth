@@ -1,17 +1,13 @@
-# Fizz Health v1.4.13.1 — Menu Header Redesign
+# Fizz Health v1.4.13.2 — Menu Calendar, Metrics, and Browsing Redesign
 
-Issued July 25, 2026 · Build 141301 · Deployment FH-20260725-141301
+Issued July 25, 2026 · Build 141302 · Deployment FH-20260725-141302
 
-## Completed
+## Completed stories
 
-- **FH-1413.2** — Replaced the Menu prototype header with the standard Fizz Health Nutrition header: X on the left, NUTRITION / Menu centered, and a checkmark on the right.
-- Removed “Meal Planning Prototype,” “Plan by date, not time,” and the remaining explanatory prototype copy.
-- Preserved the existing Today action, calendar, meal containers, nutrition summary, menu browsing, navigation, database, JSON, settings, and planner behavior.
+- FH-1413.3 — Sticky Menu calendar beneath the standard Nutrition header; removed the redundant Selected Day presentation.
+- FH-1413.4 — Replaced capacity cards with a 2×3 nutrition grid for Calories, Protein, Carbohydrates, Saturated Fat, Cholesterol, and Fiber.
+- FH-1413.6 — Reorganized saved meals into restaurant-style Today’s Menu sections; empty sections collapse automatically.
 
-## Scope boundaries
+## Corrective UI work
 
-Only Story 2 of Epic v1.4.13 is included. Stories 1 and 3–12 remain deferred.
-
-## Known issues
-
-None introduced by this release.
+- Removed the visual control artifact beneath the header checkmark and standardized the X/checkmark treatment on the page background.

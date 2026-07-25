@@ -2,6 +2,19 @@
   "format": "fizz-health-release-history",
   "releases": [
     {
+      "version": "1.4.13.2",
+      "name": "Menu Calendar, Metrics, and Browsing Redesign",
+      "type": "Feature slice",
+      "created": "2026-07-25T21:15:00-04:00",
+      "build": "141302",
+      "release_id": "FH-20260725-141302",
+      "stories": [
+        "FH-1413.3",
+        "FH-1413.4",
+        "FH-1413.6"
+      ]
+    },
+    {
       "version": "1.4.13.1",
       "name": "Menu Header Redesign",
       "type": "Feature slice",
