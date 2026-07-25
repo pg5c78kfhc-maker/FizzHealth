@@ -1,5 +1,19 @@
 # Changelog
 
+## 1.4.13.1 — 2026-07-25
+
+### Changed
+- Replaced the Menu prototype header with the standard Nutrition header layout.
+- Added the right-side completion checkmark while preserving the existing close behavior.
+
+### Removed
+- “Meal Planning Prototype.”
+- “Plan by date, not time.”
+- Explanatory prototype messaging.
+
+### Preserved
+- All Menu functionality, navigation, calendar behavior, meal containers, nutrition summary, browsing, database, JSON, and settings behavior.
+
 ## 1.4.12.1 — 2026-07-25
 
 ### Changed

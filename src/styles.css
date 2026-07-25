@@ -1035,3 +1035,6 @@ body.food-library-active .content{height:calc(100dvh - var(--bottom-nav-height))
  .nutrition-action-grid>button svg{width:36px;height:36px}
  .nutrition-action-grid>button span{font-size:.72rem}
 }
+
+/* v1.4.13.1 — Menu header redesign. */
+.planner-head-actions{justify-content:flex-end}

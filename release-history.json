@@ -2,6 +2,21 @@
   "format": "fizz-health-release-history",
   "releases": [
     {
+      "version": "1.4.13.1",
+      "name": "Menu Header Redesign",
+      "type": "Feature slice",
+      "created_at": "2026-07-25T16:20:47-04:00",
+      "build": "141301",
+      "release_id": "FH-20260725-141301",
+      "stories": [
+        [
+          "FH-1413.2",
+          "Replace the Menu prototype header with the standard Nutrition header and remove prototype messaging"
+        ]
+      ],
+      "known_issues": []
+    },
+    {
       "version": "1.4.12.1",
       "name": "Nutrition Landing Page Organization",
       "type": "Feature slice",

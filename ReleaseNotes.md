@@ -1,22 +1,17 @@
-# Fizz Health v1.4.12.1 — Nutrition Landing Page Organization
+# Fizz Health v1.4.13.1 — Menu Header Redesign
 
-Issued July 25, 2026 · Build 141201 · Deployment FH-20260725-141201
+Issued July 25, 2026 · Build 141301 · Deployment FH-20260725-141301
 
 ## Completed
 
-- **FH-1412.1** — Renamed the Eat subsystem and primary navigation destination to **Nutrition**.
-- **FH-1412.2** — Reorganized the landing page into bordered **Eating** and **Manage** cards with equal-size action buttons.
-- **FH-1412.3** — Preserved the existing destinations for Meals, Pantry, Restaurants, Shopping, Meal Planner, and Chef’s Recommendations.
-- **FH-1412.4** — Moved **Log Once** out of the Meals create menu and added it as a Nutrition landing-page action using the existing one-time logging workflow.
-- **FH-1412.5** — Removed the page-level plus button from the Nutrition landing page.
-- **FH-1412.6** — Removed the obsolete Upcoming Meals landing card, route, page component, and supporting navigation entry.
-- **FH-1412.7** — Removed the redundant Recommendations landing card and exposed the existing destination as **The Chef**.
-- **FH-1412.8** — Added regression coverage for the new hierarchy, preserved routing, Log Once relocation, and retired UI.
+- **FH-1413.2** — Replaced the Menu prototype header with the standard Fizz Health Nutrition header: X on the left, NUTRITION / Menu centered, and a checkmark on the right.
+- Removed “Meal Planning Prototype,” “Plan by date, not time,” and the remaining explanatory prototype copy.
+- Preserved the existing Today action, calendar, meal containers, nutrition summary, menu browsing, navigation, database, JSON, settings, and planner behavior.
 
 ## Scope boundaries
 
-The forms opened by Meals, Pantry, Restaurants, Shopping, Menu, and The Chef were not redesigned in this slice. Their existing routing and functionality remain authoritative.
+Only Story 2 of Epic v1.4.13 is included. Stories 1 and 3–12 remain deferred.
 
 ## Known issues
 
-None recorded.
+None introduced by this release.
