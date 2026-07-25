@@ -975,12 +975,13 @@ body.food-library-active .content{height:calc(100dvh - var(--bottom-nav-height))
 
 /* v1.4.11.38 — unified Meals library architecture */
 .food-library-page{grid-template-rows:auto auto auto minmax(0,1fr);gap:10px}
-.food-library-page .meals-library-head{display:grid;grid-template-columns:48px minmax(0,1fr) 48px;align-items:center;gap:8px;padding:8px 0}
+.food-library-page .meals-library-head{position:relative;display:grid;grid-template-columns:48px minmax(0,1fr) 48px;align-items:center;gap:8px;padding:8px 0;min-height:78px}
 .food-library-page .meals-library-head>button,.food-library-page .create-menu-wrap>button{width:44px;height:44px;min-width:44px;border-radius:50%;display:grid;place-items:center}
-.library-mode-switch{min-width:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:4px;align-items:stretch}
-.library-mode-switch button{min-width:0;border:0;background:transparent;color:var(--muted);display:grid;place-items:center;gap:3px;padding:5px 2px;border-bottom:3px solid transparent;border-radius:0;font-weight:850}
-.library-mode-switch button svg{width:22px;height:22px}.library-mode-switch button span{font-size:.72rem;white-space:nowrap}
-.library-mode-switch button.active{color:#9bf23c;border-bottom-color:#9bf23c}
+.library-mode-switch{position:absolute;left:50%;top:8px;transform:translateX(-50%);width:min(264px,calc(100% - 104px));display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;align-items:start}
+.library-mode-switch button{min-width:0;width:100%;height:68px;border:0;background:transparent;color:var(--muted);display:grid;grid-template-rows:38px auto;place-items:center;gap:2px;padding:2px;border-radius:12px;font-weight:850}
+.library-mode-switch button svg{width:24px;height:24px;padding:7px;box-sizing:content-box;border-radius:9px;background:transparent}.library-mode-switch button span{font-size:.72rem;white-space:nowrap}
+.library-mode-switch button.active{color:#b8ff62;background:transparent}
+.library-mode-switch button.active svg{background:#43515a;color:#b8ff62;box-shadow:0 0 0 1px rgba(255,255,255,.2),0 3px 10px rgba(0,0,0,.35)}
 .create-menu-wrap{position:relative;justify-self:end}.create-menu{position:absolute;right:0;top:50px;z-index:1200;width:210px;padding:8px;display:grid;gap:4px;border:1px solid var(--line);border-radius:16px;background:#11191e;box-shadow:0 16px 40px rgba(0,0,0,.45)}
 .create-menu button{width:100%;display:flex;align-items:center;gap:12px;text-align:left;border:0;background:transparent;color:var(--text);padding:12px;border-radius:10px}.create-menu button:active{background:rgba(255,255,255,.08)}.create-menu svg{width:20px;height:20px}
 .library-scope-row{display:grid;grid-template-columns:repeat(3,52px);justify-content:center;gap:24px;align-items:center}
@@ -1002,3 +1003,6 @@ body.food-library-active .content{height:calc(100dvh - var(--bottom-nav-height))
 .classification-controls{display:grid;grid-template-columns:1fr 1fr;gap:.75rem;padding:.85rem;border:1px solid var(--line);border-radius:1rem;background:var(--panel)}
 .classification-controls label{margin:0}.enrichment-list{display:grid;gap:.65rem}.enrichment-list article{display:grid;grid-template-columns:minmax(0,1fr) minmax(7rem,.8fr) minmax(8rem,.9fr);gap:.55rem;align-items:center;padding:.8rem;border:1px solid var(--line);border-radius:1rem;background:var(--panel)}.enrichment-list article div{min-width:0}.enrichment-list article b,.enrichment-list article small{display:block}.enrichment-list article small{color:var(--muted);text-transform:capitalize}.enrichment-list select{min-width:0}
 @media(max-width:560px){.classification-controls{grid-template-columns:1fr}.enrichment-list article{grid-template-columns:1fr 1fr}.enrichment-list article div{grid-column:1/-1}}
+
+/* v1.4.11.41 — Eat navigation and centered high-contrast square mode selection */
+@media(max-width:390px){.library-mode-switch{width:min(252px,calc(100% - 96px));gap:5px}.library-mode-switch button span{font-size:.67rem}}

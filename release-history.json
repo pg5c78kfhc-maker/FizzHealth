@@ -2,6 +2,41 @@
   "format": "fizz-health-release-history",
   "releases": [
     {
+      "version": "1.4.11.41",
+      "name": "Eat Navigation & Library Header Polish",
+      "type": "Feature release",
+      "created": "2026-07-25T20:10:00-04:00",
+      "build": "141141",
+      "release_id": "FH-20260725-141141",
+      "stories": [
+        [
+          "FH-1273",
+          "Rename Food to Eat across primary navigation and the destination landing page"
+        ],
+        [
+          "FH-1274",
+          "Center the Ingredients, Recipes, and Meals selector independently of close and create controls"
+        ],
+        [
+          "FH-1275",
+          "Use equal-width, high-contrast square selected-state tiles without an underline"
+        ],
+        [
+          "FH-1276",
+          "Keep primary mode selection visually stronger than secondary filters"
+        ],
+        [
+          "FH-1277",
+          "Align the header controls and preserve iPhone safe-area behavior"
+        ],
+        [
+          "FH-1278",
+          "Finish Eat page icon, spacing, search, and card-edge consistency"
+        ]
+      ],
+      "known_issues": []
+    },
+    {
       "version": "1.4.11.40",
       "name": "Project Integrity & Food Library Recovery",
       "type": "Corrective release",

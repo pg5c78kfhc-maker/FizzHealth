@@ -1,0 +1,95 @@
+$ npm run integrity:check
+
+> fizz-health@1.4.11.41 integrity:check
+> node scripts/project-integrity.mjs
+
+Project integrity OK: one application root (.), one package.json, one src tree.
+
+$ node --test tests/v141140-integrity-recovery.test.js tests/v141141-eat-header.test.js
+TAP version 13
+# Subtest: current release metadata remains centralized after v1.4.11.40 recovery
+ok 1 - current release metadata remains centralized after v1.4.11.40 recovery
+  ---
+  duration_ms: 0.993724
+  type: 'test'
+  ...
+# Subtest: approved Food Library redesign is active and old action row is absent
+ok 2 - approved Food Library redesign is active and old action row is absent
+  ---
+  duration_ms: 0.81591
+  type: 'test'
+  ...
+# Subtest: classification and usage remain available across object editors
+ok 3 - classification and usage remain available across object editors
+  ---
+  duration_ms: 1.153611
+  type: 'test'
+  ...
+# Subtest: planner and builders use standalone and component capability
+ok 4 - planner and builders use standalone and component capability
+  ---
+  duration_ms: 0.23566
+  type: 'test'
+  ...
+# Subtest: build lifecycle repairs duplicate project trees before dev and build
+ok 5 - build lifecycle repairs duplicate project trees before dev and build
+  ---
+  duration_ms: 0.131625
+  type: 'test'
+  ...
+# Subtest: v1.4.11.41 metadata is centralized
+ok 6 - v1.4.11.41 metadata is centralized
+  ---
+  duration_ms: 0.821359
+  type: 'test'
+  ...
+# Subtest: primary Food destination is renamed Eat
+ok 7 - primary Food destination is renamed Eat
+  ---
+  duration_ms: 0.248769
+  type: 'test'
+  ...
+# Subtest: library selector is centered independently of edge controls
+ok 8 - library selector is centered independently of edge controls
+  ---
+  duration_ms: 0.193638
+  type: 'test'
+  ...
+# Subtest: active top mode uses a high-contrast square icon tile without underline
+ok 9 - active top mode uses a high-contrast square icon tile without underline
+  ---
+  duration_ms: 0.577497
+  type: 'test'
+  ...
+1..9
+# tests 9
+# suites 0
+# pass 9
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 61.922335
+
+$ npm run verify:release
+
+> fizz-health@1.4.11.41 verify:release
+> node scripts/verify-release.mjs
+
+Release metadata verified: v1.4.11.41 / FH-1278
+
+$ npm run build
+
+> fizz-health@1.4.11.41 prebuild
+> npm run integrity:repair
+
+
+> fizz-health@1.4.11.41 integrity:repair
+> node scripts/project-integrity.mjs --repair
+
+Project integrity OK: one application root (.), one package.json, one src tree.
+
+> fizz-health@1.4.11.41 build
+> vite build
+
+sh: 1: vite: not found

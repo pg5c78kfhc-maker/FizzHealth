@@ -7,11 +7,10 @@ const db=fs.readFileSync('src/database.js','utf8');
 const pkg=JSON.parse(fs.readFileSync('package.json','utf8'));
 const meta=JSON.parse(fs.readFileSync('VERSION.json','utf8'));
 
-test('v1.4.11.40 release metadata is centralized',()=>{
-  assert.equal(pkg.version,'1.4.11.40');
-  assert.equal(meta.version,'1.4.11.40');
-  assert.match(main,/const VERSION='1\.4\.11\.40'/);
-  assert.match(db,/TARGET_SCHEMA_VERSION=61/);
+test('current release metadata remains centralized after v1.4.11.40 recovery',()=>{
+  assert.equal(pkg.version,meta.version);
+  assert.match(main,new RegExp(`const VERSION='${meta.version.replaceAll('.', '\\.')}'`));
+  assert.match(db,new RegExp(`TARGET_SCHEMA_VERSION=${meta.schema_version}`));
 });
 
 test('approved Food Library redesign is active and old action row is absent',()=>{
