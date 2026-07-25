@@ -1008,3 +1008,30 @@ body.food-library-active .content{height:calc(100dvh - var(--bottom-nav-height))
 @media(max-width:390px){.library-mode-switch{width:min(252px,calc(100% - 96px));gap:5px}.library-mode-switch button span{font-size:.67rem}}
 
 /* v1.4.11.42 — Eat header finalization; ingredient/recipe/meal cards intentionally unchanged */
+
+/* v1.4.12.1 — Nutrition landing page organization. */
+.nutrition-page-head{grid-template-columns:48px minmax(0,1fr) 48px}
+.nutrition-hero{text-align:center}
+.nutrition-hub{display:grid;gap:16px;margin:18px 0 100px}
+.nutrition-hub-card{display:grid;gap:18px;padding:18px;border:2px solid #f4f7f5;border-radius:24px;background:#091113}
+.nutrition-card-heading{display:flex;align-items:center;gap:14px;min-width:0}
+.nutrition-card-heading>svg{flex:0 0 auto;width:46px;height:46px;color:#9ef13a}
+.nutrition-card-heading>div{display:grid;gap:4px;min-width:0}
+.nutrition-card-heading h2{margin:0;font-size:1.55rem}
+.nutrition-card-heading p{margin:0;color:#aab4b9;line-height:1.35}
+.nutrition-action-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+.nutrition-action-grid>button{min-width:0;min-height:138px;padding:12px 7px;border:1px solid #405947;border-radius:20px;background:#132019;color:#fff;display:grid;place-items:center;align-content:center;gap:14px;font-weight:900}
+.nutrition-action-grid>button svg{width:42px;height:42px;color:#9ef13a}
+.nutrition-action-grid>button span{font-size:.82rem;line-height:1.15;text-align:center}
+.nutrition-hub-card.eating .nutrition-action-grid>button{grid-column:auto}
+@media(max-width:390px){
+ .nutrition-hub-card{padding:15px 12px}
+ .nutrition-card-heading{gap:10px}
+ .nutrition-card-heading>svg{width:40px;height:40px}
+ .nutrition-card-heading h2{font-size:1.35rem}
+ .nutrition-card-heading p{font-size:.86rem}
+ .nutrition-action-grid{gap:7px}
+ .nutrition-action-grid>button{min-height:124px;padding:9px 4px}
+ .nutrition-action-grid>button svg{width:36px;height:36px}
+ .nutrition-action-grid>button span{font-size:.72rem}
+}

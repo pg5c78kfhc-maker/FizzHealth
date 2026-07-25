@@ -1,76 +1,16 @@
-# Fizz Health v1.4.11.42 — Eat Header Finalization
+# Changelog
 
-Released July 25, 2026. Build 141142. Deployment FH-20260725-141142.
-
-Completed FH-1280 through FH-1282.
-
-- Moved the unchanged-size create button into the right header column.
-- Unified the selected background color across primary modes and secondary filters.
-- Preserved every ingredient, recipe, and meal card layout and behavior.
-
-# Fizz Health v1.4.11.22 — Startup Reliability Hotfix
-
-Released July 24, 2026. Build 141122. Deployment FH-20260724-141122.
-
-Completed FH-1321 through FH-1324.
-
-- Removed the artificial database startup timeout that could reject a healthy first installation or upgrade.
-- Replaced the fatal startup watchdog with non-destructive progress reporting.
-- Added visible startup-stage diagnostics while preserving the underlying error message.
-- Reduced migration work by reconciling schema once after pending migrations and limiting feature repair to the necessary upgrade path.
-- Preserved all existing local Fizz Health data.
-
-## 1.4.11.21 — 2026-07-24
-
-Completed FH-1302 through FH-1320.
-
-- Replaced the static Daily Brief greeting with timestamped, continuously updated health and fitness headlines.
-- Added pending-food projections, Restaurant Day context, pantry-specific nutrition guidance, and weight milestone history.
-- Added smoother spoken narration and Settings → Audio with persistent voice and speed selection.
-- Promoted Meal Planner to the Food subsystem tile grid and removed the redundant Plan a meal card.
-- Standardized Meal Planner close navigation.
-- Locked restaurant card controls to rank, price, favorite, pencil and tightened confidence percentage fitting.
-
-## v1.4.11.20 — Restaurant Decision Dashboard Polish
-- Finalized restaurant decision-card spacing and hierarchy.
-- Added upper-right confidence and nutrition metric stack.
-- Added standard nutrition editor save checkmark and unsaved-change guard.
-
-# Fizz Health v1.4.11.15
-
-## Restaurant-Aware Meal Planning Prototype
-
-Version: 1.4.11.15  
-Build: 141250  
-Deployment: FH-20260723-141250  
-Date: July 23, 2026
-
-### Added
-
-- Independent Beverage planning occasion in addition to beverages attached to meals.
-- Full saved Meal catalog beneath the daily planning slots.
-- Persistent date-specific Restaurant toggle synchronized through the shared daily preference used by Home.
-- Automatic restaurant capacity reservation when Restaurant is enabled.
-- Restaurant indicators on calendar dates.
-- Starred restaurant-meal catalog when Restaurant is enabled.
-- Multiple restaurant selections and restaurants on one date.
+## 1.4.12.1 — 2026-07-25
 
 ### Changed
+- Renamed Eat to Nutrition in the primary navigation and landing page.
+- Added Eating and Manage cards with equal-size icon-and-label buttons.
+- Renamed Meal Planner to Menu at its entry point and header without changing its destination.
+- Renamed Chef’s Recommendations to The Chef at its entry point and header without changing its destination.
+- Added Shopping to the Manage card while preserving its current destination.
+- Moved Log Once from the Meals create menu to the Nutrition landing page while reusing its current exchange workflow.
 
-- Removed the separate Reserve Capacity button.
-- Specific restaurant selections replace provisional restaurant reservations rather than double-counting calories.
-
-Completed story: FH-1478 through FH-1481
-
-## 1.4.11.37 — UI Stabilization & Archive Recovery
-- Corrected the v1.4.11.36 Food/Meals library grid regression.
-- Standardized the compact search field and filter layout.
-- Added archived Food and Recipe restore actions on detail screens.
-
-## 1.4.11.38 — Archive Restore Completion
-
-- Corrected archived-card right swipe to Restore instead of Add/Consume.
-- Added explicit archived state to grouped Recipe queries.
-- Added visible Restore controls to archived Food and Recipe details.
-- Preserved restore timestamps and relationships while returning records to Active.
-- Added focused archive lifecycle regression tests.
+### Removed
+- Nutrition landing-page plus button.
+- Upcoming Meals landing card, route, and standalone page component.
+- Redundant Recommendations landing card.

@@ -1,0 +1,33 @@
+Fizz Health v1.4.12.1 — Test Proof
+Date: 2026-07-25
+Build: 141201
+Deployment: FH-20260725-141201
+
+PASS — node scripts/project-integrity.mjs --repair
+  Project integrity OK: one application root, one package.json, one src tree.
+
+PASS — node --test tests/v14121-nutrition-landing.test.js
+  5 tests passed, 0 failed.
+  Verified:
+  - Nutrition naming and primary navigation
+  - Eating and Manage card hierarchy
+  - Equal-size four-column button grid with an unused blank fourth position in Eating
+  - Existing destinations preserved
+  - Log Once moved from the Meals create menu to the Nutrition landing page
+  - Upcoming Meals route, card, and standalone page removed
+  - Landing-page plus button removed
+
+PASS — node scripts/verify-release.mjs
+  Release metadata verified: v1.4.12.1 / FH-1412.8
+
+FULL HISTORICAL SWEEP — node --test tests/*.test.js
+  Executed: 428 tests
+  Passed: 360
+  Failed: 68
+  The failures are legacy assertions that pin earlier release numbers, old Eat/Food labels, or superseded landing-page behavior. The dedicated v1.4.12.1 regression suite passes.
+
+BUILD ATTEMPT — npm ci / npm run build
+  BLOCKED before Vite installation.
+  Internal registry returned HTTP 503 for xlsx@0.18.5.
+  Public registry retry failed DNS resolution from the sandbox.
+  Because dependencies could not be installed, the production Vite build could not be executed in this environment.

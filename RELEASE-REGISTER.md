@@ -49,3 +49,25 @@ The planner establishes the calendar, category, reservation, and proposal lifecy
 - Date: 2026-07-25
 - Theme: Archive Restore Completion
 - Stories: FH-1384–FH-1387
+
+---
+
+# Fizz Health v1.4.12.1
+
+## Nutrition Landing Page Organization
+
+Version: 1.4.12.1  
+Build: 141201  
+Deployment: FH-20260725-141201  
+Date: July 25, 2026
+
+### Completed
+
+- FH-1412.1 through FH-1412.8 — Renamed Eat to Nutrition, added Eating and Manage cards, preserved existing form destinations, moved Log Once to the landing page, added Shopping, and retired the obsolete Upcoming Meals landing workflow.
+
+### Verification
+
+- Release metadata verification: passed.
+- v1.4.12.1 regression tests: 5 passed.
+- Full historical test sweep: executed; legacy tests that intentionally pin prior release labels and metadata remain incompatible with the new release.
+- Production dependency installation/build: blocked by a temporary npm registry 503 response for `xlsx@0.18.5`; no source-code build error was observed because Vite could not be installed in this environment.

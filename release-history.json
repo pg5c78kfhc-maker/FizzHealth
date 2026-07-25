@@ -2,6 +2,49 @@
   "format": "fizz-health-release-history",
   "releases": [
     {
+      "version": "1.4.12.1",
+      "name": "Nutrition Landing Page Organization",
+      "type": "Feature slice",
+      "created_at": "2026-07-25T20:30:00-04:00",
+      "build": "141201",
+      "release_id": "FH-20260725-141201",
+      "stories": [
+        [
+          "FH-1412.1",
+          "Rename the Eat subsystem and primary navigation to Nutrition"
+        ],
+        [
+          "FH-1412.2",
+          "Organize the Nutrition landing page into Eating and Manage cards"
+        ],
+        [
+          "FH-1412.3",
+          "Preserve existing destinations for Meals, Pantry, Restaurants, Shopping, Menu, and The Chef"
+        ],
+        [
+          "FH-1412.4",
+          "Move Log Once from the Meals create menu to the Nutrition landing page"
+        ],
+        [
+          "FH-1412.5",
+          "Remove the landing-page plus button"
+        ],
+        [
+          "FH-1412.6",
+          "Remove the obsolete Upcoming Meals route, page, and landing-page card"
+        ],
+        [
+          "FH-1412.7",
+          "Remove the redundant Recommendations landing card while preserving The Chef destination"
+        ],
+        [
+          "FH-1412.8",
+          "Add regression coverage for Nutrition routing and retired UI"
+        ]
+      ],
+      "known_issues": []
+    },
+    {
       "version": "1.4.11.42",
       "name": "Eat Header Finalization",
       "type": "Polish release",
