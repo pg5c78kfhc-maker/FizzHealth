@@ -1,0 +1,13 @@
+VERSION.json
+package.json
+package-lock.json
+release-history.json
+ReleaseNotes.md
+src/main.jsx
+src/styles.css
+src/decision/engine.js
+public/sw.js
+Changelog v1.4.13.3.md
+Test Report v1.4.13.3.md
+Regression Report v1.4.13.3.md
+CHANGED-FILES-1.4.13.3.txt

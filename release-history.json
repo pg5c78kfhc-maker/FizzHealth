@@ -2,6 +2,20 @@
   "format": "fizz-health-release-history",
   "releases": [
     {
+      "version": "1.4.13.3",
+      "name": "Menu Restaurant Experience",
+      "type": "Feature and corrective release",
+      "created": "2026-07-25T22:30:00-04:00",
+      "build": "141303",
+      "release_id": "FH-20260725-141303",
+      "stories": [
+        "FH-1413.1",
+        "FH-1413.3C",
+        "FH-1413.5",
+        "FH-1413.7"
+      ]
+    },
+    {
       "version": "1.4.13.2",
       "name": "Menu Calendar, Metrics, and Browsing Redesign",
       "type": "Feature slice",

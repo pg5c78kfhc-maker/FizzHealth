@@ -1049,3 +1049,33 @@ body.food-library-active .content{height:calc(100dvh - var(--bottom-nav-height))
 .menu-category{display:grid;gap:8px}.menu-category>h3{margin:0;font-size:1.05rem}.menu-category-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
 .menu-category-grid button{min-width:0;text-align:left;background:#152027;border:1px solid #304047;border-radius:13px;padding:12px;display:grid;gap:5px}.menu-category-grid button b{overflow:hidden;text-overflow:ellipsis}.menu-category-grid button span{font-size:.74rem;color:#9aa7ad}
 @media(max-width:520px){.planner-calendar-sticky{top:calc(65px + env(safe-area-inset-top))}.planner-metrics{gap:6px}.planner-metrics strong{font-size:1.25rem}.menu-category-grid{grid-template-columns:1fr 1fr}}
+
+/* v1.4.13.3 — Menu restaurant shell, planned-meal cards, menu cards, and sticky-calendar correction. */
+.menu-page-shell,.menu-page-shell>.meal-calendar-prototype{overflow:visible!important}
+.menu-page-shell{--menu-header-height:calc(65px + env(safe-area-inset-top));position:relative}
+.planner-standard-header{min-height:65px}
+.planner-calendar-sticky{position:-webkit-sticky;position:sticky;top:var(--menu-header-height);align-self:start;z-index:39;margin-inline:-2px;padding:8px 2px 12px;background:linear-gradient(180deg,#050809 0%,#050809 88%,rgba(5,8,9,.96) 100%);box-shadow:0 12px 18px rgba(0,0,0,.32);will-change:transform}
+.meal-calendar-prototype{gap:18px;padding-bottom:24px}
+.menu-intro{padding:10px 2px 2px;display:grid;gap:5px}
+.menu-intro small,.planned-meals-heading small,.today-menu-title small{letter-spacing:.18em;color:#99a5ab;font-weight:850}
+.menu-intro h1{font-family:Georgia,"Times New Roman",serif;font-size:2.05rem;line-height:1.03;margin:0;color:#f7f2e8;font-weight:650}
+.menu-intro p{margin:0;font-size:.83rem;color:#8f9ba1}
+.planned-meals-menu{gap:14px;padding:16px;border:1px solid #384129;border-radius:24px;background:linear-gradient(180deg,#151b14,#0d1412)}
+.planned-meals-heading{align-items:end}.planned-meals-heading h3{font-family:Georgia,"Times New Roman",serif;font-size:1.35rem;color:#f6f0e5;margin-top:4px}.planned-meals-heading>span{font-size:.72rem;color:#a9ef45}
+.planner-slots{grid-template-columns:1fr;gap:10px}
+.planner-slot.meal-service-card{padding:0;overflow:hidden;border-radius:18px;background:#11191d;border:1px solid #2f3c42}
+.meal-service-card.filled{border-color:#50603d;background:#121b16}
+.meal-service-head{display:grid;grid-template-columns:42px minmax(0,1fr) auto;align-items:center;gap:10px;padding:12px 12px 10px;border-bottom:1px solid #29353b}
+.meal-service-icon{width:40px;height:40px;border-radius:13px;display:grid;place-items:center;background:#26331f;color:#b9ef74}.meal-service-icon svg{width:20px}
+.meal-service-head small{display:block;font-size:.59rem;letter-spacing:.15em;color:#819096}.meal-service-head h3{font-family:Georgia,"Times New Roman",serif;font-size:1.18rem;margin:2px 0 0;color:#f4eee3}
+.meal-add-button{display:flex;align-items:center;gap:5px;border:1px solid #4b6239;border-radius:999px;padding:8px 10px;background:#1a2714;color:#c9f598;font-size:.76rem;font-weight:850}.meal-add-button svg{width:15px}
+.meal-service-body{padding:0 12px 12px}.planned-order{padding:12px 0!important}.planned-order b{font-size:.95rem}.planned-order-actions button{width:34px;height:34px;display:grid;place-items:center;border-radius:10px;background:#182228}.planned-order-actions svg{width:16px}
+.meal-empty-state{width:100%;min-height:70px;margin-top:10px;display:flex;align-items:center;justify-content:center;gap:10px;border:1px dashed #405047;border-radius:14px;background:#0c1311;color:#9fb0a6;text-align:left}.meal-empty-state>svg{width:20px;color:#a9ef45}.meal-empty-state span{display:grid;gap:2px}.meal-empty-state b{color:#d8dfda}.meal-empty-state small{font-size:.7rem;color:#819087}
+.component-actions{padding-top:10px;border-top:1px solid #26332d}.component-actions button{border:1px solid #34443a;border-radius:999px;background:#121d18}
+.today-menu{gap:20px;border-top:0;padding-top:4px}.today-menu-title{padding:0 2px}.today-menu-title h3{font-family:Georgia,"Times New Roman",serif;font-size:1.55rem;color:#f6efe4}
+.menu-category{gap:10px}.menu-category-heading{display:flex;align-items:baseline;justify-content:space-between;border-bottom:1px solid #394047;padding:0 2px 7px}.menu-category-heading h3{font-family:Georgia,"Times New Roman",serif;font-size:1.25rem;color:#f3ecdf}.menu-category-heading span{font-size:.67rem;color:#7f8d94;text-transform:uppercase;letter-spacing:.08em}
+.menu-category-grid{grid-template-columns:1fr;gap:9px}
+.menu-category-grid .restaurant-menu-card{min-height:96px;padding:14px 14px 12px;border-radius:17px;background:linear-gradient(145deg,#171f21,#11181b);border:1px solid #354247;box-shadow:0 4px 12px rgba(0,0,0,.15);display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:12px;color:#f3f5f1}
+.restaurant-menu-copy{display:grid;gap:5px;min-width:0}.restaurant-menu-copy b{font-family:Georgia,"Times New Roman",serif;font-size:1.08rem;line-height:1.15;white-space:normal;overflow:visible}.restaurant-menu-copy p{display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;overflow:hidden;margin:0;font-size:.75rem;line-height:1.35;color:#98a4a8}
+.restaurant-menu-nutrition{min-width:82px;display:grid;gap:5px;justify-items:end}.restaurant-menu-nutrition span{font-size:.66rem;color:#8f9ca1}.restaurant-menu-nutrition strong{font-size:.82rem;color:#dfe7e0}.restaurant-menu-nutrition svg{width:18px;color:#a9ef45;margin-top:3px}
+@media(max-width:520px){.menu-page-shell{--menu-header-height:calc(65px + env(safe-area-inset-top))}.planner-calendar-sticky{top:var(--menu-header-height)}.planned-meals-menu{padding:13px}.menu-intro h1{font-size:1.85rem}.menu-category-grid{grid-template-columns:1fr}}

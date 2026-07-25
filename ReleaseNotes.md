@@ -1,13 +1,15 @@
-# Fizz Health v1.4.13.2 — Menu Calendar, Metrics, and Browsing Redesign
+# Fizz Health v1.4.13.3 — Menu Restaurant Experience
 
-Issued July 25, 2026 · Build 141302 · Deployment FH-20260725-141302
+Issued July 25, 2026 · Build 141303 · Deployment FH-20260725-141303
 
 ## Completed stories
 
-- FH-1413.3 — Sticky Menu calendar beneath the standard Nutrition header; removed the redundant Selected Day presentation.
-- FH-1413.4 — Replaced capacity cards with a 2×3 nutrition grid for Calories, Protein, Carbohydrates, Saturated Fat, Cholesterol, and Fiber.
-- FH-1413.6 — Reorganized saved meals into restaurant-style Today’s Menu sections; empty sections collapse automatically.
+- FH-1413.1 — Reframed the Menu page as a restaurant-style browsing experience with a clear dining hierarchy.
+- FH-1413.3C — Corrected the Menu calendar so it remains pinned beneath the standard header while content scrolls.
+- FH-1413.5 — Redesigned planned meals as Breakfast, Lunch, Dinner, Snack, and Beverage meal-service cards with clear empty states.
+- FH-1413.7 — Redesigned saved meals as restaurant menu cards with descriptions when available and compact nutrition details.
 
-## Corrective UI work
+## Preserved behavior
 
-- Removed the visual control artifact beneath the header checkmark and standardized the X/checkmark treatment on the page background.
+- Existing meal scheduling, restaurant-day, locking, removal, component, and occasion-selection behavior remains intact.
+- Empty menu categories continue to collapse automatically.
