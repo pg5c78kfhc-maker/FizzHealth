@@ -1,0 +1,12 @@
+Release verification:
+PASS — Release metadata verified: v1.4.11.39 / FH-1169
+
+Focused regression:
+PASS — 5 tests, 5 passed, 0 failed
+
+Full legacy suite:
+406 tests total; 361 passed; 45 failed.
+The failing assertions are retained historical/version-locked tests and were not represented as successful.
+
+Build:
+Not executed because Vite dependencies could not be provisioned by npm ci in the sandbox.

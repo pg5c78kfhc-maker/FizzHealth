@@ -3,7 +3,7 @@ import wasmUrl from 'sql.js/dist/sql-wasm.wasm?url';
 
 const DB_KEY='fizz-health-sqlite-v1';
 const STORAGE_DB='FizzHealthStorage';
-const TARGET_SCHEMA_VERSION=59;
+const TARGET_SCHEMA_VERSION=60;
 let SQL, db;
 
 const migrations=[
@@ -782,14 +782,27 @@ const migrations=[
     VALUES ('1.4.11.37','2026-07-24','141137',58,'UI Stabilization & Archive Recovery','2026-07-24T23:59:00-04:00');
   `}
 
-,  {version:59,name:'meals_library_architecture',sql:`
-    CREATE TABLE IF NOT EXISTS favorite_meals (
-      meal_id TEXT PRIMARY KEY,
-      created_at TEXT NOT NULL
-    );
-    CREATE INDEX IF NOT EXISTS idx_favorite_meals_created ON favorite_meals(created_at DESC);
+
+,  {version:59,name:'archive_restore_completion_release',sql:`
     INSERT OR REPLACE INTO release_metadata(version,release_date,build_id,schema_version,title,created_at)
-    VALUES ('1.4.11.38','2026-07-24','141138',59,'Meals Library Architecture','2026-07-24T20:30:00-04:00');
+    VALUES ('1.4.11.38','2026-07-25','141138',59,'Archive Restore Completion','2026-07-25T00:30:00-04:00');
+  `}
+
+,  {version:60,name:'food_classification_and_usage_model',sql:`
+    ALTER TABLE foods ADD COLUMN classification TEXT DEFAULT 'ingredient';
+    ALTER TABLE foods ADD COLUMN usage_designation TEXT DEFAULT 'component';
+    ALTER TABLE recipes ADD COLUMN classification TEXT DEFAULT 'recipe';
+    ALTER TABLE recipes ADD COLUMN usage_designation TEXT DEFAULT 'standalone';
+    ALTER TABLE meal_definitions ADD COLUMN classification TEXT DEFAULT 'meal';
+    ALTER TABLE meal_definitions ADD COLUMN usage_designation TEXT DEFAULT 'standalone';
+    UPDATE foods SET classification='ingredient' WHERE classification IS NULL OR TRIM(classification)='';
+    UPDATE foods SET usage_designation=CASE WHEN consumption_role IN ('standalone','both','component') THEN consumption_role ELSE 'component' END WHERE usage_designation IS NULL OR TRIM(usage_designation)='';
+    UPDATE recipes SET classification='recipe' WHERE classification IS NULL OR TRIM(classification)='';
+    UPDATE recipes SET usage_designation='standalone' WHERE usage_designation IS NULL OR TRIM(usage_designation)='';
+    UPDATE meal_definitions SET classification='meal' WHERE classification IS NULL OR TRIM(classification)='';
+    UPDATE meal_definitions SET usage_designation='standalone' WHERE usage_designation IS NULL OR TRIM(usage_designation)='';
+    INSERT OR REPLACE INTO release_metadata(version,release_date,build_id,schema_version,title,created_at)
+    VALUES ('1.4.11.39','2026-07-25','141139',60,'Food Classification & Planning Intelligence','2026-07-25T18:30:00-04:00');
   `}
 
 ];
@@ -797,7 +810,7 @@ const migrations=[
 const canonicalSchema={
   foods:{
     create:`CREATE TABLE IF NOT EXISTS foods (food_id TEXT PRIMARY KEY, name TEXT, category TEXT, default_serving REAL, unit TEXT, calories REAL, protein REAL, carbs REAL, fiber REAL, fat REAL, saturated_fat REAL, sodium REAL, potassium REAL, notes TEXT)`,
-    columns:{food_id:'TEXT',name:'TEXT',category:'TEXT',default_serving:'REAL',unit:'TEXT',calories:'REAL',protein:'REAL',carbs:'REAL',fiber:'REAL',fat:'REAL',saturated_fat:'REAL',sodium:'REAL',potassium:'REAL',notes:'TEXT',nutrition_known:'INTEGER DEFAULT 0',archived:'INTEGER DEFAULT 0',archived_at:'TEXT'},
+    columns:{food_id:'TEXT',name:'TEXT',category:'TEXT',default_serving:'REAL',unit:'TEXT',calories:'REAL',protein:'REAL',carbs:'REAL',fiber:'REAL',fat:'REAL',saturated_fat:'REAL',sodium:'REAL',potassium:'REAL',notes:'TEXT',nutrition_known:'INTEGER DEFAULT 0',archived:'INTEGER DEFAULT 0',archived_at:'TEXT',classification:"TEXT DEFAULT 'ingredient'",usage_designation:"TEXT DEFAULT 'component'"},
     aliases:{name:['food','food_name']}
   },
   pantry:{
@@ -807,7 +820,7 @@ const canonicalSchema={
   },
   recipes:{
     create:`CREATE TABLE IF NOT EXISTS recipes (id INTEGER PRIMARY KEY AUTOINCREMENT, recipe_id TEXT, recipe_name TEXT, ingredient_name TEXT, amount REAL, unit TEXT, ingredient_type TEXT, ingredient_id TEXT, inventory_status TEXT)`,
-    columns:{recipe_id:'TEXT',recipe_name:'TEXT',ingredient_name:'TEXT',amount:'REAL',unit:'TEXT',ingredient_type:'TEXT',ingredient_id:'TEXT',inventory_status:'TEXT',archived:'INTEGER DEFAULT 0',archived_at:'TEXT'},
+    columns:{recipe_id:'TEXT',recipe_name:'TEXT',ingredient_name:'TEXT',amount:'REAL',unit:'TEXT',ingredient_type:'TEXT',ingredient_id:'TEXT',inventory_status:'TEXT',archived:'INTEGER DEFAULT 0',archived_at:'TEXT',classification:"TEXT DEFAULT 'recipe'",usage_designation:"TEXT DEFAULT 'standalone'"},
     aliases:{recipe_name:['recipe','name'],ingredient_name:['ingredient','food_name']}
   },
   health_metrics:{

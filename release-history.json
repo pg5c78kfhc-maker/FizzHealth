@@ -2,32 +2,71 @@
   "format": "fizz-health-release-history",
   "releases": [
     {
+      "version": "1.4.11.39",
+      "name": "Food Classification & Planning Intelligence",
+      "type": "Feature release",
+      "created": "2026-07-25T18:30:00-04:00",
+      "build": "141139",
+      "release_id": "FH-20260725-141139",
+      "stories": [
+        [
+          "FH-1158",
+          "Refine the Food Library around Ingredients, Recipes, and Meals"
+        ],
+        [
+          "FH-1159",
+          "Move classification maintenance into Settings \u2192 Data Enrichment"
+        ],
+        [
+          "FH-1164",
+          "Add required Classification to every food object"
+        ],
+        [
+          "FH-1165",
+          "Add Component, Standalone, or Both usage designation"
+        ],
+        [
+          "FH-1166",
+          "Include standalone-capable ingredients and recipes in Meal Planner"
+        ],
+        [
+          "FH-1167",
+          "Restrict Recipe and Meal builders to component-capable records"
+        ],
+        [
+          "FH-1168",
+          "Apply conservative AI classification and usage defaults"
+        ],
+        [
+          "FH-1169",
+          "Migrate existing objects with safe defaults"
+        ]
+      ],
+      "known_issues": []
+    },
+    {
       "version": "1.4.11.38",
-      "name": "Meals Library Architecture",
-      "type": "Structural UI release",
-      "created": "2026-07-24T20:30:00-04:00",
+      "name": "Archive Restore Completion",
+      "type": "Blocking corrective release",
+      "created": "2026-07-25T00:30:00-04:00",
       "build": "141138",
       "release_id": "FH-20260724-141138",
       "stories": [
         [
-          "FH-1360",
-          "Create unified Ingredients, Recipes, and Meals modes"
+          "FH-1384",
+          "Make archived right swipes restore instead of log or consume"
         ],
         [
-          "FH-1361",
-          "Add one Create menu for Log Once, Ingredient, Recipe, and Meal"
+          "FH-1385",
+          "Add an immediately visible Restore action to archived Food and Recipe details"
         ],
         [
-          "FH-1362",
-          "Pin icon-only All, Recent, and Favorites filters with search"
+          "FH-1386",
+          "Preserve data and relationships while returning restored records to Active"
         ],
         [
-          "FH-1363",
-          "Standardize cards, icon rails, tap, and swipe behavior"
-        ],
-        [
-          "FH-1364",
-          "Move status and data enrichment controls into Settings"
+          "FH-1387",
+          "Gate the complete archive lifecycle with focused regression tests"
         ]
       ],
       "known_issues": []
