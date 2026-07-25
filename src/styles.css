@@ -1079,3 +1079,12 @@ body.food-library-active .content{height:calc(100dvh - var(--bottom-nav-height))
 .restaurant-menu-copy{display:grid;gap:5px;min-width:0}.restaurant-menu-copy b{font-family:Georgia,"Times New Roman",serif;font-size:1.08rem;line-height:1.15;white-space:normal;overflow:visible}.restaurant-menu-copy p{display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;overflow:hidden;margin:0;font-size:.75rem;line-height:1.35;color:#98a4a8}
 .restaurant-menu-nutrition{min-width:82px;display:grid;gap:5px;justify-items:end}.restaurant-menu-nutrition span{font-size:.66rem;color:#8f9ca1}.restaurant-menu-nutrition strong{font-size:.82rem;color:#dfe7e0}.restaurant-menu-nutrition svg{width:18px;color:#a9ef45;margin-top:3px}
 @media(max-width:520px){.menu-page-shell{--menu-header-height:calc(65px + env(safe-area-inset-top))}.planner-calendar-sticky{top:var(--menu-header-height)}.planned-meals-menu{padding:13px}.menu-intro h1{font-size:1.85rem}.menu-category-grid{grid-template-columns:1fr}}
+
+
+/* v1.4.13.4 — viewport-pinned Menu chrome and removal of unapproved course controls. */
+.menu-page-shell{--menu-header-height:calc(65px + env(safe-area-inset-top));--menu-calendar-height:178px;padding-top:calc(var(--menu-header-height) + var(--menu-calendar-height));}
+.menu-page-shell .planner-standard-header{position:fixed;top:0;left:50%;transform:translateX(-50%);z-index:90;width:min(520px,100%);min-height:var(--menu-header-height);padding-left:32px;padding-right:32px;background:#050809;}
+.menu-page-shell .planner-calendar-sticky{position:fixed!important;top:var(--menu-header-height)!important;left:50%;transform:translateX(-50%);z-index:89;width:min(480px,calc(100% - 40px));height:var(--menu-calendar-height);overflow:hidden;margin:0;padding:8px 2px 12px;background:#050809;box-shadow:0 12px 18px rgba(0,0,0,.32);}
+.menu-page-shell .meal-calendar-prototype{padding-top:0;}
+.component-actions{display:none!important;}
+@media(max-width:520px){.menu-page-shell{--menu-calendar-height:178px}.menu-page-shell .planner-standard-header{width:100%;padding-left:32px;padding-right:32px}.menu-page-shell .planner-calendar-sticky{width:calc(100% - 40px)}}
