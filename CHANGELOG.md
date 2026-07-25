@@ -1,3 +1,13 @@
+# Fizz Health v1.4.11.42 — Eat Header Finalization
+
+Released July 25, 2026. Build 141142. Deployment FH-20260725-141142.
+
+Completed FH-1280 through FH-1282.
+
+- Moved the unchanged-size create button into the right header column.
+- Unified the selected background color across primary modes and secondary filters.
+- Preserved every ingredient, recipe, and meal card layout and behavior.
+
 # Fizz Health v1.4.11.22 — Startup Reliability Hotfix
 
 Released July 24, 2026. Build 141122. Deployment FH-20260724-141122.

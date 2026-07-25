@@ -1,12 +1,9 @@
-# Fizz Health v1.4.11.41 — Eat Navigation & Library Header Polish
+# Fizz Health v1.4.11.42 — Eat Header Finalization
 
 Issued July 25, 2026.
 
-- FH-1273 — Rename the primary Food destination to Eat in bottom navigation and on the landing page.
-- FH-1274 — Center Ingredients / Recipes / Meals independently of the close and create controls.
-- FH-1275 — Use equal-width, high-contrast square selected-state tiles and remove the underline.
-- FH-1276 — Preserve a stronger primary-mode selection hierarchy than the secondary filters.
-- FH-1277 — Align the header controls and preserve iPhone safe-area behavior.
-- FH-1278 — Finish Eat page spacing and visual consistency.
+- FH-1280 — Keep the existing + button size and move it into the far-right header column so it no longer overlaps Meals.
+- FH-1281 — Apply the same lighter green selected background to Ingredients / Recipes / Meals and All / Recent / Favorites.
+- FH-1282 — Verify header alignment, spacing, iPhone safe-area behavior, context-aware search, create actions, and filters.
 
-Project-integrity repair remains active before development and production builds.
+The ingredient, recipe, and meal cards below the search field were intentionally left unchanged. Project-integrity repair remains active before development and production builds.

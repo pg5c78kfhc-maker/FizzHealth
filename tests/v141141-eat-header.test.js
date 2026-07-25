@@ -7,11 +7,8 @@ const css=fs.readFileSync(new URL('../src/styles.css',import.meta.url),'utf8');
 const pkg=JSON.parse(fs.readFileSync(new URL('../package.json',import.meta.url),'utf8'));
 const meta=JSON.parse(fs.readFileSync(new URL('../VERSION.json',import.meta.url),'utf8'));
 
-test('v1.4.11.41 metadata is centralized',()=>{
-  assert.equal(pkg.version,'1.4.11.41');
-  assert.equal(meta.version,'1.4.11.41');
-  assert.match(main,/const VERSION='1\.4\.11\.41'/);
-  assert.match(main,/const BUILD_ID='141141'/);
+test('v1.4.11.41 remains recorded in release history',()=>{
+  assert.match(main,/version:'1\.4\.11\.41',name:'Eat Navigation & Library Header Polish'/);
 });
 
 test('primary Food destination is renamed Eat',()=>{
@@ -26,7 +23,7 @@ test('library selector is centered independently of edge controls',()=>{
 });
 
 test('active top mode uses a high-contrast square icon tile without underline',()=>{
-  assert.match(css,/\.library-mode-switch button\.active svg\{background:#43515a/);
+  assert.match(css,/\.library-mode-switch button\.active svg\{background:#3f563d/);
   assert.match(css,/border-radius:9px/);
   assert.doesNotMatch(css,/\.library-mode-switch button\.active\{[^}]*border-bottom-color/);
 });

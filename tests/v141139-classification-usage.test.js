@@ -5,10 +5,8 @@ const main=fs.readFileSync('src/main.jsx','utf8');
 const db=fs.readFileSync('src/database.js','utf8');
 const version=JSON.parse(fs.readFileSync('VERSION.json','utf8'));
 
-test('release metadata is centralized for 1.4.11.39',()=>{
- assert.equal(version.version,'1.4.11.39');
- assert.equal(version.schema_version,60);
- assert.match(main,/const VERSION='1\.4\.11\.39'/);
+test('v1.4.11.39 remains recorded in release history',()=>{
+ assert.match(main,/version:'1\.4\.11\.39',name:'Food Classification & Planning Intelligence'/);
 });
 
 test('migration adds classification and usage with conservative defaults',()=>{

@@ -1,0 +1,141 @@
+Fizz Health v1.4.11.42 test proof
+Generated: 2026-07-25T10:30:00-04:00
+
+$ node scripts/project-integrity.mjs
+Project integrity OK: one application root (.), one package.json, one src tree.
+
+$ node --test tests/v141139-classification-usage.test.js tests/v141140-integrity-recovery.test.js tests/v141141-eat-header.test.js tests/v141142-eat-header-finalization.test.js
+TAP version 13
+# Subtest: v1.4.11.39 remains recorded in release history
+ok 1 - v1.4.11.39 remains recorded in release history
+  ---
+  duration_ms: 1.073695
+  type: 'test'
+  ...
+# Subtest: migration adds classification and usage with conservative defaults
+ok 2 - migration adds classification and usage with conservative defaults
+  ---
+  duration_ms: 0.273061
+  type: 'test'
+  ...
+# Subtest: all object editors expose classification and usage
+ok 3 - all object editors expose classification and usage
+  ---
+  duration_ms: 3.018068
+  type: 'test'
+  ...
+# Subtest: planner includes standalone and both foods and recipes
+ok 4 - planner includes standalone and both foods and recipes
+  ---
+  duration_ms: 2.066936
+  type: 'test'
+  ...
+# Subtest: builders select component-capable records
+ok 5 - builders select component-capable records
+  ---
+  duration_ms: 0.271889
+  type: 'test'
+  ...
+# Subtest: current release metadata remains centralized after v1.4.11.40 recovery
+ok 6 - current release metadata remains centralized after v1.4.11.40 recovery
+  ---
+  duration_ms: 0.793371
+  type: 'test'
+  ...
+# Subtest: approved Food Library redesign is active and old action row is absent
+ok 7 - approved Food Library redesign is active and old action row is absent
+  ---
+  duration_ms: 1.123335
+  type: 'test'
+  ...
+# Subtest: classification and usage remain available across object editors
+ok 8 - classification and usage remain available across object editors
+  ---
+  duration_ms: 1.142528
+  type: 'test'
+  ...
+# Subtest: planner and builders use standalone and component capability
+ok 9 - planner and builders use standalone and component capability
+  ---
+  duration_ms: 0.250182
+  type: 'test'
+  ...
+# Subtest: build lifecycle repairs duplicate project trees before dev and build
+ok 10 - build lifecycle repairs duplicate project trees before dev and build
+  ---
+  duration_ms: 0.098741
+  type: 'test'
+  ...
+# Subtest: v1.4.11.41 remains recorded in release history
+ok 11 - v1.4.11.41 remains recorded in release history
+  ---
+  duration_ms: 1.226016
+  type: 'test'
+  ...
+# Subtest: primary Food destination is renamed Eat
+ok 12 - primary Food destination is renamed Eat
+  ---
+  duration_ms: 0.369209
+  type: 'test'
+  ...
+# Subtest: library selector is centered independently of edge controls
+ok 13 - library selector is centered independently of edge controls
+  ---
+  duration_ms: 0.285207
+  type: 'test'
+  ...
+# Subtest: active top mode uses a high-contrast square icon tile without underline
+ok 14 - active top mode uses a high-contrast square icon tile without underline
+  ---
+  duration_ms: 0.55255
+  type: 'test'
+  ...
+# Subtest: v1.4.11.42 metadata is centralized
+ok 15 - v1.4.11.42 metadata is centralized
+  ---
+  duration_ms: 0.608731
+  type: 'test'
+  ...
+# Subtest: create button occupies the right header column without a size change
+ok 16 - create button occupies the right header column without a size change
+  ---
+  duration_ms: 0.227446
+  type: 'test'
+  ...
+# Subtest: primary mode and secondary filter share one selected background
+ok 17 - primary mode and secondary filter share one selected background
+  ---
+  duration_ms: 0.649533
+  type: 'test'
+  ...
+# Subtest: context-aware search and all three modes remain intact
+ok 18 - context-aware search and all three modes remain intact
+  ---
+  duration_ms: 0.344694
+  type: 'test'
+  ...
+# Subtest: library card geometry remains at the approved v1.4.11.41 values
+ok 19 - library card geometry remains at the approved v1.4.11.41 values
+  ---
+  duration_ms: 0.278301
+  type: 'test'
+  ...
+1..19
+# tests 19
+# suites 0
+# pass 19
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 102.463694
+
+$ npm run verify:release
+
+> fizz-health@1.4.11.42 verify:release
+> node scripts/verify-release.mjs
+
+Release metadata verified: v1.4.11.42 / FH-1282
+
+$ npm run build
+NOT COMPLETED: dependency installation did not finish within the execution window; Vite was unavailable.

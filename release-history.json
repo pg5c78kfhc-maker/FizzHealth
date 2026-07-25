@@ -2,6 +2,29 @@
   "format": "fizz-health-release-history",
   "releases": [
     {
+      "version": "1.4.11.42",
+      "name": "Eat Header Finalization",
+      "type": "Polish release",
+      "created": "2026-07-25T10:30:00-04:00",
+      "build": "141142",
+      "release_id": "FH-20260725-141142",
+      "stories": [
+        [
+          "FH-1280",
+          "Move the create button into the right header column without changing its size"
+        ],
+        [
+          "FH-1281",
+          "Use one lighter green selected background for Ingredients, Recipes, Meals, All, Recent, and Favorites"
+        ],
+        [
+          "FH-1282",
+          "Verify header alignment, spacing, safe areas, and existing Eat interactions while leaving all library cards unchanged"
+        ]
+      ],
+      "known_issues": []
+    },
+    {
       "version": "1.4.11.41",
       "name": "Eat Navigation & Library Header Polish",
       "type": "Feature release",

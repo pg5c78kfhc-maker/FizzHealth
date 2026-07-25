@@ -3,7 +3,7 @@ import wasmUrl from 'sql.js/dist/sql-wasm.wasm?url';
 
 const DB_KEY='fizz-health-sqlite-v1';
 const STORAGE_DB='FizzHealthStorage';
-const TARGET_SCHEMA_VERSION=62;
+const TARGET_SCHEMA_VERSION=63;
 let SQL, db;
 
 const migrations=[
@@ -812,6 +812,11 @@ const migrations=[
 ,  {version:62,name:'eat_navigation_and_library_header_polish',sql:`
     INSERT OR REPLACE INTO release_metadata(version,release_date,build_id,schema_version,title,created_at)
     VALUES ('1.4.11.41','2026-07-25','141141',62,'Eat Navigation & Library Header Polish','2026-07-25T20:10:00-04:00');
+  `}
+
+,  {version:63,name:'eat_header_finalization',sql:`
+    INSERT OR REPLACE INTO release_metadata(version,release_date,build_id,schema_version,title,created_at)
+    VALUES ('1.4.11.42','2026-07-25','141142',63,'Eat Header Finalization','2026-07-25T10:30:00-04:00');
   `}
 
 ];
