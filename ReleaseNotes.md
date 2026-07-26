@@ -9,3 +9,8 @@ Completed story: FH-1413.7C
 - Synchronizes restaurant eligibility through the existing date-aware daily preference and food-log data.
 - Makes planned meal groups, Chef recommendations, database-backed food categories, and restaurant groups collapsible.
 - Uses a continuous white restaurant-menu treatment only for expanded food items.
+
+
+## v1.4.13.8 — Menu Deployment Syntax Hotfix
+
+FH-1413.7H corrects the Restaurant Day toggle JSX handler that prevented the v1.4.13.7 production build from compiling. No approved Menu behavior or visual scope was changed.

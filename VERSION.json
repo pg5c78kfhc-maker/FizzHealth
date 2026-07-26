@@ -1,26 +1,24 @@
 {
   "app": "Fizz Health",
-  "version": "1.4.13.7",
-  "release": "1.4.13.7",
-  "release_type": "Corrective release",
-  "build": "141307",
-  "release_id": "FH-20260726-141307",
-  "created_at": "2026-07-26T08:15:00-04:00",
-  "schema_version": 64,
-  "status": "Menu UX Corrective and Date-Aware Restaurant Planning",
-  "completed_story": "FH-1413.7C",
+  "version": "1.4.13.8",
+  "release": "1.4.13.8",
+  "release_type": "Hotfix release",
+  "build": "141308",
+  "release_id": "FH-20260726-141308",
+  "created_at": "2026-07-26T08:20:00-04:00",
+  "schema_version": 65,
+  "status": "Menu Deployment Syntax Hotfix",
+  "completed_story": "FH-1413.7H",
   "baseline_story": "FH-1221",
-  "updated": "2026-07-26T08:15:00-04:00",
+  "updated": "2026-07-26T08:20:00-04:00",
   "stories": [
-    "FH-1413.7A",
-    "FH-1413.7B",
-    "FH-1413.7C"
+    "FH-1413.7H"
   ],
-  "build_date": "2026-07-26T08:15:00-04:00",
-  "release_name": "Menu UX Corrective and Date-Aware Restaurant Planning",
+  "build_date": "2026-07-26T08:20:00-04:00",
+  "release_name": "Menu Deployment Syntax Hotfix",
   "release_date": "2026-07-26",
   "build_id": "141307",
-  "title": "Menu UX Corrective and Date-Aware Restaurant Planning",
-  "name": "Menu UX Corrective and Date-Aware Restaurant Planning",
-  "type": "Corrective release"
+  "title": "Menu Deployment Syntax Hotfix",
+  "name": "Menu Deployment Syntax Hotfix",
+  "type": "Hotfix release"
 }
