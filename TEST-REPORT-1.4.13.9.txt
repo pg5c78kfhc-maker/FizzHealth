@@ -1,0 +1,19 @@
+Fizz Health v1.4.13.9 Test Report
+
+PASS: node --test tests/v141309-menu-card-decision-language.test.js
+- 5 tests passed
+- 0 tests failed
+
+PASS: npm run verify:release
+- Release metadata verified: v1.4.13.9 / FH-141309-06
+
+PASS: project integrity check
+- One application root
+- One package.json
+- One src tree
+
+FULL HISTORICAL SUITE: 375 passed / 73 failed
+The failing assertions are older release-specific tests that expect retired terminology, routes, metadata, and Menu markup.
+
+BUILD: not completed
+npm dependency retrieval failed with HTTP 503 from the environment package registry. Vite could not be restored, so no successful production build is claimed.

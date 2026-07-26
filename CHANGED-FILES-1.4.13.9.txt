@@ -1,0 +1,13 @@
+VERSION.json
+package.json
+package-lock.json
+public/sw.js
+release-history.json
+ReleaseNotes.md
+src/main.jsx
+src/styles.css
+src/decision/engine.js
+tests/v141309-menu-card-decision-language.test.js
+EXECUTION-VERIFICATION-1.4.13.9.md
+TEST-REPORT-1.4.13.9.txt
+CHANGED-FILES-1.4.13.9.txt

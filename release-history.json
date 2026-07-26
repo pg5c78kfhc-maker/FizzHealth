@@ -2,6 +2,22 @@
   "format": "fizz-health-release-history",
   "releases": [
     {
+      "version": "1.4.13.9",
+      "name": "Menu Card Decision Language",
+      "type": "Presentation release",
+      "created": "2026-07-26T10:45:00-04:00",
+      "build": "141309",
+      "release_id": "FH-20260726-141309",
+      "stories": [
+        "FH-141309-01",
+        "FH-141309-02",
+        "FH-141309-03",
+        "FH-141309-04",
+        "FH-141309-05",
+        "FH-141309-06"
+      ]
+    },
+    {
       "version": "1.4.13.8A",
       "name": "Menu UX Corrective Rebuild",
       "type": "Corrective release",
