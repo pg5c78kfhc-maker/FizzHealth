@@ -2,25 +2,12 @@
   "format": "fizz-health-release-history",
   "releases": [
     {
-      "version": "1.4.13.8",
-      "name": "Menu Deployment Syntax Hotfix",
-      "release_date": "2026-07-26",
-      "schema_version": 65,
-      "stories": [
-        "FH-1413.7H"
-      ],
-      "type": "Hotfix release",
-      "created": "2026-07-26T08:20:00-04:00",
-      "build": "141308",
-      "release_id": "FH-20260726-141308"
-    },
-    {
       "version": "1.4.13.7",
       "name": "Menu UX Corrective and Date-Aware Restaurant Planning",
       "type": "Corrective release",
-      "created": "2026-07-26T08:15:00-04:00",
-      "build": "141307",
-      "release_id": "FH-20260726-141307",
+      "created": "2026-07-26T08:45:00-04:00",
+      "build": "141307A",
+      "release_id": "FH-20260726-141307A",
       "stories": [
         "FH-1413.7A",
         "FH-1413.7B",
