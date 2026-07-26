@@ -42,3 +42,9 @@ test('Menu bottom navigation is anchored and safe-area space is reserved',()=>{
  assert.match(css,/\.menu-page-shell\{padding-bottom:calc\(var\(--bottom-nav-height\) \+ 34px\)\}/);
  assert.match(css,/\.menu-page-shell nav,body\.menu-page-active nav\{position:fixed/);
 });
+
+
+test('Restaurant Day async switch JSX closes its expression before the tag',()=>{
+  assert.match(main,/onClick=\{async\(\)=>\{try\{await setRestaurantPreference\(!restaurantDay\)\}catch\(e\)\{window\.alert\(e\.message\)\}\}\}><i\/>/);
+  assert.doesNotMatch(main,/onClick=\{async\(\)=>\{try\{await setRestaurantPreference\(!restaurantDay\)\}catch\(e\)\{window\.alert\(e\.message\)\}\}><i\/>/);
+});

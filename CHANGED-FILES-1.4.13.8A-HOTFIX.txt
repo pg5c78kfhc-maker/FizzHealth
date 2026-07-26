@@ -1,0 +1,5 @@
+src/main.jsx
+tests/v141138a-menu-ux-corrective-rebuild.test.js
+EXECUTION-VERIFICATION-1.4.13.8A-HOTFIX.md
+TEST-REPORT-1.4.13.8A-HOTFIX.md
+CHANGED-FILES-1.4.13.8A-HOTFIX.txt
