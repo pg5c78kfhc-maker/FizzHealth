@@ -1,0 +1,22 @@
+Fizz Health v1.4.14.1 Test Report
+
+Release: 1.4.14.1
+Build: 141401
+Deployment: FH-20260726-141401
+
+Focused regression suite
+- Command: node --test tests/v141401-menu-navigation-foundation.test.js
+- Result: 6 passed, 0 failed
+
+Release verification
+- Command: node scripts/verify-release.mjs
+- Result: passed
+
+Project integrity
+- Command: node scripts/project-integrity.mjs
+- Result: passed
+
+Production build
+- Not completed in this execution environment.
+- npm dependency restoration could not be completed because the package-install command failed at the container boundary before Vite became available.
+- No successful production build is claimed.
