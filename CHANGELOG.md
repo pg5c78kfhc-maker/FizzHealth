@@ -1,3 +1,10 @@
+## 1.4.14.2A — Restaurant Day Toggle and Synchronization Corrective
+
+- Restaurant Day now creates and removes the 800 kcal reservation atomically with the saved preference.
+- Home and Menu refresh planned meals, projections, calendar state, and totals immediately after the toggle changes.
+- Disabling Restaurant Day removes a placeholder reservation but remains blocked by an actual planned or consumed restaurant meal.
+- Restaurant Day switches now use definitive fully-left and fully-right resting positions.
+
 # Changelog
 
 ## 1.4.13.2 — 2026-07-25

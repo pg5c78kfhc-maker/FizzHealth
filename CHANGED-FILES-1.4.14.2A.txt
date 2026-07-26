@@ -1,0 +1,14 @@
+package.json
+VERSION.json
+CHANGELOG.md
+ReleaseNotes.md
+release-history.json
+src/main.jsx
+src/styles.css
+src/decision/engine.js
+public/sw.js
+tests/v14142-planner-proposed-sync.test.js
+tests/v14142a-restaurant-toggle-sync.test.js
+EXECUTION-VERIFICATION-1.4.14.2A.md
+TEST-REPORT-1.4.14.2A.txt
+CHANGED-FILES-1.4.14.2A.txt

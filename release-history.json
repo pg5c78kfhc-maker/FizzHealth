@@ -2,6 +2,29 @@
   "format": "fizz-health-release-history",
   "releases": [
     {
+      "version": "1.4.14.2A",
+      "name": "Restaurant Day Toggle and Synchronization Corrective",
+      "type": "Corrective release",
+      "created_at": "2026-07-26T19:15:00-04:00",
+      "build": "141402A",
+      "release_id": "FH-20260726-141402A",
+      "stories": [
+        [
+          "FH-1414.2A-01",
+          "Create and remove the 800 kcal restaurant reservation immediately when Restaurant Day changes"
+        ],
+        [
+          "FH-1414.2A-02",
+          "Refresh Menu, Proposed meals, projected nutrition, and calendar state without leaving the screen"
+        ],
+        [
+          "FH-1414.2A-03",
+          "Render the Restaurant Day switch in definitive fully-off and fully-on positions"
+        ]
+      ],
+      "known_issues": []
+    },
+    {
       "version": "1.4.14.2",
       "name": "Planner and Proposed Synchronization",
       "type": "Feature release",

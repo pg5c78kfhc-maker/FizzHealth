@@ -1,0 +1,42 @@
+Fizz Health v1.4.14.2A Test Report
+==================================
+
+Focused command:
+  node --test tests/v14142-planner-proposed-sync.test.js tests/v14142a-restaurant-toggle-sync.test.js
+
+Focused result:
+  Tests: 12
+  Passed: 12
+  Failed: 0
+
+Validated behaviors:
+  - Corrective release metadata is current.
+  - One shared atomic Restaurant Day synchronization function is used.
+  - Placeholder creation uses 800 reserved calories and Dinner assignment.
+  - Placeholder removal occurs when Restaurant Day changes to NO.
+  - Actual planned or consumed restaurant meals block disabling Restaurant Day.
+  - Food Log refreshes planned rows and projected nutrition immediately.
+  - Menu refreshes planner rows immediately.
+  - Menu toggle is guarded during persistence.
+  - Toggle thumb has definitive left and right resting positions.
+  - Existing planner/proposed lifecycle tests remain green.
+
+Project integrity:
+  PASS — one application root, one package.json, one src tree.
+
+Release verification:
+  PASS — v1.4.14.2A / FH-1414.2A metadata is centralized and consistent.
+
+Full historical test command:
+  npm test
+
+Full historical result:
+  Tests: 476
+  Passed: 396
+  Failed: 80
+
+The full repository contains many historical tests pinned to older release identifiers and retired UI contracts. Those tests continue to fail after later releases and are not claimed as passing. The focused release tests for this corrective scope pass completely.
+
+Production build:
+  NOT RUN — `vite` is not installed because node_modules was not included in the supplied archive.
+  Observed error: sh: 1: vite: not found

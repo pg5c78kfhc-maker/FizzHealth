@@ -1,3 +1,13 @@
+# Fizz Health v1.4.14.2A — Restaurant Day Toggle and Synchronization Corrective
+
+- **FH-1414.2A-01** — Restaurant Day **NO → YES** now creates the 800 kcal **Restaurant meal — undecided** Dinner reservation immediately in Menu and Proposed meals.
+- **FH-1414.2A-02** — Restaurant Day **YES → NO** now cancels and removes the placeholder immediately from Menu and Proposed meals, including its projected calories and nutrient totals.
+- Menu, Food Log, calendar counts, and projected nutrition now refresh from the same persisted state change without leaving or reopening the screen.
+- An actual planned or consumed restaurant meal still prevents Restaurant Day from being disabled; the placeholder alone does not.
+- The Restaurant Day switch now has definitive fully-left NO and fully-right YES resting positions on both Home and Menu.
+
+Schema remains version 65; no database migration is required.
+
 # Fizz Health v1.4.14.2 — Planner and Proposed Synchronization
 
 - **FH-1414.3** — Planner assignments are the single source for Food Log Proposed entries. Consuming a proposed item removes it from both the planner and Proposed and creates one timestamped Consumed record.
