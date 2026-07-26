@@ -1,2 +1,0 @@
-dist/assets/index-DH1xZoJn.js
-dist/assets/index-nfpcXr_Q.css

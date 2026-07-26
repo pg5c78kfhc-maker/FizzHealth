@@ -1,17 +1,23 @@
 Fizz Health v1.4.11.20 — Restaurant Decision Dashboard Polish
+Build: 141320
+Deployment: FH-20260724-141320
+Schema: 54
 
-Automated regression suite:
+Automated tests
 - Command: npm test
 - Result: 355 passed, 0 failed
 
-Release verification:
+Release verification
 - Command: npm run verify:release
 - Result: passed
-- Verified: v1.4.11.20 / FH-1295 through FH-1301
+- Output: Release metadata verified: v1.4.11.20 / FH-1295 through FH-1301
 
-Production build:
+Production build
 - Command: npm run build
-- Result: not run successfully because the supplied archive did not include installed dependencies; vite was not found.
+- Result: not executed successfully because the supplied source archive does not include installed node_modules and the environment could not resolve vite (sh: vite: not found).
 
-Package integrity:
-- Full-source and changed-files ZIP archives were created and validated with unzip -t.
+Artifact integrity
+- Full-source ZIP: tested with unzip -t
+- Changed-files ZIP: tested with unzip -t
+
+No GitHub writes, commits, or pushes were performed.

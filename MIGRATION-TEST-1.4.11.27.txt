@@ -1,3 +1,0 @@
-Migration 55 schema-54 compatibility test: PASS
-Verified app_releases is created when absent.
-Verified v1.4.11.27 rows are written to app_releases and release_metadata.
