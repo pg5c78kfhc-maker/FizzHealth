@@ -1,0 +1,56 @@
+TAP version 13
+# Subtest: release identity and sprint stories are current
+ok 1 - release identity and sprint stories are current
+  ---
+  duration_ms: 1.714162
+  type: 'test'
+  ...
+# Subtest: planned lifecycle is a single proposed state until consumption
+ok 2 - planned lifecycle is a single proposed state until consumption
+  ---
+  duration_ms: 0.321488
+  type: 'test'
+  ...
+# Subtest: restaurant reservations are projected placeholders, not consumable meals
+ok 3 - restaurant reservations are projected placeholders, not consumable meals
+  ---
+  duration_ms: 0.136516
+  type: 'test'
+  ...
+# Subtest: restaurant preference reconciles on page open and blocks contradictory off state
+ok 4 - restaurant preference reconciles on page open and blocks contradictory off state
+  ---
+  duration_ms: 0.148658
+  type: 'test'
+  ...
+# Subtest: calendar indicator derives only from current planned rows
+ok 5 - calendar indicator derives only from current planned rows
+  ---
+  duration_ms: 0.423485
+  type: 'test'
+  ...
+# Subtest: saving no destinations removes existing planner assignments
+ok 6 - saving no destinations removes existing planner assignments
+  ---
+  duration_ms: 0.219681
+  type: 'test'
+  ...
+1..6
+# tests 6
+# suites 0
+# pass 6
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 55.533953
+
+> fizz-health@1.4.14-2 integrity:check
+> node scripts/project-integrity.mjs
+
+Project integrity OK: one application root (.), one package.json, one src tree.
+
+> fizz-health@1.4.14-2 verify:release
+> node scripts/verify-release.mjs
+
+Release metadata verified: v1.4.14.2 / FH-1414.6

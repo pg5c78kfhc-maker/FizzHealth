@@ -1,3 +1,15 @@
+# Fizz Health v1.4.14.2 — Planner and Proposed Synchronization
+
+- **FH-1414.3** — Planner assignments are the single source for Food Log Proposed entries. Consuming a proposed item removes it from both the planner and Proposed and creates one timestamped Consumed record.
+- **FH-1414.4** — Future plans automatically become today's Proposed entries at local midnight or the next time the app opens.
+- **FH-1414.5** — Restaurant Day creates an 800 kcal Dinner reservation placeholder, keeps it in Proposed, and replaces it when an actual restaurant meal is planned or consumed.
+- **FH-1414.6** — Menu calendar indicators are derived directly from current planned rows and disappear when the last planned item is removed.
+- **FH-1414.3A** — Consumed records preserve the original meal occasion and planned-record lineage for future analytics without remaining visible in the planner.
+- Saving the Add to Meals screen with no destinations now removes all existing assignments for that item.
+- Restaurant reservation placeholders cannot be consumed as though they were actual meals.
+
+Schema remains version 65; no database migration is required.
+
 # Fizz Health v1.4.14.1A — Add to Meals Navigation Corrective
 
 - Keeps the Add to Meals workflow in place over the Menu instead of routing back to the Nutrition landing page.

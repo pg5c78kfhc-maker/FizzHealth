@@ -2,6 +2,37 @@
   "format": "fizz-health-release-history",
   "releases": [
     {
+      "version": "1.4.14.2",
+      "name": "Planner and Proposed Synchronization",
+      "type": "Feature release",
+      "created_at": "2026-07-26T18:30:00-04:00",
+      "build": "141402",
+      "release_id": "FH-20260726-141402",
+      "stories": [
+        [
+          "FH-1414.3",
+          "Synchronize Menu planner assignments with the Food Log Proposed lifecycle and remove items from both when consumed"
+        ],
+        [
+          "FH-1414.4",
+          "Make future dated plans become today\u2019s Proposed entries automatically at local midnight or next app open"
+        ],
+        [
+          "FH-1414.5",
+          "Restore the 800 kcal restaurant reservation placeholder and replace it when an actual restaurant meal exists"
+        ],
+        [
+          "FH-1414.6",
+          "Derive calendar indicators directly from current planned rows with no independent stored state"
+        ],
+        [
+          "FH-1414.3A",
+          "Preserve original meal occasion and planned-record lineage on consumed entries"
+        ]
+      ],
+      "known_issues": []
+    },
+    {
       "version": "1.4.14.1A",
       "name": "Add to Meals Navigation Corrective",
       "type": "Corrective release",

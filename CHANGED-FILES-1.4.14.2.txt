@@ -1,0 +1,13 @@
+VERSION.json
+package.json
+package-lock.json
+release-history.json
+ReleaseNotes.md
+public/sw.js
+src/main.jsx
+src/decision/engine.js
+src/planning/synchronization.js
+tests/v14142-planner-proposed-sync.test.js
+EXECUTION-VERIFICATION-1.4.14.2.md
+TEST-REPORT-1.4.14.2.txt
+CHANGED-FILES-1.4.14.2.txt
