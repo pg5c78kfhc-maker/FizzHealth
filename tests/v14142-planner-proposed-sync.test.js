@@ -7,10 +7,10 @@ const main=fs.readFileSync(new URL('../src/main.jsx',import.meta.url),'utf8');
 const version=JSON.parse(fs.readFileSync(new URL('../VERSION.json',import.meta.url),'utf8'));
 
 test('release identity and sprint stories are current',()=>{
- assert.equal(version.version,'1.4.14.2A');
- assert.equal(version.build,'141402A');
- assert.equal(version.release_id,'FH-20260726-141402A');
- assert.deepEqual(version.stories,['FH-1414.2A-01','FH-1414.2A-02','FH-1414.2A-03']);
+ assert.equal(version.version,'1.4.14.2B');
+ assert.equal(version.build,'141402B');
+ assert.equal(version.release_id,'FH-20260726-141402B');
+ assert.deepEqual(version.stories,['FH-1414.2B']);
 });
 
 test('planned lifecycle is a single proposed state until consumption',()=>{

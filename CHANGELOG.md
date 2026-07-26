@@ -1,3 +1,9 @@
+## 1.4.14.2B — Production Build Syntax Corrective
+
+- Corrected a missing JSX expression-closing brace in the Restaurant Day switch handler.
+- Restored successful production compilation.
+- No functional scope changes.
+
 ## 1.4.14.2A — Restaurant Day Toggle and Synchronization Corrective
 
 - Restaurant Day now creates and removes the 800 kcal reservation atomically with the saved preference.

@@ -7,10 +7,10 @@ const styles=fs.readFileSync(new URL('../src/styles.css',import.meta.url),'utf8'
 const version=JSON.parse(fs.readFileSync(new URL('../VERSION.json',import.meta.url),'utf8'));
 
 test('corrective release metadata is current',()=>{
- assert.equal(version.version,'1.4.14.2A');
- assert.equal(version.build,'141402A');
- assert.equal(version.release_id,'FH-20260726-141402A');
- assert.equal(version.completed_story,'FH-1414.2A');
+ assert.equal(version.version,'1.4.14.2B');
+ assert.equal(version.build,'141402B');
+ assert.equal(version.release_id,'FH-20260726-141402B');
+ assert.equal(version.completed_story,'FH-1414.2B');
 });
 
 test('restaurant preference uses one shared atomic synchronization function',()=>{
@@ -51,4 +51,8 @@ test('toggle thumb has definitive left and right resting positions',()=>{
  assert.match(styles,/\.restaurant-day-control button i\{position:absolute;left:3px;top:3px/);
  assert.match(styles,/\.restaurant-day-control\.yes button i\{left:28px;background:#9be64d\}/);
  assert.doesNotMatch(styles,/\.restaurant-day-control\.yes button i\{transform:translateX\(24px\)/);
+});
+
+test('Restaurant Day switch handler closes the JSX expression before rendering children',()=>{
+ assert.match(main,/onClick=\{async\(\)=>\{try\{await setRestaurantPreference\(!restaurantDay\)\}catch\(e\)\{window\.alert\(e\.message\)\}\}\}><i\/>/);
 });

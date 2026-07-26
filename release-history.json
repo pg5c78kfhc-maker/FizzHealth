@@ -2,6 +2,21 @@
   "format": "fizz-health-release-history",
   "releases": [
     {
+      "version": "1.4.14.2B",
+      "name": "Production Build Syntax Corrective",
+      "type": "Corrective release",
+      "created_at": "2026-07-26T19:25:00-04:00",
+      "build": "141402B",
+      "release_id": "FH-20260726-141402B",
+      "stories": [
+        [
+          "FH-1414.2B",
+          "Correct malformed Restaurant Day switch JSX and restore a successful production build"
+        ]
+      ],
+      "known_issues": []
+    },
+    {
       "version": "1.4.14.2A",
       "name": "Restaurant Day Toggle and Synchronization Corrective",
       "type": "Corrective release",

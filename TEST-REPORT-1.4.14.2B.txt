@@ -1,0 +1,17 @@
+Fizz Health v1.4.14.2B Test Report
+
+Focused test command:
+node --test tests/v14142-planner-proposed-sync.test.js tests/v14142a-restaurant-toggle-sync.test.js
+
+Result:
+13 tests passed
+0 tests failed
+
+Release verification command:
+node scripts/verify-release.mjs
+
+Result:
+PASS — Release metadata verified: v1.4.14.2B / FH-1414.2B
+
+Production build:
+NOT COMPLETED LOCALLY — dependency installation did not provide the Vite executable in this environment. The JSX parser defect reported by Cloudflare was corrected and is covered by a regression assertion.
