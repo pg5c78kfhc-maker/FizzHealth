@@ -2,6 +2,19 @@
   "format": "fizz-health-release-history",
   "releases": [
     {
+      "version": "1.4.13.7",
+      "name": "Menu UX Corrective and Date-Aware Restaurant Planning",
+      "type": "Corrective release",
+      "created": "2026-07-26T08:15:00-04:00",
+      "build": "141307",
+      "release_id": "FH-20260726-141307",
+      "stories": [
+        "FH-1413.7A",
+        "FH-1413.7B",
+        "FH-1413.7C"
+      ]
+    },
+    {
       "version": "1.4.13.6",
       "name": "Menu Gestures, Chef & Decision Intelligence",
       "type": "Feature release",

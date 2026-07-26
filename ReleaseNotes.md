@@ -1,11 +1,11 @@
-# Fizz Health v1.4.13.6
+# Fizz Health v1.4.13.7
 
-## Menu Gestures, Chef & Decision Intelligence
+## Menu UX Corrective and Date-Aware Restaurant Planning
 
-Release v1.4.13.6 completes the remaining functional Menu stories.
+Completed story: FH-1413.7C
 
-- FH-1413.10 — Swipe gestures on Today’s Menu and planned meal containers.
-- FH-1413.11 — The Chef integration using pantry inventory, nutrition goals, restaurant-day status, planned meals, and remaining daily macros.
-- FH-1413.12 — Decision Intelligence highlighting, explanations, and dynamic menu ranking.
-
-Tap-to-add remains the primary interaction and the restaurant-style presentation is preserved.
+- Centers the selected date in the seven-day Menu calendar and adds meal indicators.
+- Aligns Today and calendar selectors with the shared Home-style Restaurant Day control.
+- Synchronizes restaurant eligibility through the existing date-aware daily preference and food-log data.
+- Makes planned meal groups, Chef recommendations, database-backed food categories, and restaurant groups collapsible.
+- Uses a continuous white restaurant-menu treatment only for expanded food items.
