@@ -6,10 +6,10 @@ const source=fs.readFileSync(new URL('../src/main.jsx',import.meta.url),'utf8');
 const css=fs.readFileSync(new URL('../src/styles.css',import.meta.url),'utf8');
 const version=JSON.parse(fs.readFileSync(new URL('../VERSION.json',import.meta.url),'utf8'));
 
-test('release identity is v1.4.13.9',()=>{
- assert.equal(version.version,'1.4.13.9');
- assert.equal(version.build,'141309');
- assert.equal(version.release_id,'FH-20260726-141309');
+test('release identity includes the v1.4.13.9 presentation baseline or its corrective hotfix',()=>{
+ assert.match(version.version,/^1\.4\.13\.9A?$/);
+ assert.match(version.build,/^141309A?$/);
+ assert.match(version.release_id,/^FH-20260726-141309A?$/);
 });
 
 test('Menu cards use compact recommendation indicators without visible rank badges',()=>{
@@ -31,6 +31,6 @@ test('category headers use Menu sans-serif hierarchy and item counts',()=>{
 });
 
 test('macros align at the recommendation row',()=>{
- assert.match(css,/white-menu-list \.restaurant-menu-nutrition\{align-self:end/);
+ assert.match(css,/white-menu-list \.restaurant-menu-nutrition\{(?:grid-column:[^;]+;grid-row:[^;]+;)?align-self:end/);
  assert.match(css,/menu-recommendation-row\{align-self:end/);
 });

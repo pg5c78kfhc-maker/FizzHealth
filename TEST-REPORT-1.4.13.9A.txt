@@ -1,0 +1,18 @@
+Fizz Health v1.4.13.9A Test Report
+
+PASS: node --test tests/v141309-menu-card-decision-language.test.js tests/v141309a-menu-title-width-corrective.test.js
+- Tests: 10
+- Passed: 10
+- Failed: 0
+
+PASS: node scripts/verify-release.mjs
+- Release metadata verified: v1.4.13.9A / FH-141309A-02
+
+PASS: node scripts/project-integrity.mjs
+- One application root
+- One package.json
+- One src tree
+
+NOT RUN: npm run build
+- Installed dependencies were not present in the supplied source archive.
+- No compiled production build is claimed.
