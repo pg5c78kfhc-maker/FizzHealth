@@ -17,7 +17,8 @@ test('Today menu supports persistent favorites, ranking, and filters',()=>{
 });
 
 test('Today menu cards use tap-to-add as primary interaction',()=>{
- assert.match(main,/onClick=\{\(\)=>addFromMenu\(meal\)\}/);
+ assert.match(main,/onAdd=\{addFromMenu\}/);
+ assert.match(main,/if\(!wasMoved\)onAdd\(meal\)/);
  assert.match(main,/destinationFor/);
  assert.match(main,/scheduleMeal\(meal,slot,'main'\)/);
 });

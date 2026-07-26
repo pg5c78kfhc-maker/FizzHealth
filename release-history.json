@@ -2,6 +2,19 @@
   "format": "fizz-health-release-history",
   "releases": [
     {
+      "version": "1.4.13.6",
+      "name": "Menu Gestures, Chef & Decision Intelligence",
+      "type": "Feature release",
+      "created": "2026-07-25T23:59:00-04:00",
+      "build": "141306",
+      "release_id": "FH-20260725-141306",
+      "stories": [
+        "FH-1413.10",
+        "FH-1413.11",
+        "FH-1413.12"
+      ]
+    },
+    {
       "version": "1.4.13.5",
       "name": "Menu Favorites, Ranking, Filtering & Tap-to-Add",
       "type": "Feature and corrective release",

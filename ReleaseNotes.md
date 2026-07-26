@@ -1,20 +1,11 @@
-# Fizz Health v1.4.13.5 — Menu Favorites, Ranking, Filtering & Tap-to-Add
+# Fizz Health v1.4.13.6
 
-## FH-1413.5D — Meal container correction
-- Removed the green Add button from every meal container.
-- Preserved the approved meal-container design and destination behavior.
+## Menu Gestures, Chef & Decision Intelligence
 
-## FH-1413.8 — Favorites, ranking, and filtering
-- Added persistent favorites for Today’s Menu items.
-- Added user-controlled priority adjustments that change menu ordering.
-- Added All, Favorites, and category filters while preserving the restaurant-style cards.
+Release v1.4.13.6 completes the remaining functional Menu stories.
 
-## FH-1413.9 — Tap-to-add
-- Tapping a Today’s Menu item now immediately adds it to the appropriate meal container.
-- Items without one obvious destination prompt only for the meal occasion.
-- Planned meal containers and nutrition metrics refresh immediately.
+- FH-1413.10 — Swipe gestures on Today’s Menu and planned meal containers.
+- FH-1413.11 — The Chef integration using pantry inventory, nutrition goals, restaurant-day status, planned meals, and remaining daily macros.
+- FH-1413.12 — Decision Intelligence highlighting, explanations, and dynamic menu ranking.
 
-## Deferred
-- Story 10 — Swipe gestures.
-- Story 11 — The Chef integration.
-- Story 12 — Decision Intelligence integration.
+Tap-to-add remains the primary interaction and the restaurant-style presentation is preserved.

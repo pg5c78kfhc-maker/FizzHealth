@@ -1091,3 +1091,18 @@ body.food-library-active .content{height:calc(100dvh - var(--bottom-nav-height))
 
 /* v1.4.13.5 — Menu favorites, prioritization, filtering, and tap-to-add. */
 .menu-browse-filters{margin:0 0 14px;overflow-x:auto;display:flex;gap:8px;padding-bottom:4px}.menu-order-card{position:relative;cursor:pointer}.menu-card-actions{display:flex;gap:5px;position:absolute;right:10px;top:9px}.menu-card-actions button{width:31px;height:31px;border-radius:50%;display:grid;place-items:center;background:#182229;border:1px solid #34434a;color:#c9d3d8}.menu-card-actions button svg{width:16px;height:16px}.menu-card-actions .favorite-star{color:#dfff9f}.menu-order-card .restaurant-menu-copy{padding-right:112px}.meal-empty-state{cursor:default}.meal-empty-state>span{margin-left:0}
+
+/* v1.4.13.6 — Menu swipe gestures, Chef integration, and Decision Intelligence. */
+.menu-swipe-shell,.planned-order-swipe{position:relative;overflow:hidden;border-radius:inherit;touch-action:pan-y}
+.menu-swipe-rail,.planned-order-rail{position:absolute;inset:0;display:flex;justify-content:space-between;align-items:stretch;z-index:0}
+.menu-swipe-rail button,.planned-order-rail button{width:92px;border:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;font-weight:800}
+.menu-swipe-add,.planned-order-lock{background:#156b3a;color:#fff}
+.menu-swipe-favorite{background:#7b5a00;color:#fff}
+.planned-order-remove{background:#8f2020;color:#fff}
+.menu-swipe-shell>.restaurant-menu-card,.planned-order-swipe>.planned-order{position:relative;z-index:1;transition:transform .18s ease;will-change:transform}
+.menu-order-card.decision-recommended{box-shadow:inset 3px 0 0 #63d98b}
+.menu-card-title-line{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.decision-pick-badge{display:inline-flex;align-items:center;gap:3px;border:1px solid rgba(99,217,139,.7);border-radius:999px;padding:2px 7px;color:#80e7a3;font-size:.68rem;font-weight:800;letter-spacing:.04em}
+.decision-pick-badge svg{width:12px;height:12px}
+.menu-decision-why{display:block;margin-top:5px;color:rgba(255,255,255,.72);line-height:1.25}
+@media (prefers-reduced-motion:reduce){.menu-swipe-shell>.restaurant-menu-card,.planned-order-swipe>.planned-order{transition:none}}
