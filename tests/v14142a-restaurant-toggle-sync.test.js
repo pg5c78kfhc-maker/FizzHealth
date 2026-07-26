@@ -7,10 +7,10 @@ const styles=fs.readFileSync(new URL('../src/styles.css',import.meta.url),'utf8'
 const version=JSON.parse(fs.readFileSync(new URL('../VERSION.json',import.meta.url),'utf8'));
 
 test('corrective release metadata is current',()=>{
- assert.equal(version.version,'1.4.14.2B');
- assert.equal(version.build,'141402B');
- assert.equal(version.release_id,'FH-20260726-141402B');
- assert.equal(version.completed_story,'FH-1414.2B');
+ assert.equal(version.version,'1.4.14.3');
+ assert.equal(version.build,'141403');
+ assert.equal(version.release_id,'FH-20260726-141403');
+ assert.equal(version.completed_story,'FH-1414.7 / FH-1414.8 / FH-1414.9');
 });
 
 test('restaurant preference uses one shared atomic synchronization function',()=>{

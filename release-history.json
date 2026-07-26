@@ -2,6 +2,29 @@
   "format": "fizz-health-release-history",
   "releases": [
     {
+      "version": "1.4.14.3",
+      "name": "Menu Calendar and Restaurant Organization",
+      "type": "Feature release",
+      "created_at": "2026-07-26T20:10:00-04:00",
+      "build": "141403",
+      "release_id": "FH-20260726-141403",
+      "stories": [
+        [
+          "FH-1414.7",
+          "Refresh calendar indicators from live planner state after lifecycle changes and midnight rollover"
+        ],
+        [
+          "FH-1414.8",
+          "Group restaurant menu items dynamically by database category"
+        ],
+        [
+          "FH-1414.9",
+          "Edit restaurant item categories by swipe or pencil and move items immediately"
+        ]
+      ],
+      "known_issues": []
+    },
+    {
       "version": "1.4.14.2B",
       "name": "Production Build Syntax Corrective",
       "type": "Corrective release",

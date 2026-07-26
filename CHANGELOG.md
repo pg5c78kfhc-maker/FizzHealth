@@ -1,3 +1,9 @@
+## 1.4.14.3 — Menu Calendar and Restaurant Organization
+
+- Added live calendar synchronization and midnight rollover refresh.
+- Grouped restaurant menus by database category.
+- Added immediate restaurant category editing.
+
 ## 1.4.14.2B — Production Build Syntax Corrective
 
 - Corrected a missing JSX expression-closing brace in the Restaurant Day switch handler.

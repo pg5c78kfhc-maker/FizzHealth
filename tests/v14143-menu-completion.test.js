@@ -1,0 +1,10 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import fs from 'node:fs';
+const main=fs.readFileSync('src/main.jsx','utf8');
+const css=fs.readFileSync('src/styles.css','utf8');
+const version=JSON.parse(fs.readFileSync('VERSION.json','utf8'));
+test('release identity is v1.4.14.3',()=>{assert.equal(version.version,'1.4.14.3');assert.deepEqual(version.stories,['FH-1414.7','FH-1414.8','FH-1414.9'])});
+test('calendar refreshes from planner events and midnight rollover',()=>{assert.match(main,/fizz:planner-changed/);assert.match(main,/visibilitychange/);assert.match(main,/midnight-rollover/);assert.match(main,/plannerCalendarHasItems\(rows\)/)});
+test('restaurant menus are grouped dynamically by category',()=>{assert.match(main,/restaurantCategoryNames/);assert.match(main,/category=String\(meal.category\|\|''\)\.trim\(\)\|\|'Other'/);assert.match(main,/restaurant-category-sections/)});
+test('restaurant categories can be edited immediately',()=>{assert.match(main,/Change Category/);assert.match(main,/UPDATE restaurant_meals SET category=\?,updated_at=\?/);assert.match(main,/menu-category-edit/);assert.match(css,/restaurant-category-options/)});

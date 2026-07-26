@@ -1,0 +1,16 @@
+src/main.jsx
+src/styles.css
+src/decision/engine.js
+public/sw.js
+package.json
+package-lock.json
+VERSION.json
+release-history.json
+ReleaseNotes.md
+CHANGELOG.md
+tests/v14143-menu-completion.test.js
+tests/v14142-planner-proposed-sync.test.js
+tests/v14142a-restaurant-toggle-sync.test.js
+EXECUTION-VERIFICATION-1.4.14.3.md
+TEST-REPORT-1.4.14.3.txt
+CHANGED-FILES-1.4.14.3.txt
