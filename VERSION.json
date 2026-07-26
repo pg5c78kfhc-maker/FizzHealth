@@ -23,5 +23,6 @@
   "build_id": "141308A",
   "title": "Menu UX Corrective Rebuild",
   "name": "Menu UX Corrective Rebuild",
-  "type": "Corrective release"
+  "type": "Corrective release",
+  "package_version": "1.4.13-8a"
 }

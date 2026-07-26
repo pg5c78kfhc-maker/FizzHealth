@@ -5,7 +5,7 @@ const main=fs.readFileSync('src/main.jsx','utf8');
 const engine=fs.readFileSync('src/decision/engine.js','utf8');
 const worker=fs.readFileSync('public/sw.js','utf8');
 const notes=fs.readFileSync('ReleaseNotes.md','utf8');
-const required=['app','version','release','schema_version','build_date','status','completed_story','baseline_story','updated'];
+const required=['app','version','release','package_version','schema_version','build_date','status','completed_story','baseline_story','updated'];
 const errors=[];
 for(const key of required)if(!(key in meta))errors.push(`VERSION.json missing ${key}`);
 const ui=/const VERSION='([^']+)'/.exec(main)?.[1];
@@ -22,7 +22,8 @@ for(const token of ['Application version</span><b>{VERSION}','Build identifier</
 const releaseHistory=JSON.parse(fs.readFileSync('release-history.json','utf8'));
 const current=releaseHistory.releases?.[0];
 if(current?.version!==meta.version||current?.build!==meta.build||current?.release_id!==meta.release_id)errors.push('release-history.json current release is stale or inconsistent');
-for(const [label,value] of [['package.json',pkg.version],['UI',ui],['decision engine',engineVersion],['service worker cache',cacheVersion]])if(value!==meta.version)errors.push(`${label} version ${value||'missing'} != VERSION.json ${meta.version}`);
+if(pkg.version!==meta.package_version)errors.push(`package.json version ${pkg.version||'missing'} != VERSION.json package_version ${meta.package_version}`);
+for(const [label,value] of [['UI',ui],['decision engine',engineVersion],['service worker cache',cacheVersion]])if(value!==meta.version)errors.push(`${label} version ${value||'missing'} != VERSION.json ${meta.version}`);
 if(!notes.includes(`v${meta.version}`))errors.push(`ReleaseNotes.md does not identify v${meta.version}`);
 if(!notes.includes(meta.completed_story))errors.push(`ReleaseNotes.md does not identify ${meta.completed_story}`);
 if(errors.length){console.error(errors.join('\n'));process.exit(1)}
