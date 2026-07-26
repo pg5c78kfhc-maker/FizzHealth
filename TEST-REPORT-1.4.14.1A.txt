@@ -1,0 +1,14 @@
+Fizz Health v1.4.14.1A Test Report
+
+Focused test:
+node --test tests/v141411a-add-to-meals-corrective.test.js
+
+Result:
+5 passed
+0 failed
+
+Project integrity:
+PASSED — one application root, one package.json, one src tree.
+
+Production build:
+NOT RUN — node_modules was not present in the supplied source tree.

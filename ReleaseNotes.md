@@ -1,32 +1,19 @@
-# Fizz Health v1.4.14.1 — Menu Navigation Foundation
+# Fizz Health v1.4.14.1A — Add to Meals Navigation Corrective
 
-## Delivered stories
+- Keeps the Add to Meals workflow in place over the Menu instead of routing back to the Nutrition landing page.
+- Places the modal X and checkmark above the Menu header so those controls receive the tap.
+- Clamps the destination buttons below the fixed calendar.
+- Keeps Breakfast, Lunch, Dinner, Snack, and Beverage available.
+- Saves selected assignments before returning to the same Menu position.
+- X cancels without changing assignments and returns to the same Menu position.
 
-### FH-1414.1 — Swipe Navigation Framework
-- Partial right swipe stops and exposes the Add button.
-- Hard right swipe opens the same Add to Meals workflow.
-- Left swipe continues to expose Favorite.
-- Only one Menu item can remain swiped open at a time.
-- Vertical scrolling remains independent from horizontal gestures.
+# Fizz Health v1.4.13.8A — Menu UX Corrective Rebuild
 
-### FH-1414.2 — Add to Meals Workflow
-- Adds a focused full-screen multi-select workflow.
-- Available containers: Breakfast, Lunch, Dinner, Snack, and Beverage.
-- Existing assignments are preselected.
-- X closes without saving.
-- Checkmark saves the final set of assignments.
-- Items can be assigned to one or multiple containers.
+## Completed scope
 
-### FH-1414.9 — Favorite Synchronization
-- The card star and swipe star use the same persisted preference state.
-- Updating either star updates the other immediately.
-- Restaurant Menu favorites use the same preference source.
+- **FH-1413.8A1** — Renamed Chef Recommendations to **Chef's Picks** and added **Powered by AI**.
+- **FH-1413.8A2** — Standardized serif collapsible headings and moved item counts to the right beside the chevron.
+- **FH-1413.8A3** — Removed priority and navigation arrows, widened menu copy, narrowed the nutrition column, and stacked calories and protein.
+- **FH-1413.8A4** — Anchored bottom navigation while preserving calendar, Restaurant Day, planning, tap-to-add, swipe, Chef, and Decision Intelligence behavior.
 
-### FH-1414.10 — Chef's Picks Default State
-- Chef's Picks now starts collapsed.
-
-## Preserved behavior
-- Restaurant Day
-- Chef and Decision Intelligence ranking
-- Menu presentation established in v1.4.13.9A
-- Planned-meal containers and existing removal/lock controls
+Schema remains version 64; no database migration is required.

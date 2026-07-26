@@ -2,6 +2,29 @@
   "format": "fizz-health-release-history",
   "releases": [
     {
+      "version": "1.4.14.1A",
+      "name": "Add to Meals Navigation Corrective",
+      "type": "Corrective release",
+      "created_at": "2026-07-26T12:32:00-04:00",
+      "build": "141401A",
+      "release_id": "FH-20260726-141401A",
+      "stories": [
+        [
+          "FH-1414.1A-01",
+          "Keep the Add to Meals controls above the Menu page header and return in place on save or cancel"
+        ],
+        [
+          "FH-1414.1A-02",
+          "Clamp the meal destination panel below the calendar so all five destinations remain accessible"
+        ],
+        [
+          "FH-1414.1A-03",
+          "Persist selected meal assignments before closing the in-place workflow"
+        ]
+      ],
+      "known_issues": []
+    },
+    {
       "version": "1.4.14.1",
       "name": "Menu Navigation Foundation",
       "type": "Feature release",

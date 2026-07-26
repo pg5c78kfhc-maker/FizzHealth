@@ -1174,3 +1174,58 @@ body.food-library-active .content{height:calc(100dvh - var(--bottom-nav-height))
 /* v1.4.14.1 — Menu navigation foundation. */
 .menu-swipe-shell.is-open{z-index:2}.menu-swipe-rail{pointer-events:none}.menu-swipe-shell.is-open .menu-swipe-rail{pointer-events:auto}.menu-swipe-add,.menu-swipe-favorite{touch-action:manipulation}
 .add-to-meals-screen{width:min(560px,100%);height:min(720px,100dvh);max-height:100dvh;border-radius:22px 22px 0 0;overflow:hidden}.standard-modal-header{display:grid;grid-template-columns:52px minmax(0,1fr) 52px;align-items:center;gap:8px;padding:calc(12px + env(safe-area-inset-top)) 12px 12px;border-bottom:1px solid #25333a;background:#0b1115;position:sticky;top:0;z-index:3}.standard-modal-header>div{text-align:center;min-width:0}.standard-modal-header small{display:block;color:#96a3aa;font-size:.66rem;font-weight:900;letter-spacing:.12em}.standard-modal-header h3{margin:2px 0 0;font-size:1.08rem}.standard-modal-header>button{width:44px;height:44px;display:grid;place-items:center;background:transparent;border:0;color:#fff}.standard-modal-header>button:last-child{justify-self:end}.standard-modal-header>button:disabled{opacity:.28}.add-to-meals-item{margin:18px 16px 10px;font-family:Georgia,'Times New Roman',serif;font-weight:900;font-size:1.25rem;line-height:1.2}.multi-select-meals{display:grid;gap:10px;padding:8px 16px 28px}.multi-select-meals button{width:100%;min-height:58px;display:flex;align-items:center;justify-content:space-between;padding:12px 16px;border:1px solid #34434a;border-radius:14px;background:#121b20;color:#fff;font-size:1rem;font-weight:900}.multi-select-meals button.selected{background:#315b18;border-color:#8bd43f;color:#f2ffe6}.multi-select-meals button svg{width:22px;height:22px}.planner-meal-picker .editor-scroll{padding-bottom:env(safe-area-inset-bottom)}
+
+
+/* v1.4.14.1A — in-place Add to Meals corrective. */
+.add-to-meals-backdrop{
+  z-index:2300;
+  background:transparent;
+  padding:0;
+  align-items:stretch;
+  pointer-events:auto;
+}
+.add-to-meals-backdrop>.add-to-meals-screen{
+  position:fixed;
+  inset:0;
+  width:min(520px,100%);
+  max-width:520px;
+  max-height:none;
+  height:var(--visual-viewport-height,100dvh);
+  margin:0 auto;
+  border:0;
+  border-radius:0;
+  background:transparent;
+  overflow:visible;
+  box-shadow:none;
+}
+.add-to-meals-backdrop .standard-modal-header{
+  position:fixed;
+  top:var(--visual-viewport-top,0px);
+  left:50%;
+  transform:translateX(-50%);
+  width:min(520px,100%);
+  min-height:var(--menu-header-height,calc(65px + env(safe-area-inset-top)));
+  z-index:2302;
+  background:#050809;
+}
+.add-to-meals-backdrop .editor-scroll{
+  position:fixed;
+  top:calc(var(--visual-viewport-top,0px) + var(--menu-header-height,calc(65px + env(safe-area-inset-top))) + var(--menu-calendar-height,178px));
+  left:50%;
+  transform:translateX(-50%);
+  bottom:calc(84px + env(safe-area-inset-bottom));
+  width:min(520px,100%);
+  max-height:none;
+  overflow-y:auto;
+  overscroll-behavior:contain;
+  padding:10px 16px 28px;
+  background:#12191e;
+  border-top:1px solid #2b3940;
+  z-index:2301;
+}
+.add-to-meals-backdrop .add-to-meals-item{margin:4px 0 12px;}
+.add-to-meals-backdrop .multi-select-meals{padding:0;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;}
+.add-to-meals-backdrop .multi-select-meals button{min-height:76px;}
+@media(max-width:520px){
+ .add-to-meals-backdrop .editor-scroll{width:calc(100% - 40px);padding:10px 16px 28px;}
+}
