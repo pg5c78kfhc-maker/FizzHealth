@@ -1,14 +1,14 @@
 {
   "app": "Fizz Health",
-  "version": "1.4.15.7",
-  "release": "Corrective Stabilization",
+  "version": "1.4.15.8",
+  "release": "Menu Stabilization Corrective",
   "release_type": "Corrective release",
-  "build": "141507",
-  "release_id": "FH-20260727-141507",
-  "created_at": "2026-07-27T13:35:00-04:00",
+  "build": "141508",
+  "release_id": "FH-20260727-141508",
+  "created_at": "2026-07-27T15:46:52-04:00",
   "schema_version": 70,
   "status": "Corrective Stabilization",
-  "completed_story": "FH-1415.40",
+  "completed_story": "FH-1415.44",
   "baseline_story": "FH-1221",
   "updated": "2026-07-27",
   "stories": [
@@ -18,14 +18,18 @@
     "FH-1415.37",
     "FH-1415.38",
     "FH-1415.39",
-    "FH-1415.40"
+    "FH-1415.40",
+    "FH-1415.41",
+    "FH-1415.42",
+    "FH-1415.43",
+    "FH-1415.44"
   ],
-  "build_date": "2026-07-27T13:35:00-04:00",
-  "release_name": "Corrective Stabilization",
+  "build_date": "2026-07-27T15:46:52-04:00",
+  "release_name": "Menu Stabilization Corrective",
   "release_date": "2026-07-27",
-  "build_id": "141507",
-  "title": "Corrective Stabilization",
-  "name": "Corrective Stabilization",
+  "build_id": "141508",
+  "title": "Menu Stabilization Corrective",
+  "name": "Menu Stabilization Corrective",
   "type": "Corrective release",
-  "package_version": "1.4.15-7"
+  "package_version": "1.4.15-8"
 }

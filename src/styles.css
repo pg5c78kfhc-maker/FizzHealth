@@ -1722,3 +1722,38 @@ body.food-library-active .content{overflow:hidden!important}
 .meal-calendar-prototype .today-menu{padding-top:0!important}
 .meal-calendar-prototype .today-menu>.chef-section{margin-bottom:0!important;border-bottom-left-radius:0!important;border-bottom-right-radius:0!important}
 .meal-calendar-prototype .today-menu>.chef-section+.menu-category{margin-top:0!important;border-top:0!important;border-top-left-radius:0!important;border-top-right-radius:0!important}
+
+/* v1.4.15.8 stabilization: exact Menu stack geometry and full-width Chef media */
+.meal-calendar-prototype .today-menu{
+  display:flex!important;
+  flex-direction:column!important;
+  gap:0!important;
+  width:calc(100% - 24px)!important;
+  max-width:calc(100% - 24px)!important;
+  padding-left:0!important;
+  padding-right:0!important;
+}
+.meal-calendar-prototype .today-menu>.menu-category{
+  flex:0 0 auto!important;
+  align-self:stretch!important;
+  width:100%!important;
+  max-width:100%!important;
+  margin:0!important;
+}
+.meal-calendar-prototype .today-menu>.chef-section+.menu-category{
+  margin-top:0!important;
+}
+.meal-calendar-prototype .chef-section .restaurant-menu-card.has-chef-image{
+  grid-template-columns:minmax(0,1fr) auto!important;
+  padding-top:0!important;
+  overflow:hidden!important;
+}
+.meal-calendar-prototype .chef-section .restaurant-menu-card.has-chef-image>.chef-pick-image{
+  grid-column:1/-1!important;
+  width:100%!important;
+  height:auto!important;
+  min-height:150px!important;
+  max-height:220px!important;
+  border-radius:0!important;
+  align-self:stretch!important;
+}

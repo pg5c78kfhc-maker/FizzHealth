@@ -28,8 +28,7 @@ test('Menu stack has no Chef/category gap',()=>{
  assert.match(css,/today-menu>\.chef-section\+\.menu-category/);
  assert.match(css,/border-top:0!important/);
 });
-test('release identity is centralized for v1.4.15.7',()=>{
- assert.match(main,/const VERSION='1\.4\.15\.7'/);
- assert.match(main,/const BUILD_ID='141507'/);
- assert.match(main,/const DEPLOYMENT_ID='FH-20260727-141507'/);
+test('v1.4.15.7 stabilization remains represented in release history',()=>{
+ assert.match(main,/version:'1\.4\.15\.7'/);
+ assert.match(main,/FH-1415\.40/);
 });
