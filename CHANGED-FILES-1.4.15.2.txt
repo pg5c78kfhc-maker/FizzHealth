@@ -1,0 +1,14 @@
+VERSION.json
+ReleaseNotes.md
+release-history.json
+package.json
+package-lock.json
+public/sw.js
+src/database.js
+src/decision/engine.js
+src/main.jsx
+src/styles.css
+tests/v14152-stabilization.test.js
+EXECUTION-VERIFICATION-1.4.15.2.md
+TEST-REPORT-1.4.15.2.md
+CHANGED-FILES-1.4.15.2.txt

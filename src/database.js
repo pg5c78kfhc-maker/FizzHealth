@@ -865,10 +865,18 @@ const migrations=[
     UPDATE foods SET category=NULL WHERE ingredient_only=0 AND category='Ingredient';
     UPDATE recipes SET category=NULL WHERE ingredient_only=0 AND category='Ingredient';
     UPDATE meal_definitions SET category=NULL WHERE ingredient_only=0 AND category='Ingredient';
+    CREATE TABLE IF NOT EXISTS release_register (
+      version TEXT PRIMARY KEY,
+      issued_date TEXT NOT NULL,
+      build_id TEXT NOT NULL,
+      schema_version INTEGER NOT NULL,
+      title TEXT NOT NULL,
+      created_at TEXT NOT NULL
+    );
     INSERT OR REPLACE INTO release_metadata(version,release_date,build_id,schema_version,title,created_at)
-    VALUES ('1.4.15.1','2026-07-27','141501',68,'Production Build Syntax Corrective','2026-07-27T11:05:00-04:00');
+    VALUES ('1.4.15.2','2026-07-27','141502',68,'Meals Builder Stabilization','2026-07-27T11:30:00-04:00');
     INSERT OR IGNORE INTO release_register(version,issued_date,build_id,schema_version,title,created_at)
-    VALUES ('1.4.15.0','2026-07-27','141500',68,'Unified Classification & Meals Builder','2026-07-27T12:30:00-04:00');
+    VALUES ('1.4.15.2','2026-07-27','141502',68,'Meals Builder Stabilization','2026-07-27T11:30:00-04:00');
   `}
 
 ];
