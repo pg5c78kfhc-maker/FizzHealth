@@ -50,3 +50,9 @@ export function scheduleDeferredWork(work,{delay=0,onError=console.warn}={}){
 export function readStartupDiagnostics(storage=typeof localStorage!=='undefined'?localStorage:null){
   try{return JSON.parse(storage?.getItem(STORAGE_KEY)||'null')}catch{return null}
 }
+
+export function withStartupTimeout(promise,timeoutMs=12000,message='Startup timed out.'){
+  let timer;
+  const timeout=new Promise((_,reject)=>{timer=setTimeout(()=>reject(new Error(message)),timeoutMs)});
+  return Promise.race([Promise.resolve(promise),timeout]).finally(()=>clearTimeout(timer));
+}

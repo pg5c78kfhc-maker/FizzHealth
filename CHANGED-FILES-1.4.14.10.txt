@@ -1,0 +1,15 @@
+VERSION.json
+ReleaseNotes.md
+release-history.json
+package.json
+package-lock.json
+public/sw.js
+src/main.jsx
+src/startup.js
+src/styles.css
+src/decision/engine.js
+src/nutrition/format.js
+tests/v141410-stability-ux.test.js
+EXECUTION-VERIFICATION-1.4.14.10.md
+TEST-REPORT-1.4.14.10.md
+CHANGED-FILES-1.4.14.10.txt

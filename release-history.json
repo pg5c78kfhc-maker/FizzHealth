@@ -2,6 +2,33 @@
   "format": "fizz-health-release-history",
   "releases": [
     {
+      "version": "1.4.14.10",
+      "name": "Stability & UX Refinements",
+      "type": "Corrective and polish release",
+      "created_at": "2026-07-27T18:30:00-04:00",
+      "build": "141410",
+      "release_id": "FH-20260727-141410",
+      "stories": [
+        [
+          "FH-1414.13",
+          "Add bounded startup recovery with timeout and in-app retry"
+        ],
+        [
+          "FH-1414.14",
+          "Align Chef's Picks with Menu category cards and remove section spacing"
+        ],
+        [
+          "FH-1414.15",
+          "Standardize user-facing nutrition rounding through shared formatters"
+        ],
+        [
+          "FH-1414.16",
+          "Reuse the Menu category editor from Meals swipe actions"
+        ]
+      ],
+      "known_issues": []
+    },
+    {
       "version": "1.4.14.9",
       "name": "Startup Performance and Nutrition Verification",
       "type": "Corrective reliability release",

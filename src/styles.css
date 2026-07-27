@@ -1560,3 +1560,14 @@ body.food-library-active .content{height:calc(100dvh - var(--bottom-nav-height))
 }
 .audit-result{display:grid;gap:.2rem;padding:.75rem 0;border-bottom:1px solid rgba(255,255,255,.16)}
 .audit-result span{text-transform:capitalize}.audit-result small{opacity:.8}
+
+/* v1.4.14.10 — startup recovery, aligned Chef's Picks, and Meals category swipe. */
+.startup-recovery{display:grid;justify-items:center;gap:10px;margin-top:18px;max-width:300px}.startup-recovery .retry-boot{min-width:132px}.startup-recovery>small{font-size:.72rem;opacity:.7}
+.meal-calendar-prototype .today-menu{padding-left:0!important;padding-right:0!important}
+.meal-calendar-prototype .chef-section{width:100%!important;max-width:none!important;margin:0!important;border-radius:14px 14px 0 0!important}
+.meal-calendar-prototype .chef-section+.menu-category{margin-top:0!important;border-top-left-radius:0!important;border-top-right-radius:0!important}
+.meal-calendar-prototype .chef-section .white-menu-list{width:100%!important}
+.meal-calendar-prototype .chef-section .restaurant-menu-card{width:100%!important;grid-template-columns:minmax(0,1fr) auto!important}
+.meal-calendar-prototype .chef-section .restaurant-menu-copy{min-width:0!important;padding-right:4px!important}
+.meal-calendar-prototype .chef-section .restaurant-menu-nutrition{min-width:58px!important}
+.swipe-category{background:#315b18;color:#fff}.discovery-swipe-rail:has(.swipe-category){grid-template-columns:repeat(3,minmax(74px,1fr));width:min(276px,86vw)}
