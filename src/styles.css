@@ -1449,3 +1449,16 @@ body.food-library-active .content{height:calc(100dvh - var(--bottom-nav-height))
   overflow:hidden;
   margin:8px 10px;
 }
+
+
+/* v1.4.14.4C — compact calorie/protein stack on Menu cards. */
+.white-menu-list .restaurant-menu-nutrition{
+  gap:2px!important;
+  padding-bottom:0!important;
+}
+.white-menu-list .restaurant-menu-nutrition span+span{
+  padding-top:3px!important;
+}
+.white-menu-list .restaurant-menu-card{
+  min-height:96px!important;
+}

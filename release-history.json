@@ -2,6 +2,25 @@
   "format": "fizz-health-release-history",
   "releases": [
     {
+      "version": "1.4.14.4C",
+      "name": "Database Categories and Compact Menu Nutrition",
+      "type": "Corrective release",
+      "created_at": "2026-07-26T23:20:00-04:00",
+      "build": "141404C",
+      "release_id": "FH-20260726-141404C",
+      "stories": [
+        [
+          "FH-1414.11C",
+          "Store the canonical food classifications in SQLite and populate Menu category editing only from that database table"
+        ],
+        [
+          "FH-1414.12C",
+          "Pull calories and protein closer together on Menu cards to reduce vertical space"
+        ]
+      ],
+      "known_issues": []
+    },
+    {
       "version": "1.4.14.4B",
       "name": "Canonical Menu Classification Corrective",
       "type": "Corrective release",
@@ -141,7 +160,7 @@
         ],
         [
           "FH-1414.4",
-          "Make future dated plans become today\u2019s Proposed entries automatically at local midnight or next app open"
+          "Make future dated plans become today’s Proposed entries automatically at local midnight or next app open"
         ],
         [
           "FH-1414.5",
@@ -464,7 +483,7 @@
         ],
         [
           "FH-1159",
-          "Move classification maintenance into Settings \u2192 Data Enrichment"
+          "Move classification maintenance into Settings → Data Enrichment"
         ],
         [
           "FH-1164",
@@ -1151,7 +1170,7 @@
     },
     {
       "version": "1.4.11.0",
-      "name": "Daily Brief & Meal Intelligence \u2014 First Pass",
+      "name": "Daily Brief & Meal Intelligence — First Pass",
       "type": "Meal Intelligence foundation",
       "created": "2026-07-23T06:00:00-04:00",
       "build": "141100",
@@ -1573,7 +1592,7 @@
     },
     {
       "version": "1.4.10.9",
-      "name": "One-Time Food Logging \u2014 Log Once",
+      "name": "One-Time Food Logging — Log Once",
       "type": "Patch",
       "created": "2026-07-20T11:15:00-04:00",
       "build": "14108",

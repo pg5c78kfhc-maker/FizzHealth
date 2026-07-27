@@ -1,26 +1,26 @@
 {
   "app": "Fizz Health",
-  "version": "1.4.14.4B",
-  "release": "1.4.14.4B",
+  "version": "1.4.14.4C",
+  "release": "1.4.14.4C",
   "release_type": "Corrective release",
-  "build": "141404B",
-  "release_id": "FH-20260726-141404B",
-  "created_at": "2026-07-26T22:45:00-04:00",
-  "schema_version": 66,
-  "status": "Canonical Menu Classification Corrective",
-  "completed_story": "FH-1414.11B / FH-1414.12B",
+  "build": "141404C",
+  "release_id": "FH-20260726-141404C",
+  "created_at": "2026-07-26T23:20:00-04:00",
+  "schema_version": 67,
+  "status": "Database Categories and Compact Menu Nutrition",
+  "completed_story": "FH-1414.11C / FH-1414.12C",
   "baseline_story": "FH-1221",
-  "updated": "2026-07-26T22:45:00-04:00",
+  "updated": "2026-07-26T23:20:00-04:00",
   "stories": [
-    "FH-1414.11B",
-    "FH-1414.12B"
+    "FH-1414.11C",
+    "FH-1414.12C"
   ],
-  "build_date": "2026-07-26T22:45:00-04:00",
-  "release_name": "Canonical Menu Classification Corrective",
+  "build_date": "2026-07-26T23:20:00-04:00",
+  "release_name": "Database Categories and Compact Menu Nutrition",
   "release_date": "2026-07-26",
-  "build_id": "141404B",
-  "title": "Canonical Menu Classification Corrective",
-  "name": "Canonical Menu Classification Corrective",
+  "build_id": "141404C",
+  "title": "Database Categories and Compact Menu Nutrition",
+  "name": "Database Categories and Compact Menu Nutrition",
   "type": "Corrective release",
-  "package_version": "1.4.14-4B"
+  "package_version": "1.4.14-4C"
 }

@@ -3,7 +3,7 @@ import wasmUrl from 'sql.js/dist/sql-wasm.wasm?url';
 
 const DB_KEY='fizz-health-sqlite-v1';
 const STORAGE_DB='FizzHealthStorage';
-const TARGET_SCHEMA_VERSION=66;
+const TARGET_SCHEMA_VERSION=67;
 let SQL, db;
 
 const migrations=[
@@ -825,6 +825,32 @@ const migrations=[
     INSERT OR REPLACE INTO release_metadata(version,release_date,build_id,schema_version,title,created_at)
     VALUES ('1.4.14.4B','2026-07-26','141404B',66,'Canonical Menu Classification Corrective','2026-07-26T22:45:00-04:00');
   `}
+,  {version:67,name:'canonical_food_category_repository',sql:`
+    CREATE TABLE IF NOT EXISTS food_categories (
+      category_key TEXT PRIMARY KEY,
+      display_name TEXT NOT NULL UNIQUE,
+      sort_order INTEGER NOT NULL,
+      active INTEGER NOT NULL DEFAULT 1,
+      created_at TEXT NOT NULL,
+      updated_at TEXT NOT NULL
+    );
+    DELETE FROM food_categories;
+    INSERT INTO food_categories(category_key,display_name,sort_order,active,created_at,updated_at) VALUES
+      ('breakfast','Breakfast',10,1,CURRENT_TIMESTAMP,CURRENT_TIMESTAMP),
+      ('appetizer','Appetizer',20,1,CURRENT_TIMESTAMP,CURRENT_TIMESTAMP),
+      ('tapas','Tapas',30,1,CURRENT_TIMESTAMP,CURRENT_TIMESTAMP),
+      ('soup','Soup',40,1,CURRENT_TIMESTAMP,CURRENT_TIMESTAMP),
+      ('salad','Salad',50,1,CURRENT_TIMESTAMP,CURRENT_TIMESTAMP),
+      ('entree','Entrée',60,1,CURRENT_TIMESTAMP,CURRENT_TIMESTAMP),
+      ('side','Side',70,1,CURRENT_TIMESTAMP,CURRENT_TIMESTAMP),
+      ('snack','Snack',80,1,CURRENT_TIMESTAMP,CURRENT_TIMESTAMP),
+      ('dessert','Dessert',90,1,CURRENT_TIMESTAMP,CURRENT_TIMESTAMP),
+      ('beverage','Beverage',100,1,CURRENT_TIMESTAMP,CURRENT_TIMESTAMP),
+      ('alcohol','Alcohol',110,1,CURRENT_TIMESTAMP,CURRENT_TIMESTAMP),
+      ('condiment','Condiment',120,1,CURRENT_TIMESTAMP,CURRENT_TIMESTAMP);
+    INSERT OR REPLACE INTO release_metadata(version,release_date,build_id,schema_version,title,created_at)
+    VALUES ('1.4.14.4C','2026-07-26','141404C',67,'Database Categories and Compact Menu Nutrition','2026-07-26T23:20:00-04:00');
+  `}
 
 ];
 
@@ -1032,6 +1058,13 @@ async function migrate(onProgress=()=>{}){
     if(hasTable('settings'))db.run('INSERT OR REPLACE INTO settings(key,value) VALUES (?,?)',[repairMarker,'1']);
     db.run('COMMIT');
   }catch(error){try{db.run('ROLLBACK')}catch{}db=new SQL.Database(new Uint8Array(backup));throw new Error(`Database schema reconciliation failed: ${error.message}`)}
+  if(hasTable('food_categories')){
+    const requiredCategories=['Breakfast','Appetizer','Tapas','Soup','Salad','Entrée','Side','Snack','Dessert','Beverage','Alcohol','Condiment'];
+    const storedCategories=query('SELECT display_name FROM food_categories WHERE active=1 ORDER BY sort_order').map(row=>row.display_name);
+    const missing=requiredCategories.filter(name=>!storedCategories.includes(name));
+    const unexpected=storedCategories.filter(name=>!requiredCategories.includes(name));
+    if(missing.length||unexpected.length||storedCategories.length!==requiredCategories.length)throw new Error(`Canonical food category integrity failure. Missing: ${missing.join(', ')||'none'}. Unexpected: ${unexpected.join(', ')||'none'}.`);
+  }
   if(hasTable('meal_date_index')){onProgress('Indexing meal history…');normalizeHistoricalMeals()}
   onProgress('Saving database…');
   await persist();
