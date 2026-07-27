@@ -2,12 +2,12 @@
   "format": "fizz-health-release-history",
   "releases": [
     {
-      "version": "1.4.15.3",
-      "name": "Startup Loop Recovery",
+      "version": "1.4.15.4",
+      "name": "Meals & Startup Stabilization",
       "type": "Corrective release",
       "created_at": "2026-07-27T12:10:00-04:00",
-      "build": "141503",
-      "release_id": "FH-20260727-141503",
+      "build": "141504",
+      "release_id": "FH-20260727-141504",
       "schema_version": 69,
       "stories": [
         "FH-1415.26",

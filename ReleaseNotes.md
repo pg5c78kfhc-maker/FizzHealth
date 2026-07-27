@@ -1,4 +1,4 @@
-# Fizz Health v1.4.15.3 — Startup Loop Recovery
+# Fizz Health v1.4.15.4 — Meals & Startup Stabilization
 
 Corrective release issued 2026-07-27.
 
@@ -8,8 +8,8 @@ Corrective release issued 2026-07-27.
 - FH-1415.29 — Keep the startup recovery screen stable and disable overlapping Retry actions.
 
 Schema version: 69  
-Build: 141503  
-Deployment: FH-20260727-141503
+Build: 141504  
+Deployment: FH-20260727-141504
 
 ---
 
@@ -26,3 +26,5 @@ Schema: 68
 - FH-1415.23 — Restore icon-only All, Recent, and Favorites controls with a clear selected state.
 - FH-1415.24 — Constrain swipe actions so Category and Archive remain fully visible.
 - FH-1415.25 — Remove horizontal overflow, clipped text, and unfinished layout artifacts.
+
+- FH-1415.30 — Restore Menu card containment and remove the gap below Chef's Picks.

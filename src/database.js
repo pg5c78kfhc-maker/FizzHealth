@@ -889,9 +889,9 @@ const migrations=[
       created_at TEXT NOT NULL
     );
     INSERT OR REPLACE INTO release_metadata(version,release_date,build_id,schema_version,title,created_at)
-    VALUES ('1.4.15.3','2026-07-27','141503',69,'Startup Loop Recovery','2026-07-27T12:10:00-04:00');
+    VALUES ('1.4.15.4','2026-07-27','141504',69,'Meals & Startup Stabilization','2026-07-27T12:10:00-04:00');
     INSERT OR IGNORE INTO release_register(version,issued_date,build_id,schema_version,title,created_at)
-    VALUES ('1.4.15.3','2026-07-27','141503',69,'Startup Loop Recovery','2026-07-27T12:10:00-04:00');
+    VALUES ('1.4.15.4','2026-07-27','141504',69,'Meals & Startup Stabilization','2026-07-27T12:10:00-04:00');
   `}
 
 
