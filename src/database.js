@@ -3,7 +3,7 @@ import wasmUrl from 'sql.js/dist/sql-wasm.wasm?url';
 
 const DB_KEY='fizz-health-sqlite-v1';
 const STORAGE_DB='FizzHealthStorage';
-const TARGET_SCHEMA_VERSION=67;
+const TARGET_SCHEMA_VERSION=68;
 let SQL, db;
 
 const migrations=[
@@ -852,12 +852,29 @@ const migrations=[
     VALUES ('1.4.14.4C','2026-07-26','141404C',67,'Database Categories and Compact Menu Nutrition','2026-07-26T23:20:00-04:00');
   `}
 
+,  {version:68,name:'unified_classification_and_meals_builder',sql:`
+    ALTER TABLE foods ADD COLUMN ingredient_only INTEGER DEFAULT 0;
+    ALTER TABLE recipes ADD COLUMN ingredient_only INTEGER DEFAULT 0;
+    ALTER TABLE meal_definitions ADD COLUMN ingredient_only INTEGER DEFAULT 0;
+    UPDATE foods SET ingredient_only=CASE WHEN COALESCE(usage_designation,consumption_role,'')='component' THEN 1 ELSE 0 END;
+    UPDATE recipes SET ingredient_only=CASE WHEN COALESCE(usage_designation,'')='component' THEN 1 ELSE 0 END;
+    UPDATE meal_definitions SET ingredient_only=CASE WHEN COALESCE(usage_designation,'')='component' THEN 1 ELSE 0 END;
+    UPDATE foods SET category='Ingredient' WHERE ingredient_only=1;
+    UPDATE recipes SET category='Ingredient' WHERE ingredient_only=1;
+    UPDATE meal_definitions SET category='Ingredient' WHERE ingredient_only=1;
+    UPDATE foods SET category=NULL WHERE ingredient_only=0 AND category='Ingredient';
+    UPDATE recipes SET category=NULL WHERE ingredient_only=0 AND category='Ingredient';
+    UPDATE meal_definitions SET category=NULL WHERE ingredient_only=0 AND category='Ingredient';
+    INSERT OR REPLACE INTO release_metadata(version,release_date,build_id,schema_version,title,created_at)
+    VALUES ('1.4.15.0','2026-07-27','141500',68,'Unified Classification & Meals Builder','2026-07-27T12:30:00-04:00');
+  `}
+
 ];
 
 const canonicalSchema={
   foods:{
     create:`CREATE TABLE IF NOT EXISTS foods (food_id TEXT PRIMARY KEY, name TEXT, category TEXT, default_serving REAL, unit TEXT, calories REAL, protein REAL, carbs REAL, fiber REAL, fat REAL, saturated_fat REAL, sodium REAL, potassium REAL, notes TEXT)`,
-    columns:{food_id:'TEXT',name:'TEXT',category:'TEXT',default_serving:'REAL',unit:'TEXT',calories:'REAL',protein:'REAL',carbs:'REAL',fiber:'REAL',fat:'REAL',saturated_fat:'REAL',sodium:'REAL',potassium:'REAL',notes:'TEXT',nutrition_known:'INTEGER DEFAULT 0',archived:'INTEGER DEFAULT 0',archived_at:'TEXT',classification:"TEXT DEFAULT 'ingredient'",usage_designation:"TEXT DEFAULT 'component'"},
+    columns:{food_id:'TEXT',name:'TEXT',category:'TEXT',default_serving:'REAL',unit:'TEXT',calories:'REAL',protein:'REAL',carbs:'REAL',fiber:'REAL',fat:'REAL',saturated_fat:'REAL',sodium:'REAL',potassium:'REAL',notes:'TEXT',nutrition_known:'INTEGER DEFAULT 0',archived:'INTEGER DEFAULT 0',archived_at:'TEXT',classification:"TEXT DEFAULT 'ingredient'",usage_designation:"TEXT DEFAULT 'component'",ingredient_only:'INTEGER DEFAULT 0'},
     aliases:{name:['food','food_name']}
   },
   pantry:{
