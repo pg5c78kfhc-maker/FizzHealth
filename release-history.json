@@ -2,6 +2,29 @@
   "format": "fizz-health-release-history",
   "releases": [
     {
+      "version": "1.4.14.4",
+      "name": "Menu Information, Universal Categories, and Presentation",
+      "type": "Feature release",
+      "created_at": "2026-07-26T21:30:00-04:00",
+      "build": "141404",
+      "release_id": "FH-20260726-141404",
+      "stories": [
+        [
+          "FH-1414.10",
+          "Open a read-only Information page on normal Menu taps and require an explicit Add to Meals action"
+        ],
+        [
+          "FH-1414.11",
+          "Persist category changes for foods, restaurant items, meals, and recipes and relocate them immediately"
+        ],
+        [
+          "FH-1414.12",
+          "Refresh the lower Menu presentation with reversible light restaurant-menu styling"
+        ]
+      ],
+      "known_issues": []
+    },
+    {
       "version": "1.4.14.3",
       "name": "Menu Calendar and Restaurant Organization",
       "type": "Feature release",

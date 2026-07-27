@@ -1,0 +1,14 @@
+VERSION.json
+package.json
+package-lock.json
+public/sw.js
+release-history.json
+ReleaseNotes.md
+src/main.jsx
+src/styles.css
+src/database.js
+src/decision/engine.js
+tests/v14144-menu-information-category-presentation.test.js
+EXECUTION-VERIFICATION-1.4.14.4.md
+TEST-REPORT-1.4.14.4.md
+CHANGED-FILES-1.4.14.4.txt

@@ -3,7 +3,7 @@ import wasmUrl from 'sql.js/dist/sql-wasm.wasm?url';
 
 const DB_KEY='fizz-health-sqlite-v1';
 const STORAGE_DB='FizzHealthStorage';
-const TARGET_SCHEMA_VERSION=63;
+const TARGET_SCHEMA_VERSION=66;
 let SQL, db;
 
 const migrations=[
@@ -819,6 +819,13 @@ const migrations=[
     VALUES ('1.4.11.42','2026-07-25','141142',63,'Eat Header Finalization','2026-07-25T10:30:00-04:00');
   `}
 
+,  {version:66,name:'menu_universal_recipe_categories',sql:`
+    ALTER TABLE recipes ADD COLUMN category TEXT DEFAULT 'Any';
+    UPDATE recipes SET category='Any' WHERE category IS NULL OR TRIM(category)='';
+    INSERT OR REPLACE INTO release_metadata(version,release_date,build_id,schema_version,title,created_at)
+    VALUES ('1.4.14.4','2026-07-26','141404',66,'Menu Information, Categories, and Presentation','2026-07-26T21:30:00-04:00');
+  `}
+
 ];
 
 const canonicalSchema={
@@ -834,7 +841,7 @@ const canonicalSchema={
   },
   recipes:{
     create:`CREATE TABLE IF NOT EXISTS recipes (id INTEGER PRIMARY KEY AUTOINCREMENT, recipe_id TEXT, recipe_name TEXT, ingredient_name TEXT, amount REAL, unit TEXT, ingredient_type TEXT, ingredient_id TEXT, inventory_status TEXT)`,
-    columns:{recipe_id:'TEXT',recipe_name:'TEXT',ingredient_name:'TEXT',amount:'REAL',unit:'TEXT',ingredient_type:'TEXT',ingredient_id:'TEXT',inventory_status:'TEXT',archived:'INTEGER DEFAULT 0',archived_at:'TEXT',classification:"TEXT DEFAULT 'recipe'",usage_designation:"TEXT DEFAULT 'standalone'"},
+    columns:{recipe_id:'TEXT',recipe_name:'TEXT',ingredient_name:'TEXT',amount:'REAL',unit:'TEXT',ingredient_type:'TEXT',ingredient_id:'TEXT',inventory_status:'TEXT',archived:'INTEGER DEFAULT 0',archived_at:'TEXT',classification:"TEXT DEFAULT 'recipe'",usage_designation:"TEXT DEFAULT 'standalone'",category:"TEXT DEFAULT 'Any'"},
     aliases:{recipe_name:['recipe','name'],ingredient_name:['ingredient','food_name']}
   },
   health_metrics:{

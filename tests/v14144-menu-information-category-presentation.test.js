@@ -1,0 +1,13 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import fs from 'node:fs';
+const main=fs.readFileSync('src/main.jsx','utf8');
+const css=fs.readFileSync('src/styles.css','utf8');
+const db=fs.readFileSync('src/database.js','utf8');
+const meta=JSON.parse(fs.readFileSync('VERSION.json','utf8'));
+test('release identity is v1.4.14.4 with schema 66',()=>{assert.equal(meta.version,'1.4.14.4');assert.equal(meta.schema_version,66)});
+test('normal Menu tap opens Information instead of Add',()=>{assert.match(main,/if\(!wasMoved\)onInspect\(meal\)/);assert.match(main,/function MenuInformationView/);assert.match(main,/Add to Meals/)});
+test('swipe Add remains explicit and unchanged',()=>{assert.match(main,/if\(distance>=112\)\{close\(\);onAdd\(meal\)/);assert.match(main,/className="menu-swipe-add"/)});
+test('all supported object types persist category changes',()=>{for(const table of ['restaurant_meals','foods','recipes','meal_definitions'])assert.match(main,new RegExp(`UPDATE ${table}`))});
+test('recipe category is schema-managed',()=>{assert.match(db,/version:66/);assert.match(db,/ALTER TABLE recipes ADD COLUMN category/)});
+test('light presentation is scoped below the Menu title',()=>{assert.match(css,/v1\.4\.14\.4/);assert.match(css,/\.meal-calendar-prototype \.planned-meals-menu/);assert.match(css,/\.meal-calendar-prototype \.today-menu/);assert.doesNotMatch(css,/\.planner-calendar-sticky\{background:#fff/) });
