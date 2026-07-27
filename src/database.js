@@ -3,7 +3,7 @@ import wasmUrl from 'sql.js/dist/sql-wasm.wasm?url';
 
 const DB_KEY='fizz-health-sqlite-v1';
 const STORAGE_DB='FizzHealthStorage';
-const TARGET_SCHEMA_VERSION=69;
+const TARGET_SCHEMA_VERSION=70;
 let SQL, db;
 
 const migrations=[
@@ -892,6 +892,20 @@ const migrations=[
     VALUES ('1.4.15.6','2026-07-27','141506',69,'Category Commit Corrective','2026-07-27T13:05:00-04:00');
     INSERT OR IGNORE INTO release_register(version,issued_date,build_id,schema_version,title,created_at)
     VALUES ('1.4.15.6','2026-07-27','141506',69,'Category Commit Corrective','2026-07-27T13:05:00-04:00');
+  `},
+  {version:70,name:'corrective_stabilization',sql:`
+    UPDATE meal_definitions
+       SET archived=1, archived_at=CURRENT_TIMESTAMP, archive_source='v1.4.15.7_duplicate_cleanup', updated_at=CURRENT_TIMESTAMP
+     WHERE COALESCE(archived,0)=0
+       AND source_type='food'
+       AND created_at>='2026-07-27T11:00:00-04:00'
+       AND EXISTS (SELECT 1 FROM foods f WHERE CAST(f.food_id AS TEXT)=CAST(meal_definitions.source_id AS TEXT) AND LOWER(TRIM(f.name))=LOWER(TRIM(meal_definitions.title)))
+       AND EXISTS (SELECT 1 FROM meal_components c WHERE c.meal_id=meal_definitions.meal_id AND c.component_type='food' AND CAST(c.component_id AS TEXT)=CAST(meal_definitions.source_id AS TEXT))
+       AND (SELECT COUNT(*) FROM meal_components c2 WHERE c2.meal_id=meal_definitions.meal_id)=1;
+    INSERT OR REPLACE INTO release_metadata(version,release_date,build_id,schema_version,title,created_at)
+    VALUES ('1.4.15.7','2026-07-27','141507',70,'Corrective Stabilization','2026-07-27T13:35:00-04:00');
+    INSERT OR REPLACE INTO release_register(version,issued_date,build_id,schema_version,title,created_at)
+    VALUES ('1.4.15.7','2026-07-27','141507',70,'Corrective Stabilization','2026-07-27T13:35:00-04:00');
   `}
 
 

@@ -2,16 +2,21 @@
   "format": "fizz-health-release-history",
   "releases": [
     {
-      "version": "1.4.15.6",
-      "name": "Category Commit Corrective",
+      "version": "1.4.15.7",
+      "name": "Corrective Stabilization",
       "type": "Corrective release",
-      "created_at": "2026-07-27T13:05:00-04:00",
-      "build": "141506",
-      "release_id": "FH-20260727-141506",
-      "schema_version": 69,
+      "created_at": "2026-07-27T13:35:00-04:00",
+      "build": "141507",
+      "release_id": "FH-20260727-141507",
+      "schema_version": 70,
       "stories": [
-        "FH-1415.32",
-        "FH-1415.33"
+        "FH-1415.34",
+        "FH-1415.35",
+        "FH-1415.36",
+        "FH-1415.37",
+        "FH-1415.38",
+        "FH-1415.39",
+        "FH-1415.40"
       ],
       "known_issues": []
     },
