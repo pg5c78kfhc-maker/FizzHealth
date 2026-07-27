@@ -1463,8 +1463,8 @@ body.food-library-active .content{height:calc(100dvh - var(--bottom-nav-height))
   min-height:96px!important;
 }
 
-/* v1.4.14.5 — handwritten Menu hierarchy and final vertical-density polish. */
-:root{--menu-handwriting:"Nothing You Could Do","Segoe Print","Bradley Hand",cursive}
+/* v1.4.14.6 — Caveat Menu hierarchy, continuous stacking, and Chef image foundation. */
+:root{--menu-handwriting:"Caveat","Segoe Print","Bradley Hand",cursive}
 
 /* Handwriting is deliberately limited to restaurant names and Menu category names. */
 .meal-calendar-prototype .restaurant-menu-group>.menu-category-heading h3,
@@ -1472,6 +1472,7 @@ body.food-library-active .content{height:calc(100dvh - var(--bottom-nav-height))
 .meal-calendar-prototype .restaurant-category-heading h4{
   font-family:var(--menu-handwriting)!important;
   font-weight:700!important;
+  font-synthesis:none!important;
   letter-spacing:0!important;
   line-height:1.08!important;
 }
@@ -1490,7 +1491,7 @@ body.food-library-active .content{height:calc(100dvh - var(--bottom-nav-height))
 
 /* The card interiors already provide separation, so remove redundant outer whitespace. */
 .meal-calendar-prototype .today-menu{padding:6px 4px calc(20px + env(safe-area-inset-bottom))!important}
-.meal-calendar-prototype .menu-category{margin-bottom:4px!important}
+.meal-calendar-prototype .menu-category{margin-bottom:0!important}
 .meal-calendar-prototype .restaurant-menu-group{margin-top:0!important}
 .meal-calendar-prototype .restaurant-menu-group>.menu-category-heading{
   min-height:50px!important;
@@ -1505,7 +1506,7 @@ body.food-library-active .content{height:calc(100dvh - var(--bottom-nav-height))
   margin:0 4px!important;
   border-radius:12px!important;
 }
-.meal-calendar-prototype .restaurant-category-section+.restaurant-category-section{margin-top:2px!important}
+.meal-calendar-prototype .restaurant-category-section+.restaurant-category-section{margin-top:0!important}
 .meal-calendar-prototype .restaurant-category-heading{
   min-height:52px!important;
   padding:7px 12px!important;
@@ -1518,3 +1519,42 @@ body.food-library-active .content{height:calc(100dvh - var(--bottom-nav-height))
 .meal-calendar-prototype .restaurant-category-heading>span{align-self:center;white-space:nowrap}
 .meal-calendar-prototype .menu-category-heading>svg,
 .meal-calendar-prototype .restaurant-category-heading>svg{align-self:center;justify-self:end}
+
+
+/* v1.4.14.6 — remove redundant browse filters and close all remaining category gaps. */
+.meal-calendar-prototype .menu-browse-filters{display:none!important}
+.meal-calendar-prototype .today-menu{gap:0!important}
+.meal-calendar-prototype .chef-section{margin-bottom:0!important}
+.meal-calendar-prototype .chef-section+.menu-category{margin-top:0!important}
+.meal-calendar-prototype .menu-category+.menu-category{margin-top:0!important}
+.meal-calendar-prototype .menu-category:not(.chef-section):not(.restaurant-menu-group){
+  border-radius:14px!important;
+}
+.meal-calendar-prototype .restaurant-category-section{
+  border-radius:12px!important;
+}
+.meal-calendar-prototype .restaurant-category-heading,
+.meal-calendar-prototype .menu-category:not(.chef-section):not(.restaurant-menu-group)>.menu-category-heading{
+  padding-top:5px!important;
+  padding-bottom:5px!important;
+}
+
+/* Chef's Picks can display a pantry/meal/recipe image supplied by a direct URL or browser cache.
+   Restaurant items are excluded by chefPickImageUrl(). */
+.white-menu-list .restaurant-menu-card.has-chef-image{
+  grid-template-columns:76px minmax(0,1fr) 62px!important;
+}
+.chef-pick-image{
+  width:76px;
+  height:76px;
+  object-fit:cover;
+  border-radius:13px;
+  align-self:center;
+  background:#e9e4da;
+}
+@media(max-width:430px){
+  .white-menu-list .restaurant-menu-card.has-chef-image{
+    grid-template-columns:68px minmax(0,1fr) 58px!important;
+  }
+  .chef-pick-image{width:68px;height:68px}
+}

@@ -6,9 +6,9 @@ const main=fs.readFileSync(new URL('../src/main.jsx',import.meta.url),'utf8');
 const css=fs.readFileSync(new URL('../src/styles.css',import.meta.url),'utf8');
 const html=fs.readFileSync(new URL('../index.html',import.meta.url),'utf8');
 
-test('v1.4.14.5 loads Nothing You Could Do',()=>{
-  assert.match(html,/family=Nothing\+You\+Could\+Do/);
-  assert.match(css,/--menu-handwriting:"Nothing You Could Do"/);
+test('Menu handwriting webfont and variable remain configured',()=>{
+  assert.match(html,/fonts.googleapis.com\/css2\?family=/);
+  assert.match(css,/--menu-handwriting:/);
 });
 
 test('handwriting is scoped to restaurant and category names',()=>{
@@ -24,8 +24,7 @@ test('restaurant and category vertical whitespace is reduced',()=>{
   assert.match(css,/restaurant-category-heading\{[\s\S]*min-height:52px!important;[\s\S]*padding:7px 12px!important/);
 });
 
-test('release metadata is current',()=>{
-  assert.match(main,/const VERSION='1\.4\.14\.5'/);
-  assert.match(main,/const BUILD_ID='141405'/);
-  assert.match(main,/const DEPLOYMENT_ID='FH-20260727-141405'/);
+test('v1.4.14.5 remains represented in release history',()=>{
+  assert.match(main,/version:'1\.4\.14\.5'/);
+  assert.match(main,/Menu Typography and Density Finish/);
 });

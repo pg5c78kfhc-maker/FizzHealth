@@ -2,6 +2,33 @@
   "format": "fizz-health-release-history",
   "releases": [
     {
+      "version": "1.4.14.6",
+      "name": "Menu Simplification and Visual Polish",
+      "type": "Polish release",
+      "created_at": "2026-07-27T02:05:00-04:00",
+      "build": "141406",
+      "release_id": "FH-20260727-141406",
+      "stories": [
+        [
+          "FH-1414.16",
+          "Replace the Menu handwriting with Caveat at true bold weights for restaurant and category headings only"
+        ],
+        [
+          "FH-1414.17",
+          "Remove remaining gaps so Menu category cards form a continuous compact stack"
+        ],
+        [
+          "FH-1414.18",
+          "Remove the redundant Today Menu category filter row"
+        ],
+        [
+          "FH-1414.19",
+          "Add pantry-only Chef Pick image URL and local-cache rendering foundation without external fetching"
+        ]
+      ],
+      "known_issues": []
+    },
+    {
       "version": "1.4.14.5",
       "name": "Menu Typography and Density Finish",
       "type": "Polish release",
