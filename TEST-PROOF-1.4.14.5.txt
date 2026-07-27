@@ -1,0 +1,52 @@
+TAP version 13
+# Subtest: canonical food classifications are stored in SQLite
+ok 1 - canonical food classifications are stored in SQLite
+  ---
+  duration_ms: 1.044667
+  type: 'test'
+  ...
+# Subtest: Menu category picker reads from the database repository
+ok 2 - Menu category picker reads from the database repository
+  ---
+  duration_ms: 0.240667
+  type: 'test'
+  ...
+# Subtest: Menu card calories and protein use a compact stack
+ok 3 - Menu card calories and protein use a compact stack
+  ---
+  duration_ms: 0.485218
+  type: 'test'
+  ...
+# Subtest: v1.4.14.5 loads Nothing You Could Do
+ok 4 - v1.4.14.5 loads Nothing You Could Do
+  ---
+  duration_ms: 0.611856
+  type: 'test'
+  ...
+# Subtest: handwriting is scoped to restaurant and category names
+ok 5 - handwriting is scoped to restaurant and category names
+  ---
+  duration_ms: 0.356548
+  type: 'test'
+  ...
+# Subtest: restaurant and category vertical whitespace is reduced
+ok 6 - restaurant and category vertical whitespace is reduced
+  ---
+  duration_ms: 0.675951
+  type: 'test'
+  ...
+# Subtest: release metadata is current
+ok 7 - release metadata is current
+  ---
+  duration_ms: 0.106938
+  type: 'test'
+  ...
+1..7
+# tests 7
+# suites 0
+# pass 7
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 45.126064
