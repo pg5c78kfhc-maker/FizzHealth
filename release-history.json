@@ -2,33 +2,22 @@
   "format": "fizz-health-release-history",
   "releases": [
     {
-      "version": "1.4.15.11",
-      "name": "Pantry Serving Decrement Corrective",
+      "version": "1.4.15.12",
+      "name": "Menu/Chef Canonical Layout Cleanup",
       "type": "Corrective release",
-      "created_at": "2026-07-27T20:30:00-04:00",
-      "build_id": "141511",
-      "build": "141511",
-      "release_id": "FH-20260727-141511",
+      "date": "2026-07-27",
+      "build_id": "141512",
+      "release_id": "FH-20260727-141512",
       "schema_version": 72,
+      "status": "Corrective Stabilization",
       "stories": [
-        {
-          "id": "FH-1415.50",
-          "title": "Decrement Pantry inventory using enriched serving size and serving unit"
-        },
-        {
-          "id": "FH-1415.51",
-          "title": "Synchronize package counts as containers are opened and exhausted"
-        },
-        {
-          "id": "FH-1415.52",
-          "title": "Allow discontinued inventory to be reviewed and restored"
-        },
-        {
-          "id": "FH-1415.53",
-          "title": "Remove remaining active dependence on obsolete package state"
-        }
+        "FH-1415.50 Pantry Save accepts quantity-only records",
+        "FH-1415.51 Isolate Menu Chef section from standalone Chef page",
+        "FH-1415.52 Consolidate live Menu/Chef geometry and enforce integrity"
       ],
-      "known_issues": []
+      "known_issues": [],
+      "created_at": "2026-07-27T23:05:00-04:00",
+      "build": "141512"
     },
     {
       "version": "1.4.15.10",

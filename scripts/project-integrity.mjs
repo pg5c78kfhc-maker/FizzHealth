@@ -62,5 +62,19 @@ function findPackages(dir,depth=0){
 findPackages(root);
 if(packageFiles.length!==1)throw new Error(`Project integrity failure: expected exactly one package.json, found ${packageFiles.length}.`);
 
-console.log(`Project integrity OK: one application root (${rel(root)}), one package.json, one src tree.`);
+
+
+// Protected implementation checks: prevent the historical duplicate-UI failure mode.
+const mainSource=fs.readFileSync(path.join(root,'src/main.jsx'),'utf8');
+const styleSource=fs.readFileSync(path.join(root,'src/styles.css'),'utf8');
+const menuChefClassCount=(mainSource.match(/className="menu-category menu-chef-section"/g)||[]).length;
+if(menuChefClassCount!==1)throw new Error(`Project integrity failure: expected one live Menu Chef section, found ${menuChefClassCount}.`);
+if(mainSource.includes('className="menu-category chef-section"'))throw new Error('Project integrity failure: Menu and standalone Chef page share the legacy chef-section class.');
+for(const obsolete of ['v1.4.15.8 stabilization: exact Menu stack geometry','v1.4.15.9 — structural Menu geometry']){
+  if(styleSource.includes(obsolete))throw new Error(`Project integrity failure: superseded Menu override remains: ${obsolete}`);
+}
+const canonicalMenuCount=(styleSource.match(/CANONICAL Menu\/Chef layout/g)||[]).length;
+if(canonicalMenuCount!==1)throw new Error(`Project integrity failure: expected one canonical Menu/Chef layout block, found ${canonicalMenuCount}.`);
+
+console.log(`Project integrity OK: one application root (${rel(root)}), one package.json, one src tree, one isolated Menu/Chef implementation.`);
 for(const action of actions)console.log(`Repair: ${action}`);

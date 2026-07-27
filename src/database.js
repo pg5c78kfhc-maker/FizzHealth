@@ -3,7 +3,7 @@ import wasmUrl from 'sql.js/dist/sql-wasm.wasm?url';
 
 const DB_KEY='fizz-health-sqlite-v1';
 const STORAGE_DB='FizzHealthStorage';
-const TARGET_SCHEMA_VERSION=72;
+const TARGET_SCHEMA_VERSION=71;
 let SQL, db;
 
 const migrations=[
@@ -913,16 +913,9 @@ const migrations=[
     ALTER TABLE pantry ADD COLUMN discontinued INTEGER DEFAULT 0;
     UPDATE pantry SET discontinued=0 WHERE discontinued IS NULL;
     INSERT OR REPLACE INTO release_metadata(version,release_date,build_id,schema_version,title,created_at)
-    VALUES ('1.4.15.10','2026-07-27','141510',71,'Pantry Inventory Model Cleanup','2026-07-27T18:15:00-04:00');
+    VALUES ('1.4.15.12','2026-07-27','141512',72,'Menu/Chef Canonical Layout Cleanup','2026-07-27T23:05:00-04:00');
     INSERT OR REPLACE INTO release_register(version,issued_date,build_id,schema_version,title,created_at)
-    VALUES ('1.4.15.10','2026-07-27','141510',71,'Pantry Inventory Model Cleanup','2026-07-27T18:15:00-04:00');
-  `}
-
-,  {version:72,name:'pantry_serving_decrement_corrective',sql:`
-    INSERT OR REPLACE INTO release_metadata(version,release_date,build_id,schema_version,title,created_at)
-    VALUES ('1.4.15.11','2026-07-27','141511',72,'Pantry Serving Decrement Corrective','2026-07-27T20:30:00-04:00');
-    INSERT OR REPLACE INTO release_register(version,issued_date,build_id,schema_version,title,created_at)
-    VALUES ('1.4.15.11','2026-07-27','141511',72,'Pantry Serving Decrement Corrective','2026-07-27T20:30:00-04:00');
+    VALUES ('1.4.15.12','2026-07-27','141512',72,'Menu/Chef Canonical Layout Cleanup','2026-07-27T23:05:00-04:00');
   `}
 
 ];

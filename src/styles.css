@@ -839,7 +839,6 @@ body.food-library-active .discovery-tabs{flex:0 0 auto}
 .recipe-pantry-success{margin:12px 0}
 
 
-
 /* v1.4.11.9 — single-layer Food library and data recovery. */
 body.food-library-active{overflow:hidden}
 body.food-library-active .app{height:100dvh;min-height:0;overflow:hidden;padding-bottom:0;width:100%;max-width:100%}
@@ -1057,7 +1056,7 @@ body.food-library-active .content{height:calc(100dvh - var(--bottom-nav-height))
 .planner-calendar-sticky{position:-webkit-sticky;position:sticky;top:var(--menu-header-height);align-self:start;z-index:39;margin-inline:-2px;padding:8px 2px 12px;background:linear-gradient(180deg,#050809 0%,#050809 88%,rgba(5,8,9,.96) 100%);box-shadow:0 12px 18px rgba(0,0,0,.32);will-change:transform}
 .meal-calendar-prototype{gap:18px;padding-bottom:24px}
 .menu-intro{padding:10px 2px 2px;display:grid;gap:5px}
-.menu-intro small,.planned-meals-heading small,.today-menu-title small{letter-spacing:.18em;color:#99a5ab;font-weight:850}
+
 .menu-intro h1{font-family:Georgia,"Times New Roman",serif;font-size:2.05rem;line-height:1.03;margin:0;color:#f7f2e8;font-weight:650}
 .menu-intro p{margin:0;font-size:.83rem;color:#8f9ba1}
 .planned-meals-menu{gap:14px;padding:16px;border:1px solid #384129;border-radius:24px;background:linear-gradient(180deg,#151b14,#0d1412)}
@@ -1072,7 +1071,7 @@ body.food-library-active .content{height:calc(100dvh - var(--bottom-nav-height))
 .meal-service-body{padding:0 12px 12px}.planned-order{padding:12px 0!important}.planned-order b{font-size:.95rem}.planned-order-actions button{width:34px;height:34px;display:grid;place-items:center;border-radius:10px;background:#182228}.planned-order-actions svg{width:16px}
 .meal-empty-state{width:100%;min-height:70px;margin-top:10px;display:flex;align-items:center;justify-content:center;gap:10px;border:1px dashed #405047;border-radius:14px;background:#0c1311;color:#9fb0a6;text-align:left}.meal-empty-state>svg{width:20px;color:#a9ef45}.meal-empty-state span{display:grid;gap:2px}.meal-empty-state b{color:#d8dfda}.meal-empty-state small{font-size:.7rem;color:#819087}
 .component-actions{padding-top:10px;border-top:1px solid #26332d}.component-actions button{border:1px solid #34443a;border-radius:999px;background:#121d18}
-.today-menu{gap:20px;border-top:0;padding-top:4px}.today-menu-title{padding:0 2px}.today-menu-title h3{font-family:Georgia,"Times New Roman",serif;font-size:1.55rem;color:#f6efe4}
+.today-menu-title{padding:0 2px}.today-menu-title h3{font-family:Georgia,"Times New Roman",serif;font-size:1.55rem;color:#f6efe4}
 .menu-category{gap:10px}.menu-category-heading{display:flex;align-items:baseline;justify-content:space-between;border-bottom:1px solid #394047;padding:0 2px 7px}.menu-category-heading h3{font-family:Georgia,"Times New Roman",serif;font-size:1.25rem;color:#f3ecdf}.menu-category-heading span{font-size:.67rem;color:#7f8d94;text-transform:uppercase;letter-spacing:.08em}
 .menu-category-grid{grid-template-columns:1fr;gap:9px}
 .menu-category-grid .restaurant-menu-card{min-height:96px;padding:14px 14px 12px;border-radius:17px;background:linear-gradient(145deg,#171f21,#11181b);border:1px solid #354247;box-shadow:0 4px 12px rgba(0,0,0,.15);display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:12px;color:#f3f5f1}
@@ -1111,7 +1110,7 @@ body.food-library-active .content{height:calc(100dvh - var(--bottom-nav-height))
 .calendar-control-row{display:grid;grid-template-columns:auto auto minmax(0,1fr) auto auto;align-items:end;gap:8px;margin-bottom:8px}.calendar-control-row>b{text-align:center;align-self:center;font-size:1rem}.calendar-control-row .today-control,.calendar-control-row .calendar-arrow{height:38px;min-width:54px;border-radius:999px}.planner-restaurant-toggle{position:static!important;display:grid!important;justify-items:center;gap:4px;align-self:center}.planner-restaurant-toggle>span{font-size:.58rem;letter-spacing:.12em;white-space:nowrap}.planner-restaurant-toggle>button{min-width:86px}.planner-week button{position:relative}.calendar-meal-indicator{position:absolute;bottom:4px;left:50%;width:7px;height:7px;border-radius:50%;background:var(--lime);transform:translateX(-50%);box-shadow:0 0 8px rgba(164,255,45,.65)}
 .decorative-menu-title{display:flex;align-items:center;justify-content:center;gap:16px;margin:18px 0 14px;color:#d6b965}.decorative-menu-title:before,.decorative-menu-title:after{content:"";height:1px;flex:1;background:linear-gradient(90deg,transparent,#d6b965)}.decorative-menu-title:after{background:linear-gradient(90deg,#d6b965,transparent)}.decorative-menu-title span{font-family:Georgia,"Times New Roman",serif;font-style:italic;font-size:2.7rem;line-height:1}
 .collapsible-heading{width:100%;border:0;background:transparent;color:inherit;text-align:left}.meal-service-head.collapsible-heading{display:grid;grid-template-columns:auto minmax(0,1fr) auto auto;align-items:center;gap:10px;padding:12px}.meal-service-head.collapsible-heading>span{color:var(--lime);font-size:.72rem}.meal-service-head.collapsible-heading>svg,.menu-category-heading.collapsible-heading>svg{width:19px;color:var(--lime)}
-.today-menu{gap:10px}.menu-category{gap:0;border:1px solid #2f3c42;border-radius:15px;overflow:hidden;background:#0d1418}.menu-category-heading{align-items:center;padding:12px 14px;border-bottom:0}.menu-category-heading>div{display:grid;gap:2px}.menu-category-heading h3{margin:0;font-family:inherit;font-size:1rem}.menu-category-heading small{font-size:.72rem;color:#96a2a8}.menu-category-heading>span{margin-left:auto;color:var(--lime)}
+.menu-category{gap:0;border:1px solid #2f3c42;border-radius:15px;overflow:hidden;background:#0d1418}.menu-category-heading{align-items:center;padding:12px 14px;border-bottom:0}.menu-category-heading>div{display:grid;gap:2px}.menu-category-heading h3{margin:0;font-family:inherit;font-size:1rem}.menu-category-heading small{font-size:.72rem;color:#96a2a8}.menu-category-heading>span{margin-left:auto;color:var(--lime)}
 .white-menu-list{display:block!important;background:#fff;color:#111;padding:0!important}.white-menu-list .menu-swipe-shell{border-radius:0;overflow:hidden}.white-menu-list .restaurant-menu-card{min-height:92px!important;border:0!important;border-radius:0!important;box-shadow:none!important;background:#fff!important;color:#111!important;padding:14px 14px!important;border-bottom:1px solid #e1e1e1!important}.white-menu-list .menu-swipe-shell:last-child .restaurant-menu-card{border-bottom:0!important}.white-menu-list .restaurant-menu-copy{padding-right:92px}.white-menu-list .restaurant-menu-copy b{color:#111;font-size:1.08rem}.white-menu-list .restaurant-menu-copy p,.white-menu-list .menu-decision-why{color:#5f6368!important}.white-menu-list .restaurant-menu-nutrition span,.white-menu-list .restaurant-menu-nutrition strong{color:#222!important}.white-menu-list .menu-card-actions{display:grid;grid-template-columns:1fr;top:10px;right:10px}.white-menu-list .menu-card-actions button{background:transparent;border:0;color:#345b1c;width:27px;height:25px}.white-menu-list .decision-pick-badge{color:#345b1c;border-color:#78b84a}.restaurant-menu-group{margin-top:2px}
 @media(max-width:520px){.calendar-control-row{grid-template-columns:auto auto minmax(88px,1fr) auto auto;gap:5px}.calendar-control-row>b{font-size:.82rem}.calendar-control-row .today-control,.calendar-control-row .calendar-arrow{min-width:46px;height:34px;padding-inline:10px}.planner-restaurant-toggle>span{font-size:.48rem}.planner-restaurant-toggle>button{min-width:72px;height:34px}.decorative-menu-title span{font-size:2.25rem}.white-menu-list .restaurant-menu-copy{padding-right:78px}}
 
@@ -1123,8 +1122,8 @@ body.food-library-active .content{height:calc(100dvh - var(--bottom-nav-height))
 .menu-category-heading h3,.meal-service-head h3,.planned-meals-heading h3{font-family:Georgia,"Times New Roman",serif}
 .menu-category-heading>span,.meal-service-head>span{justify-self:end;font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;font-size:.72rem;color:#8d9aa0;letter-spacing:0;text-transform:none}
 .menu-category-heading>svg,.meal-service-head>svg{width:18px;height:18px;color:#9aa6ab}
-.chef-section .menu-category-heading{align-items:center}
-.chef-section .menu-category-heading small{display:block;margin-top:2px;font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;font-size:.68rem;color:#8f9ca1;letter-spacing:.04em;text-transform:none}
+
+
 .menu-category-grid .restaurant-menu-card{grid-template-columns:minmax(0,1fr) 66px;gap:10px}
 .menu-order-card .restaurant-menu-copy{padding-right:42px}
 .menu-card-actions{right:8px;top:8px}
@@ -1145,7 +1144,7 @@ body.food-library-active .content{height:calc(100dvh - var(--bottom-nav-height))
 .menu-category-heading>div{grid-column:1;display:grid;gap:1px}
 .menu-category-heading>span{grid-column:3;color:#8f9aa1;font-size:.72rem;white-space:nowrap}
 .menu-category-heading h3,.meal-service-head h3,.planned-meals-heading h3{font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;font-weight:800}
-.chef-section .menu-category-heading{grid-template-columns:auto minmax(24px,1fr) auto}
+
 .white-menu-list{border-radius:18px;overflow:hidden;margin:0 4px 8px}
 .white-menu-list .restaurant-menu-card{min-height:126px!important;padding:16px 15px 15px!important;display:grid;grid-template-columns:minmax(0,1fr) 104px!important;grid-template-rows:auto auto 1fr;column-gap:12px;align-items:stretch}
 .white-menu-list .restaurant-menu-copy{display:contents}
@@ -1240,7 +1239,7 @@ body.food-library-active .content{height:calc(100dvh - var(--bottom-nav-height))
 .meal-calendar-prototype .planned-meals-heading,.meal-calendar-prototype .meal-service-card,.meal-calendar-prototype .menu-category,.meal-calendar-prototype .restaurant-category-section{color:var(--menu-ink)}
 .meal-calendar-prototype .meal-service-card{background:#fff;border-color:#ded7ca}
 .meal-calendar-prototype .meal-service-head,.meal-calendar-prototype .menu-category-heading,.meal-calendar-prototype .restaurant-category-heading{color:var(--menu-ink)}
-.meal-calendar-prototype .meal-service-head>span,.meal-calendar-prototype .menu-category-heading>span,.meal-calendar-prototype .restaurant-category-heading span,.meal-calendar-prototype .chef-section small{color:var(--menu-muted)}
+
 .meal-calendar-prototype .meal-service-icon{background:transparent;border:0;color:#315b18}
 .meal-calendar-prototype .menu-category-heading:after{background:#b9b0a1}
 .meal-calendar-prototype .restaurant-menu-card.menu-order-card{background:#fff;border-color:#ddd6ca;color:var(--menu-ink);box-shadow:0 4px 12px rgba(61,49,32,.08)}
@@ -1338,17 +1337,10 @@ body.food-library-active .content{height:calc(100dvh - var(--bottom-nav-height))
 
 /* Light Menu: readable, responsive, rounded, and deliberately sans-serif. */
 .meal-calendar-prototype .planned-meals-menu,
-.meal-calendar-prototype .today-menu{
-  width:calc(100% - 24px);
-  max-width:calc(100% - 24px);
-  margin-left:auto;
-  margin-right:auto;
-  border-radius:24px;
-  overflow:hidden;
-}
-.meal-calendar-prototype .today-menu{padding:14px 10px calc(24px + env(safe-area-inset-bottom));}
+
+
 .meal-calendar-prototype .menu-category{margin:0 0 12px;border-radius:18px;background:#fbf8f1;overflow:hidden}
-.meal-calendar-prototype .chef-section,.meal-calendar-prototype .restaurant-menu-group{border:1px solid #ddd4c4}
+
 .meal-calendar-prototype .menu-category-heading{padding:13px 14px;color:#182126!important}
 .meal-calendar-prototype .menu-category-heading h3,
 .meal-calendar-prototype .meal-service-head h3,
@@ -1360,7 +1352,7 @@ body.food-library-active .content{height:calc(100dvh - var(--bottom-nav-height))
 }
 .meal-calendar-prototype .menu-category-heading>span,
 .meal-calendar-prototype .restaurant-category-heading span,
-.meal-calendar-prototype .chef-section small{color:#5f6b70!important}
+
 .meal-calendar-prototype .menu-category-heading:after{background:#a9a091!important}
 .restaurant-category-section{border-top:1px solid #d8d0c4!important}
 .restaurant-category-heading{padding:12px 14px!important;color:#182126!important}
@@ -1485,12 +1477,10 @@ body.food-library-active .content{height:calc(100dvh - var(--bottom-nav-height))
 .meal-calendar-prototype .restaurant-category-heading>span,
 .meal-calendar-prototype .menu-category-heading>svg,
 .meal-calendar-prototype .restaurant-category-heading>svg,
-.meal-calendar-prototype .chef-section .menu-category-heading h3{
-  font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif!important;
-}
+
 
 /* The card interiors already provide separation, so remove redundant outer whitespace. */
-.meal-calendar-prototype .today-menu{padding:6px 4px calc(20px + env(safe-area-inset-bottom))!important}
+
 .meal-calendar-prototype .menu-category{margin-bottom:0!important}
 .meal-calendar-prototype .restaurant-menu-group{margin-top:0!important}
 .meal-calendar-prototype .restaurant-menu-group>.menu-category-heading{
@@ -1523,9 +1513,8 @@ body.food-library-active .content{height:calc(100dvh - var(--bottom-nav-height))
 
 /* v1.4.14.6 — remove redundant browse filters and close all remaining category gaps. */
 .meal-calendar-prototype .menu-browse-filters{display:none!important}
-.meal-calendar-prototype .today-menu{gap:0!important}
-.meal-calendar-prototype .chef-section{margin-bottom:0!important}
-.meal-calendar-prototype .chef-section+.menu-category{margin-top:0!important}
+
+
 .meal-calendar-prototype .menu-category+.menu-category{margin-top:0!important}
 .meal-calendar-prototype .menu-category:not(.chef-section):not(.restaurant-menu-group){
   border-radius:14px!important;
@@ -1563,13 +1552,8 @@ body.food-library-active .content{height:calc(100dvh - var(--bottom-nav-height))
 
 /* v1.4.14.10 — startup recovery, aligned Chef's Picks, and Meals category swipe. */
 .startup-recovery{display:grid;justify-items:center;gap:10px;margin-top:18px;max-width:300px}.startup-recovery .retry-boot{min-width:132px}.startup-recovery>small{font-size:.72rem;opacity:.7}
-.meal-calendar-prototype .today-menu{padding-left:0!important;padding-right:0!important}
-.meal-calendar-prototype .chef-section{width:100%!important;max-width:none!important;margin:0!important;border-radius:14px 14px 0 0!important}
-.meal-calendar-prototype .chef-section+.menu-category{margin-top:0!important;border-top-left-radius:0!important;border-top-right-radius:0!important}
-.meal-calendar-prototype .chef-section .white-menu-list{width:100%!important}
-.meal-calendar-prototype .chef-section .restaurant-menu-card{width:100%!important;grid-template-columns:minmax(0,1fr) auto!important}
-.meal-calendar-prototype .chef-section .restaurant-menu-copy{min-width:0!important;padding-right:4px!important}
-.meal-calendar-prototype .chef-section .restaurant-menu-nutrition{min-width:58px!important}
+
+
 .swipe-category{background:#315b18;color:#fff}.discovery-swipe-rail:has(.swipe-category){grid-template-columns:repeat(3,minmax(74px,1fr));width:min(276px,86vw)}
 
 /* v1.4.15.0 unified classification and Meals builder */
@@ -1662,36 +1646,21 @@ body.food-library-active .content{overflow:hidden!important}
 /* v1.4.15.4 stabilization */
 .meal-calendar-prototype{overflow-x:hidden!important}
 .meal-calendar-prototype .menu-category,
-.meal-calendar-prototype .chef-section,
-.meal-calendar-prototype .restaurant-menu-group{width:100%!important;max-width:100%!important;box-sizing:border-box!important;overflow:hidden!important}
+
 .meal-calendar-prototype .menu-category-heading{width:100%!important;max-width:100%!important;box-sizing:border-box!important;grid-template-columns:minmax(0,1fr) auto 26px!important}
 .meal-calendar-prototype .menu-category-heading>div,
 .meal-calendar-prototype .menu-category-heading h3{min-width:0!important}
 .meal-calendar-prototype .menu-category-heading>span{white-space:nowrap!important;justify-self:end!important;padding-right:2px!important}
-.meal-calendar-prototype .chef-section{margin-bottom:0!important}
-.meal-calendar-prototype .chef-section+.menu-category{margin-top:0!important}
-.meal-calendar-prototype .chef-section+.restaurant-menu-group{margin-top:0!important}
+
+
 .meal-calendar-prototype .menu-category-stack{gap:0!important}
 .meal-calendar-prototype .menu-category:not(.chef-section){margin-top:0!important}
 .menu-page-shell{padding-bottom:calc(var(--bottom-nav-height) + 28px)!important}
 
 
 /* v1.4.15.6 category commit and Menu containment corrective */
-.meal-calendar-prototype .today-menu{
-  width:calc(100% - 24px)!important;
-  max-width:calc(100% - 24px)!important;
-  margin-left:auto!important;
-  margin-right:auto!important;
-  box-sizing:border-box!important;
-  gap:0!important;
-}
-.meal-calendar-prototype .today-menu>.menu-category{
-  width:100%!important;
-  max-width:100%!important;
-  margin:0!important;
-  box-sizing:border-box!important;
-}
-.meal-calendar-prototype .today-menu>.chef-section+ .menu-category{margin-top:0!important}
+
+
 .meal-calendar-prototype .menu-category-heading{
   grid-template-columns:minmax(0,1fr) max-content 24px!important;
   column-gap:10px!important;
@@ -1709,7 +1678,7 @@ body.food-library-active .content{overflow:hidden!important}
   padding-right:0!important;
 }
 .meal-calendar-prototype .menu-category-heading>svg{grid-column:auto!important}
-.meal-calendar-prototype .chef-section .menu-category-heading{grid-template-columns:minmax(0,1fr) max-content!important}
+
 .restaurant-category-editor .standard-modal-header button[type=submit]:disabled{opacity:.55}
 
 /* v1.4.15.7 corrective stabilization */
@@ -1719,84 +1688,7 @@ body.food-library-active .content{overflow:hidden!important}
 .builder-category-summary b{font-size:1.05rem}.builder-category-summary span{justify-self:end}.builder-category-summary svg{justify-self:end}
 .food-metadata-readonly{display:grid;gap:10px;margin-top:8px}.food-metadata-readonly>div{display:flex;justify-content:space-between;gap:16px}.food-metadata-readonly span{color:#9da8af}.food-metadata-readonly b{text-align:right}
 .nutrition-editor-identity{display:grid;gap:14px;padding:16px;border:1px solid #344149;border-radius:18px;background:#111a20}
-.meal-calendar-prototype .today-menu{padding-top:0!important}
-.meal-calendar-prototype .today-menu>.chef-section{margin-bottom:0!important;border-bottom-left-radius:0!important;border-bottom-right-radius:0!important}
-.meal-calendar-prototype .today-menu>.chef-section+.menu-category{margin-top:0!important;border-top:0!important;border-top-left-radius:0!important;border-top-right-radius:0!important}
 
-/* v1.4.15.8 stabilization: exact Menu stack geometry and full-width Chef media */
-.meal-calendar-prototype .today-menu{
-  display:flex!important;
-  flex-direction:column!important;
-  gap:0!important;
-  width:calc(100% - 24px)!important;
-  max-width:calc(100% - 24px)!important;
-  padding-left:0!important;
-  padding-right:0!important;
-}
-.meal-calendar-prototype .today-menu>.menu-category{
-  flex:0 0 auto!important;
-  align-self:stretch!important;
-  width:100%!important;
-  max-width:100%!important;
-  margin:0!important;
-}
-.meal-calendar-prototype .today-menu>.chef-section+.menu-category{
-  margin-top:0!important;
-}
-.meal-calendar-prototype .chef-section .restaurant-menu-card.has-chef-image{
-  grid-template-columns:minmax(0,1fr) auto!important;
-  padding-top:0!important;
-  overflow:hidden!important;
-}
-.meal-calendar-prototype .chef-section .restaurant-menu-card.has-chef-image>.chef-pick-image{
-  grid-column:1/-1!important;
-  width:100%!important;
-  height:auto!important;
-  min-height:150px!important;
-  max-height:220px!important;
-  border-radius:0!important;
-  align-self:stretch!important;
-}
-
-/* v1.4.15.9 — structural Menu geometry and Pantry inventory refresh */
-.meal-calendar-prototype .planned-meals-menu + .today-menu{
-  margin-top:-18px!important;
-}
-.meal-calendar-prototype .today-menu{
-  padding-top:0!important;
-}
-.meal-calendar-prototype .today-menu>.chef-section{
-  width:100%!important;
-  max-width:100%!important;
-  margin:0!important;
-  border-radius:24px 24px 0 0!important;
-}
-.meal-calendar-prototype .chef-section .white-menu-list{
-  width:100%!important;
-  margin:0!important;
-  border-radius:0!important;
-}
-.meal-calendar-prototype .chef-section .menu-swipe-shell,
-.meal-calendar-prototype .chef-section .restaurant-menu-card{
-  width:100%!important;
-  max-width:100%!important;
-  border-radius:0!important;
-}
-.meal-calendar-prototype .chef-section .restaurant-menu-card.has-chef-image{
-  display:grid!important;
-  grid-template-columns:minmax(0,1fr) auto!important;
-  padding:0 14px 14px!important;
-}
-.meal-calendar-prototype .chef-section .restaurant-menu-card.has-chef-image>.chef-pick-image{
-  display:block!important;
-  grid-column:1/-1!important;
-  width:calc(100% + 28px)!important;
-  max-width:none!important;
-  height:clamp(180px,52vw,260px)!important;
-  margin:0 -14px 12px!important;
-  object-fit:cover!important;
-  border-radius:0!important;
-}
 
 /* v1.4.15.10 — compact mobile Pantry property sheet */
 .pantry-property-editor .editor-scroll{padding:12px 18px 180px}
@@ -1813,9 +1705,95 @@ body.food-library-active .content{overflow:hidden!important}
 .pantry-property-editor .section-help{display:block;color:#8f9aa2;font-size:12px;padding:0 0 6px 44%}
 @media(max-width:390px){.pantry-property-row{grid-template-columns:minmax(110px,42%) minmax(0,1fr);gap:10px}.pantry-property-editor .section-help{padding-left:0}}
 
-/* v1.4.15.11 — discontinued review and exact shared Menu column */
-.pantry-toolbar .include-discontinued{display:flex;align-items:center;gap:8px;font-size:.86rem;white-space:nowrap}
-.pantry-toolbar .include-discontinued input{width:18px;height:18px}
-.meal-calendar-prototype .planned-meals-menu+.today-menu{margin-top:0!important}
-.meal-calendar-prototype .today-menu{width:100%!important;max-width:100%!important}
-.meal-calendar-prototype .today-menu>.chef-section{padding-left:0!important;padding-right:0!important}
+/* v1.4.15.12 — CANONICAL Menu/Chef layout. Do not append competing geometry rules. */
+.meal-calendar-prototype{
+  row-gap:0;
+}
+.meal-calendar-prototype .planned-meals-menu{
+  margin-bottom:0;
+}
+.meal-calendar-prototype .today-menu{
+  display:flex;
+  flex-direction:column;
+  gap:0;
+  width:calc(100% - 24px);
+  max-width:calc(100% - 24px);
+  margin:0 auto;
+  padding:0 0 calc(20px + env(safe-area-inset-bottom));
+  border-top:0;
+  border-radius:24px;
+  overflow:hidden;
+  box-sizing:border-box;
+}
+.meal-calendar-prototype .today-menu>.menu-category{
+  flex:0 0 auto;
+  align-self:stretch;
+  width:100%;
+  max-width:100%;
+  margin:0;
+  box-sizing:border-box;
+}
+.meal-calendar-prototype .today-menu>.menu-chef-section{
+  border:1px solid #ddd4c4;
+  border-radius:24px 24px 0 0;
+  overflow:hidden;
+}
+.meal-calendar-prototype .today-menu>.menu-chef-section+.menu-category{
+  margin-top:0;
+  border-top:0;
+  border-radius:0;
+}
+.meal-calendar-prototype .menu-chef-section .menu-category-heading{
+  grid-template-columns:minmax(0,1fr) max-content;
+}
+.meal-calendar-prototype .menu-chef-section .menu-category-heading small{
+  display:block;
+  margin-top:2px;
+  color:#5f6b70;
+  font-size:.68rem;
+}
+.meal-calendar-prototype .menu-chef-section .white-menu-list,
+.meal-calendar-prototype .menu-chef-section .menu-swipe-shell,
+.meal-calendar-prototype .menu-chef-section .restaurant-menu-card{
+  width:100%;
+  max-width:100%;
+  margin-left:0;
+  margin-right:0;
+  box-sizing:border-box;
+}
+.meal-calendar-prototype .menu-chef-section .white-menu-list{
+  border-radius:0;
+}
+.meal-calendar-prototype .menu-chef-section .restaurant-menu-card.has-chef-image{
+  display:grid;
+  grid-template-columns:minmax(0,1fr) auto;
+  padding:0 14px 14px;
+  overflow:hidden;
+  border-radius:0;
+}
+.meal-calendar-prototype .menu-chef-section .restaurant-menu-card.has-chef-image>.chef-pick-image{
+  display:block;
+  grid-column:1/-1;
+  width:calc(100% + 28px);
+  max-width:none;
+  height:clamp(180px,52vw,260px);
+  margin:0 -14px 12px;
+  object-fit:cover;
+  border-radius:0;
+}
+.pantry-property-editor .pantry-save-error{
+  position:sticky;
+  top:var(--sticky-head-height,72px);
+  z-index:4;
+  margin:0;
+  padding:10px 16px;
+  background:#4a1717;
+  border-bottom:1px solid #ff7b7b;
+  color:#fff;
+  font-size:.84rem;
+  font-weight:750;
+}
+@media(max-width:420px){
+  .meal-calendar-prototype .today-menu{width:calc(100% - 16px);max-width:calc(100% - 16px)}
+}
+

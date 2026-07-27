@@ -1,0 +1,11 @@
+VERSION.json
+package.json
+public/sw.js
+release-history.json
+ReleaseNotes.md
+scripts/project-integrity.mjs
+src/database.js
+src/decision/engine.js
+src/main.jsx
+src/styles.css
+tests/v1.4.15.12-cleanup.test.js
