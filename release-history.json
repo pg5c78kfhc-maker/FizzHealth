@@ -2,6 +2,37 @@
   "format": "fizz-health-release-history",
   "releases": [
     {
+      "version": "1.4.14.7",
+      "name": "Aggregate Nutrition Integrity",
+      "type": "Corrective architecture release",
+      "created_at": "2026-07-27T07:30:00-04:00",
+      "build": "141407",
+      "release_id": "FH-20260727-141407",
+      "stories": [
+        [
+          "FH-1414.20",
+          "Canonical Recipe Nutrition Path"
+        ],
+        [
+          "FH-1414.21",
+          "Canonical Meal Nutrition Path"
+        ],
+        [
+          "FH-1414.22",
+          "Aggregate Integrity Audit"
+        ],
+        [
+          "FH-1414.23",
+          "Live Calculation and Historical Snapshot Policy"
+        ],
+        [
+          "FH-1414.24",
+          "Release Integrity Verification"
+        ]
+      ],
+      "known_issues": []
+    },
+    {
       "version": "1.4.14.6",
       "name": "Menu Simplification and Visual Polish",
       "type": "Polish release",

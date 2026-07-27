@@ -1,0 +1,13 @@
+ReleaseNotes.md
+VERSION.json
+package.json
+public/sw.js
+release-history.json
+src/decision/engine.js
+src/main.jsx
+src/nutrition/aggregate.js
+src/nutrition/recipe.js
+tests/aggregate-nutrition-integrity.test.js
+EXECUTION-VERIFICATION-1.4.14.7.md
+TEST-REPORT-1.4.14.7.md
+CHANGED-FILES-1.4.14.7.txt

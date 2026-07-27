@@ -28,6 +28,9 @@ export function buildRecipeSnapshot(recipeRows,foods){
     const resolved=resolveRecipeFood(row,foods);
     if(!resolved.food){issues.push(resolved.reason);ingredients.push({ingredient_id:row.ingredient_id||null,ingredient_name:row.ingredient_name,amount:Number(row.amount)||0,unit:row.unit||'',resolved:false,issue:resolved.reason});continue;}
     const food=resolved.food;
+    const amount=Number(row.amount);
+    if(!Number.isFinite(amount)||amount<=0){const reason=`${row.ingredient_name}: quantity must be greater than zero.`;issues.push(reason);ingredients.push({ingredient_id:row.ingredient_id||food.food_id,ingredient_name:row.ingredient_name,food_id:food.food_id,amount:Number(row.amount)||0,unit:row.unit||food.unit||'',resolved:false,issue:reason});continue;}
+    if(Number(food.nutrition_known)!==1){const reason=`${row.ingredient_name}: food nutrition is unknown.`;issues.push(reason);ingredients.push({ingredient_id:row.ingredient_id||food.food_id,ingredient_name:row.ingredient_name,food_id:food.food_id,amount,unit:row.unit||food.unit||'',resolved:false,issue:reason});continue;}
     const scaling=scaleForServing({amount:row.amount,amountUnit:row.unit||food.unit,servingAmount:food.default_serving,servingUnit:food.unit||row.unit});
     if(!scaling.ok){issues.push(`${row.ingredient_name}: ${scaling.reason}`);ingredients.push({ingredient_id:row.ingredient_id||food.food_id,ingredient_name:row.ingredient_name,food_id:food.food_id,amount:Number(row.amount)||0,unit:row.unit||food.unit||'',resolved:false,issue:scaling.reason});continue;}
     for(const key of NUTRIENT_KEYS)total[key]+=finite(food[key])*scaling.ratio;
