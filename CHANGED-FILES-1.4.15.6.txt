@@ -1,0 +1,14 @@
+ReleaseNotes.md
+release-history.json
+VERSION.json
+src/main.jsx
+src/styles.css
+src/database.js
+src/decision/engine.js
+public/sw.js
+package.json
+package-lock.json
+tests/v14156-category-commit.test.js
+TEST-REPORT-1.4.15.6.md
+EXECUTION-VERIFICATION-1.4.15.6.md
+CHANGED-FILES-1.4.15.6.txt

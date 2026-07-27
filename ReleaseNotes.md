@@ -1,3 +1,16 @@
+# Fizz Health v1.4.15.6 — Category Commit Corrective
+
+Corrective release issued 2026-07-27.
+
+- FH-1415.32 — Fix Meals category commit by submitting the selected database category from the shared picker without referencing Menu-local state.
+- FH-1415.33 — Keep Menu item counts and chevrons inside the card and preserve the continuous Chef’s Picks/category stack.
+
+Schema version: 69  
+Build: 141506  
+Deployment: FH-20260727-141506
+
+---
+
 # Fizz Health v1.4.15.4 — Meals & Startup Stabilization
 
 Corrective release issued 2026-07-27.

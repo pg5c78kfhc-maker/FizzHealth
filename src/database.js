@@ -889,9 +889,9 @@ const migrations=[
       created_at TEXT NOT NULL
     );
     INSERT OR REPLACE INTO release_metadata(version,release_date,build_id,schema_version,title,created_at)
-    VALUES ('1.4.15.5','2026-07-27','141505',69,'Startup Symbol Corrective','2026-07-27T12:40:00-04:00');
+    VALUES ('1.4.15.6','2026-07-27','141506',69,'Category Commit Corrective','2026-07-27T13:05:00-04:00');
     INSERT OR IGNORE INTO release_register(version,issued_date,build_id,schema_version,title,created_at)
-    VALUES ('1.4.15.5','2026-07-27','141505',69,'Startup Symbol Corrective','2026-07-27T12:40:00-04:00');
+    VALUES ('1.4.15.6','2026-07-27','141506',69,'Category Commit Corrective','2026-07-27T13:05:00-04:00');
   `}
 
 
