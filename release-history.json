@@ -2,22 +2,23 @@
   "format": "fizz-health-release-history",
   "releases": [
     {
-      "version": "1.4.15.12",
-      "name": "Menu/Chef Canonical Layout Cleanup",
-      "type": "Corrective release",
+      "version": "1.4.15.12A",
+      "name": "Menu/Chef Canonical Layout Build Corrective",
+      "type": "Build corrective release",
       "date": "2026-07-27",
-      "build_id": "141512",
-      "release_id": "FH-20260727-141512",
+      "build_id": "1415121",
+      "release_id": "FH-20260727-1415121",
       "schema_version": 72,
-      "status": "Corrective Stabilization",
+      "status": "Build Corrective",
       "stories": [
         "FH-1415.50 Pantry Save accepts quantity-only records",
         "FH-1415.51 Isolate Menu Chef section from standalone Chef page",
-        "FH-1415.52 Consolidate live Menu/Chef geometry and enforce integrity"
+        "FH-1415.52 Consolidate live Menu/Chef geometry and enforce integrity",
+        "FH-1415.54 Correct release-history string quoting and restore production compilation"
       ],
       "known_issues": [],
-      "created_at": "2026-07-27T23:05:00-04:00",
-      "build": "141512"
+      "created_at": "2026-07-27T23:32:00-04:00",
+      "build": "1415121"
     },
     {
       "version": "1.4.15.10",

@@ -913,9 +913,9 @@ const migrations=[
     ALTER TABLE pantry ADD COLUMN discontinued INTEGER DEFAULT 0;
     UPDATE pantry SET discontinued=0 WHERE discontinued IS NULL;
     INSERT OR REPLACE INTO release_metadata(version,release_date,build_id,schema_version,title,created_at)
-    VALUES ('1.4.15.12','2026-07-27','141512',72,'Menu/Chef Canonical Layout Cleanup','2026-07-27T23:05:00-04:00');
+    VALUES ('1.4.15.12A','2026-07-27','1415121',72,'Menu/Chef Canonical Layout Build Corrective','2026-07-27T23:32:00-04:00');
     INSERT OR REPLACE INTO release_register(version,issued_date,build_id,schema_version,title,created_at)
-    VALUES ('1.4.15.12','2026-07-27','141512',72,'Menu/Chef Canonical Layout Cleanup','2026-07-27T23:05:00-04:00');
+    VALUES ('1.4.15.12A','2026-07-27','1415121',72,'Menu/Chef Canonical Layout Build Corrective','2026-07-27T23:32:00-04:00');
   `}
 
 ];
