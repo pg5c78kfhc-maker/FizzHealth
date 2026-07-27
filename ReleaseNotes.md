@@ -1,14 +1,18 @@
-# Fizz Health v1.4.14.4A — Menu Viewport and Presentation Corrective
+# Fizz Health v1.4.14.4B
 
-## FH-1414.10A — Information View viewport correction
-Menu Information pages now keep their header, information rows, Decision Intelligence, and explicit Add to Meals action inside the usable iPhone viewport above the persistent navigation. Boolean values are user-facing, unknown nutrition is not represented as a confirmed zero, and duplicate recommendation text is consolidated.
+## Canonical Menu Classification Corrective
 
-## FH-1414.11A — Category editor and swipe correction
-The universal category editor is constrained between the Menu calendar and bottom navigation with independent scrolling. Compact swipe actions now expose both Favorite and Category actions completely.
+Completed stories: FH-1414.11B / FH-1414.12B
 
-## FH-1414.12A — Light Menu presentation correction
-The lower Menu now uses readable contrast, responsive widths, horizontally reachable filters, consistent rounded containers, one sans-serif typography system, tighter cards, and vector recommendation icons.
+### FH-1414.11B
+- Reclassification now offers only the canonical Fizz meal classifications defined by the application database model.
+- Restaurant-specific menu sections remain unchanged and continue to organize the source restaurant menu.
+- Restaurant reclassification writes the normalized Fizz classification to `primary_category` rather than overwriting the restaurant's original `category` section.
+- Added **No Classification** so an incorrect normalized classification can be removed deliberately.
+- Removed restaurant-derived, free-text, singular/plural duplicate, and “New category” choices from the Menu classification picker.
 
-Schema version: 66 (unchanged).
+### FH-1414.12B
+- Strengthened Fizz and restaurant category headers with heavier type, higher contrast, dedicated header backgrounds, counts, and visible chevrons.
+- Expanded and collapsed states now read clearly as interactive section controls rather than food cards.
 
-Completed stories: FH-1414.10A / FH-1414.11A / FH-1414.12A
+Schema remains version 66; no database structure change was required.

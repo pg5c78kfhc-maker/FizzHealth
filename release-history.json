@@ -2,6 +2,25 @@
   "format": "fizz-health-release-history",
   "releases": [
     {
+      "version": "1.4.14.4B",
+      "name": "Canonical Menu Classification Corrective",
+      "type": "Corrective release",
+      "created_at": "2026-07-26T22:45:00-04:00",
+      "build": "141404B",
+      "release_id": "FH-20260726-141404B",
+      "stories": [
+        [
+          "FH-1414.11B",
+          "Use only canonical Fizz meal classifications for reclassification, preserve restaurant menu sections, and support No Classification"
+        ],
+        [
+          "FH-1414.12B",
+          "Make Fizz and restaurant category headers visually distinct collapsible controls"
+        ]
+      ],
+      "known_issues": []
+    },
+    {
       "version": "1.4.14.4A",
       "name": "Menu Viewport and Presentation Corrective",
       "type": "Corrective release",

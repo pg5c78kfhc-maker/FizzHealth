@@ -1402,3 +1402,50 @@ body.food-library-active .content{height:calc(100dvh - var(--bottom-nav-height))
  .white-menu-list .restaurant-menu-copy b{font-size:1.04rem!important}
  .restaurant-category-editor{width:calc(100% - 16px)!important}
 }
+
+/* v1.4.14.4B — canonical classification and stronger collapsible category hierarchy. */
+.restaurant-category-options .unclassified-option{
+  border-color:#647078;
+  background:#1a2328;
+}
+.restaurant-category-options .unclassified-option>span{display:grid;gap:2px;text-align:left}
+.restaurant-category-options .unclassified-option small{color:#aab4b9;font-weight:600;font-size:.72rem}
+.restaurant-category-options .unclassified-option.selected{background:#384047;border-color:#a9b3b8}
+.meal-calendar-prototype .menu-category-heading,
+.meal-calendar-prototype .restaurant-category-heading{
+  min-height:58px;
+  background:#eee8dc!important;
+  border-bottom:1px solid #cfc5b5!important;
+  box-shadow:inset 0 -1px 0 rgba(24,33,38,.06);
+}
+.meal-calendar-prototype .menu-category-heading{
+  grid-template-columns:minmax(0,1fr) auto 22px!important;
+}
+.meal-calendar-prototype .menu-category-heading:after{display:none!important}
+.meal-calendar-prototype .menu-category-heading h3,
+.meal-calendar-prototype .restaurant-category-heading h4{
+  font-size:1.08rem!important;
+  font-weight:900!important;
+  letter-spacing:.01em;
+}
+.meal-calendar-prototype .menu-category-heading>span,
+.meal-calendar-prototype .restaurant-category-heading span{
+  font-weight:800!important;
+  color:#59666c!important;
+}
+.meal-calendar-prototype .menu-category-heading>svg,
+.meal-calendar-prototype .restaurant-category-heading>svg{
+  color:#182126!important;
+  width:20px!important;
+  height:20px!important;
+}
+.meal-calendar-prototype .menu-category-heading[aria-expanded="true"],
+.meal-calendar-prototype .restaurant-category-heading[aria-expanded="true"]{
+  background:#e4dccd!important;
+}
+.meal-calendar-prototype .restaurant-category-section{
+  border:1px solid #d6cdbf!important;
+  border-radius:14px;
+  overflow:hidden;
+  margin:8px 10px;
+}
