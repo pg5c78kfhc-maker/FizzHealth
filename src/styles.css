@@ -1249,3 +1249,156 @@ body.food-library-active .content{height:calc(100dvh - var(--bottom-nav-height))
 .meal-calendar-prototype .planned-order{background:#fff;color:var(--menu-ink);border-color:#ddd6ca}
 .meal-calendar-prototype .meal-empty-state{color:#687277;background:#fff;border-color:#ddd6ca}
 .menu-information-page{z-index:120}.menu-information-scroll{overflow:auto;padding:16px;display:grid;gap:16px}.menu-information-grid{display:grid;gap:0;border:1px solid #34434a;border-radius:14px;overflow:hidden}.menu-information-grid>div{display:grid;grid-template-columns:minmax(120px,.8fr) minmax(0,1.4fr);gap:12px;padding:12px 14px;border-bottom:1px solid #2d3940}.menu-information-grid>div:last-child{border-bottom:0}.menu-information-grid span{color:#9aa6ab;font-size:.78rem}.menu-information-grid b{overflow-wrap:anywhere}.menu-information-add{width:100%;justify-content:center}
+
+/* v1.4.14.4A — Menu viewport, swipe sizing, contrast, and rounded presentation corrective. */
+.menu-information-page{
+  position:fixed!important;
+  inset:var(--visual-viewport-top,0px) 0 calc(82px + env(safe-area-inset-bottom))!important;
+  height:auto!important;
+  z-index:2400!important;
+  overflow:hidden!important;
+  background:#070c0f;
+}
+.menu-information-page .decision-page-inner{
+  width:min(520px,100%);
+  height:100%;
+  max-height:none;
+  margin:0 auto;
+  display:grid;
+  grid-template-rows:auto minmax(0,1fr);
+  overflow:hidden;
+}
+.menu-information-page .decision-detail-head{position:sticky;top:0;z-index:2;background:#070c0f}
+.menu-information-scroll{
+  min-height:0;
+  overflow-y:auto!important;
+  overscroll-behavior:contain;
+  -webkit-overflow-scrolling:touch;
+  padding:16px 16px calc(30px + env(safe-area-inset-bottom))!important;
+  scroll-padding-bottom:110px;
+}
+.menu-information-grid>div{align-items:start}
+.menu-information-grid b{line-height:1.3}
+.menu-information-add{min-height:54px;border-radius:18px;margin-bottom:8px}
+
+/* Category editor occupies only the usable area between Menu calendar and footer. */
+.modal-backdrop:has(.restaurant-category-editor){
+  position:fixed;
+  inset:0;
+  height:var(--visual-viewport-height,100dvh);
+  top:var(--visual-viewport-top,0px);
+  padding:0;
+  align-items:stretch;
+  background:transparent;
+  z-index:2350;
+  pointer-events:none;
+}
+.restaurant-category-editor{
+  pointer-events:auto;
+  position:fixed;
+  top:calc(var(--visual-viewport-top,0px) + var(--menu-header-height,calc(65px + env(safe-area-inset-top))) + var(--menu-calendar-height,178px));
+  bottom:calc(82px + env(safe-area-inset-bottom));
+  left:50%;
+  transform:translateX(-50%);
+  width:min(520px,calc(100% - 24px))!important;
+  max-height:none!important;
+  height:auto;
+  display:grid;
+  grid-template-rows:auto minmax(0,1fr);
+  border-radius:20px 20px 0 0;
+  overflow:hidden!important;
+  background:#11191e;
+  z-index:2351;
+}
+.restaurant-category-editor .standard-modal-header{padding:10px 12px;position:relative;min-height:62px}
+.restaurant-category-editor .editor-scroll{
+  min-height:0;
+  overflow-y:auto!important;
+  overscroll-behavior:contain;
+  -webkit-overflow-scrolling:touch;
+  padding:8px 0 calc(28px + env(safe-area-inset-bottom));
+  scroll-padding-bottom:100px;
+}
+.restaurant-category-editor .add-to-meals-item{font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;font-size:1rem;margin:6px 16px 10px}
+.restaurant-category-options{gap:8px;padding:4px 14px 18px}
+.restaurant-category-options button{min-height:48px;padding:9px 13px;border-radius:15px}
+
+/* Compact, completely revealable Menu swipe actions. */
+.menu-swipe-rail{justify-content:flex-end!important;gap:0!important}
+.menu-swipe-rail .menu-swipe-add{margin-right:auto}
+.menu-swipe-rail button,.menu-swipe-shell:has(.menu-swipe-edit) .menu-swipe-rail button{
+  width:66px!important;
+  min-width:66px!important;
+  padding:5px 3px;
+  gap:3px;
+  font-size:.64rem;
+}
+.menu-swipe-rail button svg{width:20px;height:20px}
+.menu-swipe-shell{overflow:hidden;border-radius:18px}
+
+/* Light Menu: readable, responsive, rounded, and deliberately sans-serif. */
+.meal-calendar-prototype .planned-meals-menu,
+.meal-calendar-prototype .today-menu{
+  width:calc(100% - 24px);
+  max-width:calc(100% - 24px);
+  margin-left:auto;
+  margin-right:auto;
+  border-radius:24px;
+  overflow:hidden;
+}
+.meal-calendar-prototype .today-menu{padding:14px 10px calc(24px + env(safe-area-inset-bottom));}
+.meal-calendar-prototype .menu-category{margin:0 0 12px;border-radius:18px;background:#fbf8f1;overflow:hidden}
+.meal-calendar-prototype .chef-section,.meal-calendar-prototype .restaurant-menu-group{border:1px solid #ddd4c4}
+.meal-calendar-prototype .menu-category-heading{padding:13px 14px;color:#182126!important}
+.meal-calendar-prototype .menu-category-heading h3,
+.meal-calendar-prototype .meal-service-head h3,
+.meal-calendar-prototype .planned-meals-heading h3,
+.meal-calendar-prototype .restaurant-category-heading h4,
+.white-menu-list .restaurant-menu-copy b{
+  font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif!important;
+  color:#182126!important;
+}
+.meal-calendar-prototype .menu-category-heading>span,
+.meal-calendar-prototype .restaurant-category-heading span,
+.meal-calendar-prototype .chef-section small{color:#5f6b70!important}
+.meal-calendar-prototype .menu-category-heading:after{background:#a9a091!important}
+.restaurant-category-section{border-top:1px solid #d8d0c4!important}
+.restaurant-category-heading{padding:12px 14px!important;color:#182126!important}
+.menu-browse-filters{
+  width:100%;
+  max-width:100%;
+  overflow-x:auto;
+  overscroll-behavior-inline:contain;
+  scrollbar-width:none;
+  padding:8px 4px 14px;
+  gap:8px;
+}
+.menu-browse-filters::-webkit-scrollbar{display:none}
+.menu-browse-filters button{flex:0 0 auto;white-space:nowrap;min-height:42px;border-radius:21px;padding:8px 15px;color:#182126!important}
+.menu-browse-filters button.active{background:#e9f6cc!important;color:#182126!important}
+.white-menu-list{border-radius:16px;overflow:hidden;margin:0 8px 10px}
+.white-menu-list .restaurant-menu-card{
+  min-height:104px!important;
+  padding:13px 13px 12px!important;
+  grid-template-columns:minmax(0,1fr) 88px!important;
+  border-radius:0!important;
+}
+.white-menu-list .restaurant-menu-copy b{font-size:1.12rem!important;line-height:1.15!important;font-weight:800!important}
+.white-menu-list .restaurant-menu-copy p{color:#566166!important}
+.menu-recommendation-row{gap:9px;overflow:visible}
+.menu-recommendation-indicator{min-width:38px;color:#182126}
+.menu-recommendation-indicator i{display:grid;place-items:center;width:24px;height:24px;color:#315b18}
+.menu-recommendation-indicator i svg{width:22px;height:22px;stroke-width:2.2}
+.menu-recommendation-indicator small{color:#182126!important;font-size:.58rem}
+.white-menu-list .restaurant-menu-nutrition strong{font-size:1.12rem!important}
+.white-menu-list .restaurant-menu-nutrition small{color:#5d686d!important}
+.white-menu-list .menu-card-actions button{width:28px;height:28px}
+.white-menu-list .menu-card-actions button svg{width:21px;height:21px}
+.meal-calendar-prototype .meal-service-card,.meal-calendar-prototype .planned-order{border-radius:18px}
+.meal-calendar-prototype .meal-empty-state{border-radius:16px}
+@media(max-width:420px){
+ .meal-calendar-prototype .planned-meals-menu,.meal-calendar-prototype .today-menu{width:calc(100% - 16px);max-width:calc(100% - 16px)}
+ .white-menu-list .restaurant-menu-card{grid-template-columns:minmax(0,1fr) 82px!important;min-height:100px!important}
+ .white-menu-list .restaurant-menu-copy b{font-size:1.04rem!important}
+ .restaurant-category-editor{width:calc(100% - 16px)!important}
+}

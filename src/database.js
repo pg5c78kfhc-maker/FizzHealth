@@ -823,7 +823,7 @@ const migrations=[
     ALTER TABLE recipes ADD COLUMN category TEXT DEFAULT 'Any';
     UPDATE recipes SET category='Any' WHERE category IS NULL OR TRIM(category)='';
     INSERT OR REPLACE INTO release_metadata(version,release_date,build_id,schema_version,title,created_at)
-    VALUES ('1.4.14.4','2026-07-26','141404',66,'Menu Information, Categories, and Presentation','2026-07-26T21:30:00-04:00');
+    VALUES ('1.4.14.4A','2026-07-26','141404A',66,'Menu Viewport and Presentation Corrective','2026-07-26T22:15:00-04:00');
   `}
 
 ];

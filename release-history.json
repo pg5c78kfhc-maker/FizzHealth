@@ -2,6 +2,29 @@
   "format": "fizz-health-release-history",
   "releases": [
     {
+      "version": "1.4.14.4A",
+      "name": "Menu Viewport and Presentation Corrective",
+      "type": "Corrective release",
+      "created_at": "2026-07-26T22:15:00-04:00",
+      "build": "141404A",
+      "release_id": "FH-20260726-141404A",
+      "stories": [
+        [
+          "FH-1414.10A",
+          "Keep every Menu Information field and Add to Meals action above the persistent footer"
+        ],
+        [
+          "FH-1414.11A",
+          "Constrain category editing to the usable viewport and fully reveal compact swipe actions"
+        ],
+        [
+          "FH-1414.12A",
+          "Correct light Menu contrast, responsive sizing, rounded containers, typography, and card density"
+        ]
+      ],
+      "known_issues": []
+    },
+    {
       "version": "1.4.14.4",
       "name": "Menu Information, Universal Categories, and Presentation",
       "type": "Feature release",
