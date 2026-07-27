@@ -1,0 +1,14 @@
+VERSION.json
+release-history.json
+ReleaseNotes.md
+package.json
+package-lock.json
+index.html
+public/sw.js
+src/main.jsx
+src/startup.js
+src/decision/engine.js
+tests/v14149-startup-performance.test.js
+EXECUTION-VERIFICATION-1.4.14.9.md
+TEST-REPORT-1.4.14.9.md
+CHANGED-FILES-1.4.14.9.txt

@@ -2,6 +2,33 @@
   "format": "fizz-health-release-history",
   "releases": [
     {
+      "version": "1.4.14.9",
+      "name": "Startup Performance and Nutrition Verification",
+      "type": "Corrective reliability release",
+      "created_at": "2026-07-27T11:00:00-04:00",
+      "build": "141409",
+      "release_id": "FH-20260727-141409",
+      "stories": [
+        [
+          "FH-1414.32",
+          "Render an immediate launch shell before the JavaScript bundle initializes"
+        ],
+        [
+          "FH-1414.33",
+          "Remove aggregate nutrition refresh from the critical first-render path"
+        ],
+        [
+          "FH-1414.34",
+          "Isolate deferred nutrition failures so they cannot block navigation"
+        ],
+        [
+          "FH-1414.35",
+          "Record startup phase timing and add startup regression coverage"
+        ]
+      ],
+      "known_issues": []
+    },
+    {
       "version": "1.4.14.8",
       "name": "Aggregate Nutrition Completion",
       "type": "Corrective architecture release",
