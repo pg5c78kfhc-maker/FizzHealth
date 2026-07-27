@@ -1558,3 +1558,5 @@ body.food-library-active .content{height:calc(100dvh - var(--bottom-nav-height))
   }
   .chef-pick-image{width:68px;height:68px}
 }
+.audit-result{display:grid;gap:.2rem;padding:.75rem 0;border-bottom:1px solid rgba(255,255,255,.16)}
+.audit-result span{text-transform:capitalize}.audit-result small{opacity:.8}

@@ -62,3 +62,36 @@ test('UI consumers cannot call low-level recipe builder directly',()=>{
  assert.match(source,/getMealNutrition\(query,row\.meal_id\)/);
  assert.match(source,/Number\(item\.nutrition_known\)===1/);
 });
+
+test('aggregate audit returns explicit integrity states and resolution counts',()=>{
+ const report=auditAggregateNutrition(runQuery);
+ assert.equal(report.recipes[0].status,'valid');
+ assert.equal(report.recipes[0].ingredient_count,2);
+ assert.equal(report.recipes[0].resolved_count,2);
+ assert.equal(report.meals[0].component_count,1);
+ assert.equal(report.meals[0].resolved_count,1);
+ assert.equal(report.by_status.valid,2);
+});
+
+test('duplicate Meal components invalidate the Meal rather than double-count silently',()=>{
+ mealComponents.push({...mealComponents[0],id:2,sort_order:1});
+ const snapshot=getMealNutrition(runQuery,'M1');
+ assert.equal(snapshot.nutrition_known,0);
+ assert.equal(snapshot.status,'calculation_error');
+ assert.match(snapshot.issues.join(' '),/duplicate/i);
+ mealComponents.pop();
+});
+
+test('low-level recipe aggregation remains isolated from UI and feature consumers',()=>{
+ const files=['../src/main.jsx','../src/decision/intelligence.js','../src/planning/intelligence.js','../src/pantry/intelligence.js'];
+ for(const file of files){
+  const source=fs.readFileSync(new URL(file,import.meta.url),'utf8');
+  assert.doesNotMatch(source,/buildRecipeSnapshot\s*\(/,`${file} bypasses canonical aggregate nutrition`);
+ }
+});
+
+test('Menu calculates each Recipe snapshot once per mapping pass',()=>{
+ const source=fs.readFileSync(new URL('../src/main.jsx',import.meta.url),'utf8');
+ assert.match(source,/map\(r=>\{const snapshot=recipeSnapshot\(r\.meal_id\)/);
+ assert.doesNotMatch(source,/nutrition_known:recipeSnapshot\(r\.meal_id\)/);
+});

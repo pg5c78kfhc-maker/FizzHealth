@@ -2,6 +2,45 @@
   "format": "fizz-health-release-history",
   "releases": [
     {
+      "version": "1.4.14.8",
+      "name": "Aggregate Nutrition Completion",
+      "type": "Corrective architecture release",
+      "created_at": "2026-07-27T08:00:00-04:00",
+      "build": "141408",
+      "release_id": "FH-20260727-141408",
+      "stories": [
+        [
+          "FH-1414.25",
+          "Complete Meal nutrition audit and canonical nested Recipe calculation"
+        ],
+        [
+          "FH-1414.26",
+          "Complete aggregate consumer audit and remove repeated Recipe calculation"
+        ],
+        [
+          "FH-1414.27",
+          "Enforce current nutrition for prospective views and immutable historical snapshots"
+        ],
+        [
+          "FH-1414.28",
+          "Add detailed Recipe and Meal integrity reporting"
+        ],
+        [
+          "FH-1414.29",
+          "Standardize aggregate nutrition integrity states"
+        ],
+        [
+          "FH-1414.30",
+          "Add cross-system consistency and dependency regression coverage"
+        ],
+        [
+          "FH-1414.31",
+          "Strengthen release integrity verification"
+        ]
+      ],
+      "known_issues": []
+    },
+    {
       "version": "1.4.14.7",
       "name": "Aggregate Nutrition Integrity",
       "type": "Corrective architecture release",

@@ -1,0 +1,12 @@
+src/nutrition/aggregate.js
+src/main.jsx
+src/styles.css
+tests/aggregate-nutrition-integrity.test.js
+package.json
+VERSION.json
+release-history.json
+src/decision/engine.js
+public/sw.js
+ReleaseNotes.md
+EXECUTION-VERIFICATION-1.4.14.8.md
+TEST-REPORT-1.4.14.8.md
