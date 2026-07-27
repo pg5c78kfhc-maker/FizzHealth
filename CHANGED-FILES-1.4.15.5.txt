@@ -1,0 +1,10 @@
+src/main.jsx
+src/database.js
+src/decision/engine.js
+public/sw.js
+package.json
+package-lock.json
+tests/v14155-startup-symbol.test.js
+TEST-REPORT-1.4.15.5.md
+EXECUTION-VERIFICATION-1.4.15.5.md
+CHANGED-FILES-1.4.15.5.txt
