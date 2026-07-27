@@ -1,25 +1,26 @@
-# Fizz Health v1.4.15.10 — Pantry Inventory Model Cleanup
+# Fizz Health v1.4.15.11 — Pantry Serving Decrement Corrective
 
 ## Completed story
 
-FH-1415.49
+FH-1415.53
 
 ## Scope
 
-- Removed the editable Package state boolean and all active application logic that depended on it.
-- Derives open-package status from package counts and open-package remainder.
-- Removed the manual Freshness selector and derives freshness from purchase/prepared and expiration/best-by dates.
-- Added Discontinued, defaulting to false, and excluded discontinued inventory from Pantry, Chef, Menu, Shopping, and recommendation queries.
-- Rebuilt the Pantry item editor as an iPhone-friendly property sheet with labels left and fields right.
-- Displays canonical enriched serving size and servings per container.
-- Uses canonical serving size when a serving is consumed and advances through open and unopened package inventory.
-- Preserved existing inventory quantities, locations, dates, notes, and package values.
+- Converts logged servings into the canonical enriched serving size before decrementing Pantry inventory.
+- Uses the enriched serving unit and converts it to the Pantry inventory unit when compatible.
+- Synchronizes packages on hand, unopened packages, and open-package remainder as containers are opened and exhausted.
+- Restores package structure when a Pantry-linked consumption event is undone.
+- Adds an Include discontinued control so discontinued records can be reviewed and restored without returning to active recommendations.
+- Removes remaining active Menu and Chef dependence on the obsolete stored package-state value.
+- Carries serving size and servings per container into product-enrichment requests.
+- Preserves the existing Pantry property-sheet editor and derived freshness behavior.
+- Retains the carried-forward Menu editor routing and Chef layout corrections.
 
 ## Release identity
 
-- Version: 1.4.15.10
-- Build: 141510
-- Deployment: FH-20260727-141510
-- Schema: 71
+- Version: 1.4.15.11
+- Build: 141511
+- Deployment: FH-20260727-141511
+- Schema: 72
 - Issued: 2026-07-27
-- Created: 2026-07-27T18:15:00-04:00
+- Created: 2026-07-27T20:30:00-04:00

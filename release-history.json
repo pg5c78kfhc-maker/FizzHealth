@@ -2,6 +2,35 @@
   "format": "fizz-health-release-history",
   "releases": [
     {
+      "version": "1.4.15.11",
+      "name": "Pantry Serving Decrement Corrective",
+      "type": "Corrective release",
+      "created_at": "2026-07-27T20:30:00-04:00",
+      "build_id": "141511",
+      "build": "141511",
+      "release_id": "FH-20260727-141511",
+      "schema_version": 72,
+      "stories": [
+        {
+          "id": "FH-1415.50",
+          "title": "Decrement Pantry inventory using enriched serving size and serving unit"
+        },
+        {
+          "id": "FH-1415.51",
+          "title": "Synchronize package counts as containers are opened and exhausted"
+        },
+        {
+          "id": "FH-1415.52",
+          "title": "Allow discontinued inventory to be reviewed and restored"
+        },
+        {
+          "id": "FH-1415.53",
+          "title": "Remove remaining active dependence on obsolete package state"
+        }
+      ],
+      "known_issues": []
+    },
+    {
       "version": "1.4.15.10",
       "name": "Pantry Inventory Model Cleanup",
       "type": "Corrective feature release",

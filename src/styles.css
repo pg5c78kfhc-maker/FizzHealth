@@ -1812,3 +1812,10 @@ body.food-library-active .content{overflow:hidden!important}
 .pantry-property-editor textarea{width:100%;min-height:90px}
 .pantry-property-editor .section-help{display:block;color:#8f9aa2;font-size:12px;padding:0 0 6px 44%}
 @media(max-width:390px){.pantry-property-row{grid-template-columns:minmax(110px,42%) minmax(0,1fr);gap:10px}.pantry-property-editor .section-help{padding-left:0}}
+
+/* v1.4.15.11 — discontinued review and exact shared Menu column */
+.pantry-toolbar .include-discontinued{display:flex;align-items:center;gap:8px;font-size:.86rem;white-space:nowrap}
+.pantry-toolbar .include-discontinued input{width:18px;height:18px}
+.meal-calendar-prototype .planned-meals-menu+.today-menu{margin-top:0!important}
+.meal-calendar-prototype .today-menu{width:100%!important;max-width:100%!important}
+.meal-calendar-prototype .today-menu>.chef-section{padding-left:0!important;padding-right:0!important}
