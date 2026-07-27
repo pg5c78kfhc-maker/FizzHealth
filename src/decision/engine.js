@@ -1,7 +1,7 @@
 const number = value => Number.isFinite(Number(value)) ? Number(value) : 0;
 const clamp = (value, min = 0, max = 100) => Math.max(min, Math.min(max, value));
 const unique = values => [...new Set(values.filter(Boolean))];
-export const ENGINE_VERSION = '1.4.15.9';
+export const ENGINE_VERSION = '1.4.15.10';
 export const RULES_VERSION = '2026-07-20.1';
 
 export const DECISION_TRACE_CONTRACT = Object.freeze({
@@ -208,7 +208,7 @@ export function evaluateInventoryPressure({candidate, horizonDays = 14, now = Da
   const thawed=/thaw(ed|ing)|defrost(ed|ing)/.test(stateText);
   const frozen=/freezer|frozen/.test(stateText)&&!thawed;
   const refrigerated=/refrigerator|fridge|chilled/.test(stateText);
-  const opened=String(candidate.opened||'').toLowerCase()==='yes'||/\bopen(ed)?\b/.test(stateText);
+  const opened=Number(candidate.partial_package_quantity)>0||(Number(candidate.package_count)>0&&Number(candidate.unopened_packages)<Number(candidate.package_count))||/\bopen(ed)?\b/.test(stateText);
   let score=0,status='low';
   if(daysToExpiration==null){missing.push('Expiration date');score-=rules.unknownExpiryPenalty;factors.push({label:'Unknown expiration date',impact:-rules.unknownExpiryPenalty,category:'data'});}
   else if(daysToExpiration<0){score=rules.expired;status='expired';negative.push('Past the recorded expiration date');factors.push({label:'Past expiration date',impact:rules.expired,category:'safety'});}
@@ -227,7 +227,7 @@ export function evaluateInventoryPressure({candidate, horizonDays = 14, now = Da
   if(/high|urgent/.test(wasteRisk)){score+=rules.highWasteRisk;positive.push('High recorded waste risk');factors.push({label:'Recorded high waste risk',impact:rules.highWasteRisk,category:'waste'});}
   score=clamp(score);
   if(status!=='expired')status=score>=80?'critical':score>=60?'high':score>=35?'moderate':'low';
-  const confidence=clamp(55+(daysToExpiration!=null?22:0)+(candidate.quantity!=null?10:0)+(candidate.status||candidate.location?7:0)+(candidate.opened!=null?4:0)-missing.length*8,35,98);
+  const confidence=clamp(55+(daysToExpiration!=null?22:0)+(candidate.quantity!=null?10:0)+(candidate.status||candidate.location?7:0)+(candidate.partial_package_quantity!=null?4:0)-missing.length*8,35,98);
   const action=status==='expired'?'Do not recommend this item for consumption until its safety is reviewed.':score>=80?'Use this item in the next available meal.':score>=60?'Schedule this item within the next few days.':score>=35?'Include this item during the current planning horizon.':'No immediate inventory action is required.';
   return createDecisionTrace({type:'inventory_pressure',subject:candidate.pantry_id||candidate.food_id||candidate.item,subjectId:candidate.pantry_id||candidate.food_id||candidate.item,subjectName:candidate.item||candidate.name||'Inventory item',score,confidence,status,positive,negative,missing,factors,methodology:'Inventory pressure combines expiration proximity, open or thawed state, storage location, servings remaining, preferred serving cadence, and recorded waste risk. Expired inventory is treated as a safety exception rather than a consumption priority.',confidenceReason:missing.length?`Confidence is reduced because ${missing.join(' and ')} ${missing.length===1?'is':'are'} unavailable.`:'Expiration, quantity, and storage-state evidence are available.',action,inputs:{quantity,horizonDays:number(horizonDays),preferredFrequency,daysToExpiration,opened,thawed,frozen,refrigerated},dataUsed:['Pantry quantity','Expiration date','Open and thawed status','Storage location',...(preferredFrequency>0?['Preferred serving frequency']:[]),...(candidate.waste_risk||candidate.priority?['Recorded waste risk']:[])],projectedResult:{pressureScore:Math.round(score),daysToExpiration:daysToExpiration==null?null:Math.round(daysToExpiration*10)/10,servingsRemaining:quantity,expectedUses:expectedUses==null?null:Math.round(expectedUses*10)/10}});
 }
@@ -284,7 +284,7 @@ export function scoreChefCandidate({candidate, remaining = {}, daily = {}, targe
   }
 
   // Open status is useful context, but it cannot dominate nutrition without real waste risk.
-  if (String(candidate.opened).toLowerCase() === 'yes') {
+  if (Number(candidate.partial_package_quantity)>0||(Number(candidate.package_count)>0&&Number(candidate.unopened_packages)<Number(candidate.package_count))) {
     const openImpact = daysToExpiration != null && daysToExpiration <= 7 ? 12 : 5;
     score += openImpact; factors.push({label:'Open package',impact:openImpact,category:'waste'});
     positive.push('Uses an open package');

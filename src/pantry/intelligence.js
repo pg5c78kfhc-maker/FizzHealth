@@ -3,12 +3,13 @@ const num=v=>Number.isFinite(Number(v))?Number(v):0;
 const clamp=(v,min=0,max=100)=>Math.max(min,Math.min(max,v));
 const dateMs=v=>{const n=Date.parse(v||'');return Number.isFinite(n)?n:null};
 const yes=v=>['yes','true','1','on hand','available','verified'].includes(String(v??'').trim().toLowerCase());
+const hasOpenPackage=item=>num(item.partial_package_quantity)>0||(num(item.package_count)>0&&num(item.unopened_packages)<num(item.package_count));
 const round=(v,d=1)=>Math.round(num(v)*10**d)/10**d;
 const hasNumber=v=>v!==null&&v!==undefined&&String(v).trim()!==''&&Number.isFinite(Number(v));
 
 export function inventoryState(item={}){
  const status=String(item.status||'').trim().toLowerCase();
- if(['archived','deleted','discarded'].includes(status))return 'archived';
+ if(Number(item.discontinued)===1||['archived','deleted','discarded'].includes(status))return 'archived';
  const quantity=hasNumber(item.quantity)?Math.max(0,num(item.quantity)):null;
  const remaining=hasNumber(item.remaining_servings)?Math.max(0,num(item.remaining_servings)):null;
  if(quantity!==null)return quantity>0?'in_stock':'out_of_stock';
@@ -26,7 +27,7 @@ export function calculateAvailableServings(item={}){
 
 export function pantryConfidence(item={},events=[],now=Date.now()){
  let score=35;const relevant=events.filter(e=>String(e.pantry_id)===String(item.pantry_id));
- const latest=[item.verified_at,item.purchase_date,item.opened_date,...relevant.map(e=>e.event_at||e.occurred_at)].map(dateMs).filter(v=>v!==null).sort((a,b)=>b-a)[0];
+ const latest=[item.verified_at,item.purchase_date,...relevant.map(e=>e.event_at||e.occurred_at)].map(dateMs).filter(v=>v!==null).sort((a,b)=>b-a)[0];
  const ageDays=latest==null?90:Math.max(0,(now-latest)/DAY);
  if(item.verified_at)score+=30;if(item.purchase_date)score+=12;if(Number.isFinite(Number(item.quantity)))score+=10;
  if(relevant.some(e=>['purchase','restock','verify','confirmation'].includes(String(e.event_type).toLowerCase())))score+=14;
@@ -35,15 +36,13 @@ export function pantryConfidence(item={},events=[],now=Date.now()){
 }
 
 export function freshnessStatus(item={},now=Date.now()){
- const purchase=dateMs(item.purchase_date),opened=dateMs(item.opened_date),explicit=dateMs(item.expiration||item.best_by);
+ const purchase=dateMs(item.purchase_date),explicit=dateMs(item.expiration||item.best_by);
  const storage=String(item.storage_type||item.location||'pantry').toLowerCase();
  const manufacturer=num(item.manufacturer_shelf_life_days||item.shelf_life_days);
- const openedLife=num(item.opened_shelf_life_days);
  const storageMultiplier=storage.includes('freezer')?3:storage.includes('refriger')?1:0.8;
  const candidates=[];
  if(explicit!==null)candidates.push(explicit);
  if(purchase!==null&&manufacturer>0)candidates.push(purchase+manufacturer*storageMultiplier*DAY);
- if(opened!==null&&openedLife>0)candidates.push(opened+openedLife*DAY);
  const thaw=dateMs(item.thaw_date);if(thaw!==null)candidates.push(thaw+num(item.thaw_life_days||3)*DAY);
  const effective=candidates.length?Math.min(...candidates):null;
  if(effective===null)return {status:'unknown',quality:'unknown',safety:'unknown',daysRemaining:null,effectiveExpiration:null};
@@ -72,7 +71,7 @@ export function forecastPantry(item={},plannedMeals=[],history=[],startDate=new 
 export function wasteRisk(item={},events=[],now=Date.now()){
  const fresh=freshnessStatus(item,now),servings=calculateAvailableServings(item),confidence=pantryConfidence(item,events,now);let score=0;const reasons=[];
  const weight={expired:100,today:94,urgent:80,soon:55,fresh:10,unknown:15};score+=weight[fresh.status]||0;
- if(yes(item.opened)){score+=12;reasons.push('Opened package')}if(item.thaw_date||String(item.status).toLowerCase()==='thawed'){score+=20;reasons.push('Thawed')}
+ if(hasOpenPackage(item)){score+=12;reasons.push('Opened package')}if(item.thaw_date||String(item.status).toLowerCase()==='thawed'){score+=20;reasons.push('Thawed')}
  if(servings>=3&&['today','urgent','soon'].includes(fresh.status)){score+=Math.min(18,servings*3);reasons.push(`${round(servings)} servings remain`)}
  if(fresh.daysRemaining!=null&&fresh.daysRemaining<=2)reasons.unshift(fresh.daysRemaining<0?'Past recorded freshness date':`Use within ${Math.max(0,fresh.daysRemaining)} days`);
  if(confidence<45){score-=8;reasons.push('Verify quantity first')}

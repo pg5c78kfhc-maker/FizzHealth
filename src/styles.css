@@ -1797,3 +1797,18 @@ body.food-library-active .content{overflow:hidden!important}
   object-fit:cover!important;
   border-radius:0!important;
 }
+
+/* v1.4.15.10 — compact mobile Pantry property sheet */
+.pantry-property-editor .editor-scroll{padding:12px 18px 180px}
+.pantry-property-editor .editor-scroll>section{border-bottom:1px solid var(--line,#31404a);padding:8px 0 14px;margin:0}
+.pantry-property-editor .editor-scroll>section>h3{font-size:14px;letter-spacing:.12em;text-transform:uppercase;margin:8px 0 5px;color:#aab5bd}
+.pantry-property-row{display:grid!important;grid-template-columns:minmax(120px,44%) minmax(0,1fr);align-items:center;gap:14px;margin:0!important;padding:8px 0}
+.pantry-property-row>span{font-size:15px;line-height:1.2;color:#aab5bd;font-weight:700}
+.pantry-property-row>div{min-width:0;text-align:right}
+.pantry-property-row input:not([type=checkbox]),.pantry-property-row select,.pantry-property-row output{width:100%;min-height:44px;box-sizing:border-box;text-align:right}
+.pantry-property-row output{display:flex;align-items:center;justify-content:flex-end;padding:0 12px;border:1px solid #33434d;border-radius:12px;background:#071012;color:#f4f6f5}
+.pantry-property-row input[type=checkbox]{width:28px;height:28px;float:right;accent-color:#9cff32}
+.pantry-property-row .inline-value{display:grid;grid-template-columns:1fr 82px;gap:8px}
+.pantry-property-editor textarea{width:100%;min-height:90px}
+.pantry-property-editor .section-help{display:block;color:#8f9aa2;font-size:12px;padding:0 0 6px 44%}
+@media(max-width:390px){.pantry-property-row{grid-template-columns:minmax(110px,42%) minmax(0,1fr);gap:10px}.pantry-property-editor .section-help{padding-left:0}}

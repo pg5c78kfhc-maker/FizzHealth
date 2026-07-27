@@ -2,6 +2,22 @@
   "format": "fizz-health-release-history",
   "releases": [
     {
+      "version": "1.4.15.10",
+      "name": "Pantry Inventory Model Cleanup",
+      "type": "Corrective feature release",
+      "created_at": "2026-07-27T18:15:00-04:00",
+      "build_id": "141510",
+      "release_id": "FH-20260727-141510",
+      "schema_version": 71,
+      "stories": [
+        "Remove obsolete package-state and manual freshness logic",
+        "Add Discontinued lifecycle control",
+        "Redesign Pantry editor for iPhone",
+        "Use enriched serving data for inventory decrement"
+      ],
+      "build": "141510"
+    },
+    {
       "version": "1.4.15.9",
       "name": "Stabilization and Pantry Inventory Refresh",
       "type": "Corrective release",

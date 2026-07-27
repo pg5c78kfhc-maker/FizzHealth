@@ -1,14 +1,14 @@
 {
   "app": "Fizz Health",
-  "version": "1.4.15.9",
-  "release": "Stabilization and Pantry Inventory Refresh",
+  "version": "1.4.15.10",
+  "release": "Pantry Inventory Model Cleanup",
   "release_type": "Corrective release",
-  "build": "141509",
-  "release_id": "FH-20260727-141509",
-  "created_at": "2026-07-27T17:30:00-04:00",
-  "schema_version": 70,
+  "build": "141510",
+  "release_id": "FH-20260727-141510",
+  "created_at": "2026-07-27T18:15:00-04:00",
+  "schema_version": 71,
   "status": "Corrective Stabilization",
-  "completed_story": "FH-1415.45",
+  "completed_story": "FH-1415.49",
   "baseline_story": "FH-1221",
   "updated": "2026-07-27",
   "stories": [
@@ -23,14 +23,18 @@
     "FH-1415.42",
     "FH-1415.43",
     "FH-1415.44",
-    "FH-1415.45"
+    "FH-1415.45",
+    "FH-1415.46",
+    "FH-1415.47",
+    "FH-1415.48",
+    "FH-1415.49"
   ],
-  "build_date": "2026-07-27T17:30:00-04:00",
-  "release_name": "Stabilization and Pantry Inventory Refresh",
+  "build_date": "2026-07-27T18:15:00-04:00",
+  "release_name": "Pantry Inventory Model Cleanup",
   "release_date": "2026-07-27",
-  "build_id": "141509",
-  "title": "Stabilization and Pantry Inventory Refresh",
-  "name": "Stabilization and Pantry Inventory Refresh",
+  "build_id": "141510",
+  "title": "Pantry Inventory Model Cleanup",
+  "name": "Pantry Inventory Model Cleanup",
   "type": "Corrective release",
-  "package_version": "1.4.15-9"
+  "package_version": "1.4.15-10"
 }
