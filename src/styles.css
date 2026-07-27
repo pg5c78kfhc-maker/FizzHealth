@@ -1757,3 +1757,43 @@ body.food-library-active .content{overflow:hidden!important}
   border-radius:0!important;
   align-self:stretch!important;
 }
+
+/* v1.4.15.9 — structural Menu geometry and Pantry inventory refresh */
+.meal-calendar-prototype .planned-meals-menu + .today-menu{
+  margin-top:-18px!important;
+}
+.meal-calendar-prototype .today-menu{
+  padding-top:0!important;
+}
+.meal-calendar-prototype .today-menu>.chef-section{
+  width:100%!important;
+  max-width:100%!important;
+  margin:0!important;
+  border-radius:24px 24px 0 0!important;
+}
+.meal-calendar-prototype .chef-section .white-menu-list{
+  width:100%!important;
+  margin:0!important;
+  border-radius:0!important;
+}
+.meal-calendar-prototype .chef-section .menu-swipe-shell,
+.meal-calendar-prototype .chef-section .restaurant-menu-card{
+  width:100%!important;
+  max-width:100%!important;
+  border-radius:0!important;
+}
+.meal-calendar-prototype .chef-section .restaurant-menu-card.has-chef-image{
+  display:grid!important;
+  grid-template-columns:minmax(0,1fr) auto!important;
+  padding:0 14px 14px!important;
+}
+.meal-calendar-prototype .chef-section .restaurant-menu-card.has-chef-image>.chef-pick-image{
+  display:block!important;
+  grid-column:1/-1!important;
+  width:calc(100% + 28px)!important;
+  max-width:none!important;
+  height:clamp(180px,52vw,260px)!important;
+  margin:0 -14px 12px!important;
+  object-fit:cover!important;
+  border-radius:0!important;
+}
