@@ -2,6 +2,22 @@
   "format": "fizz-health-release-history",
   "releases": [
     {
+      "version": "1.4.15.3",
+      "name": "Startup Loop Recovery",
+      "type": "Corrective release",
+      "created_at": "2026-07-27T12:10:00-04:00",
+      "build": "141503",
+      "release_id": "FH-20260727-141503",
+      "schema_version": 69,
+      "stories": [
+        "FH-1415.26",
+        "FH-1415.27",
+        "FH-1415.28",
+        "FH-1415.29"
+      ],
+      "known_issues": []
+    },
+    {
       "version": "1.4.15.2",
       "name": "Meals Builder Stabilization",
       "type": "Corrective release",
@@ -374,7 +390,7 @@
         ],
         [
           "FH-1414.4",
-          "Make future dated plans become today’s Proposed entries automatically at local midnight or next app open"
+          "Make future dated plans become today\u2019s Proposed entries automatically at local midnight or next app open"
         ],
         [
           "FH-1414.5",
@@ -697,7 +713,7 @@
         ],
         [
           "FH-1159",
-          "Move classification maintenance into Settings → Data Enrichment"
+          "Move classification maintenance into Settings \u2192 Data Enrichment"
         ],
         [
           "FH-1164",
@@ -1384,7 +1400,7 @@
     },
     {
       "version": "1.4.11.0",
-      "name": "Daily Brief & Meal Intelligence — First Pass",
+      "name": "Daily Brief & Meal Intelligence \u2014 First Pass",
       "type": "Meal Intelligence foundation",
       "created": "2026-07-23T06:00:00-04:00",
       "build": "141100",
@@ -1806,7 +1822,7 @@
     },
     {
       "version": "1.4.10.9",
-      "name": "One-Time Food Logging — Log Once",
+      "name": "One-Time Food Logging \u2014 Log Once",
       "type": "Patch",
       "created": "2026-07-20T11:15:00-04:00",
       "build": "14108",

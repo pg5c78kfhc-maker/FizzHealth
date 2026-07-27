@@ -3,7 +3,7 @@ import wasmUrl from 'sql.js/dist/sql-wasm.wasm?url';
 
 const DB_KEY='fizz-health-sqlite-v1';
 const STORAGE_DB='FizzHealthStorage';
-const TARGET_SCHEMA_VERSION=68;
+const TARGET_SCHEMA_VERSION=69;
 let SQL, db;
 
 const migrations=[
@@ -878,6 +878,22 @@ const migrations=[
     INSERT OR IGNORE INTO release_register(version,issued_date,build_id,schema_version,title,created_at)
     VALUES ('1.4.15.2','2026-07-27','141502',68,'Meals Builder Stabilization','2026-07-27T11:30:00-04:00');
   `}
+,
+  {version:69,name:'startup_loop_recovery',sql:`
+    CREATE TABLE IF NOT EXISTS release_register (
+      version TEXT PRIMARY KEY,
+      issued_date TEXT NOT NULL,
+      build_id TEXT NOT NULL,
+      schema_version INTEGER NOT NULL,
+      title TEXT NOT NULL,
+      created_at TEXT NOT NULL
+    );
+    INSERT OR REPLACE INTO release_metadata(version,release_date,build_id,schema_version,title,created_at)
+    VALUES ('1.4.15.3','2026-07-27','141503',69,'Startup Loop Recovery','2026-07-27T12:10:00-04:00');
+    INSERT OR IGNORE INTO release_register(version,issued_date,build_id,schema_version,title,created_at)
+    VALUES ('1.4.15.3','2026-07-27','141503',69,'Startup Loop Recovery','2026-07-27T12:10:00-04:00');
+  `}
+
 
 ];
 
@@ -1096,16 +1112,23 @@ async function migrate(onProgress=()=>{}){
   onProgress('Saving database…');
   await persist();
 }
+let openDatabasePromise=null;
 export async function openDatabase({onProgress=()=>{}}={}){
   if(db){onProgress('Database ready');return db}
-  onProgress('Loading database engine…');
-  SQL=await initSqlJs({locateFile:()=>wasmUrl});
-  onProgress('Opening saved health data…');
-  const bytes=await loadBytes();
-  db=bytes?new SQL.Database(new Uint8Array(bytes)):new SQL.Database();
-  await migrate(onProgress);
-  onProgress('Database ready');
-  return db;
+  if(openDatabasePromise)return openDatabasePromise;
+  openDatabasePromise=(async()=>{
+    onProgress('Loading database engine…');
+    SQL=await initSqlJs({locateFile:()=>wasmUrl});
+    onProgress('Opening saved health data…');
+    const bytes=await loadBytes();
+    db=bytes?new SQL.Database(new Uint8Array(bytes)):new SQL.Database();
+    await migrate(onProgress);
+    onProgress('Database ready');
+    return db;
+  })();
+  try{return await openDatabasePromise}
+  catch(error){db=null;throw error}
+  finally{openDatabasePromise=null}
 }
 export async function persist(){if(db)await saveBytes(db.export())}
 export async function resetDatabase(){db=new SQL.Database();await migrate();return db}

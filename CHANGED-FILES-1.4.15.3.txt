@@ -1,0 +1,13 @@
+VERSION.json
+package.json
+package-lock.json
+public/sw.js
+release-history.json
+ReleaseNotes.md
+src/database.js
+src/decision/engine.js
+src/main.jsx
+tests/v14153-startup-loop-recovery.test.js
+EXECUTION-VERIFICATION-1.4.15.3.md
+TEST-REPORT-1.4.15.3.md
+CHANGED-FILES-1.4.15.3.txt
