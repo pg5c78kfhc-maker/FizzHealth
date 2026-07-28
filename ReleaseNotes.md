@@ -1,9 +1,8 @@
-# Fizz Health v1.4.15.25 — Food Discontinue and Toggle Controls
+# Fizz Health v1.4.15.26 — Menu and Pantry Usability Polish
 
-## Scope
-
-- FH-1415.25A — Replace the Food Detail **Ingredient Only** checkbox with an iOS-style toggle.
-- FH-1415.25B — Add a confirmed **Discontinued** toggle directly beneath Ingredient Only.
-- FH-1415.25C — Use the established archival lifecycle to hide discontinued foods from active Menu, Meals, Chef, search/add, and Pantry-selection surfaces while preserving historical records and restoration.
-
-No unrelated layout, Menu, Pantry, recipe, or Decision Intelligence changes are included.
+- FH-1415.26A — Inline Pantry search with live filtering.
+- FH-1415.26B — Full-width seven-day Menu calendar.
+- FH-1415.26C — Larger, bolder Menu category headings.
+- FH-1415.26D — Verified restaurant-style category ordering.
+- FH-1415.26E — Meals out-of-stock color synchronization with Pantry.
+- FH-1415.26F — White prohibition icon for items not tracked in Pantry.

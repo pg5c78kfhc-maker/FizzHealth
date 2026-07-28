@@ -1,3 +1,10 @@
+## v1.4.15.26 — Menu and Pantry Usability Polish
+
+- Replaced Pantry search navigation with inline filtering.
+- Corrected Menu calendar width.
+- Improved and reordered Menu category headings.
+- Added Meals inventory-state color and tracking indicators.
+
 ## 1.4.14.3 — Menu Calendar and Restaurant Organization
 
 - Added live calendar synchronization and midnight rollover refresh.

@@ -2,6 +2,45 @@
   "format": "fizz-health-release-history",
   "releases": [
     {
+      "version": "1.4.15.26",
+      "name": "Menu and Pantry Usability Polish",
+      "type": "Polish release",
+      "created": "2026-07-28T20:45:00-04:00",
+      "build_id": "141526",
+      "release_id": "FH-20260728-141526",
+      "stories": [
+        {
+          "id": "FH-1415.26A",
+          "title": "Replace Pantry search navigation with inline live filtering"
+        },
+        {
+          "id": "FH-1415.26B",
+          "title": "Expand the Menu calendar across the full available width"
+        },
+        {
+          "id": "FH-1415.26C",
+          "title": "Increase Menu category heading size and weight"
+        },
+        {
+          "id": "FH-1415.26D",
+          "title": "Order verified food categories like a restaurant menu"
+        },
+        {
+          "id": "FH-1415.26E",
+          "title": "Match Meals out-of-stock colors to Pantry"
+        },
+        {
+          "id": "FH-1415.26F",
+          "title": "Mark Meals items not tracked in Pantry with a white prohibition icon"
+        }
+      ],
+      "known_issues": [],
+      "date": "2026-07-28",
+      "build": "141526",
+      "schema_version": 74,
+      "status": "Polish"
+    },
+    {
       "version": "1.4.15.25",
       "name": "Food Discontinue and Toggle Controls",
       "type": "Feature release",

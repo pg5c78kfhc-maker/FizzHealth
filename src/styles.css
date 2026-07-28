@@ -1866,3 +1866,17 @@ body.food-library-active .content{overflow:hidden!important}
 .food-lifecycle-toggle input[type=checkbox]:checked{background:var(--green)}
 .food-lifecycle-toggle input[type=checkbox]:checked::after{transform:translateX(22px)}
 .food-lifecycle-toggle input[type=checkbox]:focus-visible{outline:2px solid #fff;outline-offset:3px}
+
+
+/* v1.4.15.26 — frozen Menu & Pantry usability polish */
+.pantry-inline-search{margin:14px 0;grid-template-columns:auto minmax(0,1fr) auto!important}
+.pantry-inline-search>button{border:0;background:transparent;color:#eef4f0;padding:4px;display:grid;place-items:center}
+.pantry-inline-search>button svg{width:20px;height:20px}
+.menu-page-shell .planner-calendar-sticky{left:0!important;transform:none!important;width:100%!important;max-width:none!important;padding-left:0!important;padding-right:0!important}
+.menu-page-shell .planner-week{grid-template-columns:repeat(7,minmax(0,1fr))!important;gap:0!important;overflow:hidden!important;width:100%!important}
+.menu-page-shell .planner-week button{min-width:0!important;width:100%!important;border-radius:0!important}
+.meal-calendar-prototype .menu-category:not(.menu-chef-section):not(.restaurant-menu-group)>.menu-category-heading h3{font-size:1.18rem!important;font-weight:900!important}
+.unified-library-card.inventory-out{background:#263a2d!important;border-color:#5f7d69!important}
+.library-card-icons{display:grid;justify-items:center;align-content:start;gap:8px;color:#fff;flex:0 0 auto}
+.library-card-icons svg{width:24px;height:24px;color:#fff}
+.library-card-icons svg+svg{width:21px;height:21px}

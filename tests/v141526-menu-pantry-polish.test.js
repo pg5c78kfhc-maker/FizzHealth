@@ -1,0 +1,12 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import {readFileSync} from 'node:fs';
+const main=readFileSync(new URL('../src/main.jsx',import.meta.url),'utf8');
+const css=readFileSync(new URL('../src/styles.css',import.meta.url),'utf8');
+const db=readFileSync(new URL('../src/database.js',import.meta.url),'utf8');
+test('Pantry search is inline and no separate search page remains',()=>{assert.match(main,/pantry-inline-search/);assert.doesNotMatch(main,/pantry-search-launch/);assert.doesNotMatch(main,/showSearch/)});
+test('Menu calendar uses full width and seven equal columns',()=>{assert.match(css,/planner-calendar-sticky\{left:0!important;transform:none!important;width:100%!important/);assert.match(css,/grid-template-columns:repeat\(7,minmax\(0,1fr\)\)!important/)});
+test('Menu category order matches approved restaurant sequence',()=>{assert.match(main,/\['Appetizer','Salad','Soup','Tapas','Breakfast','Entrée','Side','Dessert','Snack','Beverage','Condiment','Alcohol'\]/)});
+test('database taxonomy contains exactly the twelve approved canonical categories',()=>{for(const name of ['Breakfast','Appetizer','Tapas','Soup','Salad','Entrée','Side','Snack','Dessert','Beverage','Alcohol','Condiment'])assert.match(db,new RegExp(`'${name}'`))});
+test('Meals cards distinguish out of stock and not tracked states',()=>{assert.match(main,/inventory-out/);assert.match(main,/<Ban aria-label="Not tracked in Pantry"\/>/);assert.match(css,/unified-library-card\.inventory-out/);assert.match(css,/library-card-icons svg/)});
+test('release metadata is current',()=>{assert.match(main,/VERSION='1\.4\.15\.26'/);assert.match(main,/BUILD_ID='141526'/)});
