@@ -1,30 +1,27 @@
 {
   "app": "Fizz Health",
-  "version": "1.4.15.14",
-  "release": "Pantry Restoration and Editor Stabilization",
-  "release_type": "Corrective restoration release",
-  "build": "141514",
-  "release_id": "FH-20260727-141514",
+  "version": "1.4.15.15",
+  "release": "Regression Recovery",
+  "release_type": "Corrective release",
+  "build": "141515",
+  "release_id": "FH-20260727-141515",
   "created_at": "2026-07-27T20:45:00-04:00",
   "schema_version": 72,
   "status": "Corrective",
-  "completed_story": "FH-1415.62",
+  "completed_story": "FH-1415.59",
   "baseline_story": "FH-1221",
   "updated": "2026-07-27",
   "stories": [
     "FH-1415.57",
     "FH-1415.58",
-    "FH-1415.59",
-    "FH-1415.60",
-    "FH-1415.61",
-    "FH-1415.62"
+    "FH-1415.59"
   ],
   "build_date": "2026-07-27T20:45:00-04:00",
-  "release_name": "Pantry Restoration and Editor Stabilization",
+  "release_name": "Regression Recovery",
   "release_date": "2026-07-27",
-  "build_id": "141514",
-  "title": "Pantry Restoration and Editor Stabilization",
-  "name": "Pantry Restoration and Editor Stabilization",
-  "type": "Corrective restoration release",
-  "package_version": "1.4.15-14"
+  "build_id": "141515",
+  "title": "Regression Recovery",
+  "name": "Regression Recovery",
+  "type": "Corrective release",
+  "package_version": "1.4.15-15"
 }

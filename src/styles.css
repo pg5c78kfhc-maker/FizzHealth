@@ -1795,15 +1795,13 @@ body.food-library-active .content{overflow:hidden!important}
 /* v1.4.15.13 approved corrective delta only: align sibling sections and restore plain counts. */
 .meal-calendar-prototype .menu-category-heading>span,
 .meal-calendar-prototype .restaurant-category-heading>span{background:transparent!important;box-shadow:none!important;-webkit-tap-highlight-color:transparent;user-select:none}
-
-
-/* v1.4.15.14 approved restoration delta */
-.pantry-inline-search{margin:14px 0;display:grid;grid-template-columns:24px minmax(0,1fr) auto;align-items:center;gap:10px;min-height:52px;padding:0 14px;border:1px solid #33434b;border-radius:15px;background:#121a20}
-.pantry-inline-search input{width:100%;border:0;background:transparent;color:#f5f7f4;font-size:1rem;outline:0}
-.pantry-inline-search>button{display:grid;place-items:center;border:0;background:transparent;color:#9eabb1;padding:6px}
-.pantry-inline-search>button svg{width:18px;height:18px}
-.pantry-recipe-link .compact-action-row{width:100%}
-.meal-calendar-prototype .today-menu>.menu-category{display:grid!important;grid-template-rows:auto auto!important;overflow:hidden!important}
-.meal-calendar-prototype .today-menu>.menu-category>.menu-category-heading{display:grid!important;visibility:visible!important;position:relative!important;z-index:2!important}
-.meal-calendar-prototype .today-menu>.menu-category>.menu-category-grid,
-.meal-calendar-prototype .today-menu>.menu-category>.restaurant-category-sections{position:relative!important;z-index:1!important}
+\n/* v1.4.15.15 — regression recovery only: Pantry swipe actions. */
+.pantry-swipe-shell{position:relative;overflow:hidden;width:100%;touch-action:pan-y}
+.pantry-swipe-rail{position:absolute;inset:0;display:flex;justify-content:space-between;align-items:stretch;pointer-events:none}
+.pantry-swipe-shell.is-open .pantry-swipe-rail{pointer-events:auto}
+.pantry-swipe-rail button{width:88px;border:0;border-radius:0;display:grid;place-content:center;gap:4px;font-weight:800}
+.pantry-swipe-rail button svg{width:20px;height:20px;margin:auto}
+.pantry-swipe-use{background:#315b18;color:#fff}
+.pantry-swipe-edit{background:#263a44;color:#fff}
+.pantry-swipe-card{position:relative;z-index:1;background:#111;transition:transform .18s ease;will-change:transform}
+@media (prefers-reduced-motion:reduce){.pantry-swipe-card{transition:none}}

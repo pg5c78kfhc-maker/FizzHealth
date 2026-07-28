@@ -1,17 +1,13 @@
-# Fizz Health v1.4.15.14
+# Fizz Health v1.4.15.15 — Regression Recovery
 
-**Release:** Pantry Restoration and Editor Stabilization  
-**Build:** 141514  
-**Deployment:** FH-20260727-141514  
-**Issued:** July 27, 2026
+Corrective release limited to the approved regression-recovery scope.
 
-## Completed scope
+- **FH-1415.57:** Restore the recipe pencil and the existing ingredient add, edit, and swipe-delete workflow.
+- **FH-1415.58:** Restore Pantry swipe-right Use and swipe-left Edit actions.
+- **FH-1415.59:** Correct open-carton inventory wording and preserve the accepted v1.4.15.13 Menu and Chef’s Picks presentation.
 
-- FH-1415.57 — Restore recipe ingredient editing from linked Pantry recipes.
-- FH-1415.58 — Restore Pantry swipe-left archive and swipe-right quick-log actions.
-- FH-1415.59 — Replace package math with plain-language unopened and open-container inventory inputs.
-- FH-1415.60 — Prevent stale Pantry values from overwriting current edits.
-- FH-1415.61 — Replace the Pantry search navigation card with inline filtering.
-- FH-1415.62 — Keep expanded Menu category headers visible and inside their containers.
-
-No unrelated visual or functional changes are included.
+Release: 1.4.15.15  
+Build: 141515  
+Deployment: FH-20260727-141515  
+Schema: 72  
+Created: 2026-07-27T20:45:00-04:00
