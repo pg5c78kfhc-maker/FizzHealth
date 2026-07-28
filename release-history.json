@@ -2,6 +2,24 @@
   "format": "fizz-health-release-history",
   "releases": [
     {
+      "version": "1.4.15.21",
+      "name": "Meal Selector Portion Controls",
+      "type": "Feature release",
+      "date": "2026-07-28",
+      "build_id": "141521",
+      "release_id": "FH-20260728-141521",
+      "schema_version": 74,
+      "status": "Feature",
+      "stories": [
+        "FH-1415.21A Add partial and multiple portion controls to Add to Meals",
+        "FH-1415.21B Scale planned nutrition and stored amount by selected portions",
+        "FH-1415.21C Preserve meal destination selection with compact buttons"
+      ],
+      "known_issues": [],
+      "created_at": "2026-07-28T10:45:00-04:00",
+      "build": "141521"
+    },
+    {
       "version": "1.4.15.20",
       "name": "Recipe Ingredient Resolution Integrity",
       "type": "Corrective release",

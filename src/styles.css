@@ -1817,3 +1817,22 @@ body.food-library-active .content{overflow:hidden!important}
 .pantry-row-swipe.is-open .pantry-row-swipe-rail{pointer-events:auto}
 .pantry-filter-results>.pantry-row-swipe{margin:0}
 @media(prefers-reduced-motion:reduce){.pantry-row-swipe-card{transition:none}}
+
+/* v1.4.15.21 — portion controls inside the existing Add to Meals workflow */
+.meal-portion-controls{display:grid;gap:10px;margin:0 0 12px;padding:12px;border:1px solid #33434b;border-radius:16px;background:#0e171b}
+.meal-portion-summary{display:grid;grid-template-columns:minmax(0,1fr) 92px minmax(0,1fr);gap:10px;align-items:end}
+.meal-portion-summary>span,.meal-portion-summary>label{display:grid;gap:4px;min-width:0}
+.meal-portion-summary>span:last-child{text-align:right}
+.meal-portion-summary small,.meal-portion-nutrition small,.meal-destination-label{color:#9da9af;font-size:.68rem;font-weight:900;letter-spacing:.08em;text-transform:uppercase}
+.meal-portion-summary b{font-size:.98rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.meal-portion-summary input{width:100%;min-width:0;text-align:center;padding:9px 8px;border:1px solid #40515a;border-radius:11px;background:#111c21;color:#fff;font-weight:900}
+.meal-portion-quick-picks{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:6px}
+.meal-portion-quick-picks button{min-height:38px;padding:6px 4px;border:1px solid #40515a;border-radius:10px;background:#121c21;color:#fff;font-weight:900}
+.meal-portion-quick-picks button.active{border-color:#9ced35;background:#294316;color:#efffda}
+.meal-portion-nutrition{display:grid;grid-template-columns:auto auto;gap:3px 10px;align-items:baseline;padding-top:9px;border-top:1px solid #2d3a40}
+.meal-portion-nutrition b{justify-self:end;color:#a5ef38}
+.meal-portion-nutrition span{grid-column:1/-1;color:#a5b0b6;font-size:.78rem}
+.meal-destination-label{display:block;margin:2px 0 7px}
+.add-to-meals-backdrop .multi-select-meals{gap:8px}
+.add-to-meals-backdrop .multi-select-meals button{min-height:48px;padding:9px 12px;font-size:.9rem}
+@media(max-width:430px){.meal-portion-summary{grid-template-columns:1fr 78px 1fr;gap:7px}.meal-portion-quick-picks{gap:5px}.meal-portion-quick-picks button{font-size:.82rem}}

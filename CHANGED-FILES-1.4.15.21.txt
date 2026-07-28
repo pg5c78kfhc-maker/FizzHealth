@@ -1,0 +1,12 @@
+src/main.jsx
+src/styles.css
+src/decision/engine.js
+public/sw.js
+package.json
+package-lock.json
+VERSION.json
+release-history.json
+ReleaseNotes.md
+tests/meal-selector-portions.test.js
+TEST-REPORT-1.4.15.21.md
+CHANGED-FILES-1.4.15.21.txt
