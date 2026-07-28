@@ -1,14 +1,9 @@
-# Fizz Health v1.4.15.21 — Meal Selector Portion Controls
+# Fizz Health v1.4.15.22 — Menu Food Detail Hub
 
-## FH-1415.21A
-Adds partial and multiple portion selection to the existing Add to Meals popup.
+Completed story: FH-1415.22A
 
-## Included
-- Defined serving-size and calculated logging-amount display.
-- Editable decimal portions with ¼, ½, ¾, 1, 1½, and 2 quick choices.
-- Live projected calories, protein, carbohydrates, and fat.
-- Planned entries store the selected portion and scaled nutrients.
-- Existing meal assignments update when their portion changes.
-- Smaller meal-destination buttons preserve the existing multi-select workflow.
-
-No unrelated layout, navigation, Pantry, Menu catalog, Chef, or Food Log behavior was changed.
+- Promotes Decision Intelligence to the top of the Menu food detail page.
+- Adds nutrition completeness, missing-field count, update date, and the existing single-food enrichment workflow.
+- Replaces the redundant Add to Meals action with Pantry availability and pencil-only inventory editing.
+- Shows recipe ingredient quantities, Pantry availability, and ingredient-level inventory editing.
+- Preserves the existing header pencil for canonical food or recipe editing.

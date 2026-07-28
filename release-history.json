@@ -2,6 +2,25 @@
   "format": "fizz-health-release-history",
   "releases": [
     {
+      "version": "1.4.15.22",
+      "name": "Menu Food Detail Hub",
+      "type": "Feature release",
+      "date": "2026-07-28",
+      "build_id": "141522",
+      "release_id": "FH-20260728-141522",
+      "schema_version": 74,
+      "status": "Feature",
+      "stories": [
+        "FH-1415.22A Promote Decision Intelligence on Menu Food Detail",
+        "FH-1415.22B Add nutrition quality and single-food enrichment access",
+        "FH-1415.22C Add Pantry availability and canonical inventory editing",
+        "FH-1415.22D Show recipe ingredient availability and inventory editing"
+      ],
+      "known_issues": [],
+      "created_at": "2026-07-28T12:10:00-04:00",
+      "build": "141522"
+    },
+    {
       "version": "1.4.15.21",
       "name": "Meal Selector Portion Controls",
       "type": "Feature release",

@@ -1836,3 +1836,21 @@ body.food-library-active .content{overflow:hidden!important}
 .add-to-meals-backdrop .multi-select-meals{gap:8px}
 .add-to-meals-backdrop .multi-select-meals button{min-height:48px;padding:9px 12px;font-size:.9rem}
 @media(max-width:430px){.meal-portion-summary{grid-template-columns:1fr 78px 1fr;gap:7px}.meal-portion-quick-picks{gap:5px}.meal-portion-quick-picks button{font-size:.82rem}}
+
+/* v1.4.15.22 — Menu Food Detail operational hub */
+.food-detail-hub .decision-detail-head em{display:block;color:#9aa6ab;font-style:normal;margin-top:2px}
+.food-detail-hub .menu-information-scroll{gap:12px;padding-bottom:calc(92px + env(safe-area-inset-bottom))}
+.food-hub-card{border:1px solid #34434a;border-radius:18px;padding:16px;background:#10171c;display:grid;gap:14px}
+.food-hub-card>small{color:#a3f43b;font-weight:900;letter-spacing:.09em}
+.food-hub-decision-body{display:grid;grid-template-columns:72px 1fr;gap:14px;align-items:center}
+.food-hub-decision-body>strong{width:68px;height:68px;border:5px solid #9ff33c;border-left-color:#31551f;border-radius:50%;display:grid;place-items:center;font-size:1.7rem}
+.food-hub-decision h3{margin:0 0 5px;font-size:1.05rem}.food-hub-decision p{margin:0;color:#c7ced2}.food-hub-decision footer{color:#aab4b9}
+.food-hub-nutrients{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0;border-top:1px solid #314047;border-bottom:1px solid #314047;padding:10px 0}
+.food-hub-nutrients span{padding:4px 8px;border-right:1px solid #314047;min-width:0}.food-hub-nutrients span:nth-child(3n){border-right:0}.food-hub-nutrients small{display:block;color:#aab4b9}.food-hub-nutrients b{font-size:1.25rem;overflow-wrap:anywhere}.food-hub-nutrients i{font-size:.72rem;font-style:normal;color:#aab4b9;margin-left:3px}
+.food-hub-quality{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}.food-hub-quality span{display:flex;flex-direction:column}.food-hub-quality b{font-size:1rem}.food-hub-quality small{color:#aab4b9}.food-hub-quality .warning b{color:#ffbd3f}
+.food-hub-enrich{min-height:54px;border:1px solid #a457e8;border-radius:12px;color:#c778ff;background:transparent;display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:12px;text-align:left;padding:0 14px}.food-hub-enrich svg{width:22px;height:22px}
+.food-hub-pantry{display:grid;grid-template-columns:1fr auto;gap:12px;align-items:center}.food-hub-pantry>div{display:grid;gap:3px}.food-hub-pantry b{font-size:1.2rem}.food-hub-pantry span,.food-hub-pantry small{color:#aab4b9}
+.food-hub-pencil{width:48px;height:48px;border-radius:50%;border:1px solid #405159;background:transparent;color:#a3f43b;display:grid;place-items:center}.food-hub-pencil svg{width:25px;height:25px}
+.food-hub-ingredients{display:grid}.food-hub-ingredients>div{display:grid;grid-template-columns:1fr auto;gap:10px;align-items:center;padding:12px 0;border-bottom:1px solid #2d3940}.food-hub-ingredients>div:last-child{border-bottom:0}.food-hub-ingredients span{display:grid;gap:3px}.food-hub-ingredients small,.food-hub-empty{color:#aab4b9;margin:0}
+.food-hub-nutrients.compact{grid-template-columns:repeat(5,minmax(0,1fr));border:0;padding:0}.food-hub-nutrients.compact span:nth-child(3n){border-right:1px solid #314047}.food-hub-nutrients.compact span:last-child{border-right:0}
+@media(max-width:520px){.food-hub-nutrients{grid-template-columns:repeat(2,minmax(0,1fr))}.food-hub-nutrients span:nth-child(3n){border-right:1px solid #314047}.food-hub-nutrients span:nth-child(2n){border-right:0}.food-hub-nutrients.compact{grid-template-columns:repeat(3,minmax(0,1fr))}.food-hub-nutrients.compact span:nth-child(2n){border-right:1px solid #314047}.food-hub-nutrients.compact span:nth-child(3n){border-right:0}.food-hub-quality{grid-template-columns:1fr 1fr}.food-hub-quality span:last-child{grid-column:1/-1}.food-hub-decision-body{grid-template-columns:62px 1fr}.food-hub-decision-body>strong{width:58px;height:58px;font-size:1.4rem}}
