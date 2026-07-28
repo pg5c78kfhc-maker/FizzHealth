@@ -54,3 +54,10 @@
 - Nutrition landing-page plus button.
 - Upcoming Meals landing card, route, and standalone page component.
 - Redundant Recommendations landing card.
+
+## v1.4.15.25 — Food Discontinue and Toggle Controls
+
+- Replaced the Food Detail Ingredient Only checkbox with an iOS-style switch.
+- Added a confirmed Discontinued switch directly beneath Ingredient Only.
+- Reused the established archival lifecycle to remove discontinued foods from active surfaces while retaining historical records.
+- Synchronized linked Pantry records and source-linked Meal definitions with discontinuation and restoration.

@@ -1859,3 +1859,10 @@ body.food-library-active .content{overflow:hidden!important}
 .food-metadata-readonly .food-tracking-toggle{display:flex;align-items:center;justify-content:space-between;gap:1rem;margin:0;padding:.7rem 0;color:inherit;font:inherit}
 .food-metadata-readonly .food-tracking-toggle span{color:var(--muted);font-weight:700}
 .food-metadata-readonly .food-tracking-toggle input{width:1.65rem;height:1.65rem;margin:0;accent-color:var(--green);flex:0 0 auto}
+
+/* v1.4.15.25 — Food lifecycle switches */
+.food-lifecycle-toggle input[type=checkbox]{appearance:none;-webkit-appearance:none;width:52px!important;height:30px!important;border:0;border-radius:999px;background:#59616a;position:relative;flex:0 0 52px;cursor:pointer;transition:background .18s ease;box-shadow:inset 0 0 0 1px rgba(255,255,255,.18)}
+.food-lifecycle-toggle input[type=checkbox]::after{content:'';position:absolute;top:3px;left:3px;width:24px;height:24px;border-radius:50%;background:#fff;box-shadow:0 2px 5px rgba(0,0,0,.4);transition:transform .18s ease}
+.food-lifecycle-toggle input[type=checkbox]:checked{background:var(--green)}
+.food-lifecycle-toggle input[type=checkbox]:checked::after{transform:translateX(22px)}
+.food-lifecycle-toggle input[type=checkbox]:focus-visible{outline:2px solid #fff;outline-offset:3px}

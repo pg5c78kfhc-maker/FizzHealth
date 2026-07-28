@@ -2,6 +2,33 @@
   "format": "fizz-health-release-history",
   "releases": [
     {
+      "version": "1.4.15.25",
+      "name": "Food Discontinue and Toggle Controls",
+      "type": "Feature release",
+      "created": "2026-07-28T13:45:00-04:00",
+      "build_id": "141525",
+      "release_id": "FH-20260728-141525",
+      "stories": [
+        {
+          "id": "FH-1415.25A",
+          "title": "Replace Food Detail Ingredient Only checkbox with an iOS-style toggle"
+        },
+        {
+          "id": "FH-1415.25B",
+          "title": "Add a confirmed Discontinued toggle backed by the existing archival lifecycle"
+        },
+        {
+          "id": "FH-1415.25C",
+          "title": "Hide discontinued foods from active surfaces while preserving historical records and restoration"
+        }
+      ],
+      "known_issues": [],
+      "date": "2026-07-28",
+      "build": "141525",
+      "schema_version": 74,
+      "status": "Feature"
+    },
+    {
       "version": "1.4.15.24",
       "name": "Menu Portion Quantity Save Corrective",
       "type": "Corrective release",
