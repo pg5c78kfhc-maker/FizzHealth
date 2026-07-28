@@ -1,9 +1,9 @@
-# Fizz Health v1.4.15.22 — Menu Food Detail Hub
+# Fizz Health v1.4.15.24 — Menu Portion Quantity Save Corrective
 
-Completed story: FH-1415.22A
+## Scope
 
-- Promotes Decision Intelligence to the top of the Menu food detail page.
-- Adds nutrition completeness, missing-field count, update date, and the existing single-food enrichment workflow.
-- Replaces the redundant Add to Meals action with Pantry availability and pencil-only inventory editing.
-- Shows recipe ingredient quantities, Pantry availability, and ingredient-level inventory editing.
-- Preserves the existing header pencil for canonical food or recipe editing.
+- FH-1415.24A — Persist fractional and multiple portions when updating an existing planned meal.
+- FH-1415.24B — Preserve the saved amount when a planned meal is converted to a consumed food-log event.
+- FH-1415.24C — Display save errors and prevent duplicate submissions instead of silently ignoring the checkmark.
+
+No unrelated UI or subsystem changes are included.

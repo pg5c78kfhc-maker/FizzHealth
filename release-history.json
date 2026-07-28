@@ -2,6 +2,24 @@
   "format": "fizz-health-release-history",
   "releases": [
     {
+      "version": "1.4.15.24",
+      "name": "Menu Portion Quantity Save Corrective",
+      "type": "Corrective release",
+      "date": "2026-07-28",
+      "build_id": "141524",
+      "release_id": "FH-20260728-141524",
+      "schema_version": 74,
+      "status": "Corrective",
+      "stories": [
+        "FH-1415.24A Persist fractional and multiple portions when updating an existing planned meal",
+        "FH-1415.24B Carry the saved portion through planned-to-consumed synchronization",
+        "FH-1415.24C Show save failures instead of silently ignoring the checkmark"
+      ],
+      "known_issues": [],
+      "created_at": "2026-07-28T13:00:00-04:00",
+      "build": "141524"
+    },
+    {
       "version": "1.4.15.23",
       "name": "Pantry Tracking Integration",
       "type": "Feature release",
