@@ -1716,9 +1716,6 @@ body.food-library-active .content{overflow:hidden!important}
   display:flex;
   flex-direction:column;
   gap:0;
-  width:calc(100% - 24px);
-  max-width:calc(100% - 24px);
-  margin:0 auto;
   padding:0 0 calc(20px + env(safe-area-inset-bottom));
   border-top:0;
   border-radius:24px;
@@ -1793,7 +1790,8 @@ body.food-library-active .content{overflow:hidden!important}
   font-size:.84rem;
   font-weight:750;
 }
-@media(max-width:420px){
-  .meal-calendar-prototype .today-menu{width:calc(100% - 16px);max-width:calc(100% - 16px)}
-}
 
+
+/* v1.4.15.13 approved corrective delta only: align sibling sections and restore plain counts. */
+.meal-calendar-prototype .menu-category-heading>span,
+.meal-calendar-prototype .restaurant-category-heading>span{background:transparent!important;box-shadow:none!important;-webkit-tap-highlight-color:transparent;user-select:none}

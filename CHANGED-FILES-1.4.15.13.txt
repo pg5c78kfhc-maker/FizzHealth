@@ -1,0 +1,13 @@
+VERSION.json
+package.json
+release-history.json
+ReleaseNotes.md
+public/sw.js
+src/database.js
+src/decision/engine.js
+src/inventory/availability.js
+src/main.jsx
+src/styles.css
+tests/inventory-availability.test.js
+TEST-REPORT-1.4.15.13.md
+EXECUTION-VERIFICATION-1.4.15.13.md

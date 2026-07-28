@@ -1,18 +1,12 @@
-# Fizz Health v1.4.15.12A — Menu/Chef Canonical Layout Build Corrective
+# Fizz Health v1.4.15.13 — Menu Alignment and Inventory Availability
 
-Corrective stabilization release.
+Corrective release limited to the approved scope.
 
-- **FH-1415.50:** Fix Pantry Save validation so an automatically populated unit does not falsely require package count and size.
-- **FH-1415.51:** Give Menu Chef's Picks its own isolated class so standalone Chef-page styling cannot alter Menu geometry.
-- **FH-1415.53:** Remove superseded v1.4.15.8/v1.4.15.9 Menu geometry patches, retain one canonical Menu/Chef layout contract, and fail integrity checks if the legacy shared implementation returns.
+- **FH-1415.55:** Align Chef's Picks to the Planned Meals container and restore item counts to plain text with no highlight.
+- **FH-1415.56:** Exclude foods, recipes, and composite meals when a tracked required Pantry item has zero quantity. Apply the rule to Meals, Menu categories, Chef's Picks, and new meal-plan selection. Items without Pantry tracking remain available.
 
-Release: 1.4.15.12A  
-Build: 1415121  
-Deployment: FH-20260727-1415121  
+Release: 1.4.15.13  
+Build: 141513  
+Deployment: FH-20260727-141513  
 Schema: 72  
-Created: 2026-07-27T23:32:00-04:00
-
-- Corrected the unescaped apostrophe in the v1.4.15.12 release-history entry that prevented Vite from parsing `src/main.jsx`.
-- Production build verified locally with Vite 8.1.5.
-
-- FH-1415.54 — Correct release-history string quoting and restore production compilation.
+Created: 2026-07-27T23:55:00-04:00
