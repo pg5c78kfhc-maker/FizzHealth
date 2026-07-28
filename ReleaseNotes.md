@@ -1,8 +1,14 @@
-# Fizz Health v1.4.15.26 — Menu and Pantry Usability Polish
+# Fizz Health v1.4.15.28 — Pantry Reconciliation Foundation
 
-- FH-1415.26A — Inline Pantry search with live filtering.
-- FH-1415.26B — Full-width seven-day Menu calendar.
-- FH-1415.26C — Larger, bolder Menu category headings.
-- FH-1415.26D — Verified restaurant-style category ordering.
-- FH-1415.26E — Meals out-of-stock color synchronization with Pantry.
-- FH-1415.26F — White prohibition icon for items not tracked in Pantry.
+## Completed scope
+
+- **FH-1415.28A** — Added a barcode icon beside the Pantry add button and a dedicated Pantry Reconciliation page.
+- **FH-1415.28B** — Added camera-based UPC/EAN scanning through the browser BarcodeDetector API with manual barcode entry fallback.
+- **FH-1415.28C** — Known barcodes resolve to the existing canonical food and can mark the linked Pantry record In Stock.
+- **FH-1415.28D** — Unknown barcodes require product identity input and search likely existing foods before any creation option is offered.
+- **FH-1415.28E** — A new Food and Pantry record is created only after the user explicitly selects “None of these — Create New Food.”
+- **FH-1415.28F** — Scan events are persisted and the reconciliation page reports session totals and recent scans.
+
+## Scope controls
+
+No Shopping integration, retailer capture, automatic nutrition lookup, or multi-barcode support was added.

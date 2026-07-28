@@ -3,7 +3,7 @@ import wasmUrl from 'sql.js/dist/sql-wasm.wasm?url';
 
 const DB_KEY='fizz-health-sqlite-v1';
 const STORAGE_DB='FizzHealthStorage';
-const TARGET_SCHEMA_VERSION=74;
+const TARGET_SCHEMA_VERSION=75;
 let SQL, db;
 
 const migrations=[
@@ -994,6 +994,22 @@ const migrations=[
     VALUES ('1.4.15.20','2026-07-28','141520',74,'Recipe Ingredient Resolution Integrity','2026-07-28T05:05:00-04:00');
     INSERT OR REPLACE INTO release_register(version,issued_date,build_id,schema_version,title,created_at)
     VALUES ('1.4.15.20','2026-07-28','141520',74,'Recipe Ingredient Resolution Integrity','2026-07-28T05:05:00-04:00');
+  `}
+,  {version:75,name:'pantry_barcode_reconciliation_foundation',sql:`
+    CREATE TABLE IF NOT EXISTS barcode_scan_events (
+      event_id INTEGER PRIMARY KEY AUTOINCREMENT,
+      barcode TEXT NOT NULL,
+      food_id TEXT,
+      food_name TEXT,
+      result TEXT NOT NULL,
+      scanned_at TEXT NOT NULL
+    );
+    CREATE INDEX IF NOT EXISTS idx_barcode_scan_events_barcode ON barcode_scan_events(barcode);
+    CREATE INDEX IF NOT EXISTS idx_foods_barcode_normalized ON foods(barcode);
+    INSERT OR REPLACE INTO release_metadata(version,release_date,build_id,schema_version,title,created_at)
+    VALUES ('1.4.15.28','2026-07-28','141528',75,'Pantry Reconciliation Foundation','2026-07-28T21:30:00-04:00');
+    INSERT OR REPLACE INTO release_register(version,issued_date,build_id,schema_version,title,created_at)
+    VALUES ('1.4.15.28','2026-07-28','141528',75,'Pantry Reconciliation Foundation','2026-07-28T21:30:00-04:00');
   `}
 ];
 

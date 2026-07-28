@@ -2,6 +2,45 @@
   "format": "fizz-health-release-history",
   "releases": [
     {
+      "version": "1.4.15.28",
+      "name": "Pantry Reconciliation Foundation",
+      "type": "Feature release",
+      "created": "2026-07-28T21:30:00-04:00",
+      "build_id": "141528",
+      "release_id": "FH-20260728-141528",
+      "stories": [
+        {
+          "id": "FH-1415.28A",
+          "title": "Add Pantry barcode entry point and reconciliation landing page"
+        },
+        {
+          "id": "FH-1415.28B",
+          "title": "Scan UPC and EAN barcodes with camera and manual fallback"
+        },
+        {
+          "id": "FH-1415.28C",
+          "title": "Match known barcodes and restore Pantry inventory"
+        },
+        {
+          "id": "FH-1415.28D",
+          "title": "Search likely existing foods before linking an unknown barcode"
+        },
+        {
+          "id": "FH-1415.28E",
+          "title": "Create a new food only after explicit user confirmation"
+        },
+        {
+          "id": "FH-1415.28F",
+          "title": "Persist scan history and show session progress"
+        }
+      ],
+      "known_issues": [],
+      "date": "2026-07-28",
+      "build": "141528",
+      "schema_version": 75,
+      "status": "Feature"
+    },
+    {
       "version": "1.4.15.26",
       "name": "Menu and Pantry Usability Polish",
       "type": "Polish release",
