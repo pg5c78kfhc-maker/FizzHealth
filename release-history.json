@@ -3,16 +3,19 @@
   "releases": [
     {
       "version": "1.4.15.18",
-      "name": "Production Build Syntax Corrective",
+      "name": "Pantry State and Meals Library Repair",
       "type": "Corrective release",
-      "stories": [
-        "FH-1415.18A Correct malformed SQL string quoting and restore production compilation"
-      ],
-      "date": "2026-07-27",
+      "date": "2026-07-28",
       "build_id": "141518",
       "release_id": "FH-20260728-141518",
-      "schema_version": 72,
+      "schema_version": 73,
       "status": "Corrective",
+      "stories": [
+        "FH-1415.18A Reconcile Pantry quantity, on-hand, and status fields",
+        "FH-1415.18B Keep active library records visible in Manage \u2192 Meals"
+      ],
+      "known_issues": [],
+      "created_at": "2026-07-28T03:30:00-04:00",
       "build": "141518"
     },
     {

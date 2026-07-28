@@ -3,7 +3,7 @@ import wasmUrl from 'sql.js/dist/sql-wasm.wasm?url';
 
 const DB_KEY='fizz-health-sqlite-v1';
 const STORAGE_DB='FizzHealthStorage';
-const TARGET_SCHEMA_VERSION=72;
+const TARGET_SCHEMA_VERSION=73;
 let SQL, db;
 
 const migrations=[
@@ -917,6 +917,31 @@ const migrations=[
     INSERT OR REPLACE INTO release_register(version,issued_date,build_id,schema_version,title,created_at)
     VALUES ('1.4.15.13','2026-07-27','141513',72,'Menu Alignment and Inventory Availability','2026-07-27T23:55:00-04:00');
   `},
+  {version:73,name:'pantry_state_and_meals_library_repair',sql:`
+    UPDATE pantry
+       SET quantity=0,
+           on_hand='No',
+           status='Out of Stock',
+           verified_at=COALESCE(verified_at,CURRENT_TIMESTAMP),
+           quantity_accuracy=COALESCE(quantity_accuracy,'reconciled')
+     WHERE COALESCE(discontinued,0)=0
+       AND (
+         COALESCE(quantity,0)<=0
+         OR LOWER(TRIM(COALESCE(on_hand,''))) IN ('no','false','0','out of stock','unavailable')
+         OR LOWER(TRIM(COALESCE(status,''))) IN ('out of stock','out_of_stock','unavailable','none')
+       );
+    UPDATE pantry
+       SET on_hand='Yes',
+           status='Active'
+     WHERE COALESCE(discontinued,0)=0
+       AND COALESCE(quantity,0)>0
+       AND LOWER(TRIM(COALESCE(on_hand,'yes'))) NOT IN ('no','false','0','out of stock','unavailable')
+       AND LOWER(TRIM(COALESCE(status,'active'))) NOT IN ('out of stock','out_of_stock','unavailable','none');
+    INSERT OR REPLACE INTO release_metadata(version,release_date,build_id,schema_version,title,created_at)
+    VALUES ('1.4.15.18','2026-07-28','141518',73,'Pantry State and Meals Library Repair','2026-07-28T03:30:00-04:00');
+    INSERT OR REPLACE INTO release_register(version,issued_date,build_id,schema_version,title,created_at)
+    VALUES ('1.4.15.18','2026-07-28','141518',73,'Pantry State and Meals Library Repair','2026-07-28T03:30:00-04:00');
+  `},
   {version:72,name:'menu_eligibility_classification_repair',sql:`
     UPDATE foods
        SET usage_designation=CASE WHEN COALESCE(ingredient_only,0)=1 THEN 'component' ELSE 'both' END,
@@ -940,7 +965,6 @@ const migrations=[
          OR (COALESCE(ingredient_only,0)=1 AND COALESCE(category,'')<>'Ingredient')
          OR (COALESCE(ingredient_only,0)=0 AND category='Ingredient'));
     INSERT OR REPLACE INTO release_metadata(version,release_date,build_id,schema_version,title,created_at)
-    VALUES ('1.4.15.18','2026-07-27','141518',72,'Production Build Syntax Corrective','2026-07-27T22:30:00-04:00');
     VALUES ('1.4.15.17','2026-07-28','141517',72,'Menu Eligibility Classification Repair','2026-07-28T02:35:00-04:00');
     INSERT OR REPLACE INTO release_register(version,issued_date,build_id,schema_version,title,created_at)
     VALUES ('1.4.15.17','2026-07-28','141517',72,'Menu Eligibility Classification Repair','2026-07-28T02:35:00-04:00');

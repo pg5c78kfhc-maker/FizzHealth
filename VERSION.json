@@ -1,25 +1,26 @@
 {
   "app": "Fizz Health",
   "version": "1.4.15.18",
-  "release": "Production Build Syntax Corrective",
+  "release": "Pantry State and Meals Library Repair",
   "release_type": "Corrective release",
   "build": "141518",
   "release_id": "FH-20260728-141518",
-  "created_at": "2026-07-27T22:30:00-04:00",
-  "schema_version": 72,
+  "created_at": "2026-07-28T03:30:00-04:00",
+  "schema_version": 73,
   "status": "Corrective",
-  "completed_story": "FH-1415.18A",
+  "completed_story": "FH-1415.18B",
   "baseline_story": "FH-1221",
-  "updated": "2026-07-27",
+  "updated": "2026-07-28",
   "stories": [
-    "FH-1415.18A"
+    "FH-1415.18A",
+    "FH-1415.18B"
   ],
-  "build_date": "2026-07-27T22:30:00-04:00",
-  "release_name": "Production Build Syntax Corrective",
-  "release_date": "2026-07-27",
+  "build_date": "2026-07-28T03:30:00-04:00",
+  "release_name": "Pantry State and Meals Library Repair",
+  "release_date": "2026-07-28",
   "build_id": "141518",
-  "title": "Production Build Syntax Corrective",
-  "name": "Production Build Syntax Corrective",
+  "title": "Pantry State and Meals Library Repair",
+  "name": "Pantry State and Meals Library Repair",
   "type": "Corrective release",
   "package_version": "1.4.15-18"
 }

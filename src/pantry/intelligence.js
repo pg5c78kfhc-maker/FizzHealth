@@ -12,6 +12,8 @@ export function inventoryState(item={}){
  if(Number(item.discontinued)===1||['archived','deleted','discarded'].includes(status))return 'archived';
  const quantity=hasNumber(item.quantity)?Math.max(0,num(item.quantity)):null;
  const remaining=hasNumber(item.remaining_servings)?Math.max(0,num(item.remaining_servings)):null;
+ const explicitOut=['out of stock','out_of_stock','unavailable','none'].includes(status)||['no','false','0','out of stock','unavailable'].includes(String(item.on_hand??'').trim().toLowerCase());
+ if(explicitOut)return 'out_of_stock';
  if(quantity!==null)return quantity>0?'in_stock':'out_of_stock';
  if(remaining!==null)return remaining>0?'in_stock':'out_of_stock';
  return yes(item.on_hand??'Yes')?'in_stock':'out_of_stock';
@@ -128,8 +130,8 @@ export function pantryPriority(item={},events=[],now=Date.now()){
 
 export function reconcilePantryItem(item={},event={}){
  const next={...item},type=String(event.event_type||event.type||'').toLowerCase(),delta=num(event.quantity);
- if(['purchase','restock'].includes(type)){next.quantity=Math.max(0,num(next.quantity)+delta);next.on_hand='Yes';next.purchase_date=event.event_at||new Date().toISOString()}
- if(['meal','consume','consumed'].includes(type)){next.quantity=Math.max(0,num(next.quantity)-Math.abs(delta));next.on_hand=next.quantity>0?'Yes':'No'}
- if(['verify','confirmation'].includes(type)){if(Number.isFinite(Number(event.quantity)))next.quantity=Math.max(0,delta);next.on_hand=event.on_hand??(next.quantity>0?'Yes':'No');next.verified_at=event.event_at||new Date().toISOString();next.quantity_accuracy='verified'}
+ if(['purchase','restock'].includes(type)){next.quantity=Math.max(0,num(next.quantity)+delta);next.on_hand=next.quantity>0?'Yes':'No';next.status=next.quantity>0?'Active':'Out of Stock';next.purchase_date=event.event_at||new Date().toISOString()}
+ if(['meal','consume','consumed'].includes(type)){next.quantity=Math.max(0,num(next.quantity)-Math.abs(delta));next.on_hand=next.quantity>0?'Yes':'No';next.status=next.quantity>0?'Active':'Out of Stock'}
+ if(['verify','confirmation'].includes(type)){if(Number.isFinite(Number(event.quantity)))next.quantity=Math.max(0,delta);next.on_hand=event.on_hand??(next.quantity>0?'Yes':'No');next.status=String(next.on_hand).toLowerCase()==='yes'&&next.quantity>0?'Active':'Out of Stock';next.verified_at=event.event_at||new Date().toISOString();next.quantity_accuracy='verified'}
  return next;
 }
