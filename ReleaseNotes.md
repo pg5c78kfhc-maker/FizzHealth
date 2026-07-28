@@ -1,13 +1,15 @@
-# Fizz Health v1.4.15.17 — Menu Eligibility Classification Repair
+# Fizz Health v1.4.15.18 — Production Build Syntax Corrective
 
-Corrective release limited to repairing Menu eligibility classification drift.
+Corrective release built directly from v1.4.15.17.
 
-- **FH-1415.17A:** Migrate all active Foods and Recipes so `Ingredient only` controls their planning classification consistently.
-- **FH-1415.17B:** Build Menu eligibility from the canonical `ingredient_only` field, preventing stale legacy usage fields from hiding valid items.
-- **FH-1415.17C:** Synchronize classification, usage designation, consumption role, and category whenever Food or Recipe classification is saved.
+Story: FH-1415.18A
 
-Release: 1.4.15.17  
-Build: 141517  
-Deployment: FH-20260728-141517  
-Schema: 72  
-Created: 2026-07-28T02:35:00-04:00
+## Scope
+
+- Correct malformed SQL string quoting in the Meals category-save handler.
+- Preserve the v1.4.15.17 Menu eligibility classification repair unchanged.
+- Restore successful production Vite compilation.
+
+Release: 1.4.15.18  
+Build: 141518  
+Deployment: FH-20260728-141518

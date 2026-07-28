@@ -2,6 +2,20 @@
   "format": "fizz-health-release-history",
   "releases": [
     {
+      "version": "1.4.15.18",
+      "name": "Production Build Syntax Corrective",
+      "type": "Corrective release",
+      "stories": [
+        "FH-1415.18A Correct malformed SQL string quoting and restore production compilation"
+      ],
+      "date": "2026-07-27",
+      "build_id": "141518",
+      "release_id": "FH-20260728-141518",
+      "schema_version": 72,
+      "status": "Corrective",
+      "build": "141518"
+    },
+    {
       "version": "1.4.15.17",
       "name": "Menu Eligibility Classification Repair",
       "type": "Corrective release",

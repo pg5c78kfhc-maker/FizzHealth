@@ -940,6 +940,7 @@ const migrations=[
          OR (COALESCE(ingredient_only,0)=1 AND COALESCE(category,'')<>'Ingredient')
          OR (COALESCE(ingredient_only,0)=0 AND category='Ingredient'));
     INSERT OR REPLACE INTO release_metadata(version,release_date,build_id,schema_version,title,created_at)
+    VALUES ('1.4.15.18','2026-07-27','141518',72,'Production Build Syntax Corrective','2026-07-27T22:30:00-04:00');
     VALUES ('1.4.15.17','2026-07-28','141517',72,'Menu Eligibility Classification Repair','2026-07-28T02:35:00-04:00');
     INSERT OR REPLACE INTO release_register(version,issued_date,build_id,schema_version,title,created_at)
     VALUES ('1.4.15.17','2026-07-28','141517',72,'Menu Eligibility Classification Repair','2026-07-28T02:35:00-04:00');
