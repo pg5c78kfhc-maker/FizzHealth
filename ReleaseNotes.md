@@ -1,12 +1,17 @@
-# Fizz Health v1.4.15.13 — Menu Alignment and Inventory Availability
+# Fizz Health v1.4.15.14
 
-Corrective release limited to the approved scope.
+**Release:** Pantry Restoration and Editor Stabilization  
+**Build:** 141514  
+**Deployment:** FH-20260727-141514  
+**Issued:** July 27, 2026
 
-- **FH-1415.55:** Align Chef's Picks to the Planned Meals container and restore item counts to plain text with no highlight.
-- **FH-1415.56:** Exclude foods, recipes, and composite meals when a tracked required Pantry item has zero quantity. Apply the rule to Meals, Menu categories, Chef's Picks, and new meal-plan selection. Items without Pantry tracking remain available.
+## Completed scope
 
-Release: 1.4.15.13  
-Build: 141513  
-Deployment: FH-20260727-141513  
-Schema: 72  
-Created: 2026-07-27T23:55:00-04:00
+- FH-1415.57 — Restore recipe ingredient editing from linked Pantry recipes.
+- FH-1415.58 — Restore Pantry swipe-left archive and swipe-right quick-log actions.
+- FH-1415.59 — Replace package math with plain-language unopened and open-container inventory inputs.
+- FH-1415.60 — Prevent stale Pantry values from overwriting current edits.
+- FH-1415.61 — Replace the Pantry search navigation card with inline filtering.
+- FH-1415.62 — Keep expanded Menu category headers visible and inside their containers.
+
+No unrelated visual or functional changes are included.
