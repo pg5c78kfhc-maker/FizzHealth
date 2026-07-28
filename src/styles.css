@@ -1795,13 +1795,25 @@ body.food-library-active .content{overflow:hidden!important}
 /* v1.4.15.13 approved corrective delta only: align sibling sections and restore plain counts. */
 .meal-calendar-prototype .menu-category-heading>span,
 .meal-calendar-prototype .restaurant-category-heading>span{background:transparent!important;box-shadow:none!important;-webkit-tap-highlight-color:transparent;user-select:none}
-\n/* v1.4.15.15 — regression recovery only: Pantry swipe actions. */
-.pantry-swipe-shell{position:relative;overflow:hidden;width:100%;touch-action:pan-y}
-.pantry-swipe-rail{position:absolute;inset:0;display:flex;justify-content:space-between;align-items:stretch;pointer-events:none}
-.pantry-swipe-shell.is-open .pantry-swipe-rail{pointer-events:auto}
-.pantry-swipe-rail button{width:88px;border:0;border-radius:0;display:grid;place-content:center;gap:4px;font-weight:800}
-.pantry-swipe-rail button svg{width:20px;height:20px;margin:auto}
-.pantry-swipe-use{background:#315b18;color:#fff}
-.pantry-swipe-edit{background:#263a44;color:#fff}
-.pantry-swipe-card{position:relative;z-index:1;background:#111;transition:transform .18s ease;will-change:transform}
-@media (prefers-reduced-motion:reduce){.pantry-swipe-card{transition:none}}
+
+
+/* v1.4.15.16 — tightly scoped regression recovery. */
+/* Food Detail is z-index 2500; its canonical nutrition editor must render above it. */
+.modal-backdrop.nutrition-modal{z-index:2700}
+
+/* Expanded Menu sections remain in ordinary document flow and own their height. */
+.meal-calendar-prototype .today-menu>.menu-category{display:block;position:relative;clear:both;isolation:isolate}
+.meal-calendar-prototype .today-menu>.menu-category>.menu-category-heading{display:grid}
+.meal-calendar-prototype .today-menu>.menu-category>.white-menu-list{display:block!important;position:relative;float:none;clear:both;height:auto;min-height:0}
+.meal-calendar-prototype .today-menu>.menu-category>.white-menu-list>.menu-swipe-shell{display:block;position:relative;width:100%;height:auto;min-height:0}
+.meal-calendar-prototype .today-menu>.menu-category>.white-menu-list>.menu-swipe-shell>.restaurant-menu-card{position:relative;width:100%;height:auto}
+
+/* Pantry gestures belong to inventory rows only. */
+.pantry-row-swipe{position:relative;display:block;overflow:hidden;border-radius:16px;touch-action:pan-y}
+.pantry-row-swipe-rail{position:absolute;inset:0;display:flex;justify-content:space-between;z-index:0}
+.pantry-row-swipe-rail button{width:88px;border:0;color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;font-weight:800}
+.pantry-row-use{background:#315f19}.pantry-row-edit{background:#294251}
+.pantry-row-swipe-card{position:relative;z-index:1;transition:transform .18s ease;will-change:transform;background:#0d1519}
+.pantry-row-swipe.is-open .pantry-row-swipe-rail{pointer-events:auto}
+.pantry-filter-results>.pantry-row-swipe{margin:0}
+@media(prefers-reduced-motion:reduce){.pantry-row-swipe-card{transition:none}}

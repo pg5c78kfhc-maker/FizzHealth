@@ -2,22 +2,23 @@
   "format": "fizz-health-release-history",
   "releases": [
     {
-      "version": "1.4.15.15",
+      "version": "1.4.15.16",
       "name": "Regression Recovery",
       "type": "Corrective release",
-      "date": "2026-07-27",
-      "build_id": "141515",
-      "release_id": "FH-20260727-141515",
+      "date": "2026-07-28",
+      "build_id": "141516",
+      "release_id": "FH-20260727-141516",
       "schema_version": 72,
       "status": "Corrective",
       "stories": [
-        "FH-1415.57 Restore recipe pencil and ingredient editing",
-        "FH-1415.58 Restore Pantry swipe-right Use and swipe-left Edit",
-        "FH-1415.59 Correct open-carton wording and preserve accepted Menu/Chef layout"
+        "FH-1415.16A Restore Menu category expansion flow without overlap",
+        "FH-1415.16B Open the canonical nutrition editor from Food Detail",
+        "FH-1415.16C Use contained-item wording in Pantry package inventory",
+        "FH-1415.16D Restore row-only Pantry left and right swipe actions"
       ],
       "known_issues": [],
-      "created_at": "2026-07-27T20:45:00-04:00",
-      "build": "141515"
+      "created_at": "2026-07-28T01:45:00-04:00",
+      "build": "141516"
     },
     {
       "version": "1.4.15.13",
