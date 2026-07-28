@@ -3,7 +3,7 @@ import wasmUrl from 'sql.js/dist/sql-wasm.wasm?url';
 
 const DB_KEY='fizz-health-sqlite-v1';
 const STORAGE_DB='FizzHealthStorage';
-const TARGET_SCHEMA_VERSION=75;
+const TARGET_SCHEMA_VERSION=77;
 let SQL, db;
 
 const migrations=[
@@ -1017,12 +1017,30 @@ const migrations=[
     INSERT OR REPLACE INTO release_register(version,issued_date,build_id,schema_version,title,created_at)
     VALUES ('1.4.15.29','2026-07-28','141529',76,'iPhone Barcode Camera Corrective','2026-07-28T22:30:00-04:00');
   `}
+,  {version:77,name:'pantry_reconciliation_product_fields',sql:`
+    ALTER TABLE foods ADD COLUMN manufacturer TEXT;
+    CREATE TABLE IF NOT EXISTS food_barcodes (
+      barcode TEXT PRIMARY KEY,
+      food_id TEXT NOT NULL,
+      package_description TEXT,
+      created_at TEXT NOT NULL,
+      updated_at TEXT NOT NULL
+    );
+    INSERT OR IGNORE INTO food_barcodes(barcode,food_id,created_at,updated_at)
+      SELECT REPLACE(REPLACE(barcode,'-',''),' ',''),food_id,CURRENT_TIMESTAMP,CURRENT_TIMESTAMP
+      FROM foods WHERE TRIM(COALESCE(barcode,''))<>'';
+    CREATE INDEX IF NOT EXISTS idx_food_barcodes_food_id ON food_barcodes(food_id);
+    INSERT OR REPLACE INTO release_metadata(version,release_date,build_id,schema_version,title,created_at)
+    VALUES ('1.4.15.30','2026-07-28','141530',77,'Pantry Reconciliation Product Fields','2026-07-28T23:30:00-04:00');
+    INSERT OR REPLACE INTO release_register(version,issued_date,build_id,schema_version,title,created_at)
+    VALUES ('1.4.15.30','2026-07-28','141530',77,'Pantry Reconciliation Product Fields','2026-07-28T23:30:00-04:00');
+  `}
 ];
 
 const canonicalSchema={
   foods:{
     create:`CREATE TABLE IF NOT EXISTS foods (food_id TEXT PRIMARY KEY, name TEXT, category TEXT, default_serving REAL, unit TEXT, calories REAL, protein REAL, carbs REAL, fiber REAL, fat REAL, saturated_fat REAL, sodium REAL, potassium REAL, notes TEXT)`,
-    columns:{food_id:'TEXT',name:'TEXT',category:'TEXT',default_serving:'REAL',unit:'TEXT',calories:'REAL',protein:'REAL',carbs:'REAL',fiber:'REAL',fat:'REAL',saturated_fat:'REAL',sodium:'REAL',potassium:'REAL',notes:'TEXT',nutrition_known:'INTEGER DEFAULT 0',archived:'INTEGER DEFAULT 0',archived_at:'TEXT',classification:"TEXT DEFAULT 'ingredient'",usage_designation:"TEXT DEFAULT 'component'",ingredient_only:'INTEGER DEFAULT 0'},
+    columns:{food_id:'TEXT',name:'TEXT',category:'TEXT',default_serving:'REAL',unit:'TEXT',calories:'REAL',protein:'REAL',carbs:'REAL',fiber:'REAL',fat:'REAL',saturated_fat:'REAL',sodium:'REAL',potassium:'REAL',notes:'TEXT',nutrition_known:'INTEGER DEFAULT 0',archived:'INTEGER DEFAULT 0',archived_at:'TEXT',classification:"TEXT DEFAULT 'ingredient'",usage_designation:"TEXT DEFAULT 'component'",ingredient_only:'INTEGER DEFAULT 0',brand:'TEXT',manufacturer:'TEXT',barcode:'TEXT',serving_description:'TEXT',servings_per_container:'REAL',package_quantity:'TEXT'},
     aliases:{name:['food','food_name']}
   },
   pantry:{

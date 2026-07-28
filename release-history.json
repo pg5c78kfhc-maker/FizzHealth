@@ -2,6 +2,36 @@
   "format": "fizz-health-release-history",
   "releases": [
     {
+      "version": "1.4.15.30",
+      "name": "Pantry Reconciliation Product Fields",
+      "type": "Feature release",
+      "created": "2026-07-28T23:30:00-04:00",
+      "build_id": "141530",
+      "release_id": "FH-20260728-141530",
+      "stories": [
+        {
+          "id": "FH-1415.30A",
+          "title": "Add Preferred Retailer with editable suggestions from existing Pantry retailers"
+        },
+        {
+          "id": "FH-1415.30B",
+          "title": "Expose Brand and Company / Manufacturer on the Full Nutrition Record"
+        },
+        {
+          "id": "FH-1415.30C",
+          "title": "Preserve package size and servings per package during reconciliation"
+        },
+        {
+          "id": "FH-1415.30D",
+          "title": "Support multiple barcodes per canonical food without overwriting prior links"
+        }
+      ],
+      "known_issues": [],
+      "date": "2026-07-28",
+      "build": "141530",
+      "schema_version": 77
+    },
+    {
       "version": "1.4.15.29",
       "name": "iPhone Barcode Camera Corrective",
       "type": "Corrective release",
