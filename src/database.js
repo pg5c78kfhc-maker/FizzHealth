@@ -938,9 +938,9 @@ const migrations=[
        AND LOWER(TRIM(COALESCE(on_hand,'yes'))) NOT IN ('no','false','0','out of stock','unavailable')
        AND LOWER(TRIM(COALESCE(status,'active'))) NOT IN ('out of stock','out_of_stock','unavailable','none');
     INSERT OR REPLACE INTO release_metadata(version,release_date,build_id,schema_version,title,created_at)
-    VALUES ('1.4.15.18','2026-07-28','141518',73,'Pantry State and Meals Library Repair','2026-07-28T03:30:00-04:00');
+    VALUES ('1.4.15.19','2026-07-28','141519',73,'Build Syntax Correction','2026-07-28T04:10:00-04:00');
     INSERT OR REPLACE INTO release_register(version,issued_date,build_id,schema_version,title,created_at)
-    VALUES ('1.4.15.18','2026-07-28','141518',73,'Pantry State and Meals Library Repair','2026-07-28T03:30:00-04:00');
+    VALUES ('1.4.15.19','2026-07-28','141519',73,'Build Syntax Correction','2026-07-28T04:10:00-04:00');
   `},
   {version:72,name:'menu_eligibility_classification_repair',sql:`
     UPDATE foods

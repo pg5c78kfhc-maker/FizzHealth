@@ -2,6 +2,22 @@
   "format": "fizz-health-release-history",
   "releases": [
     {
+      "version": "1.4.15.19",
+      "name": "Build Syntax Correction",
+      "type": "Corrective release",
+      "date": "2026-07-28",
+      "build_id": "141519",
+      "release_id": "FH-20260728-141519",
+      "schema_version": 73,
+      "status": "Corrective",
+      "stories": [
+        "FH-1415.19A Correct malformed SQL string delimiters that prevented production compilation"
+      ],
+      "known_issues": [],
+      "created_at": "2026-07-28T04:10:00-04:00",
+      "build": "141519"
+    },
+    {
       "version": "1.4.15.18",
       "name": "Pantry State and Meals Library Repair",
       "type": "Corrective release",
