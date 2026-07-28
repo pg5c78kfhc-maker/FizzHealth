@@ -1,3 +1,9 @@
+# Fizz Health v1.4.15.20 — Recipe Ingredient Resolution Integrity
+
+- FH-1415.20A: Stored recipe quantities remain visible even when food nutrition is unresolved.
+- FH-1415.20B: Available nutrient values from partially enriched foods contribute to recipe totals without inventing unknown values.
+- FH-1415.20C: Existing food records are marked nutrition-known only when all required values and serving metadata are present.
+
 # Fizz Health v1.4.15.19 — Build Syntax Correction
 
 Corrective release limited to the production-build syntax failure in v1.4.15.18.

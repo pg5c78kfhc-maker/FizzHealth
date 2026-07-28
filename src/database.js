@@ -3,7 +3,7 @@ import wasmUrl from 'sql.js/dist/sql-wasm.wasm?url';
 
 const DB_KEY='fizz-health-sqlite-v1';
 const STORAGE_DB='FizzHealthStorage';
-const TARGET_SCHEMA_VERSION=73;
+const TARGET_SCHEMA_VERSION=74;
 let SQL, db;
 
 const migrations=[
@@ -970,6 +970,31 @@ const migrations=[
     VALUES ('1.4.15.17','2026-07-28','141517',72,'Menu Eligibility Classification Repair','2026-07-28T02:35:00-04:00');
   `}
 
+,  {version:74,name:'recipe_ingredient_resolution_integrity',sql:`
+    UPDATE foods
+       SET nutrition_known=1,
+           nutrition_source=COALESCE(NULLIF(nutrition_source,''),'reconciled_existing_values'),
+           updated_at=CURRENT_TIMESTAMP
+     WHERE COALESCE(archived,0)=0
+       AND COALESCE(nutrition_known,0)<>1
+       AND default_serving>0
+       AND TRIM(COALESCE(unit,''))<>''
+       AND calories IS NOT NULL AND calories>=0
+       AND protein IS NOT NULL AND protein>=0
+       AND carbs IS NOT NULL AND carbs>=0
+       AND fiber IS NOT NULL AND fiber>=0
+       AND fat IS NOT NULL AND fat>=0
+       AND saturated_fat IS NOT NULL AND saturated_fat>=0
+       AND trans_fat IS NOT NULL AND trans_fat>=0
+       AND cholesterol IS NOT NULL AND cholesterol>=0
+       AND sodium IS NOT NULL AND sodium>=0
+       AND total_sugar IS NOT NULL AND total_sugar>=0
+       AND added_sugar IS NOT NULL AND added_sugar>=0;
+    INSERT OR REPLACE INTO release_metadata(version,release_date,build_id,schema_version,title,created_at)
+    VALUES ('1.4.15.20','2026-07-28','141520',74,'Recipe Ingredient Resolution Integrity','2026-07-28T05:05:00-04:00');
+    INSERT OR REPLACE INTO release_register(version,issued_date,build_id,schema_version,title,created_at)
+    VALUES ('1.4.15.20','2026-07-28','141520',74,'Recipe Ingredient Resolution Integrity','2026-07-28T05:05:00-04:00');
+  `}
 ];
 
 const canonicalSchema={

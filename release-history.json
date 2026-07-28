@@ -2,6 +2,24 @@
   "format": "fizz-health-release-history",
   "releases": [
     {
+      "version": "1.4.15.20",
+      "name": "Recipe Ingredient Resolution Integrity",
+      "type": "Corrective release",
+      "date": "2026-07-28",
+      "build_id": "141520",
+      "release_id": "FH-20260728-141520",
+      "schema_version": 74,
+      "status": "Corrective",
+      "stories": [
+        "FH-1415.20A Preserve stored recipe ingredient quantities when nutrition is unresolved",
+        "FH-1415.20B Include available nutrient values from partially enriched foods in recipe totals",
+        "FH-1415.20C Repair safely complete food nutrition status records"
+      ],
+      "known_issues": [],
+      "created_at": "2026-07-28T05:05:00-04:00",
+      "build": "141520"
+    },
+    {
       "version": "1.4.15.19",
       "name": "Build Syntax Correction",
       "type": "Corrective release",
