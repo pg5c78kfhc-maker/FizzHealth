@@ -2,6 +2,25 @@
   "format": "fizz-health-release-history",
   "releases": [
     {
+      "version": "1.4.15.23",
+      "name": "Pantry Tracking Integration",
+      "type": "Feature release",
+      "date": "2026-07-28",
+      "build_id": "141523",
+      "release_id": "FH-20260728-141523",
+      "schema_version": 74,
+      "status": "Feature",
+      "stories": [
+        "FH-1415.23A Add Track in Pantry control to Food Detail",
+        "FH-1415.23B Create or reactivate one linked Pantry record and open the canonical editor",
+        "FH-1415.23C Disable tracking with inventory confirmation while preserving history",
+        "FH-1415.23D Refresh Pantry, Menu, and recipe ingredient tracking state after changes"
+      ],
+      "known_issues": [],
+      "created_at": "2026-07-28T12:30:00-04:00",
+      "build": "141523"
+    },
+    {
       "version": "1.4.15.22",
       "name": "Menu Food Detail Hub",
       "type": "Feature release",

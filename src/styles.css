@@ -1854,3 +1854,8 @@ body.food-library-active .content{overflow:hidden!important}
 .food-hub-ingredients{display:grid}.food-hub-ingredients>div{display:grid;grid-template-columns:1fr auto;gap:10px;align-items:center;padding:12px 0;border-bottom:1px solid #2d3940}.food-hub-ingredients>div:last-child{border-bottom:0}.food-hub-ingredients span{display:grid;gap:3px}.food-hub-ingredients small,.food-hub-empty{color:#aab4b9;margin:0}
 .food-hub-nutrients.compact{grid-template-columns:repeat(5,minmax(0,1fr));border:0;padding:0}.food-hub-nutrients.compact span:nth-child(3n){border-right:1px solid #314047}.food-hub-nutrients.compact span:last-child{border-right:0}
 @media(max-width:520px){.food-hub-nutrients{grid-template-columns:repeat(2,minmax(0,1fr))}.food-hub-nutrients span:nth-child(3n){border-right:1px solid #314047}.food-hub-nutrients span:nth-child(2n){border-right:0}.food-hub-nutrients.compact{grid-template-columns:repeat(3,minmax(0,1fr))}.food-hub-nutrients.compact span:nth-child(2n){border-right:1px solid #314047}.food-hub-nutrients.compact span:nth-child(3n){border-right:0}.food-hub-quality{grid-template-columns:1fr 1fr}.food-hub-quality span:last-child{grid-column:1/-1}.food-hub-decision-body{grid-template-columns:62px 1fr}.food-hub-decision-body>strong{width:58px;height:58px;font-size:1.4rem}}
+
+/* v1.4.15.23 — Food Detail Pantry tracking */
+.food-metadata-readonly .food-tracking-toggle{display:flex;align-items:center;justify-content:space-between;gap:1rem;margin:0;padding:.7rem 0;color:inherit;font:inherit}
+.food-metadata-readonly .food-tracking-toggle span{color:var(--muted);font-weight:700}
+.food-metadata-readonly .food-tracking-toggle input{width:1.65rem;height:1.65rem;margin:0;accent-color:var(--green);flex:0 0 auto}
