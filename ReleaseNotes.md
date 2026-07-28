@@ -1,14 +1,13 @@
-# Fizz Health v1.4.15.16 — Regression Recovery
+# Fizz Health v1.4.15.17 — Menu Eligibility Classification Repair
 
-Corrective release limited to the four approved runtime regressions.
+Corrective release limited to repairing Menu eligibility classification drift.
 
-- **FH-1415.16A:** Keep Menu category headings visible and place expanded foods in normal document flow without overlap.
-- **FH-1415.16B:** Render the canonical Nutrition Editor above Food Detail when its pencil is tapped.
-- **FH-1415.16C:** Ask for the contained item remaining in an open package, such as “How many eggs are left in the open carton?”
-- **FH-1415.16D:** Apply left/right swipe actions only to individual Pantry inventory rows; the page header and controls never swipe.
+- **FH-1415.17A:** Migrate all active Foods and Recipes so `Ingredient only` controls their planning classification consistently.
+- **FH-1415.17B:** Build Menu eligibility from the canonical `ingredient_only` field, preventing stale legacy usage fields from hiding valid items.
+- **FH-1415.17C:** Synchronize classification, usage designation, consumption role, and category whenever Food or Recipe classification is saved.
 
-Release: 1.4.15.16  
-Build: 141516  
-Deployment: FH-20260727-141516  
+Release: 1.4.15.17  
+Build: 141517  
+Deployment: FH-20260728-141517  
 Schema: 72  
-Created: 2026-07-28T01:45:00-04:00
+Created: 2026-07-28T02:35:00-04:00

@@ -1,0 +1,11 @@
+VERSION.json
+package.json
+release-history.json
+ReleaseNotes.md
+src/database.js
+src/main.jsx
+src/decision/engine.js
+public/sw.js
+tests/v141517-menu-eligibility-repair.test.js
+TEST-REPORT-1.4.15.17.md
+CHANGED-FILES-1.4.15.17.txt

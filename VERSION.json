@@ -1,28 +1,27 @@
 {
   "app": "Fizz Health",
-  "version": "1.4.15.16",
-  "release": "Regression Recovery",
+  "version": "1.4.15.17",
+  "release": "Menu Eligibility Classification Repair",
   "release_type": "Corrective release",
-  "build": "141516",
-  "release_id": "FH-20260727-141516",
-  "created_at": "2026-07-28T01:45:00-04:00",
+  "build": "141517",
+  "release_id": "FH-20260728-141517",
+  "created_at": "2026-07-28T02:35:00-04:00",
   "schema_version": 72,
   "status": "Corrective",
-  "completed_story": "FH-1415.16D",
+  "completed_story": "FH-1415.17C",
   "baseline_story": "FH-1221",
   "updated": "2026-07-28",
   "stories": [
-    "FH-1415.16A",
-    "FH-1415.16B",
-    "FH-1415.16C",
-    "FH-1415.16D"
+    "FH-1415.17A",
+    "FH-1415.17B",
+    "FH-1415.17C"
   ],
-  "build_date": "2026-07-28T01:45:00-04:00",
-  "release_name": "Regression Recovery",
+  "build_date": "2026-07-28T02:35:00-04:00",
+  "release_name": "Menu Eligibility Classification Repair",
   "release_date": "2026-07-28",
-  "build_id": "141516",
-  "title": "Regression Recovery",
-  "name": "Regression Recovery",
+  "build_id": "141517",
+  "title": "Menu Eligibility Classification Repair",
+  "name": "Menu Eligibility Classification Repair",
   "type": "Corrective release",
-  "package_version": "1.4.15-16"
+  "package_version": "1.4.15-17"
 }

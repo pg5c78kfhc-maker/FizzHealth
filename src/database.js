@@ -3,7 +3,7 @@ import wasmUrl from 'sql.js/dist/sql-wasm.wasm?url';
 
 const DB_KEY='fizz-health-sqlite-v1';
 const STORAGE_DB='FizzHealthStorage';
-const TARGET_SCHEMA_VERSION=71;
+const TARGET_SCHEMA_VERSION=72;
 let SQL, db;
 
 const migrations=[
@@ -913,9 +913,36 @@ const migrations=[
     ALTER TABLE pantry ADD COLUMN discontinued INTEGER DEFAULT 0;
     UPDATE pantry SET discontinued=0 WHERE discontinued IS NULL;
     INSERT OR REPLACE INTO release_metadata(version,release_date,build_id,schema_version,title,created_at)
-    VALUES ('1.4.15.14','2026-07-27','141514',72,'Pantry Restoration and Editor Stabilization','2026-07-27T20:45:00-04:00');
+    VALUES ('1.4.15.13','2026-07-27','141513',72,'Menu Alignment and Inventory Availability','2026-07-27T23:55:00-04:00');
     INSERT OR REPLACE INTO release_register(version,issued_date,build_id,schema_version,title,created_at)
-    VALUES ('1.4.15.14','2026-07-27','141514',72,'Pantry Restoration and Editor Stabilization','2026-07-27T20:45:00-04:00');
+    VALUES ('1.4.15.13','2026-07-27','141513',72,'Menu Alignment and Inventory Availability','2026-07-27T23:55:00-04:00');
+  `},
+  {version:72,name:'menu_eligibility_classification_repair',sql:`
+    UPDATE foods
+       SET usage_designation=CASE WHEN COALESCE(ingredient_only,0)=1 THEN 'component' ELSE 'both' END,
+           consumption_role=CASE WHEN COALESCE(ingredient_only,0)=1 THEN 'component' ELSE 'both' END,
+           classification=CASE WHEN COALESCE(ingredient_only,0)=1 THEN 'ingredient' ELSE 'food' END,
+           category=CASE WHEN COALESCE(ingredient_only,0)=1 THEN 'Ingredient' WHEN category='Ingredient' THEN NULL ELSE category END,
+           updated_at=CURRENT_TIMESTAMP
+     WHERE COALESCE(archived,0)=0
+       AND (COALESCE(usage_designation,'')<>CASE WHEN COALESCE(ingredient_only,0)=1 THEN 'component' ELSE 'both' END
+         OR COALESCE(consumption_role,'')<>CASE WHEN COALESCE(ingredient_only,0)=1 THEN 'component' ELSE 'both' END
+         OR COALESCE(classification,'')<>CASE WHEN COALESCE(ingredient_only,0)=1 THEN 'ingredient' ELSE 'food' END
+         OR (COALESCE(ingredient_only,0)=1 AND COALESCE(category,'')<>'Ingredient')
+         OR (COALESCE(ingredient_only,0)=0 AND category='Ingredient'));
+    UPDATE recipes
+       SET usage_designation=CASE WHEN COALESCE(ingredient_only,0)=1 THEN 'component' ELSE 'both' END,
+           classification=CASE WHEN COALESCE(ingredient_only,0)=1 THEN 'ingredient' ELSE 'recipe' END,
+           category=CASE WHEN COALESCE(ingredient_only,0)=1 THEN 'Ingredient' WHEN category='Ingredient' THEN NULL ELSE category END
+     WHERE COALESCE(archived,0)=0
+       AND (COALESCE(usage_designation,'')<>CASE WHEN COALESCE(ingredient_only,0)=1 THEN 'component' ELSE 'both' END
+         OR COALESCE(classification,'')<>CASE WHEN COALESCE(ingredient_only,0)=1 THEN 'ingredient' ELSE 'recipe' END
+         OR (COALESCE(ingredient_only,0)=1 AND COALESCE(category,'')<>'Ingredient')
+         OR (COALESCE(ingredient_only,0)=0 AND category='Ingredient'));
+    INSERT OR REPLACE INTO release_metadata(version,release_date,build_id,schema_version,title,created_at)
+    VALUES ('1.4.15.17','2026-07-28','141517',72,'Menu Eligibility Classification Repair','2026-07-28T02:35:00-04:00');
+    INSERT OR REPLACE INTO release_register(version,issued_date,build_id,schema_version,title,created_at)
+    VALUES ('1.4.15.17','2026-07-28','141517',72,'Menu Eligibility Classification Repair','2026-07-28T02:35:00-04:00');
   `}
 
 ];
