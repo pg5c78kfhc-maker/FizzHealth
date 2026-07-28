@@ -1011,6 +1011,12 @@ const migrations=[
     INSERT OR REPLACE INTO release_register(version,issued_date,build_id,schema_version,title,created_at)
     VALUES ('1.4.15.28','2026-07-28','141528',75,'Pantry Reconciliation Foundation','2026-07-28T21:30:00-04:00');
   `}
+,  {version:76,name:'iphone_barcode_camera_corrective',sql:`
+    INSERT OR REPLACE INTO release_metadata(version,release_date,build_id,schema_version,title,created_at)
+    VALUES ('1.4.15.29','2026-07-28','141529',76,'iPhone Barcode Camera Corrective','2026-07-28T22:30:00-04:00');
+    INSERT OR REPLACE INTO release_register(version,issued_date,build_id,schema_version,title,created_at)
+    VALUES ('1.4.15.29','2026-07-28','141529',76,'iPhone Barcode Camera Corrective','2026-07-28T22:30:00-04:00');
+  `}
 ];
 
 const canonicalSchema={

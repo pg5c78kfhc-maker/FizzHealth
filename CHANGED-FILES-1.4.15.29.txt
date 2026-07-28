@@ -1,0 +1,12 @@
+src/main.jsx
+src/styles.css
+src/database.js
+src/decision/engine.js
+public/sw.js
+package.json
+VERSION.json
+release-history.json
+ReleaseNotes.md
+tests/v141529-camera-scanner-corrective.test.js
+TEST-REPORT-1.4.15.29.md
+CHANGED-FILES-1.4.15.29.txt

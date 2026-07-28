@@ -2,6 +2,32 @@
   "format": "fizz-health-release-history",
   "releases": [
     {
+      "version": "1.4.15.29",
+      "name": "iPhone Barcode Camera Corrective",
+      "type": "Corrective release",
+      "created": "2026-07-28T22:30:00-04:00",
+      "build_id": "141529",
+      "release_id": "FH-20260728-141529",
+      "stories": [
+        {
+          "id": "FH-1415.29A",
+          "title": "Request iPhone camera permission and attach the live rear-camera preview"
+        },
+        {
+          "id": "FH-1415.29B",
+          "title": "Decode UPC-A and EAN-13 on Safari without requiring the BarcodeDetector API"
+        },
+        {
+          "id": "FH-1415.29C",
+          "title": "Show camera startup, denial, and retry states instead of a silent black panel"
+        }
+      ],
+      "known_issues": [],
+      "date": "2026-07-28",
+      "build": "141529",
+      "schema_version": 76
+    },
+    {
       "version": "1.4.15.28",
       "name": "Pantry Reconciliation Foundation",
       "type": "Feature release",
