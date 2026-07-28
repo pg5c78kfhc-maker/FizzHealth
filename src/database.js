@@ -1031,9 +1031,9 @@ const migrations=[
       FROM foods WHERE TRIM(COALESCE(barcode,''))<>'';
     CREATE INDEX IF NOT EXISTS idx_food_barcodes_food_id ON food_barcodes(food_id);
     INSERT OR REPLACE INTO release_metadata(version,release_date,build_id,schema_version,title,created_at)
-    VALUES ('1.4.15.30','2026-07-28','141530',77,'Pantry Reconciliation Product Fields','2026-07-28T23:30:00-04:00');
+    VALUES ('1.4.15.31','2026-07-28','141531',77,'Pantry Reconciliation UX and Retailer Organization','2026-07-28T23:55:00-04:00');
     INSERT OR REPLACE INTO release_register(version,issued_date,build_id,schema_version,title,created_at)
-    VALUES ('1.4.15.30','2026-07-28','141530',77,'Pantry Reconciliation Product Fields','2026-07-28T23:30:00-04:00');
+    VALUES ('1.4.15.31','2026-07-28','141531',77,'Pantry Reconciliation UX and Retailer Organization','2026-07-28T23:55:00-04:00');
   `}
 ];
 

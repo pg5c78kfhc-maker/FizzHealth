@@ -1,31 +1,26 @@
-# Fizz Health v1.4.15.30 — Pantry Reconciliation Product Fields
+# Fizz Health v1.4.15.31 — Pantry Reconciliation UX and Retailer Organization
 
-Release ID: FH-20260728-141530  
-Build: 141530  
-Schema: 77  
+Release ID: FH-20260728-141531  
+Build: 141531  
 Issued: 2026-07-28
 
 ## Delivered
 
-- FH-1415.30A — Preferred Retailer field with editable suggestions from Pantry history.
-- FH-1415.30B — Brand and Company / Manufacturer fields on the Full Nutrition Record.
-- FH-1415.30C — Package size and servings-per-package persistence.
-- FH-1415.30D — Multiple barcode links per canonical food without overwriting prior barcodes.
+- Added a horizontally scrollable Pantry view bar and a persistent **By Retailer** view.
+- Grouped Pantry foods into collapsible retailer sections, including a clear **Retailer not recorded** group.
+- Made retailer names on Pantry cards actionable so they jump into the matching retailer view.
+- Reorganized Pantry Item into **Product**, **What You Have**, and **Freshness** sections.
+- Added **Bought at** with suggestions from previously used retailer values.
+- Replaced technical field labels with plain-language prompts.
+- Repaired the Pantry percentage/completeness action by defining and rendering a safe Record Completeness checklist.
+- Enlarged and strengthened Menu food-category headings for iPhone readability.
 
-## Preservation
+No schema migration was required; existing Pantry and Food fields are reused.
 
-Historical food, meal, Pantry, and barcode records remain intact.
+## Stories
 
----
-
-# Fizz Health v1.4.15.29 — iPhone Barcode Camera Corrective
-
-## Completed scope
-
-- **FH-1415.29A** — The barcode scanner now requests iPhone camera permission and attaches the live rear-camera stream to the scanner preview.
-- **FH-1415.29B** — Added an in-app UPC-A/EAN-13 decoder for iPhone Safari when the browser BarcodeDetector API is unavailable.
-- **FH-1415.29C** — Added visible camera startup, permission-denied, unavailable-camera, and retry states instead of leaving a silent black scanner panel.
-
-## Scope controls
-
-No changes were made to barcode matching, food creation, Pantry reconciliation logic, Shopping, Menu, Meals, Chef, or unrelated UI.
+- FH-1415.31A — Retailer-grouped Pantry browsing
+- FH-1415.31B — Pantry editor reorganization and Bought at
+- FH-1415.31C — Plain-language field labels
+- FH-1415.31D — Record Completeness corrective
+- FH-1415.31E — Menu category heading readability

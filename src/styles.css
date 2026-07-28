@@ -1899,3 +1899,14 @@ body.food-library-active .content{overflow:hidden!important}
 .barcode-camera-frame.starting::before{content:"";position:absolute;z-index:1;width:42px;height:42px;left:calc(50% - 21px);top:calc(50% - 21px);border:4px solid rgba(165,239,56,.28);border-top-color:#a5ef38;border-radius:50%;animation:barcode-spin .8s linear infinite}
 .barcode-camera-frame.error .barcode-target{opacity:.35}.barcode-fallback{display:grid;gap:8px}.barcode-fallback b{color:#fff}.barcode-fallback span{display:block}.barcode-fallback button{margin-top:4px}
 @keyframes barcode-spin{to{transform:rotate(360deg)}}
+
+/* v1.4.15.31 — Pantry reconciliation usability, retailer grouping, completeness, and Menu heading corrective */
+.pantry-intel-tabs{display:flex!important;grid-template-columns:none!important;gap:8px;overflow-x:auto;overscroll-behavior-inline:contain;scrollbar-width:none;padding-bottom:4px;-webkit-overflow-scrolling:touch}
+.pantry-intel-tabs::-webkit-scrollbar{display:none}.pantry-intel-tabs button{flex:0 0 auto;white-space:nowrap}
+.pantry-retailer-groups{display:grid;gap:12px}.pantry-retailer-groups>h2{margin:4px 0}
+.pantry-retailer-group{border:1px solid #34454c;border-radius:16px;background:#10181d;overflow:hidden}
+.pantry-retailer-group summary{list-style:none;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 16px;cursor:pointer}.pantry-retailer-group summary::-webkit-details-marker{display:none}.pantry-retailer-group summary span{display:flex;align-items:center;gap:9px}.pantry-retailer-group summary svg{width:20px;height:20px;color:#a5ef38}.pantry-retailer-group summary em{font-style:normal;color:#aab4b9;font-size:.78rem}.pantry-retailer-group .list{padding:0 10px 10px}
+.pantry-retailer-link{display:inline!important;width:auto!important;min-height:0!important;padding:0!important;border:0!important;background:transparent!important;color:#a5ef38!important;font:inherit!important;text-decoration:underline;text-underline-offset:2px}
+.pantry-property-editor .editor-scroll>section>h3{font-size:1.08rem;margin:8px 0 6px;color:#a5ef38}.pantry-property-editor .section-help{display:block;color:#aab4b9;margin-top:8px}
+.missing-evidence-list li{display:flex;gap:9px;align-items:flex-start}.missing-evidence-list li>span{color:#a5ef38;font-weight:900}.completeness-benefits{margin-top:12px}
+.meal-calendar-prototype .menu-category:not(.menu-chef-section):not(.restaurant-menu-group)>.menu-category-heading h3{font-size:1.55rem!important;font-weight:950!important;line-height:1.05!important;letter-spacing:-.025em!important}
