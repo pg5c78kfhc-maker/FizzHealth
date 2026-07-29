@@ -2003,3 +2003,13 @@ body.food-library-active .food-library-page .list.foods{padding-bottom:calc(24px
 .record-detail-tabs button{appearance:none;position:relative;min-height:58px;padding:14px 8px;border:0;border-right:1px solid #2b3940;background:transparent;color:#b7c0c4;font:inherit;font-weight:800;touch-action:manipulation}
 .record-detail-tabs button:last-child{border-right:0}.record-detail-tabs button.active{color:#a5ef38}.record-detail-tabs button.active::after{content:"";position:absolute;left:0;right:0;bottom:0;height:4px;background:#a5ef38}
 .record-tab-panel{min-width:0}.record-tab-placeholder{min-height:48dvh;display:grid;place-content:center;text-align:center;gap:8px;border:1px solid #34454c;border-radius:0 0 18px 18px;background:#10181d;padding:32px}.record-tab-placeholder h3,.record-tab-placeholder p{margin:0}.record-tab-placeholder h3{font-size:1.45rem}.record-tab-placeholder p{color:#aeb8bc}
+
+/* v1.4.15.43 — Inventory Details inside the Food Record tab */
+.inventory-record-tab{min-width:0;padding-bottom:calc(120px + env(safe-area-inset-bottom,0px))}
+.inventory-tab-summary{margin-top:0;border-radius:0 0 18px 18px}
+.inventory-summary-grid>div{align-items:flex-start}.inventory-summary-grid b{max-width:62%;overflow-wrap:anywhere;text-align:right}
+.pantry-tab-editor-shell{min-width:0;border:1px solid #34454c;border-radius:0 0 18px 18px;background:#10181d;overflow:hidden}
+.pantry-tab-editor{position:relative!important;inset:auto!important;width:100%!important;max-width:none!important;height:auto!important;max-height:none!important;margin:0!important;border:0!important;border-radius:0!important;background:#10181d!important;box-shadow:none!important;overflow:visible!important}
+.pantry-tab-editor .edit-head{position:sticky;top:58px;z-index:22;background:#10181d;border-bottom:1px solid #34454c}
+.pantry-tab-editor .editor-scroll{height:auto!important;max-height:none!important;overflow:visible!important;padding-bottom:36px}
+.inventory-empty-state{border-radius:0 0 18px 18px}

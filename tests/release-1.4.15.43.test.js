@@ -1,0 +1,15 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import fs from 'node:fs';
+const source=fs.readFileSync(new URL('../src/main.jsx',import.meta.url),'utf8');
+const css=fs.readFileSync(new URL('../src/styles.css',import.meta.url),'utf8');
+test('release metadata is current',()=>{assert.match(source,/VERSION='1\.4\.15\.43'/);assert.match(source,/BUILD_ID='141543'/)});
+test('Inventory tab renders a real record panel',()=>{assert.match(source,/className="record-tab-panel inventory-record-tab"/);assert.match(source,/Inventory Details/)});
+test('Inventory edit uses the canonical PantryItemEditor',()=>{assert.match(source,/<PantryItemEditor item=\{editingPantry\} locations=\{pantryLocations\} embedded/)});
+test('PantryItemEditor supports embedded and existing modal shells',()=>{assert.match(source,/embedded=false/);assert.match(source,/embedded\?<div className="pantry-tab-editor-shell"/);assert.match(source,/modal-backdrop pantry-editor-layer/)});
+test('pencil is context sensitive',()=>{assert.match(source,/recordTab==='inventory'\?activePantry&&setEditingPantry\(activePantry\):setEditingFood\(true\)/)});
+test('shared Pantry save and validation remain canonical',()=>{assert.match(source,/UPDATE pantry SET item=\?,brand=\?,retailer=\?,product_link=\?,quantity=\?/);assert.match(source,/Pantry inventory updated\./)});
+test('existing Pantry page remains available',()=>{assert.match(source,/function Pantry\(\{onLogFood,tick,onReconcile\}\)/)});
+test('Shopping remains a placeholder',()=>{assert.match(source,/recordTab==='shopping'/);assert.match(source,/Coming in the next release\./)});
+test('embedded editor stays inside tab layout',()=>{assert.match(css,/\.pantry-tab-editor-shell/);assert.match(css,/\.pantry-tab-editor\{/)});
+test('serving display uses plain-language Common measure label',()=>{assert.match(source,/<span>Common measure<\/span>/)});
