@@ -1066,15 +1066,14 @@ const migrations=[
     INSERT OR REPLACE INTO release_register(version,issued_date,build_id,schema_version,title,created_at)
     VALUES ('1.4.15.37','2026-07-29','141537',82,'Inventory Consumption and Shopping Image Corrective','2026-07-29T10:30:00-04:00');
   `}
-,  {version:82,name:'critical_inventory_integrity_and_shopping_stabilization',sql:`
+,  {version:82,name:'inventory_integrity_runtime_path_corrective',sql:`
     ALTER TABLE meal_pantry_adjustments ADD COLUMN before_json TEXT;
     ALTER TABLE meal_pantry_adjustments ADD COLUMN after_json TEXT;
-    CREATE UNIQUE INDEX IF NOT EXISTS idx_meal_pantry_adjustments_idempotent ON meal_pantry_adjustments(source_record_id,pantry_id);
-    CREATE INDEX IF NOT EXISTS idx_pantry_product_image_status ON pantry(product_image_status);
+    CREATE UNIQUE INDEX IF NOT EXISTS idx_meal_pantry_adjustments_unique ON meal_pantry_adjustments(meal_id,pantry_id);
     INSERT OR REPLACE INTO release_metadata(version,release_date,build_id,schema_version,title,created_at)
-    VALUES ('1.4.15.38','2026-07-29','141538',83,'Inventory & Shopping Stabilization','2026-07-29T10:42:00-04:00');
+    VALUES ('1.4.15.39','2026-07-29','141539',82,'Inventory Integrity Runtime Path Corrective','2026-07-29T11:45:00-04:00');
     INSERT OR REPLACE INTO release_register(version,issued_date,build_id,schema_version,title,created_at)
-    VALUES ('1.4.15.38','2026-07-29','141538',83,'Inventory & Shopping Stabilization','2026-07-29T10:42:00-04:00');
+    VALUES ('1.4.15.39','2026-07-29','141539',82,'Inventory Integrity Runtime Path Corrective','2026-07-29T11:45:00-04:00');
   `}
 ];
 

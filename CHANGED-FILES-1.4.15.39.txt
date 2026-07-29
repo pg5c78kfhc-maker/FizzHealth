@@ -1,0 +1,12 @@
+Fizz Health v1.4.15.39 — Changed Files Manifest
+Baseline: Fizz-Health-v1.4.15.37-FULL-SOURCE(1)(1)(2).zip
+
+ReleaseNotes.md
+VERSION.json
+package.json
+public/sw.js
+release-history.json
+src/database.js
+src/decision/engine.js
+src/main.jsx
+tests/v141539-inventory-runtime-integrity.test.js

@@ -1,12 +1,12 @@
-# Fizz Health v1.4.15.37 — Inventory Consumption and Shopping Image Corrective
+# Fizz Health v1.4.15.39 — Inventory Integrity Runtime Path Corrective
 
 ## Stories
 
-- FH-1415.37A — Resolve Pantry records and decrement linked inventory whenever a Food becomes Consumed.
-- FH-1415.37B — Persist Pantry adjustment identifiers and deltas so delete and undo restore inventory correctly.
-- FH-1415.37C — Add observable product-image discovery, saved fetch status, and Refresh Images to Shopping.
-- FH-1415.37D — Make Shopping retailer groups collapsible.
+- FH-1415.39A — Correct count-based serving decrements so one apple subtracts one apple, never the food’s 125 g serving size.
+- FH-1415.39B — Route live add, edit, delete, undo, redo, quick-consume, meal, and recipe inventory changes through the canonical transaction functions.
+- FH-1415.39C — Record actual deducted quantities plus before/after inventory snapshots and prevent duplicate adjustment rows.
+- FH-1415.39D — Verify the deployed entry point is `/src/main.jsx` and that the archive contains one active source tree and one active main page.
 
-## Image retrieval note
+## Critical correction
 
-Retailer sites may block browser-side metadata access. The Shopping page now reports whether an image loaded, was not found, or was blocked, while preserving the working retailer deep link.
+The prior release changed helper code but left active Food Log handlers that directly modified Pantry. This release removes that bypass and tests the exact 5 apples → consume 1 → 4 → delete → 5 workflow.
