@@ -2059,3 +2059,21 @@ body.food-library-active .food-library-page .list.foods{padding-bottom:calc(24px
  .pantry-tab-editor .pantry-property-row input[type=checkbox]{float:right}
  .pantry-tab-editor .barcode-edit-row,.pantry-tab-editor .pantry-inline-actions{justify-content:flex-end}
 }
+
+/* v1.4.15.47 — Food Record Shopping integration */
+.shopping-record-tab .shopping-tab-summary,.shopping-record-tab .shopping-product-action{margin-bottom:16px}
+.shopping-summary-grid{display:grid;gap:0}
+.shopping-summary-grid>div{display:grid;grid-template-columns:minmax(118px,40%) minmax(0,1fr);align-items:start;gap:14px;padding:12px 0;border-bottom:1px solid #28373d}
+.shopping-summary-grid>div:last-child{border-bottom:0}
+.shopping-summary-grid span{color:#aab4bd;font-weight:700}
+.shopping-summary-grid b{text-align:right;overflow-wrap:anywhere}
+.shopping-product-action .primary{display:flex;align-items:center;justify-content:center;gap:8px;text-decoration:none}
+.shopping-tab-editor .pantry-property-row{grid-template-columns:minmax(118px,40%) minmax(0,1fr);align-items:center;gap:14px}
+.shopping-tab-editor .pantry-property-row>div{text-align:right;min-width:0}
+.shopping-tab-editor input,.shopping-tab-editor select,.shopping-tab-editor output{text-align:right}
+.shopping-tab-editor output{display:flex;justify-content:flex-end;min-height:44px;align-items:center}
+.shopping-tab-editor .barcode-edit-row,.shopping-tab-editor .pantry-inline-actions{justify-content:flex-end}
+.shopping-price-input{display:grid;grid-template-columns:auto minmax(0,1fr);align-items:center;gap:8px}
+.shopping-price-input>span{color:#aab4bd;font-weight:800}
+.shopping-editor-note{margin:14px 0 0;color:#aab4bd;line-height:1.45}
+@media(max-width:390px){.shopping-summary-grid>div,.shopping-tab-editor .pantry-property-row{grid-template-columns:minmax(104px,38%) minmax(0,1fr)}}

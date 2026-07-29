@@ -1,13 +1,12 @@
-# Fizz Health v1.4.15.45 — Food Record Architecture Consolidation
+# Fizz Health v1.4.15.47 — Food Record Shopping Integration
 
 ## Completed scope
 
-- **FH-1545.1** — Add General as the first and default Food Record tab.
-- **FH-1545.2** — Move food identity and behavior fields into General.
-- **FH-1545.3** — Remove duplicate identity editing from Nutrition and Inventory.
-- **FH-1545.4** — Align General, Nutrition, and Inventory view/edit layouts and ordering.
-- **FH-1545.5** — Make Common measure editable and persist it as the Nutrition serving-description source.
+- **FH-1547.1** — Complete the Shopping tab and move preferred retailer, product link, barcode, and last price into it.
+- **FH-1547.2** — Remove shopping-owned fields from the Inventory display and editor.
+- **FH-1547.3** — Use the approved label-left and value-right layout in Shopping view and edit modes.
+- **FH-1547.4** — Preserve existing Pantry, product-link, price, barcode, and scanner persistence paths.
 
 ## Scope discipline
 
-No database schema, nutrition calculation, inventory calculation, or Shopping functionality changes were introduced.
+No nutrition calculations, inventory calculations, or database schema changes were introduced.
