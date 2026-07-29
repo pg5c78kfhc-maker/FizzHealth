@@ -1,0 +1,33 @@
+Fizz Health v1.4.15.42 — Changed Files Manifest
+Baseline: v1.4.15.41
+Release: Food Record Consolidation — Phase 1
+
+Modified:
+- src/main.jsx
+  - Added Nutrition, Inventory, and Shopping tabs to Meals food details.
+  - Kept Nutrition as the unchanged default content.
+  - Added blank Inventory and Shopping placeholders.
+  - Preserved per-tab scroll positions.
+  - Updated centralized runtime release metadata and release history.
+- src/styles.css
+  - Added approved tab presentation and active green underline.
+  - Corrected Food/Meals library viewport sizing so footer space is reserved once.
+- src/decision/engine.js
+  - Updated engine release version.
+- public/sw.js
+  - Updated service-worker cache identifier.
+- VERSION.json
+  - Updated centralized release metadata.
+- release-history.json
+  - Added v1.4.15.42 release entry.
+- ReleaseNotes.md
+  - Added current release notes.
+- package.json
+  - Updated package version.
+
+Added:
+- tests/release-1.4.15.42.test.js
+  - Focused regression checks for tabs, placeholders, scroll preservation, styling, and footer-layout correction.
+
+No database schema changes.
+No Pantry, Inventory, Shopping, Nutrition, Meals, Recipe, or logging functionality was moved or redesigned.

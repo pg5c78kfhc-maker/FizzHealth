@@ -1994,3 +1994,12 @@ body{padding-bottom:env(safe-area-inset-bottom,0px)}
 .brief-purchase-list{list-style:none;padding:0;margin:12px 0 0;display:grid;gap:8px}
 .brief-purchase-list button{width:100%;display:flex;align-items:center;justify-content:space-between;gap:12px;text-align:left;padding:12px;border:1px solid #314047;border-radius:14px;background:#11191e;color:#f4f7f2}
 .brief-purchase-list button span{display:grid;gap:4px}.brief-purchase-list small{color:#aeb8bc;line-height:1.35}.brief-purchase-list svg{width:18px;color:#a5ef38;flex:0 0 auto}
+
+/* v1.4.15.42 — Food Record consolidation phase 1 and library viewport correction. */
+body.food-library-active .app{padding-bottom:0!important}
+body.food-library-active .content{height:calc(100dvh - var(--bottom-nav-height))!important;padding-bottom:0!important}
+body.food-library-active .food-library-page .list.foods{padding-bottom:calc(24px + env(safe-area-inset-bottom,0px))}
+.record-detail-tabs{position:sticky;top:0;z-index:25;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));margin:0 0 14px;border:1px solid #34454c;border-radius:16px 16px 0 0;background:#10181d;overflow:hidden}
+.record-detail-tabs button{appearance:none;position:relative;min-height:58px;padding:14px 8px;border:0;border-right:1px solid #2b3940;background:transparent;color:#b7c0c4;font:inherit;font-weight:800;touch-action:manipulation}
+.record-detail-tabs button:last-child{border-right:0}.record-detail-tabs button.active{color:#a5ef38}.record-detail-tabs button.active::after{content:"";position:absolute;left:0;right:0;bottom:0;height:4px;background:#a5ef38}
+.record-tab-panel{min-width:0}.record-tab-placeholder{min-height:48dvh;display:grid;place-content:center;text-align:center;gap:8px;border:1px solid #34454c;border-radius:0 0 18px 18px;background:#10181d;padding:32px}.record-tab-placeholder h3,.record-tab-placeholder p{margin:0}.record-tab-placeholder h3{font-size:1.45rem}.record-tab-placeholder p{color:#aeb8bc}

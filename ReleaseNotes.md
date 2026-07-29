@@ -1,3 +1,9 @@
+# Fizz Health v1.4.15.42 — Food Record Consolidation — Phase 1
+
+- **FH-1542.1:** Removed the blank footer overlay from the Food and Meals library viewport.
+- **FH-1542.2:** Added Nutrition, Inventory, and Shopping tabs to Meals food details.
+- **FH-1542.3:** Preserved the existing Nutrition page and added blank Inventory and Shopping placeholders.
+
 # Fizz Health v1.4.15.41 — Menu & Daily Brief Corrections
 
 Issued July 29, 2026. Build 141541. Deployment FH-20260729-141541.
