@@ -1973,3 +1973,24 @@ body.food-library-active .content{overflow:hidden!important}
 /* v1.4.15.40 — inventory and shopping completion */
 .shopping-toolbar{align-items:center;gap:12px;flex-wrap:wrap}.shopping-image-progress{color:#aeb8bc;font-size:.82rem;font-weight:700}
 .shopping-product-card{display:block;padding:0}.shopping-product-card>button,.shopping-product-card>div{appearance:none;width:100%;display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:12px;text-align:left;padding:14px 16px;border:0;background:transparent;color:#f4f7f2;font:inherit}.shopping-product-card>img{float:left;margin:12px 0 12px 14px}.shopping-product-copy{display:grid!important;gap:3px}.shopping-product-copy h3,.shopping-product-copy p{margin:0}.shopping-product-copy small{color:#94a1a7;text-transform:none;letter-spacing:0}.shopping-product-copy strong{color:#a5ef38;text-transform:uppercase}.pantry-inline-actions,.barcode-edit-row{display:flex;align-items:center;gap:10px;flex-wrap:wrap}.barcode-edit-row>input{flex:1 1 180px}.barcode-edit-row button{min-height:42px}.serving-basis-section{margin-top:14px}
+
+/* v1.4.15.41 — viewport-anchored navigation and Daily Brief purchase priorities. */
+.primary-bottom-nav{
+  position:fixed!important;
+  left:50%!important;
+  right:auto!important;
+  top:auto!important;
+  bottom:0!important;
+  transform:translate3d(-50%,0,0)!important;
+  width:min(520px,100vw)!important;
+  z-index:10000!important;
+  margin:0!important;
+  min-height:var(--bottom-nav-height);
+  padding-bottom:calc(6px + env(safe-area-inset-bottom,0px));
+  contain:layout paint;
+}
+body{padding-bottom:env(safe-area-inset-bottom,0px)}
+.app{padding-bottom:calc(var(--bottom-nav-height) + env(safe-area-inset-bottom,0px) + 28px)!important}
+.brief-purchase-list{list-style:none;padding:0;margin:12px 0 0;display:grid;gap:8px}
+.brief-purchase-list button{width:100%;display:flex;align-items:center;justify-content:space-between;gap:12px;text-align:left;padding:12px;border:1px solid #314047;border-radius:14px;background:#11191e;color:#f4f7f2}
+.brief-purchase-list button span{display:grid;gap:4px}.brief-purchase-list small{color:#aeb8bc;line-height:1.35}.brief-purchase-list svg{width:18px;color:#a5ef38;flex:0 0 auto}

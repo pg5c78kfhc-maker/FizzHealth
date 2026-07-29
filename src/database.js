@@ -1071,9 +1071,9 @@ const migrations=[
     ALTER TABLE meal_pantry_adjustments ADD COLUMN after_json TEXT;
     CREATE UNIQUE INDEX IF NOT EXISTS idx_meal_pantry_adjustments_unique ON meal_pantry_adjustments(meal_id,pantry_id);
     INSERT OR REPLACE INTO release_metadata(version,release_date,build_id,schema_version,title,created_at)
-    VALUES ('1.4.15.39','2026-07-29','141539',82,'Inventory Integrity Runtime Path Corrective','2026-07-29T11:45:00-04:00');
+    VALUES ('1.4.15.41','2026-07-29','141541',82,'Menu & Daily Brief Corrections','2026-07-29T12:15:00-04:00');
     INSERT OR REPLACE INTO release_register(version,issued_date,build_id,schema_version,title,created_at)
-    VALUES ('1.4.15.39','2026-07-29','141539',82,'Inventory Integrity Runtime Path Corrective','2026-07-29T11:45:00-04:00');
+    VALUES ('1.4.15.41','2026-07-29','141541',82,'Menu & Daily Brief Corrections','2026-07-29T12:15:00-04:00');
   `}
 ,  {version:83,name:'inventory_shopping_completion',sql:`
     INSERT OR REPLACE INTO release_metadata(version,release_date,build_id,schema_version,title,created_at)

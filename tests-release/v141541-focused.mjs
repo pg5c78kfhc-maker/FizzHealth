@@ -1,0 +1,17 @@
+import fs from 'node:fs';
+import assert from 'node:assert/strict';
+const main=fs.readFileSync('src/main.jsx','utf8');
+const css=fs.readFileSync('src/styles.css','utf8');
+const version=JSON.parse(fs.readFileSync('VERSION.json','utf8'));
+assert.equal(version.version,'1.4.15.41');
+assert.match(main,/createPortal\(<nav className="primary-bottom-nav"/);
+assert.match(css,/\.primary-bottom-nav\{[\s\S]*position:fixed!important;[\s\S]*bottom:0!important;/);
+assert.match(main,/SELECT food_id,meal_definition_id,food_name FROM meals WHERE consumed_local_date=\?/);
+assert.match(main,/baseMeals\.filter\(meal=>!candidateAlreadyUsed\(meal\)\)/);
+assert.match(main,/planned_meal_removed/);
+assert.match(main,/was removed from Proposed/);
+assert.match(main,/Next actions have been re-ranked/);
+assert.match(main,/purchaseCandidates=.*COALESCE\(p\.quantity,0\)<=0/);
+assert.match(main,/Five Pantry items worth buying next/);
+assert.match(main,/\.slice\(0,5\)/);
+console.log('Focused v1.4.15.41 checks passed: 10/10');

@@ -1,12 +1,14 @@
-# Fizz Health v1.4.15.39 — Inventory Integrity Runtime Path Corrective
+# Fizz Health v1.4.15.41 — Menu & Daily Brief Corrections
 
-## Stories
+Issued July 29, 2026. Build 141541. Deployment FH-20260729-141541.
 
-- FH-1415.39A — Correct count-based serving decrements so one apple subtracts one apple, never the food’s 125 g serving size.
-- FH-1415.39B — Route live add, edit, delete, undo, redo, quick-consume, meal, and recipe inventory changes through the canonical transaction functions.
-- FH-1415.39C — Record actual deducted quantities plus before/after inventory snapshots and prevent duplicate adjustment rows.
-- FH-1415.39D — Verify the deployed entry point is `/src/main.jsx` and that the archive contains one active source tree and one active main page.
+## Completed
 
-## Critical correction
+- FH-1415.41A — Anchor the primary navigation to the viewport bottom with iPhone safe-area protection and content clearance.
+- FH-1415.41B — Exclude foods, meals, and recipes already Consumed or Proposed today from Chef’s Picks and recalculate the displayed recommendations.
+- FH-1415.41C — Record Proposed removals, acknowledge them in the Daily Brief, recalculate projected nutrition, and re-rank next actions.
+- FH-1415.41D — Rank and explain up to five out-of-stock Pantry purchase recommendations using nutrition gaps, LDL support, calorie and sodium fit, Restaurant Day context, and availability.
 
-The prior release changed helper code but left active Food Log handlers that directly modified Pantry. This release removes that bypass and tests the exact 5 apples → consume 1 → 4 → delete → 5 workflow.
+## Testing
+
+See `TEST-REPORT-1.4.15.41.md`.
