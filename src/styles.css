@@ -1933,3 +1933,21 @@ body.food-library-active .content{overflow:hidden!important}
 .barcode-target.full-frame span{width:72%;max-width:360px}
 .barcode-scan-now{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;margin-top:10px}
 .barcode-scan-now svg{width:20px;height:20px}
+
+/* v1.4.15.34 Pantry inventory conversation and iPhone containment corrective */
+.pantry-property-editor{overflow:hidden;max-width:calc(100vw - 16px)!important}
+.pantry-property-editor .editor-scroll{width:100%;min-width:0;box-sizing:border-box;overflow-x:hidden!important;padding-left:18px;padding-right:18px}
+.pantry-property-editor .editor-scroll>section,.pantry-property-row,.pantry-property-row>div{width:100%;min-width:0;max-width:100%;box-sizing:border-box}
+.pantry-property-row input:not([type=checkbox]),.pantry-property-row select,.pantry-property-row textarea,.pantry-property-row output{width:100%!important;min-width:0!important;max-width:100%!important;box-sizing:border-box!important;overflow:hidden;text-overflow:ellipsis}
+.pantry-property-row input[type=date]{display:block;-webkit-appearance:none;appearance:none}
+.pantry-property-row output{white-space:normal;overflow-wrap:anywhere;text-align:right}
+@media(max-width:520px){
+ .pantry-property-editor .editor-scroll{padding-left:16px;padding-right:16px}
+ .pantry-property-row{grid-template-columns:minmax(0,1fr)!important;gap:7px!important;align-items:stretch!important;padding:10px 0!important}
+ .pantry-property-row>span{display:block;max-width:100%;font-size:1rem!important;line-height:1.25!important}
+ .pantry-property-row>div{text-align:left!important}
+ .pantry-property-row input:not([type=checkbox]),.pantry-property-row select,.pantry-property-row output{text-align:left!important}
+ .pantry-property-row output{justify-content:flex-start!important}
+ .pantry-property-row input[type=checkbox]{float:none;width:32px;height:32px}
+ .pantry-property-row .inline-value{grid-template-columns:minmax(0,1fr) minmax(74px,96px)!important}
+}

@@ -2,6 +2,26 @@
   "format": "fizz-health-release-history",
   "releases": [
     {
+      "version": "1.4.15.34",
+      "name": "Pantry Inventory Conversation Corrective",
+      "title": "Pantry Inventory Conversation Corrective",
+      "type": "Corrective release",
+      "release_type": "Corrective release",
+      "release_date": "2026-07-29",
+      "issued_date": "2026-07-29",
+      "created_at": "2026-07-29T06:18:00-04:00",
+      "build": "141534",
+      "build_id": "141534",
+      "release_id": "FH-20260729-141534",
+      "schema_version": 79,
+      "stories": [
+        "FH-1415.34A",
+        "FH-1415.34B",
+        "FH-1415.34C",
+        "FH-1415.34D"
+      ]
+    },
+    {
       "version": "1.4.15.33",
       "name": "Pantry Persistence and Barcode Scanner Corrective",
       "title": "Pantry Persistence and Barcode Scanner Corrective",

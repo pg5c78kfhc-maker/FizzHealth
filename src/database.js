@@ -1041,6 +1041,12 @@ const migrations=[
     INSERT OR REPLACE INTO release_register(version,issued_date,build_id,schema_version,title,created_at)
     VALUES ('1.4.15.33','2026-07-28','141533',78,'Pantry Persistence and Barcode Scanner Corrective','2026-07-28T23:59:30-04:00');
   `}
+,  {version:79,name:'pantry_inventory_conversation_corrective',sql:`
+    INSERT OR REPLACE INTO release_metadata(version,release_date,build_id,schema_version,title,created_at)
+    VALUES ('1.4.15.34','2026-07-29','141534',79,'Pantry Inventory Conversation Corrective','2026-07-29T06:18:00-04:00');
+    INSERT OR REPLACE INTO release_register(version,issued_date,build_id,schema_version,title,created_at)
+    VALUES ('1.4.15.34','2026-07-29','141534',79,'Pantry Inventory Conversation Corrective','2026-07-29T06:18:00-04:00');
+  `}
 ];
 
 const canonicalSchema={
