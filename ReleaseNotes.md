@@ -1,17 +1,12 @@
-# Fizz Health v1.4.15.35 — Barcode Scanner Reliability Corrective
+# Fizz Health v1.4.15.36 — Linked Shopping Cart Pilot
 
-- FH-1415.35A — Added native one-tap still-photo barcode capture with an on-screen captured-photo preview.
-- FH-1415.35B — Added automatic full-frame, crop, rotation, scale, grayscale, and contrast decode passes.
-- FH-1415.35C — Added explicit photo-captured, reading, failure, retake, and manual-entry states.
-- FH-1415.35D — Corrected Pantry quantity labels so package names pluralize exactly once.
+## Stories
 
-# Fizz Health v1.4.15.34 — Pantry Inventory Conversation Corrective
+- FH-1415.36A — Store a retailer product link on each Pantry item.
+- FH-1415.36B — List Out of Stock and Order Soon items grouped by retailer.
+- FH-1415.36C — Exclude discontinued items and use image-or-text product links with graceful fallback.
+- FH-1415.36D — Open retailer product pages through the iPhone link handoff.
 
-Issued July 29, 2026. Build 141534. Deployment FH-20260729-141534. Schema 79.
+## Pilot limitation
 
-## Delivered
-
-- **FH-1415.34A** replaces the duplicate quantity, unit, container, and package questions with one adaptive inventory flow.
-- **FH-1415.34B** stores package type once and asks package-aware questions for total packages, sealed packages, an open package, and the amount remaining.
-- **FH-1415.34C** constrains all Pantry editor controls to the modal and stacks rows on narrow iPhones to eliminate right-edge clipping.
-- **FH-1415.34D** preserves save/reload behavior for both package-count and direct-measure inventory records.
+Retailer pages may block browser-side image discovery. The Shopping Cart therefore displays a stored/direct image when available and otherwise uses the product name as the link, without breaking the list.

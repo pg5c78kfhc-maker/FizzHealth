@@ -1956,3 +1956,11 @@ body.food-library-active .content{overflow:hidden!important}
 .barcode-camera-frame.has-photo .barcode-target{box-shadow:0 0 0 999px rgba(0,0,0,.12)}
 .barcode-take-photo{width:100%;margin-top:14px;min-height:58px;font-size:1.08rem}
 .barcode-reading-status{margin-top:12px;display:grid;gap:4px}
+
+/* v1.4.15.36 — linked shopping cart pilot */
+.pantry-open-product-link{display:inline-flex;margin-top:8px;color:#a5ef38;font-weight:800;text-decoration:underline;text-underline-offset:3px}
+.shopping-retailer-groups{display:grid;gap:18px;padding-bottom:24px}
+.shopping-retailer-group{border:1px solid #34454c;border-radius:18px;background:#10181d;overflow:hidden}
+.shopping-retailer-group>header{display:flex;align-items:center;gap:12px;padding:15px 16px;border-bottom:1px solid #2d3d43}
+.shopping-retailer-group>header svg{width:22px;color:#a5ef38}.shopping-retailer-group>header div{display:flex;align-items:baseline;justify-content:space-between;gap:12px;width:100%}.shopping-retailer-group h2{margin:0;font-size:1.08rem}.shopping-retailer-group header span{color:#9eaaaf;font-size:.82rem}
+.shopping-product-list{display:grid}.shopping-product-card{appearance:none;width:100%;display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:12px;text-align:left;padding:14px 16px;border:0;border-bottom:1px solid #25343a;background:transparent;color:#f4f7f2;font:inherit}.shopping-product-card:last-child{border-bottom:0}.shopping-product-card.has-image{grid-template-columns:64px minmax(0,1fr) auto}.shopping-product-card img{width:64px;height:64px;object-fit:contain;border-radius:10px;background:#fff}.shopping-product-card div{min-width:0;display:grid;gap:3px}.shopping-product-card b{font-size:1rem;line-height:1.2}.shopping-product-card span{color:#aeb8bc;font-size:.86rem}.shopping-product-card small{color:#a5ef38;font-weight:800;text-transform:uppercase;letter-spacing:.04em}.shopping-product-card svg{width:20px;color:#a5ef38}.shopping-product-card:active{background:#172329}.shopping-empty{text-align:center;padding:48px 20px;border:1px solid #34454c;border-radius:18px;background:#10181d}.shopping-empty svg{width:44px;height:44px;color:#a5ef38}.shopping-empty h2{margin:12px 0 6px}.shopping-empty p{margin:0;color:#aeb8bc}
