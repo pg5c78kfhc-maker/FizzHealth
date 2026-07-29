@@ -2077,3 +2077,29 @@ body.food-library-active .food-library-page .list.foods{padding-bottom:calc(24px
 .shopping-price-input>span{color:#aab4bd;font-weight:800}
 .shopping-editor-note{margin:14px 0 0;color:#aab4bd;line-height:1.45}
 @media(max-width:390px){.shopping-summary-grid>div,.shopping-tab-editor .pantry-property-row{grid-template-columns:minmax(104px,38%) minmax(0,1fr)}}
+
+/* v1.4.15.48 — Food Record Nutrition view/edit alignment. */
+.record-tab-nutrition .nutrition-record-summary,.nutrition-record-editor{padding:18px 16px;background:#10181d;border:1px solid #34454c;border-radius:18px}
+.nutrition-tab-editor-shell .nutrition-record-editor{border:0;border-radius:0;padding:0}
+.nutrition-record-section{margin-top:22px;padding-top:18px;border-top:1px solid #2b3a40}
+.nutrition-record-section:first-of-type{margin-top:16px}
+.nutrition-record-section h4{margin:0 0 8px;font-size:1.03rem;color:var(--text);letter-spacing:0}
+.nutrition-record-grid{display:grid;gap:0}
+.nutrition-record-grid>div{display:grid;grid-template-columns:minmax(118px,40%) minmax(0,1fr);align-items:start;gap:14px;padding:10px 0;border-bottom:1px solid #28373d}
+.nutrition-record-grid>div:last-child{border-bottom:0}
+.nutrition-record-grid span{color:var(--muted);font-weight:700}
+.nutrition-record-grid b{text-align:right;overflow-wrap:anywhere}
+.nutrition-record-form{padding:0!important;margin:0!important;border:0!important;border-radius:0!important;background:transparent!important}
+.nutrition-record-form label:last-child{border-bottom:0}
+.serving-size-control{display:grid;grid-template-columns:minmax(0,1fr) 72px;gap:8px;min-width:0}
+.serving-size-control input{text-align:right;min-width:0}
+.serving-size-control .unit-input{text-align:center}
+.nutrition-edit-value{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px;min-width:0}
+.nutrition-value-input{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:7px;min-width:0;border:1px solid #39474f;border-radius:12px;background:#0c1216;padding-right:10px}
+.nutrition-value-input input{width:100%;min-width:0;border:0!important;background:transparent!important;text-align:right;padding-right:0!important}
+.nutrition-value-input em{font-style:normal;color:var(--muted);font-weight:800;white-space:nowrap}
+.nutrition-value-actions{display:grid;grid-template-columns:42px 42px;gap:6px}
+.nutrition-edit-value .nutrient-source-line{grid-column:1/-1;margin:0;text-align:right}
+.nutrition-record-form>label{grid-template-columns:minmax(118px,40%) minmax(0,1fr)!important}
+.nutrition-record-form>label>span{color:var(--muted)}
+@media(max-width:390px){.nutrition-record-grid>div,.nutrition-record-form>label{grid-template-columns:minmax(104px,38%) minmax(0,1fr)!important}.serving-size-control{grid-template-columns:minmax(0,1fr) 60px}.nutrition-value-actions{grid-template-columns:38px 38px}}

@@ -1,12 +1,24 @@
-# Fizz Health v1.4.15.47 — Food Record Shopping Integration
+# Fizz Health v1.4.15.48 — Food Record Nutrition Alignment
 
-## Completed scope
+Issued: 2026-07-29  
+Build: 141548  
+Deployment: FH-20260729-141548
 
-- **FH-1547.1** — Complete the Shopping tab and move preferred retailer, product link, barcode, and last price into it.
-- **FH-1547.2** — Remove shopping-owned fields from the Inventory display and editor.
-- **FH-1547.3** — Use the approved label-left and value-right layout in Shopping view and edit modes.
-- **FH-1547.4** — Preserve existing Pantry, product-link, price, barcode, and scanner persistence paths.
+## Scope delivered
 
-## Scope discipline
+- Removed the legacy four-card macro summary from the Food Record Nutrition tab.
+- Added the standard Nutrition heading with the matching edit helper.
+- Made Nutrition view and edit use the same section names, fields, and order.
+- Displayed every nutrient supported by the editor in the read-only Nutrition record.
+- Combined serving amount and unit into one Serving size row.
+- Kept nutrient values and units together on one line.
+- Preserved nutrition persistence, recalculation, enrichment, and meal-promotion behavior.
 
-No nutrition calculations, inventory calculations, or database schema changes were introduced.
+## Stories
+
+- FH-1548.1
+- FH-1548.2
+- FH-1548.3
+- FH-1548.4
+- FH-1548.5
+- FH-1548.6

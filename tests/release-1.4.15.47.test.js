@@ -5,11 +5,9 @@ import fs from 'node:fs';
 const app=fs.readFileSync(new URL('../src/main.jsx',import.meta.url),'utf8');
 const css=fs.readFileSync(new URL('../src/styles.css',import.meta.url),'utf8');
 
-test('release metadata advances to v1.4.15.47',()=>{
- assert.match(app,/VERSION='1\.4\.15\.47'/);
- assert.match(app,/BUILD_ID='141547'/);
- assert.match(app,/DEPLOYMENT_ID='FH-20260729-141547'/);
- assert.match(app,/Food Record Shopping Integration/);
+test('release history retains v1.4.15.47 Shopping integration',()=>{
+ assert.match(app,/version:'1\.4\.15\.47',name:'Food Record Shopping Integration'/);
+ assert.match(app,/FH-1547\.4/);
 });
 
 test('Shopping is a complete editable Food Record tab',()=>{
