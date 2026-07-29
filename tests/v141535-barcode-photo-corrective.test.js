@@ -1,0 +1,11 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import fs from 'node:fs';
+const main=fs.readFileSync(new URL('../src/main.jsx',import.meta.url),'utf8');
+const css=fs.readFileSync(new URL('../src/styles.css',import.meta.url),'utf8');
+test('release metadata is v1.4.15.35',()=>{assert.match(main,/const VERSION='1\.4\.15\.35'/);assert.match(main,/BUILD_ID='141535'/)});
+test('scanner exposes native still photo capture',()=>{assert.match(main,/type="file" accept="image\/\*" capture="environment"/);assert.match(main,/Take Photo/);assert.match(main,/Photo captured\. Reading barcode/)});
+test('captured photo receives multipass decoding',()=>{assert.match(main,/decodeStill/);assert.match(main,/rotate:90/);assert.match(main,/gray:true,contrast:1\.35/);assert.match(main,/x:\.08,y:\.22,w:\.84,h:\.56/)});
+test('scanner gives explicit retake and manual fallback',()=>{assert.match(main,/Retake Photo/);assert.match(main,/Couldn’t read barcode/);assert.match(main,/Enter barcode manually/)});
+test('pantry quantity formatter pluralizes once',()=>{assert.match(main,/const quantityLabel=/);assert.match(main,/raw\.endsWith\('s'\)/);assert.doesNotMatch(main,/\$\{u\}\$\{n===1\?'':'s'\}/)});
+test('photo preview stays contained',()=>{assert.match(css,/\.barcode-photo-preview/);assert.match(css,/object-fit:contain/)});

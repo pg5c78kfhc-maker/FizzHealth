@@ -1,3 +1,10 @@
+# Fizz Health v1.4.15.35 — Barcode Scanner Reliability Corrective
+
+- FH-1415.35A — Added native one-tap still-photo barcode capture with an on-screen captured-photo preview.
+- FH-1415.35B — Added automatic full-frame, crop, rotation, scale, grayscale, and contrast decode passes.
+- FH-1415.35C — Added explicit photo-captured, reading, failure, retake, and manual-entry states.
+- FH-1415.35D — Corrected Pantry quantity labels so package names pluralize exactly once.
+
 # Fizz Health v1.4.15.34 — Pantry Inventory Conversation Corrective
 
 Issued July 29, 2026. Build 141534. Deployment FH-20260729-141534. Schema 79.
