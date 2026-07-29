@@ -3,7 +3,7 @@ import wasmUrl from 'sql.js/dist/sql-wasm.wasm?url';
 
 const DB_KEY='fizz-health-sqlite-v1';
 const STORAGE_DB='FizzHealthStorage';
-const TARGET_SCHEMA_VERSION=82;
+const TARGET_SCHEMA_VERSION=83;
 let SQL, db;
 
 const migrations=[
@@ -1075,6 +1075,13 @@ const migrations=[
     INSERT OR REPLACE INTO release_register(version,issued_date,build_id,schema_version,title,created_at)
     VALUES ('1.4.15.39','2026-07-29','141539',82,'Inventory Integrity Runtime Path Corrective','2026-07-29T11:45:00-04:00');
   `}
+,  {version:83,name:'inventory_shopping_completion',sql:`
+    INSERT OR REPLACE INTO release_metadata(version,release_date,build_id,schema_version,title,created_at)
+    VALUES ('1.4.15.40','2026-07-29','141540',83,'Inventory & Shopping Completion','2026-07-29T12:15:00-04:00');
+    INSERT OR REPLACE INTO release_register(version,issued_date,build_id,schema_version,title,created_at)
+    VALUES ('1.4.15.40','2026-07-29','141540',83,'Inventory & Shopping Completion','2026-07-29T12:15:00-04:00');
+  `}
+
 ];
 
 const canonicalSchema={

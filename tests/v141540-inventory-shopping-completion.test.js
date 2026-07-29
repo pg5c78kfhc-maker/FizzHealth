@@ -1,0 +1,11 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import fs from 'node:fs';
+const main=fs.readFileSync(new URL('../src/main.jsx',import.meta.url),'utf8');
+const db=fs.readFileSync(new URL('../src/database.js',import.meta.url),'utf8');
+test('release metadata is centralized for 1.4.15.40',()=>{assert.match(main,/VERSION='1\.4\.15\.40'/);assert.match(db,/TARGET_SCHEMA_VERSION=83/);assert.match(db,/Inventory & Shopping Completion/)});
+test('zero quantity drives out-of-stock workflow without treating zero as missing',()=>{assert.match(main,/outOfStock=Number\(currentQuantity\)===0/);assert.match(main,/!outOfStock&&/);assert.match(main,/quantity>0\?'Active':'Out of Stock'/)});
+test('product link has an inventory-independent save path',()=>{assert.match(main,/saveProductLink/);assert.match(main,/UPDATE pantry SET product_link=\?,product_image_url=NULL/);assert.match(main,/>Save link</)});
+test('barcode is editable through scan photo manual entry and delete',()=>{assert.match(main,/label="Barcode"/);assert.match(main,/Scan \/ Photo/);assert.match(main,/normalizeBarcode\(e\.target\.value\)/);assert.match(main,/setBarcode\(''\)/);assert.match(main,/food_barcodes/)});
+test('food detail displays serving basis',()=>{for(const label of ['Serving Basis','Serving size','Household measure','Servings per package'])assert.ok(main.includes(label))});
+test('shopping image refresh exposes progress and complete statuses',()=>{for(const label of ['Fetching','Cached','Blocked by retailer','Not Found','No Product Link','Refreshing images'])assert.ok(main.includes(label))});
