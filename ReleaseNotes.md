@@ -1,3 +1,29 @@
+# Fizz Health v1.4.15.32 — Pantry Stabilization and Promote to Meal
+
+Release ID: FH-20260728-141532  
+Build: 141532  
+Issued: 2026-07-28
+
+## Delivered
+
+- Reworked Pantry cards so product information receives the full width and quantity/completeness share a compact metadata row.
+- Applied neutral out-of-stock styling whenever quantity is zero.
+- Rebuilt Record Completeness from one shared field list, including retailer, manufacturer, package data, servings, barcode, freshness, and notes.
+- Fixed quantity-on-hand persistence so a directly entered quantity is not overwritten by package calculations.
+- Updated open-package prompts to ask how much remains in the current container and show the applicable unit.
+- Added manufacturer editing and persistence from Pantry Item to the linked Food record.
+- Constrained Pantry controls to the iPhone safe area and aligned Full Nutrition Record package fields responsively.
+- Preserved duplicate-safe Promote to Meal for Food and Recipe details with immediate Meals/Menu availability.
+
+## Stories
+
+- FH-1415.32A — Pantry card, stock-state, and completeness corrective
+- FH-1415.32B — Pantry persistence, wording, and safe-area stabilization
+- FH-1415.32C — Promote to Meal completion and duplicate prevention
+- FH-1415.32D — Full Nutrition Record alignment corrective
+
+---
+
 # Fizz Health v1.4.15.31 — Pantry Reconciliation UX and Retailer Organization
 
 Release ID: FH-20260728-141531  

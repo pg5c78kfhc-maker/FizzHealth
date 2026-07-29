@@ -1910,3 +1910,20 @@ body.food-library-active .content{overflow:hidden!important}
 .pantry-property-editor .editor-scroll>section>h3{font-size:1.08rem;margin:8px 0 6px;color:#a5ef38}.pantry-property-editor .section-help{display:block;color:#aab4b9;margin-top:8px}
 .missing-evidence-list li{display:flex;gap:9px;align-items:flex-start}.missing-evidence-list li>span{color:#a5ef38;font-weight:900}.completeness-benefits{margin-top:12px}
 .meal-calendar-prototype .menu-category:not(.menu-chef-section):not(.restaurant-menu-group)>.menu-category-heading h3{font-size:1.55rem!important;font-weight:950!important;line-height:1.05!important;letter-spacing:-.025em!important}
+/* v1.4.15.32 Pantry stabilization */
+.pantry-smart-item{display:block!important;overflow:hidden}
+.pantry-open{display:grid!important;grid-template-columns:minmax(0,1fr)!important;gap:10px!important;align-items:stretch!important}
+.pantry-card-copy{min-width:0;display:grid;gap:5px}
+.pantry-card-copy>b{white-space:normal;overflow-wrap:anywhere;line-height:1.15}
+.pantry-card-meta{display:flex;align-items:center;justify-content:space-between;gap:12px;border-top:1px solid rgba(255,255,255,.08);padding-top:9px}
+.pantry-card-meta em{color:var(--lime);font-style:normal;font-weight:850;white-space:nowrap}
+.pantry-card-meta .verify-chip{width:auto!important;min-width:0!important;border:0!important;padding:5px 8px!important;border-radius:999px;background:rgba(0,0,0,.18)!important;white-space:nowrap}
+.pantry-smart-item.out-of-stock-card{background:#202328!important;border-color:#555d63!important;color:#e1e4e6}
+.pantry-smart-item.out-of-stock-card .pantry-card-meta em,.pantry-smart-item.out-of-stock-card .verify-chip{color:#aeb7bd!important}
+.pantry-property-editor,.pantry-property-editor .editor-scroll,.pantry-property-row,.pantry-property-row>div{max-width:100%;box-sizing:border-box}
+.pantry-property-row input:not([type=checkbox]),.pantry-property-row select,.pantry-property-row output,.pantry-property-row textarea{min-width:0;max-width:100%}
+.pantry-property-row .inline-value{grid-template-columns:minmax(0,1fr) minmax(68px,82px)}
+.nutrition-editor-identity .nutrition-product-package{display:grid!important;grid-template-columns:minmax(0,1fr) minmax(0,1fr)!important;gap:14px!important;align-items:end!important}
+.nutrition-editor-identity .nutrition-product-package>label{min-width:0;margin:0!important}
+.nutrition-editor-identity .nutrition-product-package input{width:100%;box-sizing:border-box}
+@media(max-width:390px){.pantry-property-row{grid-template-columns:minmax(102px,40%) minmax(0,1fr)!important}.pantry-property-row .inline-value{grid-template-columns:minmax(0,1fr) 70px}.nutrition-editor-identity .nutrition-product-package{grid-template-columns:1fr!important}}
