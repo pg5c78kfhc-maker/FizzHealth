@@ -2042,3 +2042,20 @@ body.food-library-active .food-library-page .list.foods{padding-bottom:calc(24px
 .nutrition-form-grid>label{display:grid;grid-template-columns:minmax(118px,40%) minmax(0,1fr);align-items:start;gap:14px;padding:12px 0;border-bottom:1px solid #28373d}
 .nutrition-form-grid .review-field{min-width:0}.nutrition-form-grid .nutrient-source-line{grid-column:2}
 @media(max-width:390px){.record-detail-tabs button{font-size:.82rem}.food-record-property-row,.aligned-record-form label,.nutrition-form-grid>label{grid-template-columns:minmax(104px,38%) minmax(0,1fr)}}
+
+
+/* v1.4.15.46 — Inventory tab edit layout corrective */
+@media(max-width:520px){
+ .pantry-tab-editor .pantry-property-row{
+  grid-template-columns:minmax(104px,38%) minmax(0,1fr)!important;
+  gap:12px!important;align-items:center!important;padding:10px 0!important;
+ }
+ .pantry-tab-editor .pantry-property-row>span{font-size:.95rem!important;line-height:1.2!important}
+ .pantry-tab-editor .pantry-property-row>div{text-align:right!important}
+ .pantry-tab-editor .pantry-property-row input:not([type=checkbox]),
+ .pantry-tab-editor .pantry-property-row select,
+ .pantry-tab-editor .pantry-property-row output{text-align:right!important}
+ .pantry-tab-editor .pantry-property-row output{justify-content:flex-end!important}
+ .pantry-tab-editor .pantry-property-row input[type=checkbox]{float:right}
+ .pantry-tab-editor .barcode-edit-row,.pantry-tab-editor .pantry-inline-actions{justify-content:flex-end}
+}
