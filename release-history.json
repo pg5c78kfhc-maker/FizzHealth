@@ -2,6 +2,28 @@
   "format": "fizz-health-release-history",
   "releases": [
     {
+      "version": "1.4.15.45",
+      "name": "Food Record Architecture Consolidation",
+      "title": "Food Record Architecture Consolidation",
+      "type": "Architecture and presentation release",
+      "release_type": "Architecture and presentation release",
+      "release_date": "2026-07-29",
+      "issued_date": "2026-07-29",
+      "created_at": "2026-07-29T16:25:00-04:00",
+      "build": "141545",
+      "build_id": "141545",
+      "release_id": "FH-20260729-141545",
+      "deployment_id": "FH-20260729-141545",
+      "schema_version": 82,
+      "stories": [
+        "FH-1545.1",
+        "FH-1545.2",
+        "FH-1545.3",
+        "FH-1545.4",
+        "FH-1545.5"
+      ]
+    },
+    {
       "version": "1.4.15.44",
       "name": "Food Record Consolidation \u2014 Phase 3",
       "title": "Food Record Consolidation \u2014 Phase 3",

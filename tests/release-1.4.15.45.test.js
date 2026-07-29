@@ -1,0 +1,11 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import fs from 'node:fs';
+const source=fs.readFileSync(new URL('../src/main.jsx',import.meta.url),'utf8');
+const css=fs.readFileSync(new URL('../src/styles.css',import.meta.url),'utf8');
+test('General is the first and default Food Record tab',()=>{assert.match(source,/useState\('general'\)/);assert.match(source,/\[\['general','General'\],\['nutrition','Nutrition'\],\['inventory','Inventory'\],\['shopping','Shopping'\]\]/)});
+test('General owns identity and behavior fields',()=>{assert.match(source,/function GeneralFoodEditor/);for(const label of ['Food name','Brand','Manufacturer','Category','Ingredient only','Track in Pantry','Discontinued'])assert.match(source,new RegExp(label))});
+test('Nutrition owns serving basis including editable Common measure',()=>{assert.match(source,/serving_description/);assert.match(source,/<span>Common measure<\/span><input value=\{form\.serving_description\}/);assert.match(source,/'serving_description=\?'/)});
+test('Inventory no longer edits duplicate identity fields',()=>{const start=source.indexOf('function PantryItemEditor');const end=source.indexOf('function singularInventoryUnit',start);const editor=source.slice(start,end);assert.doesNotMatch(editor,/name="item"/);assert.doesNotMatch(editor,/name="brand"/);assert.doesNotMatch(editor,/name="manufacturer"/);assert.doesNotMatch(editor,/name="discontinued"/)});
+test('Four-tab and aligned record layouts are styled',()=>{assert.match(css,/repeat\(4,minmax\(0,1fr\)\)/);assert.match(css,/food-record-property-row/);assert.match(css,/aligned-record-form/)});
+test('release metadata is current',()=>{assert.match(source,/const VERSION='1\.4\.15\.45'/);assert.match(source,/const BUILD_ID='141545'/);assert.match(source,/FH-20260729-141545/)});

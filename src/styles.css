@@ -2021,3 +2021,24 @@ body.food-library-active .food-library-page .list.foods{padding-bottom:calc(24px
 .nutrition-tab-editor .nutrition-scroll{height:auto!important;max-height:none!important;overflow:visible!important;padding:18px 16px 36px!important}
 .pantry-tab-editor .editor-scroll{padding-top:18px!important}
 .food-detail-page .save-action{color:#a5ef38}
+
+/* v1.4.15.45 — Food Record architecture consolidation */
+.record-detail-tabs{grid-template-columns:repeat(4,minmax(0,1fr))}
+.record-detail-tabs button{padding-left:4px;padding-right:4px;font-size:.9rem}
+.general-record-tab,.general-tab-editor-shell{min-width:0}
+.general-tab-summary{margin-top:0;border-radius:0 0 18px 18px}
+.general-summary-grid b{max-width:62%;overflow-wrap:anywhere;text-align:right}
+.general-tab-editor-shell{border:1px solid #34454c;border-radius:0 0 18px 18px;background:#10181d;overflow:hidden}
+.general-food-editor.embedded-record-editor{position:relative!important;inset:auto!important;width:100%!important;max-width:none!important;height:auto!important;max-height:none!important;margin:0!important;border:0!important;border-radius:0!important;background:#10181d!important;box-shadow:none!important;overflow:visible!important}
+.general-food-editor .editor-scroll{height:auto!important;max-height:none!important;overflow:visible!important;padding:18px 16px 36px}
+.record-toggle-section{display:grid;gap:10px;margin-bottom:16px}
+.food-record-property-row{display:grid;grid-template-columns:minmax(118px,40%) minmax(0,1fr);align-items:center;gap:14px;padding:12px 0;border-bottom:1px solid #28373d}
+.food-record-property-row>span{font-weight:800;color:#e7ece8}
+.food-record-property-row>div{min-width:0;text-align:right}
+.food-record-property-row input,.food-record-property-row select{width:100%;box-sizing:border-box;text-align:right}
+.aligned-record-form{display:grid!important;grid-template-columns:1fr!important;gap:0!important;padding:0 12px!important}
+.aligned-record-form label{display:grid;grid-template-columns:minmax(118px,40%) minmax(0,1fr);align-items:center;gap:14px;padding:12px 0;border-bottom:1px solid #28373d}
+.aligned-record-form label>span{font-weight:800}.aligned-record-form input{text-align:right}
+.nutrition-form-grid>label{display:grid;grid-template-columns:minmax(118px,40%) minmax(0,1fr);align-items:start;gap:14px;padding:12px 0;border-bottom:1px solid #28373d}
+.nutrition-form-grid .review-field{min-width:0}.nutrition-form-grid .nutrient-source-line{grid-column:2}
+@media(max-width:390px){.record-detail-tabs button{font-size:.82rem}.food-record-property-row,.aligned-record-form label,.nutrition-form-grid>label{grid-template-columns:minmax(104px,38%) minmax(0,1fr)}}
