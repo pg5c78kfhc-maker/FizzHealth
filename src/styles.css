@@ -2013,3 +2013,11 @@ body.food-library-active .food-library-page .list.foods{padding-bottom:calc(24px
 .pantry-tab-editor .edit-head{position:sticky;top:58px;z-index:22;background:#10181d;border-bottom:1px solid #34454c}
 .pantry-tab-editor .editor-scroll{height:auto!important;max-height:none!important;overflow:visible!important;padding-bottom:36px}
 .inventory-empty-state{border-radius:0 0 18px 18px}
+
+/* v1.4.15.44 — Unified Food Record editing shell */
+.record-detail-tabs button:disabled{opacity:1;cursor:default}
+.nutrition-tab-editor-shell{min-width:0;border:1px solid #34454c;border-radius:0 0 18px 18px;background:#10181d;overflow:hidden}
+.nutrition-tab-editor{position:relative!important;inset:auto!important;width:100%!important;max-width:none!important;height:auto!important;max-height:none!important;margin:0!important;border:0!important;border-radius:0!important;background:#10181d!important;box-shadow:none!important;overflow:visible!important;padding:0!important;display:block!important}
+.nutrition-tab-editor .nutrition-scroll{height:auto!important;max-height:none!important;overflow:visible!important;padding:18px 16px 36px!important}
+.pantry-tab-editor .editor-scroll{padding-top:18px!important}
+.food-detail-page .save-action{color:#a5ef38}
