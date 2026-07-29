@@ -1055,6 +1055,17 @@ const migrations=[
     INSERT OR REPLACE INTO release_register(version,issued_date,build_id,schema_version,title,created_at)
     VALUES ('1.4.15.36','2026-07-29','141536',81,'Linked Shopping Cart Pilot','2026-07-29T09:45:00-04:00');
   `}
+,  {version:81,name:'inventory_consumption_shopping_image_corrective',sql:`
+    ALTER TABLE pantry ADD COLUMN product_image_status TEXT;
+    ALTER TABLE pantry ADD COLUMN product_image_checked_at TEXT;
+    ALTER TABLE pantry ADD COLUMN product_image_error TEXT;
+    CREATE TABLE IF NOT EXISTS meal_pantry_adjustments (id INTEGER PRIMARY KEY AUTOINCREMENT,meal_id INTEGER NOT NULL,source_record_id TEXT,pantry_id TEXT NOT NULL,delta REAL NOT NULL,created_at TEXT NOT NULL);
+    CREATE INDEX IF NOT EXISTS idx_meal_pantry_adjustments_meal ON meal_pantry_adjustments(meal_id);
+    INSERT OR REPLACE INTO release_metadata(version,release_date,build_id,schema_version,title,created_at)
+    VALUES ('1.4.15.37','2026-07-29','141537',82,'Inventory Consumption and Shopping Image Corrective','2026-07-29T10:30:00-04:00');
+    INSERT OR REPLACE INTO release_register(version,issued_date,build_id,schema_version,title,created_at)
+    VALUES ('1.4.15.37','2026-07-29','141537',82,'Inventory Consumption and Shopping Image Corrective','2026-07-29T10:30:00-04:00');
+  `}
 ];
 
 const canonicalSchema={
@@ -1065,7 +1076,7 @@ const canonicalSchema={
   },
   pantry:{
     create:`CREATE TABLE IF NOT EXISTS pantry (id INTEGER PRIMARY KEY AUTOINCREMENT, pantry_id TEXT, item TEXT, food_id TEXT, brand TEXT, on_hand TEXT, quantity REAL, unit TEXT, opened TEXT, opened_date TEXT, expiration TEXT, location TEXT, status TEXT, priority TEXT, category TEXT, notes TEXT)`,
-    columns:{pantry_id:'TEXT',item:'TEXT',food_id:'TEXT',brand:'TEXT',on_hand:'TEXT',quantity:'REAL',unit:'TEXT',opened:'TEXT',opened_date:'TEXT',expiration:'TEXT',location:'TEXT',status:'TEXT',priority:'TEXT',category:'TEXT',notes:'TEXT',purchase_date:'TEXT',verified_at:'TEXT',storage_type:'TEXT',manufacturer_shelf_life_days:'REAL',opened_shelf_life_days:'REAL',freshness_observation:'TEXT',purchase_price:'REAL',retailer:'TEXT',original_servings:'REAL',quantity_accuracy:'TEXT',package_count:'REAL',package_type:'TEXT',container_size:'REAL',container_unit:'TEXT',unopened_packages:'REAL',partial_package_quantity:'REAL',freshness_status:'TEXT',source_recipe_id:'TEXT',discontinued:'INTEGER DEFAULT 0',product_link:'TEXT',product_image_url:'TEXT'},
+    columns:{pantry_id:'TEXT',item:'TEXT',food_id:'TEXT',brand:'TEXT',on_hand:'TEXT',quantity:'REAL',unit:'TEXT',opened:'TEXT',opened_date:'TEXT',expiration:'TEXT',location:'TEXT',status:'TEXT',priority:'TEXT',category:'TEXT',notes:'TEXT',purchase_date:'TEXT',verified_at:'TEXT',storage_type:'TEXT',manufacturer_shelf_life_days:'REAL',opened_shelf_life_days:'REAL',freshness_observation:'TEXT',purchase_price:'REAL',retailer:'TEXT',original_servings:'REAL',quantity_accuracy:'TEXT',package_count:'REAL',package_type:'TEXT',container_size:'REAL',container_unit:'TEXT',unopened_packages:'REAL',partial_package_quantity:'REAL',freshness_status:'TEXT',source_recipe_id:'TEXT',discontinued:'INTEGER DEFAULT 0',product_link:'TEXT',product_image_url:'TEXT',product_image_status:'TEXT',product_image_checked_at:'TEXT',product_image_error:'TEXT'},
     aliases:{item:['name','food','pantry_item'],food_id:['canonical_food_id'],expiration:['effective_expiry','best_by_expiration']}
   },
   recipes:{

@@ -1,12 +1,12 @@
-# Fizz Health v1.4.15.36 — Linked Shopping Cart Pilot
+# Fizz Health v1.4.15.37 — Inventory Consumption and Shopping Image Corrective
 
 ## Stories
 
-- FH-1415.36A — Store a retailer product link on each Pantry item.
-- FH-1415.36B — List Out of Stock and Order Soon items grouped by retailer.
-- FH-1415.36C — Exclude discontinued items and use image-or-text product links with graceful fallback.
-- FH-1415.36D — Open retailer product pages through the iPhone link handoff.
+- FH-1415.37A — Resolve Pantry records and decrement linked inventory whenever a Food becomes Consumed.
+- FH-1415.37B — Persist Pantry adjustment identifiers and deltas so delete and undo restore inventory correctly.
+- FH-1415.37C — Add observable product-image discovery, saved fetch status, and Refresh Images to Shopping.
+- FH-1415.37D — Make Shopping retailer groups collapsible.
 
-## Pilot limitation
+## Image retrieval note
 
-Retailer pages may block browser-side image discovery. The Shopping Cart therefore displays a stored/direct image when available and otherwise uses the product name as the link, without breaking the list.
+Retailer sites may block browser-side metadata access. The Shopping page now reports whether an image loaded, was not found, or was blocked, while preserving the working retailer deep link.
