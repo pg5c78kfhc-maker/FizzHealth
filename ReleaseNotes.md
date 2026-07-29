@@ -1,3 +1,29 @@
+# Fizz Health v1.4.15.33 — Pantry Persistence and Barcode Scanner Corrective
+
+Release ID: FH-20260728-141533  
+Build: 141533  
+Issued: 2026-07-28
+
+## Delivered
+
+- Fixed Pantry counting-unit persistence so changing the quantity descriptor (for example, jar to bags) saves and reloads independently from package-size units.
+- Replaced the technical **Unit** label with **What are you counting?** and added practical container and measurement suggestions.
+- Increased live barcode scan cadence and requested continuous focus, higher capture resolution, and modest zoom where the iPhone camera supports them.
+- Changed barcode detection guidance so the entire camera frame is scanned rather than requiring exact placement inside a small target.
+- Added **Scan Now**, which captures a high-resolution still image and retries barcode detection against full-frame and cropped views.
+- Preserved manual barcode entry and camera retry behavior.
+- Reverified Pantry persistence, Promote to Meal safeguards, and responsive editor constraints.
+
+## Stories
+
+- FH-1415.33A — Pantry counting-unit persistence corrective
+- FH-1415.33B — Natural-language quantity descriptor controls
+- FH-1415.33C — Faster full-frame live barcode detection
+- FH-1415.33D — High-resolution still-image barcode fallback
+- FH-1415.33E — Focused Pantry and Meal workflow regression verification
+
+---
+
 # Fizz Health v1.4.15.32 — Pantry Stabilization and Promote to Meal
 
 Release ID: FH-20260728-141532  

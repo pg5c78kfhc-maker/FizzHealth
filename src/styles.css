@@ -1927,3 +1927,9 @@ body.food-library-active .content{overflow:hidden!important}
 .nutrition-editor-identity .nutrition-product-package>label{min-width:0;margin:0!important}
 .nutrition-editor-identity .nutrition-product-package input{width:100%;box-sizing:border-box}
 @media(max-width:390px){.pantry-property-row{grid-template-columns:minmax(102px,40%) minmax(0,1fr)!important}.pantry-property-row .inline-value{grid-template-columns:minmax(0,1fr) 70px}.nutrition-editor-identity .nutrition-product-package{grid-template-columns:1fr!important}}
+
+/* v1.4.15.33 Pantry persistence and barcode scanner corrective */
+.barcode-target.full-frame{inset:10px;border-radius:18px;border-color:rgba(165,239,56,.7);background:linear-gradient(90deg,rgba(165,239,56,.08),transparent 22%,transparent 78%,rgba(165,239,56,.08))}
+.barcode-target.full-frame span{width:72%;max-width:360px}
+.barcode-scan-now{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;margin-top:10px}
+.barcode-scan-now svg{width:20px;height:20px}
