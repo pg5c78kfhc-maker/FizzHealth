@@ -2103,3 +2103,7 @@ body.food-library-active .food-library-page .list.foods{padding-bottom:calc(24px
 .nutrition-record-form>label{grid-template-columns:minmax(118px,40%) minmax(0,1fr)!important}
 .nutrition-record-form>label>span{color:var(--muted)}
 @media(max-width:390px){.nutrition-record-grid>div,.nutrition-record-form>label{grid-template-columns:minmax(104px,38%) minmax(0,1fr)!important}.serving-size-control{grid-template-columns:minmax(0,1fr) 60px}.nutrition-value-actions{grid-template-columns:38px 38px}}
+
+
+/* v1.4.15.49 — Nutrition landing Menu/Chef consolidation. */
+.nutrition-hub-card.eating .nutrition-action-grid{grid-template-columns:repeat(2,minmax(0,1fr))}

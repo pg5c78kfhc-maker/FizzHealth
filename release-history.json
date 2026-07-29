@@ -2,6 +2,28 @@
   "format": "fizz-health-release-history",
   "releases": [
     {
+      "version": "1.4.15.49",
+      "name": "Nutrition Landing Simplification",
+      "title": "Nutrition Landing Simplification",
+      "type": "Navigation and information architecture release",
+      "release_type": "Navigation and information architecture release",
+      "release_date": "2026-07-29",
+      "issued_date": "2026-07-29",
+      "created_at": "2026-07-29T17:34:00-04:00",
+      "build": "141549",
+      "build_id": "141549",
+      "release_id": "FH-20260729-141549",
+      "deployment_id": "FH-20260729-141549",
+      "schema_version": 82,
+      "stories": [
+        "FH-1549.1",
+        "FH-1549.2",
+        "FH-1549.3",
+        "FH-1549.4",
+        "FH-1549.5"
+      ]
+    },
+    {
       "version": "1.4.15.48",
       "name": "Food Record Nutrition Alignment",
       "title": "Food Record Nutrition Alignment",

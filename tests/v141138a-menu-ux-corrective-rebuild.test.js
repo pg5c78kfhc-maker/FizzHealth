@@ -14,8 +14,8 @@ test('release metadata identifies v1.4.13.8A consistently',()=>{
  assert.match(main,/const DEPLOYMENT_ID='FH-20260726-141308A'/);
 });
 
-test("Chef section is labeled Chef's Picks and Powered by AI",()=>{
- assert.match(main,/>Chef's Picks</);
+test("Chef section is labeled Today's Recommendations and Powered by AI",()=>{
+ assert.match(main,/>Today's Recommendations</);
  assert.match(main,/>Powered by AI</);
  assert.doesNotMatch(main,/>Chef Recommendations</);
 });

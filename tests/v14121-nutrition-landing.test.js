@@ -13,19 +13,20 @@ test('Nutrition replaces Eat as the subsystem and navigation label',()=>{
 });
 
 test('Nutrition landing page groups equal-sized actions into Eating and Manage cards',()=>{
- for(const title of ['Eating','Manage','Menu','The Chef','Log Once','Meals','Pantry','Restaurants','Shopping'])assert.ok(main.includes(`title:'${title}'`)||main.includes(`title="${title}"`),`${title} is missing`);
+ for(const title of ['Eating','Manage','Menu','Log Once','Meals','Pantry','Restaurants','Shopping'])assert.ok(main.includes(`title:'${title}'`)||main.includes(`title="${title}"`),`${title} is missing`);
  assert.match(main,/nutrition-hub-card/);
  assert.match(css,/\.nutrition-action-grid\{display:grid;grid-template-columns:repeat\(4,minmax\(0,1fr\)\)/);
  assert.match(css,/\.nutrition-action-grid>button\{[^}]*min-height:138px/);
 });
 
-test('existing subsystem destinations are preserved while labels change',()=>{
+test('Menu is the single destination for planning and recommendations',()=>{
  assert.match(main,/{id:'add',Icon:Apple,title:'Meals'/);
  assert.match(main,/{id:'pantry',Icon:Package,title:'Pantry'/);
  assert.match(main,/{id:'restaurants',Icon:UtensilsCrossed,title:'Restaurants'/);
  assert.match(main,/{id:'shopping',Icon:ShoppingCart,title:'Shopping'/);
  assert.match(main,/{id:'food-planner',Icon:CalendarDays,title:'Menu'/);
- assert.match(main,/{id:'food-recommendations',Icon:ChefHat,title:'The Chef'/);
+ assert.doesNotMatch(main,/{id:'food-recommendations',Icon:ChefHat,title:'The Chef'/);
+ assert.match(css,/\.nutrition-hub-card\.eating \.nutrition-action-grid\{grid-template-columns:repeat\(2,minmax\(0,1fr\)\)\}/);
 });
 
 test('Log Once is launched from Nutrition and removed from the Meals create menu',()=>{

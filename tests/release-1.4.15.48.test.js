@@ -6,11 +6,11 @@ const main=fs.readFileSync(new URL('../src/main.jsx',import.meta.url),'utf8');
 const css=fs.readFileSync(new URL('../src/styles.css',import.meta.url),'utf8');
 const version=JSON.parse(fs.readFileSync(new URL('../VERSION.json',import.meta.url),'utf8'));
 
-test('release metadata identifies v1.4.15.48',()=>{
- assert.equal(version.version,'1.4.15.48');
- assert.equal(version.build_id,'141548');
- assert.equal(version.release_id,'FH-20260729-141548');
- assert.match(main,/const VERSION='1\.4\.15\.48'/);
+test('release metadata identifies v1.4.15.49',()=>{
+ assert.equal(version.version,'1.4.15.49');
+ assert.equal(version.build_id,'141549');
+ assert.equal(version.release_id,'FH-20260729-141549');
+ assert.match(main,/const VERSION='1\.4\.15\.49'/);
 });
 
 test('Nutrition display uses complete shared record sections instead of legacy cards',()=>{
