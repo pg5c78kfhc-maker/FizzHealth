@@ -1,3 +1,9 @@
+## v1.4.15.57 — Inventory Editor Focus Corrective
+
+- Kept all Inventory editor fields mounted and focused during entry.
+- Preserved On hand edits while switching package type.
+- Retained existing validation and persistence behavior.
+
 ## v1.4.15.26 — Menu and Pantry Usability Polish
 
 - Replaced Pantry search navigation with inline filtering.

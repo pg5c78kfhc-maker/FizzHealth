@@ -1086,6 +1086,8 @@ const migrations=[
     UPDATE pantry SET servings_per_package=(SELECT f.servings_per_container FROM foods f WHERE UPPER(f.food_id)=UPPER(pantry.food_id)) WHERE servings_per_package IS NULL;
     INSERT OR REPLACE INTO release_metadata(version,release_date,build_id,schema_version,title,created_at) VALUES ('1.4.15.56','2026-07-30','141556',84,'Inventory Model Consolidation & Nutrition Landing Cleanup','2026-07-30T09:45:00-04:00');
     INSERT OR REPLACE INTO release_register(version,issued_date,build_id,schema_version,title,created_at) VALUES ('1.4.15.56','2026-07-30','141556',84,'Inventory Model Consolidation & Nutrition Landing Cleanup','2026-07-30T09:45:00-04:00');
+    INSERT OR REPLACE INTO release_metadata(version,release_date,build_id,schema_version,title,created_at) VALUES ('1.4.15.57','2026-07-30','141557',84,'Inventory Editor Focus Corrective','2026-07-30T10:40:00-04:00');
+    INSERT OR REPLACE INTO release_register(version,issued_date,build_id,schema_version,title,created_at) VALUES ('1.4.15.57','2026-07-30','141557',84,'Inventory Editor Focus Corrective','2026-07-30T10:40:00-04:00');
   `}
 
 ];
