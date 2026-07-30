@@ -2,6 +2,39 @@
   "format": "fizz-health-release-history",
   "releases": [
     {
+      "version": "1.4.15.65",
+      "name": "Recipe Form & Availability Stabilization",
+      "type": "Corrective release",
+      "issued_date": "2026-07-30",
+      "created_at": "2026-07-30T17:45:00-04:00",
+      "build": "141565",
+      "release_id": "FH-20260730-141565",
+      "schema_version": 91,
+      "stories": [
+        {
+          "id": "FH-1565.1",
+          "title": "Allow untracked Recipes when required tracked ingredients are sufficient"
+        },
+        {
+          "id": "FH-1565.2",
+          "title": "Require prepared batches for Recipes explicitly tracked in inventory"
+        },
+        {
+          "id": "FH-1565.3",
+          "title": "Restore Recipe inventory editor scrolling on iPhone"
+        },
+        {
+          "id": "FH-1565.4",
+          "title": "Prevent edit fields from remounting and losing focus while typing"
+        },
+        {
+          "id": "FH-1565.5",
+          "title": "Restore consistent checkbox and switch rendering"
+        }
+      ],
+      "known_issues": []
+    },
+    {
       "version": "1.4.15.64",
       "name": "Recipe Navigation Stabilization",
       "type": "Corrective release",

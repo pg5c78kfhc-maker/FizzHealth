@@ -13,12 +13,13 @@ test('positive quantity across pantry records keeps food available',()=>{
  assert.equal(availability.foodAvailable('F1'),true);
 });
 
-test('recipe is planner eligible only when prepared inventory exists',()=>{
+test('tracked recipe is planner eligible only when prepared inventory exists',()=>{
  const recipeRows=[{recipe_id:'R1',ingredient_type:'food',ingredient_id:'F1',ingredient_name:'Milk',amount:100,unit:'g'}];
- const withoutPrepared=buildAvailabilityIndex({pantryRows:[{food_id:'F1',quantity:500,unit:'g'}],recipeRows});
+ const mealDefinitions=[{meal_id:'recipe:R1',source_type:'legacy_recipe',source_id:'R1',track_inventory:1}];
+ const withoutPrepared=buildAvailabilityIndex({pantryRows:[{food_id:'F1',quantity:500,unit:'g'}],recipeRows,mealDefinitions});
  assert.equal(withoutPrepared.recipeAvailable('R1','Smoothie'),false);
  assert.equal(withoutPrepared.recipeCanPrepare('R1'),true);
- const withPrepared=buildAvailabilityIndex({pantryRows:[{food_id:'F1',quantity:0,unit:'g'},{food_id:'recipe:R1',quantity:200,unit:'g'}],recipeRows});
+ const withPrepared=buildAvailabilityIndex({pantryRows:[{food_id:'F1',quantity:0,unit:'g'},{food_id:'recipe:R1',quantity:200,unit:'g'}],recipeRows,mealDefinitions});
  assert.equal(withPrepared.recipeAvailable('R1','Smoothie'),true);
 });
 

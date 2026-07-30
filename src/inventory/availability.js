@@ -3,7 +3,7 @@ import {convertQuantity} from '../nutrition/units.js';
 const key=value=>String(value??'').trim().toLowerCase();
 const recipeKey=value=>key(value).replace(/^recipe:/,'');
 
-export function buildAvailabilityIndex({pantryRows=[],recipeRows=[],mealComponents=[]}={}){
+export function buildAvailabilityIndex({pantryRows=[],recipeRows=[],mealComponents=[],mealDefinitions=[]}={}){
   const pantryStates=new Map();
   const pantryRecords=new Map();
   for(const row of pantryRows){
@@ -26,6 +26,12 @@ export function buildAvailabilityIndex({pantryRows=[],recipeRows=[],mealComponen
     if(!recipesById.has(id))recipesById.set(id,[]);
     recipesById.get(id).push(row);
   }
+  const recipeTrackingById=new Map();
+  for(const row of mealDefinitions){
+    if(String(row?.source_type||'').toLowerCase()!=='legacy_recipe')continue;
+    const id=recipeKey(row?.source_id||row?.meal_id);
+    if(id)recipeTrackingById.set(id,Number(row?.track_inventory)===1);
+  }
   const mealComponentsById=new Map();
   for(const row of mealComponents){
     const id=key(row?.meal_id);
@@ -47,23 +53,24 @@ export function buildAvailabilityIndex({pantryRows=[],recipeRows=[],mealComponen
     }
     return total>=required;
   };
-  // A reusable Recipe is planner-eligible only when finished, prepared inventory exists.
-  // Ingredient inventory determines whether it can be prepared, not whether it can be planned.
-  const recipeAvailable=(id,name)=>{
-    const recipeId=recipeKey(id);
-    if(!recipeId)return false;
-    const prepared=pantryState(`recipe:${recipeId}`,name);
-    return Boolean(prepared&&prepared.total>0);
-  };
   const recipeCanPrepare=(id,seen=new Set())=>{
     const recipeId=recipeKey(id);if(!recipeId||seen.has(recipeId))return false;
     const nextSeen=new Set(seen).add(recipeId);
     const rows=recipesById.get(recipeId)||[];
     return rows.length>0&&rows.every(row=>{
       const type=key(row.ingredient_type||'food');
-      if(type==='recipe')return recipeAvailable(row.ingredient_id,row.ingredient_name)||recipeCanPrepare(row.ingredient_id,nextSeen);
+      if(type==='recipe')return recipeAvailable(row.ingredient_id,row.ingredient_name,nextSeen);
       return ingredientSufficient(row.ingredient_id,row.ingredient_name,row.amount,row.unit);
     });
+  };
+  // Tracked Recipes require prepared inventory. Untracked Recipes are available
+  // when their required tracked ingredients are available in sufficient quantities.
+  const recipeAvailable=(id,name,seen=new Set())=>{
+    const recipeId=recipeKey(id);
+    if(!recipeId)return false;
+    const prepared=pantryState(`recipe:${recipeId}`,name);
+    if(recipeTrackingById.get(recipeId)===true)return Boolean(prepared&&prepared.total>0);
+    return recipeCanPrepare(recipeId,seen);
   };
   const mealAvailable=(id,seen=new Set())=>{
     const mealId=key(id);if(!mealId||seen.has(mealId))return true;
