@@ -3,7 +3,7 @@ import wasmUrl from 'sql.js/dist/sql-wasm.wasm?url';
 
 const DB_KEY='fizz-health-sqlite-v1';
 const STORAGE_DB='FizzHealthStorage';
-const TARGET_SCHEMA_VERSION=86;
+const TARGET_SCHEMA_VERSION=87;
 let SQL, db;
 
 const migrations=[
@@ -1135,6 +1135,22 @@ const migrations=[
     VALUES ('1.4.15.60','2026-07-30','141560',86,'Recipe Serving & Availability Integration','2026-07-30T14:27:00-04:00');
     INSERT OR REPLACE INTO release_register(version,issued_date,build_id,schema_version,title,created_at)
     VALUES ('1.4.15.60','2026-07-30','141560',86,'Recipe Serving & Availability Integration','2026-07-30T14:27:00-04:00');
+  `},
+  {version:87,name:'prepared_batch_weight_and_food_category_repair',sql:`
+    UPDATE foods
+       SET category=NULL, updated_at=COALESCE(updated_at,CURRENT_TIMESTAMP)
+     WHERE COALESCE(ingredient_only,0)=0
+       AND COALESCE(TRIM(category),'')<>''
+       AND LOWER(TRIM(category))<>'ingredient'
+       AND NOT EXISTS (
+         SELECT 1 FROM food_categories fc
+          WHERE fc.active=1 AND LOWER(TRIM(fc.display_name))=LOWER(TRIM(foods.category))
+       );
+    UPDATE foods SET category=NULL WHERE COALESCE(ingredient_only,0)=0 AND LOWER(TRIM(COALESCE(category,'')))='food';
+    INSERT OR REPLACE INTO release_metadata(version,release_date,build_id,schema_version,title,created_at)
+    VALUES ('1.4.15.61','2026-07-30','141561',87,'Prepared Batch Weight & Food Import Visibility','2026-07-30T15:05:00-04:00');
+    INSERT OR REPLACE INTO release_register(version,issued_date,build_id,schema_version,title,created_at)
+    VALUES ('1.4.15.61','2026-07-30','141561',87,'Prepared Batch Weight & Food Import Visibility','2026-07-30T15:05:00-04:00');
   `}
 ];
 
