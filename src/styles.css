@@ -2199,3 +2199,21 @@ body.food-library-active .food-library-page .list.foods{padding-bottom:calc(24px
 /* v1.4.15.56 — Manage mirrors the two-card Eating layout; simplified Nutrition hero. */
 .nutrition-hub-card.manage .nutrition-action-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
 .nutrition-hero small,.nutrition-hero h1{display:none}
+
+/* v1.4.15.60 Recipe serving and availability */
+.recipe-record-form{display:grid;gap:0;padding:8px 16px!important}
+.recipe-record-form>label{display:grid!important;grid-template-columns:minmax(124px,42%) minmax(0,1fr)!important;align-items:center;gap:14px;padding:12px 0;border-bottom:1px solid #28373d;margin:0!important}
+.recipe-record-form>label>span{color:var(--muted);font-weight:700;min-width:0}
+.recipe-record-form>label input,.recipe-record-form>label select,.recipe-record-form>label textarea,.recipe-record-form>label output{grid-column:2;min-width:0;width:100%;box-sizing:border-box;text-align:right}
+.recipe-record-form>label textarea{text-align:left;min-height:92px}
+.recipe-record-form .toggle-row input{width:auto;justify-self:end}
+.recipe-record-form .readonly-row output{padding:11px 12px;border:1px solid #3b4b52;border-radius:10px;background:#0c1215;color:var(--text);font-weight:800}
+.recipe-record-form .form-helper{margin:8px 0 10px;padding:10px 12px;border-radius:10px;background:#2a2111;color:#f6d58a}
+.recipe-availability-status{display:grid;gap:4px;padding:14px 16px;margin-bottom:16px;border-radius:14px;border:1px solid #3b4b52}
+.recipe-availability-status small{font-weight:900;letter-spacing:.08em;color:var(--muted)}
+.recipe-availability-status b{font-size:1.2rem}
+.recipe-availability-status span{color:var(--muted)}
+.recipe-availability-status.ready{background:#10291d;border-color:#2d7652}
+.recipe-availability-status.can-prepare{background:#2a2312;border-color:#8c6d2e}
+.recipe-availability-status.cannot-prepare{background:#321719;border-color:#8e4147}
+@media(max-width:390px){.recipe-record-form>label{grid-template-columns:minmax(112px,40%) minmax(0,1fr)!important;gap:10px}}

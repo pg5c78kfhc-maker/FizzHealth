@@ -1,18 +1,22 @@
-# Fizz Health v1.4.15.59 — Recipe Record Navigation Corrective
+# Fizz Health v1.4.15.60 — Recipe Serving & Availability Integration
 
-Build: 141559  
-Deployment: FH-20260730-141559
+Build: 141560  
+Deployment: FH-20260730-141560
 
 ## Delivered
 
-- **FH-1559.1:** Route every Library Recipe tap directly to the modern Recipe record with General, Nutrition, Inventory, and Ingredients tabs.
-- **FH-1559.2:** Separate Food and Recipe presentation dispatch so the legacy shared Recipe rendering path cannot intercept Recipe navigation.
-- **FH-1559.3:** Preserve the complete v1.4.15.58 Recipe migration, schema version 85, historical records, and data architecture unchanged.
+- **FH-1560.1:** Verify all Recipe taps continue through the modern four-tab Recipe record.
+- **FH-1560.2:** Repair the Recipe Nutrition editor so labels remain left and controls remain right on iPhone.
+- **FH-1560.3:** Calculate read-only batch weight from ingredient weights, derive servings per batch from serving size, and calculate nutrition per serving.
+- **FH-1560.4:** Add Ready, Can Prepare, and Cannot Prepare availability status to the Recipe General tab.
+- **FH-1560.5:** Give prepared Recipe inventory precedence over depleted ingredient inventory.
+- **FH-1560.6:** Require positive prepared Recipe inventory before a Recipe can be offered in Meal Planner.
+- **FH-1560.7:** Deduct tracked ingredient inventory when a batch is made; ingredients reaching zero flow into Shopping through the existing out-of-stock mechanism.
 
-Baseline: **FH-1558.9**.
+Baseline: **v1.4.15.59 / FH-1559.3**.
 
 ## Boundaries
 
-- No database table or data-layer renames.
-- No additional migration or schema changes.
-- No Meal Planner, consumed-log, recommendation, or unrelated Library redesign.
+- No physical table or data-layer renames.
+- No unrelated Library, Nutrition, Planner, consumed-log, or recommendation redesign.
+- Existing Recipe migration and historical records remain intact.

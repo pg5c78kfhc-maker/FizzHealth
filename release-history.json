@@ -2,6 +2,30 @@
   "format": "fizz-health-release-history",
   "releases": [
     {
+      "version": "1.4.15.60",
+      "name": "Recipe Serving & Availability Integration",
+      "title": "Recipe Serving & Availability Integration",
+      "type": "Feature and corrective release",
+      "release_type": "Feature and corrective release",
+      "release_date": "2026-07-30",
+      "issued_date": "2026-07-30",
+      "created_at": "2026-07-30T14:27:00-04:00",
+      "build": "141560",
+      "build_id": "141560",
+      "release_id": "FH-20260730-141560",
+      "deployment_id": "FH-20260730-141560",
+      "schema_version": 86,
+      "stories": [
+        "FH-1560.1",
+        "FH-1560.2",
+        "FH-1560.3",
+        "FH-1560.4",
+        "FH-1560.5",
+        "FH-1560.6",
+        "FH-1560.7"
+      ]
+    },
+    {
       "version": "1.4.15.59",
       "name": "Recipe Record Navigation Corrective",
       "title": "Recipe Record Navigation Corrective",

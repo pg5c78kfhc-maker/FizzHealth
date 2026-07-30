@@ -3,7 +3,7 @@ import wasmUrl from 'sql.js/dist/sql-wasm.wasm?url';
 
 const DB_KEY='fizz-health-sqlite-v1';
 const STORAGE_DB='FizzHealthStorage';
-const TARGET_SCHEMA_VERSION=85;
+const TARGET_SCHEMA_VERSION=86;
 let SQL, db;
 
 const migrations=[
@@ -1130,6 +1130,12 @@ const migrations=[
     VALUES ('1.4.15.59','2026-07-30','141559',85,'Recipe Record Navigation Corrective','2026-07-30T13:25:00-04:00');
   `}
 
+,  {version:86,name:'recipe_serving_availability_integration',sql:`
+    INSERT OR REPLACE INTO release_metadata(version,release_date,build_id,schema_version,title,created_at)
+    VALUES ('1.4.15.60','2026-07-30','141560',86,'Recipe Serving & Availability Integration','2026-07-30T14:27:00-04:00');
+    INSERT OR REPLACE INTO release_register(version,issued_date,build_id,schema_version,title,created_at)
+    VALUES ('1.4.15.60','2026-07-30','141560',86,'Recipe Serving & Availability Integration','2026-07-30T14:27:00-04:00');
+  `}
 ];
 
 const canonicalSchema={
