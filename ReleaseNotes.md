@@ -1,22 +1,17 @@
-# Fizz Health v1.4.15.53 — Shared Shopping and Food Cards
+# Fizz Health v1.4.15.54 — Shopping Eligibility and Food-Link Integrity
 
-Issued: 2026-07-30  
-Build: 141553  
-Deployment: FH-20260730-141553
+Build: 141554  
+Deployment: FH-20260730-141554
 
-## Scope delivered
+## Delivered
 
-- Matched Shopping retailer sections to the exact Food category content width.
-- Replaced the obsolete Shopping-specific card renderer with the shared Food library card presentation.
-- Matched Shopping item rounded corners, spacing, typography, inventory color treatment, and pencil placement to Food cards.
-- Made Shopping card taps open the standard Food Information system for the linked food record.
-- Preserved Shopping search, retailer grouping, item counts, collapsed defaults, image refresh, product-link data, and existing eligibility rules.
-- Made no database or inventory-rule changes.
+- **FH-1554.1:** Shopping now automatically includes only non-discontinued Pantry records whose quantity is zero or less. Legacy `Order Soon`, `Restock`, `Low`, and `High` text values no longer qualify an item.
+- **FH-1554.2:** Every visible Shopping item must resolve to an active Food record. Shopping cards open that exact standard Food Information record.
+- **FH-1554.3:** Invalid Pantry food links are repaired only when one unique exact-name Food match exists. Unresolved orphaned Pantry records are excluded and recorded in the local `fizz-shopping-link-audit` diagnostic instead of being guessed or duplicated.
 
-## Stories
+## Boundaries
 
-- FH-1553.1
-- FH-1553.2
-- FH-1553.3
-- FH-1553.4
-- FH-1553.5
+- No database schema changes.
+- No reorder thresholds.
+- No changes to inventory depletion logic.
+- No unrelated Library or Shopping presentation changes.

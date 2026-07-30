@@ -2,6 +2,26 @@
   "format": "fizz-health-release-history",
   "releases": [
     {
+      "version": "1.4.15.54",
+      "name": "Shopping Eligibility and Food-Link Integrity",
+      "title": "Shopping Eligibility and Food-Link Integrity",
+      "type": "Corrective release",
+      "release_type": "Corrective release",
+      "release_date": "2026-07-30",
+      "issued_date": "2026-07-30",
+      "created_at": "2026-07-30T08:15:00-04:00",
+      "build": "141554",
+      "build_id": "141554",
+      "release_id": "FH-20260730-141554",
+      "deployment_id": "FH-20260730-141554",
+      "schema_version": 82,
+      "stories": [
+        "FH-1554.1",
+        "FH-1554.2",
+        "FH-1554.3"
+      ]
+    },
+    {
       "version": "1.4.15.53",
       "name": "Shared Shopping and Food Cards",
       "title": "Shared Shopping and Food Cards",

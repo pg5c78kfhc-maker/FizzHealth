@@ -1,0 +1,18 @@
+import assert from 'node:assert/strict';
+import fs from 'node:fs';
+const main=fs.readFileSync('src/main.jsx','utf8');
+const version=JSON.parse(fs.readFileSync('VERSION.json','utf8'));
+assert.equal(version.version,'1.4.15.54');
+assert.match(main,/COALESCE\(p\.quantity,0\)<=0/);
+assert.doesNotMatch(main,/LOWER\(COALESCE\(p\.status,''\)\) IN \('out of stock','out','order soon','restock','low'\)/);
+assert.doesNotMatch(main,/LOWER\(COALESCE\(p\.priority,''\)\) IN \('order soon','restock','high'\)/);
+assert.match(main,/COALESCE\(fid\.food_id,fname\.food_id\) IS NOT NULL/);
+assert.match(main,/resolved_food_id/);
+assert.match(main,/SELECT \* FROM foods WHERE UPPER\(food_id\)=UPPER\(\?\) AND COALESCE\(archived,0\)=0 LIMIT 1/);
+assert.match(main,/COUNT\(\*\) FROM foods fx WHERE LOWER\(TRIM\(fx\.name\)\)=LOWER\(TRIM\(p\.item\)\)/);
+assert.match(main,/fizz-shopping-link-audit/);
+assert.match(main,/excluded unresolved Pantry records/);
+assert.match(main,/lines=\{\[item\.brand\|\|'Brand not recorded','Out of Stock'/);
+assert.doesNotMatch(main,/Number\(item\.quantity\)<=0\?'Out of Stock':'Order Soon'/);
+assert.match(main,/Out-of-stock Pantry items with linked Food records will appear here/);
+console.log('v1.4.15.54 focused acceptance: 12/12 passed');
