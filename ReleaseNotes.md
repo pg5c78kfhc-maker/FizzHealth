@@ -1,4 +1,4 @@
-# Fizz Health v1.4.15.50 — Menu and Chef Consolidation Completion
+# Fizz Health v1.4.15.50 — Library Consolidation — Phase 1
 
 Issued: 2026-07-29  
 Build: 141550  
@@ -6,11 +6,13 @@ Deployment: FH-20260729-141550
 
 ## Scope delivered
 
-- Kept Menu as the sole active entry point for meal planning and AI recommendations.
-- Removed the obsolete standalone Chef page and its private recommendation workspace.
-- Preserved Today's Recommendations inside Menu and the existing ranking behavior.
-- Preserved the balanced two-action Eating layout: Menu and Log Once.
-- Added focused regression coverage for the completed consolidation.
+- Renamed the Meals destination and page to Library.
+- Added Food and Shopping file-folder tabs.
+- Kept Food as the default tab with the existing search and categorized foods, recipes, and meals.
+- Moved Favorites into the header immediately left of Create.
+- Removed the former All, Recent, and Favorites icon row.
+- Added a blank Shopping placeholder without moving or changing the existing Shopping Cart page.
+- Preserved current inventory coloring, searching, categorization, editing, logging, and data behavior.
 
 ## Stories
 
@@ -18,3 +20,4 @@ Deployment: FH-20260729-141550
 - FH-1550.2
 - FH-1550.3
 - FH-1550.4
+- FH-1550.5

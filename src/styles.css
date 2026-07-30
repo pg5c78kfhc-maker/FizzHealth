@@ -2107,3 +2107,17 @@ body.food-library-active .food-library-page .list.foods{padding-bottom:calc(24px
 
 /* v1.4.15.49 — Nutrition landing Menu/Chef consolidation. */
 .nutrition-hub-card.eating .nutrition-action-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+
+/* v1.4.15.50 — Library consolidation phase 1. */
+.library-header-actions{display:flex;align-items:center;justify-content:flex-end;gap:8px}
+.library-header-actions>button,.library-header-actions .create-menu-wrap>button{width:52px;height:52px;border-radius:50%;display:grid;place-items:center}
+.library-header-actions>button.active{color:var(--green);border-color:var(--green);background:rgba(151,255,47,.08)}
+.library-folder-tabs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));margin:18px 26px 8px;border-bottom:1px solid #34434a;align-items:end}
+.library-folder-tabs button{position:relative;min-height:72px;display:flex;align-items:center;justify-content:center;gap:10px;padding:16px 12px 14px;border:1px solid #34434a;border-bottom:0;border-radius:18px 18px 0 0;background:#11191e;color:var(--muted);font-size:1.05rem;font-weight:900}
+.library-folder-tabs button+button{margin-left:-1px}
+.library-folder-tabs button.active{z-index:1;color:var(--green);background:#0f1714;border-color:#47604e}
+.library-folder-tabs button.active::after{content:"";position:absolute;left:0;right:0;bottom:-2px;height:4px;background:var(--green);border-radius:4px}
+.library-folder-tabs svg{width:25px;height:25px}
+.library-shopping-placeholder{margin:24px 26px;min-height:240px;border:1px solid #34434a;border-radius:18px;background:#10181d;display:grid;place-content:center;justify-items:center;gap:10px;color:var(--muted)}
+.library-shopping-placeholder svg{width:42px;height:42px}
+.library-shopping-placeholder h3{margin:0;color:var(--text)}

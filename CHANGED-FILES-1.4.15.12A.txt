@@ -1,0 +1,10 @@
+src/main.jsx
+VERSION.json
+release-history.json
+package.json
+src/database.js
+src/decision/engine.js
+public/sw.js
+ReleaseNotes.md
+TEST-REPORT-1.4.15.12A.md
+EXECUTION-VERIFICATION-1.4.15.12A.md

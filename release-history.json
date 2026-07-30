@@ -3,13 +3,13 @@
   "releases": [
     {
       "version": "1.4.15.50",
-      "name": "Menu and Chef Consolidation Completion",
-      "title": "Menu and Chef Consolidation Completion",
-      "type": "Corrective information architecture release",
-      "release_type": "Corrective information architecture release",
+      "name": "Library Consolidation \u2014 Phase 1",
+      "title": "Library Consolidation \u2014 Phase 1",
+      "type": "Navigation and presentation release",
+      "release_type": "Navigation and presentation release",
       "release_date": "2026-07-29",
       "issued_date": "2026-07-29",
-      "created_at": "2026-07-29T20:18:00-04:00",
+      "created_at": "2026-07-29T20:25:00-04:00",
       "build": "141550",
       "build_id": "141550",
       "release_id": "FH-20260729-141550",
@@ -19,7 +19,8 @@
         "FH-1550.1",
         "FH-1550.2",
         "FH-1550.3",
-        "FH-1550.4"
+        "FH-1550.4",
+        "FH-1550.5"
       ]
     },
     {
