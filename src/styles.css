@@ -2217,3 +2217,7 @@ body.food-library-active .food-library-page .list.foods{padding-bottom:calc(24px
 .recipe-availability-status.can-prepare{background:#2a2312;border-color:#8c6d2e}
 .recipe-availability-status.cannot-prepare{background:#321719;border-color:#8e4147}
 @media(max-width:390px){.recipe-record-form>label{grid-template-columns:minmax(112px,40%) minmax(0,1fr)!important;gap:10px}}
+
+/* v1.4.15.62 Food delete restoration */
+.builder-category-section .discovery-swipe.has-delete-action .discovery-swipe-rail{width:336px!important;max-width:92vw!important;grid-template-columns:repeat(4,minmax(0,1fr))!important}
+.builder-category-section .discovery-swipe-rail .swipe-archive{background:#5b4020;color:#fff}

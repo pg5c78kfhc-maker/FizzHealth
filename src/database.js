@@ -3,7 +3,7 @@ import wasmUrl from 'sql.js/dist/sql-wasm.wasm?url';
 
 const DB_KEY='fizz-health-sqlite-v1';
 const STORAGE_DB='FizzHealthStorage';
-const TARGET_SCHEMA_VERSION=87;
+const TARGET_SCHEMA_VERSION=88;
 let SQL, db;
 
 const migrations=[
@@ -1151,6 +1151,20 @@ const migrations=[
     VALUES ('1.4.15.61','2026-07-30','141561',87,'Prepared Batch Weight & Food Import Visibility','2026-07-30T15:05:00-04:00');
     INSERT OR REPLACE INTO release_register(version,issued_date,build_id,schema_version,title,created_at)
     VALUES ('1.4.15.61','2026-07-30','141561',87,'Prepared Batch Weight & Food Import Visibility','2026-07-30T15:05:00-04:00');
+  `},
+  {version:88,name:'food_delete_and_serving_corrective',sql:`
+    UPDATE foods
+       SET default_serving=1, updated_at=COALESCE(updated_at,CURRENT_TIMESTAMP)
+     WHERE (default_serving IS NULL OR default_serving<=0)
+       AND COALESCE(TRIM(unit),'')<>'';
+    UPDATE foods
+       SET unit='serving', updated_at=COALESCE(updated_at,CURRENT_TIMESTAMP)
+     WHERE COALESCE(TRIM(unit),'')=''
+       AND default_serving>0;
+    INSERT OR REPLACE INTO release_metadata(version,release_date,build_id,schema_version,title,created_at)
+    VALUES ('1.4.15.62','2026-07-30','141562',88,'Food Delete & Serving Corrective','2026-07-30T15:38:00-04:00');
+    INSERT OR REPLACE INTO release_register(version,issued_date,build_id,schema_version,title,created_at)
+    VALUES ('1.4.15.62','2026-07-30','141562',88,'Food Delete & Serving Corrective','2026-07-30T15:38:00-04:00');
   `}
 ];
 

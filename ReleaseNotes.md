@@ -1,22 +1,19 @@
-# Fizz Health v1.4.15.60 — Recipe Serving & Availability Integration
+# Fizz Health v1.4.15.62 — Food Delete & Serving Corrective
 
-Build: 141560  
-Deployment: FH-20260730-141560
+Build: 141562  
+Deployment: FH-20260730-141562
 
 ## Delivered
 
-- **FH-1560.1:** Verify all Recipe taps continue through the modern four-tab Recipe record.
-- **FH-1560.2:** Repair the Recipe Nutrition editor so labels remain left and controls remain right on iPhone.
-- **FH-1560.3:** Calculate read-only batch weight from ingredient weights, derive servings per batch from serving size, and calculate nutrition per serving.
-- **FH-1560.4:** Add Ready, Can Prepare, and Cannot Prepare availability status to the Recipe General tab.
-- **FH-1560.5:** Give prepared Recipe inventory precedence over depleted ingredient inventory.
-- **FH-1560.6:** Require positive prepared Recipe inventory before a Recipe can be offered in Meal Planner.
-- **FH-1560.7:** Deduct tracked ingredient inventory when a batch is made; ingredients reaching zero flow into Shopping through the existing out-of-stock mechanism.
+- **FH-1562.1:** Restore the existing permanent Food delete action in Library swipe controls, using the established confirmation and deletion routine.
+- **FH-1562.2:** Normalize imported Food serving amount and unit from the reviewed JSON before persistence.
+- **FH-1562.3:** Repair existing Foods with only one side of their serving basis populated and distinguish “Not tracked in Pantry” from an unavailable serving calculation.
 
-Baseline: **v1.4.15.59 / FH-1559.3**.
+Baseline: **v1.4.15.61 / FH-1561.4**.
 
 ## Boundaries
 
-- No physical table or data-layer renames.
-- No unrelated Library, Nutrition, Planner, consumed-log, or recommendation redesign.
-- Existing Recipe migration and historical records remain intact.
+- No new deletion architecture.
+- No automatic duplicate deletion.
+- No Library redesign.
+- No Recipe, Planner, Shopping, or unrelated Nutrition changes.
