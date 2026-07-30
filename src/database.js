@@ -3,7 +3,7 @@ import wasmUrl from 'sql.js/dist/sql-wasm.wasm?url';
 
 const DB_KEY='fizz-health-sqlite-v1';
 const STORAGE_DB='FizzHealthStorage';
-const TARGET_SCHEMA_VERSION=84;
+const TARGET_SCHEMA_VERSION=85;
 let SQL, db;
 
 const migrations=[
@@ -1089,6 +1089,46 @@ const migrations=[
     INSERT OR REPLACE INTO release_metadata(version,release_date,build_id,schema_version,title,created_at) VALUES ('1.4.15.57','2026-07-30','141557',84,'Inventory Editor Focus Corrective','2026-07-30T10:40:00-04:00');
     INSERT OR REPLACE INTO release_register(version,issued_date,build_id,schema_version,title,created_at) VALUES ('1.4.15.57','2026-07-30','141557',84,'Inventory Editor Focus Corrective','2026-07-30T10:40:00-04:00');
   `}
+,  {version:85,name:'recipe_consolidation_phase_1',sql:`
+    ALTER TABLE recipes ADD COLUMN notes TEXT;
+    ALTER TABLE recipes ADD COLUMN favorite INTEGER DEFAULT 0;
+    ALTER TABLE meal_definitions ADD COLUMN serving_size REAL DEFAULT 1;
+    ALTER TABLE meal_definitions ADD COLUMN serving_unit TEXT DEFAULT 'serving';
+    ALTER TABLE meal_definitions ADD COLUMN servings_per_batch REAL DEFAULT 1;
+    ALTER TABLE meal_definitions ADD COLUMN track_inventory INTEGER DEFAULT 0;
+    CREATE TABLE IF NOT EXISTS recipe_migration_log (
+      legacy_recipe_id TEXT PRIMARY KEY, canonical_meal_id TEXT NOT NULL,
+      legacy_ingredient_count INTEGER NOT NULL, canonical_component_count INTEGER NOT NULL,
+      status TEXT NOT NULL, details TEXT, migrated_at TEXT NOT NULL, validated_at TEXT
+    );
+    CREATE TABLE IF NOT EXISTS recipe_migration_issues (
+      id INTEGER PRIMARY KEY AUTOINCREMENT, legacy_recipe_id TEXT, recipe_name TEXT,
+      issue_type TEXT NOT NULL, details TEXT, created_at TEXT NOT NULL
+    );
+    INSERT OR IGNORE INTO meal_definitions(meal_id,title,category,icon,notes,favorite,archived,created_at,updated_at,source_type,source_id,classification,usage_designation,ingredient_only,serving_size,serving_unit,servings_per_batch,track_inventory)
+    SELECT 'recipe:'||r.recipe_id,MAX(r.recipe_name),COALESCE(MAX(NULLIF(r.category,'')),'Any'),'utensils',MAX(r.notes),COALESCE(MAX(r.favorite),0),COALESCE(MAX(r.archived),0),CURRENT_TIMESTAMP,CURRENT_TIMESTAMP,'legacy_recipe',r.recipe_id,'recipe',COALESCE(MAX(NULLIF(r.usage_designation,'')),'standalone'),COALESCE(MAX(r.ingredient_only),0),1,'serving',1,0
+    FROM recipes r WHERE COALESCE(r.recipe_id,'')<>'' GROUP BY r.recipe_id;
+    INSERT INTO meal_components(meal_id,component_type,component_id,component_name,amount,unit,optional,sort_order)
+    SELECT 'recipe:'||r.recipe_id,COALESCE(NULLIF(LOWER(r.ingredient_type),''),'food'),r.ingredient_id,r.ingredient_name,r.amount,COALESCE(NULLIF(r.unit,''),'serving'),0,r.id
+    FROM recipes r
+    WHERE COALESCE(r.recipe_id,'')<>'' AND NOT EXISTS (
+      SELECT 1 FROM meal_components mc WHERE mc.meal_id='recipe:'||r.recipe_id
+    );
+    INSERT OR REPLACE INTO recipe_migration_log(legacy_recipe_id,canonical_meal_id,legacy_ingredient_count,canonical_component_count,status,details,migrated_at,validated_at)
+    SELECT r.recipe_id,'recipe:'||r.recipe_id,COUNT(*),(SELECT COUNT(*) FROM meal_components mc WHERE mc.meal_id='recipe:'||r.recipe_id),
+      CASE WHEN COUNT(*)=(SELECT COUNT(*) FROM meal_components mc WHERE mc.meal_id='recipe:'||r.recipe_id) THEN 'validated' ELSE 'issue' END,
+      CASE WHEN COUNT(*)=(SELECT COUNT(*) FROM meal_components mc WHERE mc.meal_id='recipe:'||r.recipe_id) THEN 'Ingredient counts match.' ELSE 'Ingredient count mismatch.' END,
+      CURRENT_TIMESTAMP,CASE WHEN COUNT(*)=(SELECT COUNT(*) FROM meal_components mc WHERE mc.meal_id='recipe:'||r.recipe_id) THEN CURRENT_TIMESTAMP ELSE NULL END
+    FROM recipes r WHERE COALESCE(r.recipe_id,'')<>'' GROUP BY r.recipe_id;
+    INSERT INTO recipe_migration_issues(legacy_recipe_id,recipe_name,issue_type,details,created_at)
+    SELECT r.recipe_id,MAX(r.recipe_name),'malformed_ingredient','One or more legacy ingredients have a missing name, invalid quantity, or missing unit.',CURRENT_TIMESTAMP
+    FROM recipes r WHERE COALESCE(r.recipe_id,'')<>'' GROUP BY r.recipe_id
+    HAVING SUM(CASE WHEN COALESCE(TRIM(r.ingredient_name),'')='' OR COALESCE(r.amount,0)<=0 OR COALESCE(TRIM(r.unit),'')='' THEN 1 ELSE 0 END)>0;
+    INSERT OR REPLACE INTO release_metadata(version,release_date,build_id,schema_version,title,created_at)
+    VALUES ('1.4.15.58','2026-07-30','141558',85,'Recipe Consolidation Phase 1','2026-07-30T13:25:00-04:00');
+    INSERT OR REPLACE INTO release_register(version,issued_date,build_id,schema_version,title,created_at)
+    VALUES ('1.4.15.58','2026-07-30','141558',85,'Recipe Consolidation Phase 1','2026-07-30T13:25:00-04:00');
+  `}
 
 ];
 
@@ -1105,7 +1145,7 @@ const canonicalSchema={
   },
   recipes:{
     create:`CREATE TABLE IF NOT EXISTS recipes (id INTEGER PRIMARY KEY AUTOINCREMENT, recipe_id TEXT, recipe_name TEXT, ingredient_name TEXT, amount REAL, unit TEXT, ingredient_type TEXT, ingredient_id TEXT, inventory_status TEXT)`,
-    columns:{recipe_id:'TEXT',recipe_name:'TEXT',ingredient_name:'TEXT',amount:'REAL',unit:'TEXT',ingredient_type:'TEXT',ingredient_id:'TEXT',inventory_status:'TEXT',archived:'INTEGER DEFAULT 0',archived_at:'TEXT',classification:"TEXT DEFAULT 'recipe'",usage_designation:"TEXT DEFAULT 'standalone'",category:"TEXT DEFAULT 'Any'"},
+    columns:{recipe_id:'TEXT',recipe_name:'TEXT',ingredient_name:'TEXT',amount:'REAL',unit:'TEXT',ingredient_type:'TEXT',ingredient_id:'TEXT',inventory_status:'TEXT',archived:'INTEGER DEFAULT 0',archived_at:'TEXT',classification:"TEXT DEFAULT 'recipe'",usage_designation:"TEXT DEFAULT 'standalone'",category:"TEXT DEFAULT 'Any'",ingredient_only:'INTEGER DEFAULT 0',notes:'TEXT',favorite:'INTEGER DEFAULT 0'},
     aliases:{recipe_name:['recipe','name'],ingredient_name:['ingredient','food_name']}
   },
   health_metrics:{

@@ -2,6 +2,32 @@
   "format": "fizz-health-release-history",
   "releases": [
     {
+      "version": "1.4.15.58",
+      "name": "Recipe Consolidation Phase 1",
+      "title": "Recipe Consolidation Phase 1",
+      "type": "Architecture and migration release",
+      "release_type": "Architecture and migration release",
+      "release_date": "2026-07-30",
+      "issued_date": "2026-07-30",
+      "created_at": "2026-07-30T13:25:00-04:00",
+      "build": "141558",
+      "build_id": "141558",
+      "release_id": "FH-20260730-141558",
+      "deployment_id": "FH-20260730-141558",
+      "schema_version": 85,
+      "stories": [
+        "FH-1558.1",
+        "FH-1558.2",
+        "FH-1558.3",
+        "FH-1558.4",
+        "FH-1558.5",
+        "FH-1558.6",
+        "FH-1558.7",
+        "FH-1558.8",
+        "FH-1558.9"
+      ]
+    },
+    {
       "version": "1.4.15.56",
       "name": "Inventory Model Consolidation & Nutrition Landing Cleanup",
       "title": "Inventory Model Consolidation & Nutrition Landing Cleanup",

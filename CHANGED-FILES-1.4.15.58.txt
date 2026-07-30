@@ -1,0 +1,11 @@
+VERSION.json
+package.json
+package-lock.json
+release-history.json
+ReleaseNotes.md
+public/sw.js
+src/database.js
+src/decision/engine.js
+src/main.jsx
+TEST-REPORT-1.4.15.58.md
+CHANGED-FILES-1.4.15.58.txt
