@@ -1,25 +1,10 @@
-Fizz Health v1.4.15.64 — Changed Files Manifest
-Baseline: Fizz-Health-v1.4.15.63-FULL-SOURCE
+Fizz Health v1.4.15.64 — Corrective Build Manifest
 
-src/main.jsx
-- Excludes canonical migrated Recipe records from ordinary Meal lists.
-- Routes Library/Search Recipe entries to ModernRecipeDetails.
-- Routes Planner Recipe entries to ModernRecipeDetails.
-- Preserves unrelated Food, Meal, Restaurant, and Inventory navigation.
+Changed file:
+- src/database.js
 
-src/database.js
-- Adds schema/release metadata migration 90 for v1.4.15.64.
+Correction:
+- Closed the schema migration object for version 89 before the version 90 migration entry.
+- Removes the JavaScript parse failure reported at src/database.js:1175.
 
-src/decision/engine.js
-public/sw.js
-package.json
-package-lock.json
-VERSION.json
-release-history.json
-ReleaseNotes.md
-- Synchronize release identity and metadata for v1.4.15.64.
-
-tests/v141564-recipe-navigation-stabilization.test.js
-- Verifies Library/Search and Planner Recipe routing.
-- Verifies migrated Recipe duplicates cannot enter legacy Meal routing.
-- Verifies v1.4.15.63 Recipe serving-to-gram calculation wiring remains present.
+No navigation logic, UI, data behavior, or release metadata was otherwise changed by this corrective packaging pass.

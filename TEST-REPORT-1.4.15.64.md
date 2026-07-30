@@ -1,35 +1,24 @@
-# Fizz Health v1.4.15.64 Test Report
+# Fizz Health v1.4.15.64 — Corrective Test Report
 
-## Scope tested
+## Deployment failure corrected
+Cloudflare reported a JavaScript parse error at `src/database.js:1175`.
+The version 89 migration object ended with `` `, `` instead of `` `}, `` before the version 90 migration began.
 
-- Library Recipe tap routing
-- Search Recipe result routing
-- Planner Recipe tap routing
-- Exclusion of migrated Recipe duplicates from legacy Meal routing
-- Preservation of Recipe serving-to-gram, batch-weight, and servings-per-batch calculation wiring
-- Release metadata consistency
-- Project source-tree integrity
+## Validation completed
 
-## Results
+- `node --check src/database.js` — PASS
+- `node --test tests/v141564-recipe-navigation-stabilization.test.js` — PASS (3/3)
+- `node scripts/verify-release.mjs` — PASS (`v1.4.15.64 / FH-1564.3`)
+- `node scripts/project-integrity.mjs` — PASS
 
-### Passed
+## Recipe regression coverage
 
-- `node --test tests/v141564-recipe-navigation-stabilization.test.js`
-  - 3 tests passed
-  - 0 tests failed
-- `node scripts/project-integrity.mjs`
-  - Passed: one application root, one package, one source tree, one Menu/Chef implementation
-- `node scripts/verify-release.mjs`
-  - Passed: v1.4.15.64 / FH-1564.3 metadata consistent
+- Library excludes migrated Recipe duplicates from legacy Meal routing — PASS
+- Planner excludes migrated Recipe duplicates and opens modern Recipe detail — PASS
+- Recipe serving-to-gram stabilization remains wired — PASS
 
-### Production build
+## Production build status
 
-The production build could not be executed in this environment because the source archive did not include `node_modules`, and the locked `xlsx@0.18.5` package was unavailable from the configured package registry (HTTP 404). The failure occurred during dependency restoration before application compilation; it was not a source-code compilation failure.
+The submitted Cloudflare build successfully installed dependencies and transformed 1,800 modules before stopping solely on this parse error. The malformed syntax has been corrected.
 
-### Existing full-suite status
-
-A broad test invocation exposed numerous pre-existing failures outside this release scope. The new v1.4.15.64 targeted regression suite passed completely. No unrelated failing tests were modified.
-
-## Files changed
-
-See `CHANGED-FILES-1.4.15.64.txt`.
+A local dependency reinstall could not be completed because the internal package mirror does not provide the locked `xlsx@0.18.5` tarball. This is an environment registry limitation; the supplied Cloudflare log confirms its registry successfully installs that dependency set.
