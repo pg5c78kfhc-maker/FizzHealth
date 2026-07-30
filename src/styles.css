@@ -2234,3 +2234,39 @@ body.food-library-active .food-library-page .list.foods{padding-bottom:calc(24px
 .recipe-pantry-batch{touch-action:none}
 .recipe-pantry-batch .pantry-manual-editor{display:grid!important;grid-template-rows:auto minmax(0,1fr)!important;overflow:hidden!important}
 .recipe-pantry-batch .editor-scroll{min-height:0!important;height:auto!important;overflow-y:auto!important;-webkit-overflow-scrolling:touch;touch-action:pan-y;overscroll-behavior-y:contain;scroll-padding-bottom:180px;padding-bottom:180px!important}
+
+/* v1.4.15.67 — Recipe creation viewport containment */
+.recipe-create-modal{
+  position:fixed!important;
+  inset:0!important;
+  display:flex!important;
+  align-items:flex-start!important;
+  justify-content:center!important;
+  padding:calc(env(safe-area-inset-top,0px) + 6px) 6px calc(var(--bottom-nav-height,88px) + env(safe-area-inset-bottom,0px) + 8px)!important;
+  overflow:hidden!important;
+}
+.recipe-create-editor{
+  width:min(680px,100%)!important;
+  height:calc(var(--visual-viewport-height,100dvh) - var(--bottom-nav-height,88px) - env(safe-area-inset-top,0px) - env(safe-area-inset-bottom,0px) - 14px)!important;
+  max-height:calc(var(--visual-viewport-height,100dvh) - var(--bottom-nav-height,88px) - env(safe-area-inset-top,0px) - env(safe-area-inset-bottom,0px) - 14px)!important;
+  min-height:0!important;
+  display:grid!important;
+  grid-template-rows:auto minmax(0,1fr)!important;
+  overflow:hidden!important;
+  margin:0!important;
+}
+.recipe-create-editor>.edit-head{position:relative!important;top:auto!important;flex:none;z-index:4}
+.recipe-create-editor>.editor-scroll{
+  min-height:0!important;
+  height:auto!important;
+  overflow-y:auto!important;
+  overscroll-behavior:contain;
+  -webkit-overflow-scrolling:touch;
+  padding-bottom:calc(36px + env(safe-area-inset-bottom,0px))!important;
+  scroll-padding-top:12px;
+  scroll-padding-bottom:140px;
+}
+@media(max-width:480px){
+ .recipe-create-modal{padding-left:4px!important;padding-right:4px!important}
+ .recipe-create-editor{border-radius:22px 22px 0 0!important}
+}

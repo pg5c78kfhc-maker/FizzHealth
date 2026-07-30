@@ -1189,6 +1189,12 @@ const migrations=[
     VALUES ('1.4.15.66','2026-07-30','141566',92,'Availability Engine Stabilization','2026-07-30T17:58:00-04:00');
     INSERT OR REPLACE INTO release_register(version,issued_date,build_id,schema_version,title,created_at)
     VALUES ('1.4.15.66','2026-07-30','141566',92,'Availability Engine Stabilization','2026-07-30T17:58:00-04:00');
+  `},
+  {version:93,name:'modern_record_recipe_creation_stabilization',sql:`
+    INSERT OR REPLACE INTO release_metadata(version,release_date,build_id,schema_version,title,created_at)
+    VALUES ('1.4.15.67','2026-07-30','141567',93,'Modern Record Routing & Recipe Creation Stabilization','2026-07-30T19:20:00-04:00');
+    INSERT OR REPLACE INTO release_register(version,issued_date,build_id,schema_version,title,created_at)
+    VALUES ('1.4.15.67','2026-07-30','141567',93,'Modern Record Routing & Recipe Creation Stabilization','2026-07-30T19:20:00-04:00');
   `}
 ];
 

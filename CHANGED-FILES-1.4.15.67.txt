@@ -1,0 +1,23 @@
+Fizz Health v1.4.15.67 — Changed Files
+
+Application
+- src/main.jsx
+- src/styles.css
+- src/database.js
+- src/decision/engine.js
+- public/sw.js
+
+Release metadata
+- package.json
+- package-lock.json
+- VERSION.json
+- release-history.json
+- ReleaseNotes.md
+- RELEASE-NOTES-1.4.15.67.md
+
+Tests
+- tests/v141567-modern-record-recipe-stabilization.test.js
+
+Artifacts
+- CHANGED-FILES-1.4.15.67.txt
+- TEST-REPORT-1.4.15.67.md
