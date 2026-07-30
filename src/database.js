@@ -1125,9 +1125,9 @@ const migrations=[
     FROM recipes r WHERE COALESCE(r.recipe_id,'')<>'' GROUP BY r.recipe_id
     HAVING SUM(CASE WHEN COALESCE(TRIM(r.ingredient_name),'')='' OR COALESCE(r.amount,0)<=0 OR COALESCE(TRIM(r.unit),'')='' THEN 1 ELSE 0 END)>0;
     INSERT OR REPLACE INTO release_metadata(version,release_date,build_id,schema_version,title,created_at)
-    VALUES ('1.4.15.58','2026-07-30','141558',85,'Recipe Consolidation Phase 1','2026-07-30T13:25:00-04:00');
+    VALUES ('1.4.15.59','2026-07-30','141559',85,'Recipe Record Navigation Corrective','2026-07-30T13:25:00-04:00');
     INSERT OR REPLACE INTO release_register(version,issued_date,build_id,schema_version,title,created_at)
-    VALUES ('1.4.15.58','2026-07-30','141558',85,'Recipe Consolidation Phase 1','2026-07-30T13:25:00-04:00');
+    VALUES ('1.4.15.59','2026-07-30','141559',85,'Recipe Record Navigation Corrective','2026-07-30T13:25:00-04:00');
   `}
 
 ];

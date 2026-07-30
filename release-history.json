@@ -2,6 +2,26 @@
   "format": "fizz-health-release-history",
   "releases": [
     {
+      "version": "1.4.15.59",
+      "name": "Recipe Record Navigation Corrective",
+      "title": "Recipe Record Navigation Corrective",
+      "type": "Corrective navigation release",
+      "release_type": "Corrective navigation release",
+      "release_date": "2026-07-30",
+      "issued_date": "2026-07-30",
+      "created_at": "2026-07-30T13:25:00-04:00",
+      "build": "141559",
+      "build_id": "141559",
+      "release_id": "FH-20260730-141559",
+      "deployment_id": "FH-20260730-141559",
+      "schema_version": 85,
+      "stories": [
+        "FH-1559.1",
+        "FH-1559.2",
+        "FH-1559.3"
+      ]
+    },
+    {
       "version": "1.4.15.58",
       "name": "Recipe Consolidation Phase 1",
       "title": "Recipe Consolidation Phase 1",
