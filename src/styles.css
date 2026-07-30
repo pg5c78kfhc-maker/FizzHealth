@@ -2195,3 +2195,7 @@ body.food-library-active .food-library-page .list.foods{padding-bottom:calc(24px
 .planner-occasion-options .add-now-button{background:#29392d;border-color:#6f8b78;color:#fff}
 .planner-occasion-options .add-now-button:hover,.planner-occasion-options .add-now-button:focus-visible{background:#314638;border-color:#9ae83b}
 .planner-occasion-options .add-now-button:disabled{opacity:.65}
+
+/* v1.4.15.56 — Manage mirrors the two-card Eating layout; simplified Nutrition hero. */
+.nutrition-hub-card.manage .nutrition-action-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+.nutrition-hero small,.nutrition-hero h1{display:none}

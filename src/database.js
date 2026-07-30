@@ -3,7 +3,7 @@ import wasmUrl from 'sql.js/dist/sql-wasm.wasm?url';
 
 const DB_KEY='fizz-health-sqlite-v1';
 const STORAGE_DB='FizzHealthStorage';
-const TARGET_SCHEMA_VERSION=83;
+const TARGET_SCHEMA_VERSION=84;
 let SQL, db;
 
 const migrations=[
@@ -1081,6 +1081,12 @@ const migrations=[
     INSERT OR REPLACE INTO release_register(version,issued_date,build_id,schema_version,title,created_at)
     VALUES ('1.4.15.40','2026-07-29','141540',83,'Inventory & Shopping Completion','2026-07-29T12:15:00-04:00');
   `}
+,  {version:84,name:'inventory_packaging_consolidation',sql:`
+    ALTER TABLE pantry ADD COLUMN servings_per_package REAL;
+    UPDATE pantry SET servings_per_package=(SELECT f.servings_per_container FROM foods f WHERE UPPER(f.food_id)=UPPER(pantry.food_id)) WHERE servings_per_package IS NULL;
+    INSERT OR REPLACE INTO release_metadata(version,release_date,build_id,schema_version,title,created_at) VALUES ('1.4.15.56','2026-07-30','141556',84,'Inventory Model Consolidation & Nutrition Landing Cleanup','2026-07-30T09:45:00-04:00');
+    INSERT OR REPLACE INTO release_register(version,issued_date,build_id,schema_version,title,created_at) VALUES ('1.4.15.56','2026-07-30','141556',84,'Inventory Model Consolidation & Nutrition Landing Cleanup','2026-07-30T09:45:00-04:00');
+  `}
 
 ];
 
@@ -1091,8 +1097,8 @@ const canonicalSchema={
     aliases:{name:['food','food_name']}
   },
   pantry:{
-    create:`CREATE TABLE IF NOT EXISTS pantry (id INTEGER PRIMARY KEY AUTOINCREMENT, pantry_id TEXT, item TEXT, food_id TEXT, brand TEXT, on_hand TEXT, quantity REAL, unit TEXT, opened TEXT, opened_date TEXT, expiration TEXT, location TEXT, status TEXT, priority TEXT, category TEXT, notes TEXT)`,
-    columns:{pantry_id:'TEXT',item:'TEXT',food_id:'TEXT',brand:'TEXT',on_hand:'TEXT',quantity:'REAL',unit:'TEXT',opened:'TEXT',opened_date:'TEXT',expiration:'TEXT',location:'TEXT',status:'TEXT',priority:'TEXT',category:'TEXT',notes:'TEXT',purchase_date:'TEXT',verified_at:'TEXT',storage_type:'TEXT',manufacturer_shelf_life_days:'REAL',opened_shelf_life_days:'REAL',freshness_observation:'TEXT',purchase_price:'REAL',retailer:'TEXT',original_servings:'REAL',quantity_accuracy:'TEXT',package_count:'REAL',package_type:'TEXT',container_size:'REAL',container_unit:'TEXT',unopened_packages:'REAL',partial_package_quantity:'REAL',freshness_status:'TEXT',source_recipe_id:'TEXT',discontinued:'INTEGER DEFAULT 0',product_link:'TEXT',product_image_url:'TEXT',product_image_status:'TEXT',product_image_checked_at:'TEXT',product_image_error:'TEXT'},
+    create:`CREATE TABLE IF NOT EXISTS pantry (id INTEGER PRIMARY KEY AUTOINCREMENT, pantry_id TEXT, item TEXT, food_id TEXT, brand TEXT, on_hand TEXT, quantity REAL, unit TEXT, opened TEXT, opened_date TEXT, expiration TEXT, location TEXT, status TEXT, priority TEXT, category TEXT, notes TEXT, servings_per_package REAL)`,
+    columns:{pantry_id:'TEXT',item:'TEXT',food_id:'TEXT',brand:'TEXT',on_hand:'TEXT',quantity:'REAL',unit:'TEXT',opened:'TEXT',opened_date:'TEXT',expiration:'TEXT',location:'TEXT',status:'TEXT',priority:'TEXT',category:'TEXT',notes:'TEXT',servings_per_package:'REAL',purchase_date:'TEXT',verified_at:'TEXT',storage_type:'TEXT',manufacturer_shelf_life_days:'REAL',opened_shelf_life_days:'REAL',freshness_observation:'TEXT',purchase_price:'REAL',retailer:'TEXT',original_servings:'REAL',quantity_accuracy:'TEXT',package_count:'REAL',package_type:'TEXT',container_size:'REAL',container_unit:'TEXT',unopened_packages:'REAL',partial_package_quantity:'REAL',freshness_status:'TEXT',source_recipe_id:'TEXT',discontinued:'INTEGER DEFAULT 0',product_link:'TEXT',product_image_url:'TEXT',product_image_status:'TEXT',product_image_checked_at:'TEXT',product_image_error:'TEXT'},
     aliases:{item:['name','food','pantry_item'],food_id:['canonical_food_id'],expiration:['effective_expiry','best_by_expiration']}
   },
   recipes:{

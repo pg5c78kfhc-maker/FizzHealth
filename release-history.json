@@ -2,6 +2,28 @@
   "format": "fizz-health-release-history",
   "releases": [
     {
+      "version": "1.4.15.56",
+      "name": "Inventory Model Consolidation & Nutrition Landing Cleanup",
+      "title": "Inventory Model Consolidation & Nutrition Landing Cleanup",
+      "type": "Architecture and corrective release",
+      "release_type": "Architecture and corrective release",
+      "release_date": "2026-07-30",
+      "issued_date": "2026-07-30",
+      "created_at": "2026-07-30T09:45:00-04:00",
+      "build": "141556",
+      "build_id": "141556",
+      "release_id": "FH-20260730-141556",
+      "deployment_id": "FH-20260730-141556",
+      "schema_version": 84,
+      "stories": [
+        "FH-1556.1",
+        "FH-1556.2",
+        "FH-1556.3",
+        "FH-1556.4",
+        "FH-1556.5"
+      ]
+    },
+    {
       "version": "1.4.15.55",
       "name": "Inventory Visibility & Add Now",
       "title": "Inventory Visibility & Add Now",

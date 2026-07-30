@@ -1,7 +1,27 @@
-# Fizz Health v1.4.15.55 — Inventory Visibility & Add Now
+# Fizz Health v1.4.15.56 — Inventory Model Consolidation & Nutrition Landing Cleanup
 
-Build: 141555  
-Deployment: FH-20260730-141555
+Build: 141556  
+Deployment: FH-20260730-141556
+
+## Delivered
+
+- **FH-1556.1:** Moved servings-per-package ownership from Nutrition to Inventory while preserving existing values through schema migration.
+- **FH-1556.2:** Added Each as an Inventory package type and corrected packaged/count-based versus directly measured servings calculations.
+- **FH-1556.3:** Added Inventory display/edit field parity for package, quantity, storage, freshness, quality, and notes fields.
+- **FH-1556.4:** Removed the legacy Pantry and Shopping landing entry points and resized Library and Restaurants to match the Eating two-card layout.
+- **FH-1556.5:** Simplified the Nutrition landing header so Nutrition appears once.
+
+## Boundaries
+
+- No reorder thresholds.
+- No Shopping eligibility changes.
+- No Add Now workflow changes.
+- No unrelated UI changes.
+
+# Fizz Health v1.4.15.56 — Inventory Visibility & Add Now
+
+Build: 141556  
+Deployment: FH-20260730-141556
 
 ## Delivered
 
