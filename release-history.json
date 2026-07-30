@@ -2,6 +2,31 @@
   "format": "fizz-health-release-history",
   "releases": [
     {
+      "version": "1.4.15.64",
+      "name": "Recipe Navigation Stabilization",
+      "type": "Corrective release",
+      "issued_date": "2026-07-30",
+      "created_at": "2026-07-30T16:30:00-04:00",
+      "build": "141564",
+      "release_id": "FH-20260730-141564",
+      "schema_version": 90,
+      "stories": [
+        {
+          "id": "FH-1564.1",
+          "title": "Route Library and Search Recipe taps to the modern tabbed Item Detail page"
+        },
+        {
+          "id": "FH-1564.2",
+          "title": "Route Planner Recipe taps to the same modern tabbed Item Detail page"
+        },
+        {
+          "id": "FH-1564.3",
+          "title": "Remove migrated Recipe duplicates from legacy Meal routing while preserving serving conversion behavior"
+        }
+      ],
+      "known_issues": []
+    },
+    {
       "version": "1.4.15.63",
       "name": "Recipe Serving Conversion Stabilization",
       "type": "Corrective release",

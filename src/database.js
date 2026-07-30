@@ -1171,6 +1171,12 @@ const migrations=[
     VALUES ('1.4.15.63','2026-07-30','141563',89,'Recipe Serving Conversion Stabilization','2026-07-30T16:16:00-04:00');
     INSERT OR REPLACE INTO release_register(version,issued_date,build_id,schema_version,title,created_at)
     VALUES ('1.4.15.63','2026-07-30','141563',89,'Recipe Serving Conversion Stabilization','2026-07-30T16:16:00-04:00');
+  `,
+  {version:90,name:'recipe_navigation_stabilization',sql:`
+    INSERT OR REPLACE INTO release_metadata(version,release_date,build_id,schema_version,title,created_at)
+    VALUES ('1.4.15.64','2026-07-30','141564',90,'Recipe Navigation Stabilization','2026-07-30T16:30:00-04:00');
+    INSERT OR REPLACE INTO release_register(version,issued_date,build_id,schema_version,title,created_at)
+    VALUES ('1.4.15.64','2026-07-30','141564',90,'Recipe Navigation Stabilization','2026-07-30T16:30:00-04:00');
   `}
 ];
 

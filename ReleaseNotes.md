@@ -1,11 +1,11 @@
-# Fizz Health v1.4.15.63 — Recipe Serving Conversion Stabilization
+# Fizz Health v1.4.15.64 — Recipe Navigation Stabilization
 
-Corrective stabilization release based exclusively on v1.4.15.62.
+Corrective stabilization release based exclusively on v1.4.15.63.
 
 ## Completed
 
-- **FH-1563.1** — Recipe batch weight now resolves non-weight ingredient measures through the referenced Food common measure and gram-based serving definition.
-- **FH-1563.2** — Recipe nutrition and dependent serving calculations use the same live Food conversion path, preventing duplicated conversion logic and stale derived values.
-- **FH-1563.3** — Added regression coverage for Red Onion, imported/manual Foods, gram/ounce/pound/common-measure ingredients, live Food edits, and inventory non-mutation.
+- **FH-1564.1** — Library and Search Recipe entries open the modern tabbed Item Detail page instead of the legacy Meal editor.
+- **FH-1564.2** — Planner Recipe entries open the same modern tabbed Item Detail page.
+- **FH-1564.3** — Migrated Recipe duplicates are excluded from ordinary Meal routing; the v1.4.15.63 serving-to-gram, batch-weight, nutrition, and live-update behavior remains intact.
 
-No unrelated UI or feature changes are included.
+No unrelated UI, inventory, or feature changes are included.
