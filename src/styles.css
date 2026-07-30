@@ -2121,3 +2121,24 @@ body.food-library-active .food-library-page .list.foods{padding-bottom:calc(24px
 .library-shopping-placeholder{margin:24px 26px;min-height:240px;border:1px solid #34434a;border-radius:18px;background:#10181d;display:grid;place-content:center;justify-items:center;gap:10px;color:var(--muted)}
 .library-shopping-placeholder svg{width:42px;height:42px}
 .library-shopping-placeholder h3{margin:0;color:var(--text)}
+
+/* v1.4.15.51 — Library tabs and Shopping integration. */
+.food-library-page .meals-library-head{border-bottom:1px solid #34454c;margin-bottom:0;padding-bottom:14px}
+.library-folder-tabs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));margin:0 26px 10px;border:1px solid #34454c;border-radius:16px 16px 0 0;background:#10181d;overflow:hidden;align-items:stretch}
+.library-folder-tabs button{position:relative;min-height:58px;display:flex;align-items:center;justify-content:center;gap:8px;padding:12px 8px;border:0;border-right:1px solid #2b3940;border-radius:0;background:transparent;color:#b7c0c4;font-size:.95rem;font-weight:800}
+.library-folder-tabs button:last-child{border-right:0}
+.library-folder-tabs button+button{margin-left:0}
+.library-folder-tabs button.active{z-index:1;color:#a5ef38;background:transparent;border-color:#2b3940}
+.library-folder-tabs button.active::after{content:"";position:absolute;left:0;right:0;bottom:0;height:4px;background:#a5ef38;border-radius:0}
+.library-folder-tabs svg{width:22px;height:22px}
+.food-library-page>.search{margin-top:0;margin-bottom:10px}
+.food-library-page>.list{margin-top:0}
+.shopping-cart-content.embedded{padding:0 26px 24px}
+.shopping-cart-content.embedded .shopping-toolbar{margin:0 0 10px;gap:8px}
+.shopping-cart-content.embedded .shopping-image-progress{margin:0}
+.shopping-cart-content.embedded .shopping-retailer-groups{gap:10px}
+.shopping-cart-content.embedded .shopping-retailer-group{margin:0}
+.shopping-cart-content.embedded .shopping-retailer-group summary{padding-top:14px;padding-bottom:14px}
+.shopping-cart-content.embedded .shopping-product-list{gap:8px;padding-top:8px}
+.shopping-cart-content.embedded .shopping-empty{margin:0}
+@media(max-width:390px){.library-folder-tabs{margin-left:16px;margin-right:16px}.shopping-cart-content.embedded{padding-left:16px;padding-right:16px}.library-folder-tabs button{font-size:.9rem}}

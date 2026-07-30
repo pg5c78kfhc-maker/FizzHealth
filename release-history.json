@@ -2,6 +2,28 @@
   "format": "fizz-health-release-history",
   "releases": [
     {
+      "version": "1.4.15.51",
+      "name": "Library Tabs & Shopping Integration",
+      "title": "Library Tabs & Shopping Integration",
+      "type": "Navigation and presentation release",
+      "release_type": "Navigation and presentation release",
+      "release_date": "2026-07-29",
+      "issued_date": "2026-07-29",
+      "created_at": "2026-07-29T21:35:00-04:00",
+      "build": "141551",
+      "build_id": "141551",
+      "release_id": "FH-20260729-141551",
+      "deployment_id": "FH-20260729-141551",
+      "schema_version": 82,
+      "stories": [
+        "FH-1551.1",
+        "FH-1551.2",
+        "FH-1551.3",
+        "FH-1551.4",
+        "FH-1551.5"
+      ]
+    },
+    {
       "version": "1.4.15.50",
       "name": "Library Consolidation \u2014 Phase 1",
       "title": "Library Consolidation \u2014 Phase 1",
