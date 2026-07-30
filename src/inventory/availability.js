@@ -1,4 +1,4 @@
-import {convertQuantity} from '../nutrition/units.js';
+import {pantryAvailableQuantity} from './quantity.js';
 
 const key=value=>String(value??'').trim().toLowerCase();
 const recipeKey=value=>key(value).replace(/^recipe:/,'');
@@ -46,12 +46,8 @@ export function buildAvailabilityIndex({pantryRows=[],recipeRows=[],mealComponen
     if(!records)return true;
     const required=Number(amount)||0;
     if(required<=0)return records.some(row=>(Number(row.quantity)||0)>0);
-    let total=0;
-    for(const row of records){
-      const converted=convertQuantity(Number(row.quantity)||0,row.unit,unit);
-      if(converted!=null)total+=converted;
-    }
-    return total>=required;
+    const total=records.reduce((sum,row)=>sum+pantryAvailableQuantity(row,unit),0);
+    return total+1e-9>=required;
   };
   const recipeCanPrepare=(id,seen=new Set())=>{
     const recipeId=recipeKey(id);if(!recipeId||seen.has(recipeId))return false;

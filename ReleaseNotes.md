@@ -1,3 +1,19 @@
+# Fizz Health v1.4.15.66 — Availability Engine Stabilization
+
+Corrective stabilization release based exclusively on v1.4.15.65.
+
+## Completed
+
+- **FH-1566.1** — Correct tracked and untracked Recipe availability rules.
+- **FH-1566.2** — Normalize packaged Pantry inventory into the ingredient measurement unit.
+- **FH-1566.3** — Include sealed packages and open-package contents in availability totals.
+- **FH-1566.4** — Deduct packaged ingredient contents consistently when preparing batches.
+- **FH-1566.5** — Refresh Recipe Detail and Meal Planner availability from current Pantry data.
+
+No unrelated redesign or refactoring is included.
+
+---
+
 # Fizz Health v1.4.15.65 — Recipe Form & Availability Stabilization
 
 Corrective stabilization release based exclusively on v1.4.15.64.

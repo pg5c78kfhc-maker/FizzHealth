@@ -1,0 +1,15 @@
+Fizz Health v1.4.15.66 — Changed Files
+
+src/inventory/quantity.js
+src/inventory/availability.js
+src/main.jsx
+src/database.js
+tests/v141566-availability-engine-stabilization.test.js
+VERSION.json
+package.json
+package-lock.json
+public/sw.js
+release-history.json
+RELEASE-NOTES-1.4.15.66.md
+CHANGED-FILES-1.4.15.66.txt
+TEST-REPORT-1.4.15.66.md

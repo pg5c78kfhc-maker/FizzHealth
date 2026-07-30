@@ -1183,6 +1183,12 @@ const migrations=[
     VALUES ('1.4.15.65','2026-07-30','141565',91,'Recipe Form & Availability Stabilization','2026-07-30T17:45:00-04:00');
     INSERT OR REPLACE INTO release_register(version,issued_date,build_id,schema_version,title,created_at)
     VALUES ('1.4.15.65','2026-07-30','141565',91,'Recipe Form & Availability Stabilization','2026-07-30T17:45:00-04:00');
+  `},
+  {version:92,name:'availability_engine_stabilization',sql:`
+    INSERT OR REPLACE INTO release_metadata(version,release_date,build_id,schema_version,title,created_at)
+    VALUES ('1.4.15.66','2026-07-30','141566',92,'Availability Engine Stabilization','2026-07-30T17:58:00-04:00');
+    INSERT OR REPLACE INTO release_register(version,issued_date,build_id,schema_version,title,created_at)
+    VALUES ('1.4.15.66','2026-07-30','141566',92,'Availability Engine Stabilization','2026-07-30T17:58:00-04:00');
   `}
 ];
 
