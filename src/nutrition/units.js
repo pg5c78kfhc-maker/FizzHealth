@@ -33,6 +33,49 @@ export function convertQuantity(amount,fromUnit,toUnit){
   return null;
 }
 
+
+const normalizedMeasure=value=>String(value??'').trim().toLowerCase().replace(/\([^)]*\)/g,' ').replace(/[^a-z0-9.]+/g,' ').replace(/\s+/g,' ').trim();
+
+function parseCommonMeasure(value){
+  const text=normalizedMeasure(value);
+  if(!text)return null;
+  const match=text.match(/^(\d+(?:\.\d+)?|\.\d+)\s+(.+)$/);
+  if(!match)return {amount:1,unit:text};
+  const amount=Number(match[1]);
+  return Number.isFinite(amount)&&amount>0?{amount,unit:match[2]}:null;
+}
+
+function measureMatches(requested,common){
+  const a=normalizedMeasure(requested),b=normalizedMeasure(common);
+  if(!a||!b)return false;
+  if(a===b)return true;
+  const at=new Set(a.split(' ')),bt=new Set(b.split(' '));
+  return [...at].every(token=>bt.has(token))||[...bt].every(token=>at.has(token));
+}
+
+export function scaleFoodQuantity({amount,amountUnit,food}){
+  const servingAmount=Number(food?.default_serving);
+  const servingUnit=food?.unit;
+  if(!Number.isFinite(servingAmount)||servingAmount<=0)return {ok:false,reason:'Food serving size is missing or invalid.'};
+  const direct=convertQuantity(amount,amountUnit,servingUnit);
+  if(direct!=null)return {ok:true,ratio:direct/servingAmount,convertedAmount:direct,method:'direct'};
+  const common=parseCommonMeasure(food?.serving_description);
+  if(common&&measureMatches(amountUnit,common.unit)){
+    const value=Number(amount);
+    if(!Number.isFinite(value))return {ok:false,reason:'Ingredient quantity is missing or invalid.'};
+    return {ok:true,ratio:value/common.amount,convertedAmount:value,method:'common_measure'};
+  }
+  return {ok:false,reason:`Cannot convert ${amountUnit||'unknown unit'} to ${servingUnit||'unknown unit'} using the Food serving definition.`};
+}
+
+export function foodQuantityToGrams({amount,amountUnit,food}){
+  const scaling=scaleFoodQuantity({amount,amountUnit,food});
+  if(!scaling.ok)return scaling;
+  const servingGrams=convertQuantity(food?.default_serving,food?.unit,'g');
+  if(servingGrams==null)return {ok:false,reason:'Food serving definition does not resolve to grams.'};
+  return {...scaling,grams:servingGrams*scaling.ratio};
+}
+
 export function scaleForServing({amount,amountUnit,servingAmount,servingUnit}){
   const serving=Number(servingAmount);
   if(!Number.isFinite(serving)||serving<=0)return {ok:false,reason:'Food serving size is missing or invalid.'};

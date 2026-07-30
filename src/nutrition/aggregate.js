@@ -1,5 +1,5 @@
 import {NUTRIENT_KEYS} from './registry.js';
-import {scaleForServing} from './units.js';
+import {scaleFoodQuantity} from './units.js';
 import {buildRecipeSnapshot} from './recipe.js';
 
 const finite=value=>Number.isFinite(Number(value))?Number(value):0;
@@ -79,7 +79,7 @@ export function getMealNutrition(runQuery,mealId){
    if(!resolved.food){issues.push(resolved.reason);resolvedComponents.push({...component,resolved:false,issue:resolved.reason});continue;}
    const food=resolved.food;
    if(Number(food.nutrition_known)!==1){const issue=`${component.component_name}: food nutrition is unknown.`;issues.push(issue);resolvedComponents.push({...component,resolved:false,issue});continue;}
-   const scaling=scaleForServing({amount,amountUnit:component.unit||food.unit,servingAmount:food.default_serving,servingUnit:food.unit||component.unit});
+   const scaling=scaleFoodQuantity({amount,amountUnit:component.unit||food.unit,food});
    if(!scaling.ok){const issue=`${component.component_name}: ${scaling.reason}`;issues.push(issue);resolvedComponents.push({...component,resolved:false,issue});continue;}
    nutrition=Object.fromEntries(NUTRIENT_KEYS.map(key=>[key,finite(food[key])*scaling.ratio]));
   }else{

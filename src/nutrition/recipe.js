@@ -1,5 +1,5 @@
 import {NUTRIENT_KEYS} from './registry.js';
-import {scaleForServing} from './units.js';
+import {scaleFoodQuantity} from './units.js';
 
 const finite=value=>Number.isFinite(Number(value))?Number(value):0;
 const normalizedName=value=>String(value??'').trim().toLowerCase().replace(/[^a-z0-9]+/g,' ').replace(/\s+/g,' ').trim();
@@ -32,7 +32,7 @@ export function buildRecipeSnapshot(recipeRows,foods){
     if(!Number.isFinite(amount)||amount<=0){const reason=`${row.ingredient_name}: quantity must be greater than zero.`;issues.push(reason);ingredients.push({ingredient_id:row.ingredient_id||food.food_id,ingredient_name:row.ingredient_name,food_id:food.food_id,amount:Number(row.amount)||0,unit:row.unit||food.unit||'',resolved:false,issue:reason});continue;}
     const storedUnit=row.unit||food.unit||'';
     const baseIngredient={ingredient_id:row.ingredient_id||food.food_id,ingredient_name:row.ingredient_name,food_id:food.food_id,food_name:food.name,amount,resolved_amount:amount,unit:storedUnit,resolved_unit:storedUnit};
-    const scaling=scaleForServing({amount:row.amount,amountUnit:storedUnit,servingAmount:food.default_serving,servingUnit:food.unit||row.unit});
+    const scaling=scaleFoodQuantity({amount:row.amount,amountUnit:storedUnit,food});
     if(!scaling.ok){issues.push(`${row.ingredient_name}: ${scaling.reason}`);ingredients.push({...baseIngredient,resolved:false,issue:scaling.reason});continue;}
     const availableKeys=NUTRIENT_KEYS.filter(key=>food[key]!==null&&food[key]!==undefined&&food[key]!==''&&Number.isFinite(Number(food[key]))&&Number(food[key])>=0);
     if(!availableKeys.length){const reason=`${row.ingredient_name}: food nutrition is unknown.`;issues.push(reason);ingredients.push({...baseIngredient,resolved:false,issue:reason});continue;}

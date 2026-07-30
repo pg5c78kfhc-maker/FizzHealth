@@ -24,14 +24,14 @@ import {normalizeSqlValue,auditValue} from './exchange/persistence';
 import {createStartupDiagnostics,scheduleDeferredWork,withStartupTimeout} from './startup';
 import {formatCalories,formatGrams,formatMilligrams,formatNutritionValue} from './nutrition/format';
 import {buildAvailabilityIndex} from './inventory/availability';
-import {canonicalUnit,convertQuantity} from './nutrition/units';
+import {canonicalUnit,convertQuantity,foodQuantityToGrams} from './nutrition/units';
 import {buildFoodEnrichmentExchange,buildNewFoodExchange,buildLogOnceExchange,normalizeExchangeJson as normalizeUniversalJson,parseExchangeJson,restaurantMenuItems,validateRestaurantExchange,validateUniversalExchange,foodProposal,mealProposal,changedFoodFields,serializeJsonBackedFields} from './exchange';
 import './styles.css';
-const VERSION='1.4.15.62';
+const VERSION='1.4.15.63';
 const RELEASE_DATE='2026-07-30';
-const BUILD_ID='141562';
-const DEPLOYMENT_ID='FH-20260730-141562';
-const RELEASE_CREATED_AT='2026-07-30T15:38:00-04:00';
+const BUILD_ID='141563';
+const DEPLOYMENT_ID='FH-20260730-141563';
+const RELEASE_CREATED_AT='2026-07-30T16:16:00-04:00';
 const NUTRITION_RECORD_SECTIONS=[
  {title:'Macronutrients',keys:['calories','protein','carbs','fiber','fat','saturated_fat','trans_fat','cholesterol','sodium','potassium','total_sugar','added_sugar','monounsaturated_fat','polyunsaturated_fat','omega_3']},
  {title:'Vitamins & Minerals',keys:['calcium','iron','magnesium','vitamin_d','vitamin_c']},
@@ -444,12 +444,17 @@ async function backfillCurrentRecipeMealsOnce(){
 }
 function recipeSnapshot(recipeId){return recipeSnapshotFrom(query,recipeId)}
 // Canonical recipe log payload includes saturated_fat,cholesterol,notes for both planned and consumed records.
-function recipeComponentBatchWeight(components=[]){
+function recipeComponentBatchWeight(components=[],foods=[]){
  let grams=0,unresolved=[];
  for(const component of components){
-  const converted=convertQuantity(component.amount,component.unit,'g');
-  if(converted==null)unresolved.push(component.component_name||'Unnamed ingredient');
-  else grams+=converted;
+  const direct=convertQuantity(component.amount,component.unit,'g');
+  if(direct!=null){grams+=direct;continue;}
+  const id=String(component.component_id||'').trim().toUpperCase();
+  const name=String(component.component_name||'').trim().toLowerCase();
+  const food=foods.find(row=>id&&String(row.food_id||'').trim().toUpperCase()===id)||foods.find(row=>name&&String(row.name||'').trim().toLowerCase()===name);
+  const resolved=food?foodQuantityToGrams({amount:component.amount,amountUnit:component.unit,food}):null;
+  if(!resolved?.ok)unresolved.push(component.component_name||'Unnamed ingredient');
+  else grams+=resolved.grams;
  }
  return {grams,unresolved,complete:unresolved.length===0};
 }
@@ -572,7 +577,7 @@ function ModernRecipeDetails({item,onClose,onSaved}){
  const foods=optionalQuery('SELECT * FROM foods WHERE COALESCE(archived,0)=0 ORDER BY name COLLATE NOCASE');
  const recipes=optionalQuery("SELECT r.recipe_id,MAX(r.recipe_name) recipe_name FROM recipes r WHERE COALESCE(r.archived,0)=0 AND r.recipe_id<>? GROUP BY r.recipe_id ORDER BY recipe_name COLLATE NOCASE",[recipeId]);
  const full=canonical?getMealNutrition(query,canonical.meal_id):null;
- const weight=recipeComponentBatchWeight(components),servingSize=Math.max(.01,finite(canonical?.serving_size)||100),servingUnit=canonical?.serving_unit||'g';
+ const weight=recipeComponentBatchWeight(components,foods),servingSize=Math.max(.01,finite(canonical?.serving_size)||100),servingUnit=canonical?.serving_unit||'g';
  const servingGrams=convertQuantity(servingSize,servingUnit,'g'),calculatedServings=weight.complete&&weight.grams>0&&servingGrams>0?weight.grams/servingGrams:null;
  const batch=Math.max(.01,calculatedServings||finite(canonical?.servings_per_batch)||1),perServing=Object.fromEntries(NUTRIENT_KEYS.map(k=>[k,finite(full?.nutrition?.[k])/batch]));
  const pantry=optionalQuery("SELECT * FROM pantry WHERE food_id=? AND COALESCE(discontinued,0)=0 ORDER BY id DESC",[`recipe:${recipeId}`]);
