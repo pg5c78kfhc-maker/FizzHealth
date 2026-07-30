@@ -1,23 +1,24 @@
-# Fizz Health v1.4.15.51 — Library Tabs & Shopping Integration
+# Fizz Health v1.4.15.52 — Library Shopping Polish
 
 Issued: 2026-07-29  
-Build: 141551  
-Deployment: FH-20260729-141551
+Build: 141552  
+Deployment: FH-20260729-141552
 
 ## Scope delivered
 
-- Restyled Library Food and Shopping tabs to match the compact Food Record tab treatment.
-- Added divider structure beneath the Library header and around the tab area.
-- Tightened spacing between the header, tabs, search, categories, and Shopping content.
-- Moved the existing Shopping Cart content into Library → Shopping.
-- Preserved Refresh Images, progress status, retailer groups, item counts, expand/collapse, product cards, and product links.
-- Removed the duplicate Shopping Cart landing presentation from the embedded tab.
-- Preserved Food tab search, categories, cards, Favorites, Create, inventory styling, and editing behavior.
+- Kept the Library header, tabs, and Shopping search fixed while only the Shopping results scroll.
+- Added Shopping search using the same visual treatment as Food search.
+- Moved Refresh Images to the bottom of Shopping content.
+- Matched retailer headers to Food category rows, including typography, counts, chevrons, borders, and spacing.
+- Removed the retailer storefront icon.
+- Collapsed retailer groups by default.
+- Applied the existing Food-tab out-of-stock card treatment to individual Shopping items.
+- Preserved retailer grouping, image refresh, product links, and existing shopping rules.
 
 ## Stories
 
-- FH-1551.1
-- FH-1551.2
-- FH-1551.3
-- FH-1551.4
-- FH-1551.5
+- FH-1552.1
+- FH-1552.2
+- FH-1552.3
+- FH-1552.4
+- FH-1552.5

@@ -2,6 +2,28 @@
   "format": "fizz-health-release-history",
   "releases": [
     {
+      "version": "1.4.15.52",
+      "name": "Library Shopping Polish",
+      "type": "Corrective and presentation release",
+      "build": "141552",
+      "stories": [
+        "FH-1552.1",
+        "FH-1552.2",
+        "FH-1552.3",
+        "FH-1552.4",
+        "FH-1552.5"
+      ],
+      "title": "Library Shopping Polish",
+      "release_type": "Corrective and presentation release",
+      "release_date": "2026-07-29",
+      "issued_date": "2026-07-29",
+      "created_at": "2026-07-29T22:05:00-04:00",
+      "build_id": "141552",
+      "release_id": "FH-20260729-141552",
+      "deployment_id": "FH-20260729-141552",
+      "schema_version": 82
+    },
+    {
       "version": "1.4.15.51",
       "name": "Library Tabs & Shopping Integration",
       "title": "Library Tabs & Shopping Integration",
