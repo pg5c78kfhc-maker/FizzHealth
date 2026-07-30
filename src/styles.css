@@ -2190,3 +2190,8 @@ body.food-library-active .food-library-page .list.foods{padding-bottom:calc(24px
 .shopping-shared-card-button .shopping-stock-status{color:#a5ef38;font-weight:800;text-transform:uppercase;letter-spacing:.04em}
 .shopping-shared-card-button:active .shared-food-library-card{filter:brightness(1.08)}
 .shopping-cart-content.embedded .shopping-toolbar{margin-left:0;margin-right:0}
+
+/* v1.4.15.55 — immediate consume action in Add to Meals */
+.planner-occasion-options .add-now-button{background:#29392d;border-color:#6f8b78;color:#fff}
+.planner-occasion-options .add-now-button:hover,.planner-occasion-options .add-now-button:focus-visible{background:#314638;border-color:#9ae83b}
+.planner-occasion-options .add-now-button:disabled{opacity:.65}

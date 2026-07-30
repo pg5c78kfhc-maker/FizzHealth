@@ -1,3 +1,22 @@
+# Fizz Health v1.4.15.55 — Inventory Visibility & Add Now
+
+Build: 141555  
+Deployment: FH-20260730-141555
+
+## Delivered
+
+- **FH-1555.1:** Food cards preserve the existing serving basis and append calculated inventory availability in brackets.
+- **FH-1555.2:** Add to Meals now includes a highlighted Add Now button beside Beverage.
+- **FH-1555.3:** Add Now logs the selected portion immediately to Consumed using the current date and time and decrements inventory through the existing source-aware inventory pipeline.
+- **FH-1555.4:** The Add to Meals screen closes after success and the standard Undo snackbar can remove the consumed record and restore inventory.
+- **FH-1555.5:** The action is disabled while saving to prevent duplicate submission.
+
+## Boundaries
+
+- No database schema changes.
+- No changes to Proposed or meal-planning behavior.
+- No changes to inventory eligibility or depletion rules beyond the existing normal consumption path.
+
 # Fizz Health v1.4.15.54 — Shopping Eligibility and Food-Link Integrity
 
 Build: 141554  
