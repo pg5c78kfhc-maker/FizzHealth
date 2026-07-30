@@ -1,24 +1,22 @@
-# Fizz Health v1.4.15.52 — Library Shopping Polish
+# Fizz Health v1.4.15.53 — Shared Shopping and Food Cards
 
-Issued: 2026-07-29  
-Build: 141552  
-Deployment: FH-20260729-141552
+Issued: 2026-07-30  
+Build: 141553  
+Deployment: FH-20260730-141553
 
 ## Scope delivered
 
-- Kept the Library header, tabs, and Shopping search fixed while only the Shopping results scroll.
-- Added Shopping search using the same visual treatment as Food search.
-- Moved Refresh Images to the bottom of Shopping content.
-- Matched retailer headers to Food category rows, including typography, counts, chevrons, borders, and spacing.
-- Removed the retailer storefront icon.
-- Collapsed retailer groups by default.
-- Applied the existing Food-tab out-of-stock card treatment to individual Shopping items.
-- Preserved retailer grouping, image refresh, product links, and existing shopping rules.
+- Matched Shopping retailer sections to the exact Food category content width.
+- Replaced the obsolete Shopping-specific card renderer with the shared Food library card presentation.
+- Matched Shopping item rounded corners, spacing, typography, inventory color treatment, and pencil placement to Food cards.
+- Made Shopping card taps open the standard Food Information system for the linked food record.
+- Preserved Shopping search, retailer grouping, item counts, collapsed defaults, image refresh, product-link data, and existing eligibility rules.
+- Made no database or inventory-rule changes.
 
 ## Stories
 
-- FH-1552.1
-- FH-1552.2
-- FH-1552.3
-- FH-1552.4
-- FH-1552.5
+- FH-1553.1
+- FH-1553.2
+- FH-1553.3
+- FH-1553.4
+- FH-1553.5

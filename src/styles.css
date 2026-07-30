@@ -2166,3 +2166,27 @@ body.food-library-active .food-library-page .list.foods{padding-bottom:calc(24px
 .shopping-cart-content.embedded .shopping-image-progress{text-align:center}
 .shopping-cart-content.embedded .shopping-empty{margin:0}
 @media(max-width:390px){.shopping-cart-content.embedded{padding-left:16px;padding-right:16px}}
+
+/* v1.4.15.53 — shared Shopping/Food cards and exact Library width alignment. */
+.shopping-cart-content.embedded{padding-left:0;padding-right:0}
+.shopping-cart-content.embedded .shopping-retailer-groups{width:100%;box-sizing:border-box}
+.shopping-cart-content.embedded .shopping-product-list{gap:0;padding:0 0 8px;border-top:1px solid rgba(255,255,255,.1)}
+.shopping-shared-card-button{appearance:none;display:block;width:100%;padding:0;border:0;background:transparent;color:inherit;text-align:left;font:inherit}
+.shopping-shared-card-button+.shopping-shared-card-button{margin-top:0}
+.shopping-shared-card-button .shared-food-library-card{width:100%;border-radius:18px!important;margin:0;box-sizing:border-box}
+.shopping-shared-card-button .shared-food-library-card span{display:block}
+.shopping-shared-card-button .shopping-stock-status{color:#a5ef38;font-weight:800;text-transform:uppercase;letter-spacing:.04em}
+.shopping-shared-card-button:active .shared-food-library-card{filter:brightness(1.08)}
+.shopping-cart-content.embedded .shopping-toolbar{margin-left:0;margin-right:0}
+
+/* v1.4.15.53 — shared Shopping/Food cards and exact Library width alignment. */
+.shopping-cart-content.embedded{padding-left:0;padding-right:0}
+.shopping-cart-content.embedded .shopping-retailer-groups{width:100%;box-sizing:border-box}
+.shopping-cart-content.embedded .shopping-product-list{gap:0;padding:0 0 8px;border-top:1px solid rgba(255,255,255,.1)}
+.shopping-shared-card-button{appearance:none;display:block;width:100%;padding:0;border:0;background:transparent;color:inherit;text-align:left;font:inherit}
+.shopping-shared-card-button+.shopping-shared-card-button{margin-top:0}
+.shopping-shared-card-button .shared-food-library-card{width:100%;border-radius:18px!important;margin:0;box-sizing:border-box}
+.shopping-shared-card-button .shared-food-library-card span{display:block}
+.shopping-shared-card-button .shopping-stock-status{color:#a5ef38;font-weight:800;text-transform:uppercase;letter-spacing:.04em}
+.shopping-shared-card-button:active .shared-food-library-card{filter:brightness(1.08)}
+.shopping-cart-content.embedded .shopping-toolbar{margin-left:0;margin-right:0}

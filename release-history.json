@@ -2,6 +2,28 @@
   "format": "fizz-health-release-history",
   "releases": [
     {
+      "version": "1.4.15.53",
+      "name": "Shared Shopping and Food Cards",
+      "title": "Shared Shopping and Food Cards",
+      "type": "Architecture and presentation release",
+      "release_type": "Architecture and presentation release",
+      "release_date": "2026-07-30",
+      "issued_date": "2026-07-30",
+      "created_at": "2026-07-30T06:40:00-04:00",
+      "build": "141553",
+      "build_id": "141553",
+      "release_id": "FH-20260730-141553",
+      "deployment_id": "FH-20260730-141553",
+      "schema_version": 82,
+      "stories": [
+        "FH-1553.1",
+        "FH-1553.2",
+        "FH-1553.3",
+        "FH-1553.4",
+        "FH-1553.5"
+      ]
+    },
+    {
       "version": "1.4.15.52",
       "name": "Library Shopping Polish",
       "type": "Corrective and presentation release",
