@@ -2,6 +2,29 @@
   "format": "fizz-health-release-history",
   "releases": [
     {
+      "version": "1.4.15.75",
+      "name": "Inventory Edit Form Alignment",
+      "type": "Corrective release",
+      "created": "2026-07-31T08:15:00-04:00",
+      "build": "141575",
+      "release_id": "FH-20260731-141575",
+      "stories": [
+        [
+          "FH-1575.1",
+          "Align Inventory edit fields, wording, and order with the Inventory information tab"
+        ],
+        [
+          "FH-1575.2",
+          "Remove obsolete duplicate package fields from the active Inventory editor"
+        ],
+        [
+          "FH-1575.3",
+          "Preserve serving size, package, quantity, storage, and best-by persistence for Foods"
+        ]
+      ],
+      "known_issues": []
+    },
+    {
       "version": "1.4.15.74",
       "name": "Unified Food and Recipe Logging Corrective",
       "type": "Blocking corrective release",
