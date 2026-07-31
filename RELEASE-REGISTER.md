@@ -1,3 +1,21 @@
+# Fizz Health v1.4.15.86
+
+## Canonical Nutrient Schema Reconciliation
+
+Version: 1.4.15.86  
+Build: 141586  
+Deployment: FH-20260731-141586  
+Date: July 31, 2026  
+Schema: 96
+
+### Completed
+
+- Reconciled the full canonical nutrient contract across foods, consumed meals, planned meals, restaurant meals, meal definitions, and meal-component nutrition snapshots.
+- Corrected the schema target and repair marker to version 96.
+- Hardened existing Prepared Recipe food updates by writing only nutrient columns verified in the live table schema.
+
+---
+
 # Fizz Health v1.4.15.85
 
 ## Prepared Recipe Save & Footer Corrective

@@ -1,9 +1,10 @@
 import initSqlJs from 'sql.js';
 import wasmUrl from 'sql.js/dist/sql-wasm.wasm?url';
+import {NUTRIENT_KEYS} from './nutrition/registry.js';
 
 const DB_KEY='fizz-health-sqlite-v1';
 const STORAGE_DB='FizzHealthStorage';
-const TARGET_SCHEMA_VERSION=94;
+const TARGET_SCHEMA_VERSION=96;
 let SQL, db;
 
 const migrations=[
@@ -1207,15 +1208,159 @@ const migrations=[
     VALUES ('1.4.15.71','2026-07-31','141571',96,'Recipe, Inventory & Enrichment Corrective','2026-07-31T01:35:00-04:00');
     INSERT OR REPLACE INTO release_register(version,issued_date,build_id,schema_version,title,created_at)
     VALUES ('1.4.15.71','2026-07-31','141571',96,'Recipe, Inventory & Enrichment Corrective','2026-07-31T01:35:00-04:00');
+   `},
+  {version:96,name:'canonical_nutrient_schema_reconciliation',sql:`
+    ALTER TABLE foods ADD COLUMN calories REAL;
+    ALTER TABLE foods ADD COLUMN protein REAL;
+    ALTER TABLE foods ADD COLUMN carbs REAL;
+    ALTER TABLE foods ADD COLUMN fiber REAL;
+    ALTER TABLE foods ADD COLUMN fat REAL;
+    ALTER TABLE foods ADD COLUMN saturated_fat REAL;
+    ALTER TABLE foods ADD COLUMN trans_fat REAL;
+    ALTER TABLE foods ADD COLUMN cholesterol REAL;
+    ALTER TABLE foods ADD COLUMN sodium REAL;
+    ALTER TABLE foods ADD COLUMN potassium REAL;
+    ALTER TABLE foods ADD COLUMN total_sugar REAL;
+    ALTER TABLE foods ADD COLUMN added_sugar REAL;
+    ALTER TABLE foods ADD COLUMN monounsaturated_fat REAL;
+    ALTER TABLE foods ADD COLUMN polyunsaturated_fat REAL;
+    ALTER TABLE foods ADD COLUMN omega_3 REAL;
+    ALTER TABLE foods ADD COLUMN calcium REAL;
+    ALTER TABLE foods ADD COLUMN iron REAL;
+    ALTER TABLE foods ADD COLUMN magnesium REAL;
+    ALTER TABLE foods ADD COLUMN vitamin_d REAL;
+    ALTER TABLE foods ADD COLUMN vitamin_c REAL;
+    ALTER TABLE foods ADD COLUMN alcohol REAL;
+    ALTER TABLE foods ADD COLUMN caffeine REAL;
+    ALTER TABLE meals ADD COLUMN calories REAL;
+    ALTER TABLE meals ADD COLUMN protein REAL;
+    ALTER TABLE meals ADD COLUMN carbs REAL;
+    ALTER TABLE meals ADD COLUMN fiber REAL;
+    ALTER TABLE meals ADD COLUMN fat REAL;
+    ALTER TABLE meals ADD COLUMN saturated_fat REAL;
+    ALTER TABLE meals ADD COLUMN trans_fat REAL;
+    ALTER TABLE meals ADD COLUMN cholesterol REAL;
+    ALTER TABLE meals ADD COLUMN sodium REAL;
+    ALTER TABLE meals ADD COLUMN potassium REAL;
+    ALTER TABLE meals ADD COLUMN total_sugar REAL;
+    ALTER TABLE meals ADD COLUMN added_sugar REAL;
+    ALTER TABLE meals ADD COLUMN monounsaturated_fat REAL;
+    ALTER TABLE meals ADD COLUMN polyunsaturated_fat REAL;
+    ALTER TABLE meals ADD COLUMN omega_3 REAL;
+    ALTER TABLE meals ADD COLUMN calcium REAL;
+    ALTER TABLE meals ADD COLUMN iron REAL;
+    ALTER TABLE meals ADD COLUMN magnesium REAL;
+    ALTER TABLE meals ADD COLUMN vitamin_d REAL;
+    ALTER TABLE meals ADD COLUMN vitamin_c REAL;
+    ALTER TABLE meals ADD COLUMN alcohol REAL;
+    ALTER TABLE meals ADD COLUMN caffeine REAL;
+    ALTER TABLE planned_meals ADD COLUMN calories REAL;
+    ALTER TABLE planned_meals ADD COLUMN protein REAL;
+    ALTER TABLE planned_meals ADD COLUMN carbs REAL;
+    ALTER TABLE planned_meals ADD COLUMN fiber REAL;
+    ALTER TABLE planned_meals ADD COLUMN fat REAL;
+    ALTER TABLE planned_meals ADD COLUMN saturated_fat REAL;
+    ALTER TABLE planned_meals ADD COLUMN trans_fat REAL;
+    ALTER TABLE planned_meals ADD COLUMN cholesterol REAL;
+    ALTER TABLE planned_meals ADD COLUMN sodium REAL;
+    ALTER TABLE planned_meals ADD COLUMN potassium REAL;
+    ALTER TABLE planned_meals ADD COLUMN total_sugar REAL;
+    ALTER TABLE planned_meals ADD COLUMN added_sugar REAL;
+    ALTER TABLE planned_meals ADD COLUMN monounsaturated_fat REAL;
+    ALTER TABLE planned_meals ADD COLUMN polyunsaturated_fat REAL;
+    ALTER TABLE planned_meals ADD COLUMN omega_3 REAL;
+    ALTER TABLE planned_meals ADD COLUMN calcium REAL;
+    ALTER TABLE planned_meals ADD COLUMN iron REAL;
+    ALTER TABLE planned_meals ADD COLUMN magnesium REAL;
+    ALTER TABLE planned_meals ADD COLUMN vitamin_d REAL;
+    ALTER TABLE planned_meals ADD COLUMN vitamin_c REAL;
+    ALTER TABLE planned_meals ADD COLUMN alcohol REAL;
+    ALTER TABLE planned_meals ADD COLUMN caffeine REAL;
+    ALTER TABLE restaurant_meals ADD COLUMN calories REAL;
+    ALTER TABLE restaurant_meals ADD COLUMN protein REAL;
+    ALTER TABLE restaurant_meals ADD COLUMN carbs REAL;
+    ALTER TABLE restaurant_meals ADD COLUMN fiber REAL;
+    ALTER TABLE restaurant_meals ADD COLUMN fat REAL;
+    ALTER TABLE restaurant_meals ADD COLUMN saturated_fat REAL;
+    ALTER TABLE restaurant_meals ADD COLUMN trans_fat REAL;
+    ALTER TABLE restaurant_meals ADD COLUMN cholesterol REAL;
+    ALTER TABLE restaurant_meals ADD COLUMN sodium REAL;
+    ALTER TABLE restaurant_meals ADD COLUMN potassium REAL;
+    ALTER TABLE restaurant_meals ADD COLUMN total_sugar REAL;
+    ALTER TABLE restaurant_meals ADD COLUMN added_sugar REAL;
+    ALTER TABLE restaurant_meals ADD COLUMN monounsaturated_fat REAL;
+    ALTER TABLE restaurant_meals ADD COLUMN polyunsaturated_fat REAL;
+    ALTER TABLE restaurant_meals ADD COLUMN omega_3 REAL;
+    ALTER TABLE restaurant_meals ADD COLUMN calcium REAL;
+    ALTER TABLE restaurant_meals ADD COLUMN iron REAL;
+    ALTER TABLE restaurant_meals ADD COLUMN magnesium REAL;
+    ALTER TABLE restaurant_meals ADD COLUMN vitamin_d REAL;
+    ALTER TABLE restaurant_meals ADD COLUMN vitamin_c REAL;
+    ALTER TABLE restaurant_meals ADD COLUMN alcohol REAL;
+    ALTER TABLE restaurant_meals ADD COLUMN caffeine REAL;
+    ALTER TABLE meal_definitions ADD COLUMN calories REAL;
+    ALTER TABLE meal_definitions ADD COLUMN protein REAL;
+    ALTER TABLE meal_definitions ADD COLUMN carbs REAL;
+    ALTER TABLE meal_definitions ADD COLUMN fiber REAL;
+    ALTER TABLE meal_definitions ADD COLUMN fat REAL;
+    ALTER TABLE meal_definitions ADD COLUMN saturated_fat REAL;
+    ALTER TABLE meal_definitions ADD COLUMN trans_fat REAL;
+    ALTER TABLE meal_definitions ADD COLUMN cholesterol REAL;
+    ALTER TABLE meal_definitions ADD COLUMN sodium REAL;
+    ALTER TABLE meal_definitions ADD COLUMN potassium REAL;
+    ALTER TABLE meal_definitions ADD COLUMN total_sugar REAL;
+    ALTER TABLE meal_definitions ADD COLUMN added_sugar REAL;
+    ALTER TABLE meal_definitions ADD COLUMN monounsaturated_fat REAL;
+    ALTER TABLE meal_definitions ADD COLUMN polyunsaturated_fat REAL;
+    ALTER TABLE meal_definitions ADD COLUMN omega_3 REAL;
+    ALTER TABLE meal_definitions ADD COLUMN calcium REAL;
+    ALTER TABLE meal_definitions ADD COLUMN iron REAL;
+    ALTER TABLE meal_definitions ADD COLUMN magnesium REAL;
+    ALTER TABLE meal_definitions ADD COLUMN vitamin_d REAL;
+    ALTER TABLE meal_definitions ADD COLUMN vitamin_c REAL;
+    ALTER TABLE meal_definitions ADD COLUMN alcohol REAL;
+    ALTER TABLE meal_definitions ADD COLUMN caffeine REAL;
+    ALTER TABLE meal_components ADD COLUMN calories REAL;
+    ALTER TABLE meal_components ADD COLUMN protein REAL;
+    ALTER TABLE meal_components ADD COLUMN carbs REAL;
+    ALTER TABLE meal_components ADD COLUMN fiber REAL;
+    ALTER TABLE meal_components ADD COLUMN fat REAL;
+    ALTER TABLE meal_components ADD COLUMN saturated_fat REAL;
+    ALTER TABLE meal_components ADD COLUMN trans_fat REAL;
+    ALTER TABLE meal_components ADD COLUMN cholesterol REAL;
+    ALTER TABLE meal_components ADD COLUMN sodium REAL;
+    ALTER TABLE meal_components ADD COLUMN potassium REAL;
+    ALTER TABLE meal_components ADD COLUMN total_sugar REAL;
+    ALTER TABLE meal_components ADD COLUMN added_sugar REAL;
+    ALTER TABLE meal_components ADD COLUMN monounsaturated_fat REAL;
+    ALTER TABLE meal_components ADD COLUMN polyunsaturated_fat REAL;
+    ALTER TABLE meal_components ADD COLUMN omega_3 REAL;
+    ALTER TABLE meal_components ADD COLUMN calcium REAL;
+    ALTER TABLE meal_components ADD COLUMN iron REAL;
+    ALTER TABLE meal_components ADD COLUMN magnesium REAL;
+    ALTER TABLE meal_components ADD COLUMN vitamin_d REAL;
+    ALTER TABLE meal_components ADD COLUMN vitamin_c REAL;
+    ALTER TABLE meal_components ADD COLUMN alcohol REAL;
+    ALTER TABLE meal_components ADD COLUMN caffeine REAL;
+    INSERT OR REPLACE INTO release_metadata(version,release_date,build_id,schema_version,title,created_at)
+    VALUES ('1.4.15.86','2026-07-31','141586',96,'Canonical Nutrient Schema Reconciliation','2026-07-31T18:43:00-04:00');
+    INSERT OR REPLACE INTO release_register(version,issued_date,build_id,schema_version,title,created_at)
+    VALUES ('1.4.15.86','2026-07-31','141586',96,'Canonical Nutrient Schema Reconciliation','2026-07-31T18:43:00-04:00');
   `}
 ];
+const canonicalNutrientColumns=Object.freeze(Object.fromEntries(NUTRIENT_KEYS.map(key=>[key,'REAL'])));
 
 const canonicalSchema={
   foods:{
     create:`CREATE TABLE IF NOT EXISTS foods (food_id TEXT PRIMARY KEY, name TEXT, category TEXT, default_serving REAL, unit TEXT, calories REAL, protein REAL, carbs REAL, fiber REAL, fat REAL, saturated_fat REAL, sodium REAL, potassium REAL, notes TEXT)`,
-    columns:{food_id:'TEXT',name:'TEXT',category:'TEXT',default_serving:'REAL',unit:'TEXT',calories:'REAL',protein:'REAL',carbs:'REAL',fiber:'REAL',fat:'REAL',saturated_fat:'REAL',sodium:'REAL',potassium:'REAL',notes:'TEXT',nutrition_known:'INTEGER DEFAULT 0',archived:'INTEGER DEFAULT 0',archived_at:'TEXT',classification:"TEXT DEFAULT 'ingredient'",usage_designation:"TEXT DEFAULT 'component'",ingredient_only:'INTEGER DEFAULT 0',brand:'TEXT',manufacturer:'TEXT',barcode:'TEXT',serving_description:'TEXT',servings_per_container:'REAL',package_quantity:'TEXT'},
+    columns:{food_id:'TEXT',name:'TEXT',category:'TEXT',default_serving:'REAL',unit:'TEXT',...canonicalNutrientColumns,notes:'TEXT',nutrition_known:'INTEGER DEFAULT 0',archived:'INTEGER DEFAULT 0',archived_at:'TEXT',classification:"TEXT DEFAULT 'ingredient'",usage_designation:"TEXT DEFAULT 'component'",ingredient_only:'INTEGER DEFAULT 0',brand:'TEXT',manufacturer:'TEXT',barcode:'TEXT',serving_description:'TEXT',servings_per_container:'REAL',package_quantity:'TEXT'},
     aliases:{name:['food','food_name']}
   },
+  meals:{create:`CREATE TABLE IF NOT EXISTS meals (id INTEGER PRIMARY KEY AUTOINCREMENT, eaten_at TEXT, meal_type TEXT, food_id TEXT, food_name TEXT, amount REAL, unit TEXT)`,columns:{...canonicalNutrientColumns},aliases:{}},
+  planned_meals:{create:`CREATE TABLE IF NOT EXISTS planned_meals (id INTEGER PRIMARY KEY AUTOINCREMENT, planned_at TEXT, planned_local_date TEXT, food_id TEXT, food_name TEXT, amount REAL, unit TEXT)`,columns:{...canonicalNutrientColumns},aliases:{}},
+  restaurant_meals:{create:`CREATE TABLE IF NOT EXISTS restaurant_meals (id INTEGER PRIMARY KEY AUTOINCREMENT, meal_name TEXT)`,columns:{...canonicalNutrientColumns},aliases:{}},
+  meal_definitions:{create:`CREATE TABLE IF NOT EXISTS meal_definitions (meal_id TEXT PRIMARY KEY, title TEXT)`,columns:{...canonicalNutrientColumns},aliases:{}},
+  meal_components:{create:`CREATE TABLE IF NOT EXISTS meal_components (id INTEGER PRIMARY KEY AUTOINCREMENT, meal_id TEXT, component_name TEXT)`,columns:{...canonicalNutrientColumns},aliases:{}},
   pantry:{
     create:`CREATE TABLE IF NOT EXISTS pantry (id INTEGER PRIMARY KEY AUTOINCREMENT, pantry_id TEXT, item TEXT, food_id TEXT, brand TEXT, on_hand TEXT, quantity REAL, unit TEXT, opened TEXT, opened_date TEXT, expiration TEXT, location TEXT, status TEXT, priority TEXT, category TEXT, notes TEXT, servings_per_package REAL)`,
     columns:{pantry_id:'TEXT',item:'TEXT',food_id:'TEXT',brand:'TEXT',on_hand:'TEXT',quantity:'REAL',unit:'TEXT',opened:'TEXT',opened_date:'TEXT',expiration:'TEXT',location:'TEXT',status:'TEXT',priority:'TEXT',category:'TEXT',notes:'TEXT',servings_per_package:'REAL',purchase_date:'TEXT',verified_at:'TEXT',storage_type:'TEXT',manufacturer_shelf_life_days:'REAL',opened_shelf_life_days:'REAL',freshness_observation:'TEXT',purchase_price:'REAL',retailer:'TEXT',original_servings:'REAL',quantity_accuracy:'TEXT',package_count:'REAL',package_type:'TEXT',container_size:'REAL',container_unit:'TEXT',unopened_packages:'REAL',partial_package_quantity:'REAL',freshness_status:'TEXT',source_recipe_id:'TEXT',discontinued:'INTEGER DEFAULT 0',product_link:'TEXT',product_image_url:'TEXT',product_image_status:'TEXT',product_image_checked_at:'TEXT',product_image_error:'TEXT'},
