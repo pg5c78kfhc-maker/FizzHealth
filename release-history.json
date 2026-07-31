@@ -2,6 +2,39 @@
   "format": "fizz-health-release-history",
   "releases": [
     {
+      "version": "1.4.15.68",
+      "name": "Recipe, Food Delete & Legacy UI Stabilization",
+      "type": "Blocking corrective release",
+      "created_at": "2026-07-30T20:05:00-04:00",
+      "issued_date": "2026-07-30",
+      "build": "141568",
+      "release_id": "FH-20260730-141568",
+      "schema_version": 94,
+      "stories": [
+        {
+          "id": "FH-1568.1",
+          "title": "Restore mutually exclusive right-swipe Add and left-swipe management actions"
+        },
+        {
+          "id": "FH-1568.2",
+          "title": "Add guarded permanent deletion for Foods and Recipes"
+        },
+        {
+          "id": "FH-1568.3",
+          "title": "Keep the unified Food Library for Foods, Recipes, and Meals"
+        },
+        {
+          "id": "FH-1568.4",
+          "title": "Remove the unused standalone legacy nutrition editor route"
+        },
+        {
+          "id": "FH-1568.5",
+          "title": "Keep individual Foods on the modern four-tab Food record"
+        }
+      ],
+      "known_issues": []
+    },
+    {
       "version": "1.4.15.67",
       "name": "Modern Record Routing & Recipe Creation Stabilization",
       "type": "Blocking corrective release",

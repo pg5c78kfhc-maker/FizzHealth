@@ -2270,3 +2270,15 @@ body.food-library-active .food-library-page .list.foods{padding-bottom:calc(24px
  .recipe-create-modal{padding-left:4px!important;padding-right:4px!important}
  .recipe-create-editor{border-radius:22px 22px 0 0!important}
 }
+
+/* v1.4.15.68 — mutually exclusive unified Library swipe rails */
+.food-library-page .discovery-swipe-right-rail,.food-library-page .discovery-swipe-left-rail{position:absolute;inset:0;display:flex;opacity:0;visibility:hidden;pointer-events:none;transition:opacity .12s ease}
+.food-library-page .discovery-swipe-right-rail{justify-content:flex-start}
+.food-library-page .discovery-swipe-left-rail{justify-content:flex-end}
+.food-library-page .discovery-swipe.swipe-right .discovery-swipe-right-rail,.food-library-page .discovery-swipe.swipe-left .discovery-swipe-left-rail{opacity:1;visibility:visible;pointer-events:auto}
+.food-library-page .discovery-swipe-right-rail>button,.food-library-page .discovery-swipe-left-rail>button{position:relative!important;inset:auto!important;width:88px!important;height:100%;border:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px}
+.food-library-page .discovery-swipe-right-rail .swipe-quick{background:#236b43;color:#fff}
+.food-library-page .discovery-swipe-left-rail .swipe-archive{background:#5b4020;color:#fff}
+.food-library-page .discovery-swipe-left-rail .swipe-category{background:#315b18;color:#fff}
+.food-library-page .discovery-swipe-left-rail .swipe-delete{background:#8d2d2d;color:#fff}
+.food-library-page .discovery-swipe.commit-ready .discovery-swipe-right-rail .swipe-quick{width:100%!important;align-items:flex-start;padding-left:24px;background:#315b18;color:#e4ffb6}

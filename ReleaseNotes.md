@@ -1,7 +1,7 @@
-# Fizz Health v1.4.15.67 — Modern Record Routing & Recipe Creation Stabilization
+# Fizz Health v1.4.15.68 — Recipe, Food Delete & Legacy UI Stabilization
 
-- FH-1567.1 — Synchronize prepared Recipe nutrition with its source Recipe.
-- FH-1567.2 — Route Menu and recommendations to modern Food and Recipe records.
-- FH-1567.3 — Create Recipes directly in the current canonical architecture.
-- FH-1567.4 — Repair Recipe create/edit viewport containment.
-- FH-1567.5 — Expose missing Pantry serving conversion requirements.
+- FH-1568.1: Restores the unified Library gesture contract: right swipe exposes Add only; left swipe exposes management actions only.
+- FH-1568.2: Adds permanent Delete to both Food and Recipe rows with safeguards for active Recipe/Meal dependencies and Pantry inventory.
+- FH-1568.3: Keeps Foods, Recipes, and Meals together in the Food Library while routing Foods and Recipes to their modern record pages.
+- FH-1568.4: Removes the unused standalone legacy Nutrition editor route from the production render tree.
+- FH-1568.5: Keeps individual Foods on the modern four-tab Food record and replaces legacy Recipe migration failure wording with an actionable incomplete-record message.
