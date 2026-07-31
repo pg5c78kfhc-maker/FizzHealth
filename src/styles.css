@@ -2314,3 +2314,12 @@ body.food-library-active .food-library-page .list.foods{padding-bottom:calc(24px
 .inventory-info-button:focus-visible{outline:2px solid currentColor;outline-offset:2px}
 .inventory-info-popover{position:absolute;z-index:80;top:calc(100% + .45rem);left:0;width:min(18rem,calc(100vw - 3rem));padding:.7rem .8rem;border:1px solid rgba(255,255,255,.22);border-radius:.75rem;background:#202124;color:#fff;font-size:.82rem;font-weight:400;line-height:1.35;box-shadow:0 .6rem 1.8rem rgba(0,0,0,.38);text-align:left}
 .inventory-summary-grid>div{overflow:visible}
+
+
+/* v1.4.15.79 — Library barcode lookup */
+.library-search-row{display:grid;grid-template-columns:minmax(0,1fr) 64px;gap:12px;align-items:stretch}
+.library-search-row>.search{margin:0;min-width:0}
+.library-barcode-button{display:grid;place-items:center;min-width:64px;border:1px solid #405159;border-radius:22px;background:#11191e;color:#f4f7f2}
+.library-barcode-button svg{width:30px;height:30px}
+.library-barcode-button:active{transform:scale(.97)}
+.barcode-prefill-summary h3,.barcode-prefill-summary p{margin:0}

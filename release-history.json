@@ -2,6 +2,14 @@
   "format": "fizz-health-release-history",
   "releases": [
     {
+      "version": "1.4.15.79",
+      "name": "Recipe Unit Conversion & Library Barcode Lookup",
+      "type": "Feature and corrective release",
+      "created": "2026-07-31T13:39:00-04:00",
+      "build": "141579",
+      "releaseId": "FH-20260731-141579"
+    },
+    {
       "version": "1.4.15.78",
       "name": "Inventory Availability Consistency",
       "type": "Corrective release",

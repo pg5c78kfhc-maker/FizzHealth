@@ -1,0 +1,11 @@
+src/nutrition/units.js
+src/exchange.js
+src/main.jsx
+src/styles.css
+package.json
+package-lock.json
+release-history.json
+tests/v141579-recipe-unit-barcode-library.test.js
+RELEASE-NOTES-1.4.15.79.md
+TEST-REPORT-1.4.15.79.md
+CHANGED-FILES-1.4.15.79.txt

@@ -53,6 +53,18 @@ function measureMatches(requested,common){
   return [...at].every(token=>bt.has(token))||[...bt].every(token=>at.has(token));
 }
 
+function foodSpecificMeasureMatches(requested,food){
+  const measure=normalizedMeasure(requested);
+  if(!measure)return false;
+  const name=normalizedMeasure(food?.name);
+  if(!name)return false;
+  const ignored=new Set(['fresh','whole','large','medium','small','cooked','raw','prepared','organic','frozen','dried','chopped','sliced']);
+  const singularToken=token=>token.endsWith('ies')?`${token.slice(0,-3)}y`:token.endsWith('ses')?token.slice(0,-2):token.endsWith('s')&&!token.endsWith('ss')?token.slice(0,-1):token;
+  const measureTokens=measure.split(' ').map(singularToken).filter(token=>token&&!ignored.has(token));
+  const nameTokens=new Set(name.split(' ').map(singularToken).filter(token=>token&&!ignored.has(token)));
+  return measureTokens.length>0&&measureTokens.every(token=>nameTokens.has(token));
+}
+
 export function scaleFoodQuantity({amount,amountUnit,food}){
   const servingAmount=Number(food?.default_serving);
   const servingUnit=food?.unit;
@@ -64,6 +76,11 @@ export function scaleFoodQuantity({amount,amountUnit,food}){
     const value=Number(amount);
     if(!Number.isFinite(value))return {ok:false,reason:'Ingredient quantity is missing or invalid.'};
     return {ok:true,ratio:value/common.amount,convertedAmount:value,method:'common_measure'};
+  }
+  if(foodSpecificMeasureMatches(amountUnit,food)){
+    const value=Number(amount);
+    if(!Number.isFinite(value))return {ok:false,reason:'Ingredient quantity is missing or invalid.'};
+    return {ok:true,ratio:value,convertedAmount:value,method:'food_specific_serving'};
   }
   return {ok:false,reason:`Cannot convert ${amountUnit||'unknown unit'} to ${servingUnit||'unknown unit'} using the Food serving definition.`};
 }
