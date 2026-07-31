@@ -1,3 +1,15 @@
+# Fizz Health v1.4.15.72
+
+Recipe Serving Basis Corrective.
+
+Completed story: FH-1572.1
+
+- Recipes in Menu and Planner now use the saved serving size rather than the full batch as one serving.
+- Recipe nutrition is normalized to the saved serving basis before portion multipliers are applied.
+- Planned and consumed records store the actual quantity and unit, such as 100 g, while preserving portion multipliers.
+- Prepared Recipe inventory is decremented by the actual logged serving quantity.
+- All Recipe logging paths share the same serving-basis calculation.
+
 # Fizz Health v1.4.15.71
 
 Recipe, Inventory & Enrichment Corrective.

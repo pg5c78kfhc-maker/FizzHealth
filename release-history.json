@@ -2,6 +2,21 @@
   "format": "fizz-health-release-history",
   "releases": [
     {
+      "version": "1.4.15.72",
+      "name": "Recipe Serving Basis Corrective",
+      "type": "Blocking corrective release",
+      "created": "2026-07-31T06:55:00-04:00",
+      "build": "141572",
+      "release_id": "FH-20260731-141572",
+      "stories": [
+        [
+          "FH-1572.1",
+          "Use each Recipe serving size consistently in planning, logging, nutrition, and prepared-inventory consumption"
+        ]
+      ],
+      "knownIssues": []
+    },
+    {
       "version": "1.4.15.71",
       "name": "Recipe, Inventory & Enrichment Corrective",
       "type": "Corrective release",
