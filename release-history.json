@@ -2,6 +2,14 @@
   "format": "fizz-health-release-history",
   "releases": [
     {
+      "version": "1.4.15.81",
+      "name": "Recipe Availability & Enrichment Regression Repair",
+      "type": "Focused corrective release",
+      "created": "2026-07-31T15:20:00-04:00",
+      "build": "141581",
+      "releaseId": "FH-20260731-141581"
+    },
+    {
       "version": "1.4.15.80",
       "name": "Unknown Barcode Resolution",
       "type": "Focused workflow release",
