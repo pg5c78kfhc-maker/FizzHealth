@@ -2,6 +2,37 @@
   "format": "fizz-health-release-history",
   "releases": [
     {
+      "version": "1.4.15.77",
+      "name": "Inventory Availability & UI Corrections",
+      "type": "Corrective release",
+      "created": "2026-07-31T10:25:00-04:00",
+      "build": "141577",
+      "release_id": "FH-20260731-141577",
+      "stories": [
+        [
+          "FH-1577.1",
+          "Use open-container servings in the centralized inventory availability calculation"
+        ],
+        [
+          "FH-1577.2",
+          "Correct Library availability to show actual servings remaining"
+        ],
+        [
+          "FH-1577.3",
+          "Show current remaining inventory in Menu food titles"
+        ],
+        [
+          "FH-1577.4",
+          "Keep wrapped Inventory information icons attached to their labels"
+        ],
+        [
+          "FH-1577.5",
+          "Remove conflicting legacy inventory-count prose when structured Inventory is saved"
+        ]
+      ],
+      "known_issues": []
+    },
+    {
       "version": "1.4.15.76",
       "name": "Inventory Model & Terminology Stabilization",
       "type": "Corrective and usability release",

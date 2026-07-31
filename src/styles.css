@@ -2307,8 +2307,8 @@ body.food-library-active .food-library-page .list.foods{padding-bottom:calc(24px
 .pantry-property-editor .editor-scroll{padding-bottom:28px!important}
 .pantry-property-editor .inline-value{grid-template-columns:minmax(0,1fr) minmax(90px,.7fr)!important}
 
-/* v1.4.15.76 Inventory field definitions */
-.inventory-field-label{position:relative;display:inline-flex;align-items:center;gap:.35rem;min-width:0}
+/* v1.4.15.77 Inventory field definitions */
+.inventory-field-label{position:relative;display:inline;min-width:0}.inventory-field-label-text{display:inline;line-height:inherit}.inventory-field-label-text .inventory-info-button{display:inline-grid;vertical-align:-.18em;margin-left:.35rem}
 .inventory-info-button{display:inline-grid;place-items:center;width:1.15rem;height:1.15rem;min-width:1.15rem;padding:0;border:0;border-radius:50%;background:transparent;color:currentColor;opacity:.72}
 .inventory-info-button svg{width:1.05rem;height:1.05rem}
 .inventory-info-button:focus-visible{outline:2px solid currentColor;outline-offset:2px}

@@ -32,8 +32,9 @@ export function pantryAvailableQuantity(row={},targetUnit=''){
     const servingSize=Math.max(0,number(row.default_serving));
     const servingUnit=String(row.food_unit||'').trim();
     if(servingsPerPackage>0&&servingSize>0&&servingUnit){
-      const {count}=packageParts(row);
-      const converted=convertQuantity(count*servingsPerPackage*servingSize,servingUnit,target);
+      const {partial,unopened}=packageParts(row);
+      const availableServings=unopened*servingsPerPackage+partial;
+      const converted=convertQuantity(availableServings*servingSize,servingUnit,target);
       if(converted!=null)return Math.max(0,converted);
     }
   }

@@ -1,0 +1,13 @@
+package.json
+VERSION.json
+release-history.json
+ReleaseNotes.md
+src/main.jsx
+src/styles.css
+src/inventory/quantity.js
+src/decision/engine.js
+public/sw.js
+tests-release/v141577-inventory-availability.test.js
+RELEASE-NOTES-1.4.15.77.md
+TEST-REPORT-1.4.15.77.md
+CHANGED-FILES-1.4.15.77.txt

@@ -8,7 +8,3 @@
 - Keeps the Inventory information icon attached to the end of wrapped field labels.
 - Removes obsolete legacy prose such as an old opened-box count when structured Inventory is saved, while preserving unrelated notes.
 - Updates About/release metadata to v1.4.15.77.
-
-**Build:** 141577  
-**Deployment:** FH-20260731-141577  
-**Completed story:** FH-1577.5
