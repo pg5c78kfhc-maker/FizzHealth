@@ -2,6 +2,14 @@
   "format": "fizz-health-release-history",
   "releases": [
     {
+      "version": "1.4.15.80",
+      "name": "Unknown Barcode Resolution",
+      "type": "Focused workflow release",
+      "created": "2026-07-31T14:50:00-04:00",
+      "build": "141580",
+      "releaseId": "FH-20260731-141580"
+    },
+    {
       "version": "1.4.15.79",
       "name": "Recipe Unit Conversion & Library Barcode Lookup",
       "type": "Feature and corrective release",

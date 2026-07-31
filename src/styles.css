@@ -2323,3 +2323,6 @@ body.food-library-active .food-library-page .list.foods{padding-bottom:calc(24px
 .library-barcode-button svg{width:30px;height:30px}
 .library-barcode-button:active{transform:scale(.97)}
 .barcode-prefill-summary h3,.barcode-prefill-summary p{margin:0}
+
+/* v1.4.15.80 — Unknown Library barcode resolution */
+.unknown-barcode-page{z-index:3150}.unknown-barcode-summary h3,.unknown-barcode-summary p,.unknown-barcode-options h3,.unknown-barcode-options p{margin:0}.unknown-barcode-summary,.unknown-barcode-options{display:grid;gap:10px}.unknown-barcode-summary>small,.unknown-barcode-options>small{color:#a5ef38;font-weight:900;letter-spacing:.12em}.unknown-barcode-summary h3{font-size:1.55rem;letter-spacing:.04em}.unknown-barcode-search{margin-top:4px}.unknown-barcode-match-list{max-height:44vh;overflow:auto;padding-right:2px}.unknown-barcode-match-list button:disabled{opacity:.55}.unknown-barcode-match-list svg{width:22px;height:22px;color:#a5ef38}.unknown-barcode-create,.unknown-barcode-cancel{margin-top:14px}.unknown-barcode-cancel svg:first-child{color:#aab4b9}

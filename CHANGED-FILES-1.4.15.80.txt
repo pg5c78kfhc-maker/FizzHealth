@@ -1,0 +1,9 @@
+src/main.jsx
+src/styles.css
+package.json
+package-lock.json
+release-history.json
+tests/v141580-unknown-barcode-resolution.test.js
+RELEASE-NOTES-1.4.15.80.md
+TEST-REPORT-1.4.15.80.md
+CHANGED-FILES-1.4.15.80.txt
