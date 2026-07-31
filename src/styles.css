@@ -2295,3 +2295,14 @@ body.food-library-active .food-library-page .list.foods{padding-bottom:calc(24px
 .component-picker-config .nutrition-preview.compact span{display:block!important;white-space:normal!important;line-height:1.35!important}
 .keyboard-open .component-picker-panel{height:var(--visual-viewport-height,100dvh)!important;max-height:var(--visual-viewport-height,100dvh)!important;margin:var(--visual-viewport-top,0px) 0 0!important;border-radius:0!important}
 @media(max-width:480px){.component-picker-body{padding:12px 12px 22px!important}.component-picker-results{flex-basis:190px!important}.component-picker-config .unit-amount{grid-template-columns:minmax(0,1fr) minmax(0,1fr)!important}}
+
+/* v1.4.15.71 corrective: one keyboard-safe editor shell */
+.component-picker-backdrop,.pantry-editor-layer,.recipe-pantry-batch,.enrichment-modal{inset:0!important;top:var(--visual-viewport-top,0)!important;height:var(--visual-viewport-height,100dvh)!important;padding:max(4px,env(safe-area-inset-top)) 6px max(4px,env(safe-area-inset-bottom))!important;align-items:stretch!important}
+.component-picker-panel,.pantry-manual-editor.fixed-editor,.recipe-create-editor.fixed-editor,.enrichment-workspace.fixed-editor{height:100%!important;max-height:100%!important;width:min(100%,680px)!important;margin:auto!important;display:grid!important;grid-template-rows:auto minmax(0,1fr) auto!important;overflow:hidden!important;border-radius:18px!important}
+.component-picker-body,.fixed-editor>.editor-scroll{min-height:0!important;overflow-y:auto!important;-webkit-overflow-scrolling:touch!important;overscroll-behavior:contain!important;scroll-padding-bottom:120px!important;padding-bottom:24px!important}
+.component-picker-panel>.editor-actions,.fixed-editor>.editor-actions{position:relative!important;inset:auto!important;flex:0 0 auto!important;z-index:20!important;background:#121a20!important;padding:10px 14px max(10px,env(safe-area-inset-bottom))!important}
+.keyboard-open .component-picker-backdrop,.keyboard-open .pantry-editor-layer,.keyboard-open .recipe-pantry-batch,.keyboard-open .enrichment-modal{padding:2px 4px!important}
+.keyboard-open .component-picker-panel,.keyboard-open .pantry-manual-editor.fixed-editor,.keyboard-open .recipe-create-editor.fixed-editor,.keyboard-open .enrichment-workspace.fixed-editor{height:calc(var(--visual-viewport-height,100dvh) - 4px)!important;max-height:calc(var(--visual-viewport-height,100dvh) - 4px)!important;border-radius:12px!important}
+.keyboard-open .component-picker-panel>.editor-actions,.keyboard-open .fixed-editor>.editor-actions{padding-block:6px!important}
+.pantry-property-editor .editor-scroll{padding-bottom:28px!important}
+.pantry-property-editor .inline-value{grid-template-columns:minmax(0,1fr) minmax(90px,.7fr)!important}

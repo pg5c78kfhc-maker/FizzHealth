@@ -2,6 +2,37 @@
   "format": "fizz-health-release-history",
   "releases": [
     {
+      "version": "1.4.15.71",
+      "name": "Recipe, Inventory & Enrichment Corrective",
+      "type": "Corrective release",
+      "created": "2026-07-31T06:25:00-04:00",
+      "build": "141571",
+      "stories": [
+        [
+          "FH-1571.1",
+          "Recipe quantity unit picker"
+        ],
+        [
+          "FH-1571.2",
+          "Keyboard-safe editor shell"
+        ],
+        [
+          "FH-1571.3",
+          "Prepared inventory precedence"
+        ],
+        [
+          "FH-1571.4",
+          "Simplified Inventory editor"
+        ],
+        [
+          "FH-1571.5",
+          "Enrich with AI navigation"
+        ]
+      ],
+      "knownIssues": [],
+      "release_id": "FH-20260731-141571"
+    },
+    {
       "version": "1.4.15.69",
       "name": "Recipe Library, Migration & Editor Recovery",
       "type": "Blocking corrective release",

@@ -1204,9 +1204,9 @@ const migrations=[
   `},
   {version:95,name:'production_build_syntax_corrective',sql:`
     INSERT OR REPLACE INTO release_metadata(version,release_date,build_id,schema_version,title,created_at)
-    VALUES ('1.4.15.70','2026-07-31','141570',96,'Production Build Syntax Corrective','2026-07-31T01:35:00-04:00');
+    VALUES ('1.4.15.71','2026-07-31','141571',96,'Recipe, Inventory & Enrichment Corrective','2026-07-31T01:35:00-04:00');
     INSERT OR REPLACE INTO release_register(version,issued_date,build_id,schema_version,title,created_at)
-    VALUES ('1.4.15.70','2026-07-31','141570',96,'Production Build Syntax Corrective','2026-07-31T01:35:00-04:00');
+    VALUES ('1.4.15.71','2026-07-31','141571',96,'Recipe, Inventory & Enrichment Corrective','2026-07-31T01:35:00-04:00');
   `}
 ];
 

@@ -1,3 +1,15 @@
+# Fizz Health v1.4.15.71
+
+Recipe, Inventory & Enrichment Corrective.
+
+Completed story: FH-1571.5
+
+- Editable Recipe quantity units, including grams where supported.
+- Keyboard-safe scrollable editor shell.
+- Prepared Recipe inventory takes precedence over ingredient shortages.
+- Simplified packaged inventory entry with serving size in Inventory.
+- Replaced obsolete Promote to Meal action with Enrich with AI.
+
 # Fizz Health v1.4.15.69
 
 **Recipe Library, Migration & Editor Recovery**  
