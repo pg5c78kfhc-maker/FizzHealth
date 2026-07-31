@@ -1,6 +1,8 @@
-# Fizz Health v1.4.15.73
+# Fizz Health v1.4.15.74
 
-## Blocking corrective release
+## Unified Food and Recipe Logging Corrective
 
-- FH-1573.1: Recipe serving size now drives projected nutrition, planned and consumed payloads, meal cards, daily totals, and prepared inventory consumption from one per-serving calculation.
-- FH-1573.2: Active planned Recipe entries created with batch-total nutrition are recalculated safely. Historical consumed entries are not rewritten automatically.
+- FH-1574.1: Uses one shared logging context for serving amount, unit, portion scaling, projected nutrition, saved records, and inventory consumption.
+- FH-1574.2: Library, Planner, Proposed, and Consumed Recipe logging use per-serving Recipe nutrition rather than full-batch totals.
+
+For a 994 g Recipe with a 100 g serving, one portion now records 100 g and approximately one-tenth of the batch nutrition.

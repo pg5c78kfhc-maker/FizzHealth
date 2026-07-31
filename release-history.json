@@ -2,6 +2,25 @@
   "format": "fizz-health-release-history",
   "releases": [
     {
+      "version": "1.4.15.74",
+      "name": "Unified Food and Recipe Logging Corrective",
+      "type": "Blocking corrective release",
+      "created": "2026-07-31T07:35:00-04:00",
+      "build": "141574",
+      "release_id": "FH-20260731-141574",
+      "stories": [
+        [
+          "FH-1574.1",
+          "Unify serving, portion, nutrition, saved quantity, and inventory logic across Library and Planner logging contexts"
+        ],
+        [
+          "FH-1574.2",
+          "Use Recipe serving nutrition rather than batch totals from every logging launch point"
+        ]
+      ],
+      "known_issues": []
+    },
+    {
       "version": "1.4.15.73",
       "name": "Recipe Nutrition Propagation Corrective",
       "type": "Blocking corrective release",
