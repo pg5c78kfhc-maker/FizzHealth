@@ -2,6 +2,25 @@
   "format": "fizz-health-release-history",
   "releases": [
     {
+      "version": "1.4.15.73",
+      "name": "Recipe Nutrition Propagation Corrective",
+      "type": "Blocking corrective release",
+      "created": "2026-07-31T07:05:00-04:00",
+      "build": "141573",
+      "release_id": "FH-20260731-141573",
+      "stories": [
+        [
+          "FH-1573.1",
+          "Propagate Recipe serving quantity through projected nutrition, saved planned and consumed records, cards, totals, and inventory"
+        ],
+        [
+          "FH-1573.2",
+          "Repair active planned Recipe records created with batch-total nutrition"
+        ]
+      ],
+      "known_issues": []
+    },
+    {
       "version": "1.4.15.72",
       "name": "Recipe Serving Basis Corrective",
       "type": "Blocking corrective release",
