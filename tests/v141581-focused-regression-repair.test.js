@@ -27,8 +27,8 @@ test('live pantry deduction consumes exactly one food-specific serving',()=>{
 
 test('recipe availability and deduction queries include Food identity and serving definition',()=>{
  assert.match(main,/f\.name AS food_name,f\.default_serving,f\.unit AS food_unit,f\.serving_description/);
- assert.match(main,/pantryAvailableQuantity\(row,component\.unit\)/);
- assert.match(main,/consumePantryQuantity\(row,usedTarget,component\.unit\)/);
+ assert.match(main,/inventoryAvailableQuantity\(row,component\.unit\)/);
+ assert.match(main,/consumeInventory\(row,usedTarget,component\.unit\)/);
 });
 
 test('existing-food enrichment request renders without an undefined barcode reference',()=>{

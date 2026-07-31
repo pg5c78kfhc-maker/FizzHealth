@@ -1,4 +1,4 @@
-import {pantryAvailableQuantity} from './quantity.js';
+import {inventoryAvailableServings,inventoryHasStock,inventorySufficient} from './service.js';
 
 const key=value=>String(value??'').trim().toLowerCase();
 const recipeKey=value=>key(value).replace(/^recipe:/,'');
@@ -10,11 +10,12 @@ export function buildAvailabilityIndex({pantryRows=[],recipeRows=[],mealComponen
     if(Number(row?.discontinued)===1)continue;
     const aliases=[...new Set([key(row?.food_id),key(row?.item)].filter(Boolean))];
     if(!aliases.length)continue;
-    const quantity=Math.max(0,Number(row?.quantity)||0);
+    const quantity=inventoryAvailableServings(row);
+    const hasStock=inventoryHasStock(row);
     for(const alias of aliases){
       const existing=pantryStates.get(alias);
-      if(existing)existing.total+=quantity;
-      else pantryStates.set(alias,{tracked:true,total:quantity});
+      if(existing){existing.total+=quantity;existing.hasStock=existing.hasStock||hasStock}
+      else pantryStates.set(alias,{tracked:true,total:quantity,hasStock});
       if(!pantryRecords.has(alias))pantryRecords.set(alias,[]);
       pantryRecords.get(alias).push(row);
     }
@@ -40,14 +41,13 @@ export function buildAvailabilityIndex({pantryRows=[],recipeRows=[],mealComponen
     mealComponentsById.get(id).push(row);
   }
   const pantryState=(id,name)=>pantryStates.get(key(id))||pantryStates.get(key(name))||null;
-  const foodAvailable=(id,name)=>{const state=pantryState(id,name);return !state||state.total>0};
+  const foodAvailable=(id,name)=>{const state=pantryState(id,name);return !state||state.hasStock};
   const ingredientSufficient=(id,name,amount=0,unit='')=>{
     const records=pantryRecords.get(key(id))||pantryRecords.get(key(name));
     if(!records)return true;
     const required=Number(amount)||0;
-    if(required<=0)return records.some(row=>(Number(row.quantity)||0)>0);
-    const total=records.reduce((sum,row)=>sum+pantryAvailableQuantity(row,unit),0);
-    return total+1e-9>=required;
+    if(required<=0)return records.some(inventoryHasStock);
+    return inventorySufficient(records,required,unit);
   };
   const recipeCanPrepare=(id,seen=new Set())=>{
     const recipeId=recipeKey(id);if(!recipeId||seen.has(recipeId))return false;
@@ -65,7 +65,7 @@ export function buildAvailabilityIndex({pantryRows=[],recipeRows=[],mealComponen
     const recipeId=recipeKey(id);
     if(!recipeId)return false;
     const prepared=pantryState(`recipe:${recipeId}`,name);
-    if(recipeTrackingById.get(recipeId)===true)return Boolean(prepared&&prepared.total>0);
+    if(recipeTrackingById.get(recipeId)===true)return Boolean(prepared&&prepared.hasStock);
     return recipeCanPrepare(recipeId,seen);
   };
   const mealAvailable=(id,seen=new Set())=>{

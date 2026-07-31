@@ -1,0 +1,14 @@
+VERSION.json
+package-lock.json
+package.json
+release-history.json
+src/inventory/availability.js
+src/inventory/quantity.js
+src/inventory/service.js
+src/main.jsx
+tests/v141581-focused-regression-repair.test.js
+tests/v141582-inventory-service-consolidation.test.js
+RELEASE-NOTES-1.4.15.82.md
+TEST-REPORT-1.4.15.82.md
+INVENTORY-CALCULATION-AUDIT-1.4.15.82.md
+CHANGED-FILES-1.4.15.82.txt

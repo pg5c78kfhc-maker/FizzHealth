@@ -2,6 +2,14 @@
   "format": "fizz-health-release-history",
   "releases": [
     {
+      "version": "1.4.15.82",
+      "name": "Inventory Calculation Consolidation",
+      "type": "Architecture corrective release",
+      "created": "2026-07-31T16:10:00-04:00",
+      "build": "141582",
+      "releaseId": "FH-20260731-141582"
+    },
+    {
       "version": "1.4.15.81",
       "name": "Recipe Availability & Enrichment Regression Repair",
       "type": "Focused corrective release",
