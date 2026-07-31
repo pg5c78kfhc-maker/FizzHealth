@@ -10,7 +10,7 @@ export function buildAvailabilityIndex({pantryRows=[],recipeRows=[],mealComponen
     if(Number(row?.discontinued)===1)continue;
     const aliases=[...new Set([key(row?.food_id),key(row?.item)].filter(Boolean))];
     if(!aliases.length)continue;
-    const quantity=inventoryAvailableServings(row);
+    const quantity=inventoryAvailableServings(row,{caller:'Availability index'});
     const hasStock=inventoryHasStock(row);
     for(const alias of aliases){
       const existing=pantryStates.get(alias);
@@ -42,12 +42,13 @@ export function buildAvailabilityIndex({pantryRows=[],recipeRows=[],mealComponen
   }
   const pantryState=(id,name)=>pantryStates.get(key(id))||pantryStates.get(key(name))||null;
   const foodAvailable=(id,name)=>{const state=pantryState(id,name);return !state||state.hasStock};
+  const foodAvailableServings=(id,name)=>{const state=pantryState(id,name);return state?Math.max(0,state.total):null};
   const ingredientSufficient=(id,name,amount=0,unit='')=>{
     const records=pantryRecords.get(key(id))||pantryRecords.get(key(name));
     if(!records)return true;
     const required=Number(amount)||0;
     if(required<=0)return records.some(inventoryHasStock);
-    return inventorySufficient(records,required,unit);
+    return inventorySufficient(records,required,unit,{caller:'Recipe availability',recipeId:id||name});
   };
   const recipeCanPrepare=(id,seen=new Set())=>{
     const recipeId=recipeKey(id);if(!recipeId||seen.has(recipeId))return false;
@@ -87,5 +88,5 @@ export function buildAvailabilityIndex({pantryRows=[],recipeRows=[],mealComponen
     if(type==='restaurant')return true;
     return foodAvailable(item?.meal_id||item?.food_id||item?.id,item?.title||item?.name||item?.item);
   };
-  return {pantryState,foodAvailable,ingredientSufficient,recipeAvailable,recipeCanPrepare,mealAvailable,itemAvailable};
+  return {pantryState,foodAvailable,foodAvailableServings,ingredientSufficient,recipeAvailable,recipeCanPrepare,mealAvailable,itemAvailable};
 }

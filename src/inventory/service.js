@@ -3,6 +3,17 @@ import {canonicalUnit,convertQuantity,scaleFoodQuantity} from '../nutrition/unit
 const EPSILON=1e-9;
 const number=value=>Number.isFinite(Number(value))?Number(value):0;
 const optionalNumber=value=>value===null||value===undefined||String(value).trim()===''?null:(Number.isFinite(Number(value))?Number(value):null);
+const runtimeAudit=[];
+const auditEnabled=()=>typeof globalThis!=='undefined'&&globalThis.__FIZZ_INVENTORY_DIAGNOSTICS__!==false;
+export function clearInventoryRuntimeAudit(){runtimeAudit.length=0}
+export function getInventoryRuntimeAudit(){return runtimeAudit.map(row=>({...row}))}
+function auditInventory(row,request={},model=null,decision=null,caller='unknown'){
+ const entry={timestamp:new Date().toISOString(),caller,food_id:row.food_id??null,inventory_record_id:row.pantry_id??row.id??null,recipe_id:request.recipeId??null,requested_quantity:request.amount??null,requested_unit:request.unit??null,serving_size:model?.food?.default_serving??null,serving_unit:model?.food?.unit??null,servings_per_container:model?.servingsPerContainer??null,containers_in_stock:model?.containerCount??null,open_container_servings:model?.openServings??null,computed_available_servings:model?.availableServings??0,decision};
+ runtimeAudit.push(entry);if(runtimeAudit.length>1000)runtimeAudit.shift();
+ if(auditEnabled()&&typeof console!=='undefined')console.info('[Fizz Inventory Runtime]',entry);
+ return entry;
+}
+
 const containerUnits=new Set(['each','bag','bottle','box','can','carton','container','jar','package','pack','tub']);
 
 function firstNumber(...values){
@@ -48,10 +59,11 @@ export function inventoryModel(row={}){
  return {food,containerMode,containerCount,servingsPerContainer,hasOpenContainer,openAmount,openServings:openAmount,fullContainers,availableServings:availableServings===null?null:Math.max(0,availableServings),directAmount,directUnit};
 }
 
-export function inventoryAvailableServings(row={}){
- if(Number(row.discontinued)===1)return 0;
- const model=inventoryModel(row);
- return model.availableServings??0;
+export function inventoryAvailableServings(row={},context={}){
+ if(Number(row.discontinued)===1){auditInventory(row,context,null,'Unavailable',context.caller);return 0}
+ const model=inventoryModel(row),available=model.availableServings??0;
+ auditInventory(row,context,model,available>EPSILON?'Available':'Unavailable',context.caller);
+ return available;
 }
 
 export function inventoryHasStock(row={}){
@@ -67,9 +79,10 @@ function servingsForRequest(amount,unit,row={}){
  return scaled.ok?scaled.ratio:null;
 }
 
-export function inventoryAvailableQuantity(row={},targetUnit='serving'){
+export function inventoryAvailableQuantity(row={},targetUnit='serving',context={}){
  if(Number(row.discontinued)===1)return 0;
  const model=inventoryModel(row),target=canonicalUnit(targetUnit);
+ auditInventory(row,{...context,unit:targetUnit},model,(model.availableServings??0)>EPSILON?'Available':'Unavailable',context.caller);
  if(model.availableServings!==null){
   if(!target||target==='serving')return model.availableServings;
   const food=model.food;
@@ -85,15 +98,16 @@ export function inventoryAvailableQuantity(row={},targetUnit='serving'){
  return 0;
 }
 
-export function inventorySufficient(rows=[],amount=0,unit='serving'){
+export function inventorySufficient(rows=[],amount=0,unit='serving',context={}){
  const required=Math.max(0,number(amount));
- if(required<=0)return rows.some(row=>inventoryAvailableServings(row)>EPSILON);
- const available=rows.reduce((sum,row)=>sum+inventoryAvailableQuantity(row,unit),0);
+ if(required<=0)return rows.some(row=>inventoryAvailableServings(row,{...context,amount:required,unit})>EPSILON);
+ const available=rows.reduce((sum,row)=>sum+inventoryAvailableQuantity(row,unit,{...context,amount:required}),0);
  return available+EPSILON>=required;
 }
 
-export function consumeInventory(row={},amount=0,amountUnit='serving'){
+export function consumeInventory(row={},amount=0,amountUnit='serving',context={}){
  const required=Math.max(0,number(amount)),model=inventoryModel(row);
+ auditInventory(row,{...context,amount:required,unit:amountUnit},model,model.availableServings!==null&&servingsForRequest(required,amountUnit,row)!==null&&model.availableServings+EPSILON>=servingsForRequest(required,amountUnit,row)?'Available':'Unavailable',context.caller);
  if(required<=0)return {ok:true,used:0,usedServings:0,remaining:inventoryAvailableQuantity(row,amountUnit),updates:{}};
  if(model.availableServings!==null){
   const requiredServings=servingsForRequest(required,amountUnit,row);
