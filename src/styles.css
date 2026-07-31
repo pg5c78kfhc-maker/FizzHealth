@@ -2326,3 +2326,31 @@ body.food-library-active .food-library-page .list.foods{padding-bottom:calc(24px
 
 /* v1.4.15.80 — Unknown Library barcode resolution */
 .unknown-barcode-page{z-index:3150}.unknown-barcode-summary h3,.unknown-barcode-summary p,.unknown-barcode-options h3,.unknown-barcode-options p{margin:0}.unknown-barcode-summary,.unknown-barcode-options{display:grid;gap:10px}.unknown-barcode-summary>small,.unknown-barcode-options>small{color:#a5ef38;font-weight:900;letter-spacing:.12em}.unknown-barcode-summary h3{font-size:1.55rem;letter-spacing:.04em}.unknown-barcode-search{margin-top:4px}.unknown-barcode-match-list{max-height:44vh;overflow:auto;padding-right:2px}.unknown-barcode-match-list button:disabled{opacity:.55}.unknown-barcode-match-list svg{width:22px;height:22px;color:#a5ef38}.unknown-barcode-create,.unknown-barcode-cancel{margin-top:14px}.unknown-barcode-cancel svg:first-child{color:#aab4b9}
+
+/* v1.4.15.85 — Prepared Recipe save and footer corrective */
+.recipe-pantry-batch{
+  top:var(--visual-viewport-top,0)!important;
+  height:calc(var(--visual-viewport-height,100dvh) - var(--bottom-nav-height,88px) - env(safe-area-inset-bottom,0px))!important;
+  max-height:calc(var(--visual-viewport-height,100dvh) - var(--bottom-nav-height,88px) - env(safe-area-inset-bottom,0px))!important;
+  padding:max(4px,env(safe-area-inset-top,0px)) 6px 4px!important;
+  align-items:stretch!important;
+}
+.recipe-pantry-batch .pantry-manual-editor.fixed-editor{
+  height:100%!important;
+  max-height:100%!important;
+  grid-template-rows:auto auto minmax(0,1fr)!important;
+}
+.recipe-pantry-batch .prepared-recipe-save-error{
+  margin:10px 14px 0!important;
+  position:relative!important;
+  z-index:25!important;
+  flex:none!important;
+}
+.recipe-pantry-batch .editor-scroll{
+  min-height:0!important;
+  overflow-y:auto!important;
+  padding-bottom:calc(28px + env(safe-area-inset-bottom,0px))!important;
+  scroll-padding-bottom:32px!important;
+}
+.recipe-pantry-batch .edit-head .save-action{color:#a5ef38!important;opacity:1!important}
+.recipe-pantry-batch .edit-head .save-action:disabled{color:#8fa1aa!important;opacity:.35!important}

@@ -1,3 +1,27 @@
+# Fizz Health v1.4.15.85
+
+## Prepared Recipe Save & Footer Corrective
+
+Version: 1.4.15.85  
+Build: 141585  
+Deployment: FH-20260731-141585  
+Date: July 31, 2026
+
+### Completed
+
+- FH-1585.1 — Abort prepared Recipe creation when any tracked ingredient cannot be fully deducted.
+- FH-1585.2 — Use the centralized inventory service for preparation validation and deduction with explicit ingredient-level failures.
+- FH-1585.3 — Keep the Prepared Recipe form above the persistent footer and display save errors immediately below the header.
+- FH-1585.4 — Render the Save checkmark as active except while saving.
+
+### Verification
+
+- Focused prepared-recipe and inventory tests: 11 passed.
+- Full historical test sweep: 580 passed; 225 pre-existing historical failures; 0 new failures.
+- Production build attempted; blocked because installed dependencies were absent (`vite: not found`).
+
+---
+
 # Fizz Health v1.4.11.15
 
 ## Restaurant-Aware Meal Planning Prototype
