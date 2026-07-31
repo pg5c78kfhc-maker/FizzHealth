@@ -1,0 +1,9 @@
+src/inventory/quantity.js
+src/main.jsx
+package.json
+package-lock.json
+release-history.json
+tests/v141578-inventory-availability-consistency.test.js
+RELEASE-NOTES-1.4.15.78.md
+TEST-REPORT-1.4.15.78.md
+CHANGED-FILES-1.4.15.78.txt

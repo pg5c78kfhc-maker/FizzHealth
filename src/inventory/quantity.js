@@ -11,10 +11,13 @@ function packageParts(row={}){
   const size=Math.max(0,number(row.container_size));
   const unit=String(row.container_unit||row.food_unit||'').trim();
   const count=Math.max(0,number(row.package_count||row.quantity));
-  const partial=Math.max(0,number(row.partial_package_quantity));
-  const explicitUnopened=row.unopened_packages!==null&&row.unopened_packages!==undefined&&row.unopened_packages!=='';
-  const unopened=Math.max(0,explicitUnopened?number(row.unopened_packages):Math.max(0,count-(partial>0?1:0)));
-  return {size,unit,count,partial,unopened};
+  const hasPartial=row.partial_package_quantity!==null&&row.partial_package_quantity!==undefined&&String(row.partial_package_quantity).trim()!==''&&number(row.partial_package_quantity)>0;
+  const partial=hasPartial?Math.max(0,number(row.partial_package_quantity)):0;
+  // The approved inventory model is authoritative:
+  // blank partial quantity means every container is full;
+  // a positive partial quantity means one container is open and all others are full.
+  const unopened=Math.max(0,count-(hasPartial?1:0));
+  return {size,unit,count,partial,unopened,hasPartial};
 }
 
 export function pantryAvailableQuantity(row={},targetUnit=''){

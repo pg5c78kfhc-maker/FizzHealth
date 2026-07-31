@@ -2,6 +2,14 @@
   "format": "fizz-health-release-history",
   "releases": [
     {
+      "version": "1.4.15.78",
+      "name": "Inventory Availability Consistency",
+      "type": "Corrective release",
+      "created": "2026-07-31T12:30:00-04:00",
+      "build": "141578",
+      "releaseId": "FH-20260731-141578"
+    },
+    {
       "version": "1.4.15.77",
       "name": "Inventory Availability & UI Corrections",
       "type": "Corrective release",
