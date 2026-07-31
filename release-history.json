@@ -2,6 +2,37 @@
   "format": "fizz-health-release-history",
   "releases": [
     {
+      "version": "1.4.15.76",
+      "name": "Inventory Model & Terminology Stabilization",
+      "type": "Corrective and usability release",
+      "created": "2026-07-31T09:35:00-04:00",
+      "build": "141576",
+      "release_id": "FH-20260731-141576",
+      "stories": [
+        [
+          "FH-1576.1",
+          "Standardize the Inventory information and edit pages on the approved container terminology"
+        ],
+        [
+          "FH-1576.2",
+          "Use one universal container model without food-type classification or package-type selection"
+        ],
+        [
+          "FH-1576.3",
+          "Infer open-container state from Servings remaining in open container and allow the field to remain blank"
+        ],
+        [
+          "FH-1576.4",
+          "Add shared information popovers beside every Inventory field label"
+        ],
+        [
+          "FH-1576.5",
+          "Keep Inventory display and edit fields, order, wording, and definitions synchronized"
+        ]
+      ],
+      "known_issues": []
+    },
+    {
       "version": "1.4.15.75",
       "name": "Inventory Edit Form Alignment",
       "type": "Corrective release",
