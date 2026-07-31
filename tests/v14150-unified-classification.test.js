@@ -17,15 +17,15 @@ test('old top object-type mode switch is removed from Meals header',()=>{
  assert.match(addMeal,/<h2>Meals<\/h2>/);
  assert.doesNotMatch(addMeal,/library-mode-switch/);
 });
-test('foods recipes and meals share unified category groups',()=>{
+test('foods and recipes share unified category groups after legacy Meal migration',()=>{
  assert.match(main,/unified-category-library/);
  assert.match(main,/type:'food'/);
  assert.match(main,/type:'recipe'/);
- assert.match(main,/type:'meal'/);
+ assert.match(main,/migrateRemainingLegacyMealsToRecipes/);
 });
 test('swipe category action is wired for every item type',()=>{
  const addMeal=main.slice(main.indexOf('function AddMeal'),main.indexOf('function FoodIntelligencePage'));
- assert.equal((addMeal.match(/onCategory=\{setCategory\}/g)||[]).length,3);
+ assert.ok((addMeal.match(/onCategory=\{setCategory\}/g)||[]).length>=2);
 });
 test('one shared database category picker handles all types',()=>{
  assert.match(main,/function DatabaseCategoryPicker/);

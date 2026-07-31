@@ -7,5 +7,5 @@ const meta=JSON.parse(fs.readFileSync(new URL('../VERSION.json',import.meta.url)
 test('v1.4.11.2 corrective metadata is canonical',()=>{assert.equal(meta.version,'1.4.11.22');assert.equal(meta.build,'141122');assert.match(main,/const VERSION='1\.4\.11\.22'/)});
 test('Meals view does not fall through to the food query',()=>{assert.match(main,/if\(view==='meals'\)mealDefs=.*?else if\(view==='recipes'\)/s)});
 test('recipes and meals share the searchable component picker',()=>{assert.match(main,/function ComponentPicker/);assert.match(main,/mode="recipe"/);assert.match(main,/mode="meal"/);assert.match(main,/Search foods…/);assert.match(main,/Search recipes…/)});
-test('meal picker supports food units and recipe servings',()=>{assert.match(main,/Foods.*Recipes/s);assert.match(main,/tab==='recipe'\?'Servings':'Quantity'/);assert.match(main,/unitOptions\(selected\.unit\)/)});
+test('meal picker supports food units and recipe servings',()=>{assert.match(main,/Foods.*Recipes/s);assert.match(main,/tab==='recipe'\?'Servings':'Quantity'/);assert.match(main,/ingredientUnitOptions\(selected\)/)});
 test('component picker is constrained to visual viewport with independent results scrolling',()=>{assert.match(css,/component-picker-panel[^}]*var\(--visual-viewport-height,100dvh\)/);assert.match(css,/component-picker-results\{[^}]*overflow-y:auto/)});

@@ -2,6 +2,22 @@
   "format": "fizz-health-release-history",
   "releases": [
     {
+      "version": "1.4.15.69",
+      "name": "Recipe Library, Migration & Editor Recovery",
+      "type": "Blocking corrective release",
+      "created": "2026-07-30T21:20:00-04:00",
+      "build": "141569",
+      "release_id": "FH-20260730-141569",
+      "stories": [
+        "FH-1569.1",
+        "FH-1569.2",
+        "FH-1569.3",
+        "FH-1569.4",
+        "FH-1569.5"
+      ],
+      "known_issues": []
+    },
+    {
       "version": "1.4.15.68",
       "name": "Recipe, Food Delete & Legacy UI Stabilization",
       "type": "Blocking corrective release",

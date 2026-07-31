@@ -17,7 +17,8 @@ test('Menu eligibility uses canonical Ingredient only value',()=>{
 });
 
 test('Food and Recipe classification saves synchronize legacy fields',()=>{
- assert.match(main,/UPDATE foods SET category=\?,ingredient_only=0,classification='food',usage_designation='both',consumption_role='both'/);
- assert.match(main,/UPDATE recipes SET category=\?,ingredient_only=0,classification='recipe',usage_designation='both'/);
+ assert.match(main,/UPDATE foods SET category=\?,ingredient_only=\?,classification=\?,usage_designation=\?,consumption_role=\?/);
+ assert.match(main,/UPDATE recipes SET category=\?,ingredient_only=\?,classification=\?,usage_designation=\?/);
+ assert.match(main,/const ingredient=chosen==='Ingredient'/);
  assert.match(main,/ingredientOnly\?'component':'both'/);
 });

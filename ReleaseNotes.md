@@ -1,7 +1,14 @@
-# Fizz Health v1.4.15.68 — Recipe, Food Delete & Legacy UI Stabilization
+# Fizz Health v1.4.15.69
 
-- FH-1568.1: Restores the unified Library gesture contract: right swipe exposes Add only; left swipe exposes management actions only.
-- FH-1568.2: Adds permanent Delete to both Food and Recipe rows with safeguards for active Recipe/Meal dependencies and Pantry inventory.
-- FH-1568.3: Keeps Foods, Recipes, and Meals together in the Food Library while routing Foods and Recipes to their modern record pages.
-- FH-1568.4: Removes the unused standalone legacy Nutrition editor route from the production render tree.
-- FH-1568.5: Keeps individual Foods on the modern four-tab Food record and replaces legacy Recipe migration failure wording with an actionable incomplete-record message.
+**Recipe Library, Migration & Editor Recovery**  
+Build `141569` · Deployment `FH-20260730-141569` · Issued July 30, 2026
+
+## Delivered
+
+- **FH-1569.1** migrates remaining valid legacy Meal definitions into canonical Recipes while preserving historical log snapshots and active planning references.
+- **FH-1569.2** rebuilds the Recipe content picker as a keyboard-safe, full-height, internally scrollable form with fixed header and actions.
+- **FH-1569.3** enables direct gram entry when a Food serving definition or common measure resolves to weight.
+- **FH-1569.4** displays Recipe availability in Library cards and sorts available items before unavailable items within each category.
+- **FH-1569.5** adds Ingredient as a first-class Change Category choice and persists component-only behavior.
+
+Historical Food Log entries remain preserved during deletion and migration.

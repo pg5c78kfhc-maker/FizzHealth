@@ -1198,9 +1198,9 @@ const migrations=[
   `},
   {version:94,name:'recipe_food_delete_legacy_ui_stabilization',sql:`
     INSERT OR REPLACE INTO release_metadata(version,release_date,build_id,schema_version,title,created_at)
-    VALUES ('1.4.15.68','2026-07-30','141568',94,'Recipe, Food Delete & Legacy UI Stabilization','2026-07-30T20:05:00-04:00');
+    VALUES ('1.4.15.69','2026-07-30','141569',95,'Recipe Library, Migration & Editor Recovery','2026-07-30T21:20:00-04:00');
     INSERT OR REPLACE INTO release_register(version,issued_date,build_id,schema_version,title,created_at)
-    VALUES ('1.4.15.68','2026-07-30','141568',94,'Recipe, Food Delete & Legacy UI Stabilization','2026-07-30T20:05:00-04:00');
+    VALUES ('1.4.15.69','2026-07-30','141569',95,'Recipe Library, Migration & Editor Recovery','2026-07-30T21:20:00-04:00');
   `}
 ];
 

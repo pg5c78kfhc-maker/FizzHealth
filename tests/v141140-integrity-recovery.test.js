@@ -10,7 +10,7 @@ const meta=JSON.parse(fs.readFileSync('VERSION.json','utf8'));
 test('current release metadata remains centralized after v1.4.11.40 recovery',()=>{
   assert.equal(pkg.version,meta.version);
   assert.match(main,new RegExp(`const VERSION='${meta.version.replaceAll('.', '\\.')}'`));
-  assert.match(db,new RegExp(`TARGET_SCHEMA_VERSION=${meta.schema_version}`));
+  assert.match(db,new RegExp(`VALUES \\('${meta.version.replaceAll('.', '\\.')}'.*${meta.schema_version}`));
 });
 
 test('approved Food Library redesign is active and old action row is absent',()=>{

@@ -2282,3 +2282,16 @@ body.food-library-active .food-library-page .list.foods{padding-bottom:calc(24px
 .food-library-page .discovery-swipe-left-rail .swipe-category{background:#315b18;color:#fff}
 .food-library-page .discovery-swipe-left-rail .swipe-delete{background:#8d2d2d;color:#fff}
 .food-library-page .discovery-swipe.commit-ready .discovery-swipe-right-rail .swipe-quick{width:100%!important;align-items:flex-start;padding-left:24px;background:#315b18;color:#e4ffb6}
+
+/* v1.4.15.69 — Recipe editor keyboard, scrolling, and clipping corrective */
+.component-picker-backdrop{padding:0!important;align-items:flex-start!important;background:#071014!important}
+.component-picker-panel{width:100%!important;height:var(--visual-viewport-height,100dvh)!important;max-height:var(--visual-viewport-height,100dvh)!important;margin:var(--visual-viewport-top,0px) 0 0!important;border-radius:0!important;display:grid!important;grid-template-rows:auto minmax(0,1fr) auto!important;overflow:hidden!important}
+.component-picker-body{min-height:0!important;display:flex!important;flex-direction:column!important;overflow-y:auto!important;-webkit-overflow-scrolling:touch!important;overscroll-behavior:contain!important;padding:14px 14px 24px!important;scroll-padding-top:16px;scroll-padding-bottom:140px}
+.component-picker-search,.component-picker-tabs,.component-picker-config,.component-picker-body>.inline-error{flex:0 0 auto}
+.component-picker-results{flex:1 0 min(260px,42vh)!important;min-height:180px!important;overflow-y:auto!important;padding-bottom:10px}
+.component-picker-config{padding-bottom:12px!important}
+.component-picker-panel .editor-actions{position:relative!important;z-index:10!important;flex:none!important;background:#121a20!important;border-top:1px solid #334249!important;padding:12px 14px max(12px,env(safe-area-inset-bottom))!important}
+.component-picker-config .nutrition-preview.compact{min-height:72px!important;overflow:visible!important}
+.component-picker-config .nutrition-preview.compact span{display:block!important;white-space:normal!important;line-height:1.35!important}
+.keyboard-open .component-picker-panel{height:var(--visual-viewport-height,100dvh)!important;max-height:var(--visual-viewport-height,100dvh)!important;margin:var(--visual-viewport-top,0px) 0 0!important;border-radius:0!important}
+@media(max-width:480px){.component-picker-body{padding:12px 12px 22px!important}.component-picker-results{flex-basis:190px!important}.component-picker-config .unit-amount{grid-template-columns:minmax(0,1fr) minmax(0,1fr)!important}}
