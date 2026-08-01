@@ -1512,6 +1512,10 @@ const migrations=[
   {version:100,name:'Health Editor Replacement, Timeline Deletion & Labs Cards',sql:`
     INSERT OR REPLACE INTO release_metadata(version,release_date,build_id,schema_version,title,created_at)
     VALUES ('1.4.15.100','2026-08-01','1415100',100,'Health Editor Replacement, Timeline Deletion & Labs Cards','2026-08-01T12:15:00-04:00');
+  `},
+  {version:101,name:'Scaled Laboratory Range Visualization',sql:`
+    INSERT OR REPLACE INTO release_metadata(version,release_date,build_id,schema_version,title,created_at)
+    VALUES ('1.4.15.101','2026-08-01','1415101',101,'Scaled Laboratory Range Visualization','2026-08-01T12:35:00-04:00');
   `}
 
 ];
