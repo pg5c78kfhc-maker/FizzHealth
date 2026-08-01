@@ -2,6 +2,15 @@
   "format": "fizz-health-release-history",
   "releases": [
     {
+      "version": "1.4.15.89",
+      "name": "Library Consumption Execution Repair",
+      "type": "Blocking corrective release",
+      "created": "2026-07-31T20:41:00-04:00",
+      "build": "141589",
+      "releaseId": "FH-20260731-141589",
+      "release_id": "FH-20260731-141589"
+    },
+    {
       "version": "1.4.15.82",
       "name": "Inventory Calculation Consolidation",
       "type": "Architecture corrective release",
