@@ -2354,3 +2354,27 @@ body.food-library-active .food-library-page .list.foods{padding-bottom:calc(24px
 }
 .recipe-pantry-batch .edit-head .save-action{color:#a5ef38!important;opacity:1!important}
 .recipe-pantry-batch .edit-head .save-action:disabled{color:#8fa1aa!important;opacity:.35!important}
+
+
+/* v1.4.15.87 — consumption inventory, prepared record deletion, and footer containment */
+.component-picker-backdrop,
+.universal-log-backdrop,
+.recipe-create-modal{
+  top:var(--visual-viewport-top,0)!important;
+  height:calc(var(--visual-viewport-height,100dvh) - var(--bottom-nav-height,88px) - env(safe-area-inset-bottom,0px))!important;
+  max-height:calc(var(--visual-viewport-height,100dvh) - var(--bottom-nav-height,88px) - env(safe-area-inset-bottom,0px))!important;
+  padding:max(4px,env(safe-area-inset-top,0px)) 6px 4px!important;
+  align-items:stretch!important;
+}
+.component-picker-backdrop>.component-picker-panel,
+.universal-log-backdrop>.universal-log-panel,
+.recipe-create-modal>.recipe-create-editor{
+  height:100%!important;
+  max-height:100%!important;
+  overflow:hidden!important;
+}
+.prepared-batch-list{display:grid;gap:10px}
+.prepared-batch-row{display:grid;grid-template-columns:minmax(0,1fr) 48px;gap:10px;align-items:center;border:1px solid var(--line);border-radius:16px;padding:14px;background:#11191e}
+.prepared-batch-row span{display:grid;gap:5px;min-width:0}.prepared-batch-row small{color:var(--muted);line-height:1.35}
+.prepared-batch-delete{width:44px;height:44px;display:grid;place-items:center;border:1px solid #743b3b;border-radius:14px;background:#2b1515;color:#ffaaa0}
+.prepared-batch-delete svg{width:22px;height:22px}
