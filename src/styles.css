@@ -2450,16 +2450,15 @@ body.food-library-active .food-library-page .list.foods{padding-bottom:calc(24px
 
 
 
-/* v1.4.15.97 single authoritative Health editor viewport */
-.health-editor-backdrop{position:fixed!important;left:0!important;right:0!important;top:var(--visual-viewport-top,0px)!important;bottom:auto!important;width:100%!important;height:var(--visual-viewport-height,100dvh)!important;max-height:var(--visual-viewport-height,100dvh)!important;display:block!important;padding:0!important;margin:0!important;overflow:hidden!important;background:#161d22!important;z-index:1800!important;touch-action:auto!important;overscroll-behavior:none!important}
-.health-editor-backdrop>.health-editor{position:absolute!important;inset:0!important;width:100%!important;height:100%!important;min-height:0!important;max-width:none!important;max-height:none!important;margin:0!important;padding:0!important;border:0!important;border-radius:0!important;background:#161d22!important;display:block!important;overflow:hidden!important}
-.health-editor-scroll{position:absolute!important;inset:0!important;width:100%!important;height:100%!important;min-height:0!important;max-height:none!important;overflow-y:auto!important;overflow-x:hidden!important;-webkit-overflow-scrolling:touch!important;overscroll-behavior:contain!important;padding:0 0 max(24px,env(safe-area-inset-bottom,0px))!important;scroll-padding-top:12px!important;scroll-padding-bottom:104px!important;touch-action:pan-y!important;background:#161d22!important}
-.health-editor-header{position:relative!important;inset:auto!important;width:100%!important;margin:0!important;border-radius:0!important;background:#161d22!important}
-.health-editor .health-form{padding:16px 16px 32px!important;min-height:0!important;overflow:visible!important}
-.health-editor input,.health-editor textarea,.health-editor select{min-width:0!important;max-width:100%!important;box-sizing:border-box!important}
-.health-editor input:focus,.health-editor textarea:focus,.health-editor select:focus{scroll-margin-top:12px!important;scroll-margin-bottom:112px!important}
-body:has(.health-editor-backdrop){overflow:hidden!important}
-.health-editor-backdrop,.health-editor-backdrop *{box-sizing:border-box}
+/* v1.4.15.98 replacement Health metric form — no legacy editor geometry */
+.health-metric-modal-new{position:fixed;left:0;right:0;width:100%;z-index:2400;background:#161d22;overflow:hidden;overscroll-behavior:none}
+.health-metric-form-new{width:100%;height:100%;min-height:0;margin:0;padding:0;border:0;border-radius:0;background:#161d22;display:flex;flex-direction:column;overflow:hidden}
+.health-metric-form-scroll{flex:1 1 auto;min-height:0;width:100%;overflow-y:auto;overflow-x:hidden;-webkit-overflow-scrolling:touch;overscroll-behavior:contain;touch-action:pan-y;padding:0 0 max(28px,env(safe-area-inset-bottom,0px));background:#161d22}
+.health-metric-form-header{position:relative;width:100%;margin:0;border-radius:0;background:#161d22}
+.health-metric-fields{padding:16px 16px 40px;min-height:0;overflow:visible}
+.health-metric-form-new input,.health-metric-form-new textarea,.health-metric-form-new select{min-width:0;max-width:100%;box-sizing:border-box}
+.health-metric-form-new input:focus,.health-metric-form-new textarea:focus,.health-metric-form-new select:focus{scroll-margin-top:12px;scroll-margin-bottom:28px}
+.health-metric-modal-new,.health-metric-modal-new *{box-sizing:border-box}
 .labs-year-tabs{display:flex;gap:6px;overflow-x:auto;padding:10px 0 0;border-bottom:1px solid #344249;scrollbar-width:none}.labs-year-tabs::-webkit-scrollbar{display:none}.labs-year-tabs button{flex:0 0 auto;min-width:92px;padding:11px 15px 10px;border:1px solid #45535c;border-bottom:0;border-radius:12px 12px 0 0;background:#182027;color:#9ba6ad;font-weight:900}.labs-year-tabs button.active{color:var(--lime);border-color:#7aa93b;background:#1d291d;box-shadow:inset 0 -4px 0 var(--lime)}
 .labs-draw-tabs{display:flex;gap:8px;overflow-x:auto;padding:12px 0}.labs-draw-tabs button{flex:0 0 auto;padding:8px 12px;border-radius:999px;border:1px solid #45535c;background:#151d22;color:#aeb8be}.labs-draw-tabs button.active{border-color:var(--lime);color:#0c1308;background:var(--lime)}
 .labs-draw-meta{display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:13px 0}.labs-draw-meta span{padding:12px;border:1px solid #344249;border-radius:14px;color:#aab4ba;background:#11181c}.labs-draw-meta b{color:#f5f7f5;margin-left:6px}

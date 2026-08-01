@@ -2,6 +2,37 @@
   "format": "fizz-health-release-history",
   "releases": [
     {
+      "version": "1.4.15.98",
+      "name": "Health Form Replacement & Laboratory Data Migration",
+      "type": "Blocking corrective release",
+      "created": "2026-08-01T10:15:00-04:00",
+      "build": "141598",
+      "stories": [
+        [
+          "FH-1598.1",
+          "Replace the legacy HealthMetricEditor layout with a new body-portal visual-viewport form"
+        ],
+        [
+          "FH-1598.2",
+          "Use one normal flex scroll region and direct focused-field scrolling"
+        ],
+        [
+          "FH-1598.3",
+          "Migrate all 54 verified historical laboratory rows from the supplied workbook"
+        ],
+        [
+          "FH-1598.4",
+          "Preserve fasting status and incomplete laboratory panels"
+        ],
+        [
+          "FH-1598.5",
+          "Populate Labs counts, year tabs, draw dates, values, ranges, and status pills"
+        ]
+      ],
+      "knownIssues": [],
+      "release_id": "FH-20260801-141598"
+    },
+    {
       "version": "1.4.15.97",
       "name": "Health Viewport & Laboratory History",
       "type": "Blocking corrective release",

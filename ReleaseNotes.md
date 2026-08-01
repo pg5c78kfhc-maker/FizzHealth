@@ -1,5 +1,5 @@
-# Fizz Health v1.4.15.97 — Health Viewport & Laboratory History
+# Fizz Health v1.4.15.98 — Health Form Replacement & Laboratory Data Migration
 
-Completed story FH-1597.4.
+Completed story FH-1598.5.
 
-This blocking corrective release removes the competing Health editor sizing rules and installs one visual-viewport shell for all seven Health editors. It also connects the Labs detail page to stored laboratory history with year and draw-date tabs, aligned label/value rows, range-aware value pills, trend comparisons, and incomplete-panel handling.
+This blocking corrective release removes the prior Health metric editor implementation and replaces it with a new body-portal form driven directly by the live visual viewport. It also migrates all 54 verified laboratory rows from the supplied workbook, including fasting-status text and incomplete historical panels, into the application database.
