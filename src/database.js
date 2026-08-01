@@ -4,7 +4,7 @@ import {NUTRIENT_KEYS} from './nutrition/registry.js';
 
 const DB_KEY='fizz-health-sqlite-v1';
 const STORAGE_DB='FizzHealthStorage';
-const TARGET_SCHEMA_VERSION=98;
+const TARGET_SCHEMA_VERSION=103;
 let SQL, db;
 
 const migrations=[
@@ -1520,6 +1520,10 @@ const migrations=[
   {version:102,name:'Labs Thresholds and Adaptive Recommendations',sql:`
     INSERT OR REPLACE INTO release_metadata(version,release_date,build_id,schema_version,title,created_at)
     VALUES ('1.4.15.102','2026-08-01','1415102',102,'Labs Thresholds and Adaptive Recommendations','2026-08-01T13:30:00-04:00');
+  `},
+  {version:103,name:'Menu Copy Planning',sql:`
+    INSERT OR REPLACE INTO release_metadata(version,release_date,build_id,schema_version,title,created_at)
+    VALUES ('1.4.15.103','2026-08-01','1415103',103,'Menu Copy Planning','2026-08-01T14:00:00-04:00');
   `}
 
 ];
