@@ -1516,6 +1516,10 @@ const migrations=[
   {version:101,name:'Scaled Laboratory Range Visualization',sql:`
     INSERT OR REPLACE INTO release_metadata(version,release_date,build_id,schema_version,title,created_at)
     VALUES ('1.4.15.101','2026-08-01','1415101',101,'Scaled Laboratory Range Visualization','2026-08-01T12:35:00-04:00');
+  `},
+  {version:102,name:'Labs Thresholds and Adaptive Recommendations',sql:`
+    INSERT OR REPLACE INTO release_metadata(version,release_date,build_id,schema_version,title,created_at)
+    VALUES ('1.4.15.102','2026-08-01','1415102',102,'Labs Thresholds and Adaptive Recommendations','2026-08-01T13:30:00-04:00');
   `}
 
 ];
