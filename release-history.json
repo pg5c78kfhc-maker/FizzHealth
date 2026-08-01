@@ -2,6 +2,38 @@
   "format": "fizz-health-release-history",
   "releases": [
     {
+      "version": "1.4.15.91",
+      "name": "Prepared Inventory & Nutrition Target Stabilization",
+      "type": "Focused stabilization release",
+      "created": "2026-08-01T04:55:00-04:00",
+      "build": "141591",
+      "releaseId": "FH-20260801-141591",
+      "release_id": "FH-20260801-141591",
+      "stories": [
+        [
+          "FH-1591.1",
+          "Set fixed fiber target to 30 g and maximum to 40 g"
+        ],
+        [
+          "FH-1591.2",
+          "Delete individual prepared Recipe inventory records safely"
+        ],
+        [
+          "FH-1591.3",
+          "Prevent zero-weight or zero-serving prepared records"
+        ],
+        [
+          "FH-1591.4",
+          "Contain approved forms above the persistent footer"
+        ],
+        [
+          "FH-1591.5",
+          "Regression verify recent inventory stabilization"
+        ]
+      ],
+      "knownIssues": []
+    },
+    {
       "version": "1.4.15.90",
       "name": "Tracked Consumption Repair",
       "created": "2026-07-31T20:41:00-04:00",

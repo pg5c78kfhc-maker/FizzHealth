@@ -4,7 +4,7 @@ import {NUTRIENT_KEYS} from './nutrition/registry.js';
 
 const DB_KEY='fizz-health-sqlite-v1';
 const STORAGE_DB='FizzHealthStorage';
-const TARGET_SCHEMA_VERSION=96;
+const TARGET_SCHEMA_VERSION=97;
 let SQL, db;
 
 const migrations=[
@@ -1347,6 +1347,25 @@ const migrations=[
     INSERT OR REPLACE INTO release_register(version,issued_date,build_id,schema_version,title,created_at)
     VALUES ('1.4.15.86','2026-07-31','141586',96,'Canonical Nutrient Schema Reconciliation','2026-07-31T18:43:00-04:00');
   `}
+  ,{version:97,name:'fixed_fiber_target_and_prepared_inventory_integrity',sql:`
+    UPDATE nutrition_targets
+       SET target_value=30,
+           max_value=40,
+           override_target=30,
+           override_max=40,
+           derived=0,
+           source='User configured',
+           source_category='fixed',
+           formula='Fixed daily target / maximum',
+           recommendation_notes='Aim for 30 g daily; 40 g is the configured maximum.',
+           updated_at=CURRENT_TIMESTAMP
+     WHERE nutrient='fiber';
+    INSERT OR REPLACE INTO target_history(effective_date,nutrient,target_value,max_value,unit,source,formula)
+    VALUES ('2026-08-01','fiber',30,40,'g','User configured','Fixed daily target / maximum');
+    INSERT OR REPLACE INTO release_metadata(version,release_date,build_id,schema_version,title,created_at)
+    VALUES ('1.4.15.91','2026-08-01','141591',97,'Prepared Inventory & Nutrition Target Stabilization','2026-08-01T04:55:00-04:00');
+  `}
+
 ];
 const canonicalNutrientColumns=Object.freeze(Object.fromEntries(NUTRIENT_KEYS.map(key=>[key,'REAL'])));
 
