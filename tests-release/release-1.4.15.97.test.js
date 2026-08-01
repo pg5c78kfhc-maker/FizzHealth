@@ -1,0 +1,8 @@
+import test from 'node:test';import assert from 'node:assert/strict';import fs from 'node:fs';
+const main=fs.readFileSync('src/main.jsx','utf8'),css=fs.readFileSync('src/styles.css','utf8');
+test('release metadata is current',()=>{assert.match(main,/const VERSION='1\.4\.15\.97'/);assert.match(main,/const BUILD_ID='141597'/)});
+test('Health editor has one authoritative shell',()=>{assert.equal((css.match(/\.health-editor-backdrop\{/g)||[]).length,1);assert.equal((css.match(/\.health-editor\{/g)||[]).length,1);assert.equal((css.match(/\.health-editor-scroll\{/g)||[]).length,1);assert.doesNotMatch(css,/health-editor-height|touch-action:none[^}]*health-editor|220px[^}]*health-editor|260px[^}]*health-editor/)});
+test('Health editor follows visual viewport and internal scrolling',()=>{assert.match(css,/height:var\(--visual-viewport-height,100dvh\)!important/);assert.match(css,/\.health-editor-scroll\{[^}]*overflow-y:auto!important[^}]*touch-action:pan-y!important/s)});
+test('Labs exposes years, draw dates, and aligned values',()=>{assert.match(main,/labs-year-tabs/);assert.match(main,/labs-draw-tabs/);assert.match(main,/labs-value-row/);assert.match(main,/labRangeState\(row\)/)});
+test('Labs range states use requested contrast',()=>{assert.match(css,/\.lab-value-pill\.in\{background:#8ee337;color:#050805\}/);assert.match(css,/\.lab-value-pill\.out\{background:#e92525;color:#fff\}/);assert.match(css,/\.lab-value-pill\.unknown/)});
+test('incomplete panels omit missing tests',()=>{assert.match(main,/Missing tests are not shown/);assert.match(main,/No numeric results are stored for this draw/)});

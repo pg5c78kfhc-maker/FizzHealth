@@ -1,8 +1,5 @@
-# Fizz Health v1.4.15.96 — Health Forms & Labs Activation
+# Fizz Health v1.4.15.97 — Health Viewport & Laboratory History
 
-Completed through **FH-1596.4**.
+Completed story FH-1597.4.
 
-- Replaced the duplicate Health editor viewport sizing layer with the shared visual-viewport modal shell.
-- Contained all seven Health editors inside the live iOS viewport and canonical internal scroller.
-- Kept Delete off the Health input forms and verified timeline deletion behavior.
-- Activated the Labs card, Labs popover, and chronological Labs detail view from stored database results.
+This blocking corrective release removes the competing Health editor sizing rules and installs one visual-viewport shell for all seven Health editors. It also connects the Labs detail page to stored laboratory history with year and draw-date tabs, aligned label/value rows, range-aware value pills, trend comparisons, and incomplete-panel handling.
