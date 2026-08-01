@@ -1,0 +1,13 @@
+VERSION.json
+package.json
+package-lock.json
+public/sw.js
+src/database.js
+src/decision/engine.js
+src/main.jsx
+src/styles.css
+tests-release/release-1.4.15.99.test.js
+RELEASE-NOTES-1.4.15.99.md
+TEST-REPORT-1.4.15.99.md
+CHANGED-FILES-1.4.15.99.txt
+HEALTH-EDITOR-LABS-AUDIT-1.4.15.99.md

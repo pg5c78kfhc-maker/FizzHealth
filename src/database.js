@@ -1469,6 +1469,47 @@ const migrations=[
     INSERT OR IGNORE INTO lab_results(biomarker,value,text_value,unit,reference_low,reference_high,collected_at,source,notes,created_at,source_record_id) VALUES ('PSA',1.03,NULL,'ng/mL',NULL,NULL,'2026-07-08T12:00:00.000Z','workbook-seed','ng/mL',CURRENT_TIMESTAMP,'lab:2026-07-08:psa');
     INSERT OR IGNORE INTO health_metrics(metric_type,value_primary,value_secondary,unit,measured_at,local_date,notes,source,created_at,updated_at,source_record_id) VALUES ('biomarker:psa',1.03,NULL,'ng/mL','2026-07-08T12:00:00.000Z','2026-07-08','ng/mL','workbook-seed',CURRENT_TIMESTAMP,CURRENT_TIMESTAMP,'lab-metric:2026-07-08:psa');
   `}
+,  {version:99,name:'complete_2026_laboratory_panel_and_align_labs_ui',sql:`
+    ALTER TABLE lab_results ADD COLUMN comparison_operator TEXT;
+    ALTER TABLE lab_results ADD COLUMN panel_name TEXT;
+    ALTER TABLE lab_results ADD COLUMN fasting_context TEXT;
+    ALTER TABLE lab_results ADD COLUMN calculation_method TEXT;
+    DELETE FROM lab_results WHERE substr(collected_at,1,10)='2026-07-08';
+    DELETE FROM health_metrics WHERE metric_type LIKE 'biomarker:%' AND local_date='2026-07-08';
+    INSERT INTO lab_results(biomarker,value,text_value,unit,reference_low,reference_high,comparison_operator,panel_name,collected_at,fasting_context,calculation_method,source,notes,source_record_id,created_at) VALUES
+      ('Total Cholesterol',255,NULL,'mg/dL',NULL,200,'<','Lipid panel','2026-07-08T12:00:00.000Z','Non-fasting',NULL,'quest-2026','Quest July 8, 2026 report','lab:2026-07-08:total-cholesterol',CURRENT_TIMESTAMP),
+      ('HDL Cholesterol',58,NULL,'mg/dL',40,NULL,'>=','Lipid panel','2026-07-08T12:00:00.000Z','Non-fasting',NULL,'quest-2026','Quest July 8, 2026 report','lab:2026-07-08:hdl-cholesterol',CURRENT_TIMESTAMP),
+      ('Triglycerides',84,NULL,'mg/dL',NULL,150,'<','Lipid panel','2026-07-08T12:00:00.000Z','Non-fasting',NULL,'quest-2026','Quest July 8, 2026 report','lab:2026-07-08:triglycerides',CURRENT_TIMESTAMP),
+      ('LDL Cholesterol',178,NULL,'mg/dL',NULL,100,'<','Lipid panel','2026-07-08T12:00:00.000Z','Non-fasting',NULL,'quest-2026','Quest July 8, 2026 report','lab:2026-07-08:ldl-cholesterol',CURRENT_TIMESTAMP),
+      ('Cholesterol/HDL Ratio',4.4,NULL,'calculated',NULL,5.0,'<','Lipid panel','2026-07-08T12:00:00.000Z','Non-fasting',NULL,'quest-2026','Quest July 8, 2026 report','lab:2026-07-08:cholesterol-hdl-ratio',CURRENT_TIMESTAMP),
+      ('Non-HDL Cholesterol',197,NULL,'mg/dL',NULL,130,'<','Lipid panel','2026-07-08T12:00:00.000Z','Non-fasting',NULL,'quest-2026','Quest July 8, 2026 report','lab:2026-07-08:non-hdl-cholesterol',CURRENT_TIMESTAMP),
+      ('Glucose',99,NULL,'mg/dL',65,139,'between','Comprehensive metabolic panel','2026-07-08T12:00:00.000Z','Non-fasting',NULL,'quest-2026','Quest July 8, 2026 report','lab:2026-07-08:glucose',CURRENT_TIMESTAMP),
+      ('Urea Nitrogen / BUN',18,NULL,'mg/dL',7,25,'between','Comprehensive metabolic panel','2026-07-08T12:00:00.000Z','Non-fasting',NULL,'quest-2026','Quest July 8, 2026 report','lab:2026-07-08:urea-nitrogen-bun',CURRENT_TIMESTAMP),
+      ('Creatinine',1.0,NULL,'mg/dL',0.7,1.35,'between','Comprehensive metabolic panel','2026-07-08T12:00:00.000Z','Non-fasting',NULL,'quest-2026','Quest July 8, 2026 report','lab:2026-07-08:creatinine',CURRENT_TIMESTAMP),
+      ('eGFR, Creatinine-Based',85,NULL,'mL/min/1.73 m²',60,NULL,'>=','Comprehensive metabolic panel','2026-07-08T12:00:00.000Z','Non-fasting','creatinine-based','quest-2026','Quest July 8, 2026 report','lab:2026-07-08:egfr-creatinine-based',CURRENT_TIMESTAMP),
+      ('BUN/Creatinine Ratio',NULL,'Not reported','calculated',6,22,'between','Comprehensive metabolic panel','2026-07-08T12:00:00.000Z','Non-fasting',NULL,'quest-2026','Quest July 8, 2026 report','lab:2026-07-08:bun-creatinine-ratio',CURRENT_TIMESTAMP),
+      ('Sodium',139,NULL,'mmol/L',135,146,'between','Comprehensive metabolic panel','2026-07-08T12:00:00.000Z','Non-fasting',NULL,'quest-2026','Quest July 8, 2026 report','lab:2026-07-08:sodium',CURRENT_TIMESTAMP),
+      ('Potassium',4.5,NULL,'mmol/L',3.5,5.3,'between','Comprehensive metabolic panel','2026-07-08T12:00:00.000Z','Non-fasting',NULL,'quest-2026','Quest July 8, 2026 report','lab:2026-07-08:potassium',CURRENT_TIMESTAMP),
+      ('Chloride',104,NULL,'mmol/L',98,110,'between','Comprehensive metabolic panel','2026-07-08T12:00:00.000Z','Non-fasting',NULL,'quest-2026','Quest July 8, 2026 report','lab:2026-07-08:chloride',CURRENT_TIMESTAMP),
+      ('Carbon Dioxide',25,NULL,'mmol/L',20,32,'between','Comprehensive metabolic panel','2026-07-08T12:00:00.000Z','Non-fasting',NULL,'quest-2026','Quest July 8, 2026 report','lab:2026-07-08:carbon-dioxide',CURRENT_TIMESTAMP),
+      ('Calcium',9.4,NULL,'mg/dL',8.6,10.3,'between','Comprehensive metabolic panel','2026-07-08T12:00:00.000Z','Non-fasting',NULL,'quest-2026','Quest July 8, 2026 report','lab:2026-07-08:calcium',CURRENT_TIMESTAMP),
+      ('Total Protein',7.1,NULL,'g/dL',6.1,8.1,'between','Comprehensive metabolic panel','2026-07-08T12:00:00.000Z','Non-fasting',NULL,'quest-2026','Quest July 8, 2026 report','lab:2026-07-08:total-protein',CURRENT_TIMESTAMP),
+      ('Albumin',4.5,NULL,'g/dL',3.6,5.1,'between','Comprehensive metabolic panel','2026-07-08T12:00:00.000Z','Non-fasting',NULL,'quest-2026','Quest July 8, 2026 report','lab:2026-07-08:albumin',CURRENT_TIMESTAMP),
+      ('Globulin',2.6,NULL,'g/dL',1.9,3.7,'between','Comprehensive metabolic panel','2026-07-08T12:00:00.000Z','Non-fasting',NULL,'quest-2026','Quest July 8, 2026 report','lab:2026-07-08:globulin',CURRENT_TIMESTAMP),
+      ('Albumin/Globulin Ratio',1.7,NULL,'calculated',1.0,2.5,'between','Comprehensive metabolic panel','2026-07-08T12:00:00.000Z','Non-fasting',NULL,'quest-2026','Quest July 8, 2026 report','lab:2026-07-08:albumin-globulin-ratio',CURRENT_TIMESTAMP),
+      ('Total Bilirubin',0.6,NULL,'mg/dL',0.2,1.2,'between','Comprehensive metabolic panel','2026-07-08T12:00:00.000Z','Non-fasting',NULL,'quest-2026','Quest July 8, 2026 report','lab:2026-07-08:total-bilirubin',CURRENT_TIMESTAMP),
+      ('Alkaline Phosphatase',53,NULL,'U/L',35,144,'between','Comprehensive metabolic panel','2026-07-08T12:00:00.000Z','Non-fasting',NULL,'quest-2026','Quest July 8, 2026 report','lab:2026-07-08:alkaline-phosphatase',CURRENT_TIMESTAMP),
+      ('AST',17,NULL,'U/L',10,35,'between','Comprehensive metabolic panel','2026-07-08T12:00:00.000Z','Non-fasting',NULL,'quest-2026','Quest July 8, 2026 report','lab:2026-07-08:ast',CURRENT_TIMESTAMP),
+      ('ALT',17,NULL,'U/L',9,46,'between','Comprehensive metabolic panel','2026-07-08T12:00:00.000Z','Non-fasting',NULL,'quest-2026','Quest July 8, 2026 report','lab:2026-07-08:alt',CURRENT_TIMESTAMP),
+      ('Hemoglobin A1C',5.5,NULL,'%',NULL,5.7,'<','Additional tests','2026-07-08T12:00:00.000Z','Non-fasting',NULL,'quest-2026','Quest July 8, 2026 report','lab:2026-07-08:hemoglobin-a1c',CURRENT_TIMESTAMP),
+      ('Cystatin C',0.91,NULL,'mg/L',0.52,1.2,'between','Additional tests','2026-07-08T12:00:00.000Z','Non-fasting',NULL,'quest-2026','Quest July 8, 2026 report','lab:2026-07-08:cystatin-c',CURRENT_TIMESTAMP),
+      ('eGFR, Cystatin-C-Based',87,NULL,'mL/min/1.73 m²',60,NULL,'>=','Additional tests','2026-07-08T12:00:00.000Z','Non-fasting','cystatin-C-based','quest-2026','Quest July 8, 2026 report','lab:2026-07-08:egfr-cystatin-c-based',CURRENT_TIMESTAMP),
+      ('PSA, Total',1.03,NULL,'ng/mL',NULL,4.0,'<=','Additional tests','2026-07-08T12:00:00.000Z','Non-fasting',NULL,'quest-2026','Quest July 8, 2026 report','lab:2026-07-08:psa-total',CURRENT_TIMESTAMP);
+    DELETE FROM lab_results WHERE id NOT IN (SELECT MIN(id) FROM lab_results GROUP BY lower(replace(replace(biomarker,'-',' '),'_',' ')),substr(collected_at,1,10),COALESCE(value,-999999),COALESCE(text_value,''));
+    INSERT OR REPLACE INTO release_metadata(version,release_date,build_id,schema_version,title,created_at)
+    VALUES ('1.4.15.99','2026-08-01','141599',99,'Laboratory Panel Completion & Labs UI','2026-08-01T11:15:00-04:00');
+  `}
+
 ];
 const canonicalNutrientColumns=Object.freeze(Object.fromEntries(NUTRIENT_KEYS.map(key=>[key,'REAL'])));
 

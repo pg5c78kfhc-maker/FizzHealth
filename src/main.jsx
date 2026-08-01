@@ -28,11 +28,11 @@ import {consumeInventory,inventoryAvailableQuantity,inventoryAvailableServings} 
 import {canonicalUnit,convertQuantity,foodQuantityToGrams} from './nutrition/units';
 import {buildFoodEnrichmentExchange,buildNewFoodExchange,buildLogOnceExchange,normalizeExchangeJson as normalizeUniversalJson,parseExchangeJson,restaurantMenuItems,validateRestaurantExchange,validateUniversalExchange,foodProposal,mealProposal,changedFoodFields,serializeJsonBackedFields} from './exchange';
 import './styles.css';
-const VERSION='1.4.15.98';
+const VERSION='1.4.15.99';
 const RELEASE_DATE='2026-08-01';
-const BUILD_ID='141598';
-const DEPLOYMENT_ID='FH-20260801-141598';
-const RELEASE_CREATED_AT='2026-08-01T10:15:00-04:00';
+const BUILD_ID='141599';
+const DEPLOYMENT_ID='FH-20260801-141599';
+const RELEASE_CREATED_AT='2026-08-01T11:15:00-04:00';
 const NUTRITION_RECORD_SECTIONS=[
  {title:'Macronutrients',keys:['calories','protein','carbs','fiber','fat','saturated_fat','trans_fat','cholesterol','sodium','potassium','total_sugar','added_sugar','monounsaturated_fat','polyunsaturated_fat','omega_3']},
  {title:'Vitamins & Minerals',keys:['calcium','iron','magnesium','vitamin_d','vitamin_c']},
@@ -2246,20 +2246,13 @@ function MetricLineChart({rows,definition}){
  const pMarks=markers(primary,secondary?'SYS':'');const sMarks=secondary?markers(secondary,'DIA'):[];
  return <div className="metric-line-chart"><div className="chart-heading"><b>{definition.label} trend</b><span>{data.length} reading{data.length===1?'':'s'} · {new Date(data[0].measured_at).toLocaleDateString()}–{new Date(data.at(-1).measured_at).toLocaleDateString()}</span></div><svg viewBox="0 0 100 34" preserveAspectRatio="none" role="img" aria-label={`${definition.label} trend`}><polyline className="metric-primary" points={points(primary)} fill="none" vectorEffect="non-scaling-stroke"/>{secondary&&<polyline className="metric-secondary" points={points(secondary)} fill="none" vectorEffect="non-scaling-stroke"/>}{pMarks.map(label)}{sMarks.map(label)}</svg><div className="chart-summary"><span>Primary low <b>{Math.min(...primary)} {definition.unit}</b></span><span>Primary high <b>{Math.max(...primary)} {definition.unit}</b></span><span>Latest <b>{primary.at(-1)} {definition.unit}</b></span></div>{secondary&&<><div className="chart-summary secondary-summary"><span>Diastolic low <b>{Math.min(...secondary)} mmHg</b></span><span>Diastolic high <b>{Math.max(...secondary)} mmHg</b></span><span>Latest <b>{secondary.at(-1)} mmHg</b></span></div><div className="chart-legend"><span>Systolic</span><span>Diastolic</span></div></>}</div>
 }
-const LAB_RANGE_RULES=[
- {match:n=>n.includes('total cholesterol'),low:null,high:200},
- {match:n=>n.includes('non-hdl'),low:null,high:130},
- {match:n=>n==='ldl'||n.includes('ldl cholesterol'),low:null,high:100},
- {match:n=>n==='hdl'||n.includes('hdl cholesterol'),low:40,high:null},
- {match:n=>n.includes('triglycer'),low:null,high:150},
- {match:n=>n==='a1c'||n.includes('hemoglobin a1c'),low:null,high:5.7},
- {match:n=>n.includes('apob')||n.includes('apo b'),low:null,high:90},
- {match:n=>n.includes('fasting glucose')||n==='glucose',low:70,high:99},
- {match:n=>n==='psa'||n.includes('prostate specific'),low:null,high:4}
-];
-function labRange(row){const low=Number(row?.reference_low),high=Number(row?.reference_high);if(Number.isFinite(low)||Number.isFinite(high))return {low:Number.isFinite(low)?low:null,high:Number.isFinite(high)?high:null,source:'stored'};const name=String(row?.biomarker||'').trim().toLowerCase(),rule=LAB_RANGE_RULES.find(x=>x.match(name));return rule?{low:rule.low,high:rule.high,source:'configured'}:null}
+const LAB_CANONICAL_NAMES=Object.freeze({
+ 'total cholesterol':'Total Cholesterol','total-cholesterol':'Total Cholesterol','hdl':'HDL Cholesterol','hdl cholesterol':'HDL Cholesterol','hdl-cholesterol':'HDL Cholesterol','ldl':'LDL Cholesterol','ldl cholesterol':'LDL Cholesterol','ldl-cholesterol':'LDL Cholesterol','non hdl cholesterol':'Non-HDL Cholesterol','non-hdl cholesterol':'Non-HDL Cholesterol','non-hdl-cholesterol':'Non-HDL Cholesterol','a1c':'Hemoglobin A1C','hemoglobin a1c':'Hemoglobin A1C','psa':'PSA, Total','psa total':'PSA, Total'
+});
+function canonicalLabName(name){const normalized=String(name||'').trim().toLowerCase().replaceAll('_',' ').replace(/\s+/g,' ');return LAB_CANONICAL_NAMES[normalized]||String(name||'').trim()}
+function labRange(row){const low=Number(row?.reference_low),high=Number(row?.reference_high);return Number.isFinite(low)||Number.isFinite(high)?{low:Number.isFinite(low)?low:null,high:Number.isFinite(high)?high:null,operator:String(row?.comparison_operator||'').trim()}:null}
 function labRangeState(row){const range=labRange(row),value=Number(row?.value);if(!range||!Number.isFinite(value))return 'unknown';if(range.low!=null&&value<range.low)return 'out';if(range.high!=null&&value>range.high)return 'out';return 'in'}
-function labRangeText(row){const range=labRange(row);if(!range)return 'Range not stored';if(range.low!=null&&range.high!=null)return `${range.low}–${range.high}`;if(range.low!=null)return `≥ ${range.low}`;return `≤ ${range.high}`}
+function labRangeText(row){const range=labRange(row);if(!range)return 'Range not stored';const op=range.operator;if(range.low!=null&&range.high!=null)return `${range.low}–${range.high}`;if(range.low!=null)return `${op==='>'?'>':'≥'} ${range.low}`;return `${op==='<'?'<':'≤'} ${range.high}`}
 function normalizeLabRecord(row){
  const pick=(...keys)=>{for(const key of keys){const value=row?.[key];if(value!==undefined&&value!==null&&String(value).trim()!=='')return value}return null};
  const rawName=pick('biomarker','test_name','Test Name','test','Test','metric_type','Lab Test','Analyte');
@@ -2270,7 +2263,8 @@ function normalizeLabRecord(row){
  const explicitUnit=pick('unit','Unit','units','Units');
  const inferredUnit=String(rawValue??'').match(/(?:mg\/dL|mmol\/L|ng\/mL|%|mIU\/L|U\/L|g\/dL|mL\/min[^,; ]*)/i)?.[0]||String(notes??'').match(/(?:mg\/dL|mmol\/L|ng\/mL|%|mIU\/L|U\/L|g\/dL|mL\/min[^,; ]*)/i)?.[0]||'';
  const collected=pick('collected_at','Date','date','measured_at','recorded_at','Collection Date');
- return {...row,biomarker:rawName?String(rawName).trim():null,test_name:rawName?String(rawName).trim():null,value:Number.isFinite(numeric)?numeric:null,text_value:textValue==null?null:String(textValue).trim(),unit:String(explicitUnit||inferredUnit||'').trim(),collected_at:collected,notes:notes||null};
+ const biomarker=rawName?canonicalLabName(String(rawName).replace(/^biomarker:/i,'')):null;
+ return {...row,biomarker,test_name:biomarker,value:Number.isFinite(numeric)?numeric:null,text_value:textValue==null?null:String(textValue).trim(),unit:String(explicitUnit||inferredUnit||'').trim(),collected_at:collected,notes:notes||null};
 }
 
 // FH-1262: Health renders the canonical federated Event contract rather than rebuilding its own timeline shape.
