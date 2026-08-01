@@ -2,6 +2,35 @@
   "format": "fizz-health-release-history",
   "releases": [
     {
+      "version": "1.4.15.96",
+      "name": "Health Forms & Labs Activation",
+      "type": "Focused corrective release",
+      "date": "2026-08-01",
+      "build": "141596",
+      "deploymentId": "FH-20260801-141596",
+      "created": "2026-08-01T09:09:00-04:00",
+      "releaseId": "FH-20260801-141596",
+      "release_id": "FH-20260801-141596",
+      "stories": [
+        [
+          "FH-1596.1",
+          "Replace the duplicate Health viewport sizing model"
+        ],
+        [
+          "FH-1596.2",
+          "Contain all seven Health editors above the iOS keyboard"
+        ],
+        [
+          "FH-1596.3",
+          "Audit timeline deletion and keep Delete off input forms"
+        ],
+        [
+          "FH-1596.4",
+          "Activate Labs summary, popover, and detail history"
+        ]
+      ]
+    },
+    {
       "version": "1.4.15.95",
       "name": "Health Page Completion",
       "date": "2026-08-01",

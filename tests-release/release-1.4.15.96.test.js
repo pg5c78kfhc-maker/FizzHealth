@@ -1,0 +1,11 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import fs from 'node:fs';
+const main=fs.readFileSync('src/main.jsx','utf8');
+const css=fs.readFileSync('src/styles.css','utf8');
+test('release metadata is 1.4.15.96',()=>{assert.match(main,/const VERSION='1\.4\.15\.96'/);assert.match(main,/const BUILD_ID='141596'/)});
+test('Health editor no longer performs a second visualViewport calculation',()=>{const block=main.slice(main.indexOf('function HealthMetricEditor'),main.indexOf('function MetricLineChart'));assert.doesNotMatch(block,/visualViewport|health-editor-height|editorRef/)});
+test('Health editor uses one bounded internal scroller',()=>{assert.match(main,/className="health-editor-scroll"/);assert.match(css,/v1\.4\.15\.96 — canonical Health editor viewport shell/);assert.match(css,/height:var\(--visual-viewport-height,100dvh\)!important/)});
+test('focused Health controls use the canonical scroller',()=>{assert.match(main,/closest\('\.health-editor-scroll,/)});
+test('Labs card opens a detail view and information stays separate',()=>{assert.match(main,/setLabsDetail\(true\)/);assert.match(main,/View all lab results/);assert.match(main,/LABORATORY HISTORY/)});
+test('Health forms do not expose Delete',()=>{const block=main.slice(main.indexOf('function HealthMetricEditor'),main.indexOf('function MetricLineChart'));assert.doesNotMatch(block,/Delete|Trash2/)});
