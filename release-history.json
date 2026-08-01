@@ -2,6 +2,38 @@
   "format": "fizz-health-release-history",
   "releases": [
     {
+      "version": "1.4.15.93",
+      "name": "Health Check-in Redesign",
+      "type": "Focused presentation release",
+      "created": "2026-08-01T07:54:00-04:00",
+      "build": "141593",
+      "releaseId": "FH-20260801-141593",
+      "release_id": "FH-20260801-141593",
+      "stories": [
+        [
+          "FH-1593.1",
+          "Replace oversized check-in cards with a compact two-column metric grid"
+        ],
+        [
+          "FH-1593.2",
+          "Preserve card tap entry and edit behavior"
+        ],
+        [
+          "FH-1593.3",
+          "Add independent information controls to each metric card"
+        ],
+        [
+          "FH-1593.4",
+          "Reconfigure the history area as one context-sensitive information panel"
+        ],
+        [
+          "FH-1593.5",
+          "Preserve completion, timeline, and metric history workflows"
+        ]
+      ],
+      "knownIssues": []
+    },
+    {
       "version": "1.4.15.92",
       "name": "Daily Brief Consolidation",
       "type": "Focused experience release",
