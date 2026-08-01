@@ -2,6 +2,16 @@
   "format": "fizz-health-release-history",
   "releases": [
     {
+      "version": "1.4.15.95",
+      "name": "Health Page Completion",
+      "date": "2026-08-01",
+      "build": "141595",
+      "deploymentId": "FH-20260801-141595",
+      "created": "2026-08-01T08:55:00-04:00",
+      "releaseId": "FH-20260801-141595",
+      "release_id": "FH-20260801-141595"
+    },
+    {
       "version": "1.4.15.94",
       "name": "Health Check-in Polish",
       "type": "Focused interaction release",

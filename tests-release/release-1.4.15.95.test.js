@@ -1,0 +1,10 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import fs from 'node:fs';
+const main=fs.readFileSync('src/main.jsx','utf8');
+const css=fs.readFileSync('src/styles.css','utf8');
+test('release metadata is 1.4.15.95',()=>{assert.match(main,/const VERSION='1\.4\.15\.95'/);assert.match(main,/const BUILD_ID='141595'/)});
+test('Health header is the standard landing pattern without Morning check-in',()=>{assert.match(main,/health-landing-head/);assert.doesNotMatch(main,/Morning check-in/)});
+test('Health grid includes Labs after the seven check-in metrics',()=>{assert.match(main,/LABS_HEALTH_CARD/);assert.match(main,/labBiomarkers/);assert.match(main,/health-labs-card/)});
+test('Health editors use visualViewport and do not expose form delete',()=>{assert.match(main,/window\.visualViewport/);assert.doesNotMatch(main,/Delete this reading/);assert.match(css,/--health-editor-height/)});
+test('Labs popover exposes stored laboratory summary',()=>{assert.match(main,/Latest draw/);assert.match(main,/Distinct markers tracked/);assert.match(main,/labAttention/)});

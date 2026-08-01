@@ -1,18 +1,8 @@
-# Fizz Health v1.4.15.92
+# Fizz Health v1.4.15.95 — Health Page Completion
 
-## Daily Brief Consolidation
-
-- FH-1592.1 — Replace the recent-changes feed with a 23-topic structured Daily Brief.
-- FH-1592.2 — Drive the visual and spoken briefing from one shared section model.
-- FH-1592.3 — Move interpreted health relationships, longitudinal insights, and confidence into the Daily Brief.
-- FH-1592.4 — Remove Health Intelligence and correlation cards from the Health page and pull remaining content upward.
-- FH-1592.5 — Standardize the Health page header and safe-area behavior.
-
-## v1.4.15.93 — Health Check-in Redesign
-
-Completed through FH-1593.5. Replaced oversized Health check-in cards with a compact two-column grid, preserved card logging/editing, added separate information controls, and converted the history area into a context-sensitive metric panel.
-
-
-## v1.4.15.94 — Health Check-in Polish
-
-Completed through FH-1594.6. Completed Health metric card borders, replaced inline history with a dismissible popover, standardized metric editors on the header X/checkmark pattern, and made all seven editors viewport-, keyboard-, footer-, and safe-area-aware. Delete remains scoped to the selected health_metrics reading and was audited without changing its behavior.
+- FH-1595.1: Match the Health landing header to the Nutrition and Library landing pattern.
+- FH-1595.2: Replace the oversized Morning Check-in introduction with a compact Daily Health card.
+- FH-1595.3: Complete the two-column Health grid with Labs beside Workout.
+- FH-1595.4: Expose stored laboratory coverage and priority results in the Labs popover.
+- FH-1595.5: Contain all seven Health editors within the live iOS visual viewport and remove form deletion.
+- FH-1595.6: Verify timeline deletion remains the contextual destructive workflow.
