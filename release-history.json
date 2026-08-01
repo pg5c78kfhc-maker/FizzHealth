@@ -2,6 +2,38 @@
   "format": "fizz-health-release-history",
   "releases": [
     {
+      "version": "1.4.15.92",
+      "name": "Daily Brief Consolidation",
+      "type": "Focused experience release",
+      "created": "2026-08-01T06:20:00-04:00",
+      "build": "141592",
+      "releaseId": "FH-20260801-141592",
+      "release_id": "FH-20260801-141592",
+      "stories": [
+        [
+          "FH-1592.1",
+          "Replace the recent-changes feed with a 23-topic structured Daily Brief"
+        ],
+        [
+          "FH-1592.2",
+          "Use one shared briefing model for collapsed visual headlines and full spoken narration"
+        ],
+        [
+          "FH-1592.3",
+          "Move interpreted health intelligence into the Daily Brief"
+        ],
+        [
+          "FH-1592.4",
+          "Remove Health Intelligence and correlation cards from the Health page"
+        ],
+        [
+          "FH-1592.5",
+          "Standardize the Health page header and reflow remaining content"
+        ]
+      ],
+      "knownIssues": []
+    },
+    {
       "version": "1.4.15.91",
       "name": "Prepared Inventory & Nutrition Target Stabilization",
       "type": "Focused stabilization release",

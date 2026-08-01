@@ -1,9 +1,9 @@
-# Fizz Health v1.4.15.91
+# Fizz Health v1.4.15.92
 
-## Prepared Inventory & Nutrition Target Stabilization
+## Daily Brief Consolidation
 
-- FH-1591.1 — Set daily fiber target to 30 g and maximum to 40 g.
-- FH-1591.2 — Allow explicit deletion of individual prepared Recipe inventory records, including legacy zero-weight records.
-- FH-1591.3 — Prevent creation of prepared inventory with zero weight, quantity, or calculated servings.
-- FH-1591.4 — Keep Add Food, Recipe Contents, and Prepared Recipe forms above the persistent footer.
-- FH-1591.5 — Regression-check tracked consumption and prepared Recipe inventory behavior.
+- FH-1592.1 — Replace the recent-changes feed with a 23-topic structured Daily Brief.
+- FH-1592.2 — Drive the visual and spoken briefing from one shared section model.
+- FH-1592.3 — Move interpreted health relationships, longitudinal insights, and confidence into the Daily Brief.
+- FH-1592.4 — Remove Health Intelligence and correlation cards from the Health page and pull remaining content upward.
+- FH-1592.5 — Standardize the Health page header and safe-area behavior.
