@@ -2418,3 +2418,28 @@ body.food-library-active .food-library-page .list.foods{padding-bottom:calc(24px
 .health-info-button{grid-column:2;grid-row:2;align-self:center;justify-self:center;width:30px;height:30px;border-radius:50%;display:grid;place-items:center;background:#222a30;color:#aab4be;border:1px solid #52606b}.health-info-button svg{width:17px}.health-info-button.active{color:var(--lime);border-color:var(--lime);background:#18261b}
 .health-info-panel{margin-top:18px;padding:16px;border:1px solid #3d4a52;border-radius:22px;background:linear-gradient(145deg,#1a2329,#11171b)}.health-info-title{display:flex;align-items:center;gap:10px;border-bottom:1px solid var(--line);padding-bottom:12px}.health-info-title>div{flex:1}.health-info-title small{color:var(--muted);letter-spacing:.12em}.health-info-title h2{margin:2px 0 0}.health-info-title>button{display:flex;align-items:center;gap:2px;color:var(--lime);background:transparent}.health-info-title>button svg{width:16px}.health-info-icon{display:grid;place-items:center;width:42px;height:42px;border-radius:13px;background:#203028;color:var(--lime)}.health-info-icon svg{width:24px}.health-info-stats{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:12px 0}.health-info-stats>div{padding:11px;border-radius:14px;background:#12191d;border:1px solid rgba(255,255,255,.07);display:grid;gap:3px}.health-info-stats small,.health-info-stats span{color:var(--muted);font-size:.7rem}.health-info-stats b{font-size:1rem}
 @media(max-width:390px){.health-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.health-card{min-height:140px;display:grid}.health-card-main{flex-direction:column}.health-card .health-state{transform:none}.health-info-stats{grid-template-columns:1fr}}
+
+/* FH-1594 Health check-in interaction refinement */
+.health-card{border:1px solid rgba(255,255,255,.18)!important;overflow:hidden}
+.health-card.complete{border-color:rgba(72,209,125,.62)!important}
+.health-card-main{border:0!important;outline:0!important}
+.health-popover-backdrop{position:fixed;inset:0;z-index:1500;background:rgba(0,0,0,.58);display:flex;align-items:flex-end;justify-content:center;padding:18px 12px calc(78px + env(safe-area-inset-bottom,0px))}
+.health-popover{width:min(760px,100%);max-height:min(72dvh,680px);overflow:auto;overscroll-behavior:contain;border:1px solid #53636d;border-radius:26px 26px 18px 18px;background:linear-gradient(145deg,#1b252b,#11171b);box-shadow:0 -20px 50px rgba(0,0,0,.55);padding:9px 16px 18px;scroll-padding-bottom:24px}
+.health-popover-handle{width:54px;height:5px;border-radius:999px;background:#66737b;margin:0 auto 10px}
+.health-popover .health-info-title{position:relative;padding-right:42px}
+.health-popover-close{position:absolute;right:0;top:2px;width:38px;height:38px;display:grid;place-items:center;border-radius:50%;background:transparent;color:#b7c0c5}
+.health-popover-close svg{width:24px}
+.health-history-button{width:100%;margin-top:12px;display:flex;align-items:center;justify-content:center;gap:7px}
+.health-history-button svg{width:18px}
+.health-editor-backdrop{align-items:flex-end;padding:0!important;overflow:hidden}
+.health-editor{width:min(760px,100%);max-width:none!important;height:min(88dvh,760px);max-height:calc(100dvh - env(safe-area-inset-top,0px) - 8px);margin:0!important;padding:0!important;border-radius:24px 24px 0 0!important;overflow:hidden;display:block!important}
+.health-editor-scroll{height:100%;overflow-y:auto;overscroll-behavior:contain;padding-bottom:calc(36px + env(safe-area-inset-bottom,0px));scroll-padding-bottom:calc(180px + env(safe-area-inset-bottom,0px))}
+.health-editor-header{position:static!important;top:auto!important;margin:0!important;border-radius:24px 24px 0 0;background:#161d22;z-index:auto}
+.health-editor-header button{color:#dfe6e3}
+.health-editor-header button[type=submit]{color:var(--lime)}
+.health-editor-header button:disabled{opacity:.45}
+.health-editor .health-form{padding:18px 16px 8px;min-width:0}
+.health-editor .single-metric-input,.health-editor .bp-inputs{min-width:0;max-width:100%}
+.health-editor input,.health-editor textarea,.health-editor select{max-width:100%;min-width:0;box-sizing:border-box}
+.health-delete-reading{width:100%;margin-top:12px;min-height:48px;border:1px solid rgba(255,100,100,.35);border-radius:14px;display:flex;align-items:center;justify-content:center;gap:8px;background:rgba(120,20,20,.12)}
+@media(max-width:420px){.health-popover-backdrop{padding-left:0;padding-right:0;padding-bottom:calc(72px + env(safe-area-inset-bottom,0px))}.health-popover{border-radius:24px 24px 0 0;max-height:76dvh}.health-editor{height:min(90dvh,760px)}}

@@ -11,3 +11,8 @@
 ## v1.4.15.93 — Health Check-in Redesign
 
 Completed through FH-1593.5. Replaced oversized Health check-in cards with a compact two-column grid, preserved card logging/editing, added separate information controls, and converted the history area into a context-sensitive metric panel.
+
+
+## v1.4.15.94 — Health Check-in Polish
+
+Completed through FH-1594.6. Completed Health metric card borders, replaced inline history with a dismissible popover, standardized metric editors on the header X/checkmark pattern, and made all seven editors viewport-, keyboard-, footer-, and safe-area-aware. Delete remains scoped to the selected health_metrics reading and was audited without changing its behavior.

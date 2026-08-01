@@ -74,3 +74,11 @@
 - Added a confirmed Discontinued switch directly beneath Ingredient Only.
 - Reused the established archival lifecycle to remove discontinued foods from active surfaces while retaining historical records.
 - Synchronized linked Pantry records and source-linked Meal definitions with discontinuation and restoration.
+
+## 1.4.15.94 — Health Check-in Polish
+
+- Completed Health metric card borders.
+- Replaced inline metric history with a dismissible popover.
+- Standardized Health metric editors on X/checkmark header actions.
+- Added viewport, keyboard, footer, and safe-area containment for all Health metric editors.
+- Audited selected-reading deletion without changing its behavior.

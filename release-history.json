@@ -2,6 +2,44 @@
   "format": "fizz-health-release-history",
   "releases": [
     {
+      "version": "1.4.15.94",
+      "name": "Health Check-in Polish",
+      "type": "Focused interaction release",
+      "build": "141594",
+      "deploymentId": "FH-20260801-141594",
+      "issuedDate": "2026-08-01",
+      "created": "2026-08-01T08:20:00-04:00",
+      "releaseId": "FH-20260801-141594",
+      "release_id": "FH-20260801-141594",
+      "stories": [
+        [
+          "FH-1594.1",
+          "Complete metric-card borders across the full card surface"
+        ],
+        [
+          "FH-1594.2",
+          "Replace the inline health details panel with a dismissible metric information popover"
+        ],
+        [
+          "FH-1594.3",
+          "Preserve independent card editing and information-button tap targets"
+        ],
+        [
+          "FH-1594.4",
+          "Make all Health metric editors viewport-, keyboard-, footer-, and safe-area-aware"
+        ],
+        [
+          "FH-1594.5",
+          "Replace bottom Save and Cancel controls with the standard header X and checkmark"
+        ],
+        [
+          "FH-1594.6",
+          "Audit Health reading deletion behavior without changing its data semantics"
+        ]
+      ],
+      "knownIssues": []
+    },
+    {
       "version": "1.4.15.93",
       "name": "Health Check-in Redesign",
       "type": "Focused presentation release",

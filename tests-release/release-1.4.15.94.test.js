@@ -1,0 +1,11 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import fs from 'node:fs';
+const main=fs.readFileSync(new URL('../src/main.jsx',import.meta.url),'utf8');
+const css=fs.readFileSync(new URL('../src/styles.css',import.meta.url),'utf8');
+test('release metadata is 1.4.15.94',()=>{assert.match(main,/const VERSION='1\.4\.15\.94'/);assert.match(main,/const BUILD_ID='141594'/)});
+test('health information is presented in a dismissible popover',()=>{assert.match(main,/health-popover-backdrop/);assert.match(main,/role="dialog"/);assert.doesNotMatch(main,/<section className="health-info-panel">/)});
+test('card edit and info controls remain independent',()=>{assert.match(main,/health-card-main" onClick=\{\(\)=>setSelected/);assert.match(main,/e\.stopPropagation\(\);setInfoType\(def\.type\)/)});
+test('health editor uses standard X and checkmark header actions',()=>{assert.match(main,/health-editor-header/);assert.match(main,/aria-label="Cancel editing"/);assert.match(main,/aria-label="Save reading"/)});
+test('health editor and popover respect viewport and safe areas',()=>{assert.match(css,/max-height:calc\(100dvh - env\(safe-area-inset-top/);assert.match(css,/scroll-padding-bottom:calc\(180px \+ env\(safe-area-inset-bottom/);assert.match(css,/health-popover-backdrop\{position:fixed/)});
+test('delete remains explicit and reading-scoped',()=>{assert.match(main,/DELETE FROM health_metrics WHERE id=\?/);assert.match(main,/Delete this \$\{definition\.label\.toLowerCase\(\)\} reading/)});
