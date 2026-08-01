@@ -2,6 +2,21 @@
   "format": "fizz-health-release-history",
   "releases": [
     {
+      "version": "1.4.15.90",
+      "name": "Tracked Consumption Repair",
+      "created": "2026-07-31T20:41:00-04:00",
+      "build": "141590",
+      "releaseId": "FH-20260731-141590",
+      "release_id": "FH-20260731-141590",
+      "type": "Blocking corrective release",
+      "stories": [
+        "FH-1590.1",
+        "FH-1590.2",
+        "FH-1590.3",
+        "FH-1590.4"
+      ]
+    },
+    {
       "version": "1.4.15.89",
       "name": "Library Consumption Execution Repair",
       "type": "Blocking corrective release",

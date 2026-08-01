@@ -75,6 +75,11 @@ export function inventoryHasStock(row={}){
 function servingsForRequest(amount,unit,row={}){
  const requested=Math.max(0,number(amount));
  if(requested<=0)return 0;
+ // A caller that explicitly supplies servings has already normalized the
+ // consumption request. Do not try to convert the word "serving" through
+ // a Food definition whose stored basis may be grams while its common measure
+ // is a bar, apple, bottle, etc. One requested serving is one inventory serving.
+ if(canonicalUnit(unit)==='serving')return requested;
  const scaled=scaleFoodQuantity({amount:requested,amountUnit:unit,food:foodDefinition(row)});
  return scaled.ok?scaled.ratio:null;
 }

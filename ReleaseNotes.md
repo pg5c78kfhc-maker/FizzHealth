@@ -1,11 +1,8 @@
-# Fizz Health v1.4.15.89
+# Fizz Health v1.4.15.90
 
-**Release ID:** FH-20260731-141589  
-**Type:** Blocking corrective release
+Tracked Consumption Repair
 
-## Completed stories
-
-- **FH-1589.1:** Replace stale React state reads in the Library full-swipe release handler with synchronous gesture refs.
-- **FH-1589.2:** Trace gesture recognition, quick-consume dispatch, transaction writes, commit, and failure.
-- **FH-1589.3:** Verify Library hard swipe remains wired to the centralized consumption transaction for Foods, Recipes, and Meals.
-- **FH-1589.4:** Preserve prepared-record deletion and footer containment delivered by prior releases.
+- FH-1590.1 Treat explicit serving requests as normalized inventory servings.
+- FH-1590.2 Restore tracked hard-swipe consumption for gram-based foods with common measures.
+- FH-1590.3 Preserve atomic logging, deduction, restoration history, delete, and Undo.
+- FH-1590.4 Allow deletion of individual prepared Recipe inventory records.
