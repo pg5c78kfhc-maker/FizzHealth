@@ -1508,6 +1508,10 @@ const migrations=[
     DELETE FROM lab_results WHERE id NOT IN (SELECT MIN(id) FROM lab_results GROUP BY lower(replace(replace(biomarker,'-',' '),'_',' ')),substr(collected_at,1,10),COALESCE(value,-999999),COALESCE(text_value,''));
     INSERT OR REPLACE INTO release_metadata(version,release_date,build_id,schema_version,title,created_at)
     VALUES ('1.4.15.99','2026-08-01','141599',99,'Laboratory Panel Completion & Labs UI','2026-08-01T11:15:00-04:00');
+  `},
+  {version:100,name:'Health Editor Replacement, Timeline Deletion & Labs Cards',sql:`
+    INSERT OR REPLACE INTO release_metadata(version,release_date,build_id,schema_version,title,created_at)
+    VALUES ('1.4.15.100','2026-08-01','1415100',100,'Health Editor Replacement, Timeline Deletion & Labs Cards','2026-08-01T12:15:00-04:00');
   `}
 
 ];
