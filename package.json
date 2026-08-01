@@ -1,7 +1,7 @@
 {
   "name": "fizz-health",
   "private": true,
-  "version": "1.4.15.104",
+  "version": "1.4.15.105",
   "type": "module",
   "scripts": {
     "integrity:repair": "node scripts/project-integrity.mjs --repair",
