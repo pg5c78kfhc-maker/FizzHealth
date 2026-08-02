@@ -1,7 +1,7 @@
-# Fizz Health v1.4.15.105
+# Fizz Health v1.4.15.106
 
-Workflow Stability & Inventory Quick Add.
+Canonical Recipe & Transaction Consistency.
 
-Completed stories: FH-15105.1-FH-15105.4.
+Completed stories: FH-15106.1-FH-15106.4.
 
-See `RELEASE-NOTES-1.4.15.105.md` for the complete release notes.
+See `RELEASE-NOTES-1.4.15.106.md` for the complete release notes.

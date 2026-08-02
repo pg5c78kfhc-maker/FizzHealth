@@ -1,0 +1,14 @@
+VERSION.json
+package.json
+package-lock.json
+release-history.json
+ReleaseNotes.md
+public/sw.js
+src/database.js
+src/decision/engine.js
+src/main.jsx
+tests/release-1.4.15.106.test.js
+RELEASE-NOTES-1.4.15.106.md
+TEST-REPORT-1.4.15.106.md
+DATA-CONSISTENCY-AUDIT-1.4.15.106.md
+CHANGED-FILES-1.4.15.106.txt

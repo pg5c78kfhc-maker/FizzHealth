@@ -1537,7 +1537,7 @@ const migrations=[
      WHERE status='planned' AND restaurant_meal_id IS NOT NULL
        AND EXISTS (SELECT 1 FROM restaurant_meals rm JOIN restaurants r ON r.restaurant_id=rm.restaurant_id WHERE rm.id=planned_meals.restaurant_meal_id);
     INSERT OR REPLACE INTO release_metadata(version,release_date,build_id,schema_version,title,created_at)
-    VALUES ('1.4.15.105','2026-08-02','1415105',104,'Workflow Stability & Inventory Quick Add','2026-08-02T10:30:00-04:00');
+    VALUES ('1.4.15.106','2026-08-02','1415106',105,'Canonical Recipe & Transaction Consistency','2026-08-02T11:45:00-04:00');
   `}
 
 ];

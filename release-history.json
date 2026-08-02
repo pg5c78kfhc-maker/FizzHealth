@@ -2,6 +2,33 @@
   "format": "fizz-health-release-history",
   "releases": [
     {
+      "version": "1.4.15.106",
+      "name": "Canonical Recipe & Transaction Consistency",
+      "type": "Corrective data-consistency release",
+      "created": "2026-08-02T11:45:00-04:00",
+      "build": "1415106",
+      "stories": [
+        [
+          "FH-15106.1",
+          "Resolve Proposed recipes from the current canonical recipe definition"
+        ],
+        [
+          "FH-15106.2",
+          "Normalize legacy Proposed recipe references and consume current ingredients"
+        ],
+        [
+          "FH-15106.3",
+          "Preflight Pantry deductions and report atomic transaction outcomes"
+        ],
+        [
+          "FH-15106.4",
+          "Preserve footer-safe Nutrition workflows and independent meal duplication"
+        ]
+      ],
+      "knownIssues": [],
+      "release_id": "FH-20260802-1415106"
+    },
+    {
       "version": "1.4.15.105",
       "name": "Workflow Stability & Inventory Quick Add",
       "type": "Corrective workflow release",
