@@ -1575,7 +1575,7 @@ const migrations=[
     CREATE TABLE IF NOT EXISTS podcast_notes (note_id TEXT PRIMARY KEY,podcast_id TEXT NOT NULL,note TEXT NOT NULL,created_at TEXT NOT NULL,updated_at TEXT NOT NULL,FOREIGN KEY (podcast_id) REFERENCES podcasts(podcast_id) ON DELETE CASCADE);
     CREATE TABLE IF NOT EXISTS podcast_tags (podcast_id TEXT NOT NULL,tag TEXT NOT NULL,created_at TEXT NOT NULL,PRIMARY KEY(podcast_id,tag),FOREIGN KEY (podcast_id) REFERENCES podcasts(podcast_id) ON DELETE CASCADE);
     INSERT OR REPLACE INTO release_metadata(version,release_date,build_id,schema_version,title,created_at) VALUES ('1.4.16.0','2026-08-02','141600',106,'Podcasts Foundation','2026-08-02T13:30:00-04:00');
-  `}
+  `},
 
   {version:107,name:'Podcast Directory Search',sql:`
     ALTER TABLE podcasts ADD COLUMN directory_source TEXT DEFAULT 'manual';

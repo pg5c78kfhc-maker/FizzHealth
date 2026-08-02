@@ -17,3 +17,9 @@ Podcast directory source identifiers are stored only in the dedicated `podcasts`
 ## Out of scope
 
 Episode import, RSS refresh, streaming, downloads, listening history, and AI summaries remain out of scope.
+
+## Corrective rebuild — August 2, 2026
+
+- Fixed a missing comma between database migration versions 106 and 107 in `src/database.js`.
+- The defect caused the Cloudflare/Vite production build to stop with `PARSE_ERROR` at the Podcast Directory Search migration.
+- No schema, feature, or release-scope behavior changed; this is a syntax-only corrective rebuild of v1.4.16.1.

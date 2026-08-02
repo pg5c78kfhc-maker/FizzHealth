@@ -1,17 +1,17 @@
-Fizz Health v1.4.16.1 changed files
+Fizz Health v1.4.16.1 — Podcast Directory Search (Corrective Rebuild)
 
-src/main.jsx
-src/styles.css
-src/database.js
-src/decision/engine.js
-public/sw.js
-package.json
-VERSION.json
-release-history.json
-ReleaseNotes.md
-RELEASE-NOTES-1.4.16.1.md
-tests-release/release-1.4.16.1.test.js
-TEST-REPORT-1.4.16.1.md
-EXECUTION-VERIFICATION-1.4.16.1.md
-CHANGED-FILES-1.4.16.1.txt
-CHECKSUMS-1.4.16.1.txt
+Source and release files included in PARTIAL-SOURCE:
+- src/database.js — corrected missing comma between migrations 106 and 107
+- src/main.jsx
+- src/styles.css
+- src/decision/engine.js
+- public/sw.js
+- package.json
+- VERSION.json
+- release-history.json
+- ReleaseNotes.md
+- tests-release/release-1.4.16.1.test.js
+- RELEASE-NOTES-1.4.16.1.md
+- TEST-REPORT-1.4.16.1.md
+- EXECUTION-VERIFICATION-1.4.16.1.md
+- CHANGED-FILES-1.4.16.1.txt
