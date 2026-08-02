@@ -2,6 +2,33 @@
   "format": "fizz-health-release-history",
   "releases": [
     {
+      "version": "1.4.15.107",
+      "name": "Canonical Recipe Composition",
+      "type": "Corrective data-integrity release",
+      "created": "2026-08-02T11:30:00-04:00",
+      "build": "1415107",
+      "stories": [
+        [
+          "FH-15107.1",
+          "Make meal_components the authoritative recipe ingredient source"
+        ],
+        [
+          "FH-15107.2",
+          "Rebuild compatibility recipe rows after every edit"
+        ],
+        [
+          "FH-15107.3",
+          "Consume and calculate nutrition from current canonical ingredients"
+        ],
+        [
+          "FH-15107.4",
+          "Repair stale and duplicate ingredient rows"
+        ]
+      ],
+      "knownIssues": [],
+      "release_id": "FH-20260802-1415107"
+    },
+    {
       "version": "1.4.15.106",
       "name": "Canonical Recipe & Transaction Consistency",
       "type": "Corrective data-consistency release",

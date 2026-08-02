@@ -38,7 +38,7 @@ export function buildRecipeSnapshot(recipeRows,foods){
     if(!availableKeys.length){const reason=`${row.ingredient_name}: food nutrition is unknown.`;issues.push(reason);ingredients.push({...baseIngredient,resolved:false,issue:reason});continue;}
     const contribution=Object.fromEntries(NUTRIENT_KEYS.map(key=>[key,availableKeys.includes(key)?Number(food[key])*scaling.ratio:null]));
     for(const key of availableKeys)total[key]+=Number(contribution[key]);
-    if(Number(food.nutrition_known)!==1){issues.push(`${row.ingredient_name}: food nutrition is incomplete; available nutrients were included.`);}
+    if(Number(food.nutrition_known)!==1){issues.push(`${row.ingredient_name}: food nutrition is unknown or incomplete; available nutrients were included.`);}
     ingredients.push({...baseIngredient,default_serving:Number(food.default_serving)||1,food_unit:food.unit||row.unit||'',serving_amount:Number(food.default_serving)||1,serving_unit:food.unit||row.unit||'',ratio:scaling.ratio,resolved:true,partially_resolved:Number(food.nutrition_known)!==1,...contribution,nutrition:contribution});
   }
   return {type:'recipe',recipe_id:recipeRows[0].recipe_id||recipeRows[0].recipe_name,recipe_name:recipeRows[0].recipe_name,ingredients,nutrition:total,nutrition_known:issues.length===0&&ingredients.length>0?1:0,issues,serving:1,unit:'recipe'};

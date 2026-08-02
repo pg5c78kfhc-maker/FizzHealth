@@ -29,7 +29,7 @@ export function buildAvailabilityIndex({pantryRows=[],recipeRows=[],mealComponen
   }
   const recipeTrackingById=new Map();
   for(const row of mealDefinitions){
-    if(String(row?.source_type||'').toLowerCase()!=='legacy_recipe')continue;
+    if(!['recipe','legacy_recipe'].includes(String(row?.source_type||'').toLowerCase()))continue;
     const id=recipeKey(row?.source_id||row?.meal_id);
     if(id)recipeTrackingById.set(id,Number(row?.track_inventory)===1);
   }

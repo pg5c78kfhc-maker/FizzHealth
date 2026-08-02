@@ -26,7 +26,17 @@ function finalizeSnapshot(snapshot){
 }
 
 export function getRecipeNutrition(runQuery,recipeId){
- const rows=runQuery(`SELECT * FROM recipes WHERE recipe_id=? OR recipe_name=(SELECT recipe_name FROM recipes WHERE recipe_id=? LIMIT 1) ORDER BY id`,[recipeId,recipeId]);
+ const id=String(recipeId??'').replace(/^recipe:/i,'');
+ const meal=runQuery('SELECT * FROM meal_definitions WHERE meal_id=? LIMIT 1',[`recipe:${id}`])[0]
+  ||runQuery("SELECT * FROM meal_definitions WHERE source_type IN ('recipe','legacy_recipe') AND CAST(source_id AS TEXT)=CAST(? AS TEXT) LIMIT 1",[id])[0];
+ if(meal){
+  const snapshot=getMealNutrition(runQuery,meal.meal_id);
+  if(!snapshot)return null;
+  return {...snapshot,type:'recipe',recipe_id:id,recipe_name:meal.title,ingredients:snapshot.components};
+ }
+ // Import/audit compatibility only: installations without a canonical meal definition
+ // may still be inspected, but active application paths always resolve meal_components.
+ const rows=runQuery(`SELECT * FROM recipes WHERE recipe_id=? OR recipe_name=(SELECT recipe_name FROM recipes WHERE recipe_id=? LIMIT 1) ORDER BY id`,[id,id]);
  if(!rows.length)return null;
  const foods=runQuery('SELECT * FROM foods WHERE COALESCE(archived,0)=0 ORDER BY food_id');
  return finalizeSnapshot(buildRecipeSnapshot(rows,foods));

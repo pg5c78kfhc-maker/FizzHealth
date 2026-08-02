@@ -1538,6 +1538,33 @@ const migrations=[
        AND EXISTS (SELECT 1 FROM restaurant_meals rm JOIN restaurants r ON r.restaurant_id=rm.restaurant_id WHERE rm.id=planned_meals.restaurant_meal_id);
     INSERT OR REPLACE INTO release_metadata(version,release_date,build_id,schema_version,title,created_at)
     VALUES ('1.4.15.106','2026-08-02','1415106',105,'Canonical Recipe & Transaction Consistency','2026-08-02T11:45:00-04:00');
+  `},
+  {version:105,name:'Canonical Recipe Composition',sql:`
+    DELETE FROM recipes
+     WHERE recipe_id IN (
+       SELECT CAST(source_id AS TEXT) FROM meal_definitions
+        WHERE source_type IN ('recipe','legacy_recipe') AND COALESCE(source_id,'')<>''
+     );
+    INSERT INTO recipes(recipe_id,recipe_name,ingredient_name,amount,unit,ingredient_type,ingredient_id,inventory_status,archived,archived_at,classification,usage_designation,category,ingredient_only,notes,favorite)
+    SELECT CAST(md.source_id AS TEXT),md.title,mc.component_name,mc.amount,mc.unit,COALESCE(mc.component_type,'food'),mc.component_id,'linked',
+           COALESCE(md.archived,0),md.archived_at,'recipe',COALESCE(md.usage_designation,'standalone'),COALESCE(md.category,'Any'),COALESCE(md.ingredient_only,0),md.notes,COALESCE(md.favorite,0)
+      FROM meal_definitions md
+      JOIN meal_components mc ON mc.meal_id=md.meal_id
+     WHERE md.source_type IN ('recipe','legacy_recipe') AND COALESCE(md.source_id,'')<>''
+     ORDER BY md.meal_id,mc.sort_order,mc.id;
+    UPDATE planned_meals
+       SET source_type='recipe',
+           food_id='recipe:'||REPLACE(COALESCE(NULLIF(food_id,''),meal_definition_id),'recipe:',''),
+           meal_definition_id='recipe:'||REPLACE(COALESCE(NULLIF(food_id,''),meal_definition_id),'recipe:',''),
+           updated_at=CURRENT_TIMESTAMP
+     WHERE status='planned' AND (source_type IN ('recipe','meal') OR food_id LIKE 'recipe:%' OR meal_definition_id LIKE 'recipe:%')
+       AND EXISTS (
+         SELECT 1 FROM meal_definitions md
+          WHERE md.meal_id='recipe:'||REPLACE(COALESCE(NULLIF(planned_meals.food_id,''),planned_meals.meal_definition_id),'recipe:','')
+            AND md.source_type IN ('recipe','legacy_recipe')
+       );
+    INSERT OR REPLACE INTO release_metadata(version,release_date,build_id,schema_version,title,created_at)
+    VALUES ('1.4.15.107','2026-08-02','1415107',106,'Canonical Recipe Composition','2026-08-02T12:15:00-04:00');
   `}
 
 ];

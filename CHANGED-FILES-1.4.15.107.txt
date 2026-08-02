@@ -1,0 +1,17 @@
+VERSION.json
+ReleaseNotes.md
+release-history.json
+package.json
+package-lock.json
+public/sw.js
+src/database.js
+src/decision/engine.js
+src/inventory/availability.js
+src/main.jsx
+src/nutrition/aggregate.js
+src/nutrition/recipe.js
+tests/release-1.4.15.107.test.js
+RELEASE-NOTES-1.4.15.107.md
+TEST-REPORT-1.4.15.107.md
+DATA-CONSISTENCY-AUDIT-1.4.15.107.md
+CHANGED-FILES-1.4.15.107.txt
