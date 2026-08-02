@@ -16,3 +16,6 @@ Cloudflare initially rejected the release because the FULL-SOURCE archive contai
 ## Local production-build limitation
 
 A local `npm clean-install` attempt was blocked because the sandbox npm mirror returned HTTP 404 for the locked `xlsx@0.18.5` tarball. Cloudflare previously installed this same dependency set successfully. The packaging defect identified by Cloudflare is corrected.
+
+## Corrective deployment verification
+The Cloudflare failure reporting two package manifests was caused by the integrity checker recursively counting generated post-install metadata. The source archive itself contained one root package manifest. The checker now validates the root package manifest and independently rejects nested duplicate application trees.

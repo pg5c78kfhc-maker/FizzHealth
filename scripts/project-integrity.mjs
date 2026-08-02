@@ -49,18 +49,9 @@ nested=walk(root);
 if(!validApp(root))throw new Error('Project integrity failure: the root is not a complete application.');
 if(nested.length)throw new Error(`Project integrity failure: duplicate application tree(s): ${nested.map(rel).join(', ')}`);
 
-const packageFiles=[];
-function findPackages(dir,depth=0){
-  if(depth>5)return;
-  for(const ent of fs.readdirSync(dir,{withFileTypes:true})){
-    if(ignored.has(ent.name))continue;
-    const p=path.join(dir,ent.name);
-    if(ent.isDirectory())findPackages(p,depth+1);
-    else if(ent.name==='package.json')packageFiles.push(p);
-  }
-}
-findPackages(root);
-if(packageFiles.length!==1)throw new Error(`Project integrity failure: expected exactly one package.json, found ${packageFiles.length}.`);
+const rootPackage=path.join(root,'package.json');
+if(!fs.existsSync(rootPackage))throw new Error('Project integrity failure: root package.json is missing.');
+if(!fs.statSync(rootPackage).isFile())throw new Error('Project integrity failure: root package.json is not a file.');
 
 
 

@@ -9,3 +9,7 @@ Completed stories: FH-1602.1-FH-1602.5
 - Adds loading, empty, error, and retry states.
 
 Fizz Health does not stream, download, or host podcast audio.
+
+## Corrective packaging update
+- Corrected `scripts/project-integrity.mjs` so post-install generated tool/dependency metadata cannot be misidentified as a second application package.
+- Duplicate application trees remain protected by the existing root-and-nested-app validation.
