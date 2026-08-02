@@ -2,6 +2,37 @@
   "format": "fizz-health-release-history",
   "releases": [
     {
+      "version": "1.4.16.3",
+      "name": "Podcast Player & External Launch Repair",
+      "type": "Corrective Podcasts player release",
+      "created": "2026-08-02T15:20:00-04:00",
+      "build": "141603",
+      "stories": [
+        [
+          "FH-1603.1",
+          "Add direct in-app podcast streaming"
+        ],
+        [
+          "FH-1603.2",
+          "Persist playback position and completion status"
+        ],
+        [
+          "FH-1603.3",
+          "Add mini-player controls and resume"
+        ],
+        [
+          "FH-1603.4",
+          "Repair Apple Podcasts and Overcast launch actions"
+        ],
+        [
+          "FH-1603.5",
+          "Use distinct branded player controls"
+        ]
+      ],
+      "knownIssues": [],
+      "release_id": "FH-20260802-141603"
+    },
+    {
       "version": "1.4.16.2",
       "name": "Podcast Episodes",
       "type": "Focused Podcasts feature release",

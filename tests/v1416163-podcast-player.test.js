@@ -1,0 +1,12 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import fs from 'node:fs';
+const main=fs.readFileSync(new URL('../src/main.jsx',import.meta.url),'utf8');
+const db=fs.readFileSync(new URL('../src/database.js',import.meta.url),'utf8');
+const css=fs.readFileSync(new URL('../src/styles.css',import.meta.url),'utf8');
+test('release metadata is v1.4.16.3',()=>{assert.match(main,/const VERSION='1\.4\.16\.3'/);assert.match(db,/version:108,name:'Podcast Player and Progress'/)});
+test('podcast playback persistence schema exists',()=>{for(const field of ['episode_key','position_seconds','duration_seconds','completed_at'])assert.match(db,new RegExp(field))});
+test('in-app audio player streams enclosure URL',()=>{assert.match(main,/<audio ref=\{audioRef\}/);assert.match(main,/audio\.src=playback\.enclosure_url/);assert.match(main,/Play .* in Fizz Health/)});
+test('player includes resume, seek, speed and completion tracking',()=>{assert.match(main,/Rewind 15 seconds/);assert.match(main,/Forward 30 seconds/);assert.match(main,/Change playback speed/);assert.match(main,/\.95/);assert.match(main,/position_seconds/)});
+test('external players are visually distinct and have fallbacks',()=>{assert.match(main,/<Apple\/>/);assert.match(main,/className="overcast"/);assert.match(main,/selected\.apple_podcasts_url/);assert.match(main,/overcast\.fm\/add/);assert.match(css,/\.podcast-episode-actions \.apple/);assert.match(css,/\.podcast-episode-actions \.overcast/)});
+test('mini-player persists across main navigation',()=>{assert.match(main,/podcastPlayback&&<PodcastMiniPlayer/);assert.match(main,/setPodcastPlayback/)});

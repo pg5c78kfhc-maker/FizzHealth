@@ -1585,6 +1585,26 @@ const migrations=[
     INSERT OR REPLACE INTO release_metadata(version,release_date,build_id,schema_version,title,created_at) VALUES ('1.4.16.1','2026-08-02','141601',107,'Podcast Directory Search','2026-08-02T14:30:00-04:00');
     INSERT OR REPLACE INTO release_metadata(version,release_date,build_id,schema_version,title,created_at) VALUES ('1.4.16.2','2026-08-02','141602',107,'Podcast Episodes','2026-08-02T14:55:00-04:00');
   `},
+  {version:108,name:'Podcast Player and Progress',sql:`
+    CREATE TABLE IF NOT EXISTS podcast_playback (
+      episode_key TEXT PRIMARY KEY,
+      podcast_id TEXT NOT NULL,
+      episode_guid TEXT,
+      episode_title TEXT NOT NULL,
+      audio_url TEXT NOT NULL,
+      artwork_url TEXT,
+      duration_seconds REAL NOT NULL DEFAULT 0,
+      position_seconds REAL NOT NULL DEFAULT 0,
+      status TEXT NOT NULL DEFAULT 'unplayed' CHECK(status IN ('unplayed','in_progress','played')),
+      started_at TEXT,
+      last_played_at TEXT,
+      completed_at TEXT,
+      updated_at TEXT NOT NULL,
+      FOREIGN KEY (podcast_id) REFERENCES podcasts(podcast_id) ON DELETE CASCADE
+    );
+    CREATE INDEX IF NOT EXISTS idx_podcast_playback_podcast ON podcast_playback(podcast_id,status,last_played_at DESC);
+    INSERT OR REPLACE INTO release_metadata(version,release_date,build_id,schema_version,title,created_at) VALUES ('1.4.16.3','2026-08-02','141603',108,'Podcast Player & External Launch Repair','2026-08-02T15:20:00-04:00');
+  `},
 
 
 ];
