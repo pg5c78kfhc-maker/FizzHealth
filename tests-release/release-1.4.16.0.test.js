@@ -1,0 +1,12 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import fs from 'node:fs';
+const main=fs.readFileSync(new URL('../src/main.jsx',import.meta.url),'utf8');
+const db=fs.readFileSync(new URL('../src/database.js',import.meta.url),'utf8');
+const pkg=JSON.parse(fs.readFileSync(new URL('../package.json',import.meta.url),'utf8'));
+const css=fs.readFileSync(new URL('../src/styles.css',import.meta.url),'utf8');
+test('release metadata increments to 1.4.16.0',()=>{assert.equal(pkg.version,'1.4.16.0');assert.match(main,/const VERSION='1\.4\.16\.0'/);});
+test('podcast schema is isolated',()=>{for(const table of ['podcasts','podcast_episodes','podcast_notes','podcast_tags'])assert.match(db,new RegExp(`CREATE TABLE IF NOT EXISTS ${table}`));assert.match(db,/version:106,name:'Podcasts Foundation'/);});
+test('settings routes to podcast module',()=>{assert.match(main,/page==='podcasts'/);assert.match(main,/function PodcastsPage/);assert.match(main,/Manage your personal podcast catalog/);});
+test('podcast workflows exist',()=>{assert.match(main,/Add Podcast/);assert.match(main,/Open in Apple Podcasts/);assert.match(main,/INSERT INTO podcasts/);assert.match(main,/UPDATE podcasts SET active=0/);});
+test('podcast mobile styles exist',()=>{assert.match(css,/\.podcast-page/);assert.match(css,/safe-area-inset-top/);assert.match(css,/\.podcast-form/);});

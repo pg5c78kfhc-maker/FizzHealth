@@ -4,7 +4,7 @@ import {NUTRIENT_KEYS} from './nutrition/registry.js';
 
 const DB_KEY='fizz-health-sqlite-v1';
 const STORAGE_DB='FizzHealthStorage';
-const TARGET_SCHEMA_VERSION=104;
+const TARGET_SCHEMA_VERSION=106;
 let SQL, db;
 
 const migrations=[
@@ -1565,6 +1565,16 @@ const migrations=[
        );
     INSERT OR REPLACE INTO release_metadata(version,release_date,build_id,schema_version,title,created_at)
     VALUES ('1.4.15.107','2026-08-02','1415107',106,'Canonical Recipe Composition','2026-08-02T12:15:00-04:00');
+  `},
+  {version:106,name:'Podcasts Foundation',sql:`
+    CREATE TABLE IF NOT EXISTS podcasts (podcast_id TEXT PRIMARY KEY,title TEXT NOT NULL,publisher TEXT,description TEXT,artwork_url TEXT,rss_feed_url TEXT,apple_podcasts_url TEXT,website_url TEXT,categories TEXT,active INTEGER NOT NULL DEFAULT 1,created_at TEXT NOT NULL,updated_at TEXT NOT NULL);
+    CREATE INDEX IF NOT EXISTS idx_podcasts_title ON podcasts(title COLLATE NOCASE);
+    CREATE INDEX IF NOT EXISTS idx_podcasts_active ON podcasts(active,title COLLATE NOCASE);
+    CREATE TABLE IF NOT EXISTS podcast_episodes (episode_id TEXT PRIMARY KEY,podcast_id TEXT NOT NULL,title TEXT NOT NULL,description TEXT,published_at TEXT,duration_seconds INTEGER,enclosure_url TEXT,apple_podcasts_url TEXT,created_at TEXT NOT NULL,updated_at TEXT NOT NULL,FOREIGN KEY (podcast_id) REFERENCES podcasts(podcast_id) ON DELETE CASCADE);
+    CREATE INDEX IF NOT EXISTS idx_podcast_episodes_podcast ON podcast_episodes(podcast_id,published_at DESC);
+    CREATE TABLE IF NOT EXISTS podcast_notes (note_id TEXT PRIMARY KEY,podcast_id TEXT NOT NULL,note TEXT NOT NULL,created_at TEXT NOT NULL,updated_at TEXT NOT NULL,FOREIGN KEY (podcast_id) REFERENCES podcasts(podcast_id) ON DELETE CASCADE);
+    CREATE TABLE IF NOT EXISTS podcast_tags (podcast_id TEXT NOT NULL,tag TEXT NOT NULL,created_at TEXT NOT NULL,PRIMARY KEY(podcast_id,tag),FOREIGN KEY (podcast_id) REFERENCES podcasts(podcast_id) ON DELETE CASCADE);
+    INSERT OR REPLACE INTO release_metadata(version,release_date,build_id,schema_version,title,created_at) VALUES ('1.4.16.0','2026-08-02','141600',106,'Podcasts Foundation','2026-08-02T13:30:00-04:00');
   `}
 
 ];

@@ -2,6 +2,37 @@
   "format": "fizz-health-release-history",
   "releases": [
     {
+      "version": "1.4.16.0",
+      "name": "Podcasts Foundation",
+      "type": "Feature foundation release",
+      "created": "2026-08-02T13:30:00-04:00",
+      "build": "141600",
+      "stories": [
+        [
+          "FH-1600.1",
+          "Add Podcasts to Settings navigation"
+        ],
+        [
+          "FH-1600.2",
+          "Create isolated podcast database tables"
+        ],
+        [
+          "FH-1600.3",
+          "Add My Podcasts landing page and empty state"
+        ],
+        [
+          "FH-1600.4",
+          "Add manual podcast create and edit workflow"
+        ],
+        [
+          "FH-1600.5",
+          "Add podcast detail page and Apple Podcasts deep link"
+        ]
+      ],
+      "knownIssues": [],
+      "release_id": "FH-20260802-141600"
+    },
+    {
       "version": "1.4.15.107",
       "name": "Canonical Recipe Composition",
       "type": "Corrective data-integrity release",
