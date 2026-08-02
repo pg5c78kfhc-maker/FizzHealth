@@ -1,0 +1,14 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import fs from 'node:fs';
+const main=fs.readFileSync('src/main.jsx','utf8');
+const styles=fs.readFileSync('src/styles.css','utf8');
+const endpoint=fs.readFileSync('functions/api/podcast-feed.js','utf8');
+const pkg=JSON.parse(fs.readFileSync('package.json','utf8'));
+test('release metadata increments to 1.4.16.2',()=>{assert.equal(pkg.version,'1.4.16.2');assert.match(main,/const VERSION='1\.4\.16\.2'/);});
+test('podcast detail loads its RSS feed through the same-origin endpoint',()=>{assert.match(main,/\/api\/podcast-feed\?/);assert.match(main,/loadEpisodes/);assert.match(endpoint,/application\/rss\+xml/);});
+test('all RSS items are normalized newest first',()=>{assert.match(endpoint,/matchAll\(\/<item/);assert.match(endpoint,/sort\(\(a,b\)=>new Date\(b\.published_at/);});
+test('episode rows show metadata and stacked player actions',()=>{assert.match(main,/podcast-episode-list/);assert.match(main,/episodeDate/);assert.match(main,/episodeDuration/);assert.match(main,/podcast-episode-actions/);assert.match(styles,/grid-template-columns:84px minmax\(0,1fr\) 54px/);});
+test('Apple and Overcast links target individual episodes when directory matches exist',()=>{assert.match(endpoint,/podcastEpisode/);assert.match(endpoint,/trackViewUrl/);assert.match(endpoint,/overcast\.fm\/itunes/);assert.match(endpoint,/overcast_url/);});
+test('trash action moved into the podcast header and body remove button is gone',()=>{assert.match(main,/podcast-head-actions/);assert.match(main,/aria-label="Remove podcast"/);assert.doesNotMatch(main,/Remove from My Podcasts/);});
+test('loading empty error and retry states are present',()=>{assert.match(main,/Loading episodes/);assert.match(main,/No episodes found/);assert.match(main,/Couldn’t load episodes/);assert.match(main,/>Retry</);});
