@@ -2,6 +2,37 @@
   "format": "fizz-health-release-history",
   "releases": [
     {
+      "version": "1.4.16.1",
+      "name": "Podcast Directory Search",
+      "type": "Focused Podcasts feature release",
+      "created": "2026-08-02T14:30:00-04:00",
+      "build": "141601",
+      "stories": [
+        [
+          "FH-1601.1",
+          "Open Find Podcasts from the Podcasts plus button"
+        ],
+        [
+          "FH-1601.2",
+          "Search the external Apple podcast directory"
+        ],
+        [
+          "FH-1601.3",
+          "Add selected podcasts to My Podcasts with one tap"
+        ],
+        [
+          "FH-1601.4",
+          "Prevent duplicates and identify already-added results"
+        ],
+        [
+          "FH-1601.5",
+          "Retain manual podcast entry as a fallback"
+        ]
+      ],
+      "knownIssues": [],
+      "release_id": "FH-20260802-141601"
+    },
+    {
       "version": "1.4.16.0",
       "name": "Podcasts Foundation",
       "type": "Feature foundation release",

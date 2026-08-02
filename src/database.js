@@ -1577,6 +1577,15 @@ const migrations=[
     INSERT OR REPLACE INTO release_metadata(version,release_date,build_id,schema_version,title,created_at) VALUES ('1.4.16.0','2026-08-02','141600',106,'Podcasts Foundation','2026-08-02T13:30:00-04:00');
   `}
 
+  {version:107,name:'Podcast Directory Search',sql:`
+    ALTER TABLE podcasts ADD COLUMN directory_source TEXT DEFAULT 'manual';
+    ALTER TABLE podcasts ADD COLUMN directory_id TEXT;
+    CREATE INDEX IF NOT EXISTS idx_podcasts_directory_id ON podcasts(directory_source,directory_id);
+    CREATE UNIQUE INDEX IF NOT EXISTS idx_podcasts_active_feed ON podcasts(LOWER(rss_feed_url)) WHERE active=1 AND rss_feed_url IS NOT NULL AND TRIM(rss_feed_url)<>'';
+    INSERT OR REPLACE INTO release_metadata(version,release_date,build_id,schema_version,title,created_at) VALUES ('1.4.16.1','2026-08-02','141601',107,'Podcast Directory Search','2026-08-02T14:30:00-04:00');
+  `},
+
+
 ];
 const canonicalNutrientColumns=Object.freeze(Object.fromEntries(NUTRIENT_KEYS.map(key=>[key,'REAL'])));
 

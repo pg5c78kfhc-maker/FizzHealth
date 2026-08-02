@@ -1,0 +1,13 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import fs from 'node:fs';
+const main=fs.readFileSync('src/main.jsx','utf8');
+const database=fs.readFileSync('src/database.js','utf8');
+const styles=fs.readFileSync('src/styles.css','utf8');
+const pkg=JSON.parse(fs.readFileSync('package.json','utf8'));
+test('release metadata increments to 1.4.16.1',()=>{assert.equal(pkg.version,'1.4.16.1');assert.match(main,/const VERSION='1\.4\.16\.1'/);});
+test('plus button opens Find Podcasts',()=>{assert.match(main,/onClick=\{openFind\} aria-label="Find podcasts"/);assert.match(main,/Head title="Find Podcasts"/);});
+test('Apple directory search is external and on demand',()=>{assert.match(main,/itunes\.apple\.com\/search\?media=podcast&entity=podcast/);assert.match(main,/Nothing is stored in Fizz Health until you tap Add/);});
+test('directory results support add and duplicate state',()=>{assert.match(main,/directory_id/);assert.match(main,/Added/);assert.match(main,/existingFeeds/);assert.match(database,/idx_podcasts_directory_id/);});
+test('manual entry remains available',()=>{assert.match(main,/Enter a podcast manually/);assert.match(main,/Add Manually/);});
+test('directory UI styles are present',()=>{assert.match(styles,/podcast-directory-results/);assert.match(styles,/podcast-directory-search/);});
