@@ -1,0 +1,16 @@
+VERSION.json
+package.json
+package-lock.json
+release-history.json
+ReleaseNotes.md
+RELEASE-NOTES-1.4.16.4.md
+src/main.jsx
+src/database.js
+src/styles.css
+src/decision/engine.js
+public/sw.js
+tests/v1416164-player-preferences.test.js
+TEST-REPORT-1.4.16.4.md
+EXECUTION-VERIFICATION-1.4.16.4.md
+CHANGED-FILES-1.4.16.4.txt
+CHECKSUMS-1.4.16.4.txt

@@ -2,6 +2,47 @@
   "format": "fizz-health-release-history",
   "releases": [
     {
+      "version": "1.4.16.4",
+      "date": "2026-08-02",
+      "title": "Player Preferences & Playback Experience",
+      "summary": "Adds global persistent podcast speed settings, played-episode filtering, resumable playback state, and app-reopen mini-player restoration.",
+      "name": "Player Preferences & Playback Experience",
+      "type": "Podcast player enhancement release",
+      "created": "2026-08-02T15:45:00-04:00",
+      "build": "141604",
+      "release_id": "FH-20260802-141604",
+      "stories": [
+        [
+          "FH-1604.1",
+          "Add persistent global playback speed settings"
+        ],
+        [
+          "FH-1604.2",
+          "Hide completed episodes by default"
+        ],
+        [
+          "FH-1604.3",
+          "Add expandable played episode history"
+        ],
+        [
+          "FH-1604.4",
+          "Restore resumable mini-player after app reopening"
+        ],
+        [
+          "FH-1604.5",
+          "Apply completion removal at 95 percent"
+        ],
+        [
+          "FH-1604.6",
+          "Add player settings gear and speed slider"
+        ],
+        [
+          "FH-1604.7",
+          "Preserve per-episode progress and completion timestamps"
+        ]
+      ]
+    },
+    {
       "version": "1.4.16.3",
       "name": "Podcast Player & External Launch Repair",
       "type": "Corrective Podcasts player release",

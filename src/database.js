@@ -1606,6 +1606,17 @@ const migrations=[
     INSERT OR REPLACE INTO release_metadata(version,release_date,build_id,schema_version,title,created_at) VALUES ('1.4.16.3','2026-08-02','141603',108,'Podcast Player & External Launch Repair','2026-08-02T15:20:00-04:00');
   `},
 
+  {version:109,name:'Podcast Player Preferences',sql:`
+    CREATE TABLE IF NOT EXISTS podcast_player_settings (
+      setting_key TEXT PRIMARY KEY,
+      setting_value TEXT NOT NULL,
+      updated_at TEXT NOT NULL
+    );
+    INSERT OR IGNORE INTO podcast_player_settings(setting_key,setting_value,updated_at) VALUES ('playback_speed','1.0','2026-08-02T15:45:00-04:00');
+    INSERT OR REPLACE INTO release_metadata(version,release_date,build_id,schema_version,title,created_at) VALUES ('1.4.16.4','2026-08-02','141604',109,'Player Preferences & Playback Experience','2026-08-02T15:45:00-04:00');
+  `},
+
+
 
 ];
 const canonicalNutrientColumns=Object.freeze(Object.fromEntries(NUTRIENT_KEYS.map(key=>[key,'REAL'])));

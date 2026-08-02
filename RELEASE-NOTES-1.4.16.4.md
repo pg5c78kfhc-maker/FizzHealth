@@ -13,5 +13,3 @@
 ## Out of scope
 
 Offline downloads, cross-device sync, queues, CarPlay, and external-player progress imports remain out of scope.
-
-Completed stories: FH-1604.1-FH-1604.7

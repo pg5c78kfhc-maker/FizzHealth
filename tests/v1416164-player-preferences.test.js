@@ -1,0 +1,14 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import fs from 'node:fs';
+const main=fs.readFileSync(new URL('../src/main.jsx',import.meta.url),'utf8');
+const db=fs.readFileSync(new URL('../src/database.js',import.meta.url),'utf8');
+const css=fs.readFileSync(new URL('../src/styles.css',import.meta.url),'utf8');
+test('release metadata is v1.4.16.4',()=>{assert.match(main,/const VERSION='1\.4\.16\.4'/);assert.match(db,/version:109,name:'Podcast Player Preferences'/)});
+test('global player settings are stored persistently',()=>{assert.match(db,/CREATE TABLE IF NOT EXISTS podcast_player_settings/);assert.match(main,/fizz-podcast-playback-speed/);assert.match(main,/INSERT INTO podcast_player_settings/)});
+test('speed control uses 0.1 increments across all podcasts',()=>{assert.match(main,/min="0\.5" max="3" step="0\.1"/);assert.match(main,/Math\.round\(Number\(value\|\|1\)\*10\)\/10/);assert.match(main,/audioRef\.current\.playbackRate=speed/)});
+test('podcast detail header includes player settings gear',()=>{assert.match(main,/aria-label="Player settings"><Settings\/>/);assert.match(main,/title="Player Settings"/)});
+test('played episodes are hidden by default and recoverable',()=>{assert.match(main,/filter\(item=>item\.saved\?\.status!==\'played\'\)/);assert.match(main,/Show Played Episodes/);assert.match(main,/completed_at/)});
+test('completion updates list immediately',()=>{assert.match(main,/fizz:podcast-playback-updated/);assert.match(main,/effectivePosition\/effectiveDuration>=\.95/)});
+test('mini-player is restored after app reopening',()=>{assert.match(main,/WHERE p\.status<>\'played\'/);assert.match(main,/setPodcastPlayback\(\{\.\.\.recent/)});
+test('new UI styles exist',()=>{assert.match(css,/\.podcast-settings-card/);assert.match(css,/\.podcast-show-played/)});
