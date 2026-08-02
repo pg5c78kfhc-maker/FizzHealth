@@ -4,7 +4,7 @@ import {NUTRIENT_KEYS} from './nutrition/registry.js';
 
 const DB_KEY='fizz-health-sqlite-v1';
 const STORAGE_DB='FizzHealthStorage';
-const TARGET_SCHEMA_VERSION=103;
+const TARGET_SCHEMA_VERSION=104;
 let SQL, db;
 
 const migrations=[
@@ -1523,7 +1523,21 @@ const migrations=[
   `},
   {version:103,name:'Menu Copy Planning',sql:`
     INSERT OR REPLACE INTO release_metadata(version,release_date,build_id,schema_version,title,created_at)
-    VALUES ('1.4.15.105','2026-08-01','1415104',104,'Menu Copy Build Hotfix','2026-08-01T18:20:00-04:00');
+    VALUES ('1.4.15.104','2026-08-01','1415104',104,'Menu Copy Build Hotfix','2026-08-01T18:20:00-04:00');
+  `},
+  {version:104,name:'Workflow Stability and Canonical Restaurant Names',sql:`
+    UPDATE restaurant_meals
+       SET restaurant_name=(SELECT r.name FROM restaurants r WHERE r.restaurant_id=restaurant_meals.restaurant_id),
+           updated_at=CURRENT_TIMESTAMP
+     WHERE EXISTS (SELECT 1 FROM restaurants r WHERE r.restaurant_id=restaurant_meals.restaurant_id)
+       AND COALESCE(restaurant_name,'')<>COALESCE((SELECT r.name FROM restaurants r WHERE r.restaurant_id=restaurant_meals.restaurant_id),'');
+    UPDATE planned_meals
+       SET restaurant_name=(SELECT r.name FROM restaurant_meals rm JOIN restaurants r ON r.restaurant_id=rm.restaurant_id WHERE rm.id=planned_meals.restaurant_meal_id),
+           updated_at=CURRENT_TIMESTAMP
+     WHERE status='planned' AND restaurant_meal_id IS NOT NULL
+       AND EXISTS (SELECT 1 FROM restaurant_meals rm JOIN restaurants r ON r.restaurant_id=rm.restaurant_id WHERE rm.id=planned_meals.restaurant_meal_id);
+    INSERT OR REPLACE INTO release_metadata(version,release_date,build_id,schema_version,title,created_at)
+    VALUES ('1.4.15.105','2026-08-02','1415105',104,'Workflow Stability & Inventory Quick Add','2026-08-02T10:30:00-04:00');
   `}
 
 ];

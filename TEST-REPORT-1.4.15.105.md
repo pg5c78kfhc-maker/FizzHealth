@@ -1,28 +1,42 @@
 # Test Report — Fizz Health v1.4.15.105
 
-## Source defect corrected
+## Focused release tests
 
-Cloudflare's Vite build reported:
+Command: `node --test tests-release/release-1.4.15.105.test.js`
 
-`Adjacent JSX elements must be wrapped in an enclosing tag` at `src/main.jsx:1364`.
+Result: **4 passed, 0 failed**.
 
-The `ChefRecommendations` component returned a single `<section>` root but incorrectly ended with `</section></>`. The unmatched `</>` has been removed.
+Coverage:
+- canonical restaurant-name resolution and rename propagation;
+- fresh source identity for duplicated Food Log entries;
+- footer/safe-area containment for the affected Nutrition workflows;
+- barcode-matched Food `+1` inventory action.
 
-## Tests performed
+## Static and integrity verification
 
-- Project integrity check: **Passed**
-- v1.4.15.105 focused JSX tests: **2 passed, 0 failed**
-- Existing v1.4.15.103 Menu-copy focused tests: **4 passed, 0 failed**
-- Combined focused tests: **6 passed, 0 failed**
-- `src/database.js` JavaScript syntax check: **Passed**
+- TypeScript JSX parser check for `src/main.jsx`: **Passed**.
+- `node --check src/database.js`: **Passed**.
+- `npm run integrity:check`: **Passed**.
+- `node scripts/verify-release.mjs`: **Passed**.
+
+## Existing full suite
+
+Command: `npm test`
+
+Result: **843 total — 599 passed, 244 failed**.
+
+The failures are the existing legacy regression baseline and include aggregate-nutrition and source-pattern assertions unrelated to this release. The four v1.4.15.105 focused tests passed.
 
 ## Production build
 
-Commands attempted:
+A production build was attempted with `npm run build`.
 
-- `npm clean-install --progress=false`
-- `npm run build`
+Result: **Not completed in this environment**.
 
-The clean install failed before Vite could run because the environment's configured npm proxy returned HTTP 404 for `xlsx@0.18.5`.
+Exact failure:
 
-No successful local production build is claimed. Deployment should run `npm clean-install --progress=false && npm run build`; the specific JSX parser defect reported by Cloudflare has been corrected.
+```text
+sh: 1: vite: not found
+```
+
+A clean dependency installation was also attempted. The configured package proxy returned HTTP 404 for `xlsx@0.18.5`, so Vite could not be installed locally. No successful production build is claimed. The source now passes a JSX parser check, including correction of the stray fragment inherited from the supplied v1.4.15.104 baseline.

@@ -2,6 +2,33 @@
   "format": "fizz-health-release-history",
   "releases": [
     {
+      "version": "1.4.15.105",
+      "name": "Workflow Stability & Inventory Quick Add",
+      "type": "Corrective workflow release",
+      "created": "2026-08-02T10:30:00-04:00",
+      "build": "1415105",
+      "stories": [
+        [
+          "FH-15105.1",
+          "Resolve restaurant names from the canonical restaurant record and propagate renames"
+        ],
+        [
+          "FH-15105.2",
+          "Create independent meal events for Food Log duplication"
+        ],
+        [
+          "FH-15105.3",
+          "Contain Nutrition workflows above the persistent footer and iPhone safe area"
+        ],
+        [
+          "FH-15105.4",
+          "Add a barcode-matched Food +1 container inventory action"
+        ]
+      ],
+      "knownIssues": [],
+      "release_id": "FH-20260802-1415105"
+    },
+    {
       "version": "1.4.15.98",
       "name": "Health Form Replacement & Laboratory Data Migration",
       "type": "Blocking corrective release",
