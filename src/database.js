@@ -1738,6 +1738,13 @@ const migrations=[
     INSERT OR REPLACE INTO release_metadata(version,release_date,build_id,schema_version,title,created_at) VALUES ('1.4.16.14','2026-08-03','141614',119,'iPhone OPML File Selection Hotfix','2026-08-03T10:30:00-04:00');
   `},
 
+  {version:120,name:'Podcast Refresh Duration and Activity',sql:`
+    ALTER TABLE podcasts ADD COLUMN last_episode_at TEXT;
+    ALTER TABLE podcasts ADD COLUMN last_refreshed_at TEXT;
+    INSERT OR IGNORE INTO podcast_player_settings(setting_key,setting_value,updated_at) VALUES ('active_threshold_months','6','2026-08-03T10:50:00-04:00');
+    INSERT OR REPLACE INTO release_metadata(version,release_date,build_id,schema_version,title,created_at) VALUES ('1.4.16.15','2026-08-03','141615',120,'Podcast Refresh, Playlist Duration & Activity Status','2026-08-03T10:50:00-04:00');
+  `},
+
 ];
 const canonicalNutrientColumns=Object.freeze(Object.fromEntries(NUTRIENT_KEYS.map(key=>[key,'REAL'])));
 

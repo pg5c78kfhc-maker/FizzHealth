@@ -2,6 +2,37 @@
   "format": "fizz-health-release-history",
   "releases": [
     {
+      "version": "1.4.16.15",
+      "name": "Podcast Refresh, Playlist Duration & Activity Status",
+      "type": "Podcast library intelligence release",
+      "created": "2026-08-03T10:50:00-04:00",
+      "build": "141615",
+      "release_id": "FH-20260803-141615",
+      "stories": [
+        [
+          "FH-1615.1",
+          "Rename chronological episode mode to Series"
+        ],
+        [
+          "FH-1615.2",
+          "Refresh every podcast with pull-to-refresh"
+        ],
+        [
+          "FH-1615.3",
+          "Show live playlist time remaining"
+        ],
+        [
+          "FH-1615.4",
+          "Separate Active and Inactive podcasts"
+        ],
+        [
+          "FH-1615.5",
+          "Add immediately saved activity threshold"
+        ]
+      ],
+      "known_issues": []
+    },
+    {
       "version": "1.4.16.14",
       "name": "iPhone OPML File Selection Hotfix",
       "type": "Corrective podcast import release",

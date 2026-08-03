@@ -1,18 +1,11 @@
-# Fizz Health v1.4.16.14 — iPhone OPML File Selection Hotfix
+# Fizz Health v1.4.16.15 — Podcast Refresh, Playlist Duration & Activity Status
 
-## Summary
+- Renames **Oldest episodes first** to **Series** while preserving chronological playback behavior.
+- Adds pull-to-refresh on My Podcasts to refresh every active podcast feed and reconcile playlists.
+- Adds live playlist time remaining in `days:hours:minutes:seconds` format.
+- Splits My Podcasts into collapsible Active and Inactive sections without changing master priority.
+- Adds an immediately saved global Active Threshold in months.
 
-Corrects the iPhone Files picker so valid Overcast OPML exports can be selected for import.
+Stories: FH-1615.1–FH-1615.5.
 
-## Changes
-
-- Remove the restrictive `accept` attribute from the hidden OPML file input.
-- Allow iOS Files to return the selected file regardless of its reported MIME type.
-- Continue validating the selected file by parsing its OPML contents after selection.
-- Preserve the existing duplicate detection, import ordering, progress, and results summary.
-
-## Limitations
-
-- The local production build remains dependent on the locked npm packages being available from the configured registry.
-
-Completed stories: FH-1614.1-FH-1614.2
+Completed story range: FH-1615.1-FH-1615.5
