@@ -1,0 +1,13 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import fs from 'node:fs';
+const source=fs.readFileSync(new URL('../src/main.jsx',import.meta.url),'utf8');
+test('all podcast sections start collapsed for each app session',()=>{assert.match(source,/const collapsed=\{unassigned:false,'up-next':false,stories:false,drama:false\}/);assert.match(source,/sessionStorage\.getItem\('fizz-podcast-sections-session'\)/)});
+test('collapsed sections do not mount podcast cards',()=>assert.match(source,/sectionOpen\[group\.id\]===true&&renderPodcastCards/));
+test('podcast artwork is lazy and async decoded',()=>{assert.match(source,/loading="lazy"/);assert.match(source,/decoding="async"/)});
+test('podcast cards render incrementally',()=>{assert.match(source,/list\.slice\(0,limit\)/);assert.match(source,/Load more \(\{list\.length-visible\.length\}\)/)});
+test('card and section rendering failures are isolated',()=>{assert.match(source,/class PodcastCardBoundary/);assert.match(source,/class PodcastSectionBoundary/)});
+test('availability count respects show latest only',()=>assert.match(source,/latestOnly\?\(list\[0\]&&list\[0\]\.status!=='played'\?1:0\)/));
+test('inactive threshold indicator is shown after count',()=>assert.match(source,/podcast-availability[\s\S]*OctagonAlert/));
+test('playlist refresh includes all subscribed podcasts',()=>{assert.match(source,/SELECT podcast_id FROM podcast_playlist_subscriptions WHERE playlist_id=\? AND subscribed=1/);assert.match(source,/\.\.\.subscriptionIds/);assert.match(source,/await applyStoredPlaylistFilters\(playlistId\)/)});
+test('broad podcast reads are memoized',()=>{assert.match(source,/const allPodcastRecords=useMemo/);assert.match(source,/const upNext=useMemo/)});
