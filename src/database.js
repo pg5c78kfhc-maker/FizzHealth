@@ -4,7 +4,7 @@ import {NUTRIENT_KEYS} from './nutrition/registry.js';
 
 const DB_KEY='fizz-health-sqlite-v1';
 const STORAGE_DB='FizzHealthStorage';
-const TARGET_SCHEMA_VERSION=118;
+const TARGET_SCHEMA_VERSION=121;
 let SQL, db;
 
 const migrations=[
@@ -1743,6 +1743,12 @@ const migrations=[
     ALTER TABLE podcasts ADD COLUMN last_refreshed_at TEXT;
     INSERT OR IGNORE INTO podcast_player_settings(setting_key,setting_value,updated_at) VALUES ('active_threshold_months','6','2026-08-03T10:50:00-04:00');
     INSERT OR REPLACE INTO release_metadata(version,release_date,build_id,schema_version,title,created_at) VALUES ('1.4.16.15','2026-08-03','141615',120,'Podcast Refresh, Playlist Duration & Activity Status','2026-08-03T10:50:00-04:00');
+  `},
+
+  {version:121,name:'Podcast Metadata and Playback Consistency',sql:`
+    ALTER TABLE podcasts ADD COLUMN feed_health_status TEXT;
+    ALTER TABLE podcasts ADD COLUMN feed_error TEXT;
+    INSERT OR REPLACE INTO release_metadata(version,release_date,build_id,schema_version,title,created_at) VALUES ('1.4.16.16','2026-08-03','141616',121,'Podcast Metadata, Playback Controls & Playlist Consistency','2026-08-03T13:20:00-04:00');
   `},
 
 ];

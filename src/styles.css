@@ -2543,3 +2543,15 @@ body.food-library-active .food-library-page .list.foods{padding-bottom:calc(24px
 
 /* v1.4.16.15 podcast refresh, durations, and activity groups */
 .podcast-playlist-duration{display:flex;align-items:baseline;gap:.55rem;padding:.7rem 1rem .45rem;color:#9aa7b1}.podcast-playlist-duration b{margin-left:auto;color:#9cf238;font-size:1.15rem;font-variant-numeric:tabular-nums}.podcast-playlist-duration small{font-size:.72rem}.podcast-activity-groups>section{margin:.6rem 0}.podcast-section-toggle{width:100%;display:flex;align-items:center;justify-content:space-between;padding:.55rem .35rem;background:transparent;border:0;color:#f5f7f2;font-size:1.18rem;font-weight:800}.podcast-section-toggle svg{width:1.25rem}.podcast-refresh-status{display:flex;align-items:center;justify-content:center;gap:.55rem;color:#9cf238;padding:.6rem;font-weight:700}.podcast-threshold-setting{display:flex!important;align-items:center;gap:1rem}.podcast-threshold-setting span{display:grid;gap:.3rem}.podcast-threshold-setting small{color:#9aa7b1;font-weight:500}.podcast-threshold-setting input{margin-left:auto;width:5rem;padding:.65rem;border-radius:.75rem;border:1px solid #42515a;background:#0b1115;color:#fff;text-align:center;font-size:1.15rem;font-weight:800}
+
+/* v1.4.16.16 podcast metadata, refresh, sleep timer, and unified playlist cards */
+.podcast-refresh-progress{--refresh-progress:0%;position:relative;height:34px;margin:10px 16px;border-radius:9px;overflow:hidden;background:#30343a;border:1px solid #4a4f57;font-weight:800}
+.podcast-refresh-progress:before{content:"";position:absolute;inset:0 auto 0 0;width:var(--refresh-progress);background:#36d46d;transition:width .2s ease}
+.podcast-refresh-progress span,.podcast-refresh-progress b{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:13px;letter-spacing:.01em}
+.podcast-refresh-progress span{color:#fff}
+.podcast-refresh-progress b{color:#07150c;clip-path:inset(0 calc(100% - var(--refresh-progress)) 0 0)}
+.podcast-sleep-menu{position:fixed;left:50%;bottom:calc(116px + env(safe-area-inset-bottom));transform:translateX(-50%);z-index:10020;width:min(330px,calc(100vw - 28px));padding:8px;background:#1b1d21;border:1px solid #454a52;border-radius:14px;box-shadow:0 18px 60px #000a;display:grid;gap:4px}
+.podcast-sleep-menu button{min-height:46px;text-align:left;padding:0 14px;border-radius:10px;background:#292d33;color:#fff;border:0;font-weight:700}
+.podcast-mini-controls button.active{outline:2px solid #36d46d;color:#36d46d}
+.podcast-playlist-card{touch-action:pan-y;transition:transform .18s ease,opacity .18s ease}
+.podcast-up-next article.podcast-playlist-card,.podcast-stories article.podcast-playlist-card{grid-template-columns:32px 58px minmax(0,1fr);align-items:center}

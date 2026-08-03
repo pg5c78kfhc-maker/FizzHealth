@@ -2,6 +2,41 @@
   "format": "fizz-health-release-history",
   "releases": [
     {
+      "version": "1.4.16.16",
+      "name": "Podcast Metadata, Playback Controls & Playlist Consistency",
+      "type": "Podcast metadata and playback refinement release",
+      "created": "2026-08-03T13:20:00-04:00",
+      "build": "141616",
+      "release_id": "FH-20260803-141616",
+      "stories": [
+        [
+          "FH-1616.1",
+          "Backfill podcast artwork and publisher metadata"
+        ],
+        [
+          "FH-1616.2",
+          "Show high-contrast refresh progress"
+        ],
+        [
+          "FH-1616.3",
+          "Add mini-player sleep timer"
+        ],
+        [
+          "FH-1616.4",
+          "Unify playlist episode cards"
+        ],
+        [
+          "FH-1616.5",
+          "Swipe right to mark episodes played"
+        ],
+        [
+          "FH-1616.6",
+          "Refresh podcasts represented by an individual playlist"
+        ]
+      ],
+      "known_issues": []
+    },
+    {
       "version": "1.4.16.15",
       "name": "Podcast Refresh, Playlist Duration & Activity Status",
       "type": "Podcast library intelligence release",
