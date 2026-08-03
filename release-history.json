@@ -2,6 +2,37 @@
   "format": "fizz-health-release-history",
   "releases": [
     {
+      "version": "1.4.16.17",
+      "name": "Podcast Subscription Lifecycle & Metadata Repair",
+      "type": "Podcast subscription and metadata repair release",
+      "created": "2026-08-03T14:10:00-04:00",
+      "stories": [
+        [
+          "FH-1617.1",
+          "Toggle podcast subscriptions from Find Podcasts"
+        ],
+        [
+          "FH-1617.2",
+          "Refresh metadata immediately on subscribe or resubscribe"
+        ],
+        [
+          "FH-1617.3",
+          "Track and repair incomplete podcast metadata"
+        ],
+        [
+          "FH-1617.4",
+          "Reconcile playlists immediately after subscription changes"
+        ],
+        [
+          "FH-1617.5",
+          "Include metadata repair in library refresh"
+        ]
+      ],
+      "knownIssues": [],
+      "build": "141617",
+      "release_id": "FH-20260803-141617"
+    },
+    {
       "version": "1.4.16.16",
       "name": "Podcast Metadata, Playback Controls & Playlist Consistency",
       "type": "Podcast metadata and playback refinement release",

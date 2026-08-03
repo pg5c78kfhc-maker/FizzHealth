@@ -2555,3 +2555,6 @@ body.food-library-active .food-library-page .list.foods{padding-bottom:calc(24px
 .podcast-mini-controls button.active{outline:2px solid #36d46d;color:#36d46d}
 .podcast-playlist-card{touch-action:pan-y;transition:transform .18s ease,opacity .18s ease}
 .podcast-up-next article.podcast-playlist-card,.podcast-stories article.podcast-playlist-card{grid-template-columns:32px 58px minmax(0,1fr);align-items:center}
+/* v1.4.16.17 subscription lifecycle */
+.podcast-directory-results article>button.subscribed{background:#26323a;color:#dbe4e9;border:1px solid #3a4851}
+.podcast-directory-results article>button.subscribed:active{background:#3b2427;color:#ff9a9f}

@@ -4,7 +4,7 @@ import {NUTRIENT_KEYS} from './nutrition/registry.js';
 
 const DB_KEY='fizz-health-sqlite-v1';
 const STORAGE_DB='FizzHealthStorage';
-const TARGET_SCHEMA_VERSION=121;
+const TARGET_SCHEMA_VERSION=122;
 let SQL, db;
 
 const migrations=[
@@ -1749,6 +1749,13 @@ const migrations=[
     ALTER TABLE podcasts ADD COLUMN feed_health_status TEXT;
     ALTER TABLE podcasts ADD COLUMN feed_error TEXT;
     INSERT OR REPLACE INTO release_metadata(version,release_date,build_id,schema_version,title,created_at) VALUES ('1.4.16.16','2026-08-03','141616',121,'Podcast Metadata, Playback Controls & Playlist Consistency','2026-08-03T13:20:00-04:00');
+  `},
+
+  {version:122,name:'Podcast Subscription Lifecycle and Metadata Repair',sql:`
+    ALTER TABLE podcasts ADD COLUMN metadata_incomplete INTEGER NOT NULL DEFAULT 1;
+    ALTER TABLE podcasts ADD COLUMN metadata_last_attempt_at TEXT;
+    UPDATE podcasts SET metadata_incomplete=CASE WHEN TRIM(COALESCE(title,''))='' OR TRIM(COALESCE(publisher,''))='' OR TRIM(COALESCE(artwork_url,''))='' OR TRIM(COALESCE(website_url,''))='' THEN 1 ELSE 0 END;
+    INSERT OR REPLACE INTO release_metadata(version,release_date,build_id,schema_version,title,created_at) VALUES ('1.4.16.17','2026-08-03','141617',122,'Podcast Subscription Lifecycle & Metadata Repair','2026-08-03T14:10:00-04:00');
   `},
 
 ];
