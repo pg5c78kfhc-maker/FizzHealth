@@ -1,0 +1,16 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import fs from 'node:fs';
+const main=fs.readFileSync(new URL('../src/main.jsx',import.meta.url),'utf8');
+const db=fs.readFileSync(new URL('../src/database.js',import.meta.url),'utf8');
+const css=fs.readFileSync(new URL('../src/styles.css',import.meta.url),'utf8');
+test('release metadata is v1.4.16.8',()=>{assert.match(main,/const VERSION='1\.4\.16\.8'/);assert.match(db,/version:113,name:'Podcast Organization and Automation'/)});
+test('podcasts have persistent display order',()=>{assert.match(db,/ALTER TABLE podcasts ADD COLUMN display_order INTEGER/);assert.match(main,/ORDER BY COALESCE\(display_order,2147483647\)/)});
+test('manual drag ordering is implemented',()=>{assert.match(main,/reorderPodcasts=async/);assert.match(main,/draggable=!\{q\}|draggable=\{!q\}/);assert.match(main,/onDrop=/)});
+test('touch long press ordering is implemented',()=>{assert.match(main,/__podcastDragTimer/);assert.match(main,/elementFromPoint/);assert.match(main,/dragTargetPodcastId/)});
+test('oldest first preference defaults off',()=>{assert.match(db,/oldest_first INTEGER NOT NULL DEFAULT 0/);assert.match(main,/Oldest episodes first/);assert.match(main,/oldestFirst\?av-bv:bv-av/)});
+test('auto up next preference defaults off',()=>{assert.match(db,/auto_add_up_next INTEGER NOT NULL DEFAULT 0/);assert.match(main,/<b>Up Next<\/b>/);assert.match(main,/autoAddUpNext&&ordered\.length/)});
+test('automatic queue insertion prevents duplicates',()=>{assert.match(main,/INSERT OR IGNORE INTO podcast_up_next/);assert.match(main,/playedKeys\.has\(key\)/)});
+test('latest only auto queue chooses literal newest episode',()=>{assert.match(main,/const visible=showLatestOnly\?\[\.\.\.raw\]\.sort/)});
+test('new podcasts append to library order',()=>{assert.match(main,/MAX\(display_order\),0\)\+1 FROM podcasts/)});
+test('reorder styling exists',()=>{assert.match(css,/podcast-reorder-list/);assert.match(css,/\.dragging/)});

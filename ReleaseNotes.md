@@ -1,14 +1,18 @@
-# Fizz Health v1.4.16.7 — Podcast Settings Hierarchy & Playback Recovery
+# Fizz Health v1.4.16.8 — Podcast Organization & Automation
 
 ## Included
-- Added a top-level Podcasts gear for global player defaults.
-- Converted each podcast gear to podcast-specific settings.
-- Added nullable per-podcast playback-speed overrides; null means use the global speed.
-- Added “Show only most recent episode,” defaulting to No.
-- Latest-only mode shows the literal newest feed episode only when it is unplayed or in progress; it does not fall back to an older episode.
-- Applied the effective local/global speed whenever an episode starts, including Up Next playback.
-- Throttled progress persistence writes and added podcast-player error logging.
-- Improved progress-label contrast as the green fill passes beneath the label.
+- Added persistent manual ordering of podcasts on My Podcasts using drag-and-drop and long-press touch reordering.
+- Added the podcast-specific “Oldest episodes first” setting. It is off by default, preserving newest-to-oldest order.
+- Added the podcast-specific “Up Next” automation setting. It is off by default.
+- When Up Next automation is enabled, qualifying unplayed and in-progress episodes are added in the podcast’s displayed order.
+- Feed refreshes add newly discovered qualifying episodes without duplicating existing queue entries or removing other podcasts’ queue entries.
+- Auto-add respects “Show only most recent episode” and never falls back to an older episode when the latest episode is already played.
+- New podcasts are appended to the bottom of the manually ordered library.
+- Podcast order persists independently from episode sort order and Up Next queue order.
+- Preserved the v1.4.16.7 global/local playback settings hierarchy and playback stability protections.
+
+## Stories
+FH-1608.1-FH-1608.4
 
 ## Out of scope
-Drag-and-drop queue ordering, repeat/shuffle, downloads, multiple playlists, and external-player progress synchronization.
+Up Next drag-and-drop reordering, repeat/shuffle, downloads, multiple playlists, and external-player progress synchronization.

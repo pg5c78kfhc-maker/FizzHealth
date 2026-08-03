@@ -2513,3 +2513,10 @@ body.food-library-active .food-library-page .list.foods{padding-bottom:calc(24px
 .podcast-setting-toggle input{width:52px;height:30px;accent-color:var(--accent)}
 .podcast-progress{position:relative;overflow:hidden}.podcast-progress small{position:relative;z-index:2;color:#fff;mix-blend-mode:difference;text-shadow:none}
 .podcast-progress i{z-index:1}
+
+
+/* v1.4.16.8 podcast organization and automation */
+.podcast-reorder-list>article{border:0;padding:0;background:transparent;transition:transform .16s ease,opacity .16s ease}
+.podcast-reorder-list>article>button{width:100%}
+.podcast-reorder-list>article.dragging{opacity:.55;transform:scale(.985)}
+.podcast-reorder-list>article[draggable=true]{touch-action:pan-y}

@@ -2,6 +2,20 @@
   "format": "fizz-health-release-history",
   "releases": [
     {
+      "version": "1.4.16.8",
+      "name": "Podcast Organization & Automation",
+      "type": "Podcast organization and automation release",
+      "release_date": "2026-08-03",
+      "build": "141608",
+      "release_id": "FH-20260803-141608",
+      "stories": [
+        "FH-1608.1",
+        "FH-1608.2",
+        "FH-1608.3",
+        "FH-1608.4"
+      ]
+    },
+    {
       "version": "1.4.16.6",
       "name": "Podcast Playback Stability & Queue Reliability",
       "issued": "2026-08-03",

@@ -1662,6 +1662,16 @@ const migrations=[
     INSERT OR REPLACE INTO release_metadata(version,release_date,build_id,schema_version,title,created_at) VALUES ('1.4.16.7','2026-08-03','141607',112,'Podcast Settings Hierarchy & Playback Recovery','2026-08-03T06:45:00-04:00');
   `},
 
+
+  {version:113,name:'Podcast Organization and Automation',sql:`
+    ALTER TABLE podcasts ADD COLUMN display_order INTEGER;
+    ALTER TABLE podcast_preferences ADD COLUMN oldest_first INTEGER NOT NULL DEFAULT 0 CHECK(oldest_first IN (0,1));
+    ALTER TABLE podcast_preferences ADD COLUMN auto_add_up_next INTEGER NOT NULL DEFAULT 0 CHECK(auto_add_up_next IN (0,1));
+    UPDATE podcasts SET display_order=(SELECT COUNT(*) FROM podcasts p2 WHERE p2.active=1 AND (LOWER(p2.title)<LOWER(podcasts.title) OR (LOWER(p2.title)=LOWER(podcasts.title) AND p2.podcast_id<=podcasts.podcast_id))) WHERE active=1 AND display_order IS NULL;
+    CREATE INDEX IF NOT EXISTS idx_podcasts_display_order ON podcasts(active,display_order,title COLLATE NOCASE);
+    INSERT OR REPLACE INTO release_metadata(version,release_date,build_id,schema_version,title,created_at) VALUES ('1.4.16.8','2026-08-03','141608',113,'Podcast Organization & Automation','2026-08-03T07:45:00-04:00');
+  `},
+
 ];
 const canonicalNutrientColumns=Object.freeze(Object.fromEntries(NUTRIENT_KEYS.map(key=>[key,'REAL'])));
 
