@@ -1,0 +1,15 @@
+VERSION.json
+package.json
+package-lock.json
+release-history.json
+ReleaseNotes.md
+public/sw.js
+src/database.js
+src/decision/engine.js
+src/main.jsx
+tests/v1416166-podcast-playback-stability.test.js
+RELEASE-NOTES-1.4.16.6.md
+CHANGED-FILES-1.4.16.6.txt
+TEST-REPORT-1.4.16.6.md
+EXECUTION-VERIFICATION-1.4.16.6.md
+CHECKSUMS-1.4.16.6.txt

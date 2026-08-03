@@ -1636,6 +1636,9 @@ const migrations=[
   `},
 
 
+  {version:111,name:'Podcast Playback Stability',sql:`
+    INSERT OR REPLACE INTO release_metadata(version,release_date,build_id,schema_version,title,created_at) VALUES ('1.4.16.6','2026-08-03','141606',111,'Podcast Playback Stability & Queue Reliability','2026-08-03T06:15:00-04:00');
+  `},
 
 ];
 const canonicalNutrientColumns=Object.freeze(Object.fromEntries(NUTRIENT_KEYS.map(key=>[key,'REAL'])));

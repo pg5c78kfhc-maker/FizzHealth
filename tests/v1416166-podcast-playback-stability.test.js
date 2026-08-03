@@ -1,0 +1,14 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import fs from 'node:fs';
+const main=fs.readFileSync(new URL('../src/main.jsx',import.meta.url),'utf8');
+const db=fs.readFileSync(new URL('../src/database.js',import.meta.url),'utf8');
+test('release metadata identifies v1.4.16.6',()=>{assert.match(main,/const VERSION='1\.4\.16\.6'/);assert.match(db,/version:111,name:'Podcast Playback Stability'/)});
+test('completion is driven only by genuine ended event',()=>{assert.match(main,/onEnded=\{completeCurrent\}/);assert.doesNotMatch(main,/value\/e\.currentTarget\.duration>=\.95/);assert.doesNotMatch(main,/effectivePosition\/effectiveDuration>=\.95/)});
+test('duplicate completion is guarded per episode',()=>{assert.match(main,/completionKey\.current===key/);assert.match(main,/completionKey\.current=key/)});
+test('episode transitions release the old source and reset transient state',()=>{assert.match(main,/audio\.removeAttribute\('src'\)/);assert.match(main,/setPosition\(0\);setDuration\(0\);setPlaying\(false\)/);assert.match(main,/resumePosition\.current=saved/)});
+test('resume applies only to an in-progress same episode',()=>{assert.match(main,/playback\?\.status==='in_progress'/);assert.match(main,/saved>0&&saved<Math\.max\(0,nextDuration-1\)/);assert.match(main,/audio\.currentTime=0;setPosition\(0\)/)});
+test('queue completion removes only the finished episode',()=>{assert.match(main,/DELETE FROM podcast_up_next WHERE episode_key=\?/);assert.doesNotMatch(main,/DELETE FROM podcast_up_next`/);assert.match(main,/adjacentQueued\(currentQueueItem,'next'\)/)});
+test('automatic queue advance waits for the next source to be playable',()=>{assert.match(main,/pendingAutoplay\.current=autoplay/);assert.match(main,/onCanPlay=\{handleCanPlay\}/);assert.match(main,/await e\.currentTarget\.play\(\)/)});
+test('manual previous and next preserve queue entries',()=>{assert.match(main,/skipQueue\('previous'\)/);assert.match(main,/skipQueue\('next'\)/);assert.match(main,/await persist\('in_progress',\{suppressState:true\}\)/)});
+test('queue adjacency is position based for future reordering',()=>{assert.match(main,/WHERE queue_position \$\{direction==='next'\?'>'\:'<'\} \?/);assert.match(main,/ORDER BY queue_position/)});

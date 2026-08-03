@@ -2,6 +2,14 @@
   "format": "fizz-health-release-history",
   "releases": [
     {
+      "version": "1.4.16.6",
+      "name": "Podcast Playback Stability & Queue Reliability",
+      "issued": "2026-08-03",
+      "created": "2026-08-03T06:15:00-04:00",
+      "build": "141606",
+      "release_id": "FH-20260803-141606"
+    },
+    {
       "version": "1.4.16.5",
       "date": "2026-08-02",
       "title": "Podcast Up Next Queue",
