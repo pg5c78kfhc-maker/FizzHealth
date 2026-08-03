@@ -2571,3 +2571,40 @@ body.food-library-active .food-library-page .list.foods{padding-bottom:calc(24px
 .podcast-details-art{width:100%;max-width:320px;aspect-ratio:1;border-radius:18px;object-fit:cover;display:block;margin:0 auto 18px}
 .podcast-episode-details dl{margin:18px 0}.podcast-episode-details dl div{display:grid;grid-template-columns:minmax(120px,38%) 1fr;gap:12px;padding:10px 0;border-bottom:1px solid var(--border,#ddd)}
 .podcast-episode-details dt{font-weight:700}.podcast-episode-details dd{margin:0;overflow-wrap:anywhere}.podcast-show-notes p{white-space:pre-wrap;line-height:1.5}.podcast-detail-links{display:grid;gap:10px;margin-top:18px}.podcast-detail-links button{min-height:48px;border-radius:12px;display:flex;align-items:center;justify-content:center;gap:8px}
+
+
+/* v1.4.16.22 critical episode-card interaction repair */
+.podcast-up-next>article.podcast-shared-episode-card,
+.podcast-stories>article.podcast-shared-episode-card,
+.podcast-episode-list>article.podcast-shared-episode-card{
+  grid-template-columns:32px 58px minmax(0,1fr) 44px;
+  cursor:pointer;
+  overflow:visible;
+}
+.podcast-episode-list>article.podcast-shared-episode-card{
+  grid-template-columns:32px 58px minmax(0,1fr) 44px;
+}
+.podcast-shared-episode-card:focus-visible{outline:2px solid #a9ef45;outline-offset:2px}
+.podcast-shared-episode-card .podcast-up-next-main{pointer-events:none}
+.podcast-shared-episode-card .podcast-episode-info{
+  position:relative;
+  z-index:2;
+  width:42px;
+  height:42px;
+  border:1px solid #53616a;
+  border-radius:50%;
+  background:#202b32;
+  color:#fff;
+  display:grid;
+  place-items:center;
+  justify-self:end;
+  flex:0 0 auto;
+}
+.podcast-shared-episode-card .podcast-episode-info:active{background:#34434c;transform:scale(.96)}
+.podcast-shared-episode-card .podcast-episode-info svg{width:23px;height:23px;pointer-events:none}
+@media(max-width:390px){
+  .podcast-up-next>article.podcast-shared-episode-card,
+  .podcast-stories>article.podcast-shared-episode-card,
+  .podcast-episode-list>article.podcast-shared-episode-card{grid-template-columns:24px 52px minmax(0,1fr) 42px;gap:8px}
+  .podcast-shared-episode-card>img,.podcast-shared-episode-card>.podcast-thumb{width:52px;height:52px}
+}

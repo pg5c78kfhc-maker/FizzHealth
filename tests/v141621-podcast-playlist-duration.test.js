@@ -5,7 +5,7 @@ import {formatPlaylistRemaining} from '../src/podcast/playlistDuration.js';
 
 const source=fs.readFileSync(new URL('../src/main.jsx',import.meta.url),'utf8');
 
-test('release version is 1.4.16.21',()=>assert.match(source,/const VERSION='1\.4\.16\.21'/));
+test('release version is 1.4.16.22',()=>assert.match(source,/const VERSION='1\.4\.16\.22'/));
 test('PodcastsPage imports the playlist remaining helper',()=>assert.match(source,/import \{formatPlaylistRemaining\} from '\.\/podcast\/playlistDuration\.js'/));
 test('empty and malformed playlists are safe',()=>{
   assert.deepEqual(formatPlaylistRemaining(null,null),{seconds:0,unknown:0,label:'0:00'});
