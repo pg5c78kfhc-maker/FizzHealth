@@ -1,0 +1,11 @@
+import test from 'node:test';import assert from 'node:assert/strict';import fs from 'node:fs';import vm from 'node:vm';
+const main=fs.readFileSync(new URL('../src/main.jsx',import.meta.url),'utf8');
+const retrieval=fs.readFileSync(new URL('../src/podcast/feedRetrieval.js',import.meta.url),'utf8');
+const diagnostics=fs.readFileSync(new URL('../src/podcast/retrievalDiagnostics.js',import.meta.url),'utf8');
+test('release metadata advanced',()=>{assert.match(main,/VERSION='1\.4\.16\.25'/);assert.match(main,/BUILD_ID='141625'/)});
+test('diagnostics persist a rolling local-device log',()=>{assert.match(diagnostics,/MAX_EVENTS=100/);assert.match(diagnostics,/localStorage/);assert.match(diagnostics,/savePodcastDiagnostic/);assert.match(diagnostics,/clearPodcastDiagnostics/)});
+test('feed retrieval records direct and proxy transport details',()=>{assert.match(retrieval,/stage:'direct'/);assert.match(retrieval,/stage:'proxy'/);assert.match(retrieval,/contentType/);assert.match(retrieval,/finalUrl/);assert.match(retrieval,/xmlBytes/);assert.match(retrieval,/episodesParsed/)});
+test('subscription captures Apple, prior stored, stored and requested URLs',()=>{for(const field of ['appleFeedUrl','previousStoredFeedUrl','storedFeedUrl','requestedFeedUrl','urlIntegrity'])assert.match(main,new RegExp(field))});
+test('failed retrieval exposes diagnostics in-app',()=>{assert.match(main,/View Diagnostics/);assert.match(main,/Copy Diagnostics/);assert.match(main,/Save Diagnostics/);assert.match(main,/Clear Diagnostics/)});
+test('resubscribe is identified separately from fresh subscription',()=>{assert.match(main,/operation:match\?'resubscribe':'subscribe'/);assert.match(main,/recordAction:match\?'reactivated':'created'/)});
+test('retrieval and import stages record parse and reconciliation counts',()=>{for(const field of ['feedType','episodesParsed','firstEpisodeTitle','lastEpisodeTitle','episodesInserted','episodesUpdated','episodesIgnored'])assert.match(main,new RegExp(field))});

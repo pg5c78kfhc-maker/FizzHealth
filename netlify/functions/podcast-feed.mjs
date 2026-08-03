@@ -23,7 +23,7 @@ export async function handler(event){
   if(!feed)return json(400,{error:'A valid public RSS feed URL is required.'});
   try{
     const response=await fetch(feed,{redirect:'follow',headers:{
-      'user-agent':'Mozilla/5.0 (iPhone; CPU iPhone OS 18_0 like Mac OS X) AppleWebKit/605.1.15 FizzHealth/1.4.16.24',
+      'user-agent':'Mozilla/5.0 (iPhone; CPU iPhone OS 18_0 like Mac OS X) AppleWebKit/605.1.15 FizzHealth/1.4.16.25',
       'accept':'application/rss+xml, application/atom+xml, text/xml, application/xml, */*',
       'accept-language':'en-US,en;q=0.9'
     }});
@@ -32,7 +32,7 @@ export async function handler(event){
     const xml=await response.text();
     if(xml.length>8_000_000)return json(413,{error:'The podcast feed is too large.'});
     if(!/<(?:rss|feed)\b/i.test(xml.slice(0,20000)))return json(502,{error:'The feed host returned content that was not RSS or Atom.',contentType,finalUrl:response.url});
-    return json(200,{xml,contentType,finalUrl:response.url||feed.toString()});
+    return json(200,{xml,contentType,finalUrl:response.url||feed.toString(),redirectChain:response.redirected?[feed.toString(),response.url]:[feed.toString()]});
   }catch(error){
     return json(502,{error:error?.message||'The podcast feed could not be loaded.',name:error?.name||'Error'});
   }
