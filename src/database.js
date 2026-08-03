@@ -1672,6 +1672,10 @@ const migrations=[
     INSERT OR REPLACE INTO release_metadata(version,release_date,build_id,schema_version,title,created_at) VALUES ('1.4.16.8','2026-08-03','141608',113,'Podcast Organization & Automation','2026-08-03T07:45:00-04:00');
   `},
 
+  {version:114,name:'Podcast Library Experience',sql:`
+    INSERT OR REPLACE INTO release_metadata(version,release_date,build_id,schema_version,title,created_at) VALUES ('1.4.16.9','2026-08-03','141609',114,'Podcast Library Experience','2026-08-03T08:00:00-04:00');
+  `},
+
 ];
 const canonicalNutrientColumns=Object.freeze(Object.fromEntries(NUTRIENT_KEYS.map(key=>[key,'REAL'])));
 

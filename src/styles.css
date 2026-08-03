@@ -2520,3 +2520,14 @@ body.food-library-active .food-library-page .list.foods{padding-bottom:calc(24px
 .podcast-reorder-list>article>button{width:100%}
 .podcast-reorder-list>article.dragging{opacity:.55;transform:scale(.985)}
 .podcast-reorder-list>article[draggable=true]{touch-action:pan-y}
+
+
+/* v1.4.16.9 compact podcast library cards */
+.podcast-reorder-list{gap:10px;margin-top:14px}
+.podcast-reorder-list>article>button{display:grid;grid-template-columns:68px minmax(0,1fr) 28px;gap:14px;align-items:start;min-height:94px;padding:12px 14px;background:#121a20;border:1px solid #2b373f;border-radius:20px;color:#fff;text-align:left}
+.podcast-reorder-list>article>button>img,.podcast-reorder-list>article>button>.podcast-thumb{width:68px;height:68px;border-radius:14px;object-fit:cover;align-self:center}
+.podcast-reorder-list>article>button>div{display:grid;align-content:start;gap:5px;min-width:0;padding-top:2px}
+.podcast-reorder-list>article>button b{color:#fff;font-size:.92rem;line-height:1.18;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.podcast-reorder-list>article>button span{color:#98a4ad;font-size:.78rem;line-height:1.2;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.podcast-reorder-list>article>button>svg{justify-self:end;align-self:center;color:#fff;width:24px;height:24px}
+@media(max-width:390px){.podcast-reorder-list>article>button{grid-template-columns:60px minmax(0,1fr) 24px;min-height:84px;padding:10px 12px;gap:12px}.podcast-reorder-list>article>button>img,.podcast-reorder-list>article>button>.podcast-thumb{width:60px;height:60px}}

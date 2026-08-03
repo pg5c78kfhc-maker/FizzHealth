@@ -1,18 +1,18 @@
-# Fizz Health v1.4.16.8 — Podcast Organization & Automation
+# Fizz Health v1.4.16.9 — Podcast Library Experience
 
-## Included
-- Added persistent manual ordering of podcasts on My Podcasts using drag-and-drop and long-press touch reordering.
-- Added the podcast-specific “Oldest episodes first” setting. It is off by default, preserving newest-to-oldest order.
-- Added the podcast-specific “Up Next” automation setting. It is off by default.
-- When Up Next automation is enabled, qualifying unplayed and in-progress episodes are added in the podcast’s displayed order.
-- Feed refreshes add newly discovered qualifying episodes without duplicating existing queue entries or removing other podcasts’ queue entries.
-- Auto-add respects “Show only most recent episode” and never falls back to an older episode when the latest episode is already played.
-- New podcasts are appended to the bottom of the manually ordered library.
-- Podcast order persists independently from episode sort order and Up Next queue order.
-- Preserved the v1.4.16.7 global/local playback settings hierarchy and playback stability protections.
+Issued: 2026-08-03  
+Build: 141609  
+Deployment: FH-20260803-141609
 
-## Stories
-FH-1608.1-FH-1608.4
+## Completed stories
 
-## Out of scope
-Up Next drag-and-drop reordering, repeat/shuffle, downloads, multiple playlists, and external-player progress synchronization.
+- FH-1609.1 — Compact podcast library cards.
+- FH-1609.2 — Align podcast titles and publishers at the top of each card.
+- FH-1609.3 — Move the podcast navigation chevron to the far right.
+- FH-1609.4 — Preserve podcast ordering, per-podcast sort settings, and automatic Up Next behavior.
+
+## Summary
+
+The My Podcasts landing page now uses compact dark cards with reduced vertical whitespace. Artwork remains on the left, titles are white and aligned to the top of the card, publishers appear directly below in muted gray, and navigation chevrons are centered vertically at the far-right edge. Existing drag ordering, podcast-specific episode sort order, and automatic Up Next population remain intact.
+
+Completed story range: FH-1609.1-FH-1609.4
