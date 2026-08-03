@@ -32,11 +32,12 @@ import {buildReconciledPlaylistOrder,selectQualifyingPlaylistEpisodes} from './p
 import {applyPlaylistFilters} from './podcast/playlistFilters.js';
 import {parsePodcastOpml,classifyPodcastImports} from './podcast/opmlImport.js';
 import {normalizePodcastRecord,podcastList,podcastText,podcastUrl} from './podcast/metadata.js';
-const VERSION='1.4.16.20';
+import {formatPlaylistRemaining} from './podcast/playlistDuration.js';
+const VERSION='1.4.16.21';
 const RELEASE_DATE='2026-08-03';
-const BUILD_ID='141620';
-const DEPLOYMENT_ID='FH-20260803-141620';
-const RELEASE_CREATED_AT='2026-08-03T16:20:00-04:00';
+const BUILD_ID='141621';
+const DEPLOYMENT_ID='FH-20260803-141621';
+const RELEASE_CREATED_AT='2026-08-03T16:42:00-04:00';
 const NUTRITION_RECORD_SECTIONS=[
  {title:'Macronutrients',keys:['calories','protein','carbs','fiber','fat','saturated_fat','trans_fat','cholesterol','sodium','potassium','total_sugar','added_sugar','monounsaturated_fat','polyunsaturated_fat','omega_3']},
  {title:'Vitamins & Minerals',keys:['calcium','iron','magnesium','vitamin_d','vitamin_c']},
