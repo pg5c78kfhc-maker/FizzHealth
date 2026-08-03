@@ -25,3 +25,8 @@ This corrective release makes subscribed podcast playlists reconcile to the podc
 - FH-1611.4 — Remove played and obsolete podcast playlist entries.
 
 Completed story range: FH-1611.1-FH-1611.4
+
+## Corrective rebuild
+
+- Fixed a missing closing brace in the podcast-feed refresh `try/catch` path that prevented Vite from parsing `src/main.jsx`.
+- No feature, schema, or behavior changes were introduced.

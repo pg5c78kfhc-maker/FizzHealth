@@ -1,4 +1,10 @@
-# Test Report — Fizz Health v1.4.16.11
+# Test Report — Fizz Health v1.4.16.11 Corrective Rebuild
+
+## Deployment syntax correction
+
+Cloudflare's production Vite build identified an unexpected-token error in `src/main.jsx` at the `catch(loadError)` clause inside the podcast-feed refresh path.
+
+Root cause: the `if (refreshUpNext || refreshStories)` block was closed, but the surrounding `try` block was not closed before `catch`. One closing brace was added. No feature behavior or release scope changed.
 
 ## Focused release tests
 
@@ -22,21 +28,13 @@ Coverage:
 
 ## Integrity and release checks
 
-- `npm run integrity:check`
-- `npm run verify:release`
-- `node --check src/database.js`
-- `node --check src/podcast/playlistReconciliation.js`
+- `npm run integrity:check`: passed.
+- `npm run verify:release`: passed.
+- `node --check src/database.js`: passed in the original release verification.
+- `node --check src/podcast/playlistReconciliation.js`: passed in the original release verification.
 
-## Full inherited suite
+## Production build status
 
-Command: `node --test tests/*.test.js`
+The original deployed archive reached Vite successfully after Cloudflare installed all dependencies, then failed on the missing JSX brace. The syntax defect reported by Vite has been corrected in this rebuild.
 
-Result: **658 passed / 265 failed** across 923 tests. The failures are the inherited source-pattern baseline and are not failures of the new focused reconciliation suite.
-
-## Production build
-
-- Internal sandbox registry install: blocked because `xlsx@0.18.5` is unavailable (HTTP 404).
-- Public npm registry retry: timed out before installation completed.
-- `npm run build` could therefore not execute because Vite was not installed.
-
-No production-build pass is claimed.
+A second local Vite run could not be completed because this sandbox's npm registry still returns HTTP 404 for the locked `xlsx@0.18.5` tarball. Therefore, no local production-build pass is claimed. The corrected archive is intended for the same Cloudflare build path that surfaced the precise syntax location.
