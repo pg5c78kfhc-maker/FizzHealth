@@ -1,0 +1,8 @@
+import test from 'node:test';import assert from 'node:assert/strict';import fs from 'node:fs';
+const main=fs.readFileSync('src/main.jsx','utf8'),db=fs.readFileSync('src/database.js','utf8'),css=fs.readFileSync('src/styles.css','utf8');
+test('release and schema identify v1.4.16.18',()=>{assert.match(main,/const VERSION='1\.4\.16\.18'/);assert.match(db,/TARGET_SCHEMA_VERSION=123/);assert.match(db,/Podcast Drama and Episode Details/)});
+test('Drama playlist is persisted and exposed',()=>{assert.match(db,/\('drama','Drama',0,3/);assert.match(main,/setLandingTab\('drama'\)/);assert.match(main,/savePlaylistSubscription\('drama'/)});
+test('My Podcasts grouping has required priority',()=>{assert.match(main,/\['unassigned','Unassigned'\].*\['up-next','Up Next'\].*\['stories','Stories'\].*\['drama','Drama'\]/s);assert.match(main,/subs\.includes\('up-next'\).*subs\.includes\('stories'\).*subs\.includes\('drama'\)/s);assert.match(main,/fizz-podcast-sections/)});
+test('shared episode card and details exist',()=>{assert.match(main,/function PodcastEpisodeCard/);assert.match(main,/function PodcastEpisodeDetails/);assert.match(main,/Episode Details/);assert.match(main,/podcast-episode-info/);assert.doesNotMatch(main,/removeFromQueue\(item\.episode_key\)/)});
+test('cards expose metadata and right swipe played action',()=>{assert.match(main,/episodeDate\(published\)/);assert.match(main,/episodeDuration\(duration\)/);assert.match(main,/if\(delta>70\)onMarkPlayed/);assert.match(css,/podcast-shared-episode-card/)});
+test('playlist refresh is scoped and Drama reconciles',()=>{assert.match(main,/onlyPlaylist:playlistId/);assert.match(main,/source=playlistId==='stories'\?stories:playlistId==='drama'\?drama:upNext/);assert.match(main,/await reconcile\('drama'\)/)});

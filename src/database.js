@@ -4,7 +4,7 @@ import {NUTRIENT_KEYS} from './nutrition/registry.js';
 
 const DB_KEY='fizz-health-sqlite-v1';
 const STORAGE_DB='FizzHealthStorage';
-const TARGET_SCHEMA_VERSION=122;
+const TARGET_SCHEMA_VERSION=123;
 let SQL, db;
 
 const migrations=[
@@ -1756,6 +1756,18 @@ const migrations=[
     ALTER TABLE podcasts ADD COLUMN metadata_last_attempt_at TEXT;
     UPDATE podcasts SET metadata_incomplete=CASE WHEN TRIM(COALESCE(title,''))='' OR TRIM(COALESCE(publisher,''))='' OR TRIM(COALESCE(artwork_url,''))='' OR TRIM(COALESCE(website_url,''))='' THEN 1 ELSE 0 END;
     INSERT OR REPLACE INTO release_metadata(version,release_date,build_id,schema_version,title,created_at) VALUES ('1.4.16.17','2026-08-03','141617',122,'Podcast Subscription Lifecycle & Metadata Repair','2026-08-03T14:10:00-04:00');
+  `},
+
+  {version:123,name:'Podcast Drama and Episode Details',sql:`
+    INSERT OR IGNORE INTO podcast_playlists(playlist_id,name,autoplay,display_order,created_at,updated_at) VALUES ('drama','Drama',0,3,datetime('now'),datetime('now'));
+    ALTER TABLE podcast_playlist_items ADD COLUMN published_at TEXT;
+    ALTER TABLE podcast_playlist_items ADD COLUMN publisher TEXT;
+    ALTER TABLE podcast_playlist_items ADD COLUMN description TEXT;
+    ALTER TABLE podcast_playlist_items ADD COLUMN season TEXT;
+    ALTER TABLE podcast_playlist_items ADD COLUMN episode_number TEXT;
+    ALTER TABLE podcast_playlist_items ADD COLUMN explicit INTEGER;
+    ALTER TABLE podcast_playlist_items ADD COLUMN episode_url TEXT;
+    INSERT OR REPLACE INTO release_metadata(version,release_date,build_id,schema_version,title,created_at) VALUES ('1.4.16.18','2026-08-03','141618',123,'Podcast Drama, Organization & Episode Details','2026-08-03T15:06:00-04:00');
   `},
 
 ];

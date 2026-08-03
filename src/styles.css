@@ -2558,3 +2558,16 @@ body.food-library-active .food-library-page .list.foods{padding-bottom:calc(24px
 /* v1.4.16.17 subscription lifecycle */
 .podcast-directory-results article>button.subscribed{background:#26323a;color:#dbe4e9;border:1px solid #3a4851}
 .podcast-directory-results article>button.subscribed:active{background:#3b2427;color:#ff9a9f}
+
+/* v1.4.16.18 podcast organization, shared cards, and episode details */
+.podcast-shared-episode-card{display:grid;grid-template-columns:auto 56px minmax(0,1fr) 42px;align-items:center;gap:10px;overflow:hidden}
+.podcast-shared-episode-card>img,.podcast-shared-episode-card>.podcast-thumb{width:56px;height:56px;border-radius:10px;object-fit:cover}
+.podcast-shared-episode-card .podcast-up-next-main{min-width:0;text-align:left;display:flex;flex-direction:column;gap:2px}
+.podcast-shared-episode-card .podcast-up-next-main small{font-size:.76rem;opacity:.72}
+.podcast-episode-info{width:38px;height:38px;border:0;background:transparent;display:grid;place-items:center}
+.podcast-episode-info svg{width:22px;height:22px}
+.podcast-playlist-groups>section{margin-bottom:10px}
+.podcast-episode-details>article{padding:16px}
+.podcast-details-art{width:100%;max-width:320px;aspect-ratio:1;border-radius:18px;object-fit:cover;display:block;margin:0 auto 18px}
+.podcast-episode-details dl{margin:18px 0}.podcast-episode-details dl div{display:grid;grid-template-columns:minmax(120px,38%) 1fr;gap:12px;padding:10px 0;border-bottom:1px solid var(--border,#ddd)}
+.podcast-episode-details dt{font-weight:700}.podcast-episode-details dd{margin:0;overflow-wrap:anywhere}.podcast-show-notes p{white-space:pre-wrap;line-height:1.5}.podcast-detail-links{display:grid;gap:10px;margin-top:18px}.podcast-detail-links button{min-height:48px;border-radius:12px;display:flex;align-items:center;justify-content:center;gap:8px}
