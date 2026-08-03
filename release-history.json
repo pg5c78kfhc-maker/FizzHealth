@@ -2,6 +2,21 @@
   "format": "fizz-health-release-history",
   "releases": [
     {
+      "version": "1.4.16.10",
+      "name": "Podcast Playlists Foundation",
+      "type": "Podcast playlist foundation release",
+      "release_date": "2026-08-03",
+      "build": "141610",
+      "release_id": "FH-20260803-141610",
+      "stories": [
+        "FH-1610.1",
+        "FH-1610.2",
+        "FH-1610.3",
+        "FH-1610.4",
+        "FH-1610.5"
+      ]
+    },
+    {
       "version": "1.4.16.9",
       "name": "Podcast Library Experience",
       "type": "Podcast library UI refinement release",

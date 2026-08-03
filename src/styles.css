@@ -2531,3 +2531,11 @@ body.food-library-active .food-library-page .list.foods{padding-bottom:calc(24px
 .podcast-reorder-list>article>button span{color:#98a4ad;font-size:.78rem;line-height:1.2;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .podcast-reorder-list>article>button>svg{justify-self:end;align-self:center;color:#fff;width:24px;height:24px}
 @media(max-width:390px){.podcast-reorder-list>article>button{grid-template-columns:60px minmax(0,1fr) 24px;min-height:84px;padding:10px 12px;gap:12px}.podcast-reorder-list>article>button>img,.podcast-reorder-list>article>button>.podcast-thumb{width:60px;height:60px}}
+
+
+/* v1.4.16.10 podcast playlists foundation */
+.podcast-folder-tabs{grid-template-columns:repeat(3,minmax(0,1fr))}
+.podcast-playlist-settings{margin-top:20px;padding-top:18px;border-top:1px solid #34424b}
+.podcast-playlist-settings h3{margin:0 0 4px;color:#a3f534;font-size:1.25rem}
+.podcast-playlist-settings>p{margin:0 0 10px;color:#9aa6ae;font-size:.82rem;line-height:1.35}
+.podcast-stories .podcast-up-next-main{cursor:pointer}

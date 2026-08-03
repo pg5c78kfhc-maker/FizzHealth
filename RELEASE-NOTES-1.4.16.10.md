@@ -25,5 +25,3 @@
 - FH-1610.3
 - FH-1610.4
 - FH-1610.5
-
-Completed story range: FH-1610.1-FH-1610.5

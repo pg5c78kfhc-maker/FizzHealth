@@ -1676,6 +1676,47 @@ const migrations=[
     INSERT OR REPLACE INTO release_metadata(version,release_date,build_id,schema_version,title,created_at) VALUES ('1.4.16.9','2026-08-03','141609',114,'Podcast Library Experience','2026-08-03T08:00:00-04:00');
   `},
 
+  {version:115,name:'Podcast Playlists Foundation',sql:`
+    CREATE TABLE IF NOT EXISTS podcast_playlists (
+      playlist_id TEXT PRIMARY KEY,
+      name TEXT NOT NULL,
+      autoplay INTEGER NOT NULL DEFAULT 0 CHECK(autoplay IN (0,1)),
+      display_order INTEGER NOT NULL DEFAULT 0,
+      created_at TEXT NOT NULL,
+      updated_at TEXT NOT NULL
+    );
+    CREATE TABLE IF NOT EXISTS podcast_playlist_subscriptions (
+      playlist_id TEXT NOT NULL,
+      podcast_id TEXT NOT NULL,
+      subscribed INTEGER NOT NULL DEFAULT 1 CHECK(subscribed IN (0,1)),
+      created_at TEXT NOT NULL,
+      updated_at TEXT NOT NULL,
+      PRIMARY KEY(playlist_id,podcast_id)
+    );
+    CREATE TABLE IF NOT EXISTS podcast_playlist_items (
+      playlist_item_id TEXT PRIMARY KEY,
+      playlist_id TEXT NOT NULL,
+      episode_key TEXT NOT NULL,
+      podcast_id TEXT NOT NULL,
+      podcast_title TEXT,
+      episode_guid TEXT,
+      episode_title TEXT NOT NULL,
+      audio_url TEXT NOT NULL,
+      artwork_url TEXT,
+      duration_seconds REAL DEFAULT 0,
+      playlist_position INTEGER NOT NULL,
+      added_at TEXT NOT NULL,
+      UNIQUE(playlist_id,episode_key)
+    );
+    CREATE INDEX IF NOT EXISTS idx_podcast_playlist_items_order ON podcast_playlist_items(playlist_id,playlist_position,added_at);
+    INSERT OR IGNORE INTO podcast_playlists(playlist_id,name,autoplay,display_order,created_at,updated_at) VALUES
+      ('up-next','Up Next',1,1,datetime('now'),datetime('now')),
+      ('stories','Stories',0,2,datetime('now'),datetime('now'));
+    INSERT OR IGNORE INTO podcast_playlist_subscriptions(playlist_id,podcast_id,subscribed,created_at,updated_at)
+      SELECT 'up-next',podcast_id,1,datetime('now'),datetime('now') FROM podcast_preferences WHERE COALESCE(auto_add_up_next,0)=1;
+    INSERT OR REPLACE INTO release_metadata(version,release_date,build_id,schema_version,title,created_at) VALUES ('1.4.16.10','2026-08-03','141610',115,'Podcast Playlists Foundation','2026-08-03T08:30:00-04:00');
+  `},
+
 ];
 const canonicalNutrientColumns=Object.freeze(Object.fromEntries(NUTRIENT_KEYS.map(key=>[key,'REAL'])));
 
