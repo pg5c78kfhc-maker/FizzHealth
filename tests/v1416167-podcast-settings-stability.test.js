@@ -1,0 +1,14 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import fs from 'node:fs';
+const main=fs.readFileSync('src/main.jsx','utf8');
+const db=fs.readFileSync('src/database.js','utf8');
+const css=fs.readFileSync('src/styles.css','utf8');
+test('release metadata is v1.4.16.7',()=>{assert.match(main,/const VERSION='1\.4\.16\.7'/);assert.match(db,/version:112,name:'Podcast Settings Hierarchy and Playback Recovery'/)});
+test('global settings gear exists at podcast landing',()=>{assert.match(main,/aria-label="Global podcast settings"/);assert.match(main,/view==='global-settings'/)});
+test('podcast preferences persist overrides',()=>{assert.match(db,/CREATE TABLE IF NOT EXISTS podcast_preferences/);assert.match(main,/playback_speed_override/);assert.match(main,/show_latest_only/)});
+test('local playback speed overrides global speed',()=>{assert.match(main,/effectivePodcastSpeed/);assert.match(main,/effective_speed:effectiveSpeed/);assert.match(main,/Use global playback speed/)});
+test('latest-only mode uses literal newest feed episode',()=>{assert.match(main,/showLatestOnly\?episodes\.slice\(0,1\):episodes/);assert.match(main,/show only most recent episode/i)});
+test('player persistence writes are throttled',()=>{assert.match(main,/lastPersistAt/);assert.match(main,/Date\.now\(\)-lastPersistAt\.current>=12000/)});
+test('player errors are captured',()=>{assert.match(db,/podcast_player_errors/);assert.match(main,/INSERT INTO podcast_player_errors/)});
+test('progress label contrast changes over fill',()=>{assert.match(css,/mix-blend-mode:difference/);assert.match(css,/podcast-progress small/)});

@@ -1640,6 +1640,28 @@ const migrations=[
     INSERT OR REPLACE INTO release_metadata(version,release_date,build_id,schema_version,title,created_at) VALUES ('1.4.16.6','2026-08-03','141606',111,'Podcast Playback Stability & Queue Reliability','2026-08-03T06:15:00-04:00');
   `},
 
+  {version:112,name:'Podcast Settings Hierarchy and Playback Recovery',sql:`
+    CREATE TABLE IF NOT EXISTS podcast_preferences (
+      podcast_id TEXT PRIMARY KEY,
+      playback_speed_override REAL,
+      show_latest_only INTEGER NOT NULL DEFAULT 0 CHECK(show_latest_only IN (0,1)),
+      updated_at TEXT NOT NULL,
+      FOREIGN KEY (podcast_id) REFERENCES podcasts(podcast_id) ON DELETE CASCADE
+    );
+    CREATE TABLE IF NOT EXISTS podcast_player_errors (
+      error_id INTEGER PRIMARY KEY AUTOINCREMENT,
+      occurred_at TEXT NOT NULL,
+      message TEXT NOT NULL,
+      stack TEXT,
+      episode_key TEXT,
+      podcast_id TEXT,
+      position_seconds REAL,
+      duration_seconds REAL,
+      queue_size INTEGER DEFAULT 0
+    );
+    INSERT OR REPLACE INTO release_metadata(version,release_date,build_id,schema_version,title,created_at) VALUES ('1.4.16.7','2026-08-03','141607',112,'Podcast Settings Hierarchy & Playback Recovery','2026-08-03T06:45:00-04:00');
+  `},
+
 ];
 const canonicalNutrientColumns=Object.freeze(Object.fromEntries(NUTRIENT_KEYS.map(key=>[key,'REAL'])));
 
