@@ -2539,3 +2539,4 @@ body.food-library-active .food-library-page .list.foods{padding-bottom:calc(24px
 .podcast-playlist-settings h3{margin:0 0 4px;color:#a3f534;font-size:1.25rem}
 .podcast-playlist-settings>p{margin:0 0 10px;color:#9aa6ae;font-size:.82rem;line-height:1.35}
 .podcast-stories .podcast-up-next-main{cursor:pointer}
+.podcast-import-button{display:flex;align-items:center;justify-content:center;gap:.55rem;width:100%;min-height:46px;border:0;border-radius:12px;background:#68d391;color:#07140c;font-weight:800}.podcast-import-button:disabled{opacity:.55}.podcast-import-progress,.podcast-import-summary{display:grid;gap:.45rem;margin-top:1rem;padding:1rem;border-radius:12px;background:rgba(255,255,255,.06)}.podcast-import-progress progress{width:100%;accent-color:#68d391}.podcast-import-progress span,.podcast-import-summary span{color:#aeb7c4}.podcast-import-summary.error{border:1px solid rgba(255,100,100,.45)}

@@ -2,6 +2,37 @@
   "format": "fizz-health-release-history",
   "releases": [
     {
+      "version": "1.4.16.13",
+      "name": "Podcast Import",
+      "type": "Podcast OPML import release",
+      "created": "2026-08-03T10:15:00-04:00",
+      "build": "141613",
+      "release_id": "FH-20260803-141613",
+      "stories": [
+        [
+          "FH-1613.1",
+          "Add OPML import behind the top-level Podcasts gear"
+        ],
+        [
+          "FH-1613.2",
+          "Parse standard podcast subscription OPML"
+        ],
+        [
+          "FH-1613.3",
+          "Prevent duplicate imports"
+        ],
+        [
+          "FH-1613.4",
+          "Preserve OPML order after existing podcasts"
+        ],
+        [
+          "FH-1613.5",
+          "Show import progress and summary"
+        ]
+      ],
+      "known_issues": []
+    },
+    {
       "version": "1.4.16.12",
       "name": "Playlist Filters & Automatic Reconciliation",
       "type": "Podcast playlist filters release",

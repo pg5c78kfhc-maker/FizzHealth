@@ -1,0 +1,6 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import {parsePodcastOpml,classifyPodcastImports} from '../src/podcast/opmlImport.js';
+test('parses Overcast OPML subscriptions in source order',()=>{const rows=parsePodcastOpml(`<?xml version="1.0"?><opml><body><outline><outline type="rss" text="First &amp; Best" xmlUrl="https://a.test/feed" applePodcastsID="123"/><outline type="rss" text="Second" xmlUrl="https://b.test/feed"/></outline></body></opml>`);assert.equal(rows.length,2);assert.equal(rows[0].title,'First & Best');assert.equal(rows[0].apple_podcasts_url,'https://podcasts.apple.com/podcast/id123');assert.equal(rows[1].title,'Second')});
+test('rejects invalid or empty OPML',()=>{assert.throws(()=>parsePodcastOpml('<html/>'));assert.throws(()=>parsePodcastOpml('<opml><body/></opml>'))});
+test('classifies duplicates by feed, Apple ID, and title',()=>{const result=classifyPodcastImports([{title:'A',rss_feed_url:'https://a.test',apple_podcasts_id:'1'},{title:'B',rss_feed_url:'https://b.test',apple_podcasts_id:'2'},{title:'B',rss_feed_url:'https://other.test',apple_podcasts_id:'3'}],[{title:'Existing',rss_feed_url:'https://a.test',directory_id:'9'}]);assert.equal(result.importable.length,1);assert.equal(result.importable[0].title,'B');assert.equal(result.duplicates.length,2)});

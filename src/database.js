@@ -4,7 +4,7 @@ import {NUTRIENT_KEYS} from './nutrition/registry.js';
 
 const DB_KEY='fizz-health-sqlite-v1';
 const STORAGE_DB='FizzHealthStorage';
-const TARGET_SCHEMA_VERSION=106;
+const TARGET_SCHEMA_VERSION=118;
 let SQL, db;
 
 const migrations=[
@@ -1727,6 +1727,11 @@ const migrations=[
     ALTER TABLE podcast_playlists ADD COLUMN enforce_master_order INTEGER NOT NULL DEFAULT 0 CHECK(enforce_master_order IN (0,1));
     ALTER TABLE podcast_playlists ADD COLUMN enforce_variety INTEGER NOT NULL DEFAULT 0 CHECK(enforce_variety IN (0,1));
     INSERT OR REPLACE INTO release_metadata(version,release_date,build_id,schema_version,title,created_at) VALUES ('1.4.16.12','2026-08-03','141612',117,'Playlist Filters & Automatic Reconciliation','2026-08-03T09:20:00-04:00');
+  `},
+
+  {version:118,name:'Podcast OPML Import',sql:`
+    CREATE TABLE IF NOT EXISTS podcast_import_history (import_id INTEGER PRIMARY KEY AUTOINCREMENT,file_name TEXT,subscriptions_found INTEGER NOT NULL DEFAULT 0,imported_count INTEGER NOT NULL DEFAULT 0,duplicate_count INTEGER NOT NULL DEFAULT 0,failed_count INTEGER NOT NULL DEFAULT 0,created_at TEXT NOT NULL);
+    INSERT OR REPLACE INTO release_metadata(version,release_date,build_id,schema_version,title,created_at) VALUES ('1.4.16.13','2026-08-03','141613',118,'Podcast Import','2026-08-03T10:15:00-04:00');
   `},
 
 ];
