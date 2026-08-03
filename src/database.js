@@ -1722,6 +1722,13 @@ const migrations=[
     INSERT OR REPLACE INTO release_metadata(version,release_date,build_id,schema_version,title,created_at) VALUES ('1.4.16.11','2026-08-03','141611',116,'Podcast Playlist Reconciliation','2026-08-03T08:42:00-04:00');
   `},
 
+
+  {version:117,name:'Playlist Filters and Automatic Reconciliation',sql:`
+    ALTER TABLE podcast_playlists ADD COLUMN enforce_master_order INTEGER NOT NULL DEFAULT 0 CHECK(enforce_master_order IN (0,1));
+    ALTER TABLE podcast_playlists ADD COLUMN enforce_variety INTEGER NOT NULL DEFAULT 0 CHECK(enforce_variety IN (0,1));
+    INSERT OR REPLACE INTO release_metadata(version,release_date,build_id,schema_version,title,created_at) VALUES ('1.4.16.12','2026-08-03','141612',117,'Playlist Filters & Automatic Reconciliation','2026-08-03T09:20:00-04:00');
+  `},
+
 ];
 const canonicalNutrientColumns=Object.freeze(Object.fromEntries(NUTRIENT_KEYS.map(key=>[key,'REAL'])));
 

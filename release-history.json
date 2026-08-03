@@ -2,17 +2,41 @@
   "format": "fizz-health-release-history",
   "releases": [
     {
-      "version": "1.4.16.11",
-      "name": "Podcast Playlist Reconciliation",
-      "type": "Corrective podcast playlist release",
-      "created": "2026-08-03T08:42:00-04:00",
-      "build": "141611",
-      "release_id": "FH-20260803-141611",
+      "version": "1.4.16.12",
+      "name": "Playlist Filters & Automatic Reconciliation",
+      "type": "Podcast playlist filters release",
+      "created": "2026-08-03T09:20:00-04:00",
+      "build": "141612",
+      "release_id": "FH-20260803-141612",
       "stories": [
-        "FH-1611.1",
-        "FH-1611.2",
-        "FH-1611.3",
-        "FH-1611.4"
+        [
+          "FH-1612.1",
+          "Add reusable playlist filter pipeline"
+        ],
+        [
+          "FH-1612.2",
+          "Add Up Next master-order filter"
+        ],
+        [
+          "FH-1612.3",
+          "Add Stories master-order and variety filters"
+        ],
+        [
+          "FH-1612.4",
+          "Apply filters immediately"
+        ],
+        [
+          "FH-1612.5",
+          "Reconcile subscriptions immediately"
+        ],
+        [
+          "FH-1612.6",
+          "Reconcile playlists after feed and preference changes"
+        ],
+        [
+          "FH-1612.7",
+          "Keep large-feed reconciliation responsive"
+        ]
       ],
       "known_issues": []
     },
