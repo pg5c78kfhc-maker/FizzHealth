@@ -1734,6 +1734,10 @@ const migrations=[
     INSERT OR REPLACE INTO release_metadata(version,release_date,build_id,schema_version,title,created_at) VALUES ('1.4.16.13','2026-08-03','141613',118,'Podcast Import','2026-08-03T10:15:00-04:00');
   `},
 
+  {version:119,name:'iPhone OPML File Selection Hotfix',sql:`
+    INSERT OR REPLACE INTO release_metadata(version,release_date,build_id,schema_version,title,created_at) VALUES ('1.4.16.14','2026-08-03','141614',119,'iPhone OPML File Selection Hotfix','2026-08-03T10:30:00-04:00');
+  `},
+
 ];
 const canonicalNutrientColumns=Object.freeze(Object.fromEntries(NUTRIENT_KEYS.map(key=>[key,'REAL'])));
 

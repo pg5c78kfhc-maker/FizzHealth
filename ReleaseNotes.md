@@ -1,19 +1,18 @@
-# Fizz Health v1.4.16.13 — Podcast Import
+# Fizz Health v1.4.16.14 — iPhone OPML File Selection Hotfix
 
 ## Summary
 
-Adds OPML podcast-subscription import behind the top-level Podcasts gear.
+Corrects the iPhone Files picker so valid Overcast OPML exports can be selected for import.
 
 ## Changes
 
-- Import standard OPML files exported by Overcast and compatible podcast apps.
-- Preserve subscription order after existing podcasts.
-- Detect duplicates by RSS URL, Apple Podcasts ID, and title fallback.
-- Show import progress and a completion summary with imported, existing, and failed counts.
-- Keep individual podcast settings unchanged.
+- Remove the restrictive `accept` attribute from the hidden OPML file input.
+- Allow iOS Files to return the selected file regardless of its reported MIME type.
+- Continue validating the selected file by parsing its OPML contents after selection.
+- Preserve the existing duplicate detection, import ordering, progress, and results summary.
 
 ## Limitations
 
-- OPML contains subscriptions, not playback history, played status, or external playlists.
+- The local production build remains dependent on the locked npm packages being available from the configured registry.
 
-Completed stories: FH-1613.1-FH-1613.5
+Completed stories: FH-1614.1-FH-1614.2

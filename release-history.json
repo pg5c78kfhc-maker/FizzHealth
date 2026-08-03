@@ -2,6 +2,25 @@
   "format": "fizz-health-release-history",
   "releases": [
     {
+      "version": "1.4.16.14",
+      "name": "iPhone OPML File Selection Hotfix",
+      "type": "Corrective podcast import release",
+      "created": "2026-08-03T10:30:00-04:00",
+      "build": "141614",
+      "release_id": "FH-20260803-141614",
+      "stories": [
+        [
+          "FH-1614.1",
+          "Allow iPhone Files to select OPML exports without MIME-type blocking"
+        ],
+        [
+          "FH-1614.2",
+          "Validate OPML contents after selection"
+        ]
+      ],
+      "known_issues": []
+    },
+    {
       "version": "1.4.16.13",
       "name": "Podcast Import",
       "type": "Podcast OPML import release",
