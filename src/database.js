@@ -1717,6 +1717,11 @@ const migrations=[
     INSERT OR REPLACE INTO release_metadata(version,release_date,build_id,schema_version,title,created_at) VALUES ('1.4.16.10','2026-08-03','141610',115,'Podcast Playlists Foundation','2026-08-03T08:30:00-04:00');
   `},
 
+
+  {version:116,name:'Podcast Playlist Reconciliation',sql:`
+    INSERT OR REPLACE INTO release_metadata(version,release_date,build_id,schema_version,title,created_at) VALUES ('1.4.16.11','2026-08-03','141611',116,'Podcast Playlist Reconciliation','2026-08-03T08:42:00-04:00');
+  `},
+
 ];
 const canonicalNutrientColumns=Object.freeze(Object.fromEntries(NUTRIENT_KEYS.map(key=>[key,'REAL'])));
 
