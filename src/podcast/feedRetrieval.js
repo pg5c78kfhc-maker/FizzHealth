@@ -2,7 +2,9 @@ const entityText=(value='')=>String(value).replace(/<!\[CDATA\[([\s\S]*?)\]\]>/g
 const tag=(xml,names)=>{for(const name of names){const match=xml.match(new RegExp(`<${name}(?:\\s[^>]*)?>([\\s\\S]*?)<\\/${name}>`,'i'));if(match)return entityText(match[1])}return ''};
 const attr=(xml,name,attribute='url')=>xml.match(new RegExp(`<${name}[^>]*\\s${attribute}=["']([^"']+)["'][^>]*>`,'i'))?.[1]||'';
 const durationSeconds=value=>{const clean=entityText(value);if(!clean)return 0;if(/^\d+$/.test(clean))return Number(clean);const parts=clean.split(':').map(Number);return parts.every(Number.isFinite)?parts.reduce((sum,n)=>sum*60+n,0):0};
-const safeHttpsUrl=value=>{try{const url=new URL(String(value||''));return url.protocol==='https:'?url.toString():''}catch{return ''}};
+const safePublicUrl=value=>{try{const url=new URL(String(value||''));return url.protocol==='https:'||url.protocol==='http:'?url.toString():''}catch{return ''}};
+const browserSafeUrl=value=>{const url=safePublicUrl(value);return url.startsWith('https://')?url:''};
+const mediaUrl=value=>{const url=safePublicUrl(value);if(!url)return '';return url.startsWith('http://')?`https://${url.slice(7)}`:url};
 
 export function parsePodcastFeed(xml,{fallbackMetadata={}}={}){
  const source=String(xml||'');
@@ -22,8 +24,8 @@ export function parsePodcastFeed(xml,{fallbackMetadata={}}={}){
   published_at:tag(item,['pubDate','published','updated']),
   description:tag(item,['content:encoded','description','summary']),
   duration_seconds:durationSeconds(tag(item,['itunes:duration','duration'])),
-  enclosure_url:safeHttpsUrl(attr(item,'enclosure','url')),
-  artwork_url:safeHttpsUrl(attr(item,'itunes:image','href')||attr(item,'media:thumbnail','url')||attr(item,'media:content','url')),
+  enclosure_url:mediaUrl(attr(item,'enclosure','url')),
+  artwork_url:mediaUrl(attr(item,'itunes:image','href')||attr(item,'media:thumbnail','url')||attr(item,'media:content','url')),
   apple_podcasts_url:'',overcast_url:''
  })).filter(item=>item.title&&item.enclosure_url).sort((a,b)=>(new Date(b.published_at||0).getTime()||0)-(new Date(a.published_at||0).getTime()||0));
  return {episodes,metadata};
@@ -36,11 +38,13 @@ const withTimeout=async(fetchImpl,url,options,timeoutMs)=>{const controller=new 
 const diagnostic=(stage,error,extra={})=>({stage,code:error?.code||error?.name||'error',message:String(error?.message||error),...extra});
 
 export async function retrievePodcastFeed({feedUrl,appleId='',fallbackMetadata={},fetchImpl=globalThis.fetch,storage=globalThis.localStorage,proxyUrl='/api/podcast-feed',timeoutMs=15000,onStatus=()=>{}}){
- const url=safeHttpsUrl(feedUrl);if(!url)throw Object.assign(new Error('A valid public HTTPS RSS feed URL is required.'),{code:'invalid-url',diagnostics:[]});
+ const url=safePublicUrl(feedUrl);if(!url)throw Object.assign(new Error('A valid public RSS feed URL is required.'),{code:'invalid-url',diagnostics:[]});
+ const directUrl=browserSafeUrl(url);
  const diagnostics=[],cached=readCapability(storage,url),cacheFresh=Boolean(cached&&Date.now()-Number(cached.checkedAt||0)<7*24*60*60*1000);
  onStatus({phase:'downloading-direct',label:'Downloading feed…'});
  try{
-  const response=await withTimeout(fetchImpl,url,{headers:{Accept:'application/rss+xml, application/atom+xml, text/xml, application/xml'}},timeoutMs);
+  if(!directUrl)throw Object.assign(new Error('The feed uses HTTP and must use compatibility mode.'),{code:'mixed-content'});
+  const response=await withTimeout(fetchImpl,directUrl,{headers:{Accept:'application/rss+xml, application/atom+xml, text/xml, application/xml'}},timeoutMs);
   if(!response.ok)throw Object.assign(new Error(`Feed returned HTTP ${response.status}.`),{code:'http-error',status:response.status});
   const contentType=String(response.headers?.get?.('content-type')||'');
   const xml=await response.text();
@@ -54,9 +58,14 @@ export async function retrievePodcastFeed({feedUrl,appleId='',fallbackMetadata={
   const response=await withTimeout(fetchImpl,`${proxyUrl}?${params}`,{},timeoutMs);
   const contentType=String(response.headers?.get?.('content-type')||'');
   if(!contentType.toLowerCase().includes('application/json'))throw Object.assign(new Error('Podcast compatibility service returned an unexpected response.'),{code:'proxy-non-json'});
-  const payload=await response.json();if(!response.ok)throw Object.assign(new Error(payload?.error||`Compatibility service returned HTTP ${response.status}.`),{code:'proxy-http-error'});
-  if(!Array.isArray(payload?.episodes))throw Object.assign(new Error('Compatibility service returned invalid podcast data.'),{code:'proxy-invalid-payload'});
+  const payload=await response.json();if(!response.ok)throw Object.assign(new Error(payload?.error||`Compatibility service returned HTTP ${response.status}.`),{code:'proxy-http-error',status:response.status});
+  let parsed;
+  if(typeof payload?.xml==='string'){
+   onStatus({phase:'parsing',label:'Parsing episodes…'});
+   parsed=parsePodcastFeed(payload.xml,{fallbackMetadata});
+  }else if(Array.isArray(payload?.episodes))parsed=payload;
+  else throw Object.assign(new Error('Compatibility service returned invalid podcast data.'),{code:'proxy-invalid-payload'});
   writeCapability(storage,url,'proxy');onStatus({phase:'ready',label:'Podcast ready.'});
-  return {...payload,retrieval:{mode:'proxy',diagnostics,contentType,cacheFresh}};
+  return {...parsed,retrieval:{mode:'proxy',diagnostics,contentType,cacheFresh,finalUrl:payload?.finalUrl||url}};
  }catch(error){diagnostics.push(diagnostic('proxy',error));const final=Object.assign(new Error('Couldn’t retrieve this podcast feed.'),{code:'feed-retrieval-failed',diagnostics,cause:error});throw final}
 }

@@ -34,7 +34,7 @@ import {parsePodcastOpml,classifyPodcastImports} from './podcast/opmlImport.js';
 import {normalizePodcastRecord,podcastList,podcastText,podcastUrl} from './podcast/metadata.js';
 import {formatPlaylistRemaining} from './podcast/playlistDuration.js';
 import {retrievePodcastFeed} from './podcast/feedRetrieval.js';
-const VERSION='1.4.16.23';
+const VERSION='1.4.16.24';
 const RELEASE_DATE='2026-08-03';
 const BUILD_ID='141623';
 const DEPLOYMENT_ID='FH-20260803-141623';
