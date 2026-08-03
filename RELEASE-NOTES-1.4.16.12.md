@@ -28,3 +28,10 @@ This release adds playlist-specific filtering and makes playlist membership reco
 ## Completed stories
 
 FH-1612.1-FH-1612.7
+
+
+## Corrective rebuild
+
+- Fixed a missing closing brace in `src/main.jsx` before the podcast-feed `catch` block.
+- The defect caused Cloudflare/Vite to report an unexpected token and prevented deployment.
+- No feature scope or database behavior changed; the release remains v1.4.16.12.
