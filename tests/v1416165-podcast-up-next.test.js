@@ -1,0 +1,15 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import fs from 'node:fs';
+const main=fs.readFileSync('src/main.jsx','utf8');
+const db=fs.readFileSync('src/database.js','utf8');
+const css=fs.readFileSync('src/styles.css','utf8');
+test('release metadata is v1.4.16.5',()=>{assert.match(main,/const VERSION='1\.4\.16\.5'/);assert.match(db,/version:110,name:'Podcast Up Next Queue'/)});
+test('queue table is isolated and ordered',()=>{assert.match(db,/CREATE TABLE IF NOT EXISTS podcast_up_next/);assert.match(db,/queue_position INTEGER NOT NULL/);assert.match(db,/UNIQUE/)});
+test('podcast landing has folder tabs',()=>{assert.match(main,/podcast-folder-tabs/);assert.match(main,/>My Podcasts</);assert.match(main,/>Up Next/)});
+test('episode swipe adds to bottom of queue',()=>{assert.match(main,/onTouchStart/);assert.match(main,/end-start>60/);assert.match(main,/MAX\(queue_position\)/)});
+test('queue persists and prevents duplicates',()=>{assert.match(db,/episode_key TEXT NOT NULL UNIQUE/);assert.match(main,/INSERT OR IGNORE INTO podcast_up_next/)});
+test('queue plays in order and removes completed episode',()=>{assert.match(main,/ORDER BY queue_position,added_at LIMIT 1/);assert.match(main,/DELETE FROM podcast_up_next WHERE episode_key/);assert.match(main,/await advanceQueue\(\)/)});
+test('drag reordering is not included',()=>{assert.doesNotMatch(main,/draggable=true|onDragStart/)});
+test('queue UI includes remove action and empty state',()=>{assert.match(main,/podcast-queue-remove/);assert.match(main,/Up Next is empty/)});
+test('queue styles are present',()=>{assert.match(css,/\.podcast-folder-tabs/);assert.match(css,/\.podcast-up-next/);assert.match(css,/\.podcast-swipe-action/)});

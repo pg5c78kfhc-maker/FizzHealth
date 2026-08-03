@@ -2,6 +2,14 @@
   "format": "fizz-health-release-history",
   "releases": [
     {
+      "version": "1.4.16.5",
+      "date": "2026-08-02",
+      "title": "Podcast Up Next Queue",
+      "summary": "Adds My Podcasts and Up Next tabs, swipe-to-queue, persistent queue storage, and sequential in-app playback.",
+      "build": "141605",
+      "release_id": "FH-20260802-141605"
+    },
+    {
       "version": "1.4.16.4",
       "date": "2026-08-02",
       "title": "Player Preferences & Playback Experience",

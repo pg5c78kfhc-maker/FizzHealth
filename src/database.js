@@ -1616,6 +1616,25 @@ const migrations=[
     INSERT OR REPLACE INTO release_metadata(version,release_date,build_id,schema_version,title,created_at) VALUES ('1.4.16.4','2026-08-02','141604',109,'Player Preferences & Playback Experience','2026-08-02T15:45:00-04:00');
   `},
 
+  {version:110,name:'Podcast Up Next Queue',sql:`
+    CREATE TABLE IF NOT EXISTS podcast_up_next (
+      queue_id TEXT PRIMARY KEY,
+      episode_key TEXT NOT NULL UNIQUE,
+      podcast_id TEXT NOT NULL,
+      podcast_title TEXT NOT NULL,
+      episode_guid TEXT,
+      episode_title TEXT NOT NULL,
+      audio_url TEXT NOT NULL,
+      artwork_url TEXT,
+      duration_seconds REAL DEFAULT 0,
+      queue_position INTEGER NOT NULL,
+      added_at TEXT NOT NULL,
+      FOREIGN KEY (podcast_id) REFERENCES podcasts(podcast_id) ON DELETE CASCADE
+    );
+    CREATE INDEX IF NOT EXISTS idx_podcast_up_next_position ON podcast_up_next(queue_position,added_at);
+    INSERT OR REPLACE INTO release_metadata(version,release_date,build_id,schema_version,title,created_at) VALUES ('1.4.16.5','2026-08-02','141605',110,'Podcast Up Next Queue','2026-08-02T22:05:00-04:00');
+  `},
+
 
 
 ];
