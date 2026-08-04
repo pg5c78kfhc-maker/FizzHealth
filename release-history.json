@@ -2,6 +2,35 @@
   "format": "fizz-health-release-history",
   "releases": [
     {
+      "version": "1.4.16.32",
+      "name": "Playlist Navigation & Background Playback Continuity",
+      "type": "Podcast navigation and playback continuity release",
+      "created": "2026-08-04T08:02:00-04:00",
+      "stories": [
+        [
+          "FH-1632.1",
+          "Add large horizontal playlist touch carousel"
+        ],
+        [
+          "FH-1632.2",
+          "Keep playlist navigation extensible and scrollable"
+        ],
+        [
+          "FH-1632.3",
+          "Move ended handling into persistent audio lifecycle"
+        ],
+        [
+          "FH-1632.4",
+          "Add automatic queue-advance diagnostics"
+        ]
+      ],
+      "knownIssues": [
+        "Production build requires installed npm dependencies; deployed iOS background and locked-screen playback must be verified on device."
+      ],
+      "build": "141632",
+      "release_id": "FH-20260804-141632"
+    },
+    {
       "version": "1.4.16.31",
       "name": "Podcast Finalization Completion & Library UI Polish",
       "type": "Podcast diagnostics and library enhancement release",
