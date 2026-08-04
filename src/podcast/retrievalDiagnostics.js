@@ -22,12 +22,12 @@ export function formatPodcastDiagnostics(event){
   `Podcast ID: ${clean(event.podcastId)}`,
   `Directory ID: ${clean(event.directoryId)}`,
   `Operation: ${clean(event.operation)}`,
-  `Result: ${event.success?'SUCCESS':'FAILURE'}`,
+  `Result: ${clean(event.result)||(event.success?'SUCCESS':'FAILURE')}`,
   `Apple feed URL: ${clean(event.appleFeedUrl)}`,
   `Previous stored feed URL: ${clean(event.previousStoredFeedUrl)}`,
   `Stored feed URL: ${clean(event.storedFeedUrl)}`,
   `Requested feed URL: ${clean(event.requestedFeedUrl)}`,
-  `URL integrity: ${event.urlIntegrity===true?'MATCH':event.urlIntegrity===false?'MISMATCH':'UNKNOWN'}`,
+  `URL integrity: ${clean(event.urlIntegrity)||'NOT_CHECKED'}`,
   `Created/reactivated: ${clean(event.recordAction)}`,
   `Retrieval mode: ${clean(event.retrievalMode)}`,
   `Feed type: ${clean(event.feedType)}`,
@@ -35,11 +35,23 @@ export function formatPodcastDiagnostics(event){
   `Episodes parsed: ${Number(event.episodesParsed)||0}`,
   `First episode: ${clean(event.firstEpisodeTitle)}`,
   `Last episode: ${clean(event.lastEpisodeTitle)}`,
+  `Episodes selected: ${Number(event.episodesSelected)||0}`,
   `Episodes inserted: ${Number(event.episodesInserted)||0}`,
   `Episodes updated: ${Number(event.episodesUpdated)||0}`,
-  `Episodes ignored: ${Number(event.episodesIgnored)||0}`,
-  `Final error: ${clean(event.errorMessage)}`
+  `Episodes unchanged: ${Number(event.episodesUnchanged)||0}`,
+  `Episodes rejected: ${Number(event.episodesRejected)||0}`,
+  `Skipped by policy: ${Number(event.episodesSkippedByPolicy)||0}`,
+  `Removed as older: ${Number(event.episodesRemovedAsOlder)||0}`,
+  `Final stored count: ${Number(event.finalStoredCount)||0}`,
+  `Last committed batch: ${Number(event.lastCommittedBatch)||0}`,
+  `Last successful operation: ${clean(event.lastSuccessfulOperation)}`,
+  `Failed stage: ${clean(event.failedStage)}`,
+  `Commit result: ${clean(event.commitResult)}`,
+  `Rollback result: ${clean(event.rollbackResult)}`,
+  `Final error: ${clean(event.errorMessage)}`,
+  `Stack trace: ${clean(event.errorStack)}`
  ];
+ for(const tx of event.transactions||[]){lines.push('',`[TRANSACTION]`,...Object.entries(tx).map(([key,value])=>`${key}: ${typeof value==='object'?JSON.stringify(value):clean(value)}`))}
  for(const attempt of event.attempts||[]){lines.push('',`[${clean(attempt.stage).toUpperCase()}]`,...Object.entries(attempt).filter(([key])=>key!=='stage').map(([key,value])=>`${key}: ${typeof value==='object'?JSON.stringify(value):clean(value)}`))}
  return lines.join('\n');
 }

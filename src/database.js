@@ -1775,7 +1775,7 @@ const migrations=[
     UPDATE podcast_up_next SET published_at=(SELECT e.published_at FROM podcast_episodes e WHERE e.episode_id=podcast_up_next.episode_key LIMIT 1) WHERE TRIM(COALESCE(published_at,''))='';
     UPDATE podcast_playlist_items SET published_at=(SELECT e.published_at FROM podcast_episodes e WHERE e.episode_id=podcast_playlist_items.episode_key LIMIT 1) WHERE TRIM(COALESCE(published_at,''))='';
     INSERT OR IGNORE INTO podcast_player_settings(setting_key,setting_value,updated_at) VALUES ('playlist_page_size','50','2026-08-03T20:15:00-04:00');
-    INSERT OR REPLACE INTO release_metadata(version,release_date,build_id,schema_version,title,created_at) VALUES ('1.4.16.28','2026-08-03','141628',124,'Podcast Stability, Paging & Metadata Repair','2026-08-03T20:15:00-04:00');
+    INSERT OR REPLACE INTO release_metadata(version,release_date,build_id,schema_version,title,created_at) VALUES ('1.4.16.29','2026-08-03','141628',124,'Podcast Stability, Paging & Metadata Repair','2026-08-03T20:15:00-04:00');
   `},
 
 ];
@@ -2032,7 +2032,12 @@ const normalizeBindValue=value=>{
 const normalizeParams=params=>Array.isArray(params)?params.map(normalizeBindValue):params;
 export function query(sql,params=[]){const stmt=db.prepare(sql);stmt.bind(normalizeParams(params));const rows=[];while(stmt.step())rows.push(stmt.getAsObject());stmt.free();return rows}
 export async function run(sql,params=[]){db.run(sql,normalizeParams(params));await persist()}
-export async function transaction(callback){const backup=db.export();const savepoint=`fizz_${Date.now()}_${Math.random().toString(36).slice(2)}`;try{db.run(`SAVEPOINT ${savepoint}`);await callback({run:(sql,params=[])=>db.run(sql,normalizeParams(params)),query});db.run(`RELEASE SAVEPOINT ${savepoint}`);await persist()}catch(error){try{db.run(`ROLLBACK TO SAVEPOINT ${savepoint}`);db.run(`RELEASE SAVEPOINT ${savepoint}`)}catch{}db=new SQL.Database(new Uint8Array(backup));await persist();throw error}}
+let transactionQueue=Promise.resolve();
+let transactionSequence=0;
+export async function transaction(callback,{operation='database-write',transactionId=''}={}){
+ const execute=async()=>{const id=transactionId||`tx-${Date.now()}-${++transactionSequence}`,backup=db.export();let committed=false,rolledBack=false;try{db.run('BEGIN IMMEDIATE TRANSACTION');const tx={transactionId:id,operation,run:(sql,params=[])=>db.run(sql,normalizeParams(params)),query};const result=await callback(tx);db.run('COMMIT');committed=true;await persist();return result}catch(error){try{db.run('ROLLBACK');rolledBack=true}catch{}if(!committed){db=new SQL.Database(new Uint8Array(backup));await persist()}error.transactionId=error.transactionId||id;error.transactionOperation=error.transactionOperation||operation;error.commitResult=committed?'COMMITTED':'NOT_COMMITTED';error.rollbackResult=rolledBack?'ROLLED_BACK':'DATABASE_RESTORED';throw error}};
+ const pending=transactionQueue.then(execute,execute);transactionQueue=pending.catch(()=>{});return pending;
+}
 export async function prepareWorkbookImport(){const backup=db.export();try{await createSafetyBackup('Before workbook import');const report=reconcileImportSchema({apply:true});if(hasTable('meal_date_index'))normalizeHistoricalMeals();await persist();return report}catch(error){db=new SQL.Database(new Uint8Array(backup));await persist();throw new Error(`Schema preparation failed: ${error.message}`)}}
 
 export async function recordImportFailure({fileName='',durationMs=0,errorMessage='' }={}){

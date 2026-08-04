@@ -2,6 +2,59 @@
   "format": "fizz-health-release-history",
   "releases": [
     {
+      "version": "1.4.16.29",
+      "name": "Podcast Refresh Transaction & Recovery Repair",
+      "type": "Narrow podcast corrective release",
+      "created": "2026-08-04T05:23:00-04:00",
+      "stories": [
+        [
+          "FH-1629.1",
+          "Replace savepoint-based podcast writes with serialized fresh transactions"
+        ],
+        [
+          "FH-1629.2",
+          "Require verified persistence before refresh success"
+        ],
+        [
+          "FH-1629.3",
+          "Reconcile parsed, selected, imported, skipped, removed, and stored counts"
+        ],
+        [
+          "FH-1629.4",
+          "Recover dead feed URLs through Apple directory data and retry"
+        ],
+        [
+          "FH-1629.5",
+          "Preserve retrieval and parsing diagnostics after later failures"
+        ],
+        [
+          "FH-1629.6",
+          "Add transaction-level refresh diagnostics"
+        ],
+        [
+          "FH-1629.7",
+          "Report explicit URL integrity states"
+        ],
+        [
+          "FH-1629.8",
+          "Harden large-feed imports with bounded batches and fallback"
+        ],
+        [
+          "FH-1629.9",
+          "Preserve existing episodes when refresh fails"
+        ],
+        [
+          "FH-1629.10",
+          "Use subscription-aware refresh error messaging"
+        ]
+      ],
+      "knownIssues": [
+        "Production build could not be executed in the provided environment because the configured npm mirror did not contain xlsx@0.18.5."
+      ],
+      "build": "141629",
+      "release_id": "FH-20260804-141629"
+    },
+    {
       "version": "1.4.16.27",
       "name": "Podcast Stability, Paging & Metadata Repair",
       "type": "Podcast stability and scalability release",

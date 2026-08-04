@@ -1,0 +1,13 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import fs from 'node:fs';
+const db=fs.readFileSync(new URL('../src/database.js',import.meta.url),'utf8');
+const main=fs.readFileSync(new URL('../src/main.jsx',import.meta.url),'utf8');
+const retrieval=fs.readFileSync(new URL('../src/podcast/feedRetrieval.js',import.meta.url),'utf8');
+const diagnostics=fs.readFileSync(new URL('../src/podcast/retrievalDiagnostics.js',import.meta.url),'utf8');
+test('database writes serialize with fresh top-level transactions and no savepoints',()=>{assert.match(db,/transactionQueue/);assert.match(db,/BEGIN IMMEDIATE TRANSACTION/);assert.match(db,/db\.run\('COMMIT'\)/);assert.doesNotMatch(db,/SAVEPOINT|ROLLBACK TO SAVEPOINT|RELEASE SAVEPOINT/)});
+test('podcast imports use bounded batches and record fallback transactions',()=>{assert.match(main,/batchSize=Math\.max\(25,Math\.min\(250/);assert.match(main,/podcast-episode-import-batch-/);assert.match(main,/podcast-episode-record-fallback/);assert.match(main,/lastCommittedBatch/)});
+test('success waits for post-commit verification and reconciled accounting',()=>{assert.match(main,/failedStage='post-commit verification'/);assert.match(main,/episode-accounting-mismatch/);assert.match(main,/stored-count-verification-failed/);assert.match(main,/commitResult:'VERIFIED'/)});
+test('failed refresh preserves existing episodes and uses subscription-aware error',()=>{assert.doesNotMatch(main,/setEpisodes\(\[\]\);setEpisodeState\('error'\)/);assert.match(main,/Your existing episodes are still available/);assert.match(main,/metadata-and-policy-finalize/)});
+test('proxy upstream errors can recover Apple advertised feed and retry',()=>{assert.match(retrieval,/upstreamStatus===404\|\|upstreamStatus===410/);assert.match(retrieval,/onRecoveredFeedUrl/);assert.match(retrieval,/recoveryAttempted:true/);assert.match(retrieval,/APPLE_ADVERTISES_DEAD_URL/);assert.match(retrieval,/LOOKUP_FAILED/)});
+test('diagnostics expose stage, transaction and all episode counters',()=>{for(const token of ['Episodes selected','Episodes unchanged','Episodes rejected','Skipped by policy','Removed as older','Final stored count','Last committed batch','Failed stage','Commit result','Rollback result','[TRANSACTION]'])assert.match(diagnostics,new RegExp(token.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')))});

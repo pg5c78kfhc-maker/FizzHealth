@@ -1,10 +1,11 @@
-# Fizz Health v1.4.16.27 — Podcast Stability, Paging & Metadata Repair
+# Fizz Health v1.4.16.29 — Podcast Refresh Transaction & Recovery Repair
 
-Completed stories: **FH-1627.1-FH-1627.4**.
+Completed stories: **FH-1629.1-FH-1629.10**.
 
-- Contains episode-card, playlist-page, playback-completion, and module-level failures inside Podcasts.
-- Adds saved playlist paging with 50, 100, or 200 episodes per page; default 50.
-- Adds explicit Load More controls while full counts, playback, and remaining-time calculations continue to use the complete playlist.
-- Lazy-loads and asynchronously decodes artwork only for mounted episode cards.
-- Persists canonical podcast episode metadata and restores publication date/time across Up Next, Stories, and Drama.
-- Adds schema migration 124 to backfill publication metadata and initialize the page-size preference.
+This narrow corrective release replaces the podcast savepoint import pattern with serialized fresh transactions, imports large feeds in bounded batches with isolated record fallback, and verifies stored episode counts before reporting success. It preserves retrieval and parsing diagnostics after later-stage failures, adds complete episode accounting and transaction diagnostics, wires Apple-advertised feed recovery into upstream 404/410/permanent-redirect handling, stages latest-only cleanup after successful replacement persistence, and preserves existing episodes whenever refresh fails.
+
+The user-facing refresh failure now states that the latest episodes could not be refreshed while existing episodes remain available.
+
+## Validation note
+
+Targeted podcast refresh, retrieval, and diagnostic tests pass. The production build could not be executed in this environment because the configured npm mirror returned 404 for the locked `xlsx@0.18.5` package.
