@@ -1,0 +1,12 @@
+src/database.js
+src/main.jsx
+package.json
+VERSION.json
+public/sw.js
+tests/v141637-dynamic-playlist-registry.test.js
+RELEASE-NOTES-1.4.16.37.md
+TEST-REPORT-1.4.16.37.md
+CHANGED-FILES-1.4.16.37.txt
+release-history.json
+ReleaseNotes.md
+src/decision/engine.js

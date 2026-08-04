@@ -1783,6 +1783,29 @@ const migrations=[
     INSERT OR REPLACE INTO release_metadata(version,release_date,build_id,schema_version,title,created_at) VALUES ('1.4.16.31','2026-08-04','141631',125,'Podcast Finalization Completion & Library UI Polish','2026-08-04T06:00:00-04:00');
   `},
 
+
+  {version:126,name:'Dynamic Podcast Playlist Registry',sql:`
+    ALTER TABLE podcast_playlists ADD COLUMN playlist_type TEXT NOT NULL DEFAULT 'standard';
+    ALTER TABLE podcast_playlists ADD COLUMN icon_tone TEXT NOT NULL DEFAULT 'purple';
+    ALTER TABLE podcast_playlists ADD COLUMN enabled INTEGER NOT NULL DEFAULT 1;
+    ALTER TABLE podcast_playlists ADD COLUMN is_system INTEGER NOT NULL DEFAULT 0;
+    ALTER TABLE podcast_playlists ADD COLUMN can_rename INTEGER NOT NULL DEFAULT 1;
+    ALTER TABLE podcast_playlists ADD COLUMN can_delete INTEGER NOT NULL DEFAULT 1;
+    INSERT OR IGNORE INTO podcast_playlists(playlist_id,name,autoplay,display_order,created_at,updated_at,playlist_type,icon_tone,enabled,is_system,can_rename,can_delete)
+      VALUES ('library','My Podcasts',0,0,datetime('now'),datetime('now'),'library','green',1,1,0,0);
+    UPDATE podcast_playlists SET playlist_type='queue',icon_tone='orange',is_system=1,can_rename=1,can_delete=0 WHERE playlist_id='up-next';
+    UPDATE podcast_playlists SET playlist_type='standard',icon_tone='purple',is_system=1,can_rename=1,can_delete=0 WHERE playlist_id='stories';
+    UPDATE podcast_playlists SET playlist_type='standard',icon_tone='purple',is_system=1,can_rename=1,can_delete=0 WHERE playlist_id='drama';
+    UPDATE podcast_playlists SET playlist_type='standard',icon_tone='green',is_system=1,can_rename=1,can_delete=0 WHERE playlist_id='general-interest';
+    UPDATE podcast_playlists SET display_order=0 WHERE playlist_id='library';
+    UPDATE podcast_playlists SET display_order=1 WHERE playlist_id='up-next';
+    UPDATE podcast_playlists SET display_order=2 WHERE playlist_id='stories';
+    UPDATE podcast_playlists SET display_order=3 WHERE playlist_id='drama';
+    UPDATE podcast_playlists SET display_order=4 WHERE playlist_id='general-interest';
+    CREATE UNIQUE INDEX IF NOT EXISTS idx_podcast_playlists_name_nocase ON podcast_playlists(LOWER(name));
+    INSERT OR REPLACE INTO release_metadata(version,release_date,build_id,schema_version,title,created_at) VALUES ('1.4.16.37','2026-08-04','141637',126,'Dynamic Playlist Registry & Management','2026-08-04T16:37:00-04:00');
+  `},
+
 ];
 const canonicalNutrientColumns=Object.freeze(Object.fromEntries(NUTRIENT_KEYS.map(key=>[key,'REAL'])));
 
