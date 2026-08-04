@@ -4,7 +4,7 @@ import {NUTRIENT_KEYS} from './nutrition/registry.js';
 
 const DB_KEY='fizz-health-sqlite-v1';
 const STORAGE_DB='FizzHealthStorage';
-const TARGET_SCHEMA_VERSION=123;
+const TARGET_SCHEMA_VERSION=124;
 let SQL, db;
 
 const migrations=[
@@ -1768,6 +1768,14 @@ const migrations=[
     ALTER TABLE podcast_playlist_items ADD COLUMN explicit INTEGER;
     ALTER TABLE podcast_playlist_items ADD COLUMN episode_url TEXT;
     INSERT OR REPLACE INTO release_metadata(version,release_date,build_id,schema_version,title,created_at) VALUES ('1.4.16.18','2026-08-03','141618',123,'Podcast Drama, Organization & Episode Details','2026-08-03T15:06:00-04:00');
+  `},
+
+  {version:124,name:'Podcast Stability Paging and Publication Metadata',sql:`
+    ALTER TABLE podcast_up_next ADD COLUMN published_at TEXT;
+    UPDATE podcast_up_next SET published_at=(SELECT e.published_at FROM podcast_episodes e WHERE e.episode_id=podcast_up_next.episode_key LIMIT 1) WHERE TRIM(COALESCE(published_at,''))='';
+    UPDATE podcast_playlist_items SET published_at=(SELECT e.published_at FROM podcast_episodes e WHERE e.episode_id=podcast_playlist_items.episode_key LIMIT 1) WHERE TRIM(COALESCE(published_at,''))='';
+    INSERT OR IGNORE INTO podcast_player_settings(setting_key,setting_value,updated_at) VALUES ('playlist_page_size','50','2026-08-03T20:15:00-04:00');
+    INSERT OR REPLACE INTO release_metadata(version,release_date,build_id,schema_version,title,created_at) VALUES ('1.4.16.27','2026-08-03','141627',124,'Podcast Stability, Paging & Metadata Repair','2026-08-03T20:15:00-04:00');
   `},
 
 ];

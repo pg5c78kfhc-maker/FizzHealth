@@ -1,0 +1,17 @@
+Release: Fizz Health v1.4.16.27
+Baseline: v1.4.16.26
+
+Modified:
+- src/main.jsx
+- src/database.js
+- src/styles.css
+- src/decision/engine.js
+- public/sw.js
+- package.json
+- package-lock.json
+- VERSION.json
+- release-history.json
+- ReleaseNotes.md
+
+Added:
+- tests/v141627-podcast-stability-paging.test.js

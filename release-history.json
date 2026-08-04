@@ -2,6 +2,33 @@
   "format": "fizz-health-release-history",
   "releases": [
     {
+      "version": "1.4.16.27",
+      "name": "Podcast Stability, Paging & Metadata Repair",
+      "type": "Podcast stability and scalability release",
+      "created": "2026-08-03T20:15:00-04:00",
+      "stories": [
+        [
+          "FH-1627.1",
+          "Contain podcast runtime and playback failures"
+        ],
+        [
+          "FH-1627.2",
+          "Page large playlists with a saved global limit"
+        ],
+        [
+          "FH-1627.3",
+          "Restore playlist publication date and time"
+        ],
+        [
+          "FH-1627.4",
+          "Lazy-load only mounted playlist artwork"
+        ]
+      ],
+      "knownIssues": [],
+      "build": "141627",
+      "release_id": "FH-20260803-141627"
+    },
+    {
       "version": "1.4.16.17",
       "name": "Podcast Subscription Lifecycle & Metadata Repair",
       "type": "Podcast subscription and metadata repair release",
