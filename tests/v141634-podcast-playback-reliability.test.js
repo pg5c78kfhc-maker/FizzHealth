@@ -1,0 +1,10 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import fs from 'node:fs';
+const source=fs.readFileSync(new URL('../src/main.jsx',import.meta.url),'utf8');
+test('v1.4.16.34 release metadata is current',()=>{assert.match(source,/const VERSION='1\.4\.16\.34'/);assert.match(source,/BUILD_ID='141634'/)});
+test('wake lock is preference controlled and lifecycle managed',()=>{assert.match(source,/keep_screen_awake/);assert.match(source,/navigator\.wakeLock\.request\('screen'\)/);assert.match(source,/releaseWakeLock\(audioRef\.current\?\.ended\?'episode-ended':'audio-pause'\)/)});
+test('episode taps request autoplay',()=>{assert.match(source,/autoplay_requested:true/);assert.match(source,/pendingAutoplay\.current=Boolean\(playback\?\.autoplay_requested\)/)});
+test('playlist playback advances through playlist positions',()=>{assert.match(source,/playback_source==='playlist'/);assert.match(source,/podcast_playlist_items WHERE playlist_id=\? AND playlist_position/);assert.match(source,/currentQueueItem\.playback_source!=='playlist'/)});
+test('episode details tolerate absent and non-string metadata',()=>{assert.match(source,/const safeEpisode=episode&&typeof episode==='object'/);assert.match(source,/optionalQuery\(`SELECT playlist_id/);assert.match(source,/JSON\.stringify\(value\)/)});
+test('large playlist mounting remains paged',()=>{assert.match(source,/playlistPageSize/);assert.match(source,/list\.slice\(0,limit\)/);assert.match(source,/Load \{Math\.min\(playlistPageSize/)});
