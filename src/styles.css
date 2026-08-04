@@ -2620,3 +2620,6 @@ body.food-library-active .food-library-page .list.foods{padding-bottom:calc(24px
 .podcast-threshold-setting select{min-width:110px;padding:12px 38px 12px 14px;border:2px solid #41505b;border-radius:16px;background:#0d1419;color:#fff;font:inherit;font-weight:900}
 .podcast-card-error{display:flex;align-items:center;gap:12px;margin:12px 0;padding:16px;border:1px solid #8d5b48;border-radius:18px;background:#182027;color:#fff}
 .podcast-card-error svg{color:#ff9a78;flex:none}.podcast-card-error div{flex:1;min-width:0}.podcast-card-error b,.podcast-card-error small{display:block}.podcast-card-error small{margin-top:4px;color:#aab4bd}.podcast-card-error button{border:0;border-radius:12px;padding:10px 12px;background:#a3f238;color:#101710;font-weight:900}
+
+/* v1.4.16.31 podcast folder expansion */
+.podcast-folder-tabs{display:grid;grid-auto-flow:column;grid-template-rows:repeat(2,minmax(56px,auto));grid-auto-columns:minmax(170px,max-content);align-items:stretch;overflow-x:auto;overflow-y:hidden;gap:6px 4px;padding:0 0 4px;scroll-snap-type:x proximity;-webkit-overflow-scrolling:touch}.podcast-folder-tabs button{min-width:170px;white-space:nowrap;display:flex;align-items:center;justify-content:center;scroll-snap-align:start;padding:11px 20px}.podcast-folder-tabs::-webkit-scrollbar{height:4px}

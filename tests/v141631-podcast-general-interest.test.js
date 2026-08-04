@@ -1,0 +1,11 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import fs from 'node:fs';
+const main=fs.readFileSync(new URL('../src/main.jsx',import.meta.url),'utf8');
+const db=fs.readFileSync(new URL('../src/database.js',import.meta.url),'utf8');
+const css=fs.readFileSync(new URL('../src/styles.css',import.meta.url),'utf8');
+test('release metadata is v1.4.16.31',()=>{assert.match(main,/VERSION='1\.4\.16\.31'/);assert.match(db,/TARGET_SCHEMA_VERSION=125/)});
+test('General Interest playlist is migrated and exposed',()=>{assert.match(db,/general-interest','General Interest'/);assert.match(main,/setLandingTab\('general-interest'\)/);assert.match(main,/savePlaylistSubscription\('general-interest'/);assert.match(main,/refreshGeneralInterest/)});
+test('General Interest uses stored playlist filters like Stories',()=>{assert.match(main,/landingTab==='general-interest'\?'general-interest':'up-next'/);assert.match(main,/applyStoredPlaylistFilters\('general-interest'\)/);assert.match(main,/same ordering and variety controls as Stories/)});
+test('folder tabs use two rows and do not wrap',()=>{assert.match(css,/grid-template-rows:repeat\(2/);assert.match(css,/white-space:nowrap/);assert.match(css,/overflow-x:auto/)});
+test('playlist rebuild diagnostics identify and verify stage',()=>{assert.match(main,/stage:'playlist rebuild'/);assert.match(main,/rebuildVerification:'VERIFIED'/);assert.match(main,/podcast-playlist-rebuild-/)});

@@ -2,6 +2,33 @@
   "format": "fizz-health-release-history",
   "releases": [
     {
+      "version": "1.4.16.31",
+      "name": "Podcast Finalization Completion & Library UI Polish",
+      "type": "Podcast diagnostics and library enhancement release",
+      "created": "2026-08-04T05:52:00-04:00",
+      "stories": [
+        [
+          "FH-1631.1",
+          "Complete stage-specific playlist diagnostics"
+        ],
+        [
+          "FH-1631.2",
+          "Add General Interest playlist"
+        ],
+        [
+          "FH-1631.3",
+          "Reuse Stories playlist controls"
+        ],
+        [
+          "FH-1631.4",
+          "Expand folder tabs to two non-wrapping rows"
+        ]
+      ],
+      "knownIssues": [],
+      "build": "141631",
+      "release_id": "FH-20260804-141631"
+    },
+    {
       "version": "1.4.16.29",
       "name": "Podcast Refresh Transaction & Recovery Repair",
       "type": "Narrow podcast corrective release",

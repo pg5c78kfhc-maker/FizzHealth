@@ -4,7 +4,7 @@ import {NUTRIENT_KEYS} from './nutrition/registry.js';
 
 const DB_KEY='fizz-health-sqlite-v1';
 const STORAGE_DB='FizzHealthStorage';
-const TARGET_SCHEMA_VERSION=124;
+const TARGET_SCHEMA_VERSION=125;
 let SQL, db;
 
 const migrations=[
@@ -1776,6 +1776,11 @@ const migrations=[
     UPDATE podcast_playlist_items SET published_at=(SELECT e.published_at FROM podcast_episodes e WHERE e.episode_id=podcast_playlist_items.episode_key LIMIT 1) WHERE TRIM(COALESCE(published_at,''))='';
     INSERT OR IGNORE INTO podcast_player_settings(setting_key,setting_value,updated_at) VALUES ('playlist_page_size','50','2026-08-03T20:15:00-04:00');
     INSERT OR REPLACE INTO release_metadata(version,release_date,build_id,schema_version,title,created_at) VALUES ('1.4.16.29','2026-08-03','141628',124,'Podcast Stability, Paging & Metadata Repair','2026-08-03T20:15:00-04:00');
+  `},
+
+  {version:125,name:'General Interest Podcast Playlist',sql:`
+    INSERT OR IGNORE INTO podcast_playlists(playlist_id,name,autoplay,display_order,created_at,updated_at) VALUES ('general-interest','General Interest',0,4,datetime('now'),datetime('now'));
+    INSERT OR REPLACE INTO release_metadata(version,release_date,build_id,schema_version,title,created_at) VALUES ('1.4.16.31','2026-08-04','141631',125,'Podcast Finalization Completion & Library UI Polish','2026-08-04T06:00:00-04:00');
   `},
 
 ];
