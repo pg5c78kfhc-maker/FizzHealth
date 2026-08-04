@@ -2,38 +2,34 @@
   "format": "fizz-health-release-history",
   "releases": [
     {
-      "version": "1.4.16.34",
-      "name": "Podcast Playback Reliability & Stability",
-      "type": "Corrective podcast playback and stability release",
-      "created": "2026-08-04T14:02:00-04:00",
+      "version": "1.4.16.35",
+      "name": "Podcast Interaction & Episode Persistence Repair",
+      "type": "Corrective podcast interaction and persistence release",
+      "created": "2026-08-04T16:03:00-04:00",
+      "build": "141635",
+      "releaseId": "FH-20260804-141635",
       "stories": [
         [
-          "FH-1634.1",
-          "Keep the screen awake during active playback"
+          "FH-1635.1",
+          "Start episode playback synchronously from the user tap"
         ],
         [
-          "FH-1634.2",
-          "Start playback when an episode is tapped"
+          "FH-1635.2",
+          "Contain and repair episode information rendering"
         ],
         [
-          "FH-1634.3",
-          "Advance through filtered playlists in persisted order"
+          "FH-1635.3",
+          "Resolve cross-podcast episode identity collisions"
         ],
         [
-          "FH-1634.4",
-          "Harden episode information rendering"
-        ],
-        [
-          "FH-1634.5",
-          "Keep large playlists paged and bounded"
+          "FH-1635.4",
+          "Verify inserted episodes after commit"
         ]
       ],
       "knownIssues": [
-        "iOS standalone PWAs cannot guarantee starting a new media resource after backgrounding or manual screen lock.",
-        "Production build requires installed npm dependencies."
+        "iOS standalone PWAs cannot reliably switch media resources after backgrounding or manual lock."
       ],
-      "build": "141634",
-      "release_id": "FH-20260804-141634"
+      "release_id": "FH-20260804-141635"
     },
     {
       "version": "1.4.16.33",
