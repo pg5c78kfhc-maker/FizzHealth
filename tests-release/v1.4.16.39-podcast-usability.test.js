@@ -1,0 +1,12 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import fs from 'node:fs';
+const main=fs.readFileSync(new URL('../src/main.jsx',import.meta.url),'utf8');
+const css=fs.readFileSync(new URL('../src/styles.css',import.meta.url),'utf8');
+const db=fs.readFileSync(new URL('../src/database.js',import.meta.url),'utf8');
+test('release metadata is current',()=>{assert.match(main,/VERSION='1\.4\.16\.39'/);assert.match(main,/BUILD_ID='141639'/);assert.match(db,/TARGET_SCHEMA_VERSION=128/)});
+test('podcast information includes description and clickable URL rendering',()=>{assert.match(main,/Podcast description/);assert.match(main,/No podcast description available/);assert.match(main,/Apple Podcasts URL/);assert.match(main,/target="_blank"/)});
+test('long press targets suppress native text selection',()=>{assert.match(main,/podcast-longpress-target/);assert.match(main,/removeAllRanges/);assert.match(css,/-webkit-touch-callout:none/);assert.match(css,/user-select:none/)});
+test('dedicated playlist podcast reorder workflow exists',()=>{assert.match(main,/function PlaylistPodcastReorderPage/);assert.match(main,/podcast_playlist_podcast_order/);assert.match(main,/Reorder —/);assert.match(main,/GripVertical/);assert.match(main,/ArrowUpDown/)});
+test('database migration persists playlist podcast order',()=>{assert.match(db,/version:128/);assert.match(db,/CREATE TABLE IF NOT EXISTS podcast_playlist_podcast_order/);assert.match(db,/PRIMARY KEY\(playlist_id,podcast_id\)/)});
+test('played episodes are excluded from listening playlists',()=>{assert.match(main,/COALESCE\(p\.status,'unplayed'\)<>'played'/);assert.match(main,/DELETE FROM podcast_playlist_items WHERE episode_key/)});

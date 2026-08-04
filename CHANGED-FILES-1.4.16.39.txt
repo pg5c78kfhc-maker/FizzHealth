@@ -1,0 +1,13 @@
+VERSION.json
+package.json
+release-history.json
+ReleaseNotes.md
+RELEASE-NOTES-1.4.16.39.md
+TEST-REPORT-1.4.16.39.md
+CHANGED-FILES-1.4.16.39.txt
+public/sw.js
+src/main.jsx
+src/styles.css
+src/database.js
+src/decision/engine.js
+tests-release/v1.4.16.39-podcast-usability.test.js

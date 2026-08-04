@@ -2,6 +2,37 @@
   "format": "fizz-health-release-history",
   "releases": [
     {
+      "version": "1.4.16.39",
+      "name": "Podcast Information, Context Menus & Playlist Reordering",
+      "type": "Podcast usability and playlist-management release",
+      "created": "2026-08-04T18:30:00-04:00",
+      "build": "141639",
+      "stories": [
+        [
+          "FH-1639.1",
+          "Complete podcast and episode information pages"
+        ],
+        [
+          "FH-1639.2",
+          "Suppress native text selection for podcast context menus"
+        ],
+        [
+          "FH-1639.3",
+          "Add playlist-aware podcast membership workflows"
+        ],
+        [
+          "FH-1639.4",
+          "Remove played episodes from listening playlists"
+        ],
+        [
+          "FH-1639.5",
+          "Add dedicated drag-and-drop playlist podcast reordering"
+        ]
+      ],
+      "knownIssues": [],
+      "release_id": "FH-20260804-141639"
+    },
+    {
       "version": "1.4.16.38",
       "name": "Dynamic Playlist Usability & Podcast Navigation",
       "type": "Podcast playlist usability release",
