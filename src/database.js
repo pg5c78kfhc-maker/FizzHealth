@@ -1775,7 +1775,7 @@ const migrations=[
     UPDATE podcast_up_next SET published_at=(SELECT e.published_at FROM podcast_episodes e WHERE e.episode_id=podcast_up_next.episode_key LIMIT 1) WHERE TRIM(COALESCE(published_at,''))='';
     UPDATE podcast_playlist_items SET published_at=(SELECT e.published_at FROM podcast_episodes e WHERE e.episode_id=podcast_playlist_items.episode_key LIMIT 1) WHERE TRIM(COALESCE(published_at,''))='';
     INSERT OR IGNORE INTO podcast_player_settings(setting_key,setting_value,updated_at) VALUES ('playlist_page_size','50','2026-08-03T20:15:00-04:00');
-    INSERT OR REPLACE INTO release_metadata(version,release_date,build_id,schema_version,title,created_at) VALUES ('1.4.16.27','2026-08-03','141627',124,'Podcast Stability, Paging & Metadata Repair','2026-08-03T20:15:00-04:00');
+    INSERT OR REPLACE INTO release_metadata(version,release_date,build_id,schema_version,title,created_at) VALUES ('1.4.16.28','2026-08-03','141628',124,'Podcast Stability, Paging & Metadata Repair','2026-08-03T20:15:00-04:00');
   `},
 
 ];
@@ -1814,8 +1814,9 @@ const canonicalSchema={
   }
 };
 
+let idbWriteChain=Promise.resolve();let idbTransactionSequence=0;const isIndexedDbInternalError=error=>/internal error|UnknownError|InvalidStateError/i.test(String(error?.message||error?.name||error||''));async function withSerializedIdbWrite(operation){const transactionId=`idb-${Date.now()}-${++idbTransactionSequence}`;const execute=async()=>{let lastError;for(let attempt=1;attempt<=3;attempt+=1){try{return await operation({transactionId,attempt})}catch(error){lastError=error;if(!isIndexedDbInternalError(error)||attempt===3)throw error;await new Promise(resolve=>setTimeout(resolve,50*attempt))}}throw lastError};const next=idbWriteChain.then(execute,execute);idbWriteChain=next.catch(()=>{});return next}
 function idbOpen(){return new Promise((resolve,reject)=>{const req=indexedDB.open(STORAGE_DB,2);req.onupgradeneeded=()=>{if(!req.result.objectStoreNames.contains('files'))req.result.createObjectStore('files');if(!req.result.objectStoreNames.contains('backups'))req.result.createObjectStore('backups')};req.onerror=()=>reject(req.error);req.onsuccess=()=>resolve(req.result)})}
-async function saveBytes(bytes){const store=await idbOpen();return new Promise((resolve,reject)=>{const tx=store.transaction('files','readwrite');tx.objectStore('files').put(bytes,DB_KEY);tx.oncomplete=()=>{store.close();resolve()};tx.onerror=()=>{store.close();reject(tx.error)}})}
+async function saveBytes(bytes){return withSerializedIdbWrite(async({transactionId,attempt})=>{const store=await idbOpen();return new Promise((resolve,reject)=>{let settled=false;const tx=store.transaction('files','readwrite');const request=tx.objectStore('files').put(bytes,DB_KEY);request.onerror=()=>{if(!settled){settled=true;store.close();reject(Object.assign(request.error||new Error('IndexedDB write failed'),{transactionId,objectStore:'files',operation:'put',attempt}))}};tx.oncomplete=()=>{if(!settled){settled=true;store.close();resolve({transactionId,attempt,commitResult:'committed'})}};tx.onabort=tx.onerror=()=>{if(!settled){settled=true;store.close();reject(Object.assign(tx.error||new Error('IndexedDB transaction failed'),{transactionId,objectStore:'files',operation:'commit',attempt}))}}})})}
 async function loadBytes(){const store=await idbOpen();return new Promise((resolve,reject)=>{const tx=store.transaction('files','readonly');const get=tx.objectStore('files').get(DB_KEY);get.onsuccess=()=>{store.close();resolve(get.result||null)};get.onerror=()=>{store.close();reject(get.error)}})}
 async function saveSafetyBytes(bytes,key){const store=await idbOpen();return new Promise((resolve,reject)=>{const tx=store.transaction('backups','readwrite');tx.objectStore('backups').put(bytes,key);tx.oncomplete=()=>{store.close();resolve()};tx.onerror=()=>{store.close();reject(tx.error)}})}
 export async function createSafetyBackup(reason='Safety backup'){

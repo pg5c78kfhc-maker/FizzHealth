@@ -9,7 +9,7 @@ export function parsePodcastFeed(xml,{fallbackMetadata={}}={}){
  const source=String(xml||'');
  const feedType=/<feed\b/i.test(source.slice(0,20000))?'atom':/<rss\b/i.test(source.slice(0,20000))?'rss':'';
  if(!feedType)throw Object.assign(new Error('The response was not a valid RSS or Atom feed.'),{code:'invalid-rss'});
- if(source.length>8_000_000)throw Object.assign(new Error('The podcast feed is too large.'),{code:'feed-too-large'});
+ if(source.length>32_000_000)throw Object.assign(new Error(`The podcast feed exceeds the 32 MB safe parsing limit (${new TextEncoder().encode(source).length} bytes).`),{code:'feed-too-large'});
  const channel=source.split(/<item(?:\s[^>]*)?>/i)[0];
  const metadata={title:tag(channel,['title'])||fallbackMetadata.title||'',publisher:tag(channel,['itunes:author','dc:creator','author','managingEditor'])||fallbackMetadata.publisher||'',artwork_url:attr(channel,'itunes:image','href')||attr(channel,'image','href')||tag(tag(channel,['image']),['url'])||fallbackMetadata.artwork_url||'',website_url:tag(channel,['link'])||fallbackMetadata.website_url||''};
  const items=[...source.matchAll(/<item(?:\s[^>]*)?>([\s\S]*?)<\/item>/gi)].map(match=>match[1]);
