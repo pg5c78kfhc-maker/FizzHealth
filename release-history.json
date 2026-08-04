@@ -2,6 +2,35 @@
   "format": "fizz-health-release-history",
   "releases": [
     {
+      "version": "1.4.16.33",
+      "name": "Playlist Assignment Integrity & UI Synchronization",
+      "type": "Corrective playlist assignment release",
+      "created": "2026-08-04T08:02:00-04:00",
+      "stories": [
+        [
+          "FH-1633.1",
+          "Repair General Interest assignment binding"
+        ],
+        [
+          "FH-1633.2",
+          "Synchronize playlist membership and Unassigned immediately"
+        ],
+        [
+          "FH-1633.3",
+          "Reconcile playlist counts after assignment changes"
+        ],
+        [
+          "FH-1633.4",
+          "Add safe spacing above playlist carousel"
+        ]
+      ],
+      "knownIssues": [
+        "Production build requires installed npm dependencies; deployed iPhone interaction verification remains required."
+      ],
+      "build": "141633",
+      "release_id": "FH-20260804-141633"
+    },
+    {
       "version": "1.4.16.32",
       "name": "Playlist Navigation & Background Playback Continuity",
       "type": "Podcast navigation and playback continuity release",
