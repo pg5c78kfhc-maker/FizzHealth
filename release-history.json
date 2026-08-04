@@ -2,32 +2,32 @@
   "format": "fizz-health-release-history",
   "releases": [
     {
-      "version": "1.4.16.37",
-      "name": "Dynamic Playlist Registry & Management",
-      "type": "Podcast playlist architecture release",
-      "created": "2026-08-04T16:37:00-04:00",
-      "build": "141637",
-      "releaseId": "FH-20260804-141637",
+      "version": "1.4.16.38",
+      "name": "Dynamic Playlist Usability & Podcast Navigation",
+      "type": "Podcast playlist usability release",
+      "created": "2026-08-04T17:30:00-04:00",
+      "build": "141638",
+      "releaseId": "FH-20260804-141638",
       "stories": [
         [
-          "FH-1637.1",
-          "Database-backed playlist registry"
+          "FH-1638.1",
+          "Add playlist-aware podcast membership editing"
         ],
         [
-          "FH-1637.2",
-          "Dynamic playlist creation and renaming"
+          "FH-1638.2",
+          "Normalize Up Next as a standard playlist"
         ],
         [
-          "FH-1637.3",
-          "Registry-driven carousel and assignment controls"
+          "FH-1638.3",
+          "Add podcast and episode contextual navigation"
         ],
         [
-          "FH-1637.4",
-          "Stable playlist identifiers and My Podcasts protection"
+          "FH-1638.4",
+          "Remove played episodes from listening playlists"
         ]
       ],
       "knownIssues": [],
-      "release_id": "FH-20260804-141637"
+      "release_id": "FH-20260804-141638"
     },
     {
       "version": "1.4.16.35",

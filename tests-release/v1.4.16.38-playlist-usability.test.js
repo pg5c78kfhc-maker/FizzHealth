@@ -1,0 +1,12 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import fs from 'node:fs';
+const main=fs.readFileSync(new URL('../src/main.jsx',import.meta.url),'utf8');
+const css=fs.readFileSync(new URL('../src/styles.css',import.meta.url),'utf8');
+const db=fs.readFileSync(new URL('../src/database.js',import.meta.url),'utf8');
+test('playlist plus is contextual and opens Add Podcasts',()=>{assert.match(main,/setPlusMenu\(true\)/);assert.match(main,/>Add Podcasts</)});
+test('membership editors use stable playlist IDs and multi-membership subscriptions',()=>{assert.match(main,/function PlaylistPodcastEditor/);assert.match(main,/function PodcastMembershipEditor/);assert.match(main,/podcast_playlist_subscriptions/)});
+test('podcast and episode contextual information/navigation are present',()=>{assert.match(main,/function PodcastInformationPage/);assert.match(main,/Go to Podcast/);assert.match(main,/Podcast description/);assert.match(main,/Newest episode/);assert.match(main,/Oldest episode/)});
+test('played episodes are filtered from listening playlists',()=>{assert.match(main,/COALESCE\(p\.status,'unplayed'\)<>'played'/)});
+test('artwork is bounded and membership checklist is touch friendly',()=>{assert.match(css,/podcast-details-artwork/);assert.match(css,/max-width:100%/);assert.match(css,/podcast-checklist/)});
+test('Up Next is normalized to standard playlist behavior',()=>{assert.match(db,/UPDATE podcast_playlists SET playlist_type='standard',autoplay=0 WHERE playlist_id='up-next'/);assert.doesNotMatch(main,/tabPlaylistId=landingTab==='queue'/)});

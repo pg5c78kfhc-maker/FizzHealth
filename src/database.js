@@ -4,7 +4,7 @@ import {NUTRIENT_KEYS} from './nutrition/registry.js';
 
 const DB_KEY='fizz-health-sqlite-v1';
 const STORAGE_DB='FizzHealthStorage';
-const TARGET_SCHEMA_VERSION=125;
+const TARGET_SCHEMA_VERSION=127;
 let SQL, db;
 
 const migrations=[
@@ -1804,6 +1804,11 @@ const migrations=[
     UPDATE podcast_playlists SET display_order=4 WHERE playlist_id='general-interest';
     CREATE UNIQUE INDEX IF NOT EXISTS idx_podcast_playlists_name_nocase ON podcast_playlists(LOWER(name));
     INSERT OR REPLACE INTO release_metadata(version,release_date,build_id,schema_version,title,created_at) VALUES ('1.4.16.37','2026-08-04','141637',126,'Dynamic Playlist Registry & Management','2026-08-04T16:37:00-04:00');
+  `},
+
+  {version:127,name:'Dynamic Playlist Usability and Podcast Navigation',sql:`
+    UPDATE podcast_playlists SET playlist_type='standard',autoplay=0 WHERE playlist_id='up-next';
+    INSERT OR REPLACE INTO release_metadata(version,release_date,build_id,schema_version,title,created_at) VALUES ('1.4.16.38','2026-08-04','141638',127,'Dynamic Playlist Usability & Podcast Navigation','2026-08-04T17:30:00-04:00');
   `},
 
 ];

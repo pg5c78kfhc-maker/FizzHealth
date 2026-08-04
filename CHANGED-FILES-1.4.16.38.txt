@@ -1,0 +1,14 @@
+src/main.jsx
+src/styles.css
+src/database.js
+package.json
+index.html
+public/sw.js
+src/decision/engine.js
+tests-release/v1.4.16.38-playlist-usability.test.js
+RELEASE-NOTES-1.4.16.38.md
+TEST-REPORT-1.4.16.38.md
+CHANGED-FILES-1.4.16.38.txt
+VERSION.json
+release-history.json
+ReleaseNotes.md
