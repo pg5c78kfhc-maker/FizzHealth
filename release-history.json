@@ -2,6 +2,30 @@
   "format": "fizz-health-release-history",
   "releases": [
     {
+      "version": "1.4.16.36",
+      "name": "Main Settings Navigation Hotfix",
+      "type": "Corrective navigation hotfix",
+      "created": "2026-08-04T16:13:00-04:00",
+      "build": "141636",
+      "releaseId": "FH-20260804-141636",
+      "stories": [
+        [
+          "FH-1636.1",
+          "Restore the main Settings component removed by the prior source truncation"
+        ],
+        [
+          "FH-1636.2",
+          "Restore the complete Podcasts render switch"
+        ],
+        [
+          "FH-1636.3",
+          "Contain future Settings render errors"
+        ]
+      ],
+      "knownIssues": [],
+      "release_id": "FH-20260804-141636"
+    },
+    {
       "version": "1.4.16.35",
       "name": "Podcast Interaction & Episode Persistence Repair",
       "type": "Corrective podcast interaction and persistence release",

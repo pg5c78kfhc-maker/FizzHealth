@@ -1,0 +1,11 @@
+ReleaseNotes.md
+RELEASE-NOTES-1.4.16.36.md
+TEST-REPORT-1.4.16.36.md
+CHANGED-FILES-1.4.16.36.txt
+VERSION.json
+package.json
+public/sw.js
+release-history.json
+src/decision/engine.js
+src/main.jsx
+tests/v141636-settings-navigation-hotfix.test.js
