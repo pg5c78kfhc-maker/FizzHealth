@@ -2680,3 +2680,9 @@ body.food-library-active .food-library-page .list.foods{padding-bottom:calc(24px
 .podcast-reorder-page{height:calc(100dvh - 78px);min-height:0;display:flex;flex-direction:column;overflow:hidden!important;padding-bottom:0!important}
 .podcast-reorder-page>.podcast-page-head{flex:0 0 auto}
 .podcast-reorder-bounded-list{flex:1 1 auto;min-height:0;height:auto!important;overflow-y:auto!important;overscroll-behavior:contain;padding:18px 18px calc(190px + env(safe-area-inset-bottom)) 22px!important;scroll-padding-bottom:190px;-webkit-overflow-scrolling:touch}
+
+/* v1.4.16.50 podcast interaction consistency */
+.podcast-shared-episode-card{transition:transform .18s ease,box-shadow .18s ease;will-change:transform}
+.podcast-shared-episode-card.swipe-armed{box-shadow:inset 8px 0 0 #a9ef45,0 0 0 1px #a9ef4566}
+.podcast-shuffle-remaining{font-size:.72rem;color:#a9ef45;font-weight:800;white-space:nowrap}
+.podcast-show-played[aria-expanded="true"]{border-color:#a9ef45}
