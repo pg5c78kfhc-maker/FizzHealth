@@ -11,3 +11,7 @@
 ## Scope boundaries
 
 No unrelated application features were added or changed.
+
+## Corrective packaging update
+
+A production syntax defect reported by Cloudflare Pages was repaired after the initial package was delivered. The shared episode card's `onKeyDown` JSX expression was missing one closing brace before the `onTouchStart` attribute. The corrected source passes a complete JSX parser validation with zero diagnostics. No feature behavior or release scope changed.

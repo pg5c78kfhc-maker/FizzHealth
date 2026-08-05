@@ -1,8 +1,8 @@
-package.json
-package-lock.json
 src/main.jsx
 src/styles.css
+package.json
+package-lock.json
 tests/v141650-playlist-consistency.test.js
 RELEASE-NOTES-1.4.16.50.md
-CHANGED-FILES-1.4.16.50.txt
 TEST-REPORT-1.4.16.50.md
+CHANGED-FILES-1.4.16.50.txt
