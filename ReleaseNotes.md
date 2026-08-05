@@ -1,13 +1,12 @@
-# Fizz Health v1.4.16.45 — Podcast Gesture, Ordering & Card Hierarchy Repair
+# Fizz Health v1.4.16.46 — Podcast Swipe & Reorder Runtime Repair
 
 ## Scope delivered
 
-- Repairs podcast reorder Save with database commit and read-back verification.
-- Separates deliberate episode long press from vertical playlist scrolling.
-- Raises the right-swipe mark-as-played threshold to require a deliberate horizontal gesture.
-- Rebuilds and verifies playlists whenever Enforce Master Playlist Order or Enforce Variety changes.
-- Displays podcast name above episode title with equal visual emphasis.
+- Moves playlist filter application into a shared runtime-safe helper.
+- Repairs podcast reorder Save so projection rebuilding no longer fails with a missing variable.
+- Requires a deliberate, horizontal, reversible swipe before marking an episode played.
+- Prevents vertical scrolling, leftward motion, cancellation, and reversal from triggering Mark as Played.
 
 ## Stories
 
-- FH-1645.1-FH-1645.5
+- FH-1646.1-FH-1646.4
