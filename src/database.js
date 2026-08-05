@@ -4,7 +4,7 @@ import {NUTRIENT_KEYS} from './nutrition/registry.js';
 
 const DB_KEY='fizz-health-sqlite-v1';
 const STORAGE_DB='FizzHealthStorage';
-const TARGET_SCHEMA_VERSION=130;
+const TARGET_SCHEMA_VERSION=133;
 let SQL, db;
 
 const migrations=[
@@ -1879,6 +1879,31 @@ const migrations=[
         AND s.subscribed=1
     );
     INSERT OR REPLACE INTO release_metadata(version,release_date,build_id,schema_version,title,created_at) VALUES ('1.4.16.48','2026-08-05','141648',132,'Playlist Refresh, Gesture State & Reorder Boundary Repair','2026-08-05T13:00:00-04:00');
+  `},
+
+
+  {version:133,name:'Shuffle Playlist Foundation and Gesture Reliability',sql:`
+    INSERT OR IGNORE INTO podcast_playlists(playlist_id,name,autoplay,display_order,created_at,updated_at,playlist_type,enabled,can_rename)
+      VALUES ('shuffle','Shuffle',1,-1,datetime('now'),datetime('now'),'system',1,0);
+    CREATE TABLE IF NOT EXISTS podcast_shuffle_sources (
+      playlist_id TEXT PRIMARY KEY,
+      enabled INTEGER NOT NULL DEFAULT 1 CHECK(enabled IN (0,1)),
+      rotation_position INTEGER NOT NULL DEFAULT 0,
+      created_at TEXT NOT NULL,
+      updated_at TEXT NOT NULL
+    );
+    CREATE INDEX IF NOT EXISTS idx_podcast_shuffle_sources_order ON podcast_shuffle_sources(enabled,rotation_position,playlist_id);
+    CREATE TABLE IF NOT EXISTS podcast_shuffle_diagnostics (
+      diagnostic_id INTEGER PRIMARY KEY AUTOINCREMENT,
+      event_type TEXT NOT NULL,
+      episode_key TEXT,
+      primary_playlist_id TEXT,
+      contributing_playlist_ids TEXT,
+      detail TEXT,
+      created_at TEXT NOT NULL
+    );
+    INSERT OR REPLACE INTO release_metadata(version,release_date,build_id,schema_version,title,created_at)
+      VALUES ('1.4.16.49','2026-08-05','141649',133,'Shuffle Playlist Foundation & Gesture Reliability','2026-08-05T14:00:00-04:00');
   `},
 
 ];

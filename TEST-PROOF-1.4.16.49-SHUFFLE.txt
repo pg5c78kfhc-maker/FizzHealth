@@ -1,0 +1,40 @@
+TAP version 13
+# Subtest: shuffle contributes one current episode per selected stable playlist ID and suppresses duplicates
+ok 1 - shuffle contributes one current episode per selected stable playlist ID and suppresses duplicates
+  ---
+  duration_ms: 1.041875
+  type: 'test'
+  ...
+# Subtest: completed contributors rotate to the end
+ok 2 - completed contributors rotate to the end
+  ---
+  duration_ms: 0.174289
+  type: 'test'
+  ...
+# Subtest: system and non-playlist containers cannot be selected
+ok 3 - system and non-playlist containers cannot be selected
+  ---
+  duration_ms: 0.130814
+  type: 'test'
+  ...
+# Subtest: strict release gesture cancels diagonal, scroll and reversal
+ok 4 - strict release gesture cancels diagonal, scroll and reversal
+  ---
+  duration_ms: 0.187097
+  type: 'test'
+  ...
+# Subtest: release source includes permanent shuffle section, settings and diagnostics
+ok 5 - release source includes permanent shuffle section, settings and diagnostics
+  ---
+  duration_ms: 4.38241
+  type: 'test'
+  ...
+1..5
+# tests 5
+# suites 0
+# pass 5
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 54.462361
