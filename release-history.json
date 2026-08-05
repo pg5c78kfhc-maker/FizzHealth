@@ -2,6 +2,33 @@
   "format": "fizz-health-release-history",
   "releases": [
     {
+      "version": "1.4.16.48",
+      "name": "Playlist Refresh, Gesture State & Reorder Boundary Repair",
+      "type": "Corrective podcast playlist release",
+      "created": "2026-08-05T13:00:00-04:00",
+      "build": "141648",
+      "release_id": "FH-20260805-141648",
+      "stories": [
+        [
+          "FH-1648.1",
+          "Clamp podcast reorder scrolling and drop boundaries"
+        ],
+        [
+          "FH-1648.2",
+          "Reset stale episode gesture state across navigation"
+        ],
+        [
+          "FH-1648.3",
+          "Reapply stable-ID playlist settings after pull-to-refresh"
+        ],
+        [
+          "FH-1648.4",
+          "Exclude completed episodes using every persisted completion signal"
+        ]
+      ],
+      "known_issues": []
+    },
+    {
       "version": "1.4.16.47",
       "name": "Master Playlist Order Projection Repair",
       "type": "Corrective podcast ordering release",
