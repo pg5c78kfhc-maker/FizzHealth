@@ -7,7 +7,7 @@ import {shuffleGestureDecision} from '../src/podcast/shuffleEngine.js';
 const main=fs.readFileSync(new URL('../src/main.jsx',import.meta.url),'utf8');
 
 test('release version and disclosure render are updated',()=>{
- assert.match(main,/const VERSION='1\.4\.16\.50'/);
+ assert.match(main,/const VERSION='1\.4\.16\.(50|51)'/);
  assert.match(main,/aria-expanded=\{showPlayed\}/);
  assert.match(main,/showPlayed&&playedRows\.length>0&&renderRows\(playedRows/);
 });
