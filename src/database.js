@@ -1839,7 +1839,11 @@ const migrations=[
     DELETE FROM podcast_playlist_subscriptions WHERE podcast_id NOT IN (SELECT podcast_id FROM podcasts) OR playlist_id NOT IN (SELECT playlist_id FROM podcast_playlists);
     DELETE FROM podcast_playlist_podcast_order WHERE podcast_id NOT IN (SELECT podcast_id FROM podcasts) OR playlist_id NOT IN (SELECT playlist_id FROM podcast_playlists);
     INSERT OR REPLACE INTO release_metadata(version,release_date,build_id,schema_version,title,created_at) VALUES ('1.4.16.42','2026-08-05','141642',130,'Playlist Integrity & Database Cleanup','2026-08-05T05:30:00-04:00');
+  `},  {version:131,name:'Playlist Ordering and Live Reconciliation Repair',sql:`
+    UPDATE podcast_playlists SET display_order=1 WHERE playlist_id='library';
+    INSERT OR REPLACE INTO release_metadata(version,release_date,build_id,schema_version,title,created_at) VALUES ('1.4.16.43','2026-08-05','141643',131,'Playlist Ordering & Live Reconciliation Repair','2026-08-05T10:15:00-04:00');
   `},
+
 ];
 const canonicalNutrientColumns=Object.freeze(Object.fromEntries(NUTRIENT_KEYS.map(key=>[key,'REAL'])));
 

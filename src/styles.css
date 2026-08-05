@@ -2663,3 +2663,15 @@ body.food-library-active .food-library-page .list.foods{padding-bottom:calc(24px
 .podcast-reorder-handle:active{cursor:grabbing}
 .podcast-reorder-handle svg{width:30px;height:30px}
 .podcast-reorder-scroll-gutter{position:absolute;top:0;right:0;width:24px;height:100%;border:0;touch-action:pan-y;background:transparent!important;box-shadow:none!important;z-index:1}.podcast-reorder-scroll-gutter::before,.podcast-reorder-scroll-gutter::after{display:none!important;content:none!important}
+
+/* v1.4.16.43 playlist-order and reorder-page stabilization */
+.podcast-reorder-page{overflow:visible!important;padding-bottom:190px}
+.podcast-reorder-scroll-shell,.podcast-reorder-scroll-gutter{display:none!important}
+.podcast-reorder-document-list{height:auto!important;overflow:visible!important;padding:18px 42px 180px 22px!important;scrollbar-width:none}
+.podcast-reorder-document-list article{grid-template-columns:64px minmax(0,1fr) 54px}
+.podcast-reorder-document-list article.pinned{opacity:.82}
+.podcast-reorder-lock{display:grid;place-items:center;width:46px;height:46px;border-radius:14px;background:#24343d;color:#9caab4;font-weight:900}
+.podcast-playlist-mini-orb{display:grid;place-items:center;width:64px;height:64px;border-radius:50%;background:#5a2b70;color:#fff;box-shadow:inset 0 0 0 10px rgba(0,0,0,.22)}
+.podcast-playlist-mini-orb.green{background:#3f7d24}.podcast-playlist-mini-orb.orange{background:#aa6a00}.podcast-playlist-mini-orb.purple{background:#79339a}
+.podcast-playlist-mini-orb svg{width:28px;height:28px;fill:currentColor}
+.podcast-secondary-management-button{margin-top:14px}

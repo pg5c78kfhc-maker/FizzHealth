@@ -2,6 +2,41 @@
   "format": "fizz-health-release-history",
   "releases": [
     {
+      "version": "1.4.16.43",
+      "name": "Playlist Ordering & Live Reconciliation Repair",
+      "type": "Corrective podcast playlist release",
+      "created": "2026-08-05T10:15:00-04:00",
+      "build": "141643",
+      "release_id": "FH-20260805-141643",
+      "stories": [
+        [
+          "FH-1643.1",
+          "Reorder playlist carousel from Podcast Settings"
+        ],
+        [
+          "FH-1643.2",
+          "Persist and immediately apply carousel order"
+        ],
+        [
+          "FH-1643.3",
+          "Refresh affected playlists after membership changes"
+        ],
+        [
+          "FH-1643.4",
+          "Exclude completed episodes from all current and future playlists"
+        ],
+        [
+          "FH-1643.5",
+          "Remove reorder-page overlay architecture"
+        ],
+        [
+          "FH-1643.6",
+          "Format podcast refresh timestamps for local display"
+        ]
+      ],
+      "knownIssues": []
+    },
+    {
       "version": "1.4.16.42",
       "name": "Playlist Integrity & Database Cleanup",
       "type": "Corrective podcast integrity release",
