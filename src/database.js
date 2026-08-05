@@ -1878,7 +1878,7 @@ const migrations=[
         AND s.podcast_id=podcast_up_next.podcast_id
         AND s.subscribed=1
     );
-    INSERT OR REPLACE INTO release_metadata(version,release_date,build_id,schema_version,title,created_at) VALUES ('1.4.16.44','2026-08-05','141644',132,'Playlist Integrity & Synchronization','2026-08-05T11:15:00-04:00');
+    INSERT OR REPLACE INTO release_metadata(version,release_date,build_id,schema_version,title,created_at) VALUES ('1.4.16.45','2026-08-05','141645',132,'Podcast Gesture, Ordering & Card Hierarchy Repair','2026-08-05T08:30:00-04:00');
   `},
 
 ];

@@ -1,0 +1,14 @@
+
+/* v1.4.16.45 episode-card hierarchy */
+.podcast-up-next-main .podcast-card-podcast-name,
+.podcast-up-next-main .podcast-card-episode-title {
+  display:block;
+  font-size:inherit;
+  font-weight:800;
+  line-height:1.12;
+  color:var(--text,#f7f8f4);
+  overflow:hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+}
+.podcast-up-next-main .podcast-card-episode-title { margin-top:.18rem; }

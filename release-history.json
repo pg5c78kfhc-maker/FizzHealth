@@ -2,6 +2,37 @@
   "format": "fizz-health-release-history",
   "releases": [
     {
+      "version": "1.4.16.45",
+      "name": "Podcast Gesture, Ordering & Card Hierarchy Repair",
+      "type": "Corrective podcast interaction and ordering release",
+      "created": "2026-08-05T08:30:00-04:00",
+      "build": "141645",
+      "release_id": "FH-20260805-141645",
+      "stories": [
+        [
+          "FH-1645.1",
+          "Repair podcast reorder Save with commit and read-back verification"
+        ],
+        [
+          "FH-1645.2",
+          "Distinguish playlist scrolling from stationary episode long press"
+        ],
+        [
+          "FH-1645.3",
+          "Require a deliberate right swipe before marking an episode played"
+        ],
+        [
+          "FH-1645.4",
+          "Rebuild and verify Enforce Master Playlist Order changes"
+        ],
+        [
+          "FH-1645.5",
+          "Show podcast name above episode title with equal visual emphasis"
+        ]
+      ],
+      "known_issues": []
+    },
+    {
       "version": "1.4.16.44",
       "name": "Playlist Integrity & Synchronization",
       "type": "Corrective podcast playlist reconciliation release",
