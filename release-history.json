@@ -2,12 +2,12 @@
   "format": "fizz-health-release-history",
   "releases": [
     {
-      "version": "1.4.16.40",
+      "version": "1.4.16.41",
       "name": "Dynamic Playlist Episode Projection & Reorder Usability",
       "type": "Corrective podcast playlist release",
       "created_at": "2026-08-04T19:15:00-04:00",
-      "build": "141640",
-      "release_id": "FH-20260804-141640",
+      "build": "141641",
+      "release_id": "FH-20260804-141641",
       "completed_story": "FH-1640.1-FH-1640.2",
       "known_issues": []
     },

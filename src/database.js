@@ -1824,7 +1824,7 @@ const migrations=[
   `},
 
   {version:129,name:'Dynamic Playlist Episode Projection and Reorder Usability',sql:`
-    INSERT OR REPLACE INTO release_metadata(version,release_date,build_id,schema_version,title,created_at) VALUES ('1.4.16.40','2026-08-04','141640',129,'Dynamic Playlist Episode Projection & Reorder Usability','2026-08-04T19:15:00-04:00');
+    INSERT OR REPLACE INTO release_metadata(version,release_date,build_id,schema_version,title,created_at) VALUES ('1.4.16.41','2026-08-04','141641',129,'Dynamic Playlist Episode Projection & Reorder Usability','2026-08-04T19:15:00-04:00');
   `},
 ];
 const canonicalNutrientColumns=Object.freeze(Object.fromEntries(NUTRIENT_KEYS.map(key=>[key,'REAL'])));
