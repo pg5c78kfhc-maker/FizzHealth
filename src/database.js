@@ -4,7 +4,7 @@ import {NUTRIENT_KEYS} from './nutrition/registry.js';
 
 const DB_KEY='fizz-health-sqlite-v1';
 const STORAGE_DB='FizzHealthStorage';
-const TARGET_SCHEMA_VERSION=128;
+const TARGET_SCHEMA_VERSION=129;
 let SQL, db;
 
 const migrations=[
@@ -1821,6 +1821,10 @@ const migrations=[
     );
     CREATE INDEX IF NOT EXISTS idx_podcast_playlist_podcast_order_position ON podcast_playlist_podcast_order(playlist_id,position);
     INSERT OR REPLACE INTO release_metadata(version,release_date,build_id,schema_version,title,created_at) VALUES ('1.4.16.39','2026-08-04','141639',128,'Podcast Information, Context Menus & Playlist Reordering','2026-08-04T18:30:00-04:00');
+  `},
+
+  {version:129,name:'Dynamic Playlist Episode Projection and Reorder Usability',sql:`
+    INSERT OR REPLACE INTO release_metadata(version,release_date,build_id,schema_version,title,created_at) VALUES ('1.4.16.40','2026-08-04','141640',129,'Dynamic Playlist Episode Projection & Reorder Usability','2026-08-04T19:15:00-04:00');
   `},
 ];
 const canonicalNutrientColumns=Object.freeze(Object.fromEntries(NUTRIENT_KEYS.map(key=>[key,'REAL'])));
