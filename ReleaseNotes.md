@@ -1,15 +1,19 @@
-# Fizz Health v1.4.16.43 — Playlist Ordering & Live Reconciliation Repair
+# Fizz Health v1.4.16.44 — Playlist Integrity & Synchronization
 
 ## Scope delivered
 
-- Adds **Reorder Playlists** directly below **Create Playlist** in Podcast Settings.
-- Persists playlist carousel order by stable playlist ID and verifies the saved order before closing.
-- Keeps My Podcasts fixed first while allowing every ordinary and future custom playlist to move.
-- Refreshes affected playlist projections, counts, Unassigned enrollment, and visible UI immediately after membership changes.
-- Excludes episodes marked played, completed, or at least 95% complete from every ordinary and future playlist.
-- Replaces the internal reorder overlay/scroll-shell architecture with normal document scrolling and pointer-coordinate edge auto-scroll.
-- Formats podcast refresh and cleanup timestamps in the device's local, human-readable date/time format.
+- Keys playlist membership, projection, and ordering reconciliation exclusively by stable playlist IDs and podcast IDs.
+- Reconciles the renamed `up-next` playlist with its current registry name without using the display name as an identifier.
+- Removes stale playlist projection and ordering rows immediately when a podcast membership is removed.
+- Stops the renamed Up Next/News playlist from rendering legacy `podcast_up_next` rows that are not supported by current membership.
+- Reloads both playlist-centric and podcast-centric membership checklists from verified database state after every change.
+- Adds startup cleanup for stale projection rows and legacy queue rows.
+- Adds reconciliation diagnostics and schema migration 132.
 
 ## Stories
 
-- FH-1643.1-FH-1643.6
+- FH-1644.1-FH-1644.5
+
+## Acceptance result
+
+Membership table, checklist state, playlist projection, visible playlist, and persisted restart state now share the same stable-ID source of truth.

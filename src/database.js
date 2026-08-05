@@ -1844,6 +1844,43 @@ const migrations=[
     INSERT OR REPLACE INTO release_metadata(version,release_date,build_id,schema_version,title,created_at) VALUES ('1.4.16.43','2026-08-05','141643',131,'Playlist Ordering & Live Reconciliation Repair','2026-08-05T10:15:00-04:00');
   `},
 
+  {version:132,name:'Playlist Integrity and Synchronization',sql:`
+    CREATE TABLE IF NOT EXISTS podcast_playlist_reconciliation_audit (
+      audit_id INTEGER PRIMARY KEY AUTOINCREMENT,
+      playlist_id TEXT NOT NULL,
+      playlist_name TEXT,
+      podcast_id TEXT,
+      expected_membership INTEGER NOT NULL DEFAULT 0,
+      stored_membership INTEGER NOT NULL DEFAULT 0,
+      projection_rows INTEGER NOT NULL DEFAULT 0,
+      stale_rows_removed INTEGER NOT NULL DEFAULT 0,
+      legacy_rows_removed INTEGER NOT NULL DEFAULT 0,
+      reason TEXT,
+      verification_result TEXT,
+      reconciled_at TEXT NOT NULL
+    );
+    CREATE INDEX IF NOT EXISTS idx_podcast_playlist_reconciliation_playlist ON podcast_playlist_reconciliation_audit(playlist_id,reconciled_at);
+    DELETE FROM podcast_playlist_items WHERE NOT EXISTS (
+      SELECT 1 FROM podcast_playlist_subscriptions s
+      WHERE s.playlist_id=podcast_playlist_items.playlist_id
+        AND s.podcast_id=podcast_playlist_items.podcast_id
+        AND s.subscribed=1
+    );
+    DELETE FROM podcast_playlist_podcast_order WHERE NOT EXISTS (
+      SELECT 1 FROM podcast_playlist_subscriptions s
+      WHERE s.playlist_id=podcast_playlist_podcast_order.playlist_id
+        AND s.podcast_id=podcast_playlist_podcast_order.podcast_id
+        AND s.subscribed=1
+    );
+    DELETE FROM podcast_up_next WHERE NOT EXISTS (
+      SELECT 1 FROM podcast_playlist_subscriptions s
+      WHERE s.playlist_id='up-next'
+        AND s.podcast_id=podcast_up_next.podcast_id
+        AND s.subscribed=1
+    );
+    INSERT OR REPLACE INTO release_metadata(version,release_date,build_id,schema_version,title,created_at) VALUES ('1.4.16.44','2026-08-05','141644',132,'Playlist Integrity & Synchronization','2026-08-05T11:15:00-04:00');
+  `},
+
 ];
 const canonicalNutrientColumns=Object.freeze(Object.fromEntries(NUTRIENT_KEYS.map(key=>[key,'REAL'])));
 

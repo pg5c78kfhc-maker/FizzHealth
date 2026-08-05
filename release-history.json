@@ -2,6 +2,37 @@
   "format": "fizz-health-release-history",
   "releases": [
     {
+      "version": "1.4.16.44",
+      "name": "Playlist Integrity & Synchronization",
+      "type": "Corrective podcast playlist reconciliation release",
+      "created": "2026-08-05T11:15:00-04:00",
+      "build": "141644",
+      "release_id": "FH-20260805-141644",
+      "stories": [
+        [
+          "FH-1644.1",
+          "Key every playlist relationship by stable playlist and podcast IDs"
+        ],
+        [
+          "FH-1644.2",
+          "Reconcile renamed Up Next legacy rows with the current membership registry"
+        ],
+        [
+          "FH-1644.3",
+          "Remove stale projection rows immediately after membership changes"
+        ],
+        [
+          "FH-1644.4",
+          "Hydrate playlist membership checkboxes from verified database state"
+        ],
+        [
+          "FH-1644.5",
+          "Verify playlist projections against committed memberships"
+        ]
+      ],
+      "knownIssues": []
+    },
+    {
       "version": "1.4.16.43",
       "name": "Playlist Ordering & Live Reconciliation Repair",
       "type": "Corrective podcast playlist release",
