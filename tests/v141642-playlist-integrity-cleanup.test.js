@@ -1,0 +1,10 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import fs from 'node:fs';
+const main=fs.readFileSync('src/main.jsx','utf8'),db=fs.readFileSync('src/database.js','utf8'),css=fs.readFileSync('src/styles.css','utf8');
+test('played episodes are removed from queue and playlist projections',()=>{assert.match(main,/podcast-played-episode-projection-cleanup/);assert.match(main,/DELETE FROM podcast_playlist_items WHERE playlist_id=\? AND episode_key IN/);assert.match(main,/COALESCE\(pb\.status,'unplayed'\)<>\'played\'/)});
+test('playlist refresh supports incremental podcast updates',()=>{assert.match(main,/incrementalRebuild:incremental\?'YES':'NO'/);assert.match(main,/podcastId=''|podcastId:\s*''/);assert.match(main,/rowsAdded,rowsRemoved,rowsUnchanged/)});
+test('latest-only cleanup uses verified resolved episode identities',()=>{assert.match(main,/\[\.\.\.identityPlans\.values\(\)\]\.map\(plan=>plan\.episodeId\)/);assert.match(main,/playlistRowsRemoved/);assert.match(main,/playbackRowsRemoved/)});
+test('orphan cleanup covers podcast dependent tables',()=>{assert.match(main,/auditAndCleanupPodcastOrphans/);assert.match(db,/Podcast Playlist Integrity and Database Cleanup/);assert.match(db,/CREATE TABLE IF NOT EXISTS podcast_storage_audit/)});
+test('podcast information shows database storage statistics',()=>{assert.match(main,/\['Feed contains'/);assert.match(main,/\['Storage mode'/);assert.match(main,/\['Orphan rows detected'/)});
+test('reorder gutter is transparent and cannot draw an overlay',()=>{assert.match(css,/podcast-reorder-scroll-gutter\{[^}]*background:transparent!important/);assert.match(css,/podcast-reorder-scroll-gutter::before/)});

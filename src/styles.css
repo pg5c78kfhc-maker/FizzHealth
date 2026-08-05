@@ -2662,4 +2662,4 @@ body.food-library-active .food-library-page .list.foods{padding-bottom:calc(24px
 .podcast-reorder-handle{width:48px;height:64px;display:grid;place-items:center;border:0;background:transparent;color:#aeb9c1;touch-action:none;cursor:grab}
 .podcast-reorder-handle:active{cursor:grabbing}
 .podcast-reorder-handle svg{width:30px;height:30px}
-.podcast-reorder-scroll-gutter{position:absolute;top:0;right:0;width:28px;height:100%;border-left:1px solid rgba(132,151,163,.22);touch-action:pan-y;background:linear-gradient(90deg,transparent,rgba(255,255,255,.025))}
+.podcast-reorder-scroll-gutter{position:absolute;top:0;right:0;width:24px;height:100%;border:0;touch-action:pan-y;background:transparent!important;box-shadow:none!important;z-index:1}.podcast-reorder-scroll-gutter::before,.podcast-reorder-scroll-gutter::after{display:none!important;content:none!important}

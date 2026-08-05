@@ -4,7 +4,7 @@ import {NUTRIENT_KEYS} from './nutrition/registry.js';
 
 const DB_KEY='fizz-health-sqlite-v1';
 const STORAGE_DB='FizzHealthStorage';
-const TARGET_SCHEMA_VERSION=129;
+const TARGET_SCHEMA_VERSION=130;
 let SQL, db;
 
 const migrations=[
@@ -1825,6 +1825,20 @@ const migrations=[
 
   {version:129,name:'Dynamic Playlist Episode Projection and Reorder Usability',sql:`
     INSERT OR REPLACE INTO release_metadata(version,release_date,build_id,schema_version,title,created_at) VALUES ('1.4.16.41','2026-08-04','141641',129,'Dynamic Playlist Episode Projection & Reorder Usability','2026-08-04T19:15:00-04:00');
+  `},
+  {version:130,name:'Podcast Playlist Integrity and Database Cleanup',sql:`
+    CREATE TABLE IF NOT EXISTS podcast_storage_audit (
+      podcast_id TEXT PRIMARY KEY, feed_episode_count INTEGER DEFAULT 0, stored_episode_count INTEGER DEFAULT 0,
+      storage_mode TEXT DEFAULT 'all', excluded_by_policy INTEGER DEFAULT 0, episode_records_removed INTEGER DEFAULT 0,
+      playlist_rows_removed INTEGER DEFAULT 0, playback_rows_removed INTEGER DEFAULT 0, orphans_detected INTEGER DEFAULT 0,
+      cleanup_result TEXT, cleaned_at TEXT, updated_at TEXT
+    );
+    DELETE FROM podcast_playlist_items WHERE episode_key NOT IN (SELECT episode_id FROM podcast_episodes) OR podcast_id NOT IN (SELECT podcast_id FROM podcasts);
+    DELETE FROM podcast_up_next WHERE episode_key NOT IN (SELECT episode_id FROM podcast_episodes) OR podcast_id NOT IN (SELECT podcast_id FROM podcasts);
+    DELETE FROM podcast_playback WHERE episode_key NOT IN (SELECT episode_id FROM podcast_episodes) OR podcast_id NOT IN (SELECT podcast_id FROM podcasts);
+    DELETE FROM podcast_playlist_subscriptions WHERE podcast_id NOT IN (SELECT podcast_id FROM podcasts) OR playlist_id NOT IN (SELECT playlist_id FROM podcast_playlists);
+    DELETE FROM podcast_playlist_podcast_order WHERE podcast_id NOT IN (SELECT podcast_id FROM podcasts) OR playlist_id NOT IN (SELECT playlist_id FROM podcast_playlists);
+    INSERT OR REPLACE INTO release_metadata(version,release_date,build_id,schema_version,title,created_at) VALUES ('1.4.16.42','2026-08-05','141642',130,'Playlist Integrity & Database Cleanup','2026-08-05T05:30:00-04:00');
   `},
 ];
 const canonicalNutrientColumns=Object.freeze(Object.fromEntries(NUTRIENT_KEYS.map(key=>[key,'REAL'])));

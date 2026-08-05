@@ -2,6 +2,37 @@
   "format": "fizz-health-release-history",
   "releases": [
     {
+      "version": "1.4.16.42",
+      "name": "Playlist Integrity & Database Cleanup",
+      "type": "Corrective podcast integrity release",
+      "created": "2026-08-05T05:30:00-04:00",
+      "build": "141642",
+      "stories": [
+        [
+          "FH-1642.1",
+          "Exclude played episodes from ordinary playlists and queues"
+        ],
+        [
+          "FH-1642.2",
+          "Use incremental per-podcast playlist projection updates"
+        ],
+        [
+          "FH-1642.3",
+          "Audit and remove podcast database orphans"
+        ],
+        [
+          "FH-1642.4",
+          "Expose latest-only storage and cleanup statistics"
+        ],
+        [
+          "FH-1642.5",
+          "Remove reorder-page overlay regression"
+        ]
+      ],
+      "knownIssues": [],
+      "release_id": "FH-20260805-141642"
+    },
+    {
       "version": "1.4.16.41",
       "name": "Dynamic Playlist Episode Projection & Reorder Usability",
       "type": "Corrective podcast playlist release",
