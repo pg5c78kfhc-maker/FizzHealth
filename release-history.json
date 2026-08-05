@@ -2,6 +2,33 @@
   "format": "fizz-health-release-history",
   "releases": [
     {
+      "version": "1.4.16.47",
+      "name": "Master Playlist Order Projection Repair",
+      "type": "Corrective podcast ordering release",
+      "created": "2026-08-05T10:15:00-04:00",
+      "build": "141647",
+      "release_id": "FH-20260805-141647",
+      "stories": [
+        [
+          "FH-1647.1",
+          "Use each playlist saved stable-ID podcast order as the primary projection order"
+        ],
+        [
+          "FH-1647.2",
+          "Preserve master order during variety interleaving on every pass"
+        ],
+        [
+          "FH-1647.3",
+          "Build display and playback queue from the same verified projection"
+        ],
+        [
+          "FH-1647.4",
+          "Diagnose and fail on the first master-order mismatch"
+        ]
+      ],
+      "known_issues": []
+    },
+    {
       "version": "1.4.16.46",
       "name": "Podcast Swipe & Reorder Runtime Repair",
       "type": "Corrective podcast interaction release",
@@ -1748,8 +1775,8 @@
     },
     {
       "version": "1.4.15.50",
-      "name": "Library Consolidation — Phase 1",
-      "title": "Library Consolidation — Phase 1",
+      "name": "Library Consolidation \u2014 Phase 1",
+      "title": "Library Consolidation \u2014 Phase 1",
       "type": "Navigation and presentation release",
       "release_type": "Navigation and presentation release",
       "release_date": "2026-07-29",
@@ -1858,8 +1885,8 @@
     },
     {
       "version": "1.4.15.44",
-      "name": "Food Record Consolidation — Phase 3",
-      "title": "Food Record Consolidation — Phase 3",
+      "name": "Food Record Consolidation \u2014 Phase 3",
+      "title": "Food Record Consolidation \u2014 Phase 3",
       "type": "Presentation and navigation release",
       "release_type": "Presentation and navigation release",
       "release_date": "2026-07-29",
@@ -1879,8 +1906,8 @@
     },
     {
       "version": "1.4.15.43",
-      "name": "Food Record Consolidation — Phase 2",
-      "title": "Food Record Consolidation — Phase 2",
+      "name": "Food Record Consolidation \u2014 Phase 2",
+      "title": "Food Record Consolidation \u2014 Phase 2",
       "type": "Feature release",
       "release_type": "Feature release",
       "release_date": "2026-07-29",
@@ -1900,8 +1927,8 @@
     },
     {
       "version": "1.4.15.42",
-      "name": "Food Record Consolidation — Phase 1",
-      "title": "Food Record Consolidation — Phase 1",
+      "name": "Food Record Consolidation \u2014 Phase 1",
+      "title": "Food Record Consolidation \u2014 Phase 1",
       "type": "Feature and corrective release",
       "release_type": "Feature and corrective release",
       "release_date": "2026-07-29",
@@ -2388,7 +2415,7 @@
       "status": "Corrective",
       "stories": [
         "FH-1415.18A Reconcile Pantry quantity, on-hand, and status fields",
-        "FH-1415.18B Keep active library records visible in Manage → Meals"
+        "FH-1415.18B Keep active library records visible in Manage \u2192 Meals"
       ],
       "known_issues": [],
       "created_at": "2026-07-28T03:30:00-04:00",
@@ -2922,7 +2949,7 @@
         ],
         [
           "FH-1414.4",
-          "Make future dated plans become today’s Proposed entries automatically at local midnight or next app open"
+          "Make future dated plans become today\u2019s Proposed entries automatically at local midnight or next app open"
         ],
         [
           "FH-1414.5",
@@ -3245,7 +3272,7 @@
         ],
         [
           "FH-1159",
-          "Move classification maintenance into Settings → Data Enrichment"
+          "Move classification maintenance into Settings \u2192 Data Enrichment"
         ],
         [
           "FH-1164",
@@ -3932,7 +3959,7 @@
     },
     {
       "version": "1.4.11.0",
-      "name": "Daily Brief & Meal Intelligence — First Pass",
+      "name": "Daily Brief & Meal Intelligence \u2014 First Pass",
       "type": "Meal Intelligence foundation",
       "created": "2026-07-23T06:00:00-04:00",
       "build": "141100",
@@ -4354,7 +4381,7 @@
     },
     {
       "version": "1.4.10.9",
-      "name": "One-Time Food Logging — Log Once",
+      "name": "One-Time Food Logging \u2014 Log Once",
       "type": "Patch",
       "created": "2026-07-20T11:15:00-04:00",
       "build": "14108",
