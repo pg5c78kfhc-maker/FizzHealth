@@ -2686,3 +2686,17 @@ body.food-library-active .food-library-page .list.foods{padding-bottom:calc(24px
 .podcast-shared-episode-card.swipe-armed{box-shadow:inset 8px 0 0 #a9ef45,0 0 0 1px #a9ef4566}
 .podcast-shuffle-remaining{font-size:.72rem;color:#a9ef45;font-weight:800;white-space:nowrap}
 .podcast-show-played[aria-expanded="true"]{border-color:#a9ef45}
+
+/* v1.4.16.57 — expandable footer drawer and five-item primary navigation */
+.expandable-footer{position:fixed;left:50%;bottom:0;transform:translateX(-50%);width:min(520px,100vw);z-index:10000;background:#121920;border-top:1px solid #34454c;box-shadow:0 -18px 45px #0008;--drawer-height:0px}
+.expandable-footer.expanded{--drawer-height:min(43dvh,360px)}
+.footer-grab-handle{position:absolute;left:50%;top:-22px;transform:translateX(-50%);width:82px;height:30px;border:1px solid #41515a;border-bottom:0;border-radius:18px 18px 0 0;background:#121920;color:#a5ef38;display:grid;place-items:center;touch-action:none}
+.footer-grab-handle span{width:38px;height:5px;border-radius:999px;background:#748189}
+.footer-secondary-grid{height:var(--drawer-height);overflow:auto;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));align-content:start;gap:10px;padding:calc(18px + env(safe-area-inset-top,0px)) 16px 12px;transition:height .24s ease,padding .24s ease;overscroll-behavior:contain}
+.expandable-footer:not(.expanded) .footer-secondary-grid{height:0;padding-top:0;padding-bottom:0;overflow:hidden}
+.footer-secondary-grid button{min-height:82px;border:1px solid #33434b;border-radius:16px;background:#172128;color:#eef3ef;display:grid;place-items:center;align-content:center;gap:7px;font:inherit;font-weight:800}
+.footer-secondary-grid button svg{width:28px;height:28px;color:#a5ef38}.footer-secondary-grid button span{font-size:.72rem}
+.expandable-footer .primary-bottom-nav{position:relative!important;left:auto!important;bottom:auto!important;transform:none!important;width:100%!important;grid-template-columns:repeat(5,minmax(0,1fr))!important;z-index:auto!important}
+.expandable-footer .primary-bottom-nav button{min-width:0;padding-left:2px;padding-right:2px}.expandable-footer .primary-bottom-nav span{font-size:.68rem}
+body:has(.expandable-footer.expanded){overflow:hidden}.podcast-played-expanded{display:block;min-height:1px}.podcast-played-expanded .podcast-episode-list{margin-top:8px}
+@media(max-width:390px){.footer-secondary-grid{grid-template-columns:repeat(3,minmax(0,1fr));padding-left:10px;padding-right:10px}.expandable-footer .primary-bottom-nav span{font-size:.61rem}}

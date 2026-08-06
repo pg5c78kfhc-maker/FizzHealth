@@ -4,7 +4,7 @@ import {NUTRIENT_KEYS} from './nutrition/registry.js';
 
 const DB_KEY='fizz-health-sqlite-v1';
 const STORAGE_DB='FizzHealthStorage';
-const TARGET_SCHEMA_VERSION=135;
+const TARGET_SCHEMA_VERSION=136;
 let SQL, db;
 
 const migrations=[
@@ -1939,6 +1939,40 @@ const migrations=[
       WHERE COALESCE(p.enforce_variety,0)=1;
     INSERT OR REPLACE INTO release_metadata(version,release_date,build_id,schema_version,title,created_at)
       VALUES ('1.4.16.55','2026-08-05','141655',135,'Variety Rotation Schema Migration Repair','2026-08-05T20:15:00-04:00');
+  `},
+
+
+  {version:136,name:'Navigation Modernization and Legacy Meal Cleanup',sql:`
+    CREATE TABLE IF NOT EXISTS legacy_cleanup_audit (
+      cleanup_key TEXT PRIMARY KEY,
+      records_found INTEGER NOT NULL DEFAULT 0,
+      records_removed INTEGER NOT NULL DEFAULT 0,
+      detail TEXT,
+      completed_at TEXT NOT NULL
+    );
+    INSERT OR REPLACE INTO legacy_cleanup_audit(cleanup_key,records_found,records_removed,detail,completed_at)
+      SELECT 'obsolete-meal-classification',
+             COUNT(*),
+             COUNT(*),
+             'Removed unreferenced legacy meal_definitions whose obsolete classification was meal.',
+             datetime('now')
+      FROM meal_definitions md
+      WHERE LOWER(TRIM(COALESCE(md.classification,'')))='meal'
+        AND NOT EXISTS (SELECT 1 FROM meals m WHERE CAST(COALESCE(m.meal_definition_id,'') AS TEXT)=CAST(md.meal_id AS TEXT))
+        AND NOT EXISTS (SELECT 1 FROM planned_meals pm WHERE CAST(COALESCE(pm.meal_definition_id,'') AS TEXT)=CAST(md.meal_id AS TEXT));
+    DELETE FROM meal_components
+      WHERE meal_id IN (
+        SELECT md.meal_id FROM meal_definitions md
+        WHERE LOWER(TRIM(COALESCE(md.classification,'')))='meal'
+          AND NOT EXISTS (SELECT 1 FROM meals m WHERE CAST(COALESCE(m.meal_definition_id,'') AS TEXT)=CAST(md.meal_id AS TEXT))
+          AND NOT EXISTS (SELECT 1 FROM planned_meals pm WHERE CAST(COALESCE(pm.meal_definition_id,'') AS TEXT)=CAST(md.meal_id AS TEXT))
+      );
+    DELETE FROM meal_definitions
+      WHERE LOWER(TRIM(COALESCE(classification,'')))='meal'
+        AND NOT EXISTS (SELECT 1 FROM meals m WHERE CAST(COALESCE(m.meal_definition_id,'') AS TEXT)=CAST(meal_definitions.meal_id AS TEXT))
+        AND NOT EXISTS (SELECT 1 FROM planned_meals pm WHERE CAST(COALESCE(pm.meal_definition_id,'') AS TEXT)=CAST(meal_definitions.meal_id AS TEXT));
+    INSERT OR REPLACE INTO release_metadata(version,release_date,build_id,schema_version,title,created_at)
+      VALUES ('1.4.16.57','2026-08-06','141657',136,'Navigation Modernization & Production Reliability','2026-08-06T08:00:00-04:00');
   `},
 
 ];

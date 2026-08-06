@@ -1,0 +1,8 @@
+package.json
+src/main.jsx
+src/styles.css
+src/database.js
+tests/v141657-navigation-cleanup.test.js
+RELEASE-NOTES-1.4.16.57.md
+TEST-REPORT-1.4.16.57.md
+CHANGED-FILES-1.4.16.57.txt
