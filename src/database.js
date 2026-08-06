@@ -4,7 +4,7 @@ import {NUTRIENT_KEYS} from './nutrition/registry.js';
 
 const DB_KEY='fizz-health-sqlite-v1';
 const STORAGE_DB='FizzHealthStorage';
-const TARGET_SCHEMA_VERSION=139;
+const TARGET_SCHEMA_VERSION=140;
 let SQL, db;
 
 const migrations=[
@@ -2030,6 +2030,33 @@ const migrations=[
     CREATE INDEX IF NOT EXISTS idx_workout_exercises_workout_order ON workout_exercises(workout_id,display_order,created_at);
     INSERT OR REPLACE INTO release_metadata(version,release_date,build_id,schema_version,title,created_at)
       VALUES ('1.4.17.2','2026-08-06','141702',139,'Nested Workout Hierarchy & Exercises Foundation','2026-08-06T19:06:00-04:00');
+  `},
+
+  {version:140,name:'Exercise Sets Foundation',sql:`
+    CREATE TABLE IF NOT EXISTS exercise_sets (
+      set_id TEXT PRIMARY KEY,
+      exercise_id TEXT NOT NULL,
+      set_number INTEGER NOT NULL CHECK(set_number > 0),
+      reps INTEGER NOT NULL DEFAULT 10 CHECK(reps > 0),
+      weight REAL,
+      weight_unit TEXT NOT NULL DEFAULT 'lb',
+      notes TEXT,
+      created_at TEXT NOT NULL,
+      updated_at TEXT NOT NULL,
+      FOREIGN KEY(exercise_id) REFERENCES workout_exercises(exercise_id) ON DELETE CASCADE,
+      UNIQUE(exercise_id,set_number)
+    );
+    CREATE INDEX IF NOT EXISTS idx_exercise_sets_exercise_order ON exercise_sets(exercise_id,set_number,created_at);
+    WITH RECURSIVE sequence(exercise_id,set_number,max_sets,reps,created_at,updated_at) AS (
+      SELECT exercise_id,1,CASE WHEN sets > 0 THEN sets ELSE 0 END,CASE WHEN reps > 0 THEN reps ELSE 10 END,created_at,updated_at
+      FROM workout_exercises WHERE sets > 0
+      UNION ALL
+      SELECT exercise_id,set_number+1,max_sets,reps,created_at,updated_at FROM sequence WHERE set_number < max_sets
+    )
+    INSERT OR IGNORE INTO exercise_sets(set_id,exercise_id,set_number,reps,weight,weight_unit,notes,created_at,updated_at)
+      SELECT 'set-backfill-' || exercise_id || '-' || set_number,exercise_id,set_number,reps,NULL,'lb','',created_at,updated_at FROM sequence;
+    INSERT OR REPLACE INTO release_metadata(version,release_date,build_id,schema_version,title,created_at)
+      VALUES ('1.4.17.3','2026-08-06','141703',140,'Exercise Sets Foundation','2026-08-06T19:20:00-04:00');
   `},
 ];
 const canonicalNutrientColumns=Object.freeze(Object.fromEntries(NUTRIENT_KEYS.map(key=>[key,'REAL'])));

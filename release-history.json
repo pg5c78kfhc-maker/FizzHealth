@@ -2,6 +2,33 @@
   "format": "fizz-health-release-history",
   "releases": [
     {
+      "version": "1.4.17.3",
+      "name": "Exercise Sets Foundation",
+      "type": "Focused workout hierarchy release",
+      "created": "2026-08-06T19:20:00-04:00",
+      "build": "141703",
+      "release_id": "FH-20260806-141703",
+      "stories": [
+        [
+          "FH-1713.1",
+          "Make exercise cards collapsible"
+        ],
+        [
+          "FH-1713.2",
+          "Add distinct exercise edit and add-set actions"
+        ],
+        [
+          "FH-1713.3",
+          "Persist and display nested exercise sets"
+        ],
+        [
+          "FH-1713.4",
+          "Keep set editors viewport and keyboard safe"
+        ]
+      ],
+      "known_issues": []
+    },
+    {
       "version": "1.4.16.48",
       "name": "Playlist Refresh, Gesture State & Reorder Boundary Repair",
       "type": "Corrective podcast playlist release",

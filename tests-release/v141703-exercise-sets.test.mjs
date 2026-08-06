@@ -1,0 +1,11 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import fs from 'node:fs';
+const main=fs.readFileSync(new URL('../src/main.jsx',import.meta.url),'utf8');
+const db=fs.readFileSync(new URL('../src/database.js',import.meta.url),'utf8');
+const css=fs.readFileSync(new URL('../src/styles.css',import.meta.url),'utf8');
+test('release version and schema are advanced',()=>{assert.match(main,/VERSION='1\.4\.17\.3'/);assert.match(db,/TARGET_SCHEMA_VERSION=140/);});
+test('exercise cards expose edit and add-set actions',()=>{assert.match(main,/aria-label={`Edit \$\{exercise\.name\}`}/);assert.match(main,/aria-label={`Add set to \$\{exercise\.name\}`}/);});
+test('sets are persisted under exercises',()=>{assert.match(db,/CREATE TABLE IF NOT EXISTS exercise_sets/);assert.match(db,/FOREIGN KEY\(exercise_id\) REFERENCES workout_exercises/);assert.match(main,/SELECT \* FROM exercise_sets WHERE exercise_id=\?/);});
+test('exercise cards and set lists are collapsible and nested',()=>{assert.match(main,/expandedExercises/);assert.match(main,/nested-set-list/);assert.match(main,/ExerciseSetEditor/);});
+test('set editor remains in keyboard-safe editor shell',()=>{assert.match(main,/workout-editor-page/);assert.match(css,/\.workout-editor-page/);assert.match(css,/overflow-x:hidden/);});

@@ -1,0 +1,14 @@
+VERSION.json — Advanced release, build, schema, and story metadata to v1.4.17.3.
+ReleaseNotes.md — Updated the in-project current-release summary.
+release-history.json — Added the v1.4.17.3 release-history entry.
+package.json — Advanced package version to 1.4.17.3.
+package-lock.json — Advanced root package metadata to 1.4.17.3.
+src/main.jsx — Added collapsible exercise cards, exercise edit/add-set controls, nested set rendering, set create/edit workflow, and release metadata.
+src/database.js — Added schema migration 140 for exercise_sets with idempotent legacy backfill.
+src/styles.css — Added responsive nested exercise/set card styles and controls.
+src/decision/engine.js — Synchronized the application release version used by release verification.
+public/sw.js — Advanced the service-worker cache version.
+tests-release/v141703-exercise-sets.test.mjs — Added focused release regression coverage.
+RELEASE-NOTES-1.4.17.3.md — Added packaged release notes.
+CHANGED-FILES-1.4.17.3.txt — Added this changed-files manifest.
+TEST-REPORT-1.4.17.3.md — Added commands, results, limitations, and acceptance verification.
