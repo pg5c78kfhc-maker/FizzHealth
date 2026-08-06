@@ -1,0 +1,10 @@
+MODIFIED package.json — bump application version to 1.4.17.1.
+MODIFIED package-lock.json — align root package version with 1.4.17.1.
+MODIFIED VERSION.json — update release, build, schema, and deployment metadata.
+MODIFIED src/main.jsx — standard workout headers, program pencil navigation, workouts list, and workout create/edit flow.
+MODIFIED src/styles.css — responsive workout containment, card actions, workout list styling, and narrow-width rules.
+MODIFIED src/database.js — migration 138 and program_workouts persistence.
+ADDED tests/workout-navigation-responsive.test.js — focused source, migration, navigation, CRUD, and overflow regression checks.
+ADDED RELEASE-NOTES-1.4.17.1.md — release scope, behavior, migration notes, and limitations.
+ADDED CHANGED-FILES-1.4.17.1.txt — complete release change manifest.
+ADDED TEST-REPORT-1.4.17.1.md — commands, results, build limitation, and acceptance verification.

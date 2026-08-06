@@ -1,0 +1,11 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import fs from 'node:fs';
+const main=fs.readFileSync('src/main.jsx','utf8');
+const css=fs.readFileSync('src/styles.css','utf8');
+const db=fs.readFileSync('src/database.js','utf8');
+test('Programs uses standard close and add header',()=>{assert.match(main,/WorkoutHeader title="Programs"/);assert.match(main,/addLabel="Create new program"/);assert.match(main,/onClose=\{onBack\}/)});
+test('program cards expose pencil and program workouts page',()=>{assert.match(main,/workout-program-pencil/);assert.match(main,/ProgramWorkoutsPage/);assert.match(main,/Manage workouts for/)});
+test('workouts can be created and edited per program',()=>{assert.match(main,/INSERT INTO program_workouts/);assert.match(main,/UPDATE program_workouts/);assert.match(main,/Create workout in/)});
+test('schema migration 138 creates program workouts',()=>{assert.match(db,/version:138/);assert.match(db,/CREATE TABLE IF NOT EXISTS program_workouts/);assert.match(db,/FOREIGN KEY\(program_id\)/)});
+test('workout module blocks horizontal overflow and constrains controls',()=>{assert.match(css,/\.workout-module-page\{[^}]*max-width:100%[^}]*overflow-x:clip/);assert.match(css,/html,body,#root\{max-width:100%;overflow-x:hidden/);assert.match(css,/\.workout-program-form input,[^{]+\{max-width:100%/)});

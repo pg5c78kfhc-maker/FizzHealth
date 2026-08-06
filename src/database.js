@@ -1995,6 +1995,24 @@ const migrations=[
       VALUES ('1.4.17.0','2026-08-06','141700',137,'Workout Programs Foundation','2026-08-06T11:41:00-04:00');
   `},
 
+
+  {version:138,name:'Workout Navigation & Responsive Foundation',sql:`
+    CREATE TABLE IF NOT EXISTS program_workouts (
+      workout_id TEXT PRIMARY KEY,
+      program_id TEXT NOT NULL,
+      name TEXT NOT NULL,
+      focus TEXT,
+      notes TEXT,
+      display_order INTEGER NOT NULL DEFAULT 0,
+      created_at TEXT NOT NULL,
+      updated_at TEXT NOT NULL,
+      FOREIGN KEY(program_id) REFERENCES workout_programs(program_id) ON DELETE CASCADE
+    );
+    CREATE INDEX IF NOT EXISTS idx_program_workouts_program_order ON program_workouts(program_id,display_order,created_at);
+    INSERT OR REPLACE INTO release_metadata(version,release_date,build_id,schema_version,title,created_at)
+      VALUES ('1.4.17.1','2026-08-06','141701',138,'Workout Navigation & Responsive Foundation','2026-08-06T12:10:00-04:00');
+  `},
+
 ];
 const canonicalNutrientColumns=Object.freeze(Object.fromEntries(NUTRIENT_KEYS.map(key=>[key,'REAL'])));
 
