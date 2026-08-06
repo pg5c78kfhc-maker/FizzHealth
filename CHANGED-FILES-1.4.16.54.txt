@@ -1,0 +1,6 @@
+package.json
+src/main.jsx
+tests/v141654-enforced-variety-projection.test.js
+RELEASE-NOTES-1.4.16.54.md
+TEST-REPORT-1.4.16.54.md
+CHANGED-FILES-1.4.16.54.txt
