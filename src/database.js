@@ -4,7 +4,7 @@ import {NUTRIENT_KEYS} from './nutrition/registry.js';
 
 const DB_KEY='fizz-health-sqlite-v1';
 const STORAGE_DB='FizzHealthStorage';
-const TARGET_SCHEMA_VERSION=137;
+const TARGET_SCHEMA_VERSION=139;
 let SQL, db;
 
 const migrations=[
@@ -2013,6 +2013,24 @@ const migrations=[
       VALUES ('1.4.17.1','2026-08-06','141701',138,'Workout Navigation & Responsive Foundation','2026-08-06T12:10:00-04:00');
   `},
 
+
+  {version:139,name:'Nested Workout Hierarchy and Exercises Foundation',sql:`
+    CREATE TABLE IF NOT EXISTS workout_exercises (
+      exercise_id TEXT PRIMARY KEY,
+      workout_id TEXT NOT NULL,
+      name TEXT NOT NULL,
+      sets INTEGER NOT NULL DEFAULT 3 CHECK(sets > 0),
+      reps INTEGER NOT NULL DEFAULT 10 CHECK(reps > 0),
+      notes TEXT,
+      display_order INTEGER NOT NULL DEFAULT 0,
+      created_at TEXT NOT NULL,
+      updated_at TEXT NOT NULL,
+      FOREIGN KEY(workout_id) REFERENCES program_workouts(workout_id) ON DELETE CASCADE
+    );
+    CREATE INDEX IF NOT EXISTS idx_workout_exercises_workout_order ON workout_exercises(workout_id,display_order,created_at);
+    INSERT OR REPLACE INTO release_metadata(version,release_date,build_id,schema_version,title,created_at)
+      VALUES ('1.4.17.2','2026-08-06','141702',139,'Nested Workout Hierarchy & Exercises Foundation','2026-08-06T19:06:00-04:00');
+  `},
 ];
 const canonicalNutrientColumns=Object.freeze(Object.fromEntries(NUTRIENT_KEYS.map(key=>[key,'REAL'])));
 

@@ -1,0 +1,9 @@
+src/main.jsx — Replaced the separate Workouts page with nested program/workout/exercise cards; added distinct pencil/plus actions; added exercise create/edit flow; updated release metadata and version constants.
+src/database.js — Advanced target schema to 139 and added the workout_exercises migration, index, foreign key, and release metadata.
+src/styles.css — Added nested hierarchy styling and visualViewport/keyboard-safe editor containment rules.
+package.json — Updated application version to 1.4.17.2.
+package-lock.json — Updated root package version metadata to 1.4.17.2.
+tests/v141702-nested-workout-hierarchy.test.js — Added focused release regression coverage for hierarchy, actions, migration, exercise fields, and viewport containment.
+RELEASE-NOTES-1.4.17.2.md — Added release scope, behavior, migration notes, and limitations.
+CHANGED-FILES-1.4.17.2.txt — Added complete changed-files manifest.
+TEST-REPORT-1.4.17.2.md — Added commands, environment, results, build limitation, and acceptance verification.
