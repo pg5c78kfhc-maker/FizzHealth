@@ -1,0 +1,10 @@
+VERSION.json — Updated release, build, schema, and version metadata to v1.4.17.0.
+package.json — Updated package version to v1.4.17.0.
+package-lock.json — Updated root lockfile package version metadata to v1.4.17.0.
+src/database.js — Added schema migration 137 and persistent workout_programs storage.
+src/main.jsx — Added Workout footer navigation, Programs list, create/edit editor, calculated end date, and release-history entry.
+src/styles.css — Added six-item footer layout and Workout Programs page/editor styling.
+tests-release/v141700-workout-programs.test.js — Added focused release regression coverage.
+RELEASE-NOTES-1.4.17.0.md — Added release scope, behavior, migration notes, and limitations.
+CHANGED-FILES-1.4.17.0.txt — Added complete release change manifest.
+TEST-REPORT-1.4.17.0.md — Added commands, environment, results, failures, and acceptance verification.

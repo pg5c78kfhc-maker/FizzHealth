@@ -4,7 +4,7 @@ import {NUTRIENT_KEYS} from './nutrition/registry.js';
 
 const DB_KEY='fizz-health-sqlite-v1';
 const STORAGE_DB='FizzHealthStorage';
-const TARGET_SCHEMA_VERSION=136;
+const TARGET_SCHEMA_VERSION=137;
 let SQL, db;
 
 const migrations=[
@@ -1973,6 +1973,26 @@ const migrations=[
         AND NOT EXISTS (SELECT 1 FROM planned_meals pm WHERE CAST(COALESCE(pm.meal_definition_id,'') AS TEXT)=CAST(meal_definitions.meal_id AS TEXT));
     INSERT OR REPLACE INTO release_metadata(version,release_date,build_id,schema_version,title,created_at)
       VALUES ('1.4.16.57','2026-08-06','141657',136,'Navigation Modernization & Production Reliability','2026-08-06T08:00:00-04:00');
+  `},
+
+
+  {version:137,name:'Workout Programs Foundation',sql:`
+    CREATE TABLE IF NOT EXISTS workout_programs (
+      program_id TEXT PRIMARY KEY,
+      name TEXT NOT NULL,
+      description TEXT,
+      goal TEXT,
+      status TEXT NOT NULL DEFAULT 'Planned',
+      start_date TEXT,
+      duration_weeks INTEGER NOT NULL DEFAULT 8 CHECK(duration_weeks > 0),
+      notes TEXT,
+      display_order INTEGER NOT NULL DEFAULT 0,
+      created_at TEXT NOT NULL,
+      updated_at TEXT NOT NULL
+    );
+    CREATE INDEX IF NOT EXISTS idx_workout_programs_status_start ON workout_programs(status,start_date,display_order);
+    INSERT OR REPLACE INTO release_metadata(version,release_date,build_id,schema_version,title,created_at)
+      VALUES ('1.4.17.0','2026-08-06','141700',137,'Workout Programs Foundation','2026-08-06T11:41:00-04:00');
   `},
 
 ];
