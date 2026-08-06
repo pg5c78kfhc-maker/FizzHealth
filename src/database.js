@@ -4,7 +4,7 @@ import {NUTRIENT_KEYS} from './nutrition/registry.js';
 
 const DB_KEY='fizz-health-sqlite-v1';
 const STORAGE_DB='FizzHealthStorage';
-const TARGET_SCHEMA_VERSION=133;
+const TARGET_SCHEMA_VERSION=135;
 let SQL, db;
 
 const migrations=[
@@ -1906,6 +1906,41 @@ const migrations=[
       VALUES ('1.4.16.49','2026-08-05','141649',133,'Shuffle Playlist Foundation & Gesture Reliability','2026-08-05T14:00:00-04:00');
   `},
 
+
+  {version:134,name:'Variety Rotation Unification',sql:`
+    CREATE TABLE IF NOT EXISTS podcast_playlist_variety_rotation (
+      playlist_id TEXT NOT NULL,
+      podcast_id TEXT NOT NULL,
+      rotation_position INTEGER NOT NULL DEFAULT 0,
+      updated_at TEXT NOT NULL,
+      PRIMARY KEY(playlist_id,podcast_id)
+    );
+    CREATE INDEX IF NOT EXISTS idx_podcast_playlist_variety_rotation_order
+      ON podcast_playlist_variety_rotation(playlist_id,rotation_position,podcast_id);
+    INSERT OR REPLACE INTO release_metadata(version,release_date,build_id,schema_version,title,created_at)
+      VALUES ('1.4.16.52','2026-08-05','141652',134,'Variety Rotation Unification','2026-08-05T18:00:00-04:00');
+  `},
+
+  {version:135,name:'Variety Rotation Schema Migration Repair',sql:`
+    CREATE TABLE IF NOT EXISTS podcast_playlist_variety_rotation (
+      playlist_id TEXT NOT NULL,
+      podcast_id TEXT NOT NULL,
+      rotation_position INTEGER NOT NULL DEFAULT 0,
+      updated_at TEXT NOT NULL,
+      PRIMARY KEY(playlist_id,podcast_id)
+    );
+    CREATE INDEX IF NOT EXISTS idx_podcast_playlist_variety_rotation_order
+      ON podcast_playlist_variety_rotation(playlist_id,rotation_position,podcast_id);
+    INSERT OR IGNORE INTO podcast_playlist_variety_rotation(playlist_id,podcast_id,rotation_position,updated_at)
+      SELECT p.playlist_id,s.podcast_id,COALESCE(o.position,2147483647),datetime('now')
+      FROM podcast_playlists p
+      JOIN podcast_playlist_subscriptions s ON s.playlist_id=p.playlist_id AND s.subscribed=1
+      LEFT JOIN podcast_playlist_podcast_order o ON o.playlist_id=s.playlist_id AND o.podcast_id=s.podcast_id
+      WHERE COALESCE(p.enforce_variety,0)=1;
+    INSERT OR REPLACE INTO release_metadata(version,release_date,build_id,schema_version,title,created_at)
+      VALUES ('1.4.16.55','2026-08-05','141655',135,'Variety Rotation Schema Migration Repair','2026-08-05T20:15:00-04:00');
+  `},
+
 ];
 const canonicalNutrientColumns=Object.freeze(Object.fromEntries(NUTRIENT_KEYS.map(key=>[key,'REAL'])));
 
@@ -2087,6 +2122,32 @@ function repairFeatureSchema(){
     if(migration.sql.trim())runMigrationSql(migration.sql);
   }
 }
+function ensureVarietyRotationSchema(){
+  // This invariant is checked on every open because v1.4.16.52 could record migration 134
+  // while an existing database still lacked the physical rotation table.
+  runMigrationSql(`
+    CREATE TABLE IF NOT EXISTS podcast_playlist_variety_rotation (
+      playlist_id TEXT NOT NULL,
+      podcast_id TEXT NOT NULL,
+      rotation_position INTEGER NOT NULL DEFAULT 0,
+      updated_at TEXT NOT NULL,
+      PRIMARY KEY(playlist_id,podcast_id)
+    );
+    CREATE INDEX IF NOT EXISTS idx_podcast_playlist_variety_rotation_order
+      ON podcast_playlist_variety_rotation(playlist_id,rotation_position,podcast_id);
+  `);
+  if(hasTable('podcast_playlists')&&hasTable('podcast_playlist_subscriptions')){
+    db.run(`
+      INSERT OR IGNORE INTO podcast_playlist_variety_rotation(playlist_id,podcast_id,rotation_position,updated_at)
+      SELECT p.playlist_id,s.podcast_id,COALESCE(o.position,2147483647),datetime('now')
+      FROM podcast_playlists p
+      JOIN podcast_playlist_subscriptions s ON s.playlist_id=p.playlist_id AND s.subscribed=1
+      LEFT JOIN podcast_playlist_podcast_order o ON o.playlist_id=s.playlist_id AND o.podcast_id=s.podcast_id
+      WHERE COALESCE(p.enforce_variety,0)=1
+    `);
+  }
+  if(!hasTable('podcast_playlist_variety_rotation'))throw new Error('Variety rotation schema invariant failed.');
+}
 async function migrate(onProgress=()=>{}){
   onProgress('Checking database structure…');
   if(!hasTable('schema_migrations'))db.run('CREATE TABLE IF NOT EXISTS schema_migrations (version INTEGER PRIMARY KEY, name TEXT NOT NULL, applied_at TEXT NOT NULL)');
@@ -2115,6 +2176,7 @@ async function migrate(onProgress=()=>{}){
     onProgress('Finalizing database structure…');
     db.run('BEGIN');
     if(needsRepair)repairFeatureSchema();
+    ensureVarietyRotationSchema();
     reconcileImportSchema({apply:true});
     if(hasTable('settings'))db.run('INSERT OR REPLACE INTO settings(key,value) VALUES (?,?)',[repairMarker,'1']);
     db.run('COMMIT');
