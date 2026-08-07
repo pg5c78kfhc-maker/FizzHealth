@@ -2765,3 +2765,64 @@ html,body,#root{max-width:100%;overflow-x:hidden}.app,.content{width:100%;max-wi
 
 /* v1.4.17.12 workout completion and calorie exchange */
 .routine-complete-mark{width:34px;height:34px;display:grid;place-items:center;border-radius:999px;background:#173425;color:#49d88b;border:1px solid #49d88b;margin-top:8px}.routine-complete-mark svg{width:20px}.routine-complete-mark.ended-early{background:#332b18;color:#f2bd58;border-color:#8b7134}.completed-workout-label.ended-early{color:#f2bd58!important}.workout-calorie-label{color:#a9ef45!important;font-weight:800}.end-workout-button{margin:0 14px 12px;width:calc(100% - 28px);display:flex;align-items:center;justify-content:center;gap:8px;padding:10px 12px;border:1px solid #8d5b5b;border-radius:12px;background:#241719;color:#ffb3b3;font-weight:900}.end-workout-button svg{width:17px}.workout-exchange-actions{display:grid;grid-template-columns:1fr;gap:8px;margin:0 14px 12px}.workout-exchange-actions button{display:flex;align-items:center;justify-content:center;gap:7px;min-width:0;padding:10px;border:1px solid #42545d;border-radius:12px;background:#10191e;color:#a9ef45;font-weight:900}.workout-exchange-actions svg{width:17px}.exercise-execution-page .execution-summary small{display:block;margin-top:7px;color:#9ca8ad}.exercise-execution-page{gap:10px}.inline-set-shell{margin-bottom:0}.nested-set-list{gap:8px}@media(max-width:390px){.workout-exchange-actions{grid-template-columns:1fr}}
+
+/* v1.4.17.14 — compact program-card presentation */
+.workout-program-card.no-program-icon.active-program-card{
+  min-height:0;
+  padding:14px 14px 42px;
+}
+.workout-program-card.no-program-icon.active-program-card .workout-program-open{
+  position:static;
+  display:block;
+  width:100%;
+  min-width:0;
+}
+.workout-program-card.no-program-icon.active-program-card .workout-program-copy{
+  width:100%;
+  min-width:0;
+}
+.workout-program-card.no-program-icon.active-program-card .workout-program-title{
+  display:block;
+  padding-right:94px;
+  min-height:38px;
+}
+.workout-program-card.no-program-icon.active-program-card .workout-program-title b{
+  display:block;
+  white-space:normal;
+  overflow:visible;
+  text-overflow:clip;
+  overflow-wrap:anywhere;
+}
+.workout-program-card.no-program-icon.active-program-card .workout-program-dates{
+  width:100%;
+  margin-top:7px;
+  gap:5px 12px;
+}
+.workout-program-card.no-program-icon.active-program-card .workout-program-copy>small{
+  margin-top:3px;
+}
+.workout-program-card.no-program-icon.active-program-card .workout-program-copy p{
+  width:100%;
+  margin:7px 0 0;
+  line-height:1.35;
+}
+.workout-program-card.no-program-icon.active-program-card .workout-program-open>svg{
+  position:absolute;
+  left:50%;
+  bottom:10px;
+  width:20px;
+  transform:translateX(-50%);
+  color:#a9ef45;
+}
+.workout-program-card.no-program-icon.active-program-card .workout-card-actions{
+  top:12px;
+  right:12px;
+  width:auto;
+  display:flex;
+  grid-template-columns:none;
+}
+@media(max-width:390px){
+  .workout-program-card.no-program-icon.active-program-card{padding:12px 12px 38px}
+  .workout-program-card.no-program-icon.active-program-card .workout-program-title{padding-right:82px;min-height:34px}
+  .workout-program-card.no-program-icon.active-program-card .workout-program-dates{display:flex;gap:4px 10px}
+}

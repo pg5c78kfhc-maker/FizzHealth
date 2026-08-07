@@ -1,0 +1,13 @@
+package.json — Bumped application package version to 1.4.17.14.
+package-lock.json — Synchronized package metadata version to 1.4.17.14.
+VERSION.json — Updated authoritative release metadata; schema remains 146.
+release-history.json — Added v1.4.17.14 release history entry.
+ReleaseNotes.md — Prepended current in-project release notes.
+public/sw.js — Bumped service-worker cache version to v1.4.17.14.
+src/main.jsx — Removed redundant Active card indicators, added active-card presentation hook, and updated release/About metadata.
+src/styles.css — Compacted Active program cards, expanded summary text width, and anchored the disclosure chevron at the bottom edge.
+src/decision/engine.js — Synchronized application version metadata.
+tests-release/v141714-program-card-compaction.test.mjs — Added focused regression coverage for compact Active program-card presentation.
+RELEASE-NOTES-1.4.17.14.md — Release deliverable documenting scope and migration status.
+CHANGED-FILES-1.4.17.14.txt — Release changed-files manifest.
+TEST-REPORT-1.4.17.14.md — Release verification report.

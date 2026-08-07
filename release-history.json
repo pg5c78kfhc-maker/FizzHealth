@@ -2,6 +2,33 @@
   "format": "fizz-health-release-history",
   "releases": [
     {
+      "version": "1.4.17.14",
+      "name": "Compact Program Cards",
+      "type": "Focused workout program UI refinement release",
+      "created": "2026-08-07T14:53:00-04:00",
+      "build": "141714",
+      "release_id": "FH-20260807-141714",
+      "stories": [
+        [
+          "FH-17114.1",
+          "Remove redundant Active status indicators from cards on the Active tab"
+        ],
+        [
+          "FH-17114.2",
+          "Compact active program cards and let summary text use the available horizontal width"
+        ],
+        [
+          "FH-17114.3",
+          "Anchor the program expand/collapse chevron at the bottom edge of the card"
+        ],
+        [
+          "FH-17114.4",
+          "Preserve program lifecycle tabs, actions, and expansion behavior while changing presentation only"
+        ]
+      ],
+      "known_issues": []
+    },
+    {
       "version": "1.4.17.13",
       "name": "Calorie Import Parser Hotfix",
       "type": "Blocking corrective workout exchange release",

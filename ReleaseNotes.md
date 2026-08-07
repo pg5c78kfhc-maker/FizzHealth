@@ -1,3 +1,29 @@
+# Fizz Health v1.4.17.14 — Compact Program Cards
+
+Release date: 2026-08-07  
+Build: 141714  
+Release ID: FH-20260807-141714  
+Schema: 146
+
+## Implemented scope
+
+- FH-17114.1 — Remove redundant Active status indicators from cards already shown on the Active tab.
+- FH-17114.2 — Compact active program cards and allow summary text to use the available card width.
+- FH-17114.3 — Move the expand/collapse chevron to the centered bottom edge of the program card.
+- FH-17114.4 — Preserve lifecycle tabs, edit/add controls, and nested workout expansion behavior.
+
+## User-facing behavior
+
+Active program cards no longer repeat the Active state inside the card. Program metadata and description use the available horizontal width, reducing unnecessary wrapping and vertical height. The disclosure chevron now sits at the bottom edge of the card, directly above the section that expands.
+
+## Migration notes
+
+No database migration. Schema remains 146.
+
+Acceptance story range: FH-17114.1-FH-17114.4
+
+---
+
 # Fizz Health v1.4.17.13 — Calorie Import Parser Hotfix
 
 Release date: 2026-08-07  
