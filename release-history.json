@@ -2,6 +2,37 @@
   "format": "fizz-health-release-history",
   "releases": [
     {
+      "version": "1.4.17.9",
+      "name": "Weekly Workout Execution, Rest Timing & Health Timeline",
+      "type": "Workout execution lifecycle release",
+      "created": "2026-08-07T10:00:00-04:00",
+      "build": "141709",
+      "release_id": "FH-20260807-141709",
+      "stories": [
+        [
+          "FH-1719.1",
+          "Gate active program execution by current week and advance after every routine in the week is completed"
+        ],
+        [
+          "FH-1719.2",
+          "Persist workout start/completion timestamps and calculated duration"
+        ],
+        [
+          "FH-1719.3",
+          "Add configurable rest-between-sets and rest-between-exercises countdown state with draining progress bars"
+        ],
+        [
+          "FH-1719.4",
+          "Create completed workout events in the Health & meal timeline"
+        ],
+        [
+          "FH-1719.5",
+          "Preserve immutable historical workout imports while storing each new execution as its own occurrence"
+        ]
+      ],
+      "knownIssues": []
+    },
+    {
       "version": "1.4.17.8",
       "name": "Active Program Execution & Progressive Overload",
       "type": "Workout execution foundation release",

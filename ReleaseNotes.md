@@ -1,6 +1,5 @@
-# Fizz Health v1.4.17.8 — Active Program Execution & Progressive Overload
+# Fizz Health v1.4.17.9 — Weekly Workout Execution, Rest Timing & Health Timeline
 
-Release ID: FH-20260807-141708  
-Stories: FH-1718.1-FH-1718.5
+Completed story: FH-1719.1-FH-1719.5
 
-Adds active-program execution infrastructure, routine/exercise selection, reusable exercise-library selection and reordering, routine-exercise progression settings, performed-set logging with prior-performance references, and fourth-set progressive-overload state. Historical performed workouts remain immutable. Database schema advances to 143.
+This release adds week-scoped active-program execution, persisted workout start/completion timing and duration, configurable rest timers between sets and exercises with draining progress indicators, automatic week advancement/program completion, and completed-workout entries in the Health & meal timeline. Imported workout history remains immutable.

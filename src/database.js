@@ -5,7 +5,7 @@ import {WORKOUT_HISTORY_IMPORT_SQL} from './workouts/historyImportSql.js';
 
 const DB_KEY='fizz-health-sqlite-v1';
 const STORAGE_DB='FizzHealthStorage';
-const TARGET_SCHEMA_VERSION=143;
+const TARGET_SCHEMA_VERSION=144;
 let SQL, db;
 
 const migrations=[
@@ -2182,6 +2182,31 @@ const migrations=[
     CREATE INDEX IF NOT EXISTS idx_workout_execution_sets_exercise ON workout_execution_sets(exercise_id,completed_at);
     INSERT OR REPLACE INTO release_metadata(version,release_date,build_id,schema_version,title,created_at)
       VALUES ('1.4.17.8','2026-08-07','141708',143,'Active Program Execution and Progressive Overload','2026-08-07T08:57:00-04:00');
+  `},
+
+
+  {version:144,name:'Weekly Workout Execution, Rest Timing and Health Timeline',sql:`
+    ALTER TABLE workout_programs ADD COLUMN current_week INTEGER NOT NULL DEFAULT 1;
+    ALTER TABLE workout_programs ADD COLUMN completed_at TEXT;
+    ALTER TABLE workout_programs ADD COLUMN terminated_at TEXT;
+    ALTER TABLE program_workouts ADD COLUMN rest_between_exercises_seconds INTEGER NOT NULL DEFAULT 120;
+    ALTER TABLE workout_exercises ADD COLUMN rest_between_sets_seconds INTEGER NOT NULL DEFAULT 90;
+    ALTER TABLE workout_execution_sessions ADD COLUMN week_number INTEGER NOT NULL DEFAULT 1;
+    ALTER TABLE workout_execution_sessions ADD COLUMN duration_minutes REAL;
+    CREATE INDEX IF NOT EXISTS idx_workout_execution_week ON workout_execution_sessions(program_id,week_number,workout_id,status);
+    CREATE TABLE IF NOT EXISTS workout_rest_timers (
+      timer_id TEXT PRIMARY KEY,
+      execution_id TEXT NOT NULL,
+      scope TEXT NOT NULL CHECK(scope IN ('set','exercise')),
+      exercise_id TEXT NOT NULL,
+      set_number INTEGER,
+      started_at TEXT NOT NULL,
+      ends_at TEXT NOT NULL,
+      status TEXT NOT NULL DEFAULT 'active'
+    );
+    CREATE INDEX IF NOT EXISTS idx_workout_rest_timer_active ON workout_rest_timers(execution_id,status,ends_at);
+    INSERT OR REPLACE INTO release_metadata(version,release_date,build_id,schema_version,title,created_at)
+      VALUES ('1.4.17.9','2026-08-07','141709',144,'Weekly Workout Execution, Rest Timing & Health Timeline','2026-08-07T10:00:00-04:00');
   `},
 
 ];

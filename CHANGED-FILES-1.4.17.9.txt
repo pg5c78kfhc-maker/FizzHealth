@@ -1,0 +1,14 @@
+ReleaseNotes.md — Updated current in-project release summary to v1.4.17.9.
+VERSION.json — Updated version/build/deployment/schema metadata to v1.4.17.9 / schema 144.
+package.json — Updated package version to 1.4.17.9.
+package-lock.json — Updated root package version metadata to 1.4.17.9.
+public/sw.js — Updated service-worker cache version to v1.4.17.9.
+release-history.json — Added v1.4.17.9 as the current release entry.
+src/database.js — Added migration 144 for weekly execution state, workout duration, configurable rest intervals, and persisted rest timers.
+src/decision/engine.js — Updated centralized engine version metadata to v1.4.17.9.
+src/main.jsx — Added week-scoped workout lifecycle, start/end/duration completion logic, rest countdown behavior, completion metadata, and Health timeline workout events.
+src/styles.css — Added draining workout rest progress-bar and completed-workout timeline styling.
+tests/v141709-weekly-workout-lifecycle.test.js — Added focused regression coverage for migration 144, weekly gating, duration, rest timing, timeline integration, and history immutability.
+RELEASE-NOTES-1.4.17.9.md — Added requisite release notes artifact.
+CHANGED-FILES-1.4.17.9.txt — Added requisite changed-files manifest.
+TEST-REPORT-1.4.17.9.md — Added requisite release verification report.
