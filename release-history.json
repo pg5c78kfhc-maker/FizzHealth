@@ -2,6 +2,36 @@
   "format": "fizz-health-release-history",
   "releases": [
     {
+      "version": "1.4.17.6",
+      "name": "Historical Workout Planning UI Infrastructure",
+      "type": "Workout planning history integration release",
+      "created": "2026-08-07T07:20:00-04:00",
+      "build": "141706",
+      "release_id": "FH-20260807-141706",
+      "stories": [
+        [
+          "FH-1716.1",
+          "Historical workout picker from program plus"
+        ],
+        [
+          "FH-1716.2",
+          "Newest-first imported workout selection"
+        ],
+        [
+          "FH-1716.3",
+          "Deep-copy exercises and sets without modifying history"
+        ],
+        [
+          "FH-1716.4",
+          "Swipe-left confirmed removal of program copies"
+        ],
+        [
+          "FH-1716.5",
+          "Preserve imported workout metadata, equipment, set weight/reps/RIR, and source linkage in editable copies"
+        ]
+      ]
+    },
+    {
       "version": "1.4.17.5",
       "name": "Workout History Migration Compatibility Repair",
       "type": "Blocking corrective database release",

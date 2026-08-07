@@ -1,0 +1,14 @@
+ReleaseNotes.md — Updates the canonical current-release summary to v1.4.17.6.
+VERSION.json — Updates centralized version/build/schema/release metadata to v1.4.17.6 / schema 142.
+package.json — Bumps application package version to 1.4.17.6.
+package-lock.json — Keeps lockfile package metadata consistent at 1.4.17.6.
+public/sw.js — Bumps service-worker cache namespace to v1.4.17.6.
+release-history.json — Adds v1.4.17.6 to the release registry.
+src/database.js — Adds migration 142 source-link/RIR fields required for historical-to-program copying.
+src/decision/engine.js — Keeps engine version metadata consistent with the app version.
+src/main.jsx — Adds newest-first historical workout picker, deep-copy workflow, source-data preview, RIR-aware set editing/display, and swipe-left confirmed removal of planned copies.
+src/styles.css — Adds viewport-safe historical picker, preview, and swipe-delete styling.
+tests/v141706-historical-workout-planning-ui.test.js — Adds focused regression coverage for the release scope.
+RELEASE-NOTES-1.4.17.6.md — Release notes deliverable.
+CHANGED-FILES-1.4.17.6.txt — Added/modified file manifest.
+TEST-REPORT-1.4.17.6.md — Test/build/acceptance report.

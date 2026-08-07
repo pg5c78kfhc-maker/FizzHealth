@@ -2133,6 +2133,29 @@ const migrations=[
       VALUES ('1.4.17.5','2026-08-07','141705',141,'Workout History Migration Compatibility Repair','2026-08-07T06:46:00-04:00');
   `},
 
+  {version:142,name:'Historical Workout Planning UI Infrastructure',sql:`
+    ALTER TABLE program_workouts ADD COLUMN source_session_id TEXT;
+    ALTER TABLE program_workouts ADD COLUMN source_performed_at TEXT;
+    ALTER TABLE program_workouts ADD COLUMN source_program_name TEXT;
+    ALTER TABLE program_workouts ADD COLUMN source_day_label TEXT;
+    ALTER TABLE program_workouts ADD COLUMN source_week_number INTEGER;
+    ALTER TABLE program_workouts ADD COLUMN source_duration_minutes REAL;
+    ALTER TABLE program_workouts ADD COLUMN source_duration_text TEXT;
+    CREATE INDEX IF NOT EXISTS idx_program_workouts_source_session ON program_workouts(source_session_id);
+    ALTER TABLE workout_exercises ADD COLUMN source_session_exercise_id TEXT;
+    ALTER TABLE workout_exercises ADD COLUMN equipment TEXT;
+    ALTER TABLE workout_exercises ADD COLUMN prescription_text TEXT;
+    ALTER TABLE workout_exercises ADD COLUMN target_rir REAL;
+    ALTER TABLE workout_exercises ADD COLUMN source_line TEXT;
+    CREATE INDEX IF NOT EXISTS idx_workout_exercises_source_session ON workout_exercises(source_session_exercise_id);
+    ALTER TABLE exercise_sets ADD COLUMN rir REAL;
+    ALTER TABLE exercise_sets ADD COLUMN source_session_set_id TEXT;
+    CREATE INDEX IF NOT EXISTS idx_exercise_sets_source_session ON exercise_sets(source_session_set_id);
+    INSERT OR REPLACE INTO release_metadata(version,release_date,build_id,schema_version,title,created_at)
+      VALUES ('1.4.17.6','2026-08-07','141706',142,'Historical Workout Planning UI Infrastructure','2026-08-07T07:20:00-04:00');
+  `},
+
+
 ];
 const canonicalNutrientColumns=Object.freeze(Object.fromEntries(NUTRIENT_KEYS.map(key=>[key,'REAL'])));
 
