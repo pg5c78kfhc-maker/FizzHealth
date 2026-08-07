@@ -5,7 +5,7 @@ import {WORKOUT_HISTORY_IMPORT_SQL} from './workouts/historyImportSql.js';
 
 const DB_KEY='fizz-health-sqlite-v1';
 const STORAGE_DB='FizzHealthStorage';
-const TARGET_SCHEMA_VERSION=145;
+const TARGET_SCHEMA_VERSION=146;
 let SQL, db;
 
 const migrations=[
@@ -2263,6 +2263,18 @@ const migrations=[
       VALUES ('1.4.17.10','2026-08-07','141710',145,'Program Lifecycle Tabs Hotfix','2026-08-07T10:18:00-04:00');
   `},
 
+
+  {version:146,name:'Workout Completion Status and Calorie Estimate Exchange',sql:`
+    ALTER TABLE workout_execution_sessions ADD COLUMN end_reason TEXT;
+    ALTER TABLE workout_execution_sessions ADD COLUMN estimated_calories REAL;
+    ALTER TABLE workout_execution_sessions ADD COLUMN calorie_estimate_json TEXT;
+    ALTER TABLE workout_execution_sessions ADD COLUMN calorie_estimated_at TEXT;
+    ALTER TABLE workout_execution_sessions ADD COLUMN calorie_estimate_source TEXT;
+    ALTER TABLE workout_execution_sessions ADD COLUMN calorie_exported_at TEXT;
+    CREATE INDEX IF NOT EXISTS idx_workout_execution_status ON workout_execution_sessions(program_id,workout_id,week_number,status,completed_at);
+    INSERT OR REPLACE INTO release_metadata(version,release_date,build_id,schema_version,title,created_at)
+      VALUES ('1.4.17.12','2026-08-07','141712',146,'Workout End & Calorie Estimate Exchange','2026-08-07T13:42:00-04:00');
+  `},
 
 ];
 const canonicalNutrientColumns=Object.freeze(Object.fromEntries(NUTRIENT_KEYS.map(key=>[key,'REAL'])));

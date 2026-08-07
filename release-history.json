@@ -2,6 +2,37 @@
   "format": "fizz-health-release-history",
   "releases": [
     {
+      "version": "1.4.17.12",
+      "name": "Workout End & Calorie Estimate Exchange",
+      "type": "Focused workout completion release",
+      "created": "2026-08-07T13:42:00-04:00",
+      "build": "141712",
+      "release_id": "FH-20260807-141712",
+      "stories": [
+        [
+          "FH-17112.1",
+          "Start a workout only when its first performed set is committed"
+        ],
+        [
+          "FH-17112.2",
+          "Replace routine selection checkboxes with completion-only checkmarks"
+        ],
+        [
+          "FH-17112.3",
+          "Allow an in-progress workout to end early while preserving completed sets and actual duration"
+        ],
+        [
+          "FH-17112.4",
+          "Export completed or early-ended workouts as versioned JSON for ChatGPT calorie estimation"
+        ],
+        [
+          "FH-17112.5",
+          "Validate and import returned estimated calories onto the correct workout"
+        ]
+      ],
+      "known_issues": []
+    },
+    {
       "version": "1.4.17.11",
       "name": "Inline Expandable Set Entry",
       "type": "Focused workout execution UX release",
