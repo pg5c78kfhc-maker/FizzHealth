@@ -2,6 +2,29 @@
   "format": "fizz-health-release-history",
   "releases": [
     {
+      "version": "1.4.17.13",
+      "name": "Calorie Import Parser Hotfix",
+      "type": "Blocking corrective workout exchange release",
+      "created": "2026-08-07T14:25:00-04:00",
+      "build": "141713",
+      "release_id": "FH-20260807-141713",
+      "stories": [
+        [
+          "FH-17113.1",
+          "Normalize smart quotation marks in copied calorie-estimate JSON"
+        ],
+        [
+          "FH-17113.2",
+          "Accept Markdown fences and surrounding ChatGPT response text"
+        ],
+        [
+          "FH-17113.3",
+          "Preserve schema, workout-ID, and calorie-value validation after normalization"
+        ]
+      ],
+      "known_issues": []
+    },
+    {
       "version": "1.4.17.12",
       "name": "Workout End & Calorie Estimate Exchange",
       "type": "Focused workout completion release",

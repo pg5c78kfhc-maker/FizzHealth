@@ -1,3 +1,32 @@
+# Fizz Health v1.4.17.13 — Calorie Import Parser Hotfix
+
+Release date: 2026-08-07  
+Build: 141713  
+Release ID: FH-20260807-141713  
+Schema: 146
+
+## Implemented scope
+
+- FH-17113.1 — Normalize smart quotation marks in copied calorie-estimate JSON.
+- FH-17113.2 — Accept Markdown code fences and surrounding ChatGPT response text.
+- FH-17113.3 — Preserve schema-version, workout-execution-ID, and calorie-value validation after normalization.
+
+## User-facing behavior
+
+Calorie-estimate Import now accepts strict JSON as well as common clipboard formatting introduced by rich-text copying, including curly quotation marks, optional ```json fences, and harmless text surrounding the JSON object. Invalid or mismatched workout responses remain rejected.
+
+## Migration notes
+
+No database migration. Schema remains 146.
+
+## Known limitations
+
+Clipboard read access remains subject to browser/PWA permissions. Import still requires a structurally valid Fizz Health calorie-estimate response after normalization.
+
+Acceptance story range: FH-17113.1-FH-17113.3
+
+---
+
 # Fizz Health v1.4.17.12 — Workout End & Calorie Estimate Exchange
 
 Release date: 2026-08-07  

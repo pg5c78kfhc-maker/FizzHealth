@@ -1,0 +1,13 @@
+package.json — Bumped application package version to 1.4.17.13.
+package-lock.json — Synchronized package metadata version to 1.4.17.13.
+VERSION.json — Updated authoritative release metadata for the parser hotfix; schema remains 146.
+release-history.json — Added v1.4.17.13 release history entry.
+ReleaseNotes.md — Prepended current in-project release notes.
+public/sw.js — Bumped service-worker cache version to v1.4.17.13.
+src/main.jsx — Routed calorie response parsing through the hardened parser and updated release/About metadata.
+src/decision/engine.js — Synchronized application version metadata.
+src/workout/calorieExchange.js — Added robust calorie-response normalization and validated parser.
+tests-release/v141713-calorie-import-parser-hotfix.test.mjs — Added focused regression coverage for strict JSON, smart quotes, Markdown fences, surrounding prose, embedded quotes, and workout-ID mismatch.
+RELEASE-NOTES-1.4.17.13.md — Release deliverable documenting scope, behavior, migration status, and limitations.
+CHANGED-FILES-1.4.17.13.txt — Release changed-files manifest.
+TEST-REPORT-1.4.17.13.md — Release verification report.
