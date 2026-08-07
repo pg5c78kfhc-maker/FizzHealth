@@ -1,0 +1,12 @@
+src/main.jsx — Restored the Nutrition landing component, added Nutrition route containment, and updated release metadata/history.
+src/decision/engine.js — Updated application/decision engine version consistency to v1.4.17.7.
+public/sw.js — Updated service-worker cache version to v1.4.17.7.
+package.json — Updated package version to v1.4.17.7.
+package-lock.json — Updated lockfile package version to v1.4.17.7.
+VERSION.json — Updated canonical release metadata for v1.4.17.7 while retaining schema 142.
+release-history.json — Added the v1.4.17.7 corrective release entry.
+ReleaseNotes.md — Updated current in-project release notes to v1.4.17.7.
+tests-release/v141717-focused.mjs — Added focused Nutrition footer regression tests.
+RELEASE-NOTES-1.4.17.7.md — Added requisite release notes artifact.
+CHANGED-FILES-1.4.17.7.txt — Added requisite changed-files manifest artifact.
+TEST-REPORT-1.4.17.7.md — Added requisite test report artifact.

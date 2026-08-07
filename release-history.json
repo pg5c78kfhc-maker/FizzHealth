@@ -2,6 +2,29 @@
   "format": "fizz-health-release-history",
   "releases": [
     {
+      "version": "1.4.17.7",
+      "name": "Nutrition Landing Regression Hotfix",
+      "type": "Blocking corrective navigation release",
+      "created": "2026-08-07T07:40:00-04:00",
+      "build": "141707",
+      "release_id": "FH-20260807-141707",
+      "stories": [
+        [
+          "FH-1717.1",
+          "Restore missing Nutrition landing component invoked by footer navigation"
+        ],
+        [
+          "FH-1717.2",
+          "Preserve current Menu, Log Once, Library, and Restaurants landing actions"
+        ],
+        [
+          "FH-1717.3",
+          "Add Nutrition route protection and focused regression coverage"
+        ]
+      ],
+      "knownIssues": []
+    },
+    {
       "version": "1.4.17.6",
       "name": "Historical Workout Planning UI Infrastructure",
       "type": "Workout planning history integration release",
