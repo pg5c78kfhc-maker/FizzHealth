@@ -2,6 +2,33 @@
   "format": "fizz-health-release-history",
   "releases": [
     {
+      "version": "1.4.17.15",
+      "name": "Compact Workout Cards",
+      "type": "Focused workout routine UI consistency release",
+      "created_at": "2026-08-07T15:19:00-04:00",
+      "build": "141715",
+      "release_id": "FH-20260807-141715",
+      "completed_story": "FH-17115.1-FH-17115.4",
+      "stories": [
+        [
+          "FH-17115.1",
+          "Let workout card text and metadata use the available horizontal width"
+        ],
+        [
+          "FH-17115.2",
+          "Reduce unnecessary vertical wrapping on completed and incomplete workout cards"
+        ],
+        [
+          "FH-17115.3",
+          "Anchor workout expand/collapse chevrons to the bottom edge of each card"
+        ],
+        [
+          "FH-17115.4",
+          "Preserve workout actions, completion state, calorie exchange, and hierarchy behavior"
+        ]
+      ]
+    },
+    {
       "version": "1.4.17.14",
       "name": "Compact Program Cards",
       "type": "Focused workout program UI refinement release",

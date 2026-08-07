@@ -14,5 +14,3 @@ This focused UI correction applies the previously established compact expandable
 - FH-17115.2 — Compact workout-card vertical layout
 - FH-17115.3 — Bottom-edge workout disclosure chevrons
 - FH-17115.4 — Preserve workout behavior while changing presentation only
-
-Completed story: FH-17115.1-FH-17115.4

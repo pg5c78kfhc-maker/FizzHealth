@@ -1,0 +1,13 @@
+src/styles.css
+src/main.jsx
+src/decision/engine.js
+public/sw.js
+package.json
+package-lock.json
+VERSION.json
+release-history.json
+ReleaseNotes.md
+RELEASE-NOTES-1.4.17.15.md
+tests-release/v141715-workout-card-compaction.test.mjs
+TEST-REPORT-1.4.17.15.md
+CHANGED-FILES-1.4.17.15.txt
