@@ -2735,3 +2735,12 @@ html,body,#root{max-width:100%;overflow-x:hidden}.app,.content{width:100%;max-wi
 
 /* v1.4.17.9 workout execution lifecycle */
 .workout-rest-progress{margin:8px 4px 12px;padding:8px 10px;border:1px solid #31434a;border-radius:12px;background:#0b1317;min-width:0;overflow:hidden}.workout-rest-progress>div:first-child{display:flex;justify-content:space-between;gap:12px;color:#9da8b3;font-size:.78rem}.workout-rest-progress b{color:#a3ef3d}.workout-rest-track{height:6px;margin-top:7px;border-radius:99px;background:#263239;overflow:hidden}.workout-rest-track i{display:block;height:100%;background:#a3ef3d;transition:width .9s linear}.workout-rest-progress.expired .workout-rest-track i{background:#49d88b}.workout-rest-progress.expired b{color:#49d88b}.completed-workout-label{color:#49d88b!important}.timeline-dot.workout{background:#a3ef3d!important;box-shadow:0 0 0 7px rgba(163,239,61,.12)}
+/* v1.4.17.10 — program lifecycle tabs hotfix */
+.program-lifecycle-tabs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;width:100%;max-width:100%;margin:4px 0 18px;padding:4px;border:1px solid var(--line,#34444c);border-radius:18px;background:#0f171c;box-sizing:border-box}
+.program-lifecycle-tabs button{min-width:0;border:0;border-radius:14px;background:transparent;color:#9ea8b3;padding:12px 6px;font:inherit;font-weight:800;display:flex;align-items:center;justify-content:center;gap:6px;white-space:nowrap}
+.program-lifecycle-tabs button span{font-size:.75em;opacity:.8}
+.program-lifecycle-tabs button.selected{background:#a4f238;color:#071007}
+.program-lifecycle-tabs button:focus-visible{outline:2px solid #a4f238;outline-offset:2px}
+.workout-status.planned{background:#253138;color:#d2d9dd}
+.workout-status.terminated{background:#493032;color:#ffb8b8}
+@media(max-width:380px){.program-lifecycle-tabs{gap:4px}.program-lifecycle-tabs button{font-size:.9rem;padding-inline:3px}}

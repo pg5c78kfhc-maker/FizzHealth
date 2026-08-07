@@ -5,7 +5,7 @@ import {WORKOUT_HISTORY_IMPORT_SQL} from './workouts/historyImportSql.js';
 
 const DB_KEY='fizz-health-sqlite-v1';
 const STORAGE_DB='FizzHealthStorage';
-const TARGET_SCHEMA_VERSION=144;
+const TARGET_SCHEMA_VERSION=145;
 let SQL, db;
 
 const migrations=[
@@ -2208,6 +2208,61 @@ const migrations=[
     INSERT OR REPLACE INTO release_metadata(version,release_date,build_id,schema_version,title,created_at)
       VALUES ('1.4.17.9','2026-08-07','141709',144,'Weekly Workout Execution, Rest Timing & Health Timeline','2026-08-07T10:00:00-04:00');
   `},
+
+  {version:145,name:'Program Lifecycle Tabs and Template Instance Separation',sql:`
+    ALTER TABLE workout_programs ADD COLUMN template_program_id TEXT;
+    CREATE INDEX IF NOT EXISTS idx_workout_programs_template ON workout_programs(template_program_id,status);
+
+    /* Repair active programs created in-place by v1.4.17.8/9: preserve the active
+       instance and recreate its reusable Set Up template exactly once. */
+    INSERT OR IGNORE INTO workout_programs(
+      program_id,name,description,goal,status,start_date,duration_weeks,notes,display_order,created_at,updated_at,
+      active_started_at,active_ends_at,selected_workout_id,selected_exercise_id,current_week,completed_at,terminated_at,template_program_id
+    )
+    SELECT program_id||'__setup',name,description,goal,'Planned',NULL,duration_weeks,notes,display_order,created_at,updated_at,
+      NULL,NULL,NULL,NULL,1,NULL,NULL,NULL
+    FROM workout_programs
+    WHERE status='Active' AND COALESCE(template_program_id,'')='';
+
+    INSERT OR IGNORE INTO program_workouts(
+      workout_id,program_id,name,focus,notes,display_order,created_at,updated_at,
+      source_session_id,source_performed_at,source_program_name,source_day_label,source_week_number,source_duration_minutes,source_duration_text,
+      rest_between_exercises_seconds
+    )
+    SELECT w.workout_id||'__setup',p.program_id||'__setup',w.name,w.focus,w.notes,w.display_order,w.created_at,w.updated_at,
+      w.source_session_id,w.source_performed_at,w.source_program_name,w.source_day_label,w.source_week_number,w.source_duration_minutes,w.source_duration_text,
+      w.rest_between_exercises_seconds
+    FROM program_workouts w JOIN workout_programs p ON p.program_id=w.program_id
+    WHERE p.status='Active' AND COALESCE(p.template_program_id,'')='';
+
+    INSERT OR IGNORE INTO workout_exercises(
+      exercise_id,workout_id,name,sets,reps,notes,display_order,created_at,updated_at,exercise_definition_id,
+      source_session_exercise_id,equipment,prescription_text,target_rir,source_line,weight_unit,increase_by,stable_workouts,fourth_set_target,
+      stable_streak,current_weight,progression_pending,progression_previous_weight,rest_between_sets_seconds
+    )
+    SELECT e.exercise_id||'__setup',e.workout_id||'__setup',e.name,e.sets,e.reps,e.notes,e.display_order,e.created_at,e.updated_at,e.exercise_definition_id,
+      e.source_session_exercise_id,e.equipment,e.prescription_text,e.target_rir,e.source_line,e.weight_unit,e.increase_by,e.stable_workouts,e.fourth_set_target,
+      0,e.current_weight,0,NULL,e.rest_between_sets_seconds
+    FROM workout_exercises e JOIN program_workouts w ON w.workout_id=e.workout_id JOIN workout_programs p ON p.program_id=w.program_id
+    WHERE p.status='Active' AND COALESCE(p.template_program_id,'')='';
+
+    INSERT OR IGNORE INTO exercise_sets(
+      set_id,exercise_id,set_number,reps,weight,weight_unit,notes,created_at,updated_at,rir,source_session_set_id
+    )
+    SELECT s.set_id||'__setup',s.exercise_id||'__setup',s.set_number,s.reps,s.weight,s.weight_unit,s.notes,s.created_at,s.updated_at,s.rir,s.source_session_set_id
+    FROM exercise_sets s JOIN workout_exercises e ON e.exercise_id=s.exercise_id JOIN program_workouts w ON w.workout_id=e.workout_id JOIN workout_programs p ON p.program_id=w.program_id
+    WHERE p.status='Active' AND COALESCE(p.template_program_id,'')='';
+
+    UPDATE workout_programs
+      SET template_program_id=program_id||'__setup'
+      WHERE status='Active' AND COALESCE(template_program_id,'')='';
+    UPDATE workout_programs SET start_date=NULL,active_started_at=NULL,active_ends_at=NULL,current_week=1,completed_at=NULL,terminated_at=NULL
+      WHERE status='Planned';
+
+    INSERT OR REPLACE INTO release_metadata(version,release_date,build_id,schema_version,title,created_at)
+      VALUES ('1.4.17.10','2026-08-07','141710',145,'Program Lifecycle Tabs Hotfix','2026-08-07T10:18:00-04:00');
+  `},
+
 
 ];
 const canonicalNutrientColumns=Object.freeze(Object.fromEntries(NUTRIENT_KEYS.map(key=>[key,'REAL'])));

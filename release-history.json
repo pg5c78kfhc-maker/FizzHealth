@@ -2,6 +2,33 @@
   "format": "fizz-health-release-history",
   "releases": [
     {
+      "version": "1.4.17.10",
+      "name": "Program Lifecycle Tabs Hotfix",
+      "type": "Blocking corrective workout lifecycle release",
+      "created": "2026-08-07T10:18:00-04:00",
+      "build": "141710",
+      "release_id": "FH-20260807-141710",
+      "stories": [
+        [
+          "FH-17110.1",
+          "Add Active, Completed, and Set Up lifecycle tabs to Programs"
+        ],
+        [
+          "FH-17110.2",
+          "Keep Set Up templates inactive and date-free"
+        ],
+        [
+          "FH-17110.3",
+          "Run a template by creating an independent Active program instance"
+        ],
+        [
+          "FH-17110.4",
+          "Recover reusable Set Up templates for programs activated in prior releases"
+        ]
+      ],
+      "known_issues": []
+    },
+    {
       "version": "1.4.17.9",
       "name": "Weekly Workout Execution, Rest Timing & Health Timeline",
       "type": "Workout execution lifecycle release",

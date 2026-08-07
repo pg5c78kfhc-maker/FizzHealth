@@ -1,0 +1,18 @@
+Fizz Health v1.4.17.10 — Changed Files Manifest
+
+MODIFIED ReleaseNotes.md — Update the in-project current release note for the lifecycle hotfix.
+MODIFIED VERSION.json — Advance release/build/schema metadata to v1.4.17.10 / schema 145.
+MODIFIED package.json — Advance package version to 1.4.17.10.
+MODIFIED package-lock.json — Keep package metadata version synchronized.
+MODIFIED public/sw.js — Advance the service-worker cache key to v1.4.17.10.
+MODIFIED release-history.json — Add v1.4.17.10 as the current release.
+MODIFIED src/database.js — Add migration 145, template linkage, and recovery of Set Up templates for already-active programs.
+MODIFIED src/decision/engine.js — Keep centralized engine version synchronized.
+MODIFIED src/main.jsx — Add Active/Completed/Set Up tabs, lifecycle filtering, date-free Set Up rendering, and template-to-active-instance cloning on Run.
+MODIFIED src/styles.css — Add responsive lifecycle-tab styling and status presentation.
+MODIFIED tests/v141709-weekly-workout-lifecycle.test.js — Update the expected current schema target after migration 145.
+ADDED tests/v141710-program-lifecycle-tabs-hotfix.test.js — Focused regression coverage for lifecycle tabs, date-free templates, independent Run instances, and migration repair.
+MODIFIED tests/workout-navigation-responsive.test.js — Replace obsolete pre-nested-workout source assertions with current hierarchy assertions.
+ADDED RELEASE-NOTES-1.4.17.10.md — Required release notes artifact.
+ADDED CHANGED-FILES-1.4.17.10.txt — Required changed-files manifest.
+ADDED TEST-REPORT-1.4.17.10.md — Required verification report.

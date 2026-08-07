@@ -9,7 +9,7 @@ test('schema 144 adds weekly execution, durations and persisted rest timers',()=
  assert.match(db,/version:144,name:'Weekly Workout Execution, Rest Timing and Health Timeline'/);
  for(const column of ['current_week','completed_at','terminated_at','rest_between_exercises_seconds','rest_between_sets_seconds','week_number','duration_minutes']) assert.match(db,new RegExp(`ADD COLUMN ${column}`));
  assert.match(db,/CREATE TABLE IF NOT EXISTS workout_rest_timers/);
- assert.match(db,/const TARGET_SCHEMA_VERSION=144/);
+ assert.match(db,/const TARGET_SCHEMA_VERSION=145/);
 });
 
 test('routine selection starts a week-scoped execution and completed routines cannot be selected again that week',()=>{
