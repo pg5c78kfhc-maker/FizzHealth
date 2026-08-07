@@ -1,0 +1,14 @@
+M ReleaseNotes.md — Update current in-project release summary to v1.4.17.8.
+M VERSION.json — Advance application/package/build/schema metadata to v1.4.17.8 / schema 143.
+M package-lock.json — Advance package metadata version to 1.4.17.8.
+M package.json — Advance package version to 1.4.17.8.
+M public/sw.js — Advance service-worker cache version.
+M release-history.json — Add v1.4.17.8 release-history entry.
+M src/database.js — Add migration 143 for active-program selection, progression state, routine-level weight unit, and execution session/set persistence; advance target schema.
+M src/decision/engine.js — Keep centralized engine version aligned with application release metadata.
+M src/main.jsx — Add program activation, routine/exercise selection, Exercise Library selection, routine exercise reorder/replace/delete, progression settings, performed-set execution flow, automatic overload logic, and one-time auto-increase indicator; update release metadata/history.
+M src/styles.css — Add responsive styles for Run, active selection controls, library picker, reorder handles, and compact set execution UI.
+A tests/v141708-active-program-execution.test.js — Focused regression coverage for schema 143, activation, exercise management, execution persistence, and progression behavior.
+A RELEASE-NOTES-1.4.17.8.md — Detailed release notes artifact.
+A CHANGED-FILES-1.4.17.8.txt — Added/modified file manifest artifact.
+A TEST-REPORT-1.4.17.8.md — Test and build verification artifact.

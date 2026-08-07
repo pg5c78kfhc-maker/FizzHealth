@@ -5,7 +5,7 @@ import {WORKOUT_HISTORY_IMPORT_SQL} from './workouts/historyImportSql.js';
 
 const DB_KEY='fizz-health-sqlite-v1';
 const STORAGE_DB='FizzHealthStorage';
-const TARGET_SCHEMA_VERSION=141;
+const TARGET_SCHEMA_VERSION=143;
 let SQL, db;
 
 const migrations=[
@@ -2155,6 +2155,34 @@ const migrations=[
       VALUES ('1.4.17.6','2026-08-07','141706',142,'Historical Workout Planning UI Infrastructure','2026-08-07T07:20:00-04:00');
   `},
 
+
+  {version:143,name:'Active Program Execution and Progressive Overload',sql:`
+    ALTER TABLE workout_programs ADD COLUMN active_started_at TEXT;
+    ALTER TABLE workout_programs ADD COLUMN active_ends_at TEXT;
+    ALTER TABLE workout_programs ADD COLUMN selected_workout_id TEXT;
+    ALTER TABLE workout_programs ADD COLUMN selected_exercise_id TEXT;
+    ALTER TABLE workout_exercises ADD COLUMN weight_unit TEXT DEFAULT 'lb';
+    ALTER TABLE workout_exercises ADD COLUMN increase_by REAL DEFAULT 5;
+    ALTER TABLE workout_exercises ADD COLUMN stable_workouts INTEGER DEFAULT 1;
+    ALTER TABLE workout_exercises ADD COLUMN fourth_set_target INTEGER;
+    ALTER TABLE workout_exercises ADD COLUMN stable_streak INTEGER DEFAULT 0;
+    ALTER TABLE workout_exercises ADD COLUMN current_weight REAL;
+    ALTER TABLE workout_exercises ADD COLUMN progression_pending INTEGER DEFAULT 0;
+    ALTER TABLE workout_exercises ADD COLUMN progression_previous_weight REAL;
+    UPDATE workout_exercises SET weight_unit=COALESCE(weight_unit,(SELECT weight_unit FROM exercise_sets es WHERE es.exercise_id=workout_exercises.exercise_id ORDER BY set_number LIMIT 1),'lb');
+    UPDATE workout_exercises SET current_weight=COALESCE(current_weight,(SELECT weight FROM exercise_sets es WHERE es.exercise_id=workout_exercises.exercise_id AND weight IS NOT NULL ORDER BY set_number LIMIT 1));
+    CREATE TABLE IF NOT EXISTS workout_execution_sessions (
+      execution_id TEXT PRIMARY KEY,program_id TEXT NOT NULL,workout_id TEXT NOT NULL,started_at TEXT NOT NULL,completed_at TEXT,status TEXT NOT NULL DEFAULT 'active'
+    );
+    CREATE INDEX IF NOT EXISTS idx_workout_execution_sessions_workout ON workout_execution_sessions(program_id,workout_id,started_at);
+    CREATE TABLE IF NOT EXISTS workout_execution_sets (
+      execution_set_id TEXT PRIMARY KEY,execution_id TEXT NOT NULL,exercise_id TEXT NOT NULL,set_number INTEGER NOT NULL,reps REAL,weight REAL,rir REAL,notes TEXT,completed_at TEXT NOT NULL,auto_increase_marker INTEGER NOT NULL DEFAULT 0,
+      UNIQUE(execution_id,exercise_id,set_number)
+    );
+    CREATE INDEX IF NOT EXISTS idx_workout_execution_sets_exercise ON workout_execution_sets(exercise_id,completed_at);
+    INSERT OR REPLACE INTO release_metadata(version,release_date,build_id,schema_version,title,created_at)
+      VALUES ('1.4.17.8','2026-08-07','141708',143,'Active Program Execution and Progressive Overload','2026-08-07T08:57:00-04:00');
+  `},
 
 ];
 const canonicalNutrientColumns=Object.freeze(Object.fromEntries(NUTRIENT_KEYS.map(key=>[key,'REAL'])));

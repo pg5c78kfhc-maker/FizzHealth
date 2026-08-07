@@ -1,6 +1,6 @@
-# Fizz Health v1.4.17.7 — Nutrition Landing Regression Hotfix
+# Fizz Health v1.4.17.8 — Active Program Execution & Progressive Overload
 
-Release ID: FH-20260807-141707  
-Stories: FH-1717.1-FH-1717.3
+Release ID: FH-20260807-141708  
+Stories: FH-1718.1-FH-1718.5
 
-Restores the Nutrition footer destination after the landing component was missing from the runtime source. The current Nutrition landing actions remain Menu, Log Once, Library, and Restaurants. No database migration is included; schema remains 142.
+Adds active-program execution infrastructure, routine/exercise selection, reusable exercise-library selection and reordering, routine-exercise progression settings, performed-set logging with prior-performance references, and fourth-set progressive-overload state. Historical performed workouts remain immutable. Database schema advances to 143.

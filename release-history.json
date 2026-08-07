@@ -2,6 +2,37 @@
   "format": "fizz-health-release-history",
   "releases": [
     {
+      "version": "1.4.17.8",
+      "name": "Active Program Execution & Progressive Overload",
+      "type": "Workout execution foundation release",
+      "created": "2026-08-07T08:57:00-04:00",
+      "build": "141708",
+      "release_id": "FH-20260807-141708",
+      "stories": [
+        [
+          "FH-1718.1",
+          "Activate one program and persist selected routine/exercise"
+        ],
+        [
+          "FH-1718.2",
+          "Select, replace, remove, and reorder routine exercises"
+        ],
+        [
+          "FH-1718.3",
+          "Persist Increase By, Stable Workouts, 4th Set Target, and exercise weight unit"
+        ],
+        [
+          "FH-1718.4",
+          "Record performed sets separately with previous-performance references"
+        ],
+        [
+          "FH-1718.5",
+          "Apply fourth-set progression and one-time auto-increase indicator"
+        ]
+      ],
+      "knownIssues": []
+    },
+    {
       "version": "1.4.17.7",
       "name": "Nutrition Landing Regression Hotfix",
       "type": "Blocking corrective navigation release",
