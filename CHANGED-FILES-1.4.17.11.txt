@@ -1,0 +1,13 @@
+src/main.jsx — Replace separate performed-set navigation with inline expandable set entry; add completed read-only set cards; preserve progression/rest completion behavior; update release metadata.
+src/styles.css — Add compact expandable set-card, inline Weight/Reps/RIR/checkmark, completed/read-only, and narrow-mobile styles.
+tests/v141711-inline-set-entry.test.js — Add focused regression coverage for inline set entry, defaults, completed read-only rendering, and rest/exercise completion hooks.
+package.json — Advance application version to 1.4.17.11.
+package-lock.json — Keep package metadata version consistent at 1.4.17.11.
+VERSION.json — Advance release metadata to 1.4.17.11; schema remains 145.
+release-history.json — Add v1.4.17.11 release entry.
+ReleaseNotes.md — Update current release summary.
+public/sw.js — Advance service-worker cache version to 1.4.17.11.
+src/decision/engine.js — Keep engine/application version metadata synchronized.
+RELEASE-NOTES-1.4.17.11.md — Release notes for this release.
+CHANGED-FILES-1.4.17.11.txt — This changed-files manifest.
+TEST-REPORT-1.4.17.11.md — Commands, environment, results, limitations, and acceptance criteria.

@@ -2,6 +2,33 @@
   "format": "fizz-health-release-history",
   "releases": [
     {
+      "version": "1.4.17.11",
+      "name": "Inline Expandable Set Entry",
+      "type": "Focused workout execution UX release",
+      "created": "2026-08-07T13:10:00-04:00",
+      "build": "141711",
+      "release_id": "FH-20260807-141711",
+      "stories": [
+        [
+          "FH-17111.1",
+          "Replace separate performed-set editor navigation with inline expandable set cards"
+        ],
+        [
+          "FH-17111.2",
+          "Pre-populate Weight, Reps, and RIR and preserve untouched defaults when completing a set"
+        ],
+        [
+          "FH-17111.3",
+          "Complete sets with an inline checkmark and advance naturally to the next unfinished set"
+        ],
+        [
+          "FH-17111.4",
+          "Render completed performed sets through the same compact read-only presentation"
+        ]
+      ],
+      "known_issues": []
+    },
+    {
       "version": "1.4.17.10",
       "name": "Program Lifecycle Tabs Hotfix",
       "type": "Blocking corrective workout lifecycle release",
