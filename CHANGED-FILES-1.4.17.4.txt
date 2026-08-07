@@ -1,0 +1,11 @@
+ReleaseNotes.md — Updated in-project current release notes for v1.4.17.4.
+VERSION.json — Updated centralized release/build/schema metadata.
+package.json — Updated package version to 1.4.17.4.
+package-lock.json — Updated root package version metadata to 1.4.17.4.
+public/sw.js — Updated service-worker cache version.
+release-history.json — Added v1.4.17.4 release history entry.
+src/database.js — Added schema migration 141, exercise library/history tables, planned exercise library reference, historical data import, and release metadata.
+src/decision/engine.js — Updated application engine version metadata.
+src/main.jsx — Updated application release metadata and About release history entry; no workout UI behavior changed.
+src/workouts/historyImportSql.js — Added deterministic, source-derived historical workout seed for 41 reusable exercise definitions, 138 sessions, 786 exercise occurrences, and 2,848 sets.
+tests/v141704-workout-history-import.test.js — Added focused regression coverage for schema, imported counts, chronological boundaries, source preservation, and exercise-library normalization.

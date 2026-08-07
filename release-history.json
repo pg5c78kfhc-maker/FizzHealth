@@ -2,6 +2,37 @@
   "format": "fizz-health-release-history",
   "releases": [
     {
+      "version": "1.4.17.4",
+      "name": "Workout History & Exercise Library Import",
+      "type": "Workout data foundation release",
+      "created": "2026-08-07T06:46:00-04:00",
+      "build": "141704",
+      "release_id": "FH-20260807-141704",
+      "stories": [
+        [
+          "FH-1714.1",
+          "Create reusable exercise library schema"
+        ],
+        [
+          "FH-1714.2",
+          "Import all PDF workout sessions oldest to newest"
+        ],
+        [
+          "FH-1714.3",
+          "Preserve exercise order, prescriptions, equipment, and source metadata"
+        ],
+        [
+          "FH-1714.4",
+          "Preserve every historical set with weight, reps, and RIR"
+        ],
+        [
+          "FH-1714.5",
+          "Make the historical import deterministic and idempotent"
+        ]
+      ],
+      "known_issues": []
+    },
+    {
       "version": "1.4.17.3",
       "name": "Exercise Sets Foundation",
       "type": "Focused workout hierarchy release",

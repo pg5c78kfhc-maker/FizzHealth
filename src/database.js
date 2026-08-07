@@ -1,10 +1,11 @@
 import initSqlJs from 'sql.js';
 import wasmUrl from 'sql.js/dist/sql-wasm.wasm?url';
 import {NUTRIENT_KEYS} from './nutrition/registry.js';
+import {WORKOUT_HISTORY_IMPORT_SQL} from './workouts/historyImportSql.js';
 
 const DB_KEY='fizz-health-sqlite-v1';
 const STORAGE_DB='FizzHealthStorage';
-const TARGET_SCHEMA_VERSION=140;
+const TARGET_SCHEMA_VERSION=141;
 let SQL, db;
 
 const migrations=[
@@ -2058,6 +2059,80 @@ const migrations=[
     INSERT OR REPLACE INTO release_metadata(version,release_date,build_id,schema_version,title,created_at)
       VALUES ('1.4.17.3','2026-08-06','141703',140,'Exercise Sets Foundation','2026-08-06T19:20:00-04:00');
   `},
+
+  {version:141,name:'Workout History and Exercise Library Import',sql:`
+    CREATE TABLE IF NOT EXISTS exercise_library (
+      exercise_definition_id TEXT PRIMARY KEY,
+      name TEXT NOT NULL,
+      equipment TEXT,
+      normalized_key TEXT NOT NULL UNIQUE,
+      source_first_seen TEXT,
+      created_at TEXT NOT NULL,
+      updated_at TEXT NOT NULL
+    );
+    CREATE INDEX IF NOT EXISTS idx_exercise_library_name ON exercise_library(name,equipment);
+    ALTER TABLE workout_exercises ADD COLUMN exercise_definition_id TEXT;
+    CREATE INDEX IF NOT EXISTS idx_workout_exercises_definition ON workout_exercises(exercise_definition_id);
+    CREATE TABLE IF NOT EXISTS workout_sessions (
+      session_id TEXT PRIMARY KEY,
+      source_key TEXT NOT NULL UNIQUE,
+      workout_name TEXT NOT NULL,
+      program_name TEXT,
+      day_label TEXT,
+      week_number INTEGER,
+      performed_at TEXT NOT NULL,
+      performed_date TEXT NOT NULL,
+      duration_minutes INTEGER,
+      duration_source_text TEXT,
+      chronological_order INTEGER NOT NULL,
+      source_header TEXT NOT NULL,
+      created_at TEXT NOT NULL
+    );
+    CREATE INDEX IF NOT EXISTS idx_workout_sessions_chronological ON workout_sessions(performed_at,chronological_order);
+    CREATE TABLE IF NOT EXISTS workout_session_exercises (
+      session_exercise_id TEXT PRIMARY KEY,
+      session_id TEXT NOT NULL,
+      exercise_definition_id TEXT NOT NULL,
+      source_exercise_name TEXT NOT NULL,
+      source_equipment TEXT,
+      target_reps REAL,
+      target_rir REAL,
+      prescription_text TEXT,
+      notes TEXT,
+      display_order INTEGER NOT NULL,
+      source_line TEXT,
+      FOREIGN KEY(session_id) REFERENCES workout_sessions(session_id) ON DELETE CASCADE,
+      FOREIGN KEY(exercise_definition_id) REFERENCES exercise_library(exercise_definition_id)
+    );
+    CREATE INDEX IF NOT EXISTS idx_session_exercises_order ON workout_session_exercises(session_id,display_order);
+    CREATE TABLE IF NOT EXISTS workout_session_sets (
+      session_set_id TEXT PRIMARY KEY,
+      session_exercise_id TEXT NOT NULL,
+      set_number INTEGER NOT NULL,
+      weight REAL,
+      weight_unit TEXT NOT NULL DEFAULT 'lb',
+      reps REAL,
+      rir REAL,
+      notes TEXT,
+      source_row TEXT,
+      FOREIGN KEY(session_exercise_id) REFERENCES workout_session_exercises(session_exercise_id) ON DELETE CASCADE,
+      UNIQUE(session_exercise_id,set_number)
+    );
+    CREATE INDEX IF NOT EXISTS idx_session_sets_order ON workout_session_sets(session_exercise_id,set_number);
+    CREATE TABLE IF NOT EXISTS workout_history_import_audit (
+      import_key TEXT PRIMARY KEY,
+      source_name TEXT NOT NULL,
+      workout_count INTEGER NOT NULL,
+      exercise_occurrence_count INTEGER NOT NULL,
+      set_count INTEGER NOT NULL,
+      exercise_library_count INTEGER NOT NULL,
+      imported_at TEXT NOT NULL
+    );
+  ` + WORKOUT_HISTORY_IMPORT_SQL + `
+    INSERT OR REPLACE INTO release_metadata(version,release_date,build_id,schema_version,title,created_at)
+      VALUES ('1.4.17.4','2026-08-07','141704',141,'Workout History & Exercise Library Import','2026-08-07T06:46:00-04:00');
+  `},
+
 ];
 const canonicalNutrientColumns=Object.freeze(Object.fromEntries(NUTRIENT_KEYS.map(key=>[key,'REAL'])));
 
