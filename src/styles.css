@@ -2881,3 +2881,45 @@ html,body,#root{max-width:100%;overflow-x:hidden}.app,.content{width:100%;max-wi
   .nested-workout-toggle>svg{bottom:8px}
 }
 
+
+/* v1.4.17.16 — corrective exercise-card disclosure placement */
+.nested-exercise-header{
+  padding-right:0;
+}
+.nested-exercise-toggle{
+  position:relative;
+  grid-template-columns:30px minmax(0,1fr);
+  align-items:start;
+  padding:11px 11px 38px;
+  gap:9px;
+}
+.nested-exercise-toggle>div{
+  width:100%;
+  min-width:0;
+}
+.nested-exercise-toggle>div>b{
+  padding-right:74px;
+}
+.nested-exercise-toggle b,
+.nested-exercise-toggle small{
+  max-width:none;
+  width:100%;
+  overflow-wrap:anywhere;
+}
+.nested-exercise-toggle>svg{
+  position:absolute;
+  left:50%;
+  bottom:9px;
+  width:18px;
+  transform:translateX(-50%);
+  color:#a9ef45;
+}
+@media(max-width:390px){
+  .nested-exercise-header{padding-right:0}
+  .nested-exercise-toggle{
+    grid-template-columns:28px minmax(0,1fr);
+    padding:10px 8px 34px;
+  }
+  .nested-exercise-toggle>div>b{padding-right:68px}
+  .nested-exercise-toggle>svg{bottom:7px}
+}

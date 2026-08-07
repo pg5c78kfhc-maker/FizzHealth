@@ -1,0 +1,13 @@
+src/styles.css
+src/main.jsx
+src/decision/engine.js
+public/sw.js
+VERSION.json
+package.json
+package-lock.json
+release-history.json
+ReleaseNotes.md
+RELEASE-NOTES-1.4.17.16.md
+TEST-REPORT-1.4.17.16.md
+CHANGED-FILES-1.4.17.16.txt
+tests-release/v141716-exercise-chevron-corrective.test.mjs

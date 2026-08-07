@@ -2,6 +2,30 @@
   "format": "fizz-health-release-history",
   "releases": [
     {
+      "version": "1.4.17.16",
+      "name": "Exercise Disclosure Chevron Corrective Hotfix",
+      "type": "Blocking corrective workout hierarchy UI release",
+      "created_at": "2026-08-07T14:53:00-04:00",
+      "build": "141716",
+      "release_id": "FH-20260807-141716",
+      "completed_story": "FH-17116.1-FH-17116.3",
+      "stories": [
+        [
+          "FH-17116.1",
+          "Anchor every exercise expand/collapse chevron to the centered bottom edge of its card"
+        ],
+        [
+          "FH-17116.2",
+          "Keep exercise card copy full-width while reserving only the top-right action footprint"
+        ],
+        [
+          "FH-17116.3",
+          "Preserve exercise edit, add-set, expansion, and nested set behavior unchanged"
+        ]
+      ],
+      "known_issues": []
+    },
+    {
       "version": "1.4.17.15",
       "name": "Compact Workout Cards",
       "type": "Focused workout routine UI consistency release",
