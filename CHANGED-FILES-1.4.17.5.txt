@@ -1,0 +1,16 @@
+Release: Fizz Health v1.4.17.5 — Workout History Migration Compatibility Repair
+
+MODIFIED ReleaseNotes.md — Current release summary updated for migration-141 repair.
+MODIFIED VERSION.json — Version/build/release metadata updated to v1.4.17.5 / 141705 while retaining schema 141.
+MODIFIED package.json — Package version updated to 1.4.17.5.
+MODIFIED package-lock.json — Root package metadata updated to 1.4.17.5.
+MODIFIED public/sw.js — Service-worker cache version updated to 1.4.17.5.
+MODIFIED release-history.json — Corrective release prepended to release history.
+MODIFIED src/database.js — Migration 141 now upgrades the pre-existing workout_sessions schema in place before indexing/import.
+MODIFIED src/decision/engine.js — Engine release version updated to 1.4.17.5.
+MODIFIED src/main.jsx — UI/build/deployment metadata and About release history updated to v1.4.17.5.
+MODIFIED src/workouts/historyImportSql.js — Historical session imports now satisfy legacy workout_sessions requirements and add compatibility columns safely.
+ADDED tests/v141705-workout-migration-repair.test.js — Real schema-140-style migration, data-preservation, history-count, and retry-idempotency regression coverage.
+ADDED RELEASE-NOTES-1.4.17.5.md — Release notes artifact.
+ADDED CHANGED-FILES-1.4.17.5.txt — Changed-files manifest artifact.
+ADDED TEST-REPORT-1.4.17.5.md — Test and build report artifact.

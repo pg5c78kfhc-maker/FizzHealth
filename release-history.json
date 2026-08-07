@@ -2,6 +2,29 @@
   "format": "fizz-health-release-history",
   "releases": [
     {
+      "version": "1.4.17.5",
+      "name": "Workout History Migration Compatibility Repair",
+      "type": "Blocking corrective database release",
+      "created": "2026-08-07T06:46:00-04:00",
+      "build": "141705",
+      "release_id": "FH-20260807-141705",
+      "stories": [
+        [
+          "FH-1715.1",
+          "Repair migration 141 against the pre-existing workout_sessions schema"
+        ],
+        [
+          "FH-1715.2",
+          "Preserve legacy workout session rows while adding historical import fields"
+        ],
+        [
+          "FH-1715.3",
+          "Verify retry-safe upgrade from schema 140 to 141"
+        ]
+      ],
+      "knownIssues": []
+    },
+    {
       "version": "1.4.17.4",
       "name": "Workout History & Exercise Library Import",
       "type": "Workout data foundation release",

@@ -2074,20 +2074,20 @@ const migrations=[
     ALTER TABLE workout_exercises ADD COLUMN exercise_definition_id TEXT;
     CREATE INDEX IF NOT EXISTS idx_workout_exercises_definition ON workout_exercises(exercise_definition_id);
     CREATE TABLE IF NOT EXISTS workout_sessions (
-      session_id TEXT PRIMARY KEY,
-      source_key TEXT NOT NULL UNIQUE,
-      workout_name TEXT NOT NULL,
-      program_name TEXT,
-      day_label TEXT,
-      week_number INTEGER,
-      performed_at TEXT NOT NULL,
-      performed_date TEXT NOT NULL,
-      duration_minutes INTEGER,
-      duration_source_text TEXT,
-      chronological_order INTEGER NOT NULL,
-      source_header TEXT NOT NULL,
-      created_at TEXT NOT NULL
+      session_id TEXT PRIMARY KEY,local_date TEXT NOT NULL,workout TEXT,program TEXT,duration_minutes REAL,
+      location TEXT,source TEXT,notes TEXT,created_at TEXT NOT NULL,updated_at TEXT NOT NULL
     );
+    ALTER TABLE workout_sessions ADD COLUMN source_key TEXT;
+    ALTER TABLE workout_sessions ADD COLUMN workout_name TEXT;
+    ALTER TABLE workout_sessions ADD COLUMN program_name TEXT;
+    ALTER TABLE workout_sessions ADD COLUMN day_label TEXT;
+    ALTER TABLE workout_sessions ADD COLUMN week_number INTEGER;
+    ALTER TABLE workout_sessions ADD COLUMN performed_at TEXT;
+    ALTER TABLE workout_sessions ADD COLUMN performed_date TEXT;
+    ALTER TABLE workout_sessions ADD COLUMN duration_source_text TEXT;
+    ALTER TABLE workout_sessions ADD COLUMN chronological_order INTEGER;
+    ALTER TABLE workout_sessions ADD COLUMN source_header TEXT;
+    CREATE UNIQUE INDEX IF NOT EXISTS idx_workout_sessions_source_key ON workout_sessions(source_key) WHERE source_key IS NOT NULL;
     CREATE INDEX IF NOT EXISTS idx_workout_sessions_chronological ON workout_sessions(performed_at,chronological_order);
     CREATE TABLE IF NOT EXISTS workout_session_exercises (
       session_exercise_id TEXT PRIMARY KEY,
@@ -2130,7 +2130,7 @@ const migrations=[
     );
   ` + WORKOUT_HISTORY_IMPORT_SQL + `
     INSERT OR REPLACE INTO release_metadata(version,release_date,build_id,schema_version,title,created_at)
-      VALUES ('1.4.17.4','2026-08-07','141704',141,'Workout History & Exercise Library Import','2026-08-07T06:46:00-04:00');
+      VALUES ('1.4.17.5','2026-08-07','141705',141,'Workout History Migration Compatibility Repair','2026-08-07T06:46:00-04:00');
   `},
 
 ];
