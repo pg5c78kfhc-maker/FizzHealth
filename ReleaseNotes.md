@@ -1,3 +1,13 @@
+# Fizz Health v1.4.17.20 — Audible Catalog Metadata Enrichment & Library Expansion
+
+- Imported the third supplied 50-title Audible Library capture, bringing the seeded owned library to 150 unique titles.
+- Replaced failed ASIN-derived image guesses with browser-side Audible Catalog API enrichment for real cover-image URLs.
+- Backfills missing total runtimes from catalog metadata while preserving captured listening-progress text.
+- Keeps the Audible header summary live and shows explicit runtime coverage and missing-runtime count.
+- Database schema remains 147; no structural migration is required.
+
+Completed story range: **FH-17120.1-FH-17120.4**
+
 # Fizz Health v1.4.17.19 — Audible Library Expansion & Cover Enrichment
 
 ## Scope

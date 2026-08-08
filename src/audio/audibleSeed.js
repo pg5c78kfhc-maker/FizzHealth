@@ -1,8 +1,8 @@
-// Seed snapshot captured from the user's Audible Library exports through v1.4.17.19.
+// Seed snapshot captured from the user's Audible Library exports through v1.4.17.20.
 // Source fidelity rule: only values explicitly present in the captures are populated.
 
 export const AUDIBLE_SEED_CAPTURED_AT='2026-08-08';
-export const AUDIBLE_SEED_SOURCE='audible-library-markdown-2026-08-08-batches-1-2';
+export const AUDIBLE_SEED_SOURCE='audible-library-markdown-2026-08-08-batches-1-3';
 
 export const AUDIBLE_SEED_BOOKS=[
   {
@@ -2445,7 +2445,1325 @@ export const AUDIBLE_SEED_BOOKS=[
     "description": "Returning to her hometown after years of practicing law in Chicago, Maggie Gallagher is determined to put her family first—no more cases that could put her or her loved ones in danger.",
     "description_is_truncated": false,
     "listening_status": "unknown"
+  },
+
+  {
+    "asin": "B08Z3KXYNJ",
+    "title": "Ahead of the Game: A Scottish Murder Mystery (DCI Logan Crime Thrillers, Book 10)",
+    "product_url": "https://www.audible.com/pd/Ahead-of-the-Game-Audiobook/B08Z3KXYNJ",
+    "authors": [
+      {
+        "name": "JD Kirk",
+        "id": "B07Q5KDB1B",
+        "url": "https://www.audible.com/author/B07Q5KDB1B"
+      }
+    ],
+    "narrators": [
+      "Angus King"
+    ],
+    "series_name": "DCI Logan Crime Thrillers",
+    "series_id": "B07VCQSWS6",
+    "series_url": "https://www.audible.com/series/DCI-Logan-Crime-Thrillers-Audiobook/B07VCQSWS6",
+    "series_position": 10,
+    "runtime_display": null,
+    "runtime_minutes": null,
+    "remaining_minutes": null,
+    "progress_text": "Finished",
+    "description": "When a body is discovered at a popular Highland landmark, it seems like just another day on the job for DCI Jack Logan and his team....",
+    "description_is_truncated": true,
+    "listening_status": "finished"
+  },
+  {
+    "asin": "B08TLH9Q7W",
+    "title": "A Snowball's Chance in Hell: A Scottish Murder Mystery (DCI Logan Crime Thrillers, Book 9)",
+    "product_url": "https://www.audible.com/pd/A-Snowballs-Chance-in-Hell-Audiobook/B08TLH9Q7W",
+    "authors": [
+      {
+        "name": "JD Kirk",
+        "id": "B07Q5KDB1B",
+        "url": "https://www.audible.com/author/B07Q5KDB1B"
+      }
+    ],
+    "narrators": [
+      "Angus King"
+    ],
+    "series_name": "DCI Logan Crime Thrillers",
+    "series_id": "B07VCQSWS6",
+    "series_url": "https://www.audible.com/series/DCI-Logan-Crime-Thrillers-Audiobook/B07VCQSWS6",
+    "series_position": 9,
+    "runtime_display": null,
+    "runtime_minutes": null,
+    "remaining_minutes": null,
+    "progress_text": "Finished",
+    "description": "When a young man is found frozen to death on a Highland street in mid-December, DCI Jack Logan initially puts it down to a Christmas night out gone tragically wrong....",
+    "description_is_truncated": true,
+    "listening_status": "finished"
+  },
+  {
+    "asin": "B08R3T7P66",
+    "title": "A Death Most Monumental: A Scottish Detective Mystery (DCI Logan Crime Thrillers, Book 8)",
+    "product_url": "https://www.audible.com/pd/A-Death-Most-Monumental-Audiobook/B08R3T7P66",
+    "authors": [
+      {
+        "name": "JD Kirk",
+        "id": "B07Q5KDB1B",
+        "url": "https://www.audible.com/author/B07Q5KDB1B"
+      }
+    ],
+    "narrators": [
+      "Angus King"
+    ],
+    "series_name": "DCI Logan Crime Thrillers",
+    "series_id": "B07VCQSWS6",
+    "series_url": "https://www.audible.com/series/DCI-Logan-Crime-Thrillers-Audiobook/B07VCQSWS6",
+    "series_position": 8,
+    "runtime_display": null,
+    "runtime_minutes": null,
+    "remaining_minutes": null,
+    "progress_text": "Finished",
+    "description": "When the remains of a brutally murdered young woman are left hanging from the Glenfinnan Monument in the Highlands of Scotland, DCI Jack Logan and his Major Investigations team are dispatched to investigate. At first, the case appears to be fairly open and shut....",
+    "description_is_truncated": true,
+    "listening_status": "finished"
+  },
+  {
+    "asin": "B08LQ1LKRB",
+    "title": "The Big Man Upstairs (A Scottish Crime Thriller): DCI Logan Crime Thrillers, Book 7",
+    "product_url": "https://www.audible.com/pd/The-Big-Man-Upstairs-A-Scottish-Crime-Thriller-Audiobook/B08LQ1LKRB",
+    "authors": [
+      {
+        "name": "JD Kirk",
+        "id": "B07Q5KDB1B",
+        "url": "https://www.audible.com/author/B07Q5KDB1B"
+      }
+    ],
+    "narrators": [
+      "Angus King"
+    ],
+    "series_name": "DCI Logan Crime Thrillers",
+    "series_id": "B07VCQSWS6",
+    "series_url": "https://www.audible.com/series/DCI-Logan-Crime-Thrillers-Audiobook/B07VCQSWS6",
+    "series_position": 7,
+    "runtime_display": null,
+    "runtime_minutes": null,
+    "remaining_minutes": null,
+    "progress_text": "Finished",
+    "description": "Just when he thought he was out.... Burdened by guilt over the trauma recently inflicted on his friends and colleagues, former-Detective Chief Inspector Jack Logan has spent the past nine months living in self-imposed exile....",
+    "description_is_truncated": true,
+    "listening_status": "finished"
+  },
+  {
+    "asin": "B08LN1RY1S",
+    "title": "A Whisper of Sorrows: A Scottish Crime Thriller (DCI Logan Crime Thrillers)",
+    "product_url": "https://www.audible.com/pd/A-Whisper-of-Sorrows-Audiobook/B08LN1RY1S",
+    "authors": [
+      {
+        "name": "JD Kirk",
+        "id": "B07Q5KDB1B",
+        "url": "https://www.audible.com/author/B07Q5KDB1B"
+      }
+    ],
+    "narrators": [
+      "Angus King"
+    ],
+    "series_name": "DCI Logan Crime Thrillers",
+    "series_id": "B07VCQSWS6",
+    "series_url": "https://www.audible.com/series/DCI-Logan-Crime-Thrillers-Audiobook/B07VCQSWS6",
+    "series_position": 6,
+    "runtime_display": null,
+    "runtime_minutes": null,
+    "remaining_minutes": null,
+    "progress_text": "Finished",
+    "description": "The hunter has become the hunted. Ten years ago, DCI Jack Logan caught the twisted child killer known as Mister Whisper. Two days ago, Mister Whisper escaped....",
+    "description_is_truncated": true,
+    "listening_status": "finished"
+  },
+  {
+    "asin": "B0FX5RQYR4",
+    "title": "Twisting Judgment: Small Town Lawyer, Book 6",
+    "product_url": "https://www.audible.com/pd/Twisting-Judgment-Audiobook/B0FX5RQYR4",
+    "authors": [
+      {
+        "name": "Peter Kirkland",
+        "id": "B0942NYRL9",
+        "url": "https://www.audible.com/author/B0942NYRL9"
+      },
+      {
+        "name": "Daleth Hall",
+        "id": "B0DLPGG997",
+        "url": "https://www.audible.com/author/B0DLPGG997"
+      }
+    ],
+    "narrators": [
+      "J J Hosenfeld"
+    ],
+    "series_name": "Small Town Lawyer",
+    "series_id": "B09M3BV7HS",
+    "series_url": "https://www.audible.com/series/Small-Town-Lawyer-Audiobook/B09M3BV7HS",
+    "series_position": 6,
+    "runtime_display": "8h 54m",
+    "runtime_minutes": 534,
+    "remaining_minutes": null,
+    "progress_text": null,
+    "description": "A murdered judge. An innocent accused. Justice comes at a deadly price.",
+    "description_is_truncated": false,
+    "listening_status": "unknown"
+  },
+  {
+    "asin": "B01MR7DKCP",
+    "title": "Slow Horses: Slough House, Book 1",
+    "product_url": "https://www.audible.com/pd/B01MR7DKCP",
+    "authors": [
+      {
+        "name": "Mick Herron",
+        "id": "B001JP3TOY",
+        "url": "https://www.audible.com/author/B001JP3TOY"
+      }
+    ],
+    "narrators": [
+      "Gerard Doyle"
+    ],
+    "series_name": "Slough House",
+    "series_id": "B01J5ZAU1E",
+    "series_url": "https://www.audible.com/series/Slough-House-Audiobook/B01J5ZAU1E",
+    "series_position": 1,
+    "runtime_display": "10h 46m",
+    "runtime_minutes": 646,
+    "remaining_minutes": null,
+    "progress_text": null,
+    "description": "Now a critically acclaimed series on Apple TV+ Welcome to the thrilling and unnervingly prescient world of the slow horses. This team of MI5 agents is united by one common bond: they’ve screwed up royally and will do anything to redeem themselves. London, England. Slough House is where...",
+    "description_is_truncated": true,
+    "listening_status": "unknown"
+  },
+  {
+    "asin": "B0C1KDY8ZZ",
+    "title": "Terms of Restitution",
+    "product_url": "https://www.audible.com/pd/Terms-of-Restitution-Audiobook/B0C1KDY8ZZ",
+    "authors": [
+      {
+        "name": "Denzil Meyrick",
+        "id": "B009AHH4JY",
+        "url": "https://www.audible.com/author/B009AHH4JY"
+      }
+    ],
+    "narrators": [
+      "Angus King"
+    ],
+    "series_name": null,
+    "series_id": null,
+    "series_url": null,
+    "series_position": null,
+    "runtime_display": null,
+    "runtime_minutes": null,
+    "remaining_minutes": null,
+    "progress_text": "Finished",
+    "description": "Gangland boss Zander Finn is so sickened by the brutal murder of his son in a Paisley pub, he decides to change his life. Following the advice of his priest and mentor, he moves clandestinely to London and becomes an ambulance driver...",
+    "description_is_truncated": true,
+    "listening_status": "finished"
+  },
+  {
+    "asin": "B0DQWK7T5H",
+    "title": "The Tenant",
+    "product_url": "https://www.audible.com/pd/The-Tenant-Audiobook/B0DQWK7T5H",
+    "authors": [
+      {
+        "name": "Freida McFadden",
+        "id": "B00ELQLN2I",
+        "url": "https://www.audible.com/author/B00ELQLN2I"
+      }
+    ],
+    "narrators": [
+      "Will Damron",
+      "Christine Lakin"
+    ],
+    "series_name": null,
+    "series_id": null,
+    "series_url": null,
+    "series_position": null,
+    "runtime_display": "8h 50m",
+    "runtime_minutes": 530,
+    "remaining_minutes": null,
+    "progress_text": null,
+    "description": "A new, jaw-dropping thriller from the instant #1 New York Times bestseller of The Boyfriend and The Housemaid! There's no place like home… Blake Porter is riding high, until he's not. Fired abruptly from his job as a VP of marketing and unable to make the mortgage payments on the new\\...",
+    "description_is_truncated": true,
+    "listening_status": "unknown"
+  },
+  {
+    "asin": "B06XX3X8RX",
+    "title": "A Stranger in the House",
+    "product_url": "https://www.audible.com/pd/A-Stranger-in-the-House-Audiobook/B06XX3X8RX",
+    "authors": [
+      {
+        "name": "Shari Lapena",
+        "id": "B00QV4963G",
+        "url": "https://www.audible.com/author/B00QV4963G"
+      }
+    ],
+    "narrators": [
+      "Tavia Gilbert"
+    ],
+    "series_name": null,
+    "series_id": null,
+    "series_url": null,
+    "series_position": null,
+    "runtime_display": "8h 52m",
+    "runtime_minutes": 532,
+    "remaining_minutes": null,
+    "progress_text": null,
+    "description": "A perfect holiday gift. Shari Lapena’s new thriller, AN UNWANTED GUEST, is available now! “Smart and suspenseful. . . you'll never see the ending coming.” --PureWow In this neighborhood, danger lies close to home. A domestic thriller packed full of secrets, and a twisty story that never...",
+    "description_is_truncated": true,
+    "listening_status": "unknown"
+  },
+  {
+    "asin": "1799753700",
+    "title": "What Lies Between Us",
+    "product_url": "https://www.audible.com/pd/What-Lies-Between-Us-Audiobook/1799753700",
+    "authors": [
+      {
+        "name": "John Marrs",
+        "id": "B00F1CRG9U",
+        "url": "https://www.audible.com/author/B00F1CRG9U"
+      }
+    ],
+    "narrators": [
+      "Elizabeth Knowelden"
+    ],
+    "series_name": null,
+    "series_id": null,
+    "series_url": null,
+    "series_position": null,
+    "runtime_display": null,
+    "runtime_minutes": null,
+    "remaining_minutes": null,
+    "progress_text": "<1 min",
+    "description": "ITW Thriller Award winner International Book Awards winner Nina can never forgive Maggie for what she did. And she can never let her leave. They say every house has its secrets, and the house that Maggie and Nina have shared for so long is no different. Except that these secrets are not buried...",
+    "description_is_truncated": true,
+    "listening_status": "unknown"
+  },
+  {
+    "asin": "B086KLFTPQ",
+    "title": "The Killing Code: A Scottish Crime Thriller: DCI Logan Crime Thrillers, Book 3",
+    "product_url": "https://www.audible.com/pd/The-Killing-Code-A-Scottish-Crime-Thriller-Audiobook/B086KLFTPQ",
+    "authors": [
+      {
+        "name": "JD Kirk",
+        "id": "B07Q5KDB1B",
+        "url": "https://www.audible.com/author/B07Q5KDB1B"
+      }
+    ],
+    "narrators": [
+      "Angus King"
+    ],
+    "series_name": "DCI Logan Crime Thrillers",
+    "series_id": "B07VCQSWS6",
+    "series_url": "https://www.audible.com/series/DCI-Logan-Crime-Thrillers-Audiobook/B07VCQSWS6",
+    "series_position": 3,
+    "runtime_display": null,
+    "runtime_minutes": null,
+    "remaining_minutes": null,
+    "progress_text": "Finished",
+    "description": "After 20 years on the force, Detective Chief Inspector Jack Logan thinks he has seen it all. He is wrong....",
+    "description_is_truncated": true,
+    "listening_status": "finished"
+  },
+  {
+    "asin": "B08KKTNTZ4",
+    "title": "The Last Bloody Straw: A Scottish Crime Thriller (DCI Logan Crime Thrillers)",
+    "product_url": "https://www.audible.com/pd/The-Last-Bloody-Straw-Audiobook/B08KKTNTZ4",
+    "authors": [
+      {
+        "name": "JD Kirk",
+        "id": "B07Q5KDB1B",
+        "url": "https://www.audible.com/author/B07Q5KDB1B"
+      }
+    ],
+    "narrators": [
+      "Angus King"
+    ],
+    "series_name": "DCI Logan Crime Thrillers",
+    "series_id": "B07VCQSWS6",
+    "series_url": "https://www.audible.com/series/DCI-Logan-Crime-Thrillers-Audiobook/B07VCQSWS6",
+    "series_position": 5,
+    "runtime_display": null,
+    "runtime_minutes": null,
+    "remaining_minutes": null,
+    "progress_text": "Finished",
+    "description": "Tormented by the recent loss of a colleague, DCI Jack Logan is on the warpath, determined to bring down all those he holds responsible for the officer's death....",
+    "description_is_truncated": true,
+    "listening_status": "finished"
+  },
+  {
+    "asin": "B08FLZ92N7",
+    "title": "Blood and Treachery (A Scottish Crime Thriller): DCI Logan Crime Thrillers, Book 4",
+    "product_url": "https://www.audible.com/pd/Blood-and-Treachery-A-Scottish-Crime-Thriller-Audiobook/B08FLZ92N7",
+    "authors": [
+      {
+        "name": "JD Kirk",
+        "id": "B07Q5KDB1B",
+        "url": "https://www.audible.com/author/B07Q5KDB1B"
+      }
+    ],
+    "narrators": [
+      "Angus King"
+    ],
+    "series_name": "DCI Logan Crime Thrillers",
+    "series_id": "B07VCQSWS6",
+    "series_url": "https://www.audible.com/series/DCI-Logan-Crime-Thrillers-Audiobook/B07VCQSWS6",
+    "series_position": 4,
+    "runtime_display": null,
+    "runtime_minutes": null,
+    "remaining_minutes": null,
+    "progress_text": "Finished",
+    "description": "How far would you go to bury the truth? While searching for a missing hill walker, Glencoe Mountain Rescue Team uncovers a body - just not the one they were looking for....",
+    "description_is_truncated": true,
+    "listening_status": "finished"
+  },
+  {
+    "asin": "B0B4F1ZBRJ",
+    "title": "Missing Angel: An absolutely gripping mystery and suspense novel",
+    "product_url": "https://www.audible.com/pd/Missing-Angel-An-absolutely-gripping-mystery-and-suspense-novel-Audiobook/B0B4F1ZBRJ",
+    "authors": [
+      {
+        "name": "Roger Stelljes",
+        "id": "B0050IGBLO",
+        "url": "https://www.audible.com/author/B0050IGBLO"
+      }
+    ],
+    "narrators": [
+      "Kate Handford"
+    ],
+    "series_name": "Agent Tori Hunter",
+    "series_id": "B08WRDSBWL",
+    "series_url": "https://www.audible.com/series/Agent-Tori-Hunter-Audiobook/B08WRDSBWL",
+    "series_position": 4,
+    "runtime_display": "11h 41m",
+    "runtime_minutes": 701,
+    "remaining_minutes": null,
+    "progress_text": null,
+    "description": "Isabella pedals her bright red bike on the familiar route home, admiring her charm bracelet catching the light. But half an hour later, she is nowhere to be seen. All her frantic parents find is an angel-shaped charm discarded on the sidewalk....",
+    "description_is_truncated": true,
+    "listening_status": "unknown"
+  },
+  {
+    "asin": "B09H3DRGSB",
+    "title": "The Hidden Girl: An Absolutely Gripping Mystery Thriller (Agent Tori Hunter, Book 3)",
+    "product_url": "https://www.audible.com/pd/The-Hidden-Girl-Audiobook/B09H3DRGSB",
+    "authors": [
+      {
+        "name": "Roger Stelljes",
+        "id": "B0050IGBLO",
+        "url": "https://www.audible.com/author/B0050IGBLO"
+      }
+    ],
+    "narrators": [
+      "Kate Handford"
+    ],
+    "series_name": "Agent Tori Hunter",
+    "series_id": "B08WRDSBWL",
+    "series_url": "https://www.audible.com/series/Agent-Tori-Hunter-Audiobook/B08WRDSBWL",
+    "series_position": 3,
+    "runtime_display": "11h 56m",
+    "runtime_minutes": 716,
+    "remaining_minutes": null,
+    "progress_text": null,
+    "description": "The lights of her parents’ cabin just visible through the woods, the girl carefully curls up amongst the reeds, her knees pulled tight to her chest. Terrified, the only sound she makes is the pounding of her heart, but she hears the stranger searching....",
+    "description_is_truncated": true,
+    "listening_status": "unknown"
+  },
+  {
+    "asin": "B0FP653GT6",
+    "title": "The Room Next Door",
+    "product_url": "https://www.audible.com/pd/The-Room-Next-Door-Audiobook/B0FP653GT6",
+    "authors": [
+      {
+        "name": "Wendy Walker",
+        "id": "B001IOH4LU",
+        "url": "https://www.audible.com/author/B001IOH4LU"
+      }
+    ],
+    "narrators": [
+      "Julia Whelan",
+      "Elizabeth Evans",
+      "Bebe Wood",
+      "full cast"
+    ],
+    "series_name": null,
+    "series_id": null,
+    "series_url": null,
+    "series_position": null,
+    "runtime_display": "8h 46m",
+    "runtime_minutes": 526,
+    "remaining_minutes": null,
+    "progress_text": null,
+    "description": "From the bestselling author of Mad Love and American Girl comes a propulsive new thriller with a spectacular twist and an acclaimed cast.",
+    "description_is_truncated": false,
+    "listening_status": "unknown"
+  },
+  {
+    "asin": "B0815QY6H9",
+    "title": "Thicker Than Water: A Scottish Crime Thriller (DCI Logan Crime Thrillers, Book 2)",
+    "product_url": "https://www.audible.com/pd/Thicker-Than-Water-Audiobook/B0815QY6H9",
+    "authors": [
+      {
+        "name": "JD Kirk",
+        "id": "B07Q5KDB1B",
+        "url": "https://www.audible.com/author/B07Q5KDB1B"
+      }
+    ],
+    "narrators": [
+      "Angus King"
+    ],
+    "series_name": "DCI Logan Crime Thrillers",
+    "series_id": "B07VCQSWS6",
+    "series_url": "https://www.audible.com/series/DCI-Logan-Crime-Thrillers-Audiobook/B07VCQSWS6",
+    "series_position": 2,
+    "runtime_display": null,
+    "runtime_minutes": null,
+    "remaining_minutes": null,
+    "progress_text": "Finished",
+    "description": "When a badly mutilated body washes up on the shores of Loch Ness, DCI Jack Logan's dream of a quiet life in the Highlands is shattered. While the media speculates wildly about monster attacks, Jack and the Major Investigations Team must act fast to catch the killer....",
+    "description_is_truncated": true,
+    "listening_status": "finished"
+  },
+  {
+    "asin": "B07VBBF6PQ",
+    "title": "A Litter of Bones: A Scottish Crime Thriller: DCI Logan Crime Thrillers, Book 1",
+    "product_url": "https://www.audible.com/pd/A-Litter-of-Bones-A-Scottish-Crime-Thriller-Audiobook/B07VBBF6PQ",
+    "authors": [
+      {
+        "name": "JD Kirk",
+        "id": "B07Q5KDB1B",
+        "url": "https://www.audible.com/author/B07Q5KDB1B"
+      }
+    ],
+    "narrators": [
+      "Angus King"
+    ],
+    "series_name": "DCI Logan Crime Thrillers",
+    "series_id": "B07VCQSWS6",
+    "series_url": "https://www.audible.com/series/DCI-Logan-Crime-Thrillers-Audiobook/B07VCQSWS6",
+    "series_position": 1,
+    "runtime_display": null,
+    "runtime_minutes": null,
+    "remaining_minutes": null,
+    "progress_text": "Finished",
+    "description": "Was the biggest case of his career the worst mistake he ever made? Ten years ago, DCI Jack Logan stopped the serial child-killer dubbed \"Mister Whisper\", earning himself a commendation, a drinking problem, and a broken marriage in the process....",
+    "description_is_truncated": true,
+    "listening_status": "finished"
+  },
+  {
+    "asin": "B0C4BHPQP5",
+    "title": "Keep Your Friends Close",
+    "product_url": "https://www.audible.com/pd/Keep-Your-Friends-Close-Audiobook/B0C4BHPQP5",
+    "authors": [
+      {
+        "name": "Leah Konen",
+        "id": "B00AHIEVCS",
+        "url": "https://www.audible.com/author/B00AHIEVCS"
+      }
+    ],
+    "narrators": [
+      "Reba Buhr",
+      "Karissa Vacker"
+    ],
+    "series_name": null,
+    "series_id": null,
+    "series_url": null,
+    "series_position": null,
+    "runtime_display": null,
+    "runtime_minutes": null,
+    "remaining_minutes": null,
+    "progress_text": "Finished",
+    "description": "How well do you know your friends? Isolated and embroiled in a custody battle, Mary is desperate for a friend. So when she meets the charming and enigmatic Willa at a Brooklyn playground, their connection feels fated. But during a margarita-fueled moms’ night out, Mary shares her darkest...",
+    "description_is_truncated": true,
+    "listening_status": "finished"
+  },
+  {
+    "asin": "1524774367",
+    "title": "Blue Moon: Jack Reacher, Book 24",
+    "product_url": "https://www.audible.com/pd/Blue-Moon-Audiobook/1524774367",
+    "authors": [
+      {
+        "name": "Lee Child",
+        "id": "B000APO0PQ",
+        "url": "https://www.audible.com/author/B000APO0PQ"
+      }
+    ],
+    "narrators": [
+      "Scott Brick"
+    ],
+    "series_name": "Jack Reacher",
+    "series_id": "B005NASKDG",
+    "series_url": "https://www.audible.com/series/Jack-Reacher-Audiobook/B005NASKDG",
+    "series_position": 24,
+    "runtime_display": "11h 21m",
+    "runtime_minutes": 681,
+    "remaining_minutes": null,
+    "progress_text": null,
+    "description": "#1 NEW YORK TIMES BESTSELLER Don’t miss the hit streaming series Reacher! “Jack Reacher is today’s James Bond, a thriller hero we can’t get enough of.”—Ken Follett “This is a random universe,” Reacher says. “Once in a blue moon things turn out just right.” This...",
+    "description_is_truncated": true,
+    "listening_status": "unknown"
+  },
+  {
+    "asin": "B0CDQ83L5Y",
+    "title": "The Fireground",
+    "product_url": "https://www.audible.com/pd/The-Fireground-Audiobook/B0CDQ83L5Y",
+    "authors": [
+      {
+        "name": "Dervla McTiernan",
+        "id": "B076KM7PFH",
+        "url": "https://www.audible.com/author/B076KM7PFH"
+      }
+    ],
+    "narrators": [
+      "Ben Chapple",
+      "Harriet Gordon-Anderson"
+    ],
+    "series_name": null,
+    "series_id": null,
+    "series_url": null,
+    "series_position": null,
+    "runtime_display": null,
+    "runtime_minutes": null,
+    "remaining_minutes": null,
+    "progress_text": "Finished",
+    "description": "Flynn was only a teenager when her parents were killed in a terrible accident. Too young to lose her parents, too young to take on responsibility for her younger sister Kaiya, too young to protect Kaiya from the harshness of their new lives in the following years....",
+    "description_is_truncated": true,
+    "listening_status": "finished"
+  },
+  {
+    "asin": "B07DK1BBS6",
+    "title": "Past Tense: Jack Reacher, Book 23",
+    "product_url": "https://www.audible.com/pd/Past-Tense-Audiobook/B07DK1BBS6",
+    "authors": [
+      {
+        "name": "Lee Child",
+        "id": "B000APO0PQ",
+        "url": "https://www.audible.com/author/B000APO0PQ"
+      }
+    ],
+    "narrators": [
+      "Scott Brick"
+    ],
+    "series_name": "Jack Reacher",
+    "series_id": "B005NASKDG",
+    "series_url": "https://www.audible.com/series/Jack-Reacher-Audiobook/B005NASKDG",
+    "series_position": 23,
+    "runtime_display": "12h 51m",
+    "runtime_minutes": 771,
+    "remaining_minutes": null,
+    "progress_text": null,
+    "description": "#1 NEW YORK TIMES BESTSELLER Don’t miss the hit streaming series Reacher! Family secrets come back to haunt Jack Reacher in this electrifying thriller from “a superb craftsman of suspense” (Entertainment Weekly). Jack Reacher hits the pavement and sticks out his thumb. He plans to...",
+    "description_is_truncated": true,
+    "listening_status": "unknown"
+  },
+  {
+    "asin": "B01JKE3C24",
+    "title": "Night School: Jack Reacher, Book 21",
+    "product_url": "https://www.audible.com/pd/Night-School-Audiobook/B01JKE3C24",
+    "authors": [
+      {
+        "name": "Lee Child",
+        "id": "B000APO0PQ",
+        "url": "https://www.audible.com/author/B000APO0PQ"
+      }
+    ],
+    "narrators": [
+      "Dick Hill"
+    ],
+    "series_name": "Jack Reacher",
+    "series_id": "B005NASKDG",
+    "series_url": "https://www.audible.com/series/Jack-Reacher-Audiobook/B005NASKDG",
+    "series_position": 21,
+    "runtime_display": "13h 7m",
+    "runtime_minutes": 787,
+    "remaining_minutes": null,
+    "progress_text": null,
+    "description": "#1 NEW YORK TIMES BESTSELLER Determined to stop a rogue terrorist threat, Jack Reacher joins forces with Sergeant Frances Neagley—and the two must combine all their wits if they want to complete the mission alive. Don’t miss the hit streaming series Reacher and the upcoming spinoff...",
+    "description_is_truncated": true,
+    "listening_status": "unknown"
+  },
+  {
+    "asin": "B09VTP34DV",
+    "title": "Southpaw: Robert Hoon Thrillers, Book 2",
+    "product_url": "https://www.audible.com/pd/Southpaw-Audiobook/B09VTP34DV",
+    "authors": [
+      {
+        "name": "JD Kirk",
+        "id": "B07Q5KDB1B",
+        "url": "https://www.audible.com/author/B07Q5KDB1B"
+      }
+    ],
+    "narrators": [
+      "Angus King"
+    ],
+    "series_name": "Robert Hoon Thrillers",
+    "series_id": "B09JK45SGC",
+    "series_url": "https://www.audible.com/series/Robert-Hoon-Thrillers-Audiobook/B09JK45SGC",
+    "series_position": 2,
+    "runtime_display": null,
+    "runtime_minutes": null,
+    "remaining_minutes": null,
+    "progress_text": "Finished",
+    "description": "Ex-Police Scotland detective Bob Hoon has made himself some powerful enemies. Following his brutal search for the missing daughter of an old army colleague, Hoon is being hunted by the Loop....",
+    "description_is_truncated": true,
+    "listening_status": "finished"
+  },
+  {
+    "asin": "B00O7YKP6E",
+    "title": "The Ultimate Deepak Chopra Collection",
+    "product_url": "https://www.audible.com/pd/The-Ultimate-Deepak-Chopra-Collection-Audiobook/B00O7YKP6E",
+    "authors": [
+      {
+        "name": "Deepak Chopra MD",
+        "id": "B004KNMPSI",
+        "url": "https://www.audible.com/author/B004KNMPSI"
+      }
+    ],
+    "narrators": [
+      "Deepak Chopra MD"
+    ],
+    "series_name": null,
+    "series_id": null,
+    "series_url": null,
+    "series_position": null,
+    "runtime_display": "20h 41m",
+    "runtime_minutes": 1241,
+    "remaining_minutes": null,
+    "progress_text": null,
+    "description": "In this rare collection of live and studio works, Dr. Chopra will take you on a journey of invaluable healing and self-discovery....",
+    "description_is_truncated": true,
+    "listening_status": "unknown"
+  },
+  {
+    "asin": "B076PVZRX9",
+    "title": "Wayne Dyer's Ultimate Library",
+    "product_url": "https://www.audible.com/pd/Wayne-Dyers-Ultimate-Library-Audiobook/B076PVZRX9",
+    "authors": [
+      {
+        "name": "Dr. Wayne W. Dyer",
+        "id": "B000AQ104Y",
+        "url": "https://www.audible.com/author/B000AQ104Y"
+      }
+    ],
+    "narrators": [
+      "Wayne Dyer"
+    ],
+    "series_name": null,
+    "series_id": null,
+    "series_url": null,
+    "series_position": null,
+    "runtime_display": null,
+    "runtime_minutes": null,
+    "remaining_minutes": 540,
+    "progress_text": "9h left",
+    "description": "Classic audio segments from more than 12 of Wayne's best-selling programs and consists of many of the best ideas from throughout Wayne Dyer's long and illustrious career....",
+    "description_is_truncated": true,
+    "listening_status": "in_progress"
+  },
+  {
+    "asin": "B071D1Q7ZT",
+    "title": "The Midnight Line: Jack Reacher, Book 22",
+    "product_url": "https://www.audible.com/pd/The-Midnight-Line-Audiobook/B071D1Q7ZT",
+    "authors": [
+      {
+        "name": "Lee Child",
+        "id": "B000APO0PQ",
+        "url": "https://www.audible.com/author/B000APO0PQ"
+      }
+    ],
+    "narrators": [
+      "Dick Hill"
+    ],
+    "series_name": "Jack Reacher",
+    "series_id": "B005NASKDG",
+    "series_url": "https://www.audible.com/series/Jack-Reacher-Audiobook/B005NASKDG",
+    "series_position": 22,
+    "runtime_display": "13h 6m",
+    "runtime_minutes": 786,
+    "remaining_minutes": null,
+    "progress_text": null,
+    "description": "#1 NEW YORK TIMES BESTSELLER Don’t miss the hit streaming series Reacher! “A perfect example of Lee Child’s talent . . . This is not just a good story; it is a story with a purpose and a message.”—Huffington Post Reacher takes a stroll through a small Wisconsin town and sees a...",
+    "description_is_truncated": true,
+    "listening_status": "unknown"
+  },
+  {
+    "asin": "B09TBJBNSL",
+    "title": "The Secret Witness: Shepard & Gray, Book 1",
+    "product_url": "https://www.audible.com/pd/The-Secret-Witness-Audiobook/B09TBJBNSL",
+    "authors": [
+      {
+        "name": "Victor Methos",
+        "id": "B004PV6BOY",
+        "url": "https://www.audible.com/author/B004PV6BOY"
+      }
+    ],
+    "narrators": [
+      "Timothy Andrés Pabon"
+    ],
+    "series_name": "Shepard & Gray",
+    "series_id": "B09TDBQHNC",
+    "series_url": "https://www.audible.com/series/Shepard-Gray-Audiobook/B09TDBQHNC",
+    "series_position": 1,
+    "runtime_display": null,
+    "runtime_minutes": null,
+    "remaining_minutes": 475,
+    "progress_text": "7h 55m left",
+    "description": "This is Reaper speaking. So begins an anonymous letter published in a Utah newspaper after a young couple is viciously murdered....",
+    "description_is_truncated": true,
+    "listening_status": "in_progress"
+  },
+  {
+    "asin": "B09JGRM1V6",
+    "title": "Northwind: Robert Hoon Thrillers, Book 1",
+    "product_url": "https://www.audible.com/pd/Northwind-Audiobook/B09JGRM1V6",
+    "authors": [
+      {
+        "name": "JD Kirk",
+        "id": "B07Q5KDB1B",
+        "url": "https://www.audible.com/author/B07Q5KDB1B"
+      }
+    ],
+    "narrators": [
+      "Angus King"
+    ],
+    "series_name": "Robert Hoon Thrillers",
+    "series_id": "B09JK45SGC",
+    "series_url": "https://www.audible.com/series/Robert-Hoon-Thrillers-Audiobook/B09JK45SGC",
+    "series_position": 1,
+    "runtime_display": null,
+    "runtime_minutes": null,
+    "remaining_minutes": null,
+    "progress_text": "Finished",
+    "description": "Former soldier. Ex-copper. Current man on the edge. Shunned by his old colleagues, and dividing his time between a dead-end job and the bottom of a whisky bottle, former Police Scotland detective superintendent Bob Hoon’s life is a mess....",
+    "description_is_truncated": true,
+    "listening_status": "finished"
+  },
+  {
+    "asin": "B07CSNTDWZ",
+    "title": "Fear Nothing: A Novel (Moonlight Bay, Book 1)",
+    "product_url": "https://www.audible.com/pd/Fear-Nothing-Audiobook/B07CSNTDWZ",
+    "authors": [
+      {
+        "name": "Dean Koontz",
+        "id": "B000APG4T6",
+        "url": "https://www.audible.com/author/B000APG4T6"
+      }
+    ],
+    "narrators": [
+      "John Glouchevitch"
+    ],
+    "series_name": "Moonlight Bay",
+    "series_id": "B009S9GK2Q",
+    "series_url": "https://www.audible.com/series/Moonlight-Bay-Audiobook/B009S9GK2Q",
+    "series_position": 1,
+    "runtime_display": "14h 33m",
+    "runtime_minutes": 873,
+    "remaining_minutes": null,
+    "progress_text": null,
+    "description": "Christopher Snow is different from all the other residents of Moonlight Bay, different from anyone you’ve ever met. For Christopher Snow has made his peace with a very rare genetic disorder that leaves him dangerously vulnerable to light....",
+    "description_is_truncated": true,
+    "listening_status": "unknown"
+  },
+  {
+    "asin": "1713507099",
+    "title": "If She Only Knew: The Cahills, Book 1",
+    "product_url": "https://www.audible.com/pd/If-She-Only-Knew-Audiobook/1713507099",
+    "authors": [
+      {
+        "name": "Lisa Jackson",
+        "id": "B001H6GEMY",
+        "url": "https://www.audible.com/author/B001H6GEMY"
+      }
+    ],
+    "narrators": [
+      "Christine Williams"
+    ],
+    "series_name": "The Cahills",
+    "series_id": "B01MY33T6I",
+    "series_url": "https://www.audible.com/series/The-Cahills-Audiobook/B01MY33T6I",
+    "series_position": 1,
+    "runtime_display": null,
+    "runtime_minutes": null,
+    "remaining_minutes": 911,
+    "progress_text": "15h 11m left",
+    "description": "If She Only Knew, introduces the Cahills, a wealthy San Francisco family - rich in money, twisted secrets, and hidden agendas. Now at the center of their tangled world is Marla Cahill - a woman with no memory of who she is, what she’s done, or why she could be the next to die....",
+    "description_is_truncated": true,
+    "listening_status": "in_progress"
+  },
+  {
+    "asin": "B018H1NDSY",
+    "title": "Orchid Blues",
+    "product_url": "https://www.audible.com/pd/Orchid-Blues-Audiobook/B018H1NDSY",
+    "authors": [
+      {
+        "name": "Stuart Woods",
+        "id": "B000APXDEA",
+        "url": "https://www.audible.com/author/B000APXDEA"
+      }
+    ],
+    "narrators": [
+      "Cassandra Campbell"
+    ],
+    "series_name": "Holly Barker",
+    "series_id": "B005NAJ13Y",
+    "series_url": "https://www.audible.com/series/Holly-Barker-Audiobook/B005NAJ13Y",
+    "series_position": 2,
+    "runtime_display": null,
+    "runtime_minutes": null,
+    "remaining_minutes": null,
+    "progress_text": "Finished",
+    "description": "Stuart Woods brings back small-town police chief Holly Barker—and her extraordinary Doberman, Daisy—for another exhilarating adventure in this New York Times bestseller. When Holly Barker’s wedding festivities are shattered by a brutal robbery, she vows to find the culprits. With nothing...",
+    "description_is_truncated": true,
+    "listening_status": "finished"
+  },
+  {
+    "asin": "B0CGJXHMGN",
+    "title": "Conflict of Duty: A Legal Thriller (Sam Johnstone, Book 6)",
+    "product_url": "https://www.audible.com/pd/Conflict-of-Duty-Audiobook/B0CGJXHMGN",
+    "authors": [
+      {
+        "name": "James Chandler",
+        "id": "B08HQGYXHW",
+        "url": "https://www.audible.com/author/B08HQGYXHW"
+      }
+    ],
+    "narrators": [
+      "James Anderson Foster"
+    ],
+    "series_name": "Sam Johnstone",
+    "series_id": "B098NCHXSQ",
+    "series_url": "https://www.audible.com/series/Sam-Johnstone-Audiobook/B098NCHXSQ",
+    "series_position": 6,
+    "runtime_display": "9h 47m",
+    "runtime_minutes": 587,
+    "remaining_minutes": null,
+    "progress_text": null,
+    "description": "The pursuit of the truth might cost one Wyoming lawyer everything … In the wake of a trial loss and personal upheaval, defense attorney Sam Johnstone is drawn back into the legal fray by an accused drug dealer involved in a fatal fentanyl case. The dealer's tantalizing offer? Pivotal...",
+    "description_is_truncated": true,
+    "listening_status": "unknown"
+  },
+  {
+    "asin": "B0DKG55PC2",
+    "title": "Prescribing Doubt: A Legal Thriller (Small Town Lawyer, Book 5)",
+    "product_url": "https://www.audible.com/pd/Prescribing-Doubt-Audiobook/B0DKG55PC2",
+    "authors": [
+      {
+        "name": "Peter Kirkland",
+        "id": "B0942NYRL9",
+        "url": "https://www.audible.com/author/B0942NYRL9"
+      },
+      {
+        "name": "Daleth Hall",
+        "id": null,
+        "url": "https://www.audible.com/search"
+      }
+    ],
+    "narrators": [
+      "J J Hosenfeld"
+    ],
+    "series_name": "Small Town Lawyer",
+    "series_id": "B09M3BV7HS",
+    "series_url": "https://www.audible.com/series/Small-Town-Lawyer-Audiobook/B09M3BV7HS",
+    "series_position": 5,
+    "runtime_display": null,
+    "runtime_minutes": null,
+    "remaining_minutes": null,
+    "progress_text": "Finished",
+    "description": "Running his own law firm is harder than Leland Munroe ever imagined, but he’s determined to make it work. Judy Reed, accused of killing her wealthy father, is just the kind of high-profile and high-paying client he needs to keep his firm afloat.",
+    "description_is_truncated": false,
+    "listening_status": "finished"
+  },
+  {
+    "asin": "B0D6HRNJF5",
+    "title": "Course of Conduct: Sam Johnstone, Book 7",
+    "product_url": "https://www.audible.com/pd/Course-of-Conduct-Audiobook/B0D6HRNJF5",
+    "authors": [
+      {
+        "name": "James Chandler",
+        "id": "B08HQGYXHW",
+        "url": "https://www.audible.com/author/B08HQGYXHW"
+      }
+    ],
+    "narrators": [
+      "James Anderson Foster"
+    ],
+    "series_name": "Sam Johnstone",
+    "series_id": "B098NCHXSQ",
+    "series_url": "https://www.audible.com/series/Sam-Johnstone-Audiobook/B098NCHXSQ",
+    "series_position": 7,
+    "runtime_display": "10h 8m",
+    "runtime_minutes": 608,
+    "remaining_minutes": null,
+    "progress_text": null,
+    "description": "In the latest twist of fate, defense attorney Sam Johnstone confronts a formidable challenge: defending a renowned surgeon accused of domestic battery against her estranged husband, who happens to be a local attorney.",
+    "description_is_truncated": false,
+    "listening_status": "unknown"
+  },
+  {
+    "asin": "B0CRVXC8CM",
+    "title": "Burning Evidence: Small Town Lawyer, Book 4",
+    "product_url": "https://www.audible.com/pd/Burning-Evidence-Audiobook/B0CRVXC8CM",
+    "authors": [
+      {
+        "name": "Peter Kirkland",
+        "id": "B0942NYRL9",
+        "url": "https://www.audible.com/author/B0942NYRL9"
+      }
+    ],
+    "narrators": [
+      "J J Hosenfeld"
+    ],
+    "series_name": "Small Town Lawyer",
+    "series_id": "B09M3BV7HS",
+    "series_url": "https://www.audible.com/series/Small-Town-Lawyer-Audiobook/B09M3BV7HS",
+    "series_position": 4,
+    "runtime_display": null,
+    "runtime_minutes": null,
+    "remaining_minutes": null,
+    "progress_text": "Finished",
+    "description": "When a young woman dies in a late-night restaurant fire, the owner, Bobby Carter, is charged with arson and murder. The evidence is stacked against him, but something doesn’t add up. And his only chance for justice rests on the shoulders of small-town lawyer Leland Munroe….",
+    "description_is_truncated": false,
+    "listening_status": "finished"
+  },
+  {
+    "asin": "B0C2956F9J",
+    "title": "The Truthful Witness: Sam Johnstone, Book 5",
+    "product_url": "https://www.audible.com/pd/The-Truthful-Witness-Audiobook/B0C2956F9J",
+    "authors": [
+      {
+        "name": "James Chandler",
+        "id": "B08HQGYXHW",
+        "url": "https://www.audible.com/author/B08HQGYXHW"
+      }
+    ],
+    "narrators": [
+      "James Anderson Foster"
+    ],
+    "series_name": "Sam Johnstone",
+    "series_id": "B098NCHXSQ",
+    "series_url": "https://www.audible.com/series/Sam-Johnstone-Audiobook/B098NCHXSQ",
+    "series_position": 5,
+    "runtime_display": null,
+    "runtime_minutes": null,
+    "remaining_minutes": null,
+    "progress_text": "Finished",
+    "description": "The line between truth and deception is as thin as a razor’s edge… Determined to enjoy the pace of small-town life, lawyer Sam Johnstone has left his painful past behind and looks forward to taking each new day as it comes. Yet just as he sees peace and tranquility on the horizon, a close...",
+    "description_is_truncated": true,
+    "listening_status": "finished"
+  },
+  {
+    "asin": "B0BXYGCVB3",
+    "title": "Interpreting Guilt: Small Town Lawyer, Book 3",
+    "product_url": "https://www.audible.com/pd/Interpreting-Guilt-Audiobook/B0BXYGCVB3",
+    "authors": [
+      {
+        "name": "Peter Kirkland",
+        "id": "B0942NYRL9",
+        "url": "https://www.audible.com/author/B0942NYRL9"
+      }
+    ],
+    "narrators": [
+      "J J Hosenfeld"
+    ],
+    "series_name": "Small Town Lawyer",
+    "series_id": "B09M3BV7HS",
+    "series_url": "https://www.audible.com/series/Small-Town-Lawyer-Audiobook/B09M3BV7HS",
+    "series_position": 3,
+    "runtime_display": null,
+    "runtime_minutes": null,
+    "remaining_minutes": null,
+    "progress_text": "Finished",
+    "description": "A boating accident has left one teenager dead and three others traumatized. Charleston attorney Leland Munroe is determined to prove his client wasn’t responsible, but prosecutor Patrick Ludlow will stop at nothing to keep his own son out of trouble....",
+    "description_is_truncated": true,
+    "listening_status": "finished"
+  },
+  {
+    "asin": "B0BBNC6LCL",
+    "title": "Capital Justice: Sam Johnstone, Book 4",
+    "product_url": "https://www.audible.com/pd/Capital-Justice-Audiobook/B0BBNC6LCL",
+    "authors": [
+      {
+        "name": "James Chandler",
+        "id": "B08HQGYXHW",
+        "url": "https://www.audible.com/author/B08HQGYXHW"
+      }
+    ],
+    "narrators": [
+      "James Anderson Foster"
+    ],
+    "series_name": "Sam Johnstone",
+    "series_id": "B098NCHXSQ",
+    "series_url": "https://www.audible.com/series/Sam-Johnstone-Audiobook/B098NCHXSQ",
+    "series_position": 4,
+    "runtime_display": null,
+    "runtime_minutes": null,
+    "remaining_minutes": null,
+    "progress_text": "Finished",
+    "description": "When the death of a cryptocurrency magnate shakes a small town, Sam Johnstone is thrown into a new and dangerous legal frontier. As changes in Wyoming banking law bring an influx of crypto entrepreneurs to small-town Custer, attorney Sam Johnstone doesn't think much of the new arrivals. But when...",
+    "description_is_truncated": true,
+    "listening_status": "finished"
+  },
+  {
+    "asin": "B0B5B6LJTS",
+    "title": "Influencing Justice: Small Town Lawyer, Book 2",
+    "product_url": "https://www.audible.com/pd/Influencing-Justice-Audiobook/B0B5B6LJTS",
+    "authors": [
+      {
+        "name": "Peter Kirkland",
+        "id": "B0942NYRL9",
+        "url": "https://www.audible.com/author/B0942NYRL9"
+      }
+    ],
+    "narrators": [
+      "J J Hosenfeld"
+    ],
+    "series_name": "Small Town Lawyer",
+    "series_id": "B09M3BV7HS",
+    "series_url": "https://www.audible.com/series/Small-Town-Lawyer-Audiobook/B09M3BV7HS",
+    "series_position": 2,
+    "runtime_display": null,
+    "runtime_minutes": null,
+    "remaining_minutes": null,
+    "progress_text": "Finished",
+    "description": "When online influencer Simone Baker asks Leland Munroe to defend her on a criminal charge, the small town lawyer is ready to say no. He’s not a criminal lawyer—despite what the people of Basking Rock seem to think....",
+    "description_is_truncated": true,
+    "listening_status": "finished"
+  },
+  {
+    "asin": "B09KT7GWR5",
+    "title": "False Evidence: Sam Johnstone, Book 3",
+    "product_url": "https://www.audible.com/pd/False-Evidence-Audiobook/B09KT7GWR5",
+    "authors": [
+      {
+        "name": "James Chandler",
+        "id": "B08HQGYXHW",
+        "url": "https://www.audible.com/author/B08HQGYXHW"
+      }
+    ],
+    "narrators": [
+      "James Anderson Foster"
+    ],
+    "series_name": "Sam Johnstone",
+    "series_id": "B098NCHXSQ",
+    "series_url": "https://www.audible.com/series/Sam-Johnstone-Audiobook/B098NCHXSQ",
+    "series_position": 3,
+    "runtime_display": null,
+    "runtime_minutes": null,
+    "remaining_minutes": null,
+    "progress_text": "Finished",
+    "description": "After a fallout with his business partner and a breakup with his girlfriend, lawyer Sam Johnstone thinks a long vacation might be just what the doctor ordered. Before he can quit town, Sam gets a call from Lucy Beretta, the wife of the missing local college president. With a shocking accusation...",
+    "description_is_truncated": true,
+    "listening_status": "finished"
+  },
+  {
+    "asin": "B09D8QDRX1",
+    "title": "One and Done: Sam Johnstone, Book 2",
+    "product_url": "https://www.audible.com/pd/One-and-Done-Audiobook/B09D8QDRX1",
+    "authors": [
+      {
+        "name": "James Chandler",
+        "id": "B08HQGYXHW",
+        "url": "https://www.audible.com/author/B08HQGYXHW"
+      }
+    ],
+    "narrators": [
+      "James Anderson Foster"
+    ],
+    "series_name": "Sam Johnstone",
+    "series_id": "B098NCHXSQ",
+    "series_url": "https://www.audible.com/series/Sam-Johnstone-Audiobook/B098NCHXSQ",
+    "series_position": 2,
+    "runtime_display": null,
+    "runtime_minutes": null,
+    "remaining_minutes": null,
+    "progress_text": "Finished",
+    "description": "After an impressive performance in front of a full house, local college basketball stand-out Davonte Blair celebrates the victory with a few friends. But when a fierce argument over drugs ensues, the evening takes a violent turn — and one member of the group goes missing....",
+    "description_is_truncated": true,
+    "listening_status": "finished"
+  },
+  {
+    "asin": "B0D5Z6KX66",
+    "title": "Robert B. Parker's Buried Secrets",
+    "product_url": "https://www.audible.com/pd/Robert-B-Parkers-Buried-Secrets-Audiobook/B0D5Z6KX66",
+    "authors": [
+      {
+        "name": "Christopher Farnsworth",
+        "id": "B0038NXC2O",
+        "url": "https://www.audible.com/author/B0038NXC2O"
+      }
+    ],
+    "narrators": [
+      "James Naughton"
+    ],
+    "series_name": "Jesse Stone Mysteries",
+    "series_id": "B006K1SA5A",
+    "series_url": "https://www.audible.com/series/Jesse-Stone-Mysteries-Audiobook/B006K1SA5A",
+    "series_position": 22,
+    "runtime_display": null,
+    "runtime_minutes": null,
+    "remaining_minutes": null,
+    "progress_text": "Finished",
+    "description": "AN INSTANT USA TODAY BESTSELLER Police Chief Jesse Stone investigates the mystery behind a dead body found strewn with photos of murder victims and placed on top of $2 million in cash, before a mob of hit men converge on Paradise. Just another day in Paradise . . . Chief of Police Jesse Stone is...",
+    "description_is_truncated": true,
+    "listening_status": "finished"
+  },
+  {
+    "asin": "B09JY2NTY5",
+    "title": "Fallen: Daniel Briggs, Book 2",
+    "product_url": "https://www.audible.com/pd/Fallen-Audiobook/B09JY2NTY5",
+    "authors": [
+      {
+        "name": "C. G. Cooper",
+        "id": "B00B40BIVU",
+        "url": "https://www.audible.com/author/B00B40BIVU"
+      }
+    ],
+    "narrators": [
+      "David Colacci"
+    ],
+    "series_name": "Corps Justice Daniel Briggs Series",
+    "series_id": "B01N1RM7LK",
+    "series_url": "https://www.audible.com/series/Corps-Justice-Daniel-Briggs-Series-Audiobook/B01N1RM7LK",
+    "series_position": 2,
+    "runtime_display": null,
+    "runtime_minutes": null,
+    "remaining_minutes": null,
+    "progress_text": "Finished",
+    "description": "A drifting Marine. A pastor with a monstrous secret. And a fearless girl about to do what the grown men around her are too afraid to. Daniel Briggs is still running.",
+    "description_is_truncated": false,
+    "listening_status": "finished"
+  },
+  {
+    "asin": "B09LZ7DYP1",
+    "title": "Defending Innocence: A Legal Thriller Filled with Gripping Courtroom Drama (Small Town Lawyer, Book 1)",
+    "product_url": "https://www.audible.com/pd/Defending-Innocence-Audiobook/B09LZ7DYP1",
+    "authors": [
+      {
+        "name": "Peter Kirkland",
+        "id": "B0942NYRL9",
+        "url": "https://www.audible.com/author/B0942NYRL9"
+      }
+    ],
+    "narrators": [
+      "J J Hosenfeld"
+    ],
+    "series_name": "Small Town Lawyer",
+    "series_id": "B09M3BV7HS",
+    "series_url": "https://www.audible.com/series/Small-Town-Lawyer-Audiobook/B09M3BV7HS",
+    "series_position": 1,
+    "runtime_display": null,
+    "runtime_minutes": null,
+    "remaining_minutes": null,
+    "progress_text": "Finished",
+    "description": "Defense attorney Leland Monroe lost it all: his big-city job, his reputation, and, worst of all, his loving wife. Now he’s back in his hometown to hit restart and repair the relationship with his troubled son. But the past is always present in a small town....",
+    "description_is_truncated": true,
+    "listening_status": "finished"
+  },
+  {
+    "asin": "B074PBZBNG",
+    "title": "The Last Move",
+    "product_url": "https://www.audible.com/pd/The-Last-Move-Audiobook/B074PBZBNG",
+    "authors": [
+      {
+        "name": "Mary Burton",
+        "id": "B001IYV45M",
+        "url": "https://www.audible.com/author/B001IYV45M"
+      }
+    ],
+    "narrators": [
+      "Teri Schnaubelt"
+    ],
+    "series_name": null,
+    "series_id": null,
+    "series_url": null,
+    "series_position": null,
+    "runtime_display": null,
+    "runtime_minutes": null,
+    "remaining_minutes": null,
+    "progress_text": "Finished",
+    "description": "In this gripping stand-alone from bestselling author Mary Burton, an FBI agent must catch a copycat killer. The only difference this time: she’s the final victim. Catching monsters helps FBI agent Kate Hayden keep her nightmares at bay. Now an urgent call brings her back to San Antonio, the...",
+    "description_is_truncated": true,
+    "listening_status": "finished"
+  },
+  {
+    "asin": "B072YVYQ22",
+    "title": "The Terrorist Next Door",
+    "product_url": "https://www.audible.com/pd/The-Terrorist-Next-Door-Audiobook/B072YVYQ22",
+    "authors": [
+      {
+        "name": "Sheldon Siegel",
+        "id": "B000APIXDQ",
+        "url": "https://www.audible.com/author/B000APIXDQ"
+      }
+    ],
+    "narrators": [
+      "Tim Campbell"
+    ],
+    "series_name": null,
+    "series_id": null,
+    "series_url": null,
+    "series_position": null,
+    "runtime_display": null,
+    "runtime_minutes": null,
+    "remaining_minutes": 413,
+    "progress_text": "6h 53m left",
+    "description": "Meet Detective David Gold. He's a third generation native of hardscrabble South Chicago. He's also one of Chicago's most decorated homicide detectives....",
+    "description_is_truncated": true,
+    "listening_status": "in_progress"
+  },
+  {
+    "asin": "B06XD682XP",
+    "title": "The Michigan Murders: The True Story of the Ypsilanti Ripper's Reign of Terror",
+    "product_url": "https://www.audible.com/pd/The-Michigan-Murders-Audiobook/B06XD682XP",
+    "authors": [
+      {
+        "name": "Edward Keyes",
+        "id": "B000APBB8U",
+        "url": "https://www.audible.com/author/B000APBB8U"
+      }
+    ],
+    "narrators": [
+      "Pete Cross"
+    ],
+    "series_name": null,
+    "series_id": null,
+    "series_url": null,
+    "series_position": null,
+    "runtime_display": "15h 3m",
+    "runtime_minutes": 903,
+    "remaining_minutes": null,
+    "progress_text": null,
+    "description": "In 1967, during the time of peace, free love, and hitchhiking, 19-year-old Mary Terese Fleszar was last seen walking home to her apartment in Ypsilanti, Michigan. One month later, her naked body stabbed over 30 times and missing both feet and a forearm was discovered on an abandoned farm. A year...",
+    "description_is_truncated": true,
+    "listening_status": "unknown"
+  },
+  {
+    "asin": "B01DMTPQFY",
+    "title": "Orchid Beach",
+    "product_url": "https://www.audible.com/pd/Orchid-Beach-Audiobook/B01DMTPQFY",
+    "authors": [
+      {
+        "name": "Stuart Woods",
+        "id": "B000APXDEA",
+        "url": "https://www.audible.com/author/B000APXDEA"
+      }
+    ],
+    "narrators": [
+      "Cassandra Campbell"
+    ],
+    "series_name": "Holly Barker",
+    "series_id": "B005NAJ13Y",
+    "series_url": "https://www.audible.com/series/Holly-Barker-Audiobook/B005NAJ13Y",
+    "series_position": 1,
+    "runtime_display": null,
+    "runtime_minutes": null,
+    "remaining_minutes": null,
+    "progress_text": "Finished",
+    "description": "#1 New York Times bestselling author Stuart Woods delivers a riveting thriller that introduces his first female protagonist, Deputy Chief of Police Holly Barker. Forced into early retirement at thirty-seven, smart, attractive, and fiercely independent Major Holly Barker trades in her bars as a...",
+    "description_is_truncated": true,
+    "listening_status": "finished"
   }
+
 ];
 
 const sqlText=value=>value==null?'NULL':`'${String(value).replaceAll("'","''")}'`;
@@ -2455,7 +3773,7 @@ const seriesId=book=>book.series_id?`audible-series-${book.series_id}`:null;
 const authorRows=book=>Array.isArray(book.authors)&&book.authors.length?book.authors:[{name:book.author,id:book.author_id,url:book.author_url}].filter(row=>row.name);
 const authorId=author=>author.id?`audible-author-${author.id}`:`audible-author-${slug(author.name)}`;
 const narratorId=name=>`audible-narrator-${slug(name)}`;
-const asinCoverUrl=asin=>asin?`https://images-na.ssl-images-amazon.com/images/P/${encodeURIComponent(asin)}.01.LZZZZZZZ.jpg`:null;
+const asinCoverUrl=()=>null;
 
 export function buildAudibleSeedSql(){
   const statements=[];
@@ -2483,7 +3801,7 @@ export function buildAudibleSeedSql(){
     }
     const bid=`audible-book-${book.asin}`;
     const cover=asinCoverUrl(book.asin);
-    statements.push(`INSERT OR IGNORE INTO audible_audiobooks(audiobook_id,audible_asin,title,display_title,raw_title,audible_product_url,runtime_minutes,runtime_display,description,description_is_truncated,cover_image_url,cover_image_source,series_id,series_position,in_audible_library,owned_in_audible,ownership_status,audible_progress_text,remaining_minutes,listening_status,can_listen_now,discovered_from_series,source,first_imported_at,last_seen_at,last_metadata_refresh_at) VALUES (${sqlText(bid)},${sqlText(book.asin)},${sqlText(book.title)},${sqlText(book.title)},${sqlText(book.title)},${sqlText(book.product_url)},${sqlNumber(book.runtime_minutes)},${sqlText(book.runtime_display)},${sqlText(book.description)},${book.description_is_truncated?1:0},${sqlText(cover)},'amazon-asin-derived',${sqlText(seriesId(book))},${sqlNumber(book.series_position)},1,1,'owned',${sqlText(book.progress_text)},${sqlNumber(book.remaining_minutes)},${sqlText(book.listening_status)},1,0,${sqlText(AUDIBLE_SEED_SOURCE)},${sqlText(now)},${sqlText(now)},${sqlText(now)})`);
+    statements.push(`INSERT OR IGNORE INTO audible_audiobooks(audiobook_id,audible_asin,title,display_title,raw_title,audible_product_url,runtime_minutes,runtime_display,description,description_is_truncated,cover_image_url,cover_image_source,series_id,series_position,in_audible_library,owned_in_audible,ownership_status,audible_progress_text,remaining_minutes,listening_status,can_listen_now,discovered_from_series,source,first_imported_at,last_seen_at,last_metadata_refresh_at) VALUES (${sqlText(bid)},${sqlText(book.asin)},${sqlText(book.title)},${sqlText(book.title)},${sqlText(book.title)},${sqlText(book.product_url)},${sqlNumber(book.runtime_minutes)},${sqlText(book.runtime_display)},${sqlText(book.description)},${book.description_is_truncated?1:0},${sqlText(cover)},NULL,${sqlText(seriesId(book))},${sqlNumber(book.series_position)},1,1,'owned',${sqlText(book.progress_text)},${sqlNumber(book.remaining_minutes)},${sqlText(book.listening_status)},1,0,${sqlText(AUDIBLE_SEED_SOURCE)},${sqlText(now)},${sqlText(now)},${sqlText(now)})`);
     authors.forEach((author,index)=>statements.push(`INSERT OR IGNORE INTO audible_audiobook_authors(audiobook_id,author_id,display_order) VALUES (${sqlText(bid)},${sqlText(authorId(author))},${index})`));
     (book.narrators||[]).forEach((narrator,index)=>statements.push(`INSERT OR IGNORE INTO audible_audiobook_narrators(audiobook_id,narrator_id,display_order) VALUES (${sqlText(bid)},${sqlText(narratorId(narrator))},${index})`));
   }
