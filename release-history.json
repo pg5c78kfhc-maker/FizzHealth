@@ -2,6 +2,33 @@
   "format": "fizz-health-release-history",
   "releases": [
     {
+      "version": "1.4.17.26",
+      "name": "Audible JSON Existing-Enrichment Import Fix",
+      "type": "Corrective Audible JSON import release",
+      "created": "2026-08-08T16:10:00-04:00",
+      "build": "141726",
+      "stories": [
+        [
+          "FH-17126.1",
+          "Fix existing-audiobook JSON enrichment SQL parameter alignment"
+        ],
+        [
+          "FH-17126.2",
+          "Persist cover URL and runtime enrichment together while preserving established metadata"
+        ],
+        [
+          "FH-17126.3",
+          "Preserve finished status, ASIN reconciliation, full-payload validation, and transactional rollback"
+        ],
+        [
+          "FH-17126.4",
+          "Keep imported cover URLs connected to the existing dynamic artwork cache"
+        ]
+      ],
+      "knownIssues": [],
+      "release_id": "FH-20260808-141726"
+    },
+    {
       "version": "1.4.17.25",
       "name": "Audible JSON Library Exchange",
       "type": "Audible library import and enrichment release",

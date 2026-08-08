@@ -1,0 +1,15 @@
+CHANGED-FILES-1.4.17.26.txt
+RELEASE-NOTES-1.4.17.26.md
+ReleaseNotes.md
+TEST-REPORT-1.4.17.26.md
+VERSION.json
+package-lock.json
+package.json
+public/sw.js
+release-history.json
+src/audio/AudibleExchangeModal.jsx
+src/audio/audibleExchangePersistence.js
+src/database.js
+src/decision/engine.js
+src/main.jsx
+tests-release/v141726-audible-exchange-import-fix.test.mjs
