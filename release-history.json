@@ -2,6 +2,35 @@
   "format": "fizz-health-release-history",
   "releases": [
     {
+      "version": "1.4.17.24",
+      "name": "Audible Dynamic Cover Cache",
+      "type": "Focused Audible artwork delivery release",
+      "created": "2026-08-08T14:45:00-04:00",
+      "build": "141724",
+      "stories": [
+        [
+          "FH-17124.1",
+          "Use validated remote Audible/Amazon cover URLs as the preferred artwork source"
+        ],
+        [
+          "FH-17124.2",
+          "Cache remote audiobook covers in a persistent service-worker cache"
+        ],
+        [
+          "FH-17124.3",
+          "Make Audible pull-to-refresh retry and warm uncached remote artwork"
+        ],
+        [
+          "FH-17124.4",
+          "Preserve packaged covers and placeholders as safe fallbacks"
+        ]
+      ],
+      "knownIssues": [
+        "The next 50-title Audible capture was available only as a File Library reference rather than raw sandbox content during this build, so no partial or inferred audiobook import was committed. The owned library remains 450 titles."
+      ],
+      "release_id": "FH-20260808-141724"
+    },
+    {
       "version": "1.4.17.23",
       "name": "Audible Artwork & Metadata Enrichment",
       "type": "Audible local artwork cache and metadata enrichment release",
