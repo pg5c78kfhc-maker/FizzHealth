@@ -1,3 +1,14 @@
+# Fizz Health v1.4.17.32 — Audible-Only Fulfillment & 25-Cover Batches
+
+Completed story: FH-17132.1-FH-17132.4
+
+- All generated Audible exchange requests now explicitly require Audible.com as the authoritative and only catalog fulfillment website.
+- Requests explicitly prohibit podcast directories, podcast sites, blogs, general web results, third-party book catalogs, and unrelated retailer/catalog searches.
+- Cover-only fulfillment must open the supplied exact Audible product URL, verify the ASIN, and retrieve artwork from that Audible page or a directly associated image asset. Amazon-hosted media assets are acceptable only when exposed by the exact matched Audible page.
+- Failed Audible lookups remain null rather than triggering a broader Internet hunt or guessed artwork.
+- Cover-art-only targeted enrichment is reduced from 50 to a hard maximum of 25 records per request.
+- The existing Base64 UTF-8 + SHA-256 transport, stateless importer, patch semantics, duplicate prevention, and schema 147 remain unchanged.
+
 # Fizz Health v1.4.17.31 — Audible Universal Exchange & Targeted Enrichment
 
 Completed story: FH-17131.1-FH-17131.5

@@ -2,6 +2,33 @@
   "format": "fizz-health-release-history",
   "releases": [
     {
+      "version": "1.4.17.32",
+      "name": "Audible-Only Fulfillment & 25-Cover Batches",
+      "type": "Focused Audible fulfillment-source and cover-batch reliability release",
+      "created": "2026-08-08T15:05:00-04:00",
+      "build": "141732",
+      "release_id": "FH-20260808-141732",
+      "stories": [
+        [
+          "FH-17132.1",
+          "Require Audible.com as the sole catalog fulfillment source for Audible exchange requests"
+        ],
+        [
+          "FH-17132.2",
+          "Require exact Audible ASIN/product-page artwork lookup and prohibit unrelated Internet and podcast-site searches"
+        ],
+        [
+          "FH-17132.3",
+          "Allow Amazon-hosted image assets only when exposed by the exact matched Audible product page"
+        ],
+        [
+          "FH-17132.4",
+          "Reduce cover-art-only targeted enrichment batches from 50 records to 25 while preserving stateless encoded import safeguards"
+        ]
+      ],
+      "known_issues": []
+    },
+    {
       "version": "1.4.17.31",
       "name": "Audible Universal Exchange & Targeted Enrichment",
       "type": "Audible universal stateless exchange and targeted enrichment release",

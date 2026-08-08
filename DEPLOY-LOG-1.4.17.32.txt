@@ -1,0 +1,26 @@
+Fizz Health v1.4.17.32 — Deployment / Build Log
+Date: 2026-08-08
+Build: 141732
+Schema: 147 (unchanged)
+Baseline: v1.4.17.31 FULL-SOURCE
+
+IMPLEMENTATION
+- Reduced AUDIBLE_COVER_BATCH_SIZE from 50 to 25.
+- Updated Universal Library Exchange UI copy from "Covers up to 50" to "Covers up to 25".
+- Added Audible-only fulfillment rules to every outbound Audible exchange request.
+- Added exact Audible-product-page cover-art procedure and source-evidence requirements.
+- Preserved encoded transport, stateless importing, patch semantics, and existing persistence behavior.
+
+VALIDATION
+- Focused v1.4.17.32 release tests: PASS (5/5).
+- Repository historical test suite: 852 passed / 366 failed, exactly matching the supplied v1.4.17.31 baseline totals.
+- Project integrity: PASS.
+- Release metadata verification: PASS.
+- src/audio/audibleExchange.js syntax check: PASS.
+
+PRODUCTION BUILD
+- Attempted `npm run build`.
+- Prebuild integrity repair passed.
+- Vite build could not start because the supplied FULL-SOURCE archive does not include node_modules and `vite` is not installed in the execution environment.
+- Failure: `sh: 1: vite: not found`.
+- No source workaround or dependency substitution was performed.

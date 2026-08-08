@@ -1,0 +1,15 @@
+VERSION.json
+package.json
+package-lock.json
+public/sw.js
+release-history.json
+ReleaseNotes.md
+src/main.jsx
+src/decision/engine.js
+src/audio/audibleExchange.js
+src/audio/AudibleExchangeModal.jsx
+tests-release/v141732-audible-only-fulfillment.test.mjs
+RELEASE-NOTES-1.4.17.32.md
+CHANGED-FILES-1.4.17.32.txt
+DEPLOY-LOG-1.4.17.32.txt
+TEST-REPORT-1.4.17.32.md

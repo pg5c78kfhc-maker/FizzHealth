@@ -5,7 +5,7 @@ export const AUDIBLE_RESPONSE_TYPE='audible_library_batch_response';
 export const AUDIBLE_OPERATION='upsert_audiobooks';
 export const AUDIBLE_ENRICH_BATCH_SIZE=10;
 export const AUDIBLE_ADD_NEW_BATCH_SIZE=50;
-export const AUDIBLE_COVER_BATCH_SIZE=50;
+export const AUDIBLE_COVER_BATCH_SIZE=25;
 export const AUDIBLE_TARGETED_MODE='enrich_targeted';
 export const AUDIBLE_COVER_TARGET='cover_image_url';
 export const AUDIBLE_TRANSPORT_FORMAT='FIZZ_HEALTH_AUDIBLE_ENCODED_RESPONSE_V1';
@@ -203,6 +203,11 @@ export function buildAudibleBatchRequest({existingRecords=[],mode='add_new',batc
  const requestedAsins=records.map(row=>normalizeAsin(row.audible_asin)).filter(Boolean);
  const rules=[...transportRules(),
   'Preserve format, schema_version, request_id, operation, mode, expected_record_count, requested_asins, and target_fields when present, and set request_type to audible_library_batch_response.',
+  'AUDIBLE-ONLY FULFILLMENT IS REQUIRED: For any catalog lookup, identity check, enrichment, metadata verification, or artwork lookup, use Audible.com as the authoritative and only catalog website.',
+  'Do not search or use podcast directories, podcast websites, blogs, review sites, general web results, Google Books, Apple Books, Goodreads, publisher catalogs, retailer catalogs, or any other third-party site to fulfill an Audible exchange request.',
+  'When an audible_product_url is supplied, open that exact Audible URL first and verify that it corresponds to the supplied Audible ASIN. When no product URL is supplied, locate the exact ASIN within Audible.com only.',
+  'Do not broaden a failed Audible lookup into a general Internet search. If Audible cannot verify a requested value for the exact ASIN, return null for that value rather than sourcing it elsewhere.',
+  'Amazon-hosted media assets are acceptable only when the direct asset is exposed by or directly associated with the exact matched Audible product page; do not perform a separate Amazon catalog search.',
   mode==='add_new'
    ?`This is an add-new request for up to ${resolvedBatch} audiobooks from the supplied Audible capture. Return the complete requested batch and authoritative Audible ASIN for every returned audiobook.`
    :`BATCH COMPLETENESS IS REQUIRED: ${expectedRecordCount} existing records were submitted. Return exactly ${expectedRecordCount} response records, one for every submitted ASIN, in the same order.`,
@@ -219,8 +224,11 @@ export function buildAudibleBatchRequest({existingRecords=[],mode='add_new',batc
   'Populate only information supported by the supplied Audible capture or a confidently matched public catalog record.',
   'Unknown is null. Do not guess URLs, artwork, runtimes, series positions, authors, narrators, or other metadata.',
   ...(targets.includes(AUDIBLE_COVER_TARGET)?[
-   'For cover_image_url, return only a validated direct HTTPS image URL for the exact matching audiobook cover; otherwise null.',
-   'Prefer Audible/Amazon catalog identity for artwork validation and cross-check ASIN, title, author, and narrator when possible.'
+   'COVER ART PROCEDURE: For each submitted audiobook, open the supplied Audible product URL first. Confirm the page matches the submitted Audible ASIN, then identify the cover displayed for that exact audiobook edition.',
+   'Inspect the exact Audible product page for the displayed cover and cover references in page metadata, including og:image, structured/JSON-LD image data, and the product image element or srcset when available. A direct HTTPS m.media-amazon.com image asset is acceptable only when it is exposed by or directly tied to that matched Audible page.',
+   'Do not search outside Audible for cover artwork. Do not use podcast sites, unrelated catalogs, search-result pages, or a merely similar title. Do not fabricate, predict, or reverse-engineer an image URL.',
+   'For cover_image_url, return only a direct HTTPS image URL confidently associated with the exact matched Audible ASIN; otherwise return null.',
+   'For source_evidence, state the exact Audible product URL checked and whether the cover came from the Audible page or an image asset exposed by that page. If null, state that the exact Audible page was checked and did not yield a confidently usable direct cover URL.'
   ]:[]),
   ...(mode==='enrich_existing'?[
    'Actively attempt to enrich missing cover artwork and runtime while preserving ownership/listening state supplied by Fizz Health.',
@@ -250,7 +258,7 @@ export function buildAudibleBatchRequest({existingRecords=[],mode='add_new',batc
   requested_asins:requestedAsins,
   target_fields:targets,
   instructions:{
-   recipient:'ChatGPT with access to the pasted Audible library capture and the public Internet',
+   recipient:'ChatGPT with access to the pasted Audible library capture and Audible.com',
    purpose:mode===AUDIBLE_TARGETED_MODE?`Enrich only ${targets.join(', ')} for these existing Fizz Health Audible audiobook records.`:mode==='enrich_existing'?'Enrich these existing Fizz Health Audible audiobook records without creating duplicates.':'Create a batch of Audible audiobook records for import into Fizz Health.',
    rules
   },
