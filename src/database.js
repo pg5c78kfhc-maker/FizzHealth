@@ -2,10 +2,11 @@ import initSqlJs from 'sql.js';
 import wasmUrl from 'sql.js/dist/sql-wasm.wasm?url';
 import {NUTRIENT_KEYS} from './nutrition/registry.js';
 import {WORKOUT_HISTORY_IMPORT_SQL} from './workouts/historyImportSql.js';
+import {AUDIBLE_SEED_SQL} from './audio/audibleSeed.js';
 
 const DB_KEY='fizz-health-sqlite-v1';
 const STORAGE_DB='FizzHealthStorage';
-const TARGET_SCHEMA_VERSION=146;
+const TARGET_SCHEMA_VERSION=147;
 let SQL, db;
 
 const migrations=[
@@ -2274,6 +2275,86 @@ const migrations=[
     CREATE INDEX IF NOT EXISTS idx_workout_execution_status ON workout_execution_sessions(program_id,workout_id,week_number,status,completed_at);
     INSERT OR REPLACE INTO release_metadata(version,release_date,build_id,schema_version,title,created_at)
       VALUES ('1.4.17.12','2026-08-07','141712',146,'Workout End & Calorie Estimate Exchange','2026-08-07T13:42:00-04:00');
+  `},
+
+  {version:147,name:'Audio Hub and Audible Library Foundation',sql:`
+    CREATE TABLE IF NOT EXISTS audible_series (
+      series_id TEXT PRIMARY KEY,
+      audible_series_id TEXT UNIQUE,
+      name TEXT NOT NULL,
+      audible_url TEXT,
+      total_known INTEGER,
+      source TEXT,
+      created_at TEXT NOT NULL,
+      updated_at TEXT NOT NULL,
+      last_catalog_refresh_at TEXT
+    );
+    CREATE TABLE IF NOT EXISTS audible_authors (
+      author_id TEXT PRIMARY KEY,
+      audible_author_id TEXT UNIQUE,
+      name TEXT NOT NULL,
+      audible_url TEXT,
+      created_at TEXT NOT NULL,
+      updated_at TEXT NOT NULL
+    );
+    CREATE TABLE IF NOT EXISTS audible_narrators (
+      narrator_id TEXT PRIMARY KEY,
+      name TEXT NOT NULL,
+      audible_url TEXT,
+      created_at TEXT NOT NULL,
+      updated_at TEXT NOT NULL
+    );
+    CREATE TABLE IF NOT EXISTS audible_audiobooks (
+      audiobook_id TEXT PRIMARY KEY,
+      audible_asin TEXT UNIQUE,
+      title TEXT NOT NULL,
+      display_title TEXT,
+      raw_title TEXT,
+      audible_product_url TEXT,
+      runtime_minutes INTEGER,
+      runtime_display TEXT,
+      description TEXT,
+      description_is_truncated INTEGER DEFAULT 0,
+      cover_image_url TEXT,
+      cover_image_source TEXT,
+      series_id TEXT,
+      series_position REAL,
+      in_audible_library INTEGER DEFAULT 0,
+      owned_in_audible INTEGER DEFAULT 0,
+      ownership_status TEXT NOT NULL DEFAULT 'unknown',
+      audible_progress_text TEXT,
+      remaining_minutes INTEGER,
+      listening_status TEXT NOT NULL DEFAULT 'unknown',
+      can_listen_now INTEGER DEFAULT 0,
+      discovered_from_series INTEGER DEFAULT 0,
+      source TEXT,
+      first_imported_at TEXT,
+      last_seen_at TEXT,
+      last_metadata_refresh_at TEXT,
+      FOREIGN KEY(series_id) REFERENCES audible_series(series_id)
+    );
+    CREATE TABLE IF NOT EXISTS audible_audiobook_authors (
+      audiobook_id TEXT NOT NULL,
+      author_id TEXT NOT NULL,
+      display_order INTEGER NOT NULL DEFAULT 0,
+      PRIMARY KEY(audiobook_id,author_id),
+      FOREIGN KEY(audiobook_id) REFERENCES audible_audiobooks(audiobook_id),
+      FOREIGN KEY(author_id) REFERENCES audible_authors(author_id)
+    );
+    CREATE TABLE IF NOT EXISTS audible_audiobook_narrators (
+      audiobook_id TEXT NOT NULL,
+      narrator_id TEXT NOT NULL,
+      display_order INTEGER NOT NULL DEFAULT 0,
+      PRIMARY KEY(audiobook_id,narrator_id),
+      FOREIGN KEY(audiobook_id) REFERENCES audible_audiobooks(audiobook_id),
+      FOREIGN KEY(narrator_id) REFERENCES audible_narrators(narrator_id)
+    );
+    CREATE INDEX IF NOT EXISTS idx_audible_books_series ON audible_audiobooks(series_id,series_position,title);
+    CREATE INDEX IF NOT EXISTS idx_audible_books_ownership ON audible_audiobooks(ownership_status,owned_in_audible,title);
+    CREATE INDEX IF NOT EXISTS idx_audible_books_listening ON audible_audiobooks(listening_status,title);
+    ${AUDIBLE_SEED_SQL}
+    INSERT OR REPLACE INTO release_metadata(version,release_date,build_id,schema_version,title,created_at)
+      VALUES ('1.4.17.18','2026-08-08','141718',147,'Audio Hub & Audible Library Foundation','2026-08-08T07:45:00-04:00');
   `},
 
 ];

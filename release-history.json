@@ -2,6 +2,47 @@
   "format": "fizz-health-release-history",
   "releases": [
     {
+      "version": "1.4.17.18",
+      "name": "Audio Hub & Audible Library Foundation",
+      "type": "Audio navigation and Audible library foundation release",
+      "created_at": "2026-08-08T07:45:00-04:00",
+      "build": "141718",
+      "release_id": "FH-20260808-141718",
+      "completed_story": "FH-17118.1-FH-17118.5",
+      "stories": [
+        [
+          "FH-17118.1",
+          "Replace the Podcasts footer destination with an Audio headphones destination and Audio landing page"
+        ],
+        [
+          "FH-17118.2",
+          "Move Podcasts under Audio without changing podcast data or playback behavior"
+        ],
+        [
+          "FH-17118.3",
+          "Add schema-147 Audible audiobook, author, narrator, series, and ownership structures"
+        ],
+        [
+          "FH-17118.4",
+          "Seed the first 50 captured Audible library titles with source-faithful metadata"
+        ],
+        [
+          "FH-17118.5",
+          "Add Audible library, series, detail, ownership, placeholder-cover, and Open in Audible navigation"
+        ]
+      ],
+      "known_issues": [
+        [
+          "AUDIBLE-17118.1",
+          "Cover URLs were not present in the captured Markdown, so unresolved titles use placeholders until artwork enrichment is added."
+        ],
+        [
+          "AUDIBLE-17118.2",
+          "Automatic discovery of not-owned series titles is intentionally deferred."
+        ]
+      ]
+    },
+    {
       "version": "1.4.17.17",
       "name": "Compact Workout Exchange & Workout-Aware Maintenance",
       "type": "Focused workout UI and maintenance intelligence release",
@@ -2212,8 +2253,8 @@
     },
     {
       "version": "1.4.15.50",
-      "name": "Library Consolidation \u2014 Phase 1",
-      "title": "Library Consolidation \u2014 Phase 1",
+      "name": "Library Consolidation — Phase 1",
+      "title": "Library Consolidation — Phase 1",
       "type": "Navigation and presentation release",
       "release_type": "Navigation and presentation release",
       "release_date": "2026-07-29",
@@ -2322,8 +2363,8 @@
     },
     {
       "version": "1.4.15.44",
-      "name": "Food Record Consolidation \u2014 Phase 3",
-      "title": "Food Record Consolidation \u2014 Phase 3",
+      "name": "Food Record Consolidation — Phase 3",
+      "title": "Food Record Consolidation — Phase 3",
       "type": "Presentation and navigation release",
       "release_type": "Presentation and navigation release",
       "release_date": "2026-07-29",
@@ -2343,8 +2384,8 @@
     },
     {
       "version": "1.4.15.43",
-      "name": "Food Record Consolidation \u2014 Phase 2",
-      "title": "Food Record Consolidation \u2014 Phase 2",
+      "name": "Food Record Consolidation — Phase 2",
+      "title": "Food Record Consolidation — Phase 2",
       "type": "Feature release",
       "release_type": "Feature release",
       "release_date": "2026-07-29",
@@ -2364,8 +2405,8 @@
     },
     {
       "version": "1.4.15.42",
-      "name": "Food Record Consolidation \u2014 Phase 1",
-      "title": "Food Record Consolidation \u2014 Phase 1",
+      "name": "Food Record Consolidation — Phase 1",
+      "title": "Food Record Consolidation — Phase 1",
       "type": "Feature and corrective release",
       "release_type": "Feature and corrective release",
       "release_date": "2026-07-29",
@@ -2852,7 +2893,7 @@
       "status": "Corrective",
       "stories": [
         "FH-1415.18A Reconcile Pantry quantity, on-hand, and status fields",
-        "FH-1415.18B Keep active library records visible in Manage \u2192 Meals"
+        "FH-1415.18B Keep active library records visible in Manage → Meals"
       ],
       "known_issues": [],
       "created_at": "2026-07-28T03:30:00-04:00",
@@ -3386,7 +3427,7 @@
         ],
         [
           "FH-1414.4",
-          "Make future dated plans become today\u2019s Proposed entries automatically at local midnight or next app open"
+          "Make future dated plans become today’s Proposed entries automatically at local midnight or next app open"
         ],
         [
           "FH-1414.5",
@@ -3709,7 +3750,7 @@
         ],
         [
           "FH-1159",
-          "Move classification maintenance into Settings \u2192 Data Enrichment"
+          "Move classification maintenance into Settings → Data Enrichment"
         ],
         [
           "FH-1164",
@@ -4396,7 +4437,7 @@
     },
     {
       "version": "1.4.11.0",
-      "name": "Daily Brief & Meal Intelligence \u2014 First Pass",
+      "name": "Daily Brief & Meal Intelligence — First Pass",
       "type": "Meal Intelligence foundation",
       "created": "2026-07-23T06:00:00-04:00",
       "build": "141100",
@@ -4818,7 +4859,7 @@
     },
     {
       "version": "1.4.10.9",
-      "name": "One-Time Food Logging \u2014 Log Once",
+      "name": "One-Time Food Logging — Log Once",
       "type": "Patch",
       "created": "2026-07-20T11:15:00-04:00",
       "build": "14108",

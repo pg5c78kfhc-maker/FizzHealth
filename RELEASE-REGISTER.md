@@ -1,4 +1,14 @@
 
+## v1.4.17.18 — Audio Hub & Audible Library Foundation
+Date: August 8, 2026
+
+### Completed
+- FH-17118.1 through FH-17118.5 — Audio umbrella navigation, Podcasts relocation, schema-147 Audible catalog model, 50-title seed import, and Audible library/series/detail navigation.
+
+### Verification
+- Focused release and migration tests: see TEST-REPORT-1.4.17.18.md.
+- Schema advances to 147.
+
 ## v1.4.17.17 — Compact Workout Exchange & Workout-Aware Maintenance
 Date: August 8, 2026
 
