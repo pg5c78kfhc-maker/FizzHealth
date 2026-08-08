@@ -1,3 +1,13 @@
+# Fizz Health v1.4.17.33 — Audible Add-New Reconciliation Fix
+
+Completed story: FH-17133.1-FH-17133.4
+
+- `add_new` responses now validate completeness against `expected_record_count`; an intentionally empty `requested_asins` array no longer means zero records are expected.
+- Every add-new record must still contain a valid Audible ASIN, and duplicate ASINs are rejected before import.
+- `enrich_existing` and `enrich_targeted` continue to enforce exact submitted ASIN reconciliation and order.
+- Batch-count validation now reports the actual expected and received audiobook counts directly.
+- Base64 UTF-8 transport, SHA-256 verification, strict JSON parsing, transaction rollback protection, 25-cover targeted batches, and database schema 147 are unchanged.
+
 # Fizz Health v1.4.17.32 — Audible-Only Fulfillment & 25-Cover Batches
 
 Completed story: FH-17132.1-FH-17132.4

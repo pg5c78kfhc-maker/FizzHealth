@@ -2,6 +2,33 @@
   "format": "fizz-health-release-history",
   "releases": [
     {
+      "version": "1.4.17.33",
+      "name": "Audible Add-New Reconciliation Fix",
+      "type": "Corrective Audible add-new import reconciliation release",
+      "created": "2026-08-08T15:50:00-04:00",
+      "build": "141733",
+      "release_id": "FH-20260808-141733",
+      "stories": [
+        [
+          "FH-17133.1",
+          "Validate add-new responses by expected_record_count instead of an intentionally empty requested_asins list"
+        ],
+        [
+          "FH-17133.2",
+          "Require every add-new audiobook to carry a unique valid Audible ASIN"
+        ],
+        [
+          "FH-17133.3",
+          "Preserve exact ASIN and order reconciliation for targeted and existing-record enrichment responses"
+        ],
+        [
+          "FH-17133.4",
+          "Improve batch-count validation messaging while preserving encoded transport, checksum, strict JSON, and atomic import safeguards"
+        ]
+      ],
+      "known_issues": []
+    },
+    {
       "version": "1.4.17.32",
       "name": "Audible-Only Fulfillment & 25-Cover Batches",
       "type": "Focused Audible fulfillment-source and cover-batch reliability release",

@@ -1,4 +1,4 @@
-const CACHE='fizz-health-v1.4.17.32';
+const CACHE='fizz-health-v1.4.17.33';
 const AUDIBLE_COVER_CACHE='fizz-audible-covers-v1';
 const SHELL=['/','/index.html','/manifest.webmanifest','/icon-192.png','/icon-512.png','/apple-touch-icon.png'];
 self.addEventListener('install',event=>{

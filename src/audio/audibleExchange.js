@@ -294,7 +294,7 @@ export function validateAudibleBatchResponse(payload,{expectedRequestId=null,max
  const selfExpected=payload.expected_record_count==null?null:Number(payload.expected_record_count);
  const requiredCount=expectedRecordCount==null?selfExpected:Number(expectedRecordCount);
  if(requiredCount!=null&&(!Number.isInteger(requiredCount)||requiredCount<1||requiredCount>limit))throw new Error('The response has an invalid expected_record_count.');
- if(requiredCount!=null&&payload.audiobooks.length!==requiredCount)throw new Error(`Incomplete batch: expected ${requiredCount} audiobook records but received ${payload.audiobooks.length}. Nothing imported.`);
+ if(requiredCount!=null&&payload.audiobooks.length!==requiredCount)throw new Error(`Expected ${requiredCount} audiobook records; received ${payload.audiobooks.length}. Nothing imported.`);
  const targetFields=mode===AUDIBLE_TARGETED_MODE?normalizedTargetFields(payload):[];
  if(mode===AUDIBLE_TARGETED_MODE&&!targetFields.length)throw new Error('Targeted enrichment response is missing target_fields.');
  const seen=new Set();
@@ -322,7 +322,7 @@ export function validateAudibleBatchResponse(payload,{expectedRequestId=null,max
   if(series&&series.position!=null&&!Number.isFinite(series.position))throw new Error(`Record ${index+1} (${asin}) has an invalid series position.`);
   return {media_type:'audiobook',fizz_record_id:clean(raw.fizz_record_id||raw.audiobook_id),audible_asin:asin,title,display_title:clean(raw.display_title),raw_title:clean(raw.raw_title),audible_product_url:product,authors:hasOwn(raw,'authors')?stringList(raw.authors):[],narrators:hasOwn(raw,'narrators')?stringList(raw.narrators):[],series,runtime_minutes:runtime==null?null:Math.round(runtime),runtime_display:clean(raw.runtime_display),description:clean(raw.description),description_is_truncated:raw.description_is_truncated?1:0,cover_image_url:cover,ownership_status:ownership,listening_status:listening,audible_progress_text:clean(raw.audible_progress_text),remaining_minutes:remaining==null?null:Math.round(remaining),can_listen_now:raw.can_listen_now===false?0:1,source_evidence:clean(raw.source_evidence),present_fields:presentFields};
  });
- const responseAsins=Array.isArray(payload.requested_asins)?payload.requested_asins:expectedAsins;
+ const responseAsins=mode==='add_new'?null:(Array.isArray(payload.requested_asins)?payload.requested_asins:expectedAsins);
  if(responseAsins){
   const expected=[...responseAsins].map(normalizeAsin),actual=records.map(record=>record.audible_asin);
   if(expected.length!==actual.length)throw new Error(`Incomplete ASIN reconciliation: expected ${expected.length} records but received ${actual.length}. Nothing imported.`);

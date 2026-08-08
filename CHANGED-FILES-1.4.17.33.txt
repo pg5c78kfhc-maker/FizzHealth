@@ -1,0 +1,14 @@
+VERSION.json
+package.json
+package-lock.json
+public/sw.js
+release-history.json
+ReleaseNotes.md
+src/main.jsx
+src/decision/engine.js
+src/audio/audibleExchange.js
+tests-release/v141733-audible-add-new-reconciliation.test.mjs
+RELEASE-NOTES-1.4.17.33.md
+CHANGED-FILES-1.4.17.33.txt
+DEPLOY-LOG-1.4.17.33.txt
+TEST-REPORT-1.4.17.33.md
