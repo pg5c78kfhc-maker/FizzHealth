@@ -2,6 +2,33 @@
   "format": "fizz-health-release-history",
   "releases": [
     {
+      "version": "1.4.17.25",
+      "name": "Audible JSON Library Exchange",
+      "type": "Audible library import and enrichment release",
+      "created": "2026-08-08T15:25:00-04:00",
+      "build": "141725",
+      "stories": [
+        [
+          "FH-17125.1",
+          "Add a versioned 50-record Audible JSON exchange for new audiobook batches"
+        ],
+        [
+          "FH-17125.2",
+          "Export up to 50 existing audiobooks missing cover URLs or runtimes for ChatGPT enrichment"
+        ],
+        [
+          "FH-17125.3",
+          "Validate complete audiobook batches and reconcile by Audible ASIN in one transaction"
+        ],
+        [
+          "FH-17125.4",
+          "Persist validated cover URLs and warm the existing dynamic artwork cache after import"
+        ]
+      ],
+      "knownIssues": [],
+      "release_id": "FH-20260808-141725"
+    },
+    {
       "version": "1.4.17.24",
       "name": "Audible Dynamic Cover Cache",
       "type": "Focused Audible artwork delivery release",
