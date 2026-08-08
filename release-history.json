@@ -2,6 +2,34 @@
   "format": "fizz-health-release-history",
   "releases": [
     {
+      "version": "1.4.17.17",
+      "name": "Compact Workout Exchange & Workout-Aware Maintenance",
+      "type": "Focused workout UI and maintenance intelligence release",
+      "created_at": "2026-08-08T06:43:00-04:00",
+      "build": "141717",
+      "release_id": "FH-20260808-141717",
+      "completed_story": "FH-17117.1-FH-17117.4",
+      "stories": [
+        [
+          "FH-17117.1",
+          "Replace full-width workout calorie Export/Import controls with compact stateful icons beside Edit"
+        ],
+        [
+          "FH-17117.2",
+          "Reserve the workout action footprint only in the title row so completion and calorie text retain full width"
+        ],
+        [
+          "FH-17117.3",
+          "Include completed and early-ended workout calorie estimates as activity context in maintenance intelligence without double-counting expenditure"
+        ],
+        [
+          "FH-17117.4",
+          "Expose workout-calorie coverage and baseline-versus-training context in maintenance decision traces"
+        ]
+      ],
+      "known_issues": []
+    },
+    {
       "version": "1.4.17.16",
       "name": "Exercise Disclosure Chevron Corrective Hotfix",
       "type": "Blocking corrective workout hierarchy UI release",

@@ -1,3 +1,14 @@
+
+## v1.4.17.17 — Compact Workout Exchange & Workout-Aware Maintenance
+Date: August 8, 2026
+
+### Completed
+- FH-17117.1 through FH-17117.4 — Compact workout calorie exchange icons, full-width metadata below actions, and workout-aware maintenance intelligence without double counting.
+
+### Verification
+- Focused release regression: passed.
+- Project integrity: passed.
+- Schema remains 146.
 # Fizz Health v1.4.15.86
 
 ## Canonical Nutrient Schema Reconciliation

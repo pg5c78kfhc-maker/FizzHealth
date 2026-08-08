@@ -1,7 +1,7 @@
 const number = value => Number.isFinite(Number(value)) ? Number(value) : 0;
 const clamp = (value, min = 0, max = 100) => Math.max(min, Math.min(max, value));
 const unique = values => [...new Set(values.filter(Boolean))];
-export const ENGINE_VERSION = '1.4.17.16';
+export const ENGINE_VERSION = '1.4.17.17';
 export const RULES_VERSION = '2026-07-20.1';
 
 export const DECISION_TRACE_CONTRACT = Object.freeze({
@@ -484,32 +484,40 @@ export function rankPantryFoodMatches({pantry, foods = []}) {
   }).sort((a,b)=>b.score-a.score||String(a.food.name).localeCompare(String(b.food.name))).map((entry,index)=>({...entry,decision:createDecisionTrace({...entry.decision,rank:index+1,comparison:{summary:index===0?'Highest-ranked catalog match for this pantry item.':`Ranked ${index+1} by identifier, normalized-name, token, and nutrition evidence.`}})}));
 }
 
-export function calculateMaintenanceEstimate({weights = [], mealDays = [], stepDays = []}) {
+export function calculateMaintenanceEstimate({weights = [], mealDays = [], stepDays = [], workoutDays = []}) {
   const r=DECISION_RULES.maintenance;
   const byDate=new Map(mealDays.map(row=>[row.local_date,number(row.calories)]));
+  const workoutByDate=new Map(workoutDays.map(row=>[row.local_date,number(row.estimated_calories)]));
   const recentStepsAverage=stepDays.length?Math.round(stepDays.slice(-r.lookbackDays).reduce((sum,row)=>sum+number(row.steps),0)/Math.min(r.lookbackDays,stepDays.length)):null;
   if(weights.length<r.minimumWeightRows||mealDays.length<r.minimumMealDays){
-    return {estimate:null,confidence:0,days:Math.min(weights.length,mealDays.length),averageCalories:null,weightChange:null,stepsAverage:recentStepsAverage,excludedDays:0};
+    return {estimate:null,confidence:0,days:Math.min(weights.length,mealDays.length),averageCalories:null,weightChange:null,stepsAverage:recentStepsAverage,excludedDays:0,workoutEstimateDays:0,workoutCaloriesAverage:0,backgroundMaintenance:null};
   }
   const recent=weights.slice(-r.lookbackDays),first=recent[0],last=recent.at(-1);
   const spanDays=Math.max(1,(new Date(last.local_date)-new Date(first.local_date))/86400000);
   const change=number(last.value_primary)-number(first.value_primary);
   const dates=recent.map(row=>row.local_date).filter(date=>byDate.has(date));
   const average=dates.length?dates.reduce((sum,date)=>sum+byDate.get(date),0)/dates.length:0;
-  if(!average)return {estimate:null,confidence:0,days:dates.length,averageCalories:null,weightChange:change,stepsAverage:null,excludedDays:recent.length-dates.length};
+  const workoutEstimateDays=dates.filter(date=>workoutByDate.has(date)&&workoutByDate.get(date)>0).length;
+  const workoutCaloriesAverage=dates.length?dates.reduce((sum,date)=>sum+(workoutByDate.get(date)||0),0)/dates.length:0;
+  if(!average)return {estimate:null,confidence:0,days:dates.length,averageCalories:null,weightChange:change,stepsAverage:null,excludedDays:recent.length-dates.length,workoutEstimateDays,workoutCaloriesAverage:Math.round(workoutCaloriesAverage),backgroundMaintenance:null};
+  // Weight trend already reflects total energy expenditure. Workout calories are therefore
+  // used to separate training load from background expenditure and improve confidence,
+  // not added to the final maintenance estimate a second time.
   const estimate=Math.round(average-(change*r.caloriesPerPound/spanDays));
-  const confidence=clamp(Math.round(dates.length/r.lookbackDays*65+Math.min(20,spanDays/2)+(stepDays.length>=7?7:0)),r.minimumConfidence,r.maximumConfidence);
+  const workoutEvidenceBonus=Math.min(8,Math.round(workoutEstimateDays/Math.max(1,dates.length)*8));
+  const confidence=clamp(Math.round(dates.length/r.lookbackDays*65+Math.min(20,spanDays/2)+(stepDays.length>=7?7:0)+workoutEvidenceBonus),r.minimumConfidence,r.maximumConfidence);
   const spread=Math.max(90,Math.round(300-confidence*2));
   const recentSteps=stepDays.filter(row=>dates.includes(row.local_date));
   const stepsAverage=recentSteps.length?Math.round(recentSteps.reduce((sum,row)=>sum+number(row.steps),0)/recentSteps.length):null;
-  return {estimate,confidence,days:dates.length,lower:estimate-spread,upper:estimate+spread,averageCalories:Math.round(average),weightChange:Math.round(change*10)/10,stepsAverage,excludedDays:recent.length-dates.length};
+  const backgroundMaintenance=Math.max(0,Math.round(estimate-workoutCaloriesAverage));
+  return {estimate,confidence,days:dates.length,lower:estimate-spread,upper:estimate+spread,averageCalories:Math.round(average),weightChange:Math.round(change*10)/10,stepsAverage,excludedDays:recent.length-dates.length,workoutEstimateDays,workoutCaloriesAverage:Math.round(workoutCaloriesAverage),backgroundMaintenance};
 }
 
-export function evaluateMaintenance({estimate = null, lower = null, upper = null, confidence = 0, days = 0, averageCalories = null, weightChange = null, stepsAverage = null, excludedDays = 0}) {
+export function evaluateMaintenance({estimate = null, lower = null, upper = null, confidence = 0, days = 0, averageCalories = null, weightChange = null, stepsAverage = null, excludedDays = 0, workoutEstimateDays = 0, workoutCaloriesAverage = 0, backgroundMaintenance = null}) {
   const available=number(estimate)>0;
-  const missing=[]; if(days<7)missing.push('At least 7 usable overlapping days'); if(stepsAverage==null)missing.push('Average activity data');
-  const factors=[]; if(averageCalories!=null)factors.push({label:'Average logged calories',impact:Math.round(number(averageCalories)),category:'energy'}); if(weightChange!=null)factors.push({label:'Weight-trend adjustment',impact:Math.round(number(estimate)-number(averageCalories)),category:'trend'}); if(stepsAverage!=null)factors.push({label:'Average steps context',impact:Math.round(number(stepsAverage)/1000),category:'activity'});
-  return createDecisionTrace({type:'maintenance',subject:'maintenance-calories',subjectName:'Estimated Maintenance',score:available?number(estimate):0,confidence:available?confidence:0,status:available?'estimated':'learning',positive:available?[`${days} usable observation days`]:[],negative:excludedDays?[`${excludedDays} incomplete days excluded`]:[],missing,factors,methodology:'Maintenance is estimated from average logged energy intake adjusted by observed weight change. Activity and logging completeness are used to interpret confidence and the displayed range.',confidenceReason:available?`The estimate uses ${days} overlapping weight-and-calorie days${stepsAverage!=null?' plus activity context':''}.`:'There is not enough overlapping weight and calorie data for a responsible estimate.',action:available?'Continue complete meal, weight, and activity logging to narrow the range.':'Continue daily weight and complete meal logging.',inputs:{estimate_kcal:available?Math.round(number(estimate)):'learning',range_kcal:available?`${Math.round(number(lower))}-${Math.round(number(upper))}`:'unavailable',usable_days:days,average_calories:averageCalories,weight_change_lb:weightChange,average_steps:stepsAverage,excluded_days:excludedDays},dataUsed:['Meal calorie history','Weight history',...(stepsAverage!=null?['Step history']:[])],projectedResult:available?{maintenance_kcal:Math.round(number(estimate)),lower_kcal:Math.round(number(lower)),upper_kcal:Math.round(number(upper))}:null});
+  const missing=[]; if(days<7)missing.push('At least 7 usable overlapping days'); if(stepsAverage==null)missing.push('Average activity data'); if(!workoutEstimateDays)missing.push('Workout calorie estimates');
+  const factors=[]; if(averageCalories!=null)factors.push({label:'Average logged calories',impact:Math.round(number(averageCalories)),category:'energy'}); if(weightChange!=null)factors.push({label:'Weight-trend adjustment',impact:Math.round(number(estimate)-number(averageCalories)),category:'trend'}); if(stepsAverage!=null)factors.push({label:'Average steps context',impact:Math.round(number(stepsAverage)/1000),category:'activity'}); if(workoutEstimateDays>0)factors.push({label:'Average recorded workout expenditure',impact:Math.round(number(workoutCaloriesAverage)),category:'activity'}); if(backgroundMaintenance!=null&&workoutEstimateDays>0)factors.push({label:'Background maintenance after training separation',impact:Math.round(number(backgroundMaintenance)),category:'energy'});
+  return createDecisionTrace({type:'maintenance',subject:'maintenance-calories',subjectName:'Estimated Maintenance',score:available?number(estimate):0,confidence:available?confidence:0,status:available?'estimated':'learning',positive:available?[`${days} usable observation days`,...(workoutEstimateDays>0?[`${workoutEstimateDays} days include recorded workout calorie estimates`]:[])]:[],negative:excludedDays?[`${excludedDays} incomplete days excluded`]:[],missing,factors,methodology:'Maintenance is estimated from average logged energy intake adjusted by observed weight change. Estimated workout calories are used as lower-confidence activity context to separate recorded training load from background expenditure and refine confidence; they are not simply added to maintenance because the weight trend already reflects that expenditure.',confidenceReason:available?`The estimate uses ${days} overlapping weight-and-calorie days${stepsAverage!=null?' plus step context':''}${workoutEstimateDays>0?` and ${workoutEstimateDays} days with workout calorie estimates`:''}.`:'There is not enough overlapping weight and calorie data for a responsible estimate.',action:available?'Continue complete meal, weight, activity, and workout logging to narrow the range.':'Continue daily weight and complete meal logging.',inputs:{estimate_kcal:available?Math.round(number(estimate)):'learning',range_kcal:available?`${Math.round(number(lower))}-${Math.round(number(upper))}`:'unavailable',usable_days:days,average_calories:averageCalories,weight_change_lb:weightChange,average_steps:stepsAverage,workout_estimate_days:workoutEstimateDays,average_workout_calories:Math.round(number(workoutCaloriesAverage)),background_maintenance_kcal:backgroundMaintenance,excluded_days:excludedDays},dataUsed:['Meal calorie history','Weight history',...(stepsAverage!=null?['Step history']:[]),...(workoutEstimateDays>0?['Recorded workout calorie estimates']:[])],projectedResult:available?{maintenance_kcal:Math.round(number(estimate)),lower_kcal:Math.round(number(lower)),upper_kcal:Math.round(number(upper)),background_maintenance_kcal:backgroundMaintenance,average_workout_calories:Math.round(number(workoutCaloriesAverage))}:null});
 }
 
 export function scoreRestaurantCandidate({meal, remaining = {}, daily = {}, targets = {}}) {
