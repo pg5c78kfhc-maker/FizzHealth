@@ -2538,6 +2538,13 @@ function repairFeatureSchema(){
     if(migration.sql.trim())runMigrationSql(migration.sql);
   }
 }
+function ensureAudibleSeedData(){
+  if(!hasTable('audible_audiobooks')||!hasTable('audible_series')||!hasTable('audible_authors')||!hasTable('audible_narrators'))return;
+  runMigrationSql(AUDIBLE_SEED_SQL);
+  db.run(`UPDATE audible_audiobooks SET cover_image_url='https://images-na.ssl-images-amazon.com/images/P/'||audible_asin||'.01.LZZZZZZZ.jpg', cover_image_source='amazon-asin-derived' WHERE audible_asin IS NOT NULL AND (cover_image_url IS NULL OR TRIM(cover_image_url)='')`);
+  if(hasTable('release_metadata'))db.run(`INSERT OR REPLACE INTO release_metadata(version,release_date,build_id,schema_version,title,created_at) VALUES ('1.4.17.19','2026-08-08','141719',147,'Audible Library Expansion & Cover Enrichment','2026-08-08T08:17:00-04:00')`);
+}
+
 function ensureVarietyRotationSchema(){
   // This invariant is checked on every open because v1.4.16.52 could record migration 134
   // while an existing database still lacked the physical rotation table.
@@ -2593,6 +2600,7 @@ async function migrate(onProgress=()=>{}){
     db.run('BEGIN');
     if(needsRepair)repairFeatureSchema();
     ensureVarietyRotationSchema();
+    ensureAudibleSeedData();
     reconcileImportSchema({apply:true});
     if(hasTable('settings'))db.run('INSERT OR REPLACE INTO settings(key,value) VALUES (?,?)',[repairMarker,'1']);
     db.run('COMMIT');

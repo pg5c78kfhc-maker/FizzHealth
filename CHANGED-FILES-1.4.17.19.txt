@@ -1,0 +1,14 @@
+CHANGED-FILES-1.4.17.19.txt
+RELEASE-NOTES-1.4.17.19.md
+ReleaseNotes.md
+TEST-REPORT-1.4.17.19.md
+VERSION.json
+package-lock.json
+package.json
+public/sw.js
+release-history.json
+src/audio/audibleSeed.js
+src/database.js
+src/decision/engine.js
+src/main.jsx
+tests/release-1.4.17.19.test.js

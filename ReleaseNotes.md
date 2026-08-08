@@ -1,21 +1,21 @@
-# Fizz Health v1.4.17.18 — Audio Hub & Audible Library Foundation
+# Fizz Health v1.4.17.19 — Audible Library Expansion & Cover Enrichment
 
 ## Scope
-This release establishes Audio as the umbrella destination for Podcasts and Audible, moves the existing Podcasts module under Audio without changing podcast behavior, and introduces the first persistent Audible library/series data model and UI.
+This release expands the Audible foundation created in v1.4.17.18 without changing the database schema.
 
-- Replaces the Podcasts footer destination with **Audio** using a headphones icon.
-- Adds an Audio landing page with **Podcasts** (existing podcast icon) and **Audible** destinations.
-- Existing podcast storage, playlists, playback, refresh, settings, and diagnostics are preserved; only the navigation entry point changes.
-- Adds schema 147 tables for Audible audiobooks, series, authors, narrators, ownership state, series order, listening observations, and source metadata.
-- Seeds 50 owned audiobooks from the supplied Audible Library capture.
-- Imports only fields supported by the capture: ASIN, title, canonical Audible product URL, author, narrator(s), series and book number when present, runtime where unambiguous, synopsis, and explicit remaining-time observations.
-- Adds Audible Library, Series, Series Detail, and Book Detail pages.
-- Book records support `owned` and `not_owned` ownership states so future series-gap discovery can add catalog titles without treating them as owned.
-- Adds **Open in Audible** using the canonical HTTPS Audible title URL/ASIN, matching the deep-link behavior verified on iPhone.
-- Adds cover-image fields and placeholder artwork. The supplied Markdown does not contain cover-image URLs, so this release does not fabricate artwork URLs.
-- Automatic discovery of missing/unowned series books, credit recommendations, full-account synchronization, and in-Fizz Audible playback are intentionally out of scope.
+- Imports the second supplied 50-title Audible Library capture, bringing the seeded owned library to 100 titles.
+- Preserves ASIN, canonical Audible product URL, author(s), narrator(s), series identity and book position, runtime where unambiguous, synopsis, ownership, and explicit listening-state observations from the capture.
+- Adds live Audible Library summary metrics: owned title count and total known audio runtime. If some owned titles lack a captured total runtime, the UI reports how many titles contribute to the runtime total.
+- Backfills cover artwork candidates for both previously imported and newly imported books using the stable Audible/Amazon ASIN. Broken/unavailable image endpoints fall back to the existing book placeholder rather than displaying a broken image.
+- Makes Audible seed synchronization idempotent on database open so an existing schema-147 installation receives newly supplied library batches without requiring an unnecessary schema increment.
+- Preserves the Audio landing page, Podcasts relocation, Audible deep links, library/detail/series navigation, and all existing health/workout/podcast behavior.
 
 ## Schema and migration
-Database schema increments from **146 to 147**. Migration 147 is additive and idempotent: it creates new Audible tables/indexes and inserts the first seed snapshot with `INSERT OR IGNORE`, leaving health, nutrition, workout, and podcast data untouched.
+Database schema remains **147**. No structural schema change is required. The release performs an idempotent Audible data synchronization after schema reconciliation, using `INSERT OR IGNORE` so existing audiobook records and user-owned state are not rewritten.
 
-Completed story range: FH-17118.1-FH-17118.5
+## Known limitations
+- Audible library captures sometimes expose remaining time or `Finished` instead of the title's total runtime. Those titles count toward owned titles but not toward total audio runtime until a total runtime is available.
+- Cover art is resolved through an ASIN-derived Amazon image endpoint. If a title has no resolvable image at that endpoint, Fizz displays the existing placeholder.
+- Automatic discovery/import of not-owned books from complete Audible series catalogs remains out of scope for this release.
+
+Completed story range: FH-17119.1-FH-17119.4
