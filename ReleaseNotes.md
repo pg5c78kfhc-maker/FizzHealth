@@ -1,3 +1,13 @@
+# Fizz Health v1.4.17.21 — Audible Refresh, Runtime Formatting & Library Expansion
+
+- Imported the audiobook records present in the fourth Audible library capture; Audible podcast/episode rows in the same page were intentionally excluded from the audiobook library.
+- Repaired Audible catalog enrichment by requesting the supported 570px cover size instead of the invalid 500px request that caused the entire metadata call to fail.
+- Added pull-to-refresh on the Audible Library page to retry unresolved covers and total runtimes and refresh the visible cards/totals when metadata is persisted.
+- Aggregate library audio time now expands adaptively through years, days, hours, and minutes while individual audiobook runtimes keep their compact format.
+- Runtime coverage remains visible even when no titles are missing.
+- Database schema remains 147.
+- Completed story range: FH-17121.1-FH-17121.4.
+
 # Fizz Health v1.4.17.20 — Audible Catalog Metadata Enrichment & Library Expansion
 
 - Imported the third supplied 50-title Audible Library capture, bringing the seeded owned library to 150 unique titles.

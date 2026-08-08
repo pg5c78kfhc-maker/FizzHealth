@@ -1,8 +1,8 @@
-// Seed snapshot captured from the user's Audible Library exports through v1.4.17.20.
+// Seed snapshot captured from the user's Audible Library exports through v1.4.17.21.
 // Source fidelity rule: only values explicitly present in the captures are populated.
 
 export const AUDIBLE_SEED_CAPTURED_AT='2026-08-08';
-export const AUDIBLE_SEED_SOURCE='audible-library-markdown-2026-08-08-batches-1-3';
+export const AUDIBLE_SEED_SOURCE='audible-library-markdown-2026-08-08-batches-1-4';
 
 export const AUDIBLE_SEED_BOOKS=[
   {
@@ -3760,6 +3760,624 @@ export const AUDIBLE_SEED_BOOKS=[
     "remaining_minutes": null,
     "progress_text": "Finished",
     "description": "#1 New York Times bestselling author Stuart Woods delivers a riveting thriller that introduces his first female protagonist, Deputy Chief of Police Holly Barker. Forced into early retirement at thirty-seven, smart, attractive, and fiercely independent Major Holly Barker trades in her bars as a...",
+    "description_is_truncated": true,
+    "listening_status": "finished"
+  },
+  {
+    "asin": "B011PVUGUG",
+    "title": "Make Me: Jack Reacher, Book 20",
+    "product_url": "https://www.audible.com/pd/Make-Me-Audiobook/B011PVUGUG",
+    "authors": [
+      {
+        "name": "Lee Child",
+        "id": "B000APO0PQ",
+        "url": "https://www.audible.com/author/B000APO0PQ"
+      }
+    ],
+    "narrators": [
+      "Dick Hill"
+    ],
+    "series_name": "Jack Reacher",
+    "series_id": "B005NASKDG",
+    "series_url": "https://www.audible.com/series/Jack-Reacher-Audiobook/B005NASKDG",
+    "series_position": 20,
+    "runtime_display": "14h 3m",
+    "runtime_minutes": 843,
+    "remaining_minutes": null,
+    "progress_text": null,
+    "description": "#1 NEW YORK TIMES BESTSELLER The inspiration for season five of the hit streaming series Reacher! ONE OF THE BEST BOOKS OF THE YEAR: Los Angeles Times, The Guardian, Suspense magazine “Why is this town called Mother’s Rest?” That’s all Reacher wants to know. But no one will tell him...",
+    "description_is_truncated": true,
+    "listening_status": "unknown"
+  },
+  {
+    "asin": "B00M7DG5EI",
+    "title": "Personal: Jack Reacher, Book 19",
+    "product_url": "https://www.audible.com/pd/Personal-Audiobook/B00M7DG5EI",
+    "authors": [
+      {
+        "name": "Lee Child",
+        "id": "B000APO0PQ",
+        "url": "https://www.audible.com/author/B000APO0PQ"
+      }
+    ],
+    "narrators": [
+      "Dick Hill"
+    ],
+    "series_name": "Jack Reacher",
+    "series_id": "B005NASKDG",
+    "series_url": "https://www.audible.com/series/Jack-Reacher-Audiobook/B005NASKDG",
+    "series_position": 19,
+    "runtime_display": null,
+    "runtime_minutes": null,
+    "remaining_minutes": null,
+    "progress_text": "Finished",
+    "description": "#1 NEW YORK TIMES BESTSELLER Don’t miss the hit streaming series Reacher! “The best one yet.”—Stephen King Someone has tried to kill the French president. How many snipers can shoot from three-quarters of a mile with total confidence? John Kott—a U.S. Army marksman gone...",
+    "description_is_truncated": true,
+    "listening_status": "finished"
+  },
+  {
+    "asin": "B00I53UK7W",
+    "title": "The Race Underground: Boston, New York, and the Incredible Rivalry That Built America's First Subway",
+    "product_url": "https://www.audible.com/pd/The-Race-Underground-Audiobook/B00I53UK7W",
+    "authors": [
+      {
+        "name": "Doug Most",
+        "id": "B001K9061I",
+        "url": "https://www.audible.com/author/B001K9061I"
+      }
+    ],
+    "narrators": [
+      "John H. Mayer"
+    ],
+    "series_name": null,
+    "series_id": null,
+    "series_url": null,
+    "series_position": null,
+    "runtime_display": "15h 26m",
+    "runtime_minutes": 926,
+    "remaining_minutes": null,
+    "progress_text": null,
+    "description": "In the late nineteenth century, as cities like Boston and New York grew larger, the streets became increasingly clogged with horse-drawn carts. When the great blizzard of 1888 brought New York City to a halt, a solution had to be found. Two brothers—Henry Melville Whitney of Boston and...",
+    "description_is_truncated": true,
+    "listening_status": "unknown"
+  },
+  {
+    "asin": "B0090Q9BM8",
+    "title": "A Wanted Man: A Jack Reacher Novel",
+    "product_url": "https://www.audible.com/pd/A-Wanted-Man-Audiobook/B0090Q9BM8",
+    "authors": [
+      {
+        "name": "Lee Child",
+        "id": "B000APO0PQ",
+        "url": "https://www.audible.com/author/B000APO0PQ"
+      }
+    ],
+    "narrators": [
+      "Dick Hill"
+    ],
+    "series_name": "Jack Reacher",
+    "series_id": "B005NASKDG",
+    "series_url": "https://www.audible.com/series/Jack-Reacher-Audiobook/B005NASKDG",
+    "series_position": 17,
+    "runtime_display": null,
+    "runtime_minutes": null,
+    "remaining_minutes": null,
+    "progress_text": "Finished",
+    "description": "A masterpiece of suspense from #1 New York Times bestselling author Lee Child Don’t miss the hit streaming series Reacher! “The truth about Reacher gets better and better.”—Janet Maslin, The New York Times Four people in a car, hoping to make Chicago by morning. One man driving...",
+    "description_is_truncated": true,
+    "listening_status": "finished"
+  },
+  {
+    "asin": "B005MS3H6Y",
+    "title": "The Affair: Jack Reacher, Book 16",
+    "product_url": "https://www.audible.com/pd/The-Affair-Audiobook/B005MS3H6Y",
+    "authors": [
+      {
+        "name": "Lee Child",
+        "id": "B000APO0PQ",
+        "url": "https://www.audible.com/author/B000APO0PQ"
+      }
+    ],
+    "narrators": [
+      "Dick Hill"
+    ],
+    "series_name": "Jack Reacher",
+    "series_id": "B005NASKDG",
+    "series_url": "https://www.audible.com/series/Jack-Reacher-Audiobook/B005NASKDG",
+    "series_position": 16,
+    "runtime_display": null,
+    "runtime_minutes": null,
+    "remaining_minutes": null,
+    "progress_text": "Finished",
+    "description": "#1 NEW YORK TIMES BESTSELLER Hired to go undercover while investigating a murder, Jack Reacher butts heads with the local police and calls on Sergeant Frances Neagley to help untangle a cover-up that some would kill to keep buried. Don’t miss the hit streaming series Reacher and the...",
+    "description_is_truncated": true,
+    "listening_status": "finished"
+  },
+  {
+    "asin": "B0045VT4NY",
+    "title": "Worth Dying For: Jack Reacher, Book 15",
+    "product_url": "https://www.audible.com/pd/Worth-Dying-For-Audiobook/B0045VT4NY",
+    "authors": [
+      {
+        "name": "Lee Child",
+        "id": "B000APO0PQ",
+        "url": "https://www.audible.com/author/B000APO0PQ"
+      }
+    ],
+    "narrators": [
+      "Dick Hill"
+    ],
+    "series_name": "Jack Reacher",
+    "series_id": "B005NASKDG",
+    "series_url": "https://www.audible.com/series/Jack-Reacher-Audiobook/B005NASKDG",
+    "series_position": 15,
+    "runtime_display": null,
+    "runtime_minutes": null,
+    "remaining_minutes": null,
+    "progress_text": "Finished",
+    "description": "THE #1 NEW YORK TIMES BESTSELLING JACK REACHER SERIES Don’t miss the hit streaming series Reacher! A heart-racing page-turner that hits the ground running and then accelerates all the way to a colossal showdown “Jack Reacher is the coolest continuing series character now on offer...",
+    "description_is_truncated": true,
+    "listening_status": "finished"
+  },
+  {
+    "asin": "B003G8RX9O",
+    "title": "61 Hours: Jack Reacher, Book 14",
+    "product_url": "https://www.audible.com/pd/61-Hours-Audiobook/B003G8RX9O",
+    "authors": [
+      {
+        "name": "Lee Child",
+        "id": "B000APO0PQ",
+        "url": "https://www.audible.com/author/B000APO0PQ"
+      }
+    ],
+    "narrators": [
+      "Dick Hill"
+    ],
+    "series_name": "Jack Reacher",
+    "series_id": "B005NASKDG",
+    "series_url": "https://www.audible.com/series/Jack-Reacher-Audiobook/B005NASKDG",
+    "series_position": 14,
+    "runtime_display": null,
+    "runtime_minutes": null,
+    "remaining_minutes": null,
+    "progress_text": "Finished",
+    "description": "#1 NEW YORK TIMES BESTSELLER THE BLOCKBUSTER JACK REACHER SERIES THAT INSPIRED TWO MAJOR MOTION PICTURES AND THE STREAMING SERIES REACHER “Reacher gets better and better. . . . [This is the] craftiest and most highly evolved of Lee Child’s electrifying Reacher books.”—Janet Maslin...",
+    "description_is_truncated": true,
+    "listening_status": "finished"
+  },
+  {
+    "asin": "1978683073",
+    "title": "I See You",
+    "product_url": "https://www.audible.com/pd/I-See-You-Audiobook/1978683073",
+    "authors": [
+      {
+        "name": "Mary Burton",
+        "id": "B001IYV45M",
+        "url": "https://www.audible.com/author/B001IYV45M"
+      }
+    ],
+    "narrators": [
+      "Bailey Carr"
+    ],
+    "series_name": null,
+    "series_id": null,
+    "series_url": null,
+    "series_position": null,
+    "runtime_display": null,
+    "runtime_minutes": null,
+    "remaining_minutes": null,
+    "progress_text": "Finished",
+    "description": "FBI special agent Zoe Spencer uses skeletal remains to recreate the faces of murder victims through sculpture. Though highly scientific, the process is also sensitive and intimate; she becomes attached to the individuals she identifies, desperate to find justice for each....",
+    "description_is_truncated": true,
+    "listening_status": "finished"
+  },
+  {
+    "asin": "1978631227",
+    "title": "Cut and Run",
+    "product_url": "https://www.audible.com/pd/Cut-and-Run-Audiobook/1978631227",
+    "authors": [
+      {
+        "name": "Mary Burton",
+        "id": "B001IYV45M",
+        "url": "https://www.audible.com/author/B001IYV45M"
+      }
+    ],
+    "narrators": [
+      "Brittany Pressley"
+    ],
+    "series_name": null,
+    "series_id": null,
+    "series_url": null,
+    "series_position": null,
+    "runtime_display": null,
+    "runtime_minutes": null,
+    "remaining_minutes": null,
+    "progress_text": "Finished",
+    "description": "Twin sisters separated by the past are reunited by unspeakable crimes in *New York Times* best-selling author Mary Burton’s throat-clutching novel of suspense....",
+    "description_is_truncated": true,
+    "listening_status": "finished"
+  },
+  {
+    "asin": "1721362215",
+    "title": "Hide and Seek",
+    "product_url": "https://www.audible.com/pd/Hide-and-Seek-Audiobook/1721362215",
+    "authors": [
+      {
+        "name": "Mary Burton",
+        "id": "B001IYV45M",
+        "url": "https://www.audible.com/author/B001IYV45M"
+      }
+    ],
+    "narrators": [
+      "Christina Traister"
+    ],
+    "series_name": null,
+    "series_id": null,
+    "series_url": null,
+    "series_position": null,
+    "runtime_display": null,
+    "runtime_minutes": null,
+    "remaining_minutes": null,
+    "progress_text": "Finished",
+    "description": "Special Agent Macy Crow is a survivor. After a vicious hit-and-run nearly kills her, she gets right back to work, and now she’s gunning for a spot on the FBI’s elite profiling team. As an audition, she offers to investigate the recently discovered bones of Tobi Turner....",
+    "description_is_truncated": true,
+    "listening_status": "finished"
+  },
+  {
+    "asin": "1684575001",
+    "title": "Boss of the Grips: The Life of James H. Williams and the Red Caps of Grand Central Terminal",
+    "product_url": "https://www.audible.com/pd/Boss-of-the-Grips-Audiobook/1684575001",
+    "authors": [
+      {
+        "name": "Eric K. Washington",
+        "id": "B004JOFRE2",
+        "url": "https://www.audible.com/author/B004JOFRE2"
+      }
+    ],
+    "narrators": [
+      "David Sadzin"
+    ],
+    "series_name": null,
+    "series_id": null,
+    "series_url": null,
+    "series_position": null,
+    "runtime_display": null,
+    "runtime_minutes": null,
+    "remaining_minutes": 238,
+    "progress_text": "3h 58m left",
+    "description": "A long-overdue biography of the head of Grand Central Terminal's Red Caps, who flourished in the cultural nexus of Harlem and American railroads. In a feat of remarkable research and timely reclamation, Eric K. Washington uncovers the nearly forgotten life of James H. Williams (1878-1948), the...",
+    "description_is_truncated": true,
+    "listening_status": "in_progress"
+  },
+  {
+    "asin": "1039402178",
+    "title": "Misjudged: Sam Johnstone, Book 1",
+    "product_url": "https://www.audible.com/pd/Misjudged-Audiobook/1039402178",
+    "authors": [
+      {
+        "name": "James Chandler",
+        "id": "B08HQGYXHW",
+        "url": "https://www.audible.com/author/B08HQGYXHW"
+      }
+    ],
+    "narrators": [
+      "James Anderson Foster"
+    ],
+    "series_name": "Sam Johnstone",
+    "series_id": "B098NCHXSQ",
+    "series_url": "https://www.audible.com/series/Sam-Johnstone-Audiobook/B098NCHXSQ",
+    "series_position": 1,
+    "runtime_display": null,
+    "runtime_minutes": null,
+    "remaining_minutes": null,
+    "progress_text": "Finished",
+    "description": "When a disabled veteran takes a new job as an attorney in a small Wyoming town, he is thrust into a mysterious murder case....",
+    "description_is_truncated": true,
+    "listening_status": "finished"
+  },
+  {
+    "asin": "B08XMZP7ZS",
+    "title": "The Corps Justice Series: Books 1-3: The Corps Justice Series Box Set, Book 1",
+    "product_url": "https://www.audible.com/pd/The-Corps-Justice-Series-Books-1-3-Audiobook/B08XMZP7ZS",
+    "authors": [
+      {
+        "name": "C. G. Cooper",
+        "id": "B00B40BIVU",
+        "url": "https://www.audible.com/author/B00B40BIVU"
+      }
+    ],
+    "narrators": [
+      "A W Dickson"
+    ],
+    "series_name": "Corps Justice",
+    "series_id": "B00CBXCKBQ",
+    "series_url": "https://www.audible.com/series/The-Corps-Justice-Series-Audiobook/B00CBXCKBQ",
+    "series_position": null,
+    "runtime_display": null,
+    "runtime_minutes": null,
+    "remaining_minutes": null,
+    "progress_text": null,
+    "description": "This is a box set that contains books one to three of the Corps Justice Series: *Corps Justice*, *Council of Patriots*, and *Prime Asset*. Three action thriller books that are sure to keep you listening on late into the night....",
+    "description_is_truncated": true,
+    "listening_status": "unknown"
+  },
+  {
+    "asin": "B00MFW7NU6",
+    "title": "Adrift: The Complete Novel: Episodes 1 - 4, Corps Justice",
+    "product_url": "https://www.audible.com/pd/Adrift-The-Complete-Novel-Audiobook/B00MFW7NU6",
+    "authors": [
+      {
+        "name": "C. G. Cooper",
+        "id": "B00B40BIVU",
+        "url": "https://www.audible.com/author/B00B40BIVU"
+      }
+    ],
+    "narrators": [
+      "J. Bruce"
+    ],
+    "series_name": "Corps Justice Daniel Briggs Series",
+    "series_id": "B01N1RM7LK",
+    "series_url": "https://www.audible.com/series/Corps-Justice-Daniel-Briggs-Series-Audiobook/B01N1RM7LK",
+    "series_position": 1,
+    "runtime_display": null,
+    "runtime_minutes": null,
+    "remaining_minutes": null,
+    "progress_text": "Finished",
+    "description": "Daniel Briggs is a ghost in his own life. A Marine sniper haunted by a brother who died screaming his name, he's been drifting across the country one bus and one bottle at a time — running from a war that won't let go, and from the two words that chase him into every blackout: your fault.",
+    "description_is_truncated": false,
+    "listening_status": "finished"
+  },
+  {
+    "asin": "B0BV4KLZLK",
+    "title": "The Mistress and the Key",
+    "product_url": "https://www.audible.com/pd/The-Mistress-and-the-Key-Audiobook/B0BV4KLZLK",
+    "authors": [
+      {
+        "name": "Ben Mezrich",
+        "id": "B001H6OGU6",
+        "url": "https://www.audible.com/author/B001H6OGU6"
+      }
+    ],
+    "narrators": [
+      "Corey Carthew"
+    ],
+    "series_name": null,
+    "series_id": null,
+    "series_url": null,
+    "series_position": null,
+    "runtime_display": null,
+    "runtime_minutes": null,
+    "remaining_minutes": null,
+    "progress_text": "Finished",
+    "description": "From a New York Times bestselling author, a thriller in which Benjamin Franklin's mysterious connection to Paul Revere and a cabal of powerful alchemists that has been lost to history—until now. Card shark Hailey Gordon and ex-con Nick Patterson—fresh off of uncovering one of the biggest...",
+    "description_is_truncated": true,
+    "listening_status": "finished"
+  },
+  {
+    "asin": "B095CRTZ3B",
+    "title": "The Ursulina",
+    "product_url": "https://www.audible.com/pd/The-Ursulina-Audiobook/B095CRTZ3B",
+    "authors": [
+      {
+        "name": "Brian Freeman",
+        "id": "B001IGJVRI",
+        "url": "https://www.audible.com/author/B001IGJVRI"
+      }
+    ],
+    "narrators": [
+      "January LaVoy"
+    ],
+    "series_name": "Shelby Lake",
+    "series_id": "B08ZJZLGHK",
+    "series_url": "https://www.audible.com/series/Shelby-Lake-Audiobook/B08ZJZLGHK",
+    "series_position": 2,
+    "runtime_display": null,
+    "runtime_minutes": null,
+    "remaining_minutes": null,
+    "progress_text": "Finished",
+    "description": "In this gripping follow-up to his Edgar Award-nominated mystery, *The Deep, Deep Snow*, Brian Freeman tells the story of Rebecca Colder, a young sheriff’s deputy who faces the most excruciating choice a mother can make....",
+    "description_is_truncated": true,
+    "listening_status": "finished"
+  },
+  {
+    "asin": "B0B9146VS8",
+    "title": "The Thriller Boxset: Dying to Tell, Every Little Breath, The People Next Door and Trust No One",
+    "product_url": "https://www.audible.com/pd/The-Thriller-Boxset-Audiobook/B0B9146VS8",
+    "authors": [
+      {
+        "name": "Keri Beevis",
+        "id": "B00BNUIZJE",
+        "url": "https://www.audible.com/author/B00BNUIZJE"
+      }
+    ],
+    "narrators": [
+      "Eilidh Beaton",
+      "Sasha Higgins",
+      "Joel Froomkin",
+      "Shakira Shute",
+      "Billie Fulford-Brown"
+    ],
+    "series_name": null,
+    "series_id": null,
+    "series_url": null,
+    "series_position": null,
+    "runtime_display": "45h 56m",
+    "runtime_minutes": 2756,
+    "remaining_minutes": null,
+    "progress_text": null,
+    "description": "*The Thriller Boxset *includes the following gripping titles: *Dying to Tell*, *Every Little Breath*, *The People Next Door*, and *Trust No One*....",
+    "description_is_truncated": true,
+    "listening_status": "unknown"
+  },
+  {
+    "asin": "B07NNSQ4YD",
+    "title": "The Deep, Deep Snow",
+    "product_url": "https://www.audible.com/pd/The-Deep-Deep-Snow-Audiobook/B07NNSQ4YD",
+    "authors": [
+      {
+        "name": "Brian Freeman",
+        "id": "B001IGJVRI",
+        "url": "https://www.audible.com/author/B001IGJVRI"
+      }
+    ],
+    "narrators": [
+      "January LaVoy"
+    ],
+    "series_name": "Shelby Lake",
+    "series_id": "B08ZJZLGHK",
+    "series_url": "https://www.audible.com/series/Shelby-Lake-Audiobook/B08ZJZLGHK",
+    "series_position": 1,
+    "runtime_display": null,
+    "runtime_minutes": null,
+    "remaining_minutes": null,
+    "progress_text": "Finished",
+    "description": "In an intense, emotional mystery that spans a decade in the life of a small town, best-selling author Brian Freeman brings us an unforgettable heroine who discovers that the dead may sometimes be easier to rescue than the living....",
+    "description_is_truncated": true,
+    "listening_status": "finished"
+  },
+  {
+    "asin": "B0DTKV2H8J",
+    "title": "The Big Fix: A Jack Bergin Mystery",
+    "product_url": "https://www.audible.com/pd/The-Big-Fix-A-Jack-Bergin-Mystery-Audiobook/B0DTKV2H8J",
+    "authors": [
+      {
+        "name": "John Mankiewicz",
+        "id": null,
+        "url": null
+      },
+      {
+        "name": "Jamie Napoli",
+        "id": null,
+        "url": null
+      },
+      {
+        "name": "Daniel Pyne",
+        "id": "B0039TEUA0",
+        "url": "https://www.audible.com/author/B0039TEUA0"
+      },
+      {
+        "name": "Katie Pyne",
+        "id": null,
+        "url": null
+      },
+      {
+        "name": "Aaron Lipstadt",
+        "id": null,
+        "url": null
+      }
+    ],
+    "narrators": [
+      "Jon Hamm",
+      "Ana de la Reguera",
+      "Alia Shawkat",
+      "Omar Epps",
+      "Erin Moriarty",
+      "Sosie Bacon",
+      "John Slattery",
+      "Full Cast"
+    ],
+    "series_name": "Jack Bergin",
+    "series_id": "B0DTW7XKKH",
+    "series_url": "https://www.audible.com/series/Jack-Bergin-Audiobook/B0DTW7XKKH",
+    "series_position": 2,
+    "runtime_display": "4h 21m",
+    "runtime_minutes": 261,
+    "remaining_minutes": null,
+    "progress_text": null,
+    "description": "Jon Hamm returns as intrepid private eye Jack Bergin in this thrilling, hard-boiled Audible Original series....",
+    "description_is_truncated": true,
+    "listening_status": "unknown"
+  },
+  {
+    "asin": "B01AKRD89W",
+    "title": "Tough Justice Series Box Set: Parts 1 - 8",
+    "product_url": "https://www.audible.com/pd/Tough-Justice-Series-Box-Set-Parts-1-8-Audiobook/B01AKRD89W",
+    "authors": [
+      {
+        "name": "Carla Cassidy",
+        "id": "B001ILMBE8",
+        "url": "https://www.audible.com/author/B001ILMBE8"
+      },
+      {
+        "name": "Tyler Anne Snell",
+        "id": "B00ODIGTX2",
+        "url": "https://www.audible.com/author/B00ODIGTX2"
+      },
+      {
+        "name": "Carol Ericson",
+        "id": "B001KC6B5K",
+        "url": "https://www.audible.com/author/B001KC6B5K"
+      },
+      {
+        "name": "Gail Barrett",
+        "id": "B001HCZ2TE",
+        "url": "https://www.audible.com/author/B001HCZ2TE"
+      }
+    ],
+    "narrators": [
+      "Thérèse Plummer"
+    ],
+    "series_name": "Tough Justice",
+    "series_id": "B019YM9I8O",
+    "series_url": "https://www.audible.com/series/Tough-Justice-Audiobook/B019YM9I8O",
+    "series_position": null,
+    "runtime_display": null,
+    "runtime_minutes": null,
+    "remaining_minutes": null,
+    "progress_text": "Finished",
+    "description": "All 8 parts of this chilling, high-octane FBI serial available in this audio collection! Special Agent Lara Grant has finally put her life as an undercover agent in the Moretti gang behind her and started a new assignment in New York City. Until a dramatic sniper attack leaves Lara's face —...",
+    "description_is_truncated": true,
+    "listening_status": "finished"
+  },
+  {
+    "asin": "B01LFP2KC4",
+    "title": "American Murder Houses: A Coast-to-Coast Tour of the Most Notorious Houses of Homicide",
+    "product_url": "https://www.audible.com/pd/American-Murder-Houses-Audiobook/B01LFP2KC4",
+    "authors": [
+      {
+        "name": "Steve Lehto",
+        "id": "B001JPA7O4",
+        "url": "https://www.audible.com/author/B001JPA7O4"
+      }
+    ],
+    "narrators": [
+      "Barry Press"
+    ],
+    "series_name": null,
+    "series_id": null,
+    "series_url": null,
+    "series_position": null,
+    "runtime_display": null,
+    "runtime_minutes": null,
+    "remaining_minutes": null,
+    "progress_text": "Finished",
+    "description": "There are places in the United States of America where violent acts of bloodshed have occurred. Years may pass - even centuries - but the mark of death remains. They are known as Murder Houses. From a colonial manse in New England to a small-town home in Iowa to a Beverly Hills mansion, these...",
+    "description_is_truncated": true,
+    "listening_status": "finished"
+  },
+  {
+    "asin": "1250839688",
+    "title": "The Last Days of the Dinosaurs: An Asteroid, Extinction, and the Beginning of Our World",
+    "product_url": "https://www.audible.com/pd/The-Last-Days-of-the-Dinosaurs-Audiobook/1250839688",
+    "authors": [
+      {
+        "name": "Riley Black",
+        "id": "B08GRZSMC5",
+        "url": "https://www.audible.com/author/B08GRZSMC5"
+      }
+    ],
+    "narrators": [
+      "Christina Delaine"
+    ],
+    "series_name": null,
+    "series_id": null,
+    "series_url": null,
+    "series_position": null,
+    "runtime_display": null,
+    "runtime_minutes": null,
+    "remaining_minutes": null,
+    "progress_text": "Finished",
+    "description": "In The Last Days of the Dinosaurs, Riley Black walks listeners through what happened in the days, the years, the centuries, and the million years after the impact, tracking the sweeping disruptions that overtook this one spot, and imagining what might have been happening elsewhere on the globe...",
     "description_is_truncated": true,
     "listening_status": "finished"
   }
