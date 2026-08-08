@@ -1,0 +1,20 @@
+Fizz Health v1.4.17.29 — Audible iPhone Clipboard JSON Reliability
+Baseline: Fizz Health v1.4.17.28 FULL-SOURCE
+Database schema: 147 (unchanged)
+Audible exchange schema: 1 (unchanged)
+
+Implemented:
+- Added clipboard-safe normalization for structural smart/curly JSON quotation marks in Audible exchange Step 2.
+- Structural curly quotes are converted only when they occupy JSON string-delimiter positions.
+- Legitimate curly quotes, apostrophes, Unicode punctuation, escaped ASCII quotes, and metadata text remain preserved.
+- Normalization runs before the existing strict JSON.parse() stage; no permissive parser was introduced.
+- Malformed and truncated responses remain blocked with the existing detailed syntax/incomplete-structure diagnostics.
+- Validate & review reports when clipboard formatting was corrected automatically.
+- Complete-batch validation, exact ASIN/order reconciliation, duplicate prevention, transaction safety, and 10-record enrichment requirements remain unchanged.
+- No unrelated Audible/library/Audio functionality was changed.
+
+Verification:
+- Focused v1.4.17.29 acceptance tests: PASS (8/8).
+- Project integrity check: PASS.
+- Release metadata verification: PASS.
+- Production build: NOT EXECUTED TO COMPLETION because Vite is not installed in the extracted source environment (`vite: not found`). Prebuild integrity repair passed. No dependency changes were made.

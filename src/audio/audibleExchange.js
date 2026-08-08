@@ -56,9 +56,31 @@ function structureHint(text){
  if(stack.length){const open=stack.at(-1);return `The response appears incomplete: an opening ${open==='{'?'object':'array'} was not closed.`}
  return null;
 }
+const CURLY_QUOTES=new Set(['“','”']);
+function previousNonWhitespace(source,index){for(let i=index-1;i>=0;i--)if(!/\s/.test(source[i]))return source[i];return null}
+function nextNonWhitespace(source,index){for(let i=index+1;i<source.length;i++)if(!/\s/.test(source[i]))return source[i];return null}
+function curlyCanOpenString(source,index){const prev=previousNonWhitespace(source,index);return prev==null||prev==='{'||prev==='['||prev===','||prev===':'}
+function curlyCanCloseString(source,index){const next=nextNonWhitespace(source,index);if(next==null||next===':'||next==='}'||next===']')return true;if(next!==',')return false;const comma=source.indexOf(',',index+1);if(comma<0)return false;const after=nextNonWhitespace(source,comma);return after==null||after==='}'||after===']'||after==='{'||after==='['||after==='"'||CURLY_QUOTES.has(after)||after==='-'||/[0-9tfn]/.test(after)}
+export function normalizeAudibleClipboardJson(text=''){
+ const source=String(text).replace(/^\uFEFF/,'').trim();
+ let out='',inString=false,delimiter=null,escaped=false,corrections=0;
+ for(let i=0;i<source.length;i++){
+  const ch=source[i];
+  if(inString){
+   if(escaped){out+=ch;escaped=false;continue}
+   if(ch==='\\'){out+=ch;escaped=true;continue}
+   if(delimiter==='ascii'){out+=ch;if(ch==='"'){inString=false;delimiter=null}continue}
+   if(CURLY_QUOTES.has(ch)&&curlyCanCloseString(source,i)){out+='"';inString=false;delimiter=null;corrections++;continue}
+   out+=ch;continue;
+  }
+  if(ch==='"'){out+=ch;inString=true;delimiter='ascii';continue}
+  if(CURLY_QUOTES.has(ch)&&curlyCanOpenString(source,i)){out+='"';inString=true;delimiter='curly';corrections++;continue}
+  out+=ch;
+ }
+ return {text:out,corrected:corrections>0,corrections};
+}
 export function normalizeAudibleExchangeJson(text=''){
- // Audible exchange parsing is intentionally strict. Only BOM and harmless outer whitespace are normalized.
- return String(text).replace(/^\uFEFF/,'').trim();
+ return normalizeAudibleClipboardJson(text).text;
 }
 export function audibleJsonSyntaxMessage(text,error){
  const normalized=normalizeAudibleExchangeJson(text),message=String(error?.message||error||'Unknown JSON syntax error.');
@@ -70,9 +92,9 @@ export function audibleJsonSyntaxMessage(text,error){
  const hint=structureHint(normalized);return `Invalid JSON — nothing imported. Parser: ${message}.${where}${snippet}${hint?` ${hint}`:''}`.replace(/\.\./g,'.');
 }
 export function parseAudibleExchangeJson(text=''){
- const normalized=normalizeAudibleExchangeJson(text);
+ const result=normalizeAudibleClipboardJson(text),normalized=result.text;
  if(!normalized)throw new Error('Paste the Audible JSON response first.');
- try{return {payload:JSON.parse(normalized),normalized}}
+ try{return {payload:JSON.parse(normalized),normalized,clipboardCorrected:result.corrected,clipboardCorrections:result.corrections}}
  catch(error){throw new Error(audibleJsonSyntaxMessage(normalized,error))}
 }
 export function buildAudibleBatchRequest({existingRecords=[],mode='add_new',batchSize=mode==='enrich_existing'?AUDIBLE_ENRICH_BATCH_SIZE:AUDIBLE_ADD_NEW_BATCH_SIZE}={}){
