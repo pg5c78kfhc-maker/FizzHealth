@@ -5,6 +5,8 @@ export const AUDIBLE_RESPONSE_TYPE='audible_library_batch_response';
 export const AUDIBLE_OPERATION='upsert_audiobooks';
 export const AUDIBLE_ENRICH_BATCH_SIZE=10;
 export const AUDIBLE_ADD_NEW_BATCH_SIZE=50;
+export const AUDIBLE_TRANSPORT_FORMAT='FIZZ_HEALTH_AUDIBLE_ENCODED_RESPONSE_V1';
+export const AUDIBLE_TRANSPORT_ENCODING='base64-utf8';
 
 const clean=value=>value==null?null:String(value).trim()||null;
 const isHttps=value=>/^https:\/\//i.test(String(value||''));
@@ -97,14 +99,73 @@ export function parseAudibleExchangeJson(text=''){
  try{return {payload:JSON.parse(normalized),normalized,clipboardCorrected:result.corrected,clipboardCorrections:result.corrections}}
  catch(error){throw new Error(audibleJsonSyntaxMessage(normalized,error))}
 }
+function bytesToBase64(bytes){
+ let binary='';const chunk=0x8000;
+ for(let i=0;i<bytes.length;i+=chunk)binary+=String.fromCharCode(...bytes.subarray(i,Math.min(bytes.length,i+chunk)));
+ return btoa(binary);
+}
+function base64ToBytes(value){
+ const compact=String(value||'').replace(/\s+/g,'');
+ if(!compact||compact.length%4!==0||!/^[A-Za-z0-9+/]*={0,2}$/.test(compact))throw new Error('Encoded response payload is not valid Base64. Nothing imported.');
+ let binary;try{binary=atob(compact)}catch{throw new Error('Encoded response payload is not valid Base64. Nothing imported.')}
+ const bytes=new Uint8Array(binary.length);for(let i=0;i<binary.length;i++)bytes[i]=binary.charCodeAt(i);
+ if(bytesToBase64(bytes)!==compact)throw new Error('Encoded response payload is not canonical Base64. It may be incomplete or corrupted. Nothing imported.');
+ return bytes;
+}
+function bytesToHex(bytes){return [...bytes].map(byte=>byte.toString(16).padStart(2,'0')).join('')}
+async function sha256Hex(bytes){
+ if(!globalThis.crypto?.subtle)throw new Error('Secure checksum verification is unavailable on this device. Nothing imported.');
+ return bytesToHex(new Uint8Array(await globalThis.crypto.subtle.digest('SHA-256',bytes)));
+}
+export async function encodeAudibleTransport(payload){
+ const json=typeof payload==='string'?payload:JSON.stringify(payload),bytes=new TextEncoder().encode(json),sha256=await sha256Hex(bytes),base64=bytesToBase64(bytes);
+ return `${AUDIBLE_TRANSPORT_FORMAT}\nencoding=${AUDIBLE_TRANSPORT_ENCODING}\nsha256=${sha256}\npayload=${base64}`;
+}
+export function parseAudibleTransportEnvelope(text=''){
+ const source=String(text).replace(/^\uFEFF/,'').trim();
+ if(!source)throw new Error('Paste the encoded Audible response first.');
+ const lines=source.replace(/\r\n?/g,'\n').split('\n');
+ if(lines[0].trim()!==AUDIBLE_TRANSPORT_FORMAT)throw new Error(`Invalid transport envelope. Expected ${AUDIBLE_TRANSPORT_FORMAT}. Nothing imported.`);
+ let encoding=null,sha256=null,payload=null,payloadStarted=false;
+ for(let i=1;i<lines.length;i++){
+  const line=lines[i];
+  if(payloadStarted){payload+=line.trim();continue}
+  if(line.startsWith('encoding=')){if(encoding!=null)throw new Error('Invalid transport envelope: duplicate encoding field. Nothing imported.');encoding=line.slice(9).trim();continue}
+  if(line.startsWith('sha256=')){if(sha256!=null)throw new Error('Invalid transport envelope: duplicate sha256 field. Nothing imported.');sha256=line.slice(7).trim().toLowerCase();continue}
+  if(line.startsWith('payload=')){if(payload!=null)throw new Error('Invalid transport envelope: duplicate payload field. Nothing imported.');payload=line.slice(8).trim();payloadStarted=true;continue}
+  if(line.trim())throw new Error(`Invalid transport envelope: unexpected line "${line.trim().slice(0,40)}". Nothing imported.`);
+ }
+ if(encoding!==AUDIBLE_TRANSPORT_ENCODING)throw new Error(`Invalid transport envelope encoding. Expected ${AUDIBLE_TRANSPORT_ENCODING}. Nothing imported.`);
+ if(!/^[a-f0-9]{64}$/.test(String(sha256||'')))throw new Error('Invalid transport envelope checksum. Expected a 64-character SHA-256 hex digest. Nothing imported.');
+ if(!payload)throw new Error('Encoded response payload is missing or incomplete. Nothing imported.');
+ return {format:AUDIBLE_TRANSPORT_FORMAT,encoding,sha256,payload:String(payload).replace(/\s+/g,'')};
+}
+export async function parseAudibleEncodedResponse(text=''){
+ const envelope=parseAudibleTransportEnvelope(text),bytes=base64ToBytes(envelope.payload),actualSha256=await sha256Hex(bytes);
+ if(actualSha256!==envelope.sha256)throw new Error('Checksum mismatch. The encoded response changed or was incompletely copied. Nothing imported.');
+ let decoded;try{decoded=new TextDecoder('utf-8',{fatal:true}).decode(bytes)}catch{throw new Error('Encoded response is not valid UTF-8. Nothing imported.')}
+ let payload;try{payload=JSON.parse(decoded)}catch(error){throw new Error(`Decoded response is not valid JSON. Nothing imported. Parser: ${String(error?.message||error)}`)}
+ return {payload,decoded,envelope,checksumVerified:true};
+}
+
 export function buildAudibleBatchRequest({existingRecords=[],mode='add_new',batchSize=mode==='enrich_existing'?AUDIBLE_ENRICH_BATCH_SIZE:AUDIBLE_ADD_NEW_BATCH_SIZE}={}){
  const requestId=`audible-${mode}-${Date.now()}`;
  const expectedRecordCount=mode==='enrich_existing'?existingRecords.length:batchSize;
- const rules=[
+ const outputRules=mode==='enrich_existing'?[
+  'CLIPBOARD-SAFE RESPONSE TRANSPORT IS REQUIRED. Do not return the enrichment response as raw JSON.',
+  `Return exactly four transport lines and nothing else. Line 1: ${AUDIBLE_TRANSPORT_FORMAT}. Line 2: encoding=${AUDIBLE_TRANSPORT_ENCODING}. Line 3: sha256=<64 lowercase hexadecimal SHA-256 of the exact decoded UTF-8 JSON bytes>. Line 4: payload=<Base64 of those exact UTF-8 JSON bytes>.`,
+  'Do not return Markdown, code fences, commentary, citations, explanations, headings, prefixes, suffixes, or any other text.',
+  'First construct the complete audible_library_batch_response object using strict JSON with ASCII U+0022 double quotation marks for JSON syntax.',
+  'Before JSON serialization, sanitize catalog-derived text so punctuation cannot corrupt JSON: normalize typographic quotation marks when useful, and JSON-escape every embedded ASCII double quote, backslash, newline, tab, and control character.',
+  'Serialize the complete response JSON compactly, verify that the exact serialized JSON parses successfully with JavaScript JSON.parse(), then encode those exact UTF-8 bytes as Base64.',
+  'Compute SHA-256 over the exact decoded UTF-8 JSON bytes represented by payload. The checksum must match those bytes exactly.',
+  'The Base64 payload must contain the entire response JSON. Do not truncate it, split it into multiple objects, or omit unchanged records.',
+  'The transport envelope itself must contain only the four specified ASCII lines. Do not use quotation marks around envelope field values.'
+ ]:[
   'STRICT OUTPUT FORMAT: Return exactly ONE complete syntactically valid JSON object and nothing else.',
   'The response must be directly parseable by JavaScript JSON.parse() without cleanup, repair, extraction, preprocessing, or conversion.',
   'Do not return Markdown, code fences, commentary, citations, explanations, headings, prefixes, suffixes, or any text outside the JSON object.',
-  'Use strict JSON syntax only. All object keys and string delimiters must use the standard ASCII double quotation mark U+0022 (\").',
+  'Use strict JSON syntax only. All object keys and string delimiters must use the standard ASCII double quotation mark U+0022 (").',
   'Never use smart or curly quotation marks as JSON delimiters. Smart punctuation may appear only inside a properly encoded JSON string value.',
   'Never use single quotation marks as JSON delimiters, never include trailing commas, and never include comments.',
   'Never emit undefined, NaN, Infinity, or another non-JSON value. Use null when a value is unknown.',
@@ -112,7 +173,9 @@ export function buildAudibleBatchRequest({existingRecords=[],mode='add_new',batc
   'Descriptions and other catalog text must be safely JSON-escaped before insertion; quotation marks copied from source text must never terminate the surrounding JSON string.',
   'Do not truncate the response. Every opening object, array, and string delimiter must have its matching closing delimiter.',
   'The first non-whitespace character of the response must be { and the final non-whitespace character must be }.',
-  'Before returning the response, internally verify that the COMPLETE response successfully parses with JSON.parse(). If it would not parse, correct it before returning it.',
+  'Before returning the response, internally verify that the COMPLETE response successfully parses with JSON.parse(). If it would not parse, correct it before returning it.'
+ ];
+ const rules=[...outputRules,
   'Preserve format, schema_version, request_id, operation, and mode, and set request_type to audible_library_batch_response.',
   mode==='enrich_existing'
    ?`BATCH COMPLETENESS IS REQUIRED: ${expectedRecordCount} existing records were submitted. Return exactly ${expectedRecordCount} audiobook response records — one for every submitted existing record, in the same order.`
@@ -133,7 +196,7 @@ export function buildAudibleBatchRequest({existingRecords=[],mode='add_new',batc
   'Preserve ownership_status, listening_status, audible_progress_text, and remaining_minutes from submitted existing records unless the request itself contains newer authoritative listening-state evidence.',
   'Preserve explicit Finished state from the capture. Do not infer finished merely because Listen now or Mark as finished is present.',
   mode==='enrich_existing'?`Before returning, verify audiobooks.length is exactly ${expectedRecordCount}, every submitted audible_asin occurs exactly once, there are no duplicate ASINs, and the input order is preserved.`:`Before returning, verify the audiobook count matches the requested batch, there are no duplicate ASINs, and the supplied capture order is preserved.`,
-  'Before returning, perform one final strict JSON syntax validation of the entire payload.'
+  mode==='enrich_existing'?'Before Base64 encoding, perform one final strict JSON syntax validation of the entire decoded response payload.':'Before returning, perform one final strict JSON syntax validation of the entire payload.'
  ];
  return {
   format:AUDIBLE_EXCHANGE_FORMAT,
@@ -148,7 +211,7 @@ export function buildAudibleBatchRequest({existingRecords=[],mode='add_new',batc
    purpose:mode==='enrich_existing'?'Enrich these existing Fizz Health Audible audiobook records without creating duplicates.':'Create a batch of Audible audiobook records for import into Fizz Health.',
    rules
   },
-  response_requirements:{strict_json:true,json_parse_compatible:true,no_markdown:true,no_code_fences:true,no_commentary:true,return_every_input_record:true,identity_field:'audible_asin',expected_record_count:expectedRecordCount,preserve_input_order:true,require_unique_asins:true},
+  response_requirements:{strict_json:true,json_parse_compatible:true,no_markdown:true,no_code_fences:true,no_commentary:true,return_every_input_record:true,identity_field:'audible_asin',expected_record_count:expectedRecordCount,preserve_input_order:true,require_unique_asins:true,...(mode==='enrich_existing'?{transport_format:AUDIBLE_TRANSPORT_FORMAT,encoding:AUDIBLE_TRANSPORT_ENCODING,checksum:'sha256'}:{})},
   existing_records:existingRecords,
   audiobook_schema:{media_type:'audiobook',audible_asin:null,title:null,display_title:null,audible_product_url:null,authors:[],narrators:[],series:null,runtime_minutes:null,runtime_display:null,description:null,cover_image_url:null,ownership_status:'owned',listening_status:'unknown',audible_progress_text:null,remaining_minutes:null,can_listen_now:true,source_evidence:null},
   audiobooks:[]

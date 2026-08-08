@@ -2,6 +2,33 @@
   "format": "fizz-health-release-history",
   "releases": [
     {
+      "version": "1.4.17.30",
+      "name": "Audible Enrichment Clipboard-Safe Transport",
+      "type": "Focused Audible enrichment clipboard-safe transport release",
+      "created": "2026-08-08T13:35:00-04:00",
+      "build": "141730",
+      "stories": [
+        [
+          "FH-17130.1",
+          "Return existing-audiobook enrichment responses in a quote-free Base64 UTF-8 transport envelope instead of raw JSON"
+        ],
+        [
+          "FH-17130.2",
+          "Verify SHA-256 before strict JSON parsing so incomplete or changed clipboard payloads are rejected deterministically"
+        ],
+        [
+          "FH-17130.3",
+          "Decode and strictly validate the existing 10-record request, ASIN/order reconciliation, and schema before enabling import"
+        ],
+        [
+          "FH-17130.4",
+          "Preserve add-new behavior, metadata logic, duplicate prevention, and transactional zero-partial-write safety"
+        ]
+      ],
+      "knownIssues": [],
+      "release_id": "FH-20260808-141730"
+    },
+    {
       "version": "1.4.17.29",
       "name": "Audible iPhone Clipboard JSON Reliability",
       "type": "Focused Audible enrichment clipboard reliability release",

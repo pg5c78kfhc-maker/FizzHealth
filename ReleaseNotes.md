@@ -1,5 +1,5 @@
-# Fizz Health v1.4.17.29 — Audible iPhone Clipboard JSON Reliability
+# Fizz Health v1.4.17.30 — Audible Enrichment Clipboard-Safe Transport
 
-Focused Audible enrichment clipboard reliability release. Structural smart quotes introduced by iPhone clipboard round-trips are normalized only when they act as JSON syntax, legitimate typographic punctuation inside audiobook metadata is preserved, strict parsing remains mandatory after normalization, and malformed or truncated 10-record enrichment batches remain blocked before any database write.
+Focused Audible enrichment clipboard transport release. Existing-audiobook enrichment responses now use a quote-free Base64 UTF-8 envelope with SHA-256 verification before strict JSON parsing, while the 10-record batch, exact ASIN/order reconciliation, duplicate prevention, and transactional import protections remain unchanged. Add-new and unrelated Audio behavior are unchanged.
 
-Completed story range: **FH-17129.1-FH-17129.4**
+Completed story range: **FH-17130.1-FH-17130.4**

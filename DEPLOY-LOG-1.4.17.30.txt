@@ -1,0 +1,19 @@
+Fizz Health v1.4.17.30 — Audible Enrichment Clipboard-Safe Transport
+Baseline: Fizz Health v1.4.17.29 FULL-SOURCE
+Database schema: 147 (unchanged)
+Audible exchange schema: 1 (unchanged)
+
+Implemented:
+- Replaced raw-JSON clipboard transport for enrich_existing responses with a quote-free four-line ASCII envelope.
+- Encoded payload is Base64 of the exact UTF-8 serialized response JSON.
+- Added SHA-256 checksum verification over decoded JSON bytes before strict JSON parsing.
+- Added deterministic errors for invalid envelope, Base64 corruption/incompleteness, checksum mismatch, invalid UTF-8, and invalid decoded JSON.
+- Preserved 10-record completeness, exact request ID, exact ASIN/order reconciliation, duplicate prevention, and transactional import gating.
+- Preserved add-new raw-JSON workflow and all unrelated Audible/Audio behavior.
+
+Verification:
+- Focused v1.4.17.30 acceptance tests: PASS (8/8).
+- Project integrity check: PASS.
+- Release metadata verification: PASS.
+- Historical npm test suite: 852 pass / 366 fail, identical to untouched v1.4.17.29 baseline.
+- Production build: NOT EXECUTED TO COMPLETION because the supplied archive has no installed node_modules and Vite is unavailable (`vite: not found`). Prebuild integrity repair passed.
