@@ -1,0 +1,27 @@
+Fizz Health v1.4.17.27 deployment/build log
+Date: 2026-08-08
+Baseline: Fizz Health v1.4.17.26 FULL-SOURCE
+Target: Fizz Health v1.4.17.27
+Database schema: 147 (unchanged)
+Audible exchange schema: 1 (unchanged)
+
+Implementation completed:
+- Added strict parser-grade JSON response instructions to Audible batch requests.
+- Added machine-readable response_requirements, including exact expected record count and ASIN/order rules.
+- Retained the 50-record batch workflow.
+- Replaced Audible response auto-repair/extraction with syntax-first strict JSON.parse behavior; only BOM and outer whitespace are normalized.
+- Added actionable malformed/truncated JSON diagnostics.
+- Added exact expected mode/count/ASIN/order validation before preview/import.
+
+Verification performed:
+PASS: npm run integrity:check
+PASS: npm run verify:release
+PASS: node --test tests-release/v141727-audible-json-validity.test.mjs (6/6)
+
+Production build attempt:
+BLOCKED BY ENVIRONMENT: npm run build could not start Vite because dependencies were not installed.
+DEPENDENCY INSTALL ATTEMPT: npm ci failed because the configured package registry returned HTTP 404 for xlsx@0.18.5.
+This is the same external registry limitation documented in the preceding release; no source/build error was produced by Vite because Vite could not be installed/launched in this environment.
+
+Deployment action:
+No remote production deployment was performed from this sandbox. Source artifacts were packaged for deployment.
