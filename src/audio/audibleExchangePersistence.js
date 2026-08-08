@@ -68,3 +68,26 @@ export function upsertAudibleExchangeBook(tx,record,now){
  }
  return {bookId,wasNew:!existing};
 }
+
+export function upsertAudibleExchangeRecord(tx,record,now,{mode='add_new',targetFields=[]}={}){
+ if(mode==='enrich_targeted'){
+  const byId=record.resolved_audiobook_id?tx.query('SELECT * FROM audible_audiobooks WHERE audiobook_id=? LIMIT 1',[record.resolved_audiobook_id])[0]:null;
+  const byAsin=tx.query('SELECT * FROM audible_audiobooks WHERE audible_asin=? LIMIT 1',[record.audible_asin])[0]||null;
+  if(byId&&String(byId.audible_asin||'').toUpperCase()!==String(record.audible_asin||'').toUpperCase())throw new Error(`Fizz record ID conflict for ${record.audible_asin}.`);
+  if(byId&&byAsin&&String(byId.audiobook_id)!==String(byAsin.audiobook_id))throw new Error(`Fizz record ID and Audible ASIN resolve to different records for ${record.audible_asin}.`);
+  const existing=byId||byAsin;
+  if(!existing)throw new Error(`Targeted enrichment ASIN ${record.audible_asin} no longer exists.`);
+  const changedFields=[];
+  if(targetFields.includes('cover_image_url')&&record.present_fields?.includes('cover_image_url')&&record.cover_image_url&&!existing.cover_image_url){
+   tx.run('UPDATE audible_audiobooks SET cover_image_url=?,cover_image_source=?,last_seen_at=?,last_metadata_refresh_at=? WHERE audiobook_id=?',[record.cover_image_url,'chatgpt-json-exchange',now,now,existing.audiobook_id]);
+   changedFields.push('cover_image_url');
+  }
+  return {bookId:existing.audiobook_id,wasNew:false,changedFields};
+ }
+ if(mode!=='add_new'){
+  const existing=tx.query('SELECT * FROM audible_audiobooks WHERE audible_asin=? LIMIT 1',[record.audible_asin])[0]||null;
+  if(!existing)throw new Error(`Enrichment ASIN ${record.audible_asin} no longer exists.`);
+ }
+ const result=upsertAudibleExchangeBook(tx,record,now);
+ return {...result,changedFields:[]};
+}

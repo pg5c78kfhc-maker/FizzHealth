@@ -2,6 +2,37 @@
   "format": "fizz-health-release-history",
   "releases": [
     {
+      "version": "1.4.17.31",
+      "name": "Audible Universal Exchange & Targeted Enrichment",
+      "type": "Audible universal stateless exchange and targeted enrichment release",
+      "created": "2026-08-08T14:20:00-04:00",
+      "build": "141731",
+      "release_id": "FH-20260808-141731",
+      "stories": [
+        [
+          "FH-17131.1",
+          "Unify Audible response importing into one stateless self-contained transaction pipeline"
+        ],
+        [
+          "FH-17131.2",
+          "Apply the clipboard-safe Base64 UTF-8 plus SHA-256 transport to add-new, full enrichment, and targeted enrichment responses"
+        ],
+        [
+          "FH-17131.3",
+          "Resolve existing audiobooks deterministically by Fizz record ID and Audible ASIN without relying on current request state"
+        ],
+        [
+          "FH-17131.4",
+          "Add generic patch semantics and a 50-record cover-art-only targeted enrichment request"
+        ],
+        [
+          "FH-17131.5",
+          "Keep schema 147, duplicate prevention, metadata preservation, and atomic zero-partial-write validation"
+        ]
+      ],
+      "knownIssues": []
+    },
+    {
       "version": "1.4.17.30",
       "name": "Audible Enrichment Clipboard-Safe Transport",
       "type": "Focused Audible enrichment clipboard-safe transport release",

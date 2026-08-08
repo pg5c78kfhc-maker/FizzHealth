@@ -1,0 +1,29 @@
+Fizz Health v1.4.17.31 — Deploy Log
+Date: 2026-08-08
+Build ID: 141731
+Deployment ID: FH-20260808-141731
+Database schema: 147 (unchanged)
+Baseline: Fizz Health v1.4.17.30 FULL-SOURCE
+
+IMPLEMENTATION
+- Unified Audible response parsing/import into a stateless transaction pipeline.
+- Applied encoded Base64 UTF-8 + SHA-256 response transport to add-new, full enrichment, and targeted enrichment requests.
+- Added deterministic Fizz record ID + Audible ASIN identity reconciliation.
+- Added generic target_fields / patch semantics.
+- Added cover-art-only enrichment for up to 50 missing-cover records.
+- Added cover-only persistence that updates only cover URL/source metadata.
+- Preserved supported legacy strict raw JSON response import where safe.
+
+VALIDATION
+- Focused release suite: PASS (11/11).
+- Project integrity: PASS.
+- Release metadata verification: PASS.
+- Changed JSX syntax parse via TypeScript: PASS.
+- Historical regression suite: 852 pass / 366 fail, exactly matching v1.4.17.30 baseline; no new failure names.
+
+BUILD
+- `npm run build` attempted.
+- Prebuild integrity repair: PASS.
+- Production Vite build unavailable because dependencies are not installed in the supplied archive and `vite` is not present in the sandbox (`vite: not found`).
+
+No deployment was performed from this sandbox. Source artifacts are prepared for deployment in the normal Fizz Health environment.

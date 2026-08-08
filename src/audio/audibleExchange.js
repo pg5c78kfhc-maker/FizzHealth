@@ -5,6 +5,9 @@ export const AUDIBLE_RESPONSE_TYPE='audible_library_batch_response';
 export const AUDIBLE_OPERATION='upsert_audiobooks';
 export const AUDIBLE_ENRICH_BATCH_SIZE=10;
 export const AUDIBLE_ADD_NEW_BATCH_SIZE=50;
+export const AUDIBLE_COVER_BATCH_SIZE=50;
+export const AUDIBLE_TARGETED_MODE='enrich_targeted';
+export const AUDIBLE_COVER_TARGET='cover_image_url';
 export const AUDIBLE_TRANSPORT_FORMAT='FIZZ_HEALTH_AUDIBLE_ENCODED_RESPONSE_V1';
 export const AUDIBLE_TRANSPORT_ENCODING='base64-utf8';
 
@@ -148,56 +151,93 @@ export async function parseAudibleEncodedResponse(text=''){
  return {payload,decoded,envelope,checksumVerified:true};
 }
 
-export function buildAudibleBatchRequest({existingRecords=[],mode='add_new',batchSize=mode==='enrich_existing'?AUDIBLE_ENRICH_BATCH_SIZE:AUDIBLE_ADD_NEW_BATCH_SIZE}={}){
- const requestId=`audible-${mode}-${Date.now()}`;
- const expectedRecordCount=mode==='enrich_existing'?existingRecords.length:batchSize;
- const outputRules=mode==='enrich_existing'?[
-  'CLIPBOARD-SAFE RESPONSE TRANSPORT IS REQUIRED. Do not return the enrichment response as raw JSON.',
+export async function parseAudibleUniversalResponse(text=''){
+ const source=String(text||'').replace(/^\uFEFF/,'').trim();
+ if(!source)throw new Error('Paste a Fizz Health Audible response first.');
+ if(source.startsWith(AUDIBLE_TRANSPORT_FORMAT)){
+  const parsed=await parseAudibleEncodedResponse(source);
+  return {...parsed,transport:'encoded'};
+ }
+ const parsed=parseAudibleExchangeJson(source);
+ return {...parsed,transport:'legacy-json',checksumVerified:false};
+}
+
+const TARGETABLE_FIELDS=new Set(['cover_image_url','description','runtime_minutes','runtime_display','series','authors','narrators','title','display_title','audible_product_url']);
+const IDENTITY_FIELDS=new Set(['media_type','audible_asin','asin','fizz_record_id','audiobook_id','title','display_title','authors','narrators','audible_product_url','source_evidence']);
+const hasOwn=(object,key)=>Object.prototype.hasOwnProperty.call(object||{},key);
+const modeBatchLimit=mode=>mode===AUDIBLE_TARGETED_MODE?AUDIBLE_COVER_BATCH_SIZE:mode==='enrich_existing'?AUDIBLE_ENRICH_BATCH_SIZE:AUDIBLE_ADD_NEW_BATCH_SIZE;
+const compactPeople=value=>String(value||'').split(' · ').map(item=>item.trim()).filter(Boolean);
+
+export function audibleTargetIdentity(book={}){
+ return {
+  media_type:'audiobook',
+  fizz_record_id:clean(book.audiobook_id),
+  audible_asin:normalizeAsin(book.audible_asin),
+  title:clean(book.title||book.display_title),
+  audible_product_url:clean(book.audible_product_url),
+  authors:compactPeople(book.authors),
+  narrators:compactPeople(book.narrators)
+ };
+}
+
+function transportRules(){
+ return [
+  'CLIPBOARD-SAFE RESPONSE TRANSPORT IS REQUIRED. Do not return the response as raw JSON.',
   `Return exactly four transport lines and nothing else. Line 1: ${AUDIBLE_TRANSPORT_FORMAT}. Line 2: encoding=${AUDIBLE_TRANSPORT_ENCODING}. Line 3: sha256=<64 lowercase hexadecimal SHA-256 of the exact decoded UTF-8 JSON bytes>. Line 4: payload=<Base64 of those exact UTF-8 JSON bytes>.`,
   'Do not return Markdown, code fences, commentary, citations, explanations, headings, prefixes, suffixes, or any other text.',
   'First construct the complete audible_library_batch_response object using strict JSON with ASCII U+0022 double quotation marks for JSON syntax.',
-  'Before JSON serialization, sanitize catalog-derived text so punctuation cannot corrupt JSON: normalize typographic quotation marks when useful, and JSON-escape every embedded ASCII double quote, backslash, newline, tab, and control character.',
+  'Before JSON serialization, sanitize catalog-derived text so punctuation cannot corrupt JSON, and JSON-escape embedded ASCII double quotes, backslashes, newlines, tabs, and control characters.',
   'Serialize the complete response JSON compactly, verify that the exact serialized JSON parses successfully with JavaScript JSON.parse(), then encode those exact UTF-8 bytes as Base64.',
   'Compute SHA-256 over the exact decoded UTF-8 JSON bytes represented by payload. The checksum must match those bytes exactly.',
-  'The Base64 payload must contain the entire response JSON. Do not truncate it, split it into multiple objects, or omit unchanged records.',
+  'The Base64 payload must contain the entire response JSON. Do not truncate it or split it into multiple objects.',
   'The transport envelope itself must contain only the four specified ASCII lines. Do not use quotation marks around envelope field values.'
- ]:[
-  'STRICT OUTPUT FORMAT: Return exactly ONE complete syntactically valid JSON object and nothing else.',
-  'The response must be directly parseable by JavaScript JSON.parse() without cleanup, repair, extraction, preprocessing, or conversion.',
-  'Do not return Markdown, code fences, commentary, citations, explanations, headings, prefixes, suffixes, or any text outside the JSON object.',
-  'Use strict JSON syntax only. All object keys and string delimiters must use the standard ASCII double quotation mark U+0022 (").',
-  'Never use smart or curly quotation marks as JSON delimiters. Smart punctuation may appear only inside a properly encoded JSON string value.',
-  'Never use single quotation marks as JSON delimiters, never include trailing commas, and never include comments.',
-  'Never emit undefined, NaN, Infinity, or another non-JSON value. Use null when a value is unknown.',
-  'Properly JSON-escape every string. Escape embedded double quotes, backslashes, newlines, tabs, and control characters as required by the JSON standard.',
-  'Descriptions and other catalog text must be safely JSON-escaped before insertion; quotation marks copied from source text must never terminate the surrounding JSON string.',
-  'Do not truncate the response. Every opening object, array, and string delimiter must have its matching closing delimiter.',
-  'The first non-whitespace character of the response must be { and the final non-whitespace character must be }.',
-  'Before returning the response, internally verify that the COMPLETE response successfully parses with JSON.parse(). If it would not parse, correct it before returning it.'
  ];
- const rules=[...outputRules,
-  'Preserve format, schema_version, request_id, operation, and mode, and set request_type to audible_library_batch_response.',
-  mode==='enrich_existing'
-   ?`BATCH COMPLETENESS IS REQUIRED: ${expectedRecordCount} existing records were submitted. Return exactly ${expectedRecordCount} audiobook response records — one for every submitted existing record, in the same order.`
-   :`BATCH COMPLETENESS IS REQUIRED: this is a ${batchSize}-record new-book batch. Return exactly ${batchSize} audiobook response records when the supplied Audible capture contains the requested full batch.`,
-  mode==='enrich_existing'?'Do not omit an audiobook merely because no new metadata could be found. Preserve submitted values and leave unverifiable missing values as null.':`Do not silently omit an audiobook from the supplied batch because enrichment is unavailable; return the record with unverifiable fields set to null.`,
-  mode==='enrich_existing'?'Every submitted audible_asin must appear exactly once in the response. Do not add replacement or substitute ASINs.':'Every returned audiobook must have the authoritative Audible ASIN from the supplied capture or a confidently matched Audible catalog record.',
+}
+
+export function buildAudibleBatchRequest({existingRecords=[],mode='add_new',batchSize=null,targetFields=null}={}){
+ const targets=mode===AUDIBLE_TARGETED_MODE?(Array.isArray(targetFields)&&targetFields.length?targetFields:[AUDIBLE_COVER_TARGET]):[];
+ const limit=modeBatchLimit(mode),resolvedBatch=Math.min(Number(batchSize)||limit,limit);
+ const records=mode==='add_new'?[]:existingRecords.slice(0,resolvedBatch);
+ const expectedRecordCount=mode==='add_new'?resolvedBatch:records.length;
+ const requestId=`audible-${mode}-${Date.now()}`;
+ const requestedAsins=records.map(row=>normalizeAsin(row.audible_asin)).filter(Boolean);
+ const rules=[...transportRules(),
+  'Preserve format, schema_version, request_id, operation, mode, expected_record_count, requested_asins, and target_fields when present, and set request_type to audible_library_batch_response.',
+  mode==='add_new'
+   ?`This is an add-new request for up to ${resolvedBatch} audiobooks from the supplied Audible capture. Return the complete requested batch and authoritative Audible ASIN for every returned audiobook.`
+   :`BATCH COMPLETENESS IS REQUIRED: ${expectedRecordCount} existing records were submitted. Return exactly ${expectedRecordCount} response records, one for every submitted ASIN, in the same order.`,
+  mode===AUDIBLE_TARGETED_MODE
+   ?`TARGETED ENRICHMENT: Only enrich these target fields: ${targets.join(', ')}. Return identity fields plus the requested target fields and source_evidence only. Do not return or modify unrelated audiobook metadata.`
+   :'Do not silently omit an audiobook merely because some enrichment is unavailable; preserve submitted values and use null only where the requested value cannot be confidently verified.',
+  mode===AUDIBLE_TARGETED_MODE
+   ?'PATCH SEMANTICS: omitted fields mean no change. A null target value means no verified replacement was found and must not clear an existing Fizz Health value.'
+   :'Preserve valid existing non-null metadata unless a confidently matched authoritative catalog record demonstrates that the existing value is incorrect.',
   'Audiobooks only. Exclude podcast shows, podcast episodes, music, and other non-audiobook audio.',
-  'Use Audible ASIN as the authoritative identity and never invent an ASIN.',
+  'Use Audible ASIN as the authoritative catalog identity and never invent an ASIN.',
+  'Preserve fizz_record_id on returned existing-record responses whenever it was supplied in the request; use Audible ASIN as the fallback identity when no Fizz record ID is available.',
   'Do not substitute a different edition, narration, abridgment, language, or product because it is easier to find.',
   'Populate only information supported by the supplied Audible capture or a confidently matched public catalog record.',
-  'Preserve valid existing non-null metadata unless a confidently matched authoritative catalog record demonstrates that the existing value is incorrect.',
-  'Unknown is null. Do not guess missing runtimes, series positions, URLs, artwork, authors, narrators, or other metadata.',
-  'Actively attempt to locate a cover_image_url for every audiobook whose current cover_image_url is null.',
-  'For cover_image_url, return only a validated direct HTTPS image URL for the exact matching audiobook cover; otherwise null.',
-  'Prefer Audible/Amazon catalog identity for artwork validation and cross-check ASIN, title, author, and narrator when possible.',
-  'runtime_minutes is the total audiobook runtime, not time remaining. When runtime is verified, populate runtime_minutes and runtime_display consistently.',
-  'Use media_type=audiobook for every record.',
-  'Preserve ownership_status, listening_status, audible_progress_text, and remaining_minutes from submitted existing records unless the request itself contains newer authoritative listening-state evidence.',
-  'Preserve explicit Finished state from the capture. Do not infer finished merely because Listen now or Mark as finished is present.',
-  mode==='enrich_existing'?`Before returning, verify audiobooks.length is exactly ${expectedRecordCount}, every submitted audible_asin occurs exactly once, there are no duplicate ASINs, and the input order is preserved.`:`Before returning, verify the audiobook count matches the requested batch, there are no duplicate ASINs, and the supplied capture order is preserved.`,
-  mode==='enrich_existing'?'Before Base64 encoding, perform one final strict JSON syntax validation of the entire decoded response payload.':'Before returning, perform one final strict JSON syntax validation of the entire payload.'
+  'Unknown is null. Do not guess URLs, artwork, runtimes, series positions, authors, narrators, or other metadata.',
+  ...(targets.includes(AUDIBLE_COVER_TARGET)?[
+   'For cover_image_url, return only a validated direct HTTPS image URL for the exact matching audiobook cover; otherwise null.',
+   'Prefer Audible/Amazon catalog identity for artwork validation and cross-check ASIN, title, author, and narrator when possible.'
+  ]:[]),
+  ...(mode==='enrich_existing'?[
+   'Actively attempt to enrich missing cover artwork and runtime while preserving ownership/listening state supplied by Fizz Health.',
+   'runtime_minutes is the total audiobook runtime, not time remaining. When runtime is verified, populate runtime_minutes and runtime_display consistently.',
+   'Preserve ownership_status, listening_status, audible_progress_text, and remaining_minutes from submitted existing records.'
+  ]:[]),
+  `Before Base64 encoding, verify the response contains ${mode==='add_new'?'no more than '+resolvedBatch:expectedRecordCount} audiobook records, contains no duplicate ASINs, and is strict valid JSON.`
  ];
+ const responseRequirements={
+  transport_format:AUDIBLE_TRANSPORT_FORMAT,encoding:AUDIBLE_TRANSPORT_ENCODING,checksum:'sha256',strict_json:true,json_parse_compatible:true,no_markdown:true,no_code_fences:true,no_commentary:true,
+  identity_field:'audible_asin',expected_record_count:expectedRecordCount,preserve_input_order:mode!=='add_new',require_unique_asins:true,
+  stateless_import:true,
+  ...(requestedAsins.length?{requested_asins:requestedAsins}:{}),
+  ...(targets.length?{target_fields:targets,patch_semantics:true}:{}),
+ };
+ const targetedSchema={media_type:'audiobook',fizz_record_id:null,audible_asin:null,source_evidence:null};
+ for(const field of targets)targetedSchema[field]=(field==='authors'||field==='narrators')?[]:null;
  return {
   format:AUDIBLE_EXCHANGE_FORMAT,
   schema_version:AUDIBLE_EXCHANGE_SCHEMA_VERSION,
@@ -205,58 +245,110 @@ export function buildAudibleBatchRequest({existingRecords=[],mode='add_new',batc
   request_id:requestId,
   operation:AUDIBLE_OPERATION,
   mode,
-  batch_size:batchSize,
+  batch_size:resolvedBatch,
+  expected_record_count:expectedRecordCount,
+  requested_asins:requestedAsins,
+  target_fields:targets,
   instructions:{
    recipient:'ChatGPT with access to the pasted Audible library capture and the public Internet',
-   purpose:mode==='enrich_existing'?'Enrich these existing Fizz Health Audible audiobook records without creating duplicates.':'Create a batch of Audible audiobook records for import into Fizz Health.',
+   purpose:mode===AUDIBLE_TARGETED_MODE?`Enrich only ${targets.join(', ')} for these existing Fizz Health Audible audiobook records.`:mode==='enrich_existing'?'Enrich these existing Fizz Health Audible audiobook records without creating duplicates.':'Create a batch of Audible audiobook records for import into Fizz Health.',
    rules
   },
-  response_requirements:{strict_json:true,json_parse_compatible:true,no_markdown:true,no_code_fences:true,no_commentary:true,return_every_input_record:true,identity_field:'audible_asin',expected_record_count:expectedRecordCount,preserve_input_order:true,require_unique_asins:true,...(mode==='enrich_existing'?{transport_format:AUDIBLE_TRANSPORT_FORMAT,encoding:AUDIBLE_TRANSPORT_ENCODING,checksum:'sha256'}:{})},
-  existing_records:existingRecords,
-  audiobook_schema:{media_type:'audiobook',audible_asin:null,title:null,display_title:null,audible_product_url:null,authors:[],narrators:[],series:null,runtime_minutes:null,runtime_display:null,description:null,cover_image_url:null,ownership_status:'owned',listening_status:'unknown',audible_progress_text:null,remaining_minutes:null,can_listen_now:true,source_evidence:null},
+  response_requirements:responseRequirements,
+  existing_records:records,
+  audiobook_schema:mode===AUDIBLE_TARGETED_MODE
+   ?targetedSchema
+   :{media_type:'audiobook',fizz_record_id:null,audible_asin:null,title:null,display_title:null,audible_product_url:null,authors:[],narrators:[],series:null,runtime_minutes:null,runtime_display:null,description:null,cover_image_url:null,ownership_status:'owned',listening_status:'unknown',audible_progress_text:null,remaining_minutes:null,can_listen_now:true,source_evidence:null},
   audiobooks:[]
  };
 }
-export function validateAudibleBatchResponse(payload,{expectedRequestId=null,maxRecords=100,expectedMode=null,expectedRecordCount=null,expectedAsins=null}={}){
+
+function normalizedTargetFields(payload){
+ const fields=Array.isArray(payload?.target_fields)?payload.target_fields.map(field=>String(field||'').trim()).filter(Boolean):[];
+ for(const field of fields)if(!TARGETABLE_FIELDS.has(field))throw new Error(`Unsupported targeted enrichment field ${field}.`);
+ return [...new Set(fields)];
+}
+
+export function validateAudibleBatchResponse(payload,{expectedRequestId=null,maxRecords=null,expectedMode=null,expectedRecordCount=null,expectedAsins=null}={}){
  if(!payload||payload.format!==AUDIBLE_EXCHANGE_FORMAT)throw new Error('Not a Fizz Health Audible exchange.');
  if(Number(payload.schema_version)!==AUDIBLE_EXCHANGE_SCHEMA_VERSION)throw new Error(`Expected Audible exchange schema v${AUDIBLE_EXCHANGE_SCHEMA_VERSION}.`);
  if(payload.request_type!==AUDIBLE_RESPONSE_TYPE)throw new Error(`Expected request_type ${AUDIBLE_RESPONSE_TYPE}.`);
  if(payload.operation!==AUDIBLE_OPERATION)throw new Error(`Expected operation ${AUDIBLE_OPERATION}.`);
- if(expectedMode&&String(payload.mode||'')!==String(expectedMode))throw new Error(`Expected Audible exchange mode ${expectedMode}.`);
+ const mode=String(payload.mode||'add_new');
+ if(!['add_new','enrich_existing',AUDIBLE_TARGETED_MODE].includes(mode))throw new Error(`Unsupported Audible exchange mode ${mode||'(missing)'}.`);
+ if(expectedMode&&mode!==String(expectedMode))throw new Error(`Expected Audible exchange mode ${expectedMode}.`);
  if(expectedRequestId&&String(payload.request_id)!==String(expectedRequestId))throw new Error('The response belongs to a different Audible exchange request.');
+ if(!clean(payload.request_id))throw new Error('The Audible response is missing request_id provenance.');
  if(!Array.isArray(payload.audiobooks))throw new Error('The exchange is missing the audiobooks array.');
  if(payload.audiobooks.length===0)throw new Error('The Audible exchange contains no audiobook records.');
- if(payload.audiobooks.length>maxRecords)throw new Error(`This importer accepts at most ${maxRecords} audiobook records per batch.`);
- if(expectedRecordCount!=null&&payload.audiobooks.length!==Number(expectedRecordCount))throw new Error(`Incomplete batch: expected ${expectedRecordCount} audiobook records but received ${payload.audiobooks.length}. Nothing imported.`);
+ const limit=maxRecords==null?modeBatchLimit(mode):Number(maxRecords);
+ if(payload.audiobooks.length>limit)throw new Error(`This ${mode} importer accepts at most ${limit} audiobook records per batch.`);
+ const selfExpected=payload.expected_record_count==null?null:Number(payload.expected_record_count);
+ const requiredCount=expectedRecordCount==null?selfExpected:Number(expectedRecordCount);
+ if(requiredCount!=null&&(!Number.isInteger(requiredCount)||requiredCount<1||requiredCount>limit))throw new Error('The response has an invalid expected_record_count.');
+ if(requiredCount!=null&&payload.audiobooks.length!==requiredCount)throw new Error(`Incomplete batch: expected ${requiredCount} audiobook records but received ${payload.audiobooks.length}. Nothing imported.`);
+ const targetFields=mode===AUDIBLE_TARGETED_MODE?normalizedTargetFields(payload):[];
+ if(mode===AUDIBLE_TARGETED_MODE&&!targetFields.length)throw new Error('Targeted enrichment response is missing target_fields.');
  const seen=new Set();
  const records=payload.audiobooks.map((raw,index)=>{
-  if(String(raw?.media_type||'').toLowerCase()!=='audiobook')throw new Error(`Record ${index+1} is not marked as an audiobook.`);
-  const asin=normalizeAsin(raw.audible_asin||raw.asin);
+  if(hasOwn(raw,'media_type')&&String(raw?.media_type||'').toLowerCase()!=='audiobook')throw new Error(`Record ${index+1} is not marked as an audiobook.`);
+  const asin=normalizeAsin(raw?.audible_asin||raw?.asin);
   if(!/^[A-Z0-9]{10}$/.test(asin))throw new Error(`Record ${index+1} has an invalid Audible ASIN.`);
   if(seen.has(asin))throw new Error(`Duplicate ASIN ${asin} appears more than once in this batch.`);seen.add(asin);
-  const title=clean(raw.title||raw.display_title);
-  if(!title)throw new Error(`Record ${index+1} (${asin}) is missing title.`);
-  const cover=clean(raw.cover_image_url);if(cover&&!isHttps(cover))throw new Error(`Record ${index+1} (${asin}) has a non-HTTPS cover_image_url.`);
-  const product=clean(raw.audible_product_url);if(product&&!isHttps(product))throw new Error(`Record ${index+1} (${asin}) has an invalid audible_product_url.`);
-  const runtime=raw.runtime_minutes==null||raw.runtime_minutes===''?null:Number(raw.runtime_minutes);if(runtime!=null&&(!Number.isFinite(runtime)||runtime<=0||runtime>200000))throw new Error(`Record ${index+1} (${asin}) has an invalid runtime_minutes.`);
-  const remaining=raw.remaining_minutes==null||raw.remaining_minutes===''?null:Number(raw.remaining_minutes);if(remaining!=null&&(!Number.isFinite(remaining)||remaining<0))throw new Error(`Record ${index+1} (${asin}) has an invalid remaining_minutes.`);
-  const listening=normalizeStatus(raw.listening_status);if(!allowedListening.has(listening))throw new Error(`Record ${index+1} (${asin}) has unsupported listening_status ${raw.listening_status}.`);
-  const ownership=normalizeStatus(raw.ownership_status||'owned');if(!allowedOwnership.has(ownership))throw new Error(`Record ${index+1} (${asin}) has unsupported ownership_status ${raw.ownership_status}.`);
-  const series=normalizedSeries(raw.series||raw.primary_series);
+  const presentFields=Object.keys(raw||{});
+  if(mode===AUDIBLE_TARGETED_MODE){
+   for(const key of presentFields){
+    if(key==='source_evidence'||IDENTITY_FIELDS.has(key)||targetFields.includes(key))continue;
+    throw new Error(`Targeted record ${index+1} (${asin}) supplied unrelated field ${key}. Nothing imported.`);
+   }
+  }
+  const title=clean(raw?.title||raw?.display_title);
+  if(mode!==AUDIBLE_TARGETED_MODE&&!title)throw new Error(`Record ${index+1} (${asin}) is missing title.`);
+  const cover=hasOwn(raw,'cover_image_url')?clean(raw.cover_image_url):null;if(cover&&!isHttps(cover))throw new Error(`Record ${index+1} (${asin}) has a non-HTTPS cover_image_url.`);
+  const product=hasOwn(raw,'audible_product_url')?clean(raw.audible_product_url):null;if(product&&!isHttps(product))throw new Error(`Record ${index+1} (${asin}) has an invalid audible_product_url.`);
+  const runtime=hasOwn(raw,'runtime_minutes')?(raw.runtime_minutes==null||raw.runtime_minutes===''?null:Number(raw.runtime_minutes)):null;if(runtime!=null&&(!Number.isFinite(runtime)||runtime<=0||runtime>200000))throw new Error(`Record ${index+1} (${asin}) has an invalid runtime_minutes.`);
+  const remaining=hasOwn(raw,'remaining_minutes')?(raw.remaining_minutes==null||raw.remaining_minutes===''?null:Number(raw.remaining_minutes)):null;if(remaining!=null&&(!Number.isFinite(remaining)||remaining<0))throw new Error(`Record ${index+1} (${asin}) has an invalid remaining_minutes.`);
+  const listening=hasOwn(raw,'listening_status')?normalizeStatus(raw.listening_status):'unknown';if(hasOwn(raw,'listening_status')&&!allowedListening.has(listening))throw new Error(`Record ${index+1} (${asin}) has unsupported listening_status ${raw.listening_status}.`);
+  const ownership=hasOwn(raw,'ownership_status')?normalizeStatus(raw.ownership_status||'owned'):'unknown';if(hasOwn(raw,'ownership_status')&&!allowedOwnership.has(ownership))throw new Error(`Record ${index+1} (${asin}) has unsupported ownership_status ${raw.ownership_status}.`);
+  const series=hasOwn(raw,'series')||hasOwn(raw,'primary_series')?normalizedSeries(raw.series||raw.primary_series):null;
   if(series&&series.position!=null&&!Number.isFinite(series.position))throw new Error(`Record ${index+1} (${asin}) has an invalid series position.`);
-  return {media_type:'audiobook',audible_asin:asin,title,display_title:clean(raw.display_title),raw_title:clean(raw.raw_title),audible_product_url:product,authors:stringList(raw.authors),narrators:stringList(raw.narrators),series,runtime_minutes:runtime==null?null:Math.round(runtime),runtime_display:clean(raw.runtime_display),description:clean(raw.description),description_is_truncated:raw.description_is_truncated?1:0,cover_image_url:cover,ownership_status:ownership,listening_status:listening,audible_progress_text:clean(raw.audible_progress_text),remaining_minutes:remaining==null?null:Math.round(remaining),can_listen_now:raw.can_listen_now===false?0:1,source_evidence:clean(raw.source_evidence)};
+  return {media_type:'audiobook',fizz_record_id:clean(raw.fizz_record_id||raw.audiobook_id),audible_asin:asin,title,display_title:clean(raw.display_title),raw_title:clean(raw.raw_title),audible_product_url:product,authors:hasOwn(raw,'authors')?stringList(raw.authors):[],narrators:hasOwn(raw,'narrators')?stringList(raw.narrators):[],series,runtime_minutes:runtime==null?null:Math.round(runtime),runtime_display:clean(raw.runtime_display),description:clean(raw.description),description_is_truncated:raw.description_is_truncated?1:0,cover_image_url:cover,ownership_status:ownership,listening_status:listening,audible_progress_text:clean(raw.audible_progress_text),remaining_minutes:remaining==null?null:Math.round(remaining),can_listen_now:raw.can_listen_now===false?0:1,source_evidence:clean(raw.source_evidence),present_fields:presentFields};
  });
- if(expectedAsins){
-  const expected=[...expectedAsins].map(normalizeAsin),actual=records.map(record=>record.audible_asin);
+ const responseAsins=Array.isArray(payload.requested_asins)?payload.requested_asins:expectedAsins;
+ if(responseAsins){
+  const expected=[...responseAsins].map(normalizeAsin),actual=records.map(record=>record.audible_asin);
   if(expected.length!==actual.length)throw new Error(`Incomplete ASIN reconciliation: expected ${expected.length} records but received ${actual.length}. Nothing imported.`);
   for(let i=0;i<expected.length;i++)if(actual[i]!==expected[i])throw new Error(`ASIN/order mismatch at record ${i+1}: expected ${expected[i]} but received ${actual[i]}. Nothing imported.`);
  }
- return {...payload,audiobooks:records};
+ return {...payload,mode,target_fields:targetFields,audiobooks:records,expected_record_count:requiredCount??payload.audiobooks.length};
 }
+
+export function validateAudibleImportAgainstLibrary(validated,books=[]){
+ const byAsin=new Map(),byId=new Map();
+ for(const book of books){const asin=normalizeAsin(book.audible_asin);if(asin)byAsin.set(asin,book);if(book.audiobook_id)byId.set(String(book.audiobook_id),book)}
+ const mode=validated.mode,targetFields=validated.target_fields||[];
+ const records=validated.audiobooks.map((record,index)=>{
+  const byRecordId=record.fizz_record_id?byId.get(String(record.fizz_record_id))||null:null;
+  const byRecordAsin=byAsin.get(record.audible_asin)||null;
+  if(byRecordId&&normalizeAsin(byRecordId.audible_asin)!==record.audible_asin)throw new Error(`Identity conflict at record ${index+1}: Fizz record ID ${record.fizz_record_id} belongs to ${normalizeAsin(byRecordId.audible_asin)}, not ${record.audible_asin}. Nothing imported.`);
+  if(byRecordId&&byRecordAsin&&String(byRecordId.audiobook_id)!==String(byRecordAsin.audiobook_id))throw new Error(`Identity conflict at record ${index+1}: Fizz record ID and Audible ASIN resolve to different audiobooks. Nothing imported.`);
+  const existing=byRecordId||byRecordAsin||null;
+  if(mode!=='add_new'&&!existing)throw new Error(`Enrichment record ${index+1} (${record.audible_asin}) does not match an existing Audible audiobook. Nothing imported.`);
+  if(mode===AUDIBLE_TARGETED_MODE){
+   const mutable=record.present_fields.filter(field=>TARGETABLE_FIELDS.has(field)&&!IDENTITY_FIELDS.has(field));
+   for(const field of mutable)if(!targetFields.includes(field))throw new Error(`Targeted record ${index+1} (${record.audible_asin}) attempted to modify ${field}, which was not requested. Nothing imported.`);
+  }
+  return {...record,resolved_audiobook_id:existing?.audiobook_id||null,resolved_title:existing?.title||record.title||record.audible_asin,will_create:!existing&&mode==='add_new'};
+ });
+ return {...validated,audiobooks:records};
+}
+
 export function audibleExistingRecord(book={}){
  const split=value=>String(value||'').split(' · ').map(item=>item.trim()).filter(Boolean);
- return {media_type:'audiobook',audible_asin:normalizeAsin(book.audible_asin),title:book.title||null,display_title:book.display_title||null,audible_product_url:book.audible_product_url||null,authors:split(book.authors),narrators:split(book.narrators),series:book.series_name?{name:book.series_name,audible_series_id:book.audible_series_id||null,audible_url:book.audible_url||null,position:book.series_position??null}:null,runtime_minutes:Number(book.runtime_minutes)||null,runtime_display:book.runtime_display||null,description:book.description||null,cover_image_url:/^https:\/\//i.test(String(book.cover_image_url||''))?book.cover_image_url:null,ownership_status:book.ownership_status||'unknown',listening_status:book.listening_status||'unknown',audible_progress_text:book.audible_progress_text||null,remaining_minutes:book.remaining_minutes??null};
+ return {media_type:'audiobook',fizz_record_id:clean(book.audiobook_id),audible_asin:normalizeAsin(book.audible_asin),title:book.title||null,display_title:book.display_title||null,audible_product_url:book.audible_product_url||null,authors:split(book.authors),narrators:split(book.narrators),series:book.series_name?{name:book.series_name,audible_series_id:book.audible_series_id||null,audible_url:book.audible_url||null,position:book.series_position??null}:null,runtime_minutes:Number(book.runtime_minutes)||null,runtime_display:book.runtime_display||null,description:book.description||null,cover_image_url:/^https:\/\//i.test(String(book.cover_image_url||''))?book.cover_image_url:null,ownership_status:book.ownership_status||'unknown',listening_status:book.listening_status||'unknown',audible_progress_text:book.audible_progress_text||null,remaining_minutes:book.remaining_minutes??null};
 }
-export function summarizeAudibleImport(records=[],existingAsins=new Set()){
- let newCount=0,existingCount=0,covers=0,runtimes=0;for(const record of records){if(existingAsins.has(record.audible_asin))existingCount++;else newCount++;if(record.cover_image_url)covers++;if(record.runtime_minutes)runtimes++}return {received:records.length,newCount,existingCount,covers,runtimes};
+export function summarizeAudibleImport(records=[],existingAsins=new Set(),{mode=null,targetFields=[]}={}){
+ let newCount=0,existingCount=0,covers=0,runtimes=0,unchangedTargets=0;
+ for(const record of records){if(record.will_create||!existingAsins.has(record.audible_asin))newCount++;else existingCount++;if(record.cover_image_url)covers++;if(record.runtime_minutes)runtimes++;if(mode===AUDIBLE_TARGETED_MODE&&targetFields.includes(AUDIBLE_COVER_TARGET)&&!record.cover_image_url)unchangedTargets++}
+ const summary={received:records.length,newCount,existingCount,covers,runtimes};if(mode===AUDIBLE_TARGETED_MODE)summary.unchangedTargets=unchangedTargets;return summary;
 }
