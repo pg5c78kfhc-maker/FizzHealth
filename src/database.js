@@ -2542,7 +2542,7 @@ function ensureAudibleSeedData(){
   if(!hasTable('audible_audiobooks')||!hasTable('audible_series')||!hasTable('audible_authors')||!hasTable('audible_narrators'))return;
   runMigrationSql(AUDIBLE_SEED_SQL);
   db.run(`UPDATE audible_audiobooks SET cover_image_url=NULL, cover_image_source=NULL WHERE cover_image_source='amazon-asin-derived'`);
-  if(hasTable('release_metadata'))db.run(`INSERT OR REPLACE INTO release_metadata(version,release_date,build_id,schema_version,title,created_at) VALUES ('1.4.17.22','2026-08-08','141722',147,'Audible Library Reconciliation & Build-Time Enrichment','2026-08-08T09:30:00-04:00')`);
+  if(hasTable('release_metadata'))db.run(`INSERT OR REPLACE INTO release_metadata(version,release_date,build_id,schema_version,title,created_at) VALUES ('1.4.17.23','2026-08-08','141723',147,'Audible Artwork & Metadata Enrichment','2026-08-08T10:20:00-04:00')`);
 }
 
 function ensureVarietyRotationSchema(){

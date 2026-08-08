@@ -2,6 +2,39 @@
   "format": "fizz-health-release-history",
   "releases": [
     {
+      "version": "1.4.17.23",
+      "name": "Audible Artwork & Metadata Enrichment",
+      "type": "Audible local artwork cache and metadata enrichment release",
+      "created_at": "2026-08-08T10:20:00-04:00",
+      "build": "141723",
+      "release_id": "FH-20260808-141723",
+      "completed_story": "FH-17123.1-FH-17123.4",
+      "stories": [
+        [
+          "FH-17123.1",
+          "Process the 450-title Audible library through build-time metadata enrichment without browser-side Audible scraping"
+        ],
+        [
+          "FH-17123.2",
+          "Validate real Audible cover artwork by ASIN/product page and package resolved covers as local app assets"
+        ],
+        [
+          "FH-17123.3",
+          "Preserve the runtime backfill pipeline and existing runtime coverage indicator"
+        ],
+        [
+          "FH-17123.4",
+          "Keep pull-to-refresh as a stored metadata reload while reporting packaged artwork coverage"
+        ]
+      ],
+      "known_issues": [
+        [
+          "AUDIBLE-17123.1",
+          "The Node build environment still cannot resolve api.audible.com, so the automated 450-title catalog pass could not complete. Twelve covers were independently validated against their Audible product pages and packaged locally; 438 remain unresolved in this release."
+        ]
+      ]
+    },
+    {
       "version": "1.4.17.22",
       "name": "Audible Library Reconciliation & Build-Time Enrichment",
       "type": "Audible library reconciliation and metadata pipeline release",

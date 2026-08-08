@@ -1,3 +1,15 @@
+# Fizz Health v1.4.17.23 — Audible Artwork & Metadata Enrichment
+
+- Processes the existing 450-title audiobook library through the build-time enrichment path; Audible podcasts remain excluded.
+- Packages 12 product-page-validated Audible cover images as local app assets, including the first visible library cards (16th Seduction, 1st Case, and 21st Birthday).
+- Stores the local cover path in the Audible seed while retaining the validated Amazon/Audible source URL in the build snapshot for provenance.
+- Leaves unresolved titles on the existing placeholder instead of guessing artwork.
+- Keeps the runtime backfill pipeline, adaptive aggregate duration, runtime coverage line, and local pull-to-refresh behavior unchanged.
+- Audible now reports packaged artwork coverage dynamically from stored data.
+- Database schema remains 147.
+- Completed story range: FH-17123.1-FH-17123.4.
+- Known limitation: the Node environment cannot resolve api.audible.com, so bulk automated enrichment could not complete; 12 of 450 covers are packaged in this release and 438 remain unresolved.
+
 # Fizz Health v1.4.17.22 — Audible Library Reconciliation & Build-Time Enrichment
 
 - Reconciles the 350 audiobook-only restart records against the existing Audible library using ASIN as the primary identity and imports only genuinely new titles.
