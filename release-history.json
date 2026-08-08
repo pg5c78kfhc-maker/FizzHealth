@@ -2,6 +2,39 @@
   "format": "fizz-health-release-history",
   "releases": [
     {
+      "version": "1.4.17.22",
+      "name": "Audible Library Reconciliation & Build-Time Enrichment",
+      "type": "Audible library reconciliation and metadata pipeline release",
+      "created_at": "2026-08-08T09:30:00-04:00",
+      "build": "141722",
+      "release_id": "FH-20260808-141722",
+      "completed_story": "FH-17122.1-FH-17122.4",
+      "stories": [
+        [
+          "FH-17122.1",
+          "Reconcile the 350-title audiobook-only restart capture by ASIN and import only titles not already in Fizz"
+        ],
+        [
+          "FH-17122.2",
+          "Enrich overlapping audiobook records only where captured metadata is missing while preserving existing ownership and listening history"
+        ],
+        [
+          "FH-17122.3",
+          "Move Audible catalog cover/runtime resolution out of the browser into an import/build-time metadata snapshot pipeline"
+        ],
+        [
+          "FH-17122.4",
+          "Keep Audible pull-to-refresh as a stored-metadata reload and separate the metadata status from runtime coverage"
+        ]
+      ],
+      "known_issues": [
+        [
+          "AUDIBLE-17122.1",
+          "This build environment could not resolve api.audible.com, so the build-time catalog snapshot could not be populated with live cover URLs during release preparation. The pipeline is implemented and the app no longer depends on browser-side Audible catalog access."
+        ]
+      ]
+    },
+    {
       "version": "1.4.17.21",
       "name": "Audible Refresh, Runtime Formatting & Library Expansion",
       "type": "Audible metadata reliability and library expansion release",

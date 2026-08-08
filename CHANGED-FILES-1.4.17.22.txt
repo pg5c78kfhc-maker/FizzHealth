@@ -1,0 +1,17 @@
+ReleaseNotes.md
+VERSION.json
+package-lock.json
+package.json
+public/sw.js
+release-history.json
+scripts/enrich-audible-catalog.mjs
+src/audio/audibleCatalogSnapshot.js
+src/audio/audibleSeed.js
+src/database.js
+src/decision/engine.js
+src/main.jsx
+src/styles.css
+tests/release-1.4.17.22.test.js
+RELEASE-NOTES-1.4.17.22.md
+CHANGED-FILES-1.4.17.22.txt
+TEST-REPORT-1.4.17.22.md

@@ -1,7 +1,7 @@
 {
   "name": "fizz-health",
   "private": true,
-  "version": "1.4.17.21",
+  "version": "1.4.17.22",
   "type": "module",
   "scripts": {
     "integrity:repair": "node scripts/project-integrity.mjs --repair",
@@ -14,7 +14,8 @@
     "pretest": "npm run integrity:check",
     "test": "node --test tests/*.test.js",
     "verify:release": "node scripts/verify-release.mjs",
-    "verify": "npm run integrity:repair && npm test && npm run verify:release && npm run build"
+    "verify": "npm run integrity:repair && npm test && npm run verify:release && npm run build",
+    "audible:enrich": "node scripts/enrich-audible-catalog.mjs"
   },
   "dependencies": {
     "@vitejs/plugin-react": "6.0.3",

@@ -1,3 +1,13 @@
+# Fizz Health v1.4.17.22 — Audible Library Reconciliation & Build-Time Enrichment
+
+- Reconciles the 350 audiobook-only restart records against the existing Audible library using ASIN as the primary identity and imports only genuinely new titles.
+- Enriches existing overlapping titles only where stored source metadata is missing; existing ownership and listening history are preserved.
+- Moves cover-art and missing-runtime catalog resolution out of the installed PWA into an import/build-time Audible catalog snapshot pipeline.
+- Keeps pull-to-refresh on Audible as a stored-metadata reload; it no longer performs a direct cross-origin Audible API request.
+- Keeps runtime coverage visible and places metadata status on its own line.
+- Database schema remains 147.
+- Completed story range: FH-17122.1-FH-17122.4.
+
 # Fizz Health v1.4.17.21 — Audible Refresh, Runtime Formatting & Library Expansion
 
 - Imported the audiobook records present in the fourth Audible library capture; Audible podcast/episode rows in the same page were intentionally excluded from the audiobook library.
