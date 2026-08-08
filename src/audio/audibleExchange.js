@@ -3,6 +3,8 @@ export const AUDIBLE_EXCHANGE_SCHEMA_VERSION=1;
 export const AUDIBLE_REQUEST_TYPE='audible_library_batch_request';
 export const AUDIBLE_RESPONSE_TYPE='audible_library_batch_response';
 export const AUDIBLE_OPERATION='upsert_audiobooks';
+export const AUDIBLE_ENRICH_BATCH_SIZE=10;
+export const AUDIBLE_ADD_NEW_BATCH_SIZE=50;
 
 const clean=value=>value==null?null:String(value).trim()||null;
 const isHttps=value=>/^https:\/\//i.test(String(value||''));
@@ -73,7 +75,7 @@ export function parseAudibleExchangeJson(text=''){
  try{return {payload:JSON.parse(normalized),normalized}}
  catch(error){throw new Error(audibleJsonSyntaxMessage(normalized,error))}
 }
-export function buildAudibleBatchRequest({existingRecords=[],mode='add_new',batchSize=50}={}){
+export function buildAudibleBatchRequest({existingRecords=[],mode='add_new',batchSize=mode==='enrich_existing'?AUDIBLE_ENRICH_BATCH_SIZE:AUDIBLE_ADD_NEW_BATCH_SIZE}={}){
  const requestId=`audible-${mode}-${Date.now()}`;
  const expectedRecordCount=mode==='enrich_existing'?existingRecords.length:batchSize;
  const rules=[

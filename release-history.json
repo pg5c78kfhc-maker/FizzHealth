@@ -2,6 +2,33 @@
   "format": "fizz-health-release-history",
   "releases": [
     {
+      "version": "1.4.17.28",
+      "name": "Audible Enrichment 10-Record Batches",
+      "type": "Audible enrichment clipboard-size refinement release",
+      "created": "2026-08-08T12:30:00-04:00",
+      "build": "141728",
+      "stories": [
+        [
+          "FH-17128.1",
+          "Reduce existing-audiobook enrichment exchange batches from 50 records to 10"
+        ],
+        [
+          "FH-17128.2",
+          "Emit batch_size 10 and exact 10-record completeness instructions for full enrichment batches"
+        ],
+        [
+          "FH-17128.3",
+          "Keep new-book JSON exchange batches at 50 records"
+        ],
+        [
+          "FH-17128.4",
+          "Preserve strict JSON parsing, ASIN reconciliation, transaction safety, and schema 147"
+        ]
+      ],
+      "knownIssues": [],
+      "release_id": "FH-20260808-141728"
+    },
+    {
       "version": "1.4.17.27",
       "name": "Audible JSON Exchange Strict-Validity Reliability",
       "type": "Corrective Audible JSON exchange reliability release",

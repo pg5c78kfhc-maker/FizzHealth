@@ -1,0 +1,20 @@
+Fizz Health v1.4.17.28 — Audible Enrichment 10-Record Batches
+Baseline: Fizz Health v1.4.17.27 FULL-SOURCE
+Database schema: 147 (unchanged)
+Audible exchange schema: 1 (unchanged)
+
+Implemented:
+- Reduced enrich_existing Audible request batches from up to 50 records to up to 10 records.
+- Added shared constants: AUDIBLE_ENRICH_BATCH_SIZE=10 and AUDIBLE_ADD_NEW_BATCH_SIZE=50.
+- Existing-record selection now takes at most the first 10 incomplete Audible books.
+- Generated enrichment request batch_size is 10 and response_requirements.expected_record_count remains the actual submitted count (10 for a full batch, fewer for a final partial batch).
+- Updated Audible exchange UI copy to `Enrich 10 incomplete` and `Includes up to 10 existing books...`.
+- Kept add_new batches at 50 records.
+- Preserved v1.4.17.27 strict JSON parsing, ASIN/order reconciliation, duplicate rejection, transactional import safety, metadata preservation, and cover-cache behavior.
+
+Verification:
+- Focused v1.4.17.28 tests: PASS (4/4).
+- Project integrity check: PASS.
+- Release metadata verification: PASS.
+- Production build: NOT EXECUTED TO COMPLETION because dependencies are not installed in the extracted source tree. `npm ci` is blocked by the sandbox registry returning HTTP 404 for pinned dependency xlsx@0.18.5; consequently `vite` is unavailable. No dependency changes are part of this release.
+- Baseline broad historical suite has pre-existing stale assertions (baseline run: 852 pass / 366 fail); no attempt was made to rewrite unrelated historical tests.

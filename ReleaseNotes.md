@@ -1,3 +1,28 @@
+# Fizz Health v1.4.17.28 — Audible Enrichment 10-Record Batches
+
+## Implemented scope
+
+- Reduced only the `enrich_existing` Audible JSON exchange from up to 50 incomplete audiobook records to up to 10 records per request so the request/response clipboard payload remains practical on iPhone.
+- Enrichment requests now emit `batch_size: 10`; full 10-record requests require exactly 10 returned records, while a final partial batch requires exactly the actual submitted count.
+- Updated the Audible exchange UI to say “Enrich 10 incomplete” and to select no more than 10 incomplete existing books for each enrichment request.
+- Kept the `add_new` workflow at 50 records.
+- Preserved the strict well-formed JSON contract, parser-first validation, exact ASIN/order reconciliation, duplicate rejection, transaction rollback, metadata preservation, and dynamic cover-cache behavior from v1.4.17.27.
+
+## Schema / migration
+
+Database schema remains **147**. Audible exchange schema remains **1**. No database migration is required.
+
+## Scope exclusions
+
+- No reduction of new-book 50-record batches.
+- No patch/delta exchange redesign.
+- No changes to Audible ownership, listening-state, cover validation, or runtime semantics.
+- No Podcast, Workout, Nutrition, Health, or unrelated changes.
+
+Completed story range: **FH-17128.1-FH-17128.4**
+
+---
+
 # Fizz Health v1.4.17.27 — Audible JSON Exchange Strict-Validity Reliability
 
 ## Implemented scope
